@@ -1,7 +1,7 @@
 {
   "name": "@solarahealth/fhir-r4-server",
   "version": "1.0.0",
-  "description": "FHIR R4 server implementation",
+  "description": "TypeScript-first FHIR R4 server middleware for Express.js with builder pattern API, automatic validation, and type-safe resource handling",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -20,14 +20,16 @@
   },
   "keywords": [
     "fhir",
+    "fhir-r4",
     "hl7",
     "healthcare",
-    "interoperability",
     "typescript",
-    "zod",
+    "express",
+    "middleware",
+    "server",
+    "api",
     "validation",
-    "r4",
-    "health-data"
+    "ehr"
   ],
   "author": "Solara Health Pty Ltd",
   "license": "MIT",
