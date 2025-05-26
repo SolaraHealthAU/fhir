@@ -1,26 +1,47 @@
 # HL7 FHIR Tools
 
-A comprehensive TypeScript library for working with HL7 FHIR R4 resources, providing type-safe interfaces and runtime validation using Zod schemas.
+A comprehensive TypeScript ecosystem for working with HL7 FHIR R4 resources. Whether you're building healthcare applications, integrating with EHR systems, or creating FHIR-compliant APIs, this monorepo provides everything you need with bulletproof type safety and runtime validation.
 
-## 🚀 Features
+## 🚀 What This Project Offers
 
-- **Complete FHIR R4 Support**: Full TypeScript type definitions for all FHIR R4 resources
-- **Runtime Validation**: Zod-based schemas for robust data validation
-- **Type Safety**: Leverage TypeScript's type system for compile-time safety
-- **Monorepo Architecture**: Organized using Lerna for scalable package management
-- **Auto-Generated**: Types and schemas generated directly from official FHIR specifications
+This project provides two complementary packages that work together to make FHIR development simple and type-safe:
+
+### 🏗️ **For Application Developers** - `@solarahealth/fhir-r4`
+
+Use FHIR types and validation in your own applications, whether you're building client apps, custom servers, or data processing pipelines.
+
+### 🌐 **For API Developers** - `@solarahealth/fhir-r4-server`
+
+Quickly build FHIR-compliant REST APIs with Express.js middleware that handles routing, validation, and capability statements automatically.
+
+## 🎯 Key Features
+
+- **🔒 Complete Type Safety**: Full TypeScript definitions for all FHIR R4 resources
+- **✅ Runtime Validation**: Zod-powered schemas catch errors before they cause problems
+- **🚀 Express Integration**: Ready-to-use middleware for building FHIR servers
+- **📚 Comprehensive Coverage**: Support for all 150+ FHIR R4 resource types
+- **🌳 Tree Shakeable**: Only bundle what you use
+- **⚡ Auto-Generated**: Always up-to-date with official FHIR specifications
+- **🏗️ Builder Pattern**: Intuitive APIs for defining FHIR capabilities
 
 ## 📦 Packages
 
 ### `@solarahealth/fhir-r4`
 
-The main package providing TypeScript types and Zod schemas for FHIR R4 resources.
+**Core FHIR R4 types and validation schemas**
 
-**Installation:**
+Perfect for developers who want to work with FHIR data in their applications, validate resources, or build custom FHIR solutions.
 
 ```bash
 npm install @solarahealth/fhir-r4
 ```
+
+**Use Cases:**
+
+- Validating FHIR resources in your application
+- Type-safe FHIR data manipulation
+- Building custom FHIR clients or processors
+- Integrating with existing FHIR systems
 
 **Key Features:**
 
@@ -29,9 +50,34 @@ npm install @solarahealth/fhir-r4
 - Support for both CommonJS and ES modules
 - Tree-shakeable exports
 
-## 🏁 Quick Start
+### `@solarahealth/fhir-r4-server`
 
-### Basic Usage
+**Express.js middleware for building FHIR REST APIs**
+
+Perfect for developers who want to quickly expose their healthcare data through a FHIR-compliant REST API.
+
+```bash
+npm install @solarahealth/fhir-r4-server @solarahealth/fhir-r4 express
+```
+
+**Use Cases:**
+
+- Building FHIR-compliant REST APIs
+- Exposing existing healthcare data via FHIR
+- Creating FHIR facades for legacy systems
+- Rapid prototyping of FHIR servers
+
+**Key Features:**
+
+- Express middleware with builder pattern
+- Auto-generated capability statements
+- Built-in request/response validation
+- Flexible data access layer (bring your own database)
+- FHIR R4 REST API compliance
+
+## 🏁 Quick Start Examples
+
+### Using FHIR Types and Validation (`@solarahealth/fhir-r4`)
 
 ```typescript
 import {
@@ -46,12 +92,7 @@ const patient: Patient = {
   resourceType: 'Patient',
   id: 'patient-123',
   active: true,
-  name: [
-    {
-      family: 'Doe',
-      given: ['John'],
-    },
-  ],
+  name: [{ family: 'Doe', given: ['John'] }],
   gender: 'male',
   birthDate: '1990-01-01',
 };
@@ -61,16 +102,101 @@ const patientSchema = createPatientSchema();
 const result = patientSchema.safeParse(patient);
 
 if (result.success) {
-  console.log('Valid patient resource:', result.data);
+  console.log('✅ Valid patient resource:', result.data);
 } else {
-  console.error('Validation errors:', result.error.issues);
+  console.error('❌ Validation errors:', result.error.issues);
 }
 ```
 
-### Working with Observations
+### Building a FHIR Server (`@solarahealth/fhir-r4-server`)
 
 ```typescript
-import { createObservationSchema, type Observation } from '@solarahealth/fhir-r4';
+import express from 'express';
+import type { Patient } from '@solarahealth/fhir-r4';
+import { RestServer, builder, errors } from '@solarahealth/fhir-r4-server';
+import { z } from 'zod';
+
+const app = express();
+app.use(express.json());
+
+// Your data store (could be any database)
+const patients: Record<string, Patient> = {
+  '123': {
+    resourceType: 'Patient',
+    id: '123',
+    name: [{ given: ['John'], family: 'Doe' }],
+  },
+};
+
+// Define Patient resource with read capability
+const patientResource = builder
+  .defineResource('Patient')
+  .read((builder) =>
+    builder.id(z.string()).retrieveWith(async (id) => {
+      const patient = patients[id];
+      if (!patient) {
+        throw new errors.ResourceNotFound('Patient', id);
+      }
+      return patient;
+    }),
+  )
+  .build();
+
+// Initialize FHIR server
+const fhirServer = RestServer.init({
+  capabilities: {
+    resourceType: 'CapabilityStatement',
+    status: 'active',
+    date: new Date().toISOString(),
+    kind: 'instance',
+    fhirVersion: '4.0.1',
+    format: ['json'],
+    rest: [{ mode: 'server', resource: [patientResource] }],
+  },
+});
+
+// Mount FHIR middleware
+app.use(
+  '/fhir',
+  RestServer.expressMiddleware(fhirServer, {
+    context: async () => ({}),
+  }),
+);
+
+app.listen(3000, () => {
+  console.log('🏥 FHIR server running on http://localhost:3000/fhir');
+});
+```
+
+## 🎯 Choose Your Path
+
+### I want to work with FHIR data in my application
+
+→ Start with `@solarahealth/fhir-r4` for types and validation
+
+### I want to build a FHIR REST API
+
+→ Use both packages: `@solarahealth/fhir-r4-server` + `@solarahealth/fhir-r4`
+
+### I want to integrate with existing FHIR systems
+
+→ Start with `@solarahealth/fhir-r4` for client-side validation and types
+
+### I want to expose legacy healthcare data via FHIR
+
+→ Use `@solarahealth/fhir-r4-server` to create a FHIR facade
+
+## 💡 More Examples
+
+### Working with Observations and Bundles
+
+```typescript
+import {
+  createObservationSchema,
+  createBundleSchema,
+  type Observation,
+  type Bundle,
+} from '@solarahealth/fhir-r4';
 
 const observation: Observation = {
   resourceType: 'Observation',
@@ -85,9 +211,7 @@ const observation: Observation = {
       },
     ],
   },
-  subject: {
-    reference: 'Patient/patient-123',
-  },
+  subject: { reference: 'Patient/patient-123' },
   valueQuantity: {
     value: 70,
     unit: 'kg',
@@ -96,32 +220,46 @@ const observation: Observation = {
   },
 };
 
-// Validate the observation
-const observationSchema = createObservationSchema();
-const validationResult = observationSchema.safeParse(observation);
-```
-
-### Bundle Resources
-
-```typescript
-import { createBundleSchema, type Bundle } from '@solarahealth/fhir-r4';
-
+// Bundle multiple resources
 const bundle: Bundle = {
   resourceType: 'Bundle',
   id: 'bundle-123',
   type: 'collection',
-  entry: [
-    {
-      resource: patient,
-    },
-    {
-      resource: observation,
-    },
-  ],
+  entry: [{ resource: patient }, { resource: observation }],
 };
+```
 
-const bundleSchema = createBundleSchema();
-const bundleResult = bundleSchema.safeParse(bundle);
+### Advanced FHIR Server with Search
+
+```typescript
+import { builder } from '@solarahealth/fhir-r4-server';
+import { z } from 'zod';
+
+const patientResource = builder
+  .defineResource('Patient')
+  .read((builder) =>
+    builder.id(z.string()).retrieveWith(async (id, context) => {
+      return await context.database.findPatient(id);
+    }),
+  )
+  .search((builder) =>
+    builder
+      .parameters(
+        z.object({
+          name: z.string().optional(),
+          birthdate: z.string().optional(),
+        }),
+      )
+      .searchWith(async (params, context) => {
+        const results = await context.database.searchPatients(params);
+        return {
+          resourceType: 'Bundle',
+          type: 'searchset',
+          entry: results.map((resource) => ({ resource })),
+        };
+      }),
+  )
+  .build();
 ```
 
 ## 🛠️ Development
@@ -151,52 +289,30 @@ const bundleResult = bundleSchema.safeParse(bundle);
    npm run build
    ```
 
-### Working with the FHIR R4 Package
+### Working with Individual Packages
 
-Navigate to the FHIR R4 package:
+#### FHIR R4 Package (`packages/fhir-r4`)
 
 ```bash
 cd packages/fhir-r4
+npm run ci  # Run full CI pipeline
 ```
 
-#### Regenerating Types and Schemas
+**Regenerating Types and Schemas:**
 
 The types and schemas are auto-generated from the official FHIR specifications:
 
-1. **Download FHIR specifications:**
+```bash
+npm run generate  # Download specs and regenerate everything
+npm run test      # Verify everything works
+```
 
-   ```bash
-   npm run generate
-   ```
+#### FHIR R4 Server Package (`packages/fhir-r4-server`)
 
-   This will:
-
-   - Download the latest FHIR R4 specifications
-   - Generate TypeScript types and Zod schemas
-   - Update all resource definitions
-
-2. **Run tests:**
-
-   ```bash
-   npm run test
-   ```
-
-3. **Type checking:**
-
-   ```bash
-   npm run typecheck
-   ```
-
-4. **Linting:**
-
-   ```bash
-   npm run lint
-   ```
-
-5. **Full CI pipeline:**
-   ```bash
-   npm run ci
-   ```
+```bash
+cd packages/fhir-r4-server
+npm run ci  # Run full CI pipeline
+```
 
 ### Available Scripts
 
@@ -207,23 +323,32 @@ The types and schemas are auto-generated from the official FHIR specifications:
 - `npm run clean` - Clean build artifacts
 - `npm run publish` - Publish packages (requires proper permissions)
 
-#### Package Level (fhir-r4)
+#### FHIR R4 Package (`packages/fhir-r4`)
 
 - `npm run build` - Build the package (both CJS and ESM)
-- `npm run build:cjs` - Build CommonJS version
-- `npm run build:esm` - Build ES modules version
 - `npm run test` - Run Jest tests
 - `npm run typecheck` - TypeScript type checking
 - `npm run lint` - ESLint code linting
 - `npm run generate` - Download specs and regenerate types
-- `npm run generate:r4` - Generate R4 types only
+- `npm run ci` - Run full CI pipeline
+- `npm run clean` - Remove build artifacts
+
+#### FHIR R4 Server Package (`packages/fhir-r4-server`)
+
+- `npm run build` - Build the package
+- `npm run test` - Run Jest tests
+- `npm run typecheck` - TypeScript type checking
+- `npm run lint` - ESLint code linting
+- `npm run ci` - Run full CI pipeline
 - `npm run clean` - Remove build artifacts
 
 ## 📚 API Reference
 
-### Available Resources
+### `@solarahealth/fhir-r4`
 
-The library provides complete support for all FHIR R4 resources, including:
+#### Available Resources
+
+Complete support for all FHIR R4 resources, including:
 
 - **Administrative**: Patient, Practitioner, Organization, Location, etc.
 - **Clinical**: Observation, Condition, Procedure, DiagnosticReport, etc.
@@ -231,7 +356,7 @@ The library provides complete support for all FHIR R4 resources, including:
 - **Workflow**: Task, Appointment, Schedule, etc.
 - **Infrastructure**: Bundle, CapabilityStatement, OperationDefinition, etc.
 
-### Schema Creation
+#### Schema Creation
 
 Each FHIR resource has a corresponding schema creation function:
 
@@ -244,7 +369,7 @@ import {
 } from '@solarahealth/fhir-r4';
 ```
 
-### Type Definitions
+#### Type Definitions
 
 All FHIR resources are available as TypeScript types:
 
@@ -255,6 +380,35 @@ import type {
   Bundle,
   // ... and many more
 } from '@solarahealth/fhir-r4';
+```
+
+### `@solarahealth/fhir-r4-server`
+
+#### Core Components
+
+- **`RestServer`**: Main server class for initializing FHIR servers
+- **`builder`**: Fluent API for defining resource capabilities
+- **`errors`**: FHIR-compliant error classes
+
+#### Builder Pattern
+
+```typescript
+import { builder } from '@solarahealth/fhir-r4-server';
+
+const resource = builder
+  .defineResource('Patient')
+  .read(/* read handler */)
+  .search(/* search handler */)
+  .build();
+```
+
+#### Error Handling
+
+```typescript
+import { errors } from '@solarahealth/fhir-r4-server';
+
+throw new errors.ResourceNotFound('Patient', '123');
+throw new errors.BadRequest('Invalid parameter');
 ```
 
 ## 🤝 Contributing
@@ -283,11 +437,17 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🆘 Support
 
-If you encounter any issues or have questions:
+If you encounter any issues or have questions about either package:
 
 1. Check the [existing issues](../../issues)
 2. Create a new issue with a detailed description
 3. Include code examples and error messages when applicable
+4. Specify which package you're using (`@solarahealth/fhir-r4` or `@solarahealth/fhir-r4-server`)
+
+### Package-Specific Documentation
+
+- **`@solarahealth/fhir-r4`**: See [packages/fhir-r4/README.md](packages/fhir-r4/README.md)
+- **`@solarahealth/fhir-r4-server`**: See [packages/fhir-r4-server/README.md](packages/fhir-r4-server/README.md)
 
 ---
 

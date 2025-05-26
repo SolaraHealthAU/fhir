@@ -1,0 +1,74 @@
+{
+  "name": "@solarahealth/fhir-r4-server",
+  "version": "1.0.0",
+  "description": "FHIR R4 server implementation",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist/",
+    "LICENSE",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "keywords": [
+    "fhir",
+    "hl7",
+    "healthcare",
+    "interoperability",
+    "typescript",
+    "zod",
+    "validation",
+    "r4",
+    "health-data"
+  ],
+  "author": "Solara Health Pty Ltd",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SolaraHealthAU/fhir.git",
+    "directory": "packages/fhir-r4-server"
+  },
+  "homepage": "https://github.com/SolaraHealthAU/fhir#readme",
+  "bugs": {
+    "url": "https://github.com/SolaraHealthAU/fhir/issues"
+  },
+  "scripts": {
+    "build:cjs": "tsc --project tsconfig.json",
+    "build:esm": "tsc --project tsconfig.esm.json",
+    "build": "npm run clean && npm run build:cjs && npm run build:esm",
+    "clean": "rm -rf dist",
+    "ci": "npm run typecheck && npm run lint && npm run test",
+    "typecheck": "tsc --noEmit",
+    "test": "NODE_ENV=test && jest",
+    "lint": "eslint src",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@solarahealth/fhir-r4": "*"
+  },
+  "peerDependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "@types/express": "^5.0.2",
+    "@types/jest": "^29.5.12",
+    "esbuild": "^0.25.1",
+    "esbuild-runner": "^2.2.2",
+    "eslint": "^8.56.0",
+    "express": "^5.1.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.5.3",
+    "ts-jest": "^29.2.5",
+    "typescript": "5.4.5",
+    "typescript-eslint": "^7.9.0"
+  }
+}
