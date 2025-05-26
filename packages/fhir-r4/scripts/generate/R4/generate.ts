@@ -2,9 +2,6 @@
  * This script reads FHIR JSON schemas and data elements,
  * transforms them into Zod schemas and corresponding TypeScript interfaces,
  * and writes them to the specified location.
- *
- * NOTE: The logic and final output (beyond whitespace) remain the same
- * as in the original script.
  */
 
 import fs from 'fs';
