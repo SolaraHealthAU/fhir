@@ -1,0 +1,21 @@
+#!/bin/bash
+
+mkdir -p specifications/R4
+
+# https://hl7.org/fhir/R4/examples-json.zip
+if [ ! -d specifications/R4/examples ]; then
+  echo "Downloading R4 examples..."
+  curl -L https://hl7.org/fhir/R4/examples-json.zip -o specifications/R4/examples-json.zip -s
+  mkdir -p specifications/R4/examples
+  unzip -o specifications/R4/examples-json.zip -d specifications/R4/examples > /dev/null
+fi
+
+# https://hl7.org/fhir/R4/definitions.json.zip
+if [ ! -d specifications/R4/definitions ]; then
+  echo "Downloading R4 definitions..."
+  curl -L https://hl7.org/fhir/R4/definitions.json.zip -o specifications/R4/definitions.zip -s
+  mkdir -p specifications/R4/definitions
+
+  unzip -o specifications/R4/definitions.zip -d specifications/R4/definitions > /dev/null
+  unzip -o specifications/R4/definitions/fhir.schema.json.zip -d specifications/R4/definitions > /dev/null
+fi

@@ -1,1 +1,1 @@
-export const test = "test";
+export * from './v4.0.1';
