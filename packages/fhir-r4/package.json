@@ -54,5 +54,6 @@
     "ts-jest": "^29.2.5",
     "typescript": "5.4.5",
     "typescript-eslint": "^7.9.0"
-  }
+  },
+  "gitHead": "6cb68dbf06d7e3d4141511ba608763a5d4f5c675"
 }
