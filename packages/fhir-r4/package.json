@@ -5,6 +5,7 @@
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
+  "private": false,
   "sideEffects": false,
   "keywords": [
     "fhir",
@@ -55,5 +56,5 @@
     "typescript": "5.4.5",
     "typescript-eslint": "^7.9.0"
   },
-  "gitHead": "6cb68dbf06d7e3d4141511ba608763a5d4f5c675"
+  "gitHead": "aedb10dec75ecbd1824593eb938c1c5e2f9a64cd"
 }
