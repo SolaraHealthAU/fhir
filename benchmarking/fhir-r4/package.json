@@ -7,12 +7,22 @@
     "compare:tree-shaking": "esr compare-tree-shaking.ts",
     "benchmark:all": "cd fhir-r4 && npm run benchmark:all && cd ../ahryman40k-ts-fhir-types && npm run benchmark:all",
     "benchmark:tree-shaking": "cd fhir-r4 && npm run benchmark:tree-shaking && cd ../ahryman40k-ts-fhir-types && npm run benchmark:tree-shaking",
-    "benchmark:performance": "cd fhir-r4 && npm run benchmark && cd ../ahryman40k-ts-fhir-types && npm run benchmark"
+    "benchmark:performance": "cd fhir-r4 && npm run benchmark && cd ../ahryman40k-ts-fhir-types && npm run benchmark",
+    "benchmark:memory": "esr memory-coldstart-benchmark.ts",
+    "benchmark:memory-esr": "esr memory-coldstart-benchmark.ts",
+    "benchmark:enhanced": "esr enhanced-compare-libraries.ts",
+    "benchmark:complete": "npm run benchmark:performance && npm run benchmark:tree-shaking && npm run benchmark:memory-esr",
+    "benchmark:all-enhanced": "npm run benchmark:enhanced"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
     "esbuild": "^0.25.1",
     "esbuild-runner": "^2.2.2",
     "typescript": "5.4.5"
+  },
+  "dependencies": {
+    "@ahryman40k/ts-fhir-types": "^4.0.39",
+    "@solarahealth/fhir-r4": "*",
+    "fp-ts": "^2.16.10"
   }
 }
