@@ -788,7 +788,7 @@ async function writeFile(filePath: string, content: string) {
 
     // Generate imports for schema file
     const schemaImports = new Set([
-      `import { z } from 'zod';`,
+      `import { z } from 'zod/v4';`,
       `import * as types from './types';`,
       `import * as primitives from '../primitives';`,
     ]);
@@ -911,7 +911,7 @@ async function writeFile(filePath: string, content: string) {
   // Generate the main index.ts that re-exports everything
   const indexOutput = `
     /** Generated from FHIR JSON Schema */
-    import { z } from 'zod';
+    import { z } from 'zod/v4';
     export * from './primitives';
     ${groups
       .map(

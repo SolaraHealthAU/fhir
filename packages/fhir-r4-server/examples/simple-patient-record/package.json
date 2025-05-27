@@ -12,7 +12,7 @@
     "@solarahealth/fhir-r4": "*",
     "@solarahealth/fhir-r4-server": "*",
     "express": "^5.1.0",
-    "zod": "^3.25.28"
+    "zod": "^3.25.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.2",

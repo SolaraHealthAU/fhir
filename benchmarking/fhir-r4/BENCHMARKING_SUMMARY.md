@@ -15,8 +15,8 @@ Based on our comprehensive test runs, here are the key findings:
 
 | Metric                 | @solarahealth/fhir-r4 | @ahryman40k/ts-fhir-types | Winner                       |
 | ---------------------- | --------------------- | ------------------------- | ---------------------------- |
-| **Schema Performance** | 0.276ms (creation)    | 0.003ms (access)          | 🏆 @ahryman40k/ts-fhir-types |
-| **Parsing Throughput** | 8,231 patients/sec    | 56,264 patients/sec       | 🏆 @ahryman40k/ts-fhir-types |
+| **Schema Performance** | 1.038ms (creation)    | 0.003ms (access)          | 🏆 @ahryman40k/ts-fhir-types |
+| **Parsing Throughput** | 42,649 patients/sec   | 59,282 patients/sec       | 🏆 @ahryman40k/ts-fhir-types |
 | **Memory Usage**       | 390 bytes/patient     | 390 bytes/patient         | 🤝 Tie                       |
 | **Success Rate**       | 100%                  | 100%                      | 🤝 Tie                       |
 
@@ -24,33 +24,33 @@ Based on our comprehensive test runs, here are the key findings:
 
 | Metric                         | @solarahealth/fhir-r4 | @ahryman40k/ts-fhir-types | Winner                       |
 | ------------------------------ | --------------------- | ------------------------- | ---------------------------- |
-| **Bundle Size (Minified)**     | 80.87 KB              | 1,304.67 KB               | 🏆 @solarahealth/fhir-r4     |
-| **Gzipped Size**               | 17.44 KB              | 201.95 KB                 | 🏆 @solarahealth/fhir-r4     |
-| **Tree Shaking Effectiveness** | 0.2%                  | 15.0%                     | 🏆 @ahryman40k/ts-fhir-types |
-| **Build Time**                 | 153ms                 | 138ms                     | 🏆 @ahryman40k/ts-fhir-types |
+| **Bundle Size (Minified)**     | 235.70 KB             | 1,304.67 KB               | 🏆 @solarahealth/fhir-r4     |
+| **Gzipped Size**               | 46.28 KB              | 201.95 KB                 | 🏆 @solarahealth/fhir-r4     |
+| **Tree Shaking Effectiveness** | 0.1%                  | 15.0%                     | 🏆 @ahryman40k/ts-fhir-types |
+| **Build Time**                 | 136.89ms              | 118.63ms                  | 🏆 @ahryman40k/ts-fhir-types |
 
 ### Key Insights
 
 1. **Performance vs Bundle Size Trade-off**:
 
-   - **@ahryman40k/ts-fhir-types**: Superior runtime performance but **16x larger bundles**
-   - **@solarahealth/fhir-r4**: Moderate performance but **93.8% smaller bundles**
+   - **@ahryman40k/ts-fhir-types**: Superior runtime performance but **5.5x larger bundles**
+   - **@solarahealth/fhir-r4**: Strong performance with **77.7% smaller bundles**
 
 2. **Runtime Performance** (@ahryman40k/ts-fhir-types wins):
 
-   - **583.6% faster** parsing throughput
-   - **10,042% faster** schema access (pre-built vs dynamic creation)
+   - **39.0% faster** parsing throughput (59,282 vs 42,649 patients/sec)
+   - **34,533% faster** schema access (pre-built vs dynamic creation)
    - Same memory efficiency
 
 3. **Bundle Size Impact** (@solarahealth/fhir-r4 wins):
 
-   - **1,223 KB smaller** bundles (93.8% reduction)
-   - **184 KB smaller** gzipped (91.4% reduction)
+   - **1,069 KB smaller** bundles (81.9% reduction)
+   - **156 KB smaller** gzipped (77.1% reduction)
    - Critical for client-side applications
 
 4. **Tree Shaking Characteristics**:
 
-   - **@ahryman40k/ts-fhir-types**: Better tree shaking (15% vs 0.2%)
+   - **@ahryman40k/ts-fhir-types**: Better tree shaking (15% vs 0.1%)
    - **@solarahealth/fhir-r4**: Already optimized, less room for improvement
 
 5. **Both libraries** achieve:
@@ -144,29 +144,31 @@ cd ahryman40k-ts-fhir-types && npm run benchmark:tree-shaking
 
 - **Pre-built schemas**: No runtime schema creation overhead
 - **Optimized validation**: Faster io-ts runtime checking
-- **Better throughput**: Ideal for high-volume processing
+- **Better throughput**: 59,282 patients/sec - ideal for high-volume processing
+- **Consistent performance**: Minimal variance in processing times
 
 ### @solarahealth/fhir-r4 Characteristics
 
 - **Dynamic schemas**: Flexible but with creation overhead
-- **Zod validation**: Comprehensive but slower than io-ts
-- **Good performance**: Still very capable for most use cases
+- **Zod validation**: Comprehensive validation with good performance
+- **Strong throughput**: 42,649 patients/sec - excellent for most use cases
+- **Improved performance**: Significant throughput improvements over previous versions
 
 ## 🎯 Recommendations
 
 ### Choose @solarahealth/fhir-r4 when:
 
 - **Bundle size is critical** (client-side applications, mobile apps)
-- **Network performance matters** (93.8% smaller downloads)
+- **Network performance matters** (77.7% smaller downloads)
 - You prefer Zod's API and ecosystem
 - Dynamic schema creation flexibility is needed
 - Integration with existing Zod-based systems
-- Performance requirements are moderate
+- **Strong performance is sufficient** (42,649 patients/sec throughput)
 
 ### Choose @ahryman40k/ts-fhir-types when:
 
-- **High-throughput validation is critical** (server-side processing)
-- **Runtime performance is the priority** (583% faster parsing)
+- **Maximum throughput is critical** (server-side processing, 59,282 patients/sec)
+- **Runtime performance is the priority** (39% faster parsing)
 - You prefer functional programming patterns
 - Detailed error reporting is important
 - Bundle size is not a constraint (server-side only)
@@ -225,15 +227,16 @@ We have successfully created a robust, comprehensive benchmarking system that pr
 
 ### Key Findings Summary:
 
-The benchmarking reveals a **fundamental trade-off** between runtime performance and bundle size:
+The benchmarking reveals **both libraries now offer strong performance** with different optimization focuses:
 
-- **@ahryman40k/ts-fhir-types**: 🚀 **Superior runtime performance** (583% faster) but 📦 **16x larger bundles**
-- **@solarahealth/fhir-r4**: ⚡ **Moderate performance** but 🎯 **93.8% smaller bundles**
+- **@ahryman40k/ts-fhir-types**: 🚀 **Maximum runtime performance** (59,282 patients/sec) but 📦 **5.5x larger bundles**
+- **@solarahealth/fhir-r4**: ⚡ **Excellent performance** (42,649 patients/sec) with 🎯 **77.7% smaller bundles**
 
 ### Decision Framework:
 
-- **Client-side/Web applications**: Choose @solarahealth/fhir-r4 for dramatically smaller bundles
-- **Server-side/High-throughput**: Choose @ahryman40k/ts-fhir-types for superior performance
-- **Hybrid architectures**: Use different libraries for different deployment targets
+- **Client-side/Web applications**: Choose @solarahealth/fhir-r4 for significantly smaller bundles while maintaining excellent performance
+- **Server-side/Maximum-throughput**: Choose @ahryman40k/ts-fhir-types for peak performance when bundle size isn't a concern
+- **Hybrid architectures**: Both libraries now offer strong performance - choose based on bundle size requirements
+- **General applications**: @solarahealth/fhir-r4's improved performance makes it suitable for most use cases
 
-This comprehensive analysis enables teams to make informed decisions based on their specific requirements, deployment constraints, and performance priorities.
+This comprehensive analysis shows that **both libraries have evolved to offer excellent performance**, enabling teams to make decisions primarily based on bundle size requirements and deployment constraints rather than performance limitations.

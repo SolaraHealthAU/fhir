@@ -1,6 +1,6 @@
 // Primitives schema header file
 
-import { z } from "zod";
+import { z } from "zod/v4";
 
 export function createBase64BinarySchema(): Base64BinarySchema {
   return z.string().base64();

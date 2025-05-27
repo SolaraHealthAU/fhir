@@ -1,5 +1,5 @@
 /** Generated from FHIR JSON Schema */
-import { z } from "zod";
+import { z } from "zod/v4";
 export * from "./primitives";
 
 export * from "./core/schema";
