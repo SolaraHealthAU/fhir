@@ -13,6 +13,22 @@ Welcome to the most comprehensive TypeScript library for working with HL7 FHIR R
 - **🌳 Tree Shakeable**: Only bundle what you use
 - **⚡ Auto-Generated**: Always up-to-date with official FHIR specifications
 
+## 📊 Performance Benchmarks
+
+Our comprehensive testing shows excellent performance characteristics:
+
+| Metric                     | @solarahealth/fhir-r4 | vs @ahryman40k/ts-fhir-types |
+| -------------------------- | --------------------- | ---------------------------- |
+| **Parsing Throughput**     | 42,649 patients/sec   | 39% faster alternative       |
+| **Bundle Size (Minified)** | 235.70 KB             | **77.7% smaller**            |
+| **Bundle Size (Gzipped)**  | 46.28 KB              | **77.1% smaller**            |
+| **Memory Usage**           | 390 bytes/patient     | Same efficiency              |
+| **Validation Success**     | 100%                  | Same reliability             |
+
+**Perfect for client-side applications**: Excellent performance with significantly smaller bundle sizes, while maintaining strong server-side performance for most use cases.
+
+> 📈 **Detailed analysis**: See [benchmarking/fhir-r4/BENCHMARKING_SUMMARY.md](https://github.com/SolaraHealthAU/fhir/blob/main/benchmarking/fhir-r4/BENCHMARKING_SUMMARY.md) for comprehensive performance analysis and recommendations.
+
 ## 📦 Installation
 
 Getting started is as easy as:
