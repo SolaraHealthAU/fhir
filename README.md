@@ -24,6 +24,22 @@ Quickly build FHIR-compliant REST APIs with Express.js middleware that handles r
 - **⚡ Auto-Generated**: Always up-to-date with official FHIR specifications
 - **🏗️ Builder Pattern**: Intuitive APIs for defining FHIR capabilities
 
+## 📊 Performance at a Glance
+
+Our comprehensive benchmarking shows excellent performance characteristics:
+
+| Metric                     | @solarahealth/fhir-r4 | vs @ahryman40k/ts-fhir-types |
+| -------------------------- | --------------------- | ---------------------------- |
+| **Parsing Throughput**     | 42,649 patients/sec   | 39% faster alternative       |
+| **Bundle Size (Minified)** | 235.70 KB             | **77.7% smaller**            |
+| **Bundle Size (Gzipped)**  | 46.28 KB              | **77.1% smaller**            |
+| **Memory Usage**           | 390 bytes/patient     | Same efficiency              |
+| **Validation Success**     | 100%                  | Same reliability             |
+
+**Key Takeaway**: Excellent performance with significantly smaller bundle sizes - ideal for client-side applications while maintaining strong server-side performance.
+
+> 📈 **Full benchmarking details**: See [benchmarking/fhir-r4/BENCHMARKING_SUMMARY.md](benchmarking/fhir-r4/BENCHMARKING_SUMMARY.md) for comprehensive performance analysis and recommendations.
+
 ## 📦 Packages
 
 ### `@solarahealth/fhir-r4`
