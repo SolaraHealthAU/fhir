@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -10,23 +11,25 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createImplementationGuidePageSchema() {
-  const baseSchema: z.ZodType<types.ImplementationGuidePage> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    nameUrl: z.string().optional(),
-    _nameUrl: z.lazy(() => createElementSchema()).optional(),
-    nameReference: z.lazy(() => createReferenceSchema()).optional(),
-    title: primitives.createStringSchema().optional(),
-    _title: z.lazy(() => createElementSchema()).optional(),
-    generation: z.enum(["html", "markdown", "xml", "generated"]).optional(),
-    _generation: z.lazy(() => createElementSchema()).optional(),
-    page: z
-      .array(z.lazy(() => createImplementationGuidePageSchema()))
-      .optional(),
-  });
+  return getCachedSchema("ImplementationGuidePage", () => {
+    const baseSchema: z.ZodType<types.ImplementationGuidePage> = z.strictObject(
+      {
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        nameUrl: z.string().optional(),
+        _nameUrl: z.lazy(() => createElementSchema()).optional(),
+        nameReference: createReferenceSchema().optional(),
+        title: primitives.getStringSchema().optional(),
+        _title: z.lazy(() => createElementSchema()).optional(),
+        generation: z.enum(["html", "markdown", "xml", "generated"]).optional(),
+        _generation: z.lazy(() => createElementSchema()).optional(),
+        page: z.array(createImplementationGuidePageSchema()).optional(),
+      },
+    );
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodingSchema,
@@ -10,15 +11,17 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createEncounterClassHistorySchema() {
-  const baseSchema: z.ZodType<types.EncounterClassHistory> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    class: z.lazy(() => createCodingSchema()),
-    period: z.lazy(() => createPeriodSchema()),
-  });
+  return getCachedSchema("EncounterClassHistory", () => {
+    const baseSchema: z.ZodType<types.EncounterClassHistory> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      class: createCodingSchema(),
+      period: createPeriodSchema(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -12,38 +13,39 @@ import { createCoverageEligibilityResponseBenefitSchema } from "../coverageeligi
 /* Generated from FHIR JSON Schema */
 
 export function createCoverageEligibilityResponseItemSchema() {
-  const baseSchema: z.ZodType<types.CoverageEligibilityResponseItem> = z.object(
-    {
-      id: primitives.createStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      category: z.lazy(() => createCodeableConceptSchema()).optional(),
-      productOrService: z.lazy(() => createCodeableConceptSchema()).optional(),
-      modifier: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-      provider: z.lazy(() => createReferenceSchema()).optional(),
-      excluded: primitives.createBooleanSchema().optional(),
-      _excluded: z.lazy(() => createElementSchema()).optional(),
-      name: primitives.createStringSchema().optional(),
-      _name: z.lazy(() => createElementSchema()).optional(),
-      description: primitives.createStringSchema().optional(),
-      _description: z.lazy(() => createElementSchema()).optional(),
-      network: z.lazy(() => createCodeableConceptSchema()).optional(),
-      unit: z.lazy(() => createCodeableConceptSchema()).optional(),
-      term: z.lazy(() => createCodeableConceptSchema()).optional(),
-      benefit: z
-        .array(z.lazy(() => createCoverageEligibilityResponseBenefitSchema()))
-        .optional(),
-      authorizationRequired: primitives.createBooleanSchema().optional(),
-      _authorizationRequired: z.lazy(() => createElementSchema()).optional(),
-      authorizationSupporting: z
-        .array(z.lazy(() => createCodeableConceptSchema()))
-        .optional(),
-      authorizationUrl: primitives.createUriSchema().optional(),
-      _authorizationUrl: z.lazy(() => createElementSchema()).optional(),
-    },
-  );
+  return getCachedSchema("CoverageEligibilityResponseItem", () => {
+    const baseSchema: z.ZodType<types.CoverageEligibilityResponseItem> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        category: createCodeableConceptSchema().optional(),
+        productOrService: createCodeableConceptSchema().optional(),
+        modifier: z.array(createCodeableConceptSchema()).optional(),
+        provider: createReferenceSchema().optional(),
+        excluded: primitives.getBooleanSchema().optional(),
+        _excluded: z.lazy(() => createElementSchema()).optional(),
+        name: primitives.getStringSchema().optional(),
+        _name: z.lazy(() => createElementSchema()).optional(),
+        description: primitives.getStringSchema().optional(),
+        _description: z.lazy(() => createElementSchema()).optional(),
+        network: createCodeableConceptSchema().optional(),
+        unit: createCodeableConceptSchema().optional(),
+        term: createCodeableConceptSchema().optional(),
+        benefit: z
+          .array(createCoverageEligibilityResponseBenefitSchema())
+          .optional(),
+        authorizationRequired: primitives.getBooleanSchema().optional(),
+        _authorizationRequired: z.lazy(() => createElementSchema()).optional(),
+        authorizationSupporting: z
+          .array(createCodeableConceptSchema())
+          .optional(),
+        authorizationUrl: primitives.getUriSchema().optional(),
+        _authorizationUrl: z.lazy(() => createElementSchema()).optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

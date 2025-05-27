@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createReferenceSchema,
@@ -14,29 +15,29 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createSubstanceSpecificationRelationshipSchema() {
-  const baseSchema: z.ZodType<types.SubstanceSpecificationRelationship> =
-    z.object({
-      id: primitives.createStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      substanceReference: z.lazy(() => createReferenceSchema()).optional(),
-      substanceCodeableConcept: z
-        .lazy(() => createCodeableConceptSchema())
-        .optional(),
-      relationship: z.lazy(() => createCodeableConceptSchema()).optional(),
-      isDefining: primitives.createBooleanSchema().optional(),
-      _isDefining: z.lazy(() => createElementSchema()).optional(),
-      amountQuantity: z.lazy(() => createQuantitySchema()).optional(),
-      amountRange: z.lazy(() => createRangeSchema()).optional(),
-      amountRatio: z.lazy(() => createRatioSchema()).optional(),
-      amountString: z.string().optional(),
-      _amountString: z.lazy(() => createElementSchema()).optional(),
-      amountRatioLowLimit: z.lazy(() => createRatioSchema()).optional(),
-      amountType: z.lazy(() => createCodeableConceptSchema()).optional(),
-      source: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    });
+  return getCachedSchema("SubstanceSpecificationRelationship", () => {
+    const baseSchema: z.ZodType<types.SubstanceSpecificationRelationship> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        substanceReference: createReferenceSchema().optional(),
+        substanceCodeableConcept: createCodeableConceptSchema().optional(),
+        relationship: createCodeableConceptSchema().optional(),
+        isDefining: primitives.getBooleanSchema().optional(),
+        _isDefining: z.lazy(() => createElementSchema()).optional(),
+        amountQuantity: createQuantitySchema().optional(),
+        amountRange: createRangeSchema().optional(),
+        amountRatio: createRatioSchema().optional(),
+        amountString: z.string().optional(),
+        _amountString: z.lazy(() => createElementSchema()).optional(),
+        amountRatioLowLimit: createRatioSchema().optional(),
+        amountType: createCodeableConceptSchema().optional(),
+        source: z.array(createReferenceSchema()).optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

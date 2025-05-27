@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -18,46 +19,46 @@ import { createEpisodeOfCareDiagnosisSchema } from "../episodeofcarediagnosis/sc
 /* Generated from FHIR JSON Schema */
 
 export function createEpisodeOfCareSchema() {
-  const baseSchema: z.ZodType<types.EpisodeOfCare> = z.object({
-    resourceType: z.literal("EpisodeOfCare"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-    status: z.enum([
-      "planned",
-      "waitlist",
-      "active",
-      "onhold",
-      "finished",
-      "cancelled",
-      "entered-in-error",
-    ]),
-    _status: z.lazy(() => createElementSchema()).optional(),
-    statusHistory: z
-      .array(z.lazy(() => createEpisodeOfCareStatusHistorySchema()))
-      .optional(),
-    type: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    diagnosis: z
-      .array(z.lazy(() => createEpisodeOfCareDiagnosisSchema()))
-      .optional(),
-    patient: z.lazy(() => createReferenceSchema()),
-    managingOrganization: z.lazy(() => createReferenceSchema()).optional(),
-    period: z.lazy(() => createPeriodSchema()).optional(),
-    referralRequest: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    careManager: z.lazy(() => createReferenceSchema()).optional(),
-    team: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    account: z.array(z.lazy(() => createReferenceSchema())).optional(),
-  });
+  return getCachedSchema("EpisodeOfCare", () => {
+    const baseSchema: z.ZodType<types.EpisodeOfCare> = z.strictObject({
+      resourceType: z.literal("EpisodeOfCare"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: z.lazy(() => createElementSchema()).optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(createResourceListSchema()).optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+      status: z.enum([
+        "planned",
+        "waitlist",
+        "active",
+        "onhold",
+        "finished",
+        "cancelled",
+        "entered-in-error",
+      ]),
+      _status: z.lazy(() => createElementSchema()).optional(),
+      statusHistory: z
+        .array(createEpisodeOfCareStatusHistorySchema())
+        .optional(),
+      type: z.array(createCodeableConceptSchema()).optional(),
+      diagnosis: z.array(createEpisodeOfCareDiagnosisSchema()).optional(),
+      patient: createReferenceSchema(),
+      managingOrganization: createReferenceSchema().optional(),
+      period: createPeriodSchema().optional(),
+      referralRequest: z.array(createReferenceSchema()).optional(),
+      careManager: createReferenceSchema().optional(),
+      team: z.array(createReferenceSchema()).optional(),
+      account: z.array(createReferenceSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

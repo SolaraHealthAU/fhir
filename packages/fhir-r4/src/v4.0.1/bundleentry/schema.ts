@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import { createExtensionSchema, createElementSchema } from "../core/schema";
 import { createBundleLinkSchema } from "../bundlelink/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
@@ -11,20 +12,22 @@ import { createBundleResponseSchema } from "../bundleresponse/schema";
 /* Generated from FHIR JSON Schema */
 
 export function createBundleEntrySchema() {
-  const baseSchema: z.ZodType<types.BundleEntry> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    link: z.array(z.lazy(() => createBundleLinkSchema())).optional(),
-    fullUrl: primitives.createUriSchema().optional(),
-    _fullUrl: z.lazy(() => createElementSchema()).optional(),
-    resource: z.lazy(() => createResourceListSchema()).optional(),
-    search: z.lazy(() => createBundleSearchSchema()).optional(),
-    request: z.lazy(() => createBundleRequestSchema()).optional(),
-    response: z.lazy(() => createBundleResponseSchema()).optional(),
-  });
+  return getCachedSchema("BundleEntry", () => {
+    const baseSchema: z.ZodType<types.BundleEntry> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      link: z.array(createBundleLinkSchema()).optional(),
+      fullUrl: primitives.getUriSchema().optional(),
+      _fullUrl: z.lazy(() => createElementSchema()).optional(),
+      resource: createResourceListSchema().optional(),
+      search: createBundleSearchSchema().optional(),
+      request: createBundleRequestSchema().optional(),
+      response: createBundleResponseSchema().optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

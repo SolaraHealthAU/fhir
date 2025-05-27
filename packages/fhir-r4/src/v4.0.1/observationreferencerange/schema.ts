@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createQuantitySchema,
@@ -12,20 +13,23 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createObservationReferenceRangeSchema() {
-  const baseSchema: z.ZodType<types.ObservationReferenceRange> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    low: z.lazy(() => createQuantitySchema()).optional(),
-    high: z.lazy(() => createQuantitySchema()).optional(),
-    type: z.lazy(() => createCodeableConceptSchema()).optional(),
-    appliesTo: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    age: z.lazy(() => createRangeSchema()).optional(),
-    text: primitives.createStringSchema().optional(),
-    _text: z.lazy(() => createElementSchema()).optional(),
-  });
+  return getCachedSchema("ObservationReferenceRange", () => {
+    const baseSchema: z.ZodType<types.ObservationReferenceRange> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        low: createQuantitySchema().optional(),
+        high: createQuantitySchema().optional(),
+        type: createCodeableConceptSchema().optional(),
+        appliesTo: z.array(createCodeableConceptSchema()).optional(),
+        age: createRangeSchema().optional(),
+        text: primitives.getStringSchema().optional(),
+        _text: z.lazy(() => createElementSchema()).optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

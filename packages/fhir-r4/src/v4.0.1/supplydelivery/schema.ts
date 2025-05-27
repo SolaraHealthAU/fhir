@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -18,40 +19,40 @@ import { createSupplyDeliverySuppliedItemSchema } from "../supplydeliverysupplie
 /* Generated from FHIR JSON Schema */
 
 export function createSupplyDeliverySchema() {
-  const baseSchema: z.ZodType<types.SupplyDelivery> = z.object({
-    resourceType: z.literal("SupplyDelivery"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-    basedOn: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    partOf: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    status: z
-      .enum(["in-progress", "completed", "abandoned", "entered-in-error"])
-      .optional(),
-    _status: z.lazy(() => createElementSchema()).optional(),
-    patient: z.lazy(() => createReferenceSchema()).optional(),
-    type: z.lazy(() => createCodeableConceptSchema()).optional(),
-    suppliedItem: z
-      .lazy(() => createSupplyDeliverySuppliedItemSchema())
-      .optional(),
-    occurrenceDateTime: z.string().optional(),
-    _occurrenceDateTime: z.lazy(() => createElementSchema()).optional(),
-    occurrencePeriod: z.lazy(() => createPeriodSchema()).optional(),
-    occurrenceTiming: z.lazy(() => createTimingSchema()).optional(),
-    supplier: z.lazy(() => createReferenceSchema()).optional(),
-    destination: z.lazy(() => createReferenceSchema()).optional(),
-    receiver: z.array(z.lazy(() => createReferenceSchema())).optional(),
-  });
+  return getCachedSchema("SupplyDelivery", () => {
+    const baseSchema: z.ZodType<types.SupplyDelivery> = z.strictObject({
+      resourceType: z.literal("SupplyDelivery"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: z.lazy(() => createElementSchema()).optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(createResourceListSchema()).optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+      basedOn: z.array(createReferenceSchema()).optional(),
+      partOf: z.array(createReferenceSchema()).optional(),
+      status: z
+        .enum(["in-progress", "completed", "abandoned", "entered-in-error"])
+        .optional(),
+      _status: z.lazy(() => createElementSchema()).optional(),
+      patient: createReferenceSchema().optional(),
+      type: createCodeableConceptSchema().optional(),
+      suppliedItem: createSupplyDeliverySuppliedItemSchema().optional(),
+      occurrenceDateTime: z.string().optional(),
+      _occurrenceDateTime: z.lazy(() => createElementSchema()).optional(),
+      occurrencePeriod: createPeriodSchema().optional(),
+      occurrenceTiming: createTimingSchema().optional(),
+      supplier: createReferenceSchema().optional(),
+      destination: createReferenceSchema().optional(),
+      receiver: z.array(createReferenceSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

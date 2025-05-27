@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -19,42 +20,40 @@ import { createInsurancePlanPlanSchema } from "../insuranceplanplan/schema";
 /* Generated from FHIR JSON Schema */
 
 export function createInsurancePlanSchema() {
-  const baseSchema: z.ZodType<types.InsurancePlan> = z.object({
-    resourceType: z.literal("InsurancePlan"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-    status: z.enum(["draft", "active", "retired", "unknown"]).optional(),
-    _status: z.lazy(() => createElementSchema()).optional(),
-    type: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    name: primitives.createStringSchema().optional(),
-    _name: z.lazy(() => createElementSchema()).optional(),
-    alias: z.array(primitives.createStringSchema()).optional(),
-    _alias: z.array(z.lazy(() => createElementSchema())).optional(),
-    period: z.lazy(() => createPeriodSchema()).optional(),
-    ownedBy: z.lazy(() => createReferenceSchema()).optional(),
-    administeredBy: z.lazy(() => createReferenceSchema()).optional(),
-    coverageArea: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    contact: z
-      .array(z.lazy(() => createInsurancePlanContactSchema()))
-      .optional(),
-    endpoint: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    network: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    coverage: z
-      .array(z.lazy(() => createInsurancePlanCoverageSchema()))
-      .optional(),
-    plan: z.array(z.lazy(() => createInsurancePlanPlanSchema())).optional(),
-  });
+  return getCachedSchema("InsurancePlan", () => {
+    const baseSchema: z.ZodType<types.InsurancePlan> = z.strictObject({
+      resourceType: z.literal("InsurancePlan"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: z.lazy(() => createElementSchema()).optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(createResourceListSchema()).optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+      status: z.enum(["draft", "active", "retired", "unknown"]).optional(),
+      _status: z.lazy(() => createElementSchema()).optional(),
+      type: z.array(createCodeableConceptSchema()).optional(),
+      name: primitives.getStringSchema().optional(),
+      _name: z.lazy(() => createElementSchema()).optional(),
+      alias: z.array(primitives.getStringSchema()).optional(),
+      _alias: z.array(z.lazy(() => createElementSchema())).optional(),
+      period: createPeriodSchema().optional(),
+      ownedBy: createReferenceSchema().optional(),
+      administeredBy: createReferenceSchema().optional(),
+      coverageArea: z.array(createReferenceSchema()).optional(),
+      contact: z.array(createInsurancePlanContactSchema()).optional(),
+      endpoint: z.array(createReferenceSchema()).optional(),
+      network: z.array(createReferenceSchema()).optional(),
+      coverage: z.array(createInsurancePlanCoverageSchema()).optional(),
+      plan: z.array(createInsurancePlanPlanSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

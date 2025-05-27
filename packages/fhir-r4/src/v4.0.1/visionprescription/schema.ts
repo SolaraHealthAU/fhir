@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -15,34 +16,36 @@ import { createVisionPrescriptionLensSpecificationSchema } from "../visionprescr
 /* Generated from FHIR JSON Schema */
 
 export function createVisionPrescriptionSchema() {
-  const baseSchema: z.ZodType<types.VisionPrescription> = z.object({
-    resourceType: z.literal("VisionPrescription"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-    status: primitives.createCodeSchema(),
-    _status: z.lazy(() => createElementSchema()).optional(),
-    created: primitives.createDateTimeSchema(),
-    _created: z.lazy(() => createElementSchema()).optional(),
-    patient: z.lazy(() => createReferenceSchema()),
-    encounter: z.lazy(() => createReferenceSchema()).optional(),
-    dateWritten: primitives.createDateTimeSchema(),
-    _dateWritten: z.lazy(() => createElementSchema()).optional(),
-    prescriber: z.lazy(() => createReferenceSchema()),
-    lensSpecification: z.array(
-      z.lazy(() => createVisionPrescriptionLensSpecificationSchema()),
-    ),
-  });
+  return getCachedSchema("VisionPrescription", () => {
+    const baseSchema: z.ZodType<types.VisionPrescription> = z.strictObject({
+      resourceType: z.literal("VisionPrescription"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: z.lazy(() => createElementSchema()).optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(createResourceListSchema()).optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+      status: primitives.getCodeSchema(),
+      _status: z.lazy(() => createElementSchema()).optional(),
+      created: primitives.getDateTimeSchema(),
+      _created: z.lazy(() => createElementSchema()).optional(),
+      patient: createReferenceSchema(),
+      encounter: createReferenceSchema().optional(),
+      dateWritten: primitives.getDateTimeSchema(),
+      _dateWritten: z.lazy(() => createElementSchema()).optional(),
+      prescriber: createReferenceSchema(),
+      lensSpecification: z.array(
+        createVisionPrescriptionLensSpecificationSchema(),
+      ),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

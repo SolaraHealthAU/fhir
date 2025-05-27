@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createQuantitySchema,
@@ -12,27 +13,29 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createProdCharacteristicSchema() {
-  const baseSchema: z.ZodType<types.ProdCharacteristic> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    height: z.lazy(() => createQuantitySchema()).optional(),
-    width: z.lazy(() => createQuantitySchema()).optional(),
-    depth: z.lazy(() => createQuantitySchema()).optional(),
-    weight: z.lazy(() => createQuantitySchema()).optional(),
-    nominalVolume: z.lazy(() => createQuantitySchema()).optional(),
-    externalDiameter: z.lazy(() => createQuantitySchema()).optional(),
-    shape: primitives.createStringSchema().optional(),
-    _shape: z.lazy(() => createElementSchema()).optional(),
-    color: z.array(primitives.createStringSchema()).optional(),
-    _color: z.array(z.lazy(() => createElementSchema())).optional(),
-    imprint: z.array(primitives.createStringSchema()).optional(),
-    _imprint: z.array(z.lazy(() => createElementSchema())).optional(),
-    image: z.array(z.lazy(() => createAttachmentSchema())).optional(),
-    scoring: z.lazy(() => createCodeableConceptSchema()).optional(),
-  });
+  return getCachedSchema("ProdCharacteristic", () => {
+    const baseSchema: z.ZodType<types.ProdCharacteristic> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      height: createQuantitySchema().optional(),
+      width: createQuantitySchema().optional(),
+      depth: createQuantitySchema().optional(),
+      weight: createQuantitySchema().optional(),
+      nominalVolume: createQuantitySchema().optional(),
+      externalDiameter: createQuantitySchema().optional(),
+      shape: primitives.getStringSchema().optional(),
+      _shape: z.lazy(() => createElementSchema()).optional(),
+      color: z.array(primitives.getStringSchema()).optional(),
+      _color: z.array(z.lazy(() => createElementSchema())).optional(),
+      imprint: z.array(primitives.getStringSchema()).optional(),
+      _imprint: z.array(z.lazy(() => createElementSchema())).optional(),
+      image: z.array(createAttachmentSchema()).optional(),
+      scoring: createCodeableConceptSchema().optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

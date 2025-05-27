@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -16,32 +17,31 @@ import { createProdCharacteristicSchema } from "../prodcharacteristic/schema";
 /* Generated from FHIR JSON Schema */
 
 export function createMedicinalProductManufacturedSchema() {
-  const baseSchema: z.ZodType<types.MedicinalProductManufactured> = z.object({
-    resourceType: z.literal("MedicinalProductManufactured"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    manufacturedDoseForm: z.lazy(() => createCodeableConceptSchema()),
-    unitOfPresentation: z.lazy(() => createCodeableConceptSchema()).optional(),
-    quantity: z.lazy(() => createQuantitySchema()),
-    manufacturer: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    ingredient: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    physicalCharacteristics: z
-      .lazy(() => createProdCharacteristicSchema())
-      .optional(),
-    otherCharacteristics: z
-      .array(z.lazy(() => createCodeableConceptSchema()))
-      .optional(),
-  });
+  return getCachedSchema("MedicinalProductManufactured", () => {
+    const baseSchema: z.ZodType<types.MedicinalProductManufactured> =
+      z.strictObject({
+        resourceType: z.literal("MedicinalProductManufactured"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: z.lazy(() => createElementSchema()).optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: z.lazy(() => createElementSchema()).optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(createResourceListSchema()).optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        manufacturedDoseForm: createCodeableConceptSchema(),
+        unitOfPresentation: createCodeableConceptSchema().optional(),
+        quantity: createQuantitySchema(),
+        manufacturer: z.array(createReferenceSchema()).optional(),
+        ingredient: z.array(createReferenceSchema()).optional(),
+        physicalCharacteristics: createProdCharacteristicSchema().optional(),
+        otherCharacteristics: z.array(createCodeableConceptSchema()).optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

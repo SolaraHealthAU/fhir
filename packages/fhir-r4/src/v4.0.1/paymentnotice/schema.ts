@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -16,36 +17,38 @@ import { createResourceListSchema } from "../resourcelist/schema";
 /* Generated from FHIR JSON Schema */
 
 export function createPaymentNoticeSchema() {
-  const baseSchema: z.ZodType<types.PaymentNotice> = z.object({
-    resourceType: z.literal("PaymentNotice"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-    status: primitives.createCodeSchema(),
-    _status: z.lazy(() => createElementSchema()).optional(),
-    request: z.lazy(() => createReferenceSchema()).optional(),
-    response: z.lazy(() => createReferenceSchema()).optional(),
-    created: primitives.createDateTimeSchema(),
-    _created: z.lazy(() => createElementSchema()).optional(),
-    provider: z.lazy(() => createReferenceSchema()).optional(),
-    payment: z.lazy(() => createReferenceSchema()),
-    paymentDate: primitives.createDateSchema().optional(),
-    _paymentDate: z.lazy(() => createElementSchema()).optional(),
-    payee: z.lazy(() => createReferenceSchema()).optional(),
-    recipient: z.lazy(() => createReferenceSchema()),
-    amount: z.lazy(() => createMoneySchema()),
-    paymentStatus: z.lazy(() => createCodeableConceptSchema()).optional(),
-  });
+  return getCachedSchema("PaymentNotice", () => {
+    const baseSchema: z.ZodType<types.PaymentNotice> = z.strictObject({
+      resourceType: z.literal("PaymentNotice"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: z.lazy(() => createElementSchema()).optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(createResourceListSchema()).optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+      status: primitives.getCodeSchema(),
+      _status: z.lazy(() => createElementSchema()).optional(),
+      request: createReferenceSchema().optional(),
+      response: createReferenceSchema().optional(),
+      created: primitives.getDateTimeSchema(),
+      _created: z.lazy(() => createElementSchema()).optional(),
+      provider: createReferenceSchema().optional(),
+      payment: createReferenceSchema(),
+      paymentDate: primitives.getDateSchema().optional(),
+      _paymentDate: z.lazy(() => createElementSchema()).optional(),
+      payee: createReferenceSchema().optional(),
+      recipient: createReferenceSchema(),
+      amount: createMoneySchema(),
+      paymentStatus: createCodeableConceptSchema().optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

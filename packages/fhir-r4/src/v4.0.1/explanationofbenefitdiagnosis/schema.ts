@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -11,22 +12,23 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createExplanationOfBenefitDiagnosisSchema() {
-  const baseSchema: z.ZodType<types.ExplanationOfBenefitDiagnosis> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    sequence: primitives.createPositiveIntSchema(),
-    _sequence: z.lazy(() => createElementSchema()).optional(),
-    diagnosisCodeableConcept: z
-      .lazy(() => createCodeableConceptSchema())
-      .optional(),
-    diagnosisReference: z.lazy(() => createReferenceSchema()).optional(),
-    type: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    onAdmission: z.lazy(() => createCodeableConceptSchema()).optional(),
-    packageCode: z.lazy(() => createCodeableConceptSchema()).optional(),
-  });
+  return getCachedSchema("ExplanationOfBenefitDiagnosis", () => {
+    const baseSchema: z.ZodType<types.ExplanationOfBenefitDiagnosis> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        sequence: primitives.getPositiveIntSchema(),
+        _sequence: z.lazy(() => createElementSchema()).optional(),
+        diagnosisCodeableConcept: createCodeableConceptSchema().optional(),
+        diagnosisReference: createReferenceSchema().optional(),
+        type: z.array(createCodeableConceptSchema()).optional(),
+        onAdmission: createCodeableConceptSchema().optional(),
+        packageCode: createCodeableConceptSchema().optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -13,27 +14,26 @@ import { createSubstancePolymerStructuralRepresentationSchema } from "../substan
 /* Generated from FHIR JSON Schema */
 
 export function createSubstancePolymerRepeatUnitSchema() {
-  const baseSchema: z.ZodType<types.SubstancePolymerRepeatUnit> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    orientationOfPolymerisation: z
-      .lazy(() => createCodeableConceptSchema())
-      .optional(),
-    repeatUnit: primitives.createStringSchema().optional(),
-    _repeatUnit: z.lazy(() => createElementSchema()).optional(),
-    amount: z.lazy(() => createSubstanceAmountSchema()).optional(),
-    degreeOfPolymerisation: z
-      .array(z.lazy(() => createSubstancePolymerDegreeOfPolymerisationSchema()))
-      .optional(),
-    structuralRepresentation: z
-      .array(
-        z.lazy(() => createSubstancePolymerStructuralRepresentationSchema()),
-      )
-      .optional(),
-  });
+  return getCachedSchema("SubstancePolymerRepeatUnit", () => {
+    const baseSchema: z.ZodType<types.SubstancePolymerRepeatUnit> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        orientationOfPolymerisation: createCodeableConceptSchema().optional(),
+        repeatUnit: primitives.getStringSchema().optional(),
+        _repeatUnit: z.lazy(() => createElementSchema()).optional(),
+        amount: createSubstanceAmountSchema().optional(),
+        degreeOfPolymerisation: z
+          .array(createSubstancePolymerDegreeOfPolymerisationSchema())
+          .optional(),
+        structuralRepresentation: z
+          .array(createSubstancePolymerStructuralRepresentationSchema())
+          .optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

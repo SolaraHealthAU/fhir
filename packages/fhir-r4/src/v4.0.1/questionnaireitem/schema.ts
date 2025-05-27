@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -13,62 +14,58 @@ import { createQuestionnaireInitialSchema } from "../questionnaireinitial/schema
 /* Generated from FHIR JSON Schema */
 
 export function createQuestionnaireItemSchema() {
-  const baseSchema: z.ZodType<types.QuestionnaireItem> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    linkId: primitives.createStringSchema(),
-    _linkId: z.lazy(() => createElementSchema()).optional(),
-    definition: primitives.createUriSchema().optional(),
-    _definition: z.lazy(() => createElementSchema()).optional(),
-    code: z.array(z.lazy(() => createCodingSchema())).optional(),
-    prefix: primitives.createStringSchema().optional(),
-    _prefix: z.lazy(() => createElementSchema()).optional(),
-    text: primitives.createStringSchema().optional(),
-    _text: z.lazy(() => createElementSchema()).optional(),
-    type: z.enum([
-      "group",
-      "display",
-      "boolean",
-      "decimal",
-      "integer",
-      "date",
-      "dateTime",
-      "time",
-      "string",
-      "text",
-      "url",
-      "choice",
-      "open-choice",
-      "attachment",
-      "reference",
-      "quantity",
-    ]),
-    _type: z.lazy(() => createElementSchema()).optional(),
-    enableWhen: z
-      .array(z.lazy(() => createQuestionnaireEnableWhenSchema()))
-      .optional(),
-    enableBehavior: z.enum(["all", "any"]).optional(),
-    _enableBehavior: z.lazy(() => createElementSchema()).optional(),
-    required: primitives.createBooleanSchema().optional(),
-    _required: z.lazy(() => createElementSchema()).optional(),
-    repeats: primitives.createBooleanSchema().optional(),
-    _repeats: z.lazy(() => createElementSchema()).optional(),
-    readOnly: primitives.createBooleanSchema().optional(),
-    _readOnly: z.lazy(() => createElementSchema()).optional(),
-    maxLength: primitives.createIntegerSchema().optional(),
-    _maxLength: z.lazy(() => createElementSchema()).optional(),
-    answerValueSet: primitives.createCanonicalSchema().optional(),
-    answerOption: z
-      .array(z.lazy(() => createQuestionnaireAnswerOptionSchema()))
-      .optional(),
-    initial: z
-      .array(z.lazy(() => createQuestionnaireInitialSchema()))
-      .optional(),
-    item: z.array(z.lazy(() => createQuestionnaireItemSchema())).optional(),
-  });
+  return getCachedSchema("QuestionnaireItem", () => {
+    const baseSchema: z.ZodType<types.QuestionnaireItem> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      linkId: primitives.getStringSchema(),
+      _linkId: z.lazy(() => createElementSchema()).optional(),
+      definition: primitives.getUriSchema().optional(),
+      _definition: z.lazy(() => createElementSchema()).optional(),
+      code: z.array(createCodingSchema()).optional(),
+      prefix: primitives.getStringSchema().optional(),
+      _prefix: z.lazy(() => createElementSchema()).optional(),
+      text: primitives.getStringSchema().optional(),
+      _text: z.lazy(() => createElementSchema()).optional(),
+      type: z.enum([
+        "group",
+        "display",
+        "boolean",
+        "decimal",
+        "integer",
+        "date",
+        "dateTime",
+        "time",
+        "string",
+        "text",
+        "url",
+        "choice",
+        "open-choice",
+        "attachment",
+        "reference",
+        "quantity",
+      ]),
+      _type: z.lazy(() => createElementSchema()).optional(),
+      enableWhen: z.array(createQuestionnaireEnableWhenSchema()).optional(),
+      enableBehavior: z.enum(["all", "any"]).optional(),
+      _enableBehavior: z.lazy(() => createElementSchema()).optional(),
+      required: primitives.getBooleanSchema().optional(),
+      _required: z.lazy(() => createElementSchema()).optional(),
+      repeats: primitives.getBooleanSchema().optional(),
+      _repeats: z.lazy(() => createElementSchema()).optional(),
+      readOnly: primitives.getBooleanSchema().optional(),
+      _readOnly: z.lazy(() => createElementSchema()).optional(),
+      maxLength: primitives.getIntegerSchema().optional(),
+      _maxLength: z.lazy(() => createElementSchema()).optional(),
+      answerValueSet: primitives.getCanonicalSchema().optional(),
+      answerOption: z.array(createQuestionnaireAnswerOptionSchema()).optional(),
+      initial: z.array(createQuestionnaireInitialSchema()).optional(),
+      item: z.array(createQuestionnaireItemSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

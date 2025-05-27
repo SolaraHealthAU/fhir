@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -23,88 +24,80 @@ import { createPlanDefinitionDynamicValueSchema } from "../plandefinitiondynamic
 /* Generated from FHIR JSON Schema */
 
 export function createPlanDefinitionActionSchema() {
-  const baseSchema: z.ZodType<types.PlanDefinitionAction> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    prefix: primitives.createStringSchema().optional(),
-    _prefix: z.lazy(() => createElementSchema()).optional(),
-    title: primitives.createStringSchema().optional(),
-    _title: z.lazy(() => createElementSchema()).optional(),
-    description: primitives.createStringSchema().optional(),
-    _description: z.lazy(() => createElementSchema()).optional(),
-    textEquivalent: primitives.createStringSchema().optional(),
-    _textEquivalent: z.lazy(() => createElementSchema()).optional(),
-    priority: primitives.createCodeSchema().optional(),
-    _priority: z.lazy(() => createElementSchema()).optional(),
-    code: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    reason: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    documentation: z
-      .array(z.lazy(() => createRelatedArtifactSchema()))
-      .optional(),
-    goalId: z.array(primitives.createIdSchema()).optional(),
-    _goalId: z.array(z.lazy(() => createElementSchema())).optional(),
-    subjectCodeableConcept: z
-      .lazy(() => createCodeableConceptSchema())
-      .optional(),
-    subjectReference: z.lazy(() => createReferenceSchema()).optional(),
-    trigger: z.array(z.lazy(() => createTriggerDefinitionSchema())).optional(),
-    condition: z
-      .array(z.lazy(() => createPlanDefinitionConditionSchema()))
-      .optional(),
-    input: z.array(z.lazy(() => createDataRequirementSchema())).optional(),
-    output: z.array(z.lazy(() => createDataRequirementSchema())).optional(),
-    relatedAction: z
-      .array(z.lazy(() => createPlanDefinitionRelatedActionSchema()))
-      .optional(),
-    timingDateTime: z.string().optional(),
-    _timingDateTime: z.lazy(() => createElementSchema()).optional(),
-    timingAge: z.lazy(() => createAgeSchema()).optional(),
-    timingPeriod: z.lazy(() => createPeriodSchema()).optional(),
-    timingDuration: z.lazy(() => createDurationSchema()).optional(),
-    timingRange: z.lazy(() => createRangeSchema()).optional(),
-    timingTiming: z.lazy(() => createTimingSchema()).optional(),
-    participant: z
-      .array(z.lazy(() => createPlanDefinitionParticipantSchema()))
-      .optional(),
-    type: z.lazy(() => createCodeableConceptSchema()).optional(),
-    groupingBehavior: z
-      .enum(["visual-group", "logical-group", "sentence-group"])
-      .optional(),
-    _groupingBehavior: z.lazy(() => createElementSchema()).optional(),
-    selectionBehavior: z
-      .enum([
-        "any",
-        "all",
-        "all-or-none",
-        "exactly-one",
-        "at-most-one",
-        "one-or-more",
-      ])
-      .optional(),
-    _selectionBehavior: z.lazy(() => createElementSchema()).optional(),
-    requiredBehavior: z
-      .enum(["must", "could", "must-unless-documented"])
-      .optional(),
-    _requiredBehavior: z.lazy(() => createElementSchema()).optional(),
-    precheckBehavior: z.enum(["yes", "no"]).optional(),
-    _precheckBehavior: z.lazy(() => createElementSchema()).optional(),
-    cardinalityBehavior: z.enum(["single", "multiple"]).optional(),
-    _cardinalityBehavior: z.lazy(() => createElementSchema()).optional(),
-    definitionCanonical: z.string().optional(),
-    _definitionCanonical: z.lazy(() => createElementSchema()).optional(),
-    definitionUri: z.string().optional(),
-    _definitionUri: z.lazy(() => createElementSchema()).optional(),
-    transform: primitives.createCanonicalSchema().optional(),
-    dynamicValue: z
-      .array(z.lazy(() => createPlanDefinitionDynamicValueSchema()))
-      .optional(),
-    action: z
-      .array(z.lazy(() => createPlanDefinitionActionSchema()))
-      .optional(),
-  });
+  return getCachedSchema("PlanDefinitionAction", () => {
+    const baseSchema: z.ZodType<types.PlanDefinitionAction> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      prefix: primitives.getStringSchema().optional(),
+      _prefix: z.lazy(() => createElementSchema()).optional(),
+      title: primitives.getStringSchema().optional(),
+      _title: z.lazy(() => createElementSchema()).optional(),
+      description: primitives.getStringSchema().optional(),
+      _description: z.lazy(() => createElementSchema()).optional(),
+      textEquivalent: primitives.getStringSchema().optional(),
+      _textEquivalent: z.lazy(() => createElementSchema()).optional(),
+      priority: primitives.getCodeSchema().optional(),
+      _priority: z.lazy(() => createElementSchema()).optional(),
+      code: z.array(createCodeableConceptSchema()).optional(),
+      reason: z.array(createCodeableConceptSchema()).optional(),
+      documentation: z.array(createRelatedArtifactSchema()).optional(),
+      goalId: z.array(primitives.getIdSchema()).optional(),
+      _goalId: z.array(z.lazy(() => createElementSchema())).optional(),
+      subjectCodeableConcept: createCodeableConceptSchema().optional(),
+      subjectReference: createReferenceSchema().optional(),
+      trigger: z.array(createTriggerDefinitionSchema()).optional(),
+      condition: z.array(createPlanDefinitionConditionSchema()).optional(),
+      input: z.array(createDataRequirementSchema()).optional(),
+      output: z.array(createDataRequirementSchema()).optional(),
+      relatedAction: z
+        .array(createPlanDefinitionRelatedActionSchema())
+        .optional(),
+      timingDateTime: z.string().optional(),
+      _timingDateTime: z.lazy(() => createElementSchema()).optional(),
+      timingAge: createAgeSchema().optional(),
+      timingPeriod: createPeriodSchema().optional(),
+      timingDuration: createDurationSchema().optional(),
+      timingRange: createRangeSchema().optional(),
+      timingTiming: createTimingSchema().optional(),
+      participant: z.array(createPlanDefinitionParticipantSchema()).optional(),
+      type: createCodeableConceptSchema().optional(),
+      groupingBehavior: z
+        .enum(["visual-group", "logical-group", "sentence-group"])
+        .optional(),
+      _groupingBehavior: z.lazy(() => createElementSchema()).optional(),
+      selectionBehavior: z
+        .enum([
+          "any",
+          "all",
+          "all-or-none",
+          "exactly-one",
+          "at-most-one",
+          "one-or-more",
+        ])
+        .optional(),
+      _selectionBehavior: z.lazy(() => createElementSchema()).optional(),
+      requiredBehavior: z
+        .enum(["must", "could", "must-unless-documented"])
+        .optional(),
+      _requiredBehavior: z.lazy(() => createElementSchema()).optional(),
+      precheckBehavior: z.enum(["yes", "no"]).optional(),
+      _precheckBehavior: z.lazy(() => createElementSchema()).optional(),
+      cardinalityBehavior: z.enum(["single", "multiple"]).optional(),
+      _cardinalityBehavior: z.lazy(() => createElementSchema()).optional(),
+      definitionCanonical: z.string().optional(),
+      _definitionCanonical: z.lazy(() => createElementSchema()).optional(),
+      definitionUri: z.string().optional(),
+      _definitionUri: z.lazy(() => createElementSchema()).optional(),
+      transform: primitives.getCanonicalSchema().optional(),
+      dynamicValue: z
+        .array(createPlanDefinitionDynamicValueSchema())
+        .optional(),
+      action: z.array(createPlanDefinitionActionSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -26,82 +27,62 @@ import { createMedicationKnowledgeKineticsSchema } from "../medicationknowledgek
 /* Generated from FHIR JSON Schema */
 
 export function createMedicationKnowledgeSchema() {
-  const baseSchema: z.ZodType<types.MedicationKnowledge> = z.object({
-    resourceType: z.literal("MedicationKnowledge"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    code: z.lazy(() => createCodeableConceptSchema()).optional(),
-    status: primitives.createCodeSchema().optional(),
-    _status: z.lazy(() => createElementSchema()).optional(),
-    manufacturer: z.lazy(() => createReferenceSchema()).optional(),
-    doseForm: z.lazy(() => createCodeableConceptSchema()).optional(),
-    amount: z.lazy(() => createQuantitySchema()).optional(),
-    synonym: z.array(primitives.createStringSchema()).optional(),
-    _synonym: z.array(z.lazy(() => createElementSchema())).optional(),
-    relatedMedicationKnowledge: z
-      .array(
-        z.lazy(() =>
-          createMedicationKnowledgeRelatedMedicationKnowledgeSchema(),
-        ),
-      )
-      .optional(),
-    associatedMedication: z
-      .array(z.lazy(() => createReferenceSchema()))
-      .optional(),
-    productType: z
-      .array(z.lazy(() => createCodeableConceptSchema()))
-      .optional(),
-    monograph: z
-      .array(z.lazy(() => createMedicationKnowledgeMonographSchema()))
-      .optional(),
-    ingredient: z
-      .array(z.lazy(() => createMedicationKnowledgeIngredientSchema()))
-      .optional(),
-    preparationInstruction: primitives.createMarkdownSchema().optional(),
-    _preparationInstruction: z.lazy(() => createElementSchema()).optional(),
-    intendedRoute: z
-      .array(z.lazy(() => createCodeableConceptSchema()))
-      .optional(),
-    cost: z
-      .array(z.lazy(() => createMedicationKnowledgeCostSchema()))
-      .optional(),
-    monitoringProgram: z
-      .array(z.lazy(() => createMedicationKnowledgeMonitoringProgramSchema()))
-      .optional(),
-    administrationGuidelines: z
-      .array(
-        z.lazy(() => createMedicationKnowledgeAdministrationGuidelinesSchema()),
-      )
-      .optional(),
-    medicineClassification: z
-      .array(
-        z.lazy(() => createMedicationKnowledgeMedicineClassificationSchema()),
-      )
-      .optional(),
-    packaging: z
-      .lazy(() => createMedicationKnowledgePackagingSchema())
-      .optional(),
-    drugCharacteristic: z
-      .array(z.lazy(() => createMedicationKnowledgeDrugCharacteristicSchema()))
-      .optional(),
-    contraindication: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    regulatory: z
-      .array(z.lazy(() => createMedicationKnowledgeRegulatorySchema()))
-      .optional(),
-    kinetics: z
-      .array(z.lazy(() => createMedicationKnowledgeKineticsSchema()))
-      .optional(),
-  });
+  return getCachedSchema("MedicationKnowledge", () => {
+    const baseSchema: z.ZodType<types.MedicationKnowledge> = z.strictObject({
+      resourceType: z.literal("MedicationKnowledge"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: z.lazy(() => createElementSchema()).optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(createResourceListSchema()).optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      code: createCodeableConceptSchema().optional(),
+      status: primitives.getCodeSchema().optional(),
+      _status: z.lazy(() => createElementSchema()).optional(),
+      manufacturer: createReferenceSchema().optional(),
+      doseForm: createCodeableConceptSchema().optional(),
+      amount: createQuantitySchema().optional(),
+      synonym: z.array(primitives.getStringSchema()).optional(),
+      _synonym: z.array(z.lazy(() => createElementSchema())).optional(),
+      relatedMedicationKnowledge: z
+        .array(createMedicationKnowledgeRelatedMedicationKnowledgeSchema())
+        .optional(),
+      associatedMedication: z.array(createReferenceSchema()).optional(),
+      productType: z.array(createCodeableConceptSchema()).optional(),
+      monograph: z.array(createMedicationKnowledgeMonographSchema()).optional(),
+      ingredient: z
+        .array(createMedicationKnowledgeIngredientSchema())
+        .optional(),
+      preparationInstruction: primitives.getMarkdownSchema().optional(),
+      _preparationInstruction: z.lazy(() => createElementSchema()).optional(),
+      intendedRoute: z.array(createCodeableConceptSchema()).optional(),
+      cost: z.array(createMedicationKnowledgeCostSchema()).optional(),
+      monitoringProgram: z
+        .array(createMedicationKnowledgeMonitoringProgramSchema())
+        .optional(),
+      administrationGuidelines: z
+        .array(createMedicationKnowledgeAdministrationGuidelinesSchema())
+        .optional(),
+      medicineClassification: z
+        .array(createMedicationKnowledgeMedicineClassificationSchema())
+        .optional(),
+      packaging: createMedicationKnowledgePackagingSchema().optional(),
+      drugCharacteristic: z
+        .array(createMedicationKnowledgeDrugCharacteristicSchema())
+        .optional(),
+      contraindication: z.array(createReferenceSchema()).optional(),
+      regulatory: z
+        .array(createMedicationKnowledgeRegulatorySchema())
+        .optional(),
+      kinetics: z.array(createMedicationKnowledgeKineticsSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

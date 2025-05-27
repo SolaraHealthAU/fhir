@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -20,64 +21,50 @@ import { createMedicinalProductSpecialDesignationSchema } from "../medicinalprod
 /* Generated from FHIR JSON Schema */
 
 export function createMedicinalProductSchema() {
-  const baseSchema: z.ZodType<types.MedicinalProduct> = z.object({
-    resourceType: z.literal("MedicinalProduct"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-    type: z.lazy(() => createCodeableConceptSchema()).optional(),
-    domain: z.lazy(() => createCodingSchema()).optional(),
-    combinedPharmaceuticalDoseForm: z
-      .lazy(() => createCodeableConceptSchema())
-      .optional(),
-    legalStatusOfSupply: z.lazy(() => createCodeableConceptSchema()).optional(),
-    additionalMonitoringIndicator: z
-      .lazy(() => createCodeableConceptSchema())
-      .optional(),
-    specialMeasures: z.array(primitives.createStringSchema()).optional(),
-    _specialMeasures: z.array(z.lazy(() => createElementSchema())).optional(),
-    paediatricUseIndicator: z
-      .lazy(() => createCodeableConceptSchema())
-      .optional(),
-    productClassification: z
-      .array(z.lazy(() => createCodeableConceptSchema()))
-      .optional(),
-    marketingStatus: z
-      .array(z.lazy(() => createMarketingStatusSchema()))
-      .optional(),
-    pharmaceuticalProduct: z
-      .array(z.lazy(() => createReferenceSchema()))
-      .optional(),
-    packagedMedicinalProduct: z
-      .array(z.lazy(() => createReferenceSchema()))
-      .optional(),
-    attachedDocument: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    masterFile: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    contact: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    clinicalTrial: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    name: z.array(z.lazy(() => createMedicinalProductNameSchema())),
-    crossReference: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-    manufacturingBusinessOperation: z
-      .array(
-        z.lazy(() =>
-          createMedicinalProductManufacturingBusinessOperationSchema(),
-        ),
-      )
-      .optional(),
-    specialDesignation: z
-      .array(z.lazy(() => createMedicinalProductSpecialDesignationSchema()))
-      .optional(),
-  });
+  return getCachedSchema("MedicinalProduct", () => {
+    const baseSchema: z.ZodType<types.MedicinalProduct> = z.strictObject({
+      resourceType: z.literal("MedicinalProduct"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: z.lazy(() => createElementSchema()).optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(createResourceListSchema()).optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+      type: createCodeableConceptSchema().optional(),
+      domain: createCodingSchema().optional(),
+      combinedPharmaceuticalDoseForm: createCodeableConceptSchema().optional(),
+      legalStatusOfSupply: createCodeableConceptSchema().optional(),
+      additionalMonitoringIndicator: createCodeableConceptSchema().optional(),
+      specialMeasures: z.array(primitives.getStringSchema()).optional(),
+      _specialMeasures: z.array(z.lazy(() => createElementSchema())).optional(),
+      paediatricUseIndicator: createCodeableConceptSchema().optional(),
+      productClassification: z.array(createCodeableConceptSchema()).optional(),
+      marketingStatus: z.array(createMarketingStatusSchema()).optional(),
+      pharmaceuticalProduct: z.array(createReferenceSchema()).optional(),
+      packagedMedicinalProduct: z.array(createReferenceSchema()).optional(),
+      attachedDocument: z.array(createReferenceSchema()).optional(),
+      masterFile: z.array(createReferenceSchema()).optional(),
+      contact: z.array(createReferenceSchema()).optional(),
+      clinicalTrial: z.array(createReferenceSchema()).optional(),
+      name: z.array(createMedicinalProductNameSchema()),
+      crossReference: z
+        .array(z.lazy(() => createIdentifierSchema()))
+        .optional(),
+      manufacturingBusinessOperation: z
+        .array(createMedicinalProductManufacturingBusinessOperationSchema())
+        .optional(),
+      specialDesignation: z
+        .array(createMedicinalProductSpecialDesignationSchema())
+        .optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

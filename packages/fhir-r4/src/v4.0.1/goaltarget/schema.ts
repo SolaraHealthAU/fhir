@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -14,29 +15,29 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createGoalTargetSchema() {
-  const baseSchema: z.ZodType<types.GoalTarget> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    measure: z.lazy(() => createCodeableConceptSchema()).optional(),
-    detailQuantity: z.lazy(() => createQuantitySchema()).optional(),
-    detailRange: z.lazy(() => createRangeSchema()).optional(),
-    detailCodeableConcept: z
-      .lazy(() => createCodeableConceptSchema())
-      .optional(),
-    detailString: z.string().optional(),
-    _detailString: z.lazy(() => createElementSchema()).optional(),
-    detailBoolean: z.boolean().optional(),
-    _detailBoolean: z.lazy(() => createElementSchema()).optional(),
-    detailInteger: z.number().optional(),
-    _detailInteger: z.lazy(() => createElementSchema()).optional(),
-    detailRatio: z.lazy(() => createRatioSchema()).optional(),
-    dueDate: z.string().optional(),
-    _dueDate: z.lazy(() => createElementSchema()).optional(),
-    dueDuration: z.lazy(() => createDurationSchema()).optional(),
-  });
+  return getCachedSchema("GoalTarget", () => {
+    const baseSchema: z.ZodType<types.GoalTarget> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      measure: createCodeableConceptSchema().optional(),
+      detailQuantity: createQuantitySchema().optional(),
+      detailRange: createRangeSchema().optional(),
+      detailCodeableConcept: createCodeableConceptSchema().optional(),
+      detailString: z.string().optional(),
+      _detailString: z.lazy(() => createElementSchema()).optional(),
+      detailBoolean: z.boolean().optional(),
+      _detailBoolean: z.lazy(() => createElementSchema()).optional(),
+      detailInteger: z.number().optional(),
+      _detailInteger: z.lazy(() => createElementSchema()).optional(),
+      detailRatio: createRatioSchema().optional(),
+      dueDate: z.string().optional(),
+      _dueDate: z.lazy(() => createElementSchema()).optional(),
+      dueDuration: createDurationSchema().optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

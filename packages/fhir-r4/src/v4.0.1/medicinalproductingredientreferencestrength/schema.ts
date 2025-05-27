@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -11,20 +12,22 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createMedicinalProductIngredientReferenceStrengthSchema() {
-  const baseSchema: z.ZodType<types.MedicinalProductIngredientReferenceStrength> =
-    z.object({
-      id: primitives.createStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      substance: z.lazy(() => createCodeableConceptSchema()).optional(),
-      strength: z.lazy(() => createRatioSchema()),
-      strengthLowLimit: z.lazy(() => createRatioSchema()).optional(),
-      measurementPoint: primitives.createStringSchema().optional(),
-      _measurementPoint: z.lazy(() => createElementSchema()).optional(),
-      country: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    });
+  return getCachedSchema("MedicinalProductIngredientReferenceStrength", () => {
+    const baseSchema: z.ZodType<types.MedicinalProductIngredientReferenceStrength> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        substance: createCodeableConceptSchema().optional(),
+        strength: createRatioSchema(),
+        strengthLowLimit: createRatioSchema().optional(),
+        measurementPoint: primitives.getStringSchema().optional(),
+        _measurementPoint: z.lazy(() => createElementSchema()).optional(),
+        country: z.array(createCodeableConceptSchema()).optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

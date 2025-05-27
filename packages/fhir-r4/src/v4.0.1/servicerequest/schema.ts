@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -21,78 +22,72 @@ import { createResourceListSchema } from "../resourcelist/schema";
 /* Generated from FHIR JSON Schema */
 
 export function createServiceRequestSchema() {
-  const baseSchema: z.ZodType<types.ServiceRequest> = z.object({
-    resourceType: z.literal("ServiceRequest"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-    instantiatesCanonical: z
-      .array(primitives.createCanonicalSchema())
-      .optional(),
-    instantiatesUri: z.array(primitives.createUriSchema()).optional(),
-    _instantiatesUri: z.array(z.lazy(() => createElementSchema())).optional(),
-    basedOn: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    replaces: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    requisition: z.lazy(() => createIdentifierSchema()).optional(),
-    status: primitives.createCodeSchema(),
-    _status: z.lazy(() => createElementSchema()).optional(),
-    intent: primitives.createCodeSchema(),
-    _intent: z.lazy(() => createElementSchema()).optional(),
-    category: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    priority: primitives.createCodeSchema().optional(),
-    _priority: z.lazy(() => createElementSchema()).optional(),
-    doNotPerform: primitives.createBooleanSchema().optional(),
-    _doNotPerform: z.lazy(() => createElementSchema()).optional(),
-    code: z.lazy(() => createCodeableConceptSchema()).optional(),
-    orderDetail: z
-      .array(z.lazy(() => createCodeableConceptSchema()))
-      .optional(),
-    quantityQuantity: z.lazy(() => createQuantitySchema()).optional(),
-    quantityRatio: z.lazy(() => createRatioSchema()).optional(),
-    quantityRange: z.lazy(() => createRangeSchema()).optional(),
-    subject: z.lazy(() => createReferenceSchema()),
-    encounter: z.lazy(() => createReferenceSchema()).optional(),
-    occurrenceDateTime: z.string().optional(),
-    _occurrenceDateTime: z.lazy(() => createElementSchema()).optional(),
-    occurrencePeriod: z.lazy(() => createPeriodSchema()).optional(),
-    occurrenceTiming: z.lazy(() => createTimingSchema()).optional(),
-    asNeededBoolean: z.boolean().optional(),
-    _asNeededBoolean: z.lazy(() => createElementSchema()).optional(),
-    asNeededCodeableConcept: z
-      .lazy(() => createCodeableConceptSchema())
-      .optional(),
-    authoredOn: primitives.createDateTimeSchema().optional(),
-    _authoredOn: z.lazy(() => createElementSchema()).optional(),
-    requester: z.lazy(() => createReferenceSchema()).optional(),
-    performerType: z.lazy(() => createCodeableConceptSchema()).optional(),
-    performer: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    locationCode: z
-      .array(z.lazy(() => createCodeableConceptSchema()))
-      .optional(),
-    locationReference: z
-      .array(z.lazy(() => createReferenceSchema()))
-      .optional(),
-    reasonCode: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    reasonReference: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    insurance: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    supportingInfo: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    specimen: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    bodySite: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    note: z.array(z.lazy(() => createAnnotationSchema())).optional(),
-    patientInstruction: primitives.createStringSchema().optional(),
-    _patientInstruction: z.lazy(() => createElementSchema()).optional(),
-    relevantHistory: z.array(z.lazy(() => createReferenceSchema())).optional(),
-  });
+  return getCachedSchema("ServiceRequest", () => {
+    const baseSchema: z.ZodType<types.ServiceRequest> = z.strictObject({
+      resourceType: z.literal("ServiceRequest"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: z.lazy(() => createElementSchema()).optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(createResourceListSchema()).optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+      instantiatesCanonical: z
+        .array(primitives.getCanonicalSchema())
+        .optional(),
+      instantiatesUri: z.array(primitives.getUriSchema()).optional(),
+      _instantiatesUri: z.array(z.lazy(() => createElementSchema())).optional(),
+      basedOn: z.array(createReferenceSchema()).optional(),
+      replaces: z.array(createReferenceSchema()).optional(),
+      requisition: z.lazy(() => createIdentifierSchema()).optional(),
+      status: primitives.getCodeSchema(),
+      _status: z.lazy(() => createElementSchema()).optional(),
+      intent: primitives.getCodeSchema(),
+      _intent: z.lazy(() => createElementSchema()).optional(),
+      category: z.array(createCodeableConceptSchema()).optional(),
+      priority: primitives.getCodeSchema().optional(),
+      _priority: z.lazy(() => createElementSchema()).optional(),
+      doNotPerform: primitives.getBooleanSchema().optional(),
+      _doNotPerform: z.lazy(() => createElementSchema()).optional(),
+      code: createCodeableConceptSchema().optional(),
+      orderDetail: z.array(createCodeableConceptSchema()).optional(),
+      quantityQuantity: createQuantitySchema().optional(),
+      quantityRatio: createRatioSchema().optional(),
+      quantityRange: createRangeSchema().optional(),
+      subject: createReferenceSchema(),
+      encounter: createReferenceSchema().optional(),
+      occurrenceDateTime: z.string().optional(),
+      _occurrenceDateTime: z.lazy(() => createElementSchema()).optional(),
+      occurrencePeriod: createPeriodSchema().optional(),
+      occurrenceTiming: createTimingSchema().optional(),
+      asNeededBoolean: z.boolean().optional(),
+      _asNeededBoolean: z.lazy(() => createElementSchema()).optional(),
+      asNeededCodeableConcept: createCodeableConceptSchema().optional(),
+      authoredOn: primitives.getDateTimeSchema().optional(),
+      _authoredOn: z.lazy(() => createElementSchema()).optional(),
+      requester: createReferenceSchema().optional(),
+      performerType: createCodeableConceptSchema().optional(),
+      performer: z.array(createReferenceSchema()).optional(),
+      locationCode: z.array(createCodeableConceptSchema()).optional(),
+      locationReference: z.array(createReferenceSchema()).optional(),
+      reasonCode: z.array(createCodeableConceptSchema()).optional(),
+      reasonReference: z.array(createReferenceSchema()).optional(),
+      insurance: z.array(createReferenceSchema()).optional(),
+      supportingInfo: z.array(createReferenceSchema()).optional(),
+      specimen: z.array(createReferenceSchema()).optional(),
+      bodySite: z.array(createCodeableConceptSchema()).optional(),
+      note: z.array(createAnnotationSchema()).optional(),
+      patientInstruction: primitives.getStringSchema().optional(),
+      _patientInstruction: z.lazy(() => createElementSchema()).optional(),
+      relevantHistory: z.array(createReferenceSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

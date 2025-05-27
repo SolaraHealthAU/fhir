@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -13,26 +14,22 @@ import { createNutritionOrderTextureSchema } from "../nutritionordertexture/sche
 /* Generated from FHIR JSON Schema */
 
 export function createNutritionOrderOralDietSchema() {
-  const baseSchema: z.ZodType<types.NutritionOrderOralDiet> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    type: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    schedule: z.array(z.lazy(() => createTimingSchema())).optional(),
-    nutrient: z
-      .array(z.lazy(() => createNutritionOrderNutrientSchema()))
-      .optional(),
-    texture: z
-      .array(z.lazy(() => createNutritionOrderTextureSchema()))
-      .optional(),
-    fluidConsistencyType: z
-      .array(z.lazy(() => createCodeableConceptSchema()))
-      .optional(),
-    instruction: primitives.createStringSchema().optional(),
-    _instruction: z.lazy(() => createElementSchema()).optional(),
-  });
+  return getCachedSchema("NutritionOrderOralDiet", () => {
+    const baseSchema: z.ZodType<types.NutritionOrderOralDiet> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      type: z.array(createCodeableConceptSchema()).optional(),
+      schedule: z.array(createTimingSchema()).optional(),
+      nutrient: z.array(createNutritionOrderNutrientSchema()).optional(),
+      texture: z.array(createNutritionOrderTextureSchema()).optional(),
+      fluidConsistencyType: z.array(createCodeableConceptSchema()).optional(),
+      instruction: primitives.getStringSchema().optional(),
+      _instruction: z.lazy(() => createElementSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

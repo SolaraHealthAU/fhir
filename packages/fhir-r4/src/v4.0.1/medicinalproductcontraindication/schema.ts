@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -16,39 +17,33 @@ import { createPopulationSchema } from "../population/schema";
 /* Generated from FHIR JSON Schema */
 
 export function createMedicinalProductContraindicationSchema() {
-  const baseSchema: z.ZodType<types.MedicinalProductContraindication> =
-    z.object({
-      resourceType: z.literal("MedicinalProductContraindication"),
-      id: primitives.createIdSchema().optional(),
-      meta: z.lazy(() => createMetaSchema()).optional(),
-      implicitRules: primitives.createUriSchema().optional(),
-      _implicitRules: z.lazy(() => createElementSchema()).optional(),
-      language: primitives.createCodeSchema().optional(),
-      _language: z.lazy(() => createElementSchema()).optional(),
-      text: z.lazy(() => createNarrativeSchema()).optional(),
-      contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      subject: z.array(z.lazy(() => createReferenceSchema())).optional(),
-      disease: z.lazy(() => createCodeableConceptSchema()).optional(),
-      diseaseStatus: z.lazy(() => createCodeableConceptSchema()).optional(),
-      comorbidity: z
-        .array(z.lazy(() => createCodeableConceptSchema()))
-        .optional(),
-      therapeuticIndication: z
-        .array(z.lazy(() => createReferenceSchema()))
-        .optional(),
-      otherTherapy: z
-        .array(
-          z.lazy(() =>
-            createMedicinalProductContraindicationOtherTherapySchema(),
-          ),
-        )
-        .optional(),
-      population: z.array(z.lazy(() => createPopulationSchema())).optional(),
-    });
+  return getCachedSchema("MedicinalProductContraindication", () => {
+    const baseSchema: z.ZodType<types.MedicinalProductContraindication> =
+      z.strictObject({
+        resourceType: z.literal("MedicinalProductContraindication"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: z.lazy(() => createElementSchema()).optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: z.lazy(() => createElementSchema()).optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(createResourceListSchema()).optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        subject: z.array(createReferenceSchema()).optional(),
+        disease: createCodeableConceptSchema().optional(),
+        diseaseStatus: createCodeableConceptSchema().optional(),
+        comorbidity: z.array(createCodeableConceptSchema()).optional(),
+        therapeuticIndication: z.array(createReferenceSchema()).optional(),
+        otherTherapy: z
+          .array(createMedicinalProductContraindicationOtherTherapySchema())
+          .optional(),
+        population: z.array(createPopulationSchema()).optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

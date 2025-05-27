@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -11,17 +12,20 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createMeasureReportPopulation1Schema() {
-  const baseSchema: z.ZodType<types.MeasureReportPopulation1> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    code: z.lazy(() => createCodeableConceptSchema()).optional(),
-    count: primitives.createIntegerSchema().optional(),
-    _count: z.lazy(() => createElementSchema()).optional(),
-    subjectResults: z.lazy(() => createReferenceSchema()).optional(),
-  });
+  return getCachedSchema("MeasureReportPopulation1", () => {
+    const baseSchema: z.ZodType<types.MeasureReportPopulation1> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        code: createCodeableConceptSchema().optional(),
+        count: primitives.getIntegerSchema().optional(),
+        _count: z.lazy(() => createElementSchema()).optional(),
+        subjectResults: createReferenceSchema().optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

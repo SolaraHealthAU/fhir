@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -10,18 +11,20 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createContractSecurityLabelSchema() {
-  const baseSchema: z.ZodType<types.ContractSecurityLabel> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    number: z.array(primitives.createUnsignedIntSchema()).optional(),
-    _number: z.array(z.lazy(() => createElementSchema())).optional(),
-    classification: z.lazy(() => createCodingSchema()),
-    category: z.array(z.lazy(() => createCodingSchema())).optional(),
-    control: z.array(z.lazy(() => createCodingSchema())).optional(),
-  });
+  return getCachedSchema("ContractSecurityLabel", () => {
+    const baseSchema: z.ZodType<types.ContractSecurityLabel> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      number: z.array(primitives.getUnsignedIntSchema()).optional(),
+      _number: z.array(z.lazy(() => createElementSchema())).optional(),
+      classification: createCodingSchema(),
+      category: z.array(createCodingSchema()).optional(),
+      control: z.array(createCodingSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -10,16 +11,18 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createProcedurePerformerSchema() {
-  const baseSchema: z.ZodType<types.ProcedurePerformer> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    function: z.lazy(() => createCodeableConceptSchema()).optional(),
-    actor: z.lazy(() => createReferenceSchema()),
-    onBehalfOf: z.lazy(() => createReferenceSchema()).optional(),
-  });
+  return getCachedSchema("ProcedurePerformer", () => {
+    const baseSchema: z.ZodType<types.ProcedurePerformer> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      function: createCodeableConceptSchema().optional(),
+      actor: createReferenceSchema(),
+      onBehalfOf: createReferenceSchema().optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

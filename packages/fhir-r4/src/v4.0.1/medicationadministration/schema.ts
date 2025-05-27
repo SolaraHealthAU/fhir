@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -19,55 +20,50 @@ import { createMedicationAdministrationDosageSchema } from "../medicationadminis
 /* Generated from FHIR JSON Schema */
 
 export function createMedicationAdministrationSchema() {
-  const baseSchema: z.ZodType<types.MedicationAdministration> = z.object({
-    resourceType: z.literal("MedicationAdministration"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-    instantiates: z.array(primitives.createUriSchema()).optional(),
-    _instantiates: z.array(z.lazy(() => createElementSchema())).optional(),
-    partOf: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    status: primitives.createCodeSchema(),
-    _status: z.lazy(() => createElementSchema()).optional(),
-    statusReason: z
-      .array(z.lazy(() => createCodeableConceptSchema()))
-      .optional(),
-    category: z.lazy(() => createCodeableConceptSchema()).optional(),
-    medicationCodeableConcept: z
-      .lazy(() => createCodeableConceptSchema())
-      .optional(),
-    medicationReference: z.lazy(() => createReferenceSchema()).optional(),
-    subject: z.lazy(() => createReferenceSchema()),
-    context: z.lazy(() => createReferenceSchema()).optional(),
-    supportingInformation: z
-      .array(z.lazy(() => createReferenceSchema()))
-      .optional(),
-    effectiveDateTime: z.string().optional(),
-    _effectiveDateTime: z.lazy(() => createElementSchema()).optional(),
-    effectivePeriod: z.lazy(() => createPeriodSchema()).optional(),
-    performer: z
-      .array(z.lazy(() => createMedicationAdministrationPerformerSchema()))
-      .optional(),
-    reasonCode: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    reasonReference: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    request: z.lazy(() => createReferenceSchema()).optional(),
-    device: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    note: z.array(z.lazy(() => createAnnotationSchema())).optional(),
-    dosage: z
-      .lazy(() => createMedicationAdministrationDosageSchema())
-      .optional(),
-    eventHistory: z.array(z.lazy(() => createReferenceSchema())).optional(),
-  });
+  return getCachedSchema("MedicationAdministration", () => {
+    const baseSchema: z.ZodType<types.MedicationAdministration> =
+      z.strictObject({
+        resourceType: z.literal("MedicationAdministration"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: z.lazy(() => createElementSchema()).optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: z.lazy(() => createElementSchema()).optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(createResourceListSchema()).optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+        instantiates: z.array(primitives.getUriSchema()).optional(),
+        _instantiates: z.array(z.lazy(() => createElementSchema())).optional(),
+        partOf: z.array(createReferenceSchema()).optional(),
+        status: primitives.getCodeSchema(),
+        _status: z.lazy(() => createElementSchema()).optional(),
+        statusReason: z.array(createCodeableConceptSchema()).optional(),
+        category: createCodeableConceptSchema().optional(),
+        medicationCodeableConcept: createCodeableConceptSchema().optional(),
+        medicationReference: createReferenceSchema().optional(),
+        subject: createReferenceSchema(),
+        context: createReferenceSchema().optional(),
+        supportingInformation: z.array(createReferenceSchema()).optional(),
+        effectiveDateTime: z.string().optional(),
+        _effectiveDateTime: z.lazy(() => createElementSchema()).optional(),
+        effectivePeriod: createPeriodSchema().optional(),
+        performer: z
+          .array(createMedicationAdministrationPerformerSchema())
+          .optional(),
+        reasonCode: z.array(createCodeableConceptSchema()).optional(),
+        reasonReference: z.array(createReferenceSchema()).optional(),
+        request: createReferenceSchema().optional(),
+        device: z.array(createReferenceSchema()).optional(),
+        note: z.array(createAnnotationSchema()).optional(),
+        dosage: createMedicationAdministrationDosageSchema().optional(),
+        eventHistory: z.array(createReferenceSchema()).optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

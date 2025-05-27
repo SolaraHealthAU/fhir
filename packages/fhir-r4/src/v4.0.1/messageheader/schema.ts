@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -18,36 +19,36 @@ import { createMessageHeaderResponseSchema } from "../messageheaderresponse/sche
 /* Generated from FHIR JSON Schema */
 
 export function createMessageHeaderSchema() {
-  const baseSchema: z.ZodType<types.MessageHeader> = z.object({
-    resourceType: z.literal("MessageHeader"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    eventCoding: z.lazy(() => createCodingSchema()).optional(),
-    eventUri: z.string().optional(),
-    _eventUri: z.lazy(() => createElementSchema()).optional(),
-    destination: z
-      .array(z.lazy(() => createMessageHeaderDestinationSchema()))
-      .optional(),
-    sender: z.lazy(() => createReferenceSchema()).optional(),
-    enterer: z.lazy(() => createReferenceSchema()).optional(),
-    author: z.lazy(() => createReferenceSchema()).optional(),
-    source: z.lazy(() => createMessageHeaderSourceSchema()),
-    responsible: z.lazy(() => createReferenceSchema()).optional(),
-    reason: z.lazy(() => createCodeableConceptSchema()).optional(),
-    response: z.lazy(() => createMessageHeaderResponseSchema()).optional(),
-    focus: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    definition: primitives.createCanonicalSchema().optional(),
-  });
+  return getCachedSchema("MessageHeader", () => {
+    const baseSchema: z.ZodType<types.MessageHeader> = z.strictObject({
+      resourceType: z.literal("MessageHeader"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: z.lazy(() => createElementSchema()).optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(createResourceListSchema()).optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      eventCoding: createCodingSchema().optional(),
+      eventUri: z.string().optional(),
+      _eventUri: z.lazy(() => createElementSchema()).optional(),
+      destination: z.array(createMessageHeaderDestinationSchema()).optional(),
+      sender: createReferenceSchema().optional(),
+      enterer: createReferenceSchema().optional(),
+      author: createReferenceSchema().optional(),
+      source: createMessageHeaderSourceSchema(),
+      responsible: createReferenceSchema().optional(),
+      reason: createCodeableConceptSchema().optional(),
+      response: createMessageHeaderResponseSchema().optional(),
+      focus: z.array(createReferenceSchema()).optional(),
+      definition: primitives.getCanonicalSchema().optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -12,24 +13,27 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createRiskAssessmentPredictionSchema() {
-  const baseSchema: z.ZodType<types.RiskAssessmentPrediction> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    outcome: z.lazy(() => createCodeableConceptSchema()).optional(),
-    probabilityDecimal: z.number().optional(),
-    _probabilityDecimal: z.lazy(() => createElementSchema()).optional(),
-    probabilityRange: z.lazy(() => createRangeSchema()).optional(),
-    qualitativeRisk: z.lazy(() => createCodeableConceptSchema()).optional(),
-    relativeRisk: primitives.createDecimalSchema().optional(),
-    _relativeRisk: z.lazy(() => createElementSchema()).optional(),
-    whenPeriod: z.lazy(() => createPeriodSchema()).optional(),
-    whenRange: z.lazy(() => createRangeSchema()).optional(),
-    rationale: primitives.createStringSchema().optional(),
-    _rationale: z.lazy(() => createElementSchema()).optional(),
-  });
+  return getCachedSchema("RiskAssessmentPrediction", () => {
+    const baseSchema: z.ZodType<types.RiskAssessmentPrediction> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        outcome: createCodeableConceptSchema().optional(),
+        probabilityDecimal: z.number().optional(),
+        _probabilityDecimal: z.lazy(() => createElementSchema()).optional(),
+        probabilityRange: createRangeSchema().optional(),
+        qualitativeRisk: createCodeableConceptSchema().optional(),
+        relativeRisk: primitives.getDecimalSchema().optional(),
+        _relativeRisk: z.lazy(() => createElementSchema()).optional(),
+        whenPeriod: createPeriodSchema().optional(),
+        whenRange: createRangeSchema().optional(),
+        rationale: primitives.getStringSchema().optional(),
+        _rationale: z.lazy(() => createElementSchema()).optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

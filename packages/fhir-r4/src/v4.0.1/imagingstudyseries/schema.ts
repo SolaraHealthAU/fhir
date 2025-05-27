@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -13,34 +14,32 @@ import { createImagingStudyInstanceSchema } from "../imagingstudyinstance/schema
 /* Generated from FHIR JSON Schema */
 
 export function createImagingStudySeriesSchema() {
-  const baseSchema: z.ZodType<types.ImagingStudySeries> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    uid: primitives.createIdSchema(),
-    _uid: z.lazy(() => createElementSchema()).optional(),
-    number: primitives.createUnsignedIntSchema().optional(),
-    _number: z.lazy(() => createElementSchema()).optional(),
-    modality: z.lazy(() => createCodingSchema()),
-    description: primitives.createStringSchema().optional(),
-    _description: z.lazy(() => createElementSchema()).optional(),
-    numberOfInstances: primitives.createUnsignedIntSchema().optional(),
-    _numberOfInstances: z.lazy(() => createElementSchema()).optional(),
-    endpoint: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    bodySite: z.lazy(() => createCodingSchema()).optional(),
-    laterality: z.lazy(() => createCodingSchema()).optional(),
-    specimen: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    started: primitives.createDateTimeSchema().optional(),
-    _started: z.lazy(() => createElementSchema()).optional(),
-    performer: z
-      .array(z.lazy(() => createImagingStudyPerformerSchema()))
-      .optional(),
-    instance: z
-      .array(z.lazy(() => createImagingStudyInstanceSchema()))
-      .optional(),
-  });
+  return getCachedSchema("ImagingStudySeries", () => {
+    const baseSchema: z.ZodType<types.ImagingStudySeries> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      uid: primitives.getIdSchema(),
+      _uid: z.lazy(() => createElementSchema()).optional(),
+      number: primitives.getUnsignedIntSchema().optional(),
+      _number: z.lazy(() => createElementSchema()).optional(),
+      modality: createCodingSchema(),
+      description: primitives.getStringSchema().optional(),
+      _description: z.lazy(() => createElementSchema()).optional(),
+      numberOfInstances: primitives.getUnsignedIntSchema().optional(),
+      _numberOfInstances: z.lazy(() => createElementSchema()).optional(),
+      endpoint: z.array(createReferenceSchema()).optional(),
+      bodySite: createCodingSchema().optional(),
+      laterality: createCodingSchema().optional(),
+      specimen: z.array(createReferenceSchema()).optional(),
+      started: primitives.getDateTimeSchema().optional(),
+      _started: z.lazy(() => createElementSchema()).optional(),
+      performer: z.array(createImagingStudyPerformerSchema()).optional(),
+      instance: z.array(createImagingStudyInstanceSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

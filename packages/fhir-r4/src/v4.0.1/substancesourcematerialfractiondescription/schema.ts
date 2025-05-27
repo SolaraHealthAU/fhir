@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -10,17 +11,19 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createSubstanceSourceMaterialFractionDescriptionSchema() {
-  const baseSchema: z.ZodType<types.SubstanceSourceMaterialFractionDescription> =
-    z.object({
-      id: primitives.createStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      fraction: primitives.createStringSchema().optional(),
-      _fraction: z.lazy(() => createElementSchema()).optional(),
-      materialType: z.lazy(() => createCodeableConceptSchema()).optional(),
-    });
+  return getCachedSchema("SubstanceSourceMaterialFractionDescription", () => {
+    const baseSchema: z.ZodType<types.SubstanceSourceMaterialFractionDescription> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        fraction: primitives.getStringSchema().optional(),
+        _fraction: z.lazy(() => createElementSchema()).optional(),
+        materialType: createCodeableConceptSchema().optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

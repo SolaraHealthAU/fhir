@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -10,15 +11,17 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createChargeItemPerformerSchema() {
-  const baseSchema: z.ZodType<types.ChargeItemPerformer> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    function: z.lazy(() => createCodeableConceptSchema()).optional(),
-    actor: z.lazy(() => createReferenceSchema()),
-  });
+  return getCachedSchema("ChargeItemPerformer", () => {
+    const baseSchema: z.ZodType<types.ChargeItemPerformer> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      function: createCodeableConceptSchema().optional(),
+      actor: createReferenceSchema(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

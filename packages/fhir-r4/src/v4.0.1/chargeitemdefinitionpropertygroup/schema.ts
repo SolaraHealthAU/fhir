@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import { createExtensionSchema } from "../core/schema";
 import { createChargeItemDefinitionApplicabilitySchema } from "../chargeitemdefinitionapplicability/schema";
 import { createChargeItemDefinitionPriceComponentSchema } from "../chargeitemdefinitionpricecomponent/schema";
@@ -8,20 +9,22 @@ import { createChargeItemDefinitionPriceComponentSchema } from "../chargeitemdef
 /* Generated from FHIR JSON Schema */
 
 export function createChargeItemDefinitionPropertyGroupSchema() {
-  const baseSchema: z.ZodType<types.ChargeItemDefinitionPropertyGroup> =
-    z.object({
-      id: primitives.createStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      applicability: z
-        .array(z.lazy(() => createChargeItemDefinitionApplicabilitySchema()))
-        .optional(),
-      priceComponent: z
-        .array(z.lazy(() => createChargeItemDefinitionPriceComponentSchema()))
-        .optional(),
-    });
+  return getCachedSchema("ChargeItemDefinitionPropertyGroup", () => {
+    const baseSchema: z.ZodType<types.ChargeItemDefinitionPropertyGroup> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        applicability: z
+          .array(createChargeItemDefinitionApplicabilitySchema())
+          .optional(),
+        priceComponent: z
+          .array(createChargeItemDefinitionPriceComponentSchema())
+          .optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

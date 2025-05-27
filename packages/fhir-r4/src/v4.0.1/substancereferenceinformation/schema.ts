@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -16,39 +17,38 @@ import { createSubstanceReferenceInformationTargetSchema } from "../substanceref
 /* Generated from FHIR JSON Schema */
 
 export function createSubstanceReferenceInformationSchema() {
-  const baseSchema: z.ZodType<types.SubstanceReferenceInformation> = z.object({
-    resourceType: z.literal("SubstanceReferenceInformation"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    comment: primitives.createStringSchema().optional(),
-    _comment: z.lazy(() => createElementSchema()).optional(),
-    gene: z
-      .array(z.lazy(() => createSubstanceReferenceInformationGeneSchema()))
-      .optional(),
-    geneElement: z
-      .array(
-        z.lazy(() => createSubstanceReferenceInformationGeneElementSchema()),
-      )
-      .optional(),
-    classification: z
-      .array(
-        z.lazy(() => createSubstanceReferenceInformationClassificationSchema()),
-      )
-      .optional(),
-    target: z
-      .array(z.lazy(() => createSubstanceReferenceInformationTargetSchema()))
-      .optional(),
-  });
+  return getCachedSchema("SubstanceReferenceInformation", () => {
+    const baseSchema: z.ZodType<types.SubstanceReferenceInformation> =
+      z.strictObject({
+        resourceType: z.literal("SubstanceReferenceInformation"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: z.lazy(() => createElementSchema()).optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: z.lazy(() => createElementSchema()).optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(createResourceListSchema()).optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        comment: primitives.getStringSchema().optional(),
+        _comment: z.lazy(() => createElementSchema()).optional(),
+        gene: z
+          .array(createSubstanceReferenceInformationGeneSchema())
+          .optional(),
+        geneElement: z
+          .array(createSubstanceReferenceInformationGeneElementSchema())
+          .optional(),
+        classification: z
+          .array(createSubstanceReferenceInformationClassificationSchema())
+          .optional(),
+        target: z
+          .array(createSubstanceReferenceInformationTargetSchema())
+          .optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

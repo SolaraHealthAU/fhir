@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -25,64 +26,56 @@ import { createClaimResponseErrorSchema } from "../claimresponseerror/schema";
 /* Generated from FHIR JSON Schema */
 
 export function createClaimResponseSchema() {
-  const baseSchema: z.ZodType<types.ClaimResponse> = z.object({
-    resourceType: z.literal("ClaimResponse"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-    status: primitives.createCodeSchema(),
-    _status: z.lazy(() => createElementSchema()).optional(),
-    type: z.lazy(() => createCodeableConceptSchema()),
-    subType: z.lazy(() => createCodeableConceptSchema()).optional(),
-    use: primitives.createCodeSchema(),
-    _use: z.lazy(() => createElementSchema()).optional(),
-    patient: z.lazy(() => createReferenceSchema()),
-    created: primitives.createDateTimeSchema(),
-    _created: z.lazy(() => createElementSchema()).optional(),
-    insurer: z.lazy(() => createReferenceSchema()),
-    requestor: z.lazy(() => createReferenceSchema()).optional(),
-    request: z.lazy(() => createReferenceSchema()).optional(),
-    outcome: primitives.createCodeSchema(),
-    _outcome: z.lazy(() => createElementSchema()).optional(),
-    disposition: primitives.createStringSchema().optional(),
-    _disposition: z.lazy(() => createElementSchema()).optional(),
-    preAuthRef: primitives.createStringSchema().optional(),
-    _preAuthRef: z.lazy(() => createElementSchema()).optional(),
-    preAuthPeriod: z.lazy(() => createPeriodSchema()).optional(),
-    payeeType: z.lazy(() => createCodeableConceptSchema()).optional(),
-    item: z.array(z.lazy(() => createClaimResponseItemSchema())).optional(),
-    addItem: z
-      .array(z.lazy(() => createClaimResponseAddItemSchema()))
-      .optional(),
-    adjudication: z
-      .array(z.lazy(() => createClaimResponseAdjudicationSchema()))
-      .optional(),
-    total: z.array(z.lazy(() => createClaimResponseTotalSchema())).optional(),
-    payment: z.lazy(() => createClaimResponsePaymentSchema()).optional(),
-    fundsReserve: z.lazy(() => createCodeableConceptSchema()).optional(),
-    formCode: z.lazy(() => createCodeableConceptSchema()).optional(),
-    form: z.lazy(() => createAttachmentSchema()).optional(),
-    processNote: z
-      .array(z.lazy(() => createClaimResponseProcessNoteSchema()))
-      .optional(),
-    communicationRequest: z
-      .array(z.lazy(() => createReferenceSchema()))
-      .optional(),
-    insurance: z
-      .array(z.lazy(() => createClaimResponseInsuranceSchema()))
-      .optional(),
-    error: z.array(z.lazy(() => createClaimResponseErrorSchema())).optional(),
-  });
+  return getCachedSchema("ClaimResponse", () => {
+    const baseSchema: z.ZodType<types.ClaimResponse> = z.strictObject({
+      resourceType: z.literal("ClaimResponse"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: z.lazy(() => createElementSchema()).optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(createResourceListSchema()).optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+      status: primitives.getCodeSchema(),
+      _status: z.lazy(() => createElementSchema()).optional(),
+      type: createCodeableConceptSchema(),
+      subType: createCodeableConceptSchema().optional(),
+      use: primitives.getCodeSchema(),
+      _use: z.lazy(() => createElementSchema()).optional(),
+      patient: createReferenceSchema(),
+      created: primitives.getDateTimeSchema(),
+      _created: z.lazy(() => createElementSchema()).optional(),
+      insurer: createReferenceSchema(),
+      requestor: createReferenceSchema().optional(),
+      request: createReferenceSchema().optional(),
+      outcome: primitives.getCodeSchema(),
+      _outcome: z.lazy(() => createElementSchema()).optional(),
+      disposition: primitives.getStringSchema().optional(),
+      _disposition: z.lazy(() => createElementSchema()).optional(),
+      preAuthRef: primitives.getStringSchema().optional(),
+      _preAuthRef: z.lazy(() => createElementSchema()).optional(),
+      preAuthPeriod: createPeriodSchema().optional(),
+      payeeType: createCodeableConceptSchema().optional(),
+      item: z.array(createClaimResponseItemSchema()).optional(),
+      addItem: z.array(createClaimResponseAddItemSchema()).optional(),
+      adjudication: z.array(createClaimResponseAdjudicationSchema()).optional(),
+      total: z.array(createClaimResponseTotalSchema()).optional(),
+      payment: createClaimResponsePaymentSchema().optional(),
+      fundsReserve: createCodeableConceptSchema().optional(),
+      formCode: createCodeableConceptSchema().optional(),
+      form: createAttachmentSchema().optional(),
+      processNote: z.array(createClaimResponseProcessNoteSchema()).optional(),
+      communicationRequest: z.array(createReferenceSchema()).optional(),
+      insurance: z.array(createClaimResponseInsuranceSchema()).optional(),
+      error: z.array(createClaimResponseErrorSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

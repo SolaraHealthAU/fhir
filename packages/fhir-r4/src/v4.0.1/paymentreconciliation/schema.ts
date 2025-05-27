@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -19,45 +20,45 @@ import { createPaymentReconciliationProcessNoteSchema } from "../paymentreconcil
 /* Generated from FHIR JSON Schema */
 
 export function createPaymentReconciliationSchema() {
-  const baseSchema: z.ZodType<types.PaymentReconciliation> = z.object({
-    resourceType: z.literal("PaymentReconciliation"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-    status: primitives.createCodeSchema(),
-    _status: z.lazy(() => createElementSchema()).optional(),
-    period: z.lazy(() => createPeriodSchema()).optional(),
-    created: primitives.createDateTimeSchema(),
-    _created: z.lazy(() => createElementSchema()).optional(),
-    paymentIssuer: z.lazy(() => createReferenceSchema()).optional(),
-    request: z.lazy(() => createReferenceSchema()).optional(),
-    requestor: z.lazy(() => createReferenceSchema()).optional(),
-    outcome: z.enum(["queued", "complete", "error", "partial"]).optional(),
-    _outcome: z.lazy(() => createElementSchema()).optional(),
-    disposition: primitives.createStringSchema().optional(),
-    _disposition: z.lazy(() => createElementSchema()).optional(),
-    paymentDate: primitives.createDateSchema(),
-    _paymentDate: z.lazy(() => createElementSchema()).optional(),
-    paymentAmount: z.lazy(() => createMoneySchema()),
-    paymentIdentifier: z.lazy(() => createIdentifierSchema()).optional(),
-    detail: z
-      .array(z.lazy(() => createPaymentReconciliationDetailSchema()))
-      .optional(),
-    formCode: z.lazy(() => createCodeableConceptSchema()).optional(),
-    processNote: z
-      .array(z.lazy(() => createPaymentReconciliationProcessNoteSchema()))
-      .optional(),
-  });
+  return getCachedSchema("PaymentReconciliation", () => {
+    const baseSchema: z.ZodType<types.PaymentReconciliation> = z.strictObject({
+      resourceType: z.literal("PaymentReconciliation"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: z.lazy(() => createElementSchema()).optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(createResourceListSchema()).optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+      status: primitives.getCodeSchema(),
+      _status: z.lazy(() => createElementSchema()).optional(),
+      period: createPeriodSchema().optional(),
+      created: primitives.getDateTimeSchema(),
+      _created: z.lazy(() => createElementSchema()).optional(),
+      paymentIssuer: createReferenceSchema().optional(),
+      request: createReferenceSchema().optional(),
+      requestor: createReferenceSchema().optional(),
+      outcome: z.enum(["queued", "complete", "error", "partial"]).optional(),
+      _outcome: z.lazy(() => createElementSchema()).optional(),
+      disposition: primitives.getStringSchema().optional(),
+      _disposition: z.lazy(() => createElementSchema()).optional(),
+      paymentDate: primitives.getDateSchema(),
+      _paymentDate: z.lazy(() => createElementSchema()).optional(),
+      paymentAmount: createMoneySchema(),
+      paymentIdentifier: z.lazy(() => createIdentifierSchema()).optional(),
+      detail: z.array(createPaymentReconciliationDetailSchema()).optional(),
+      formCode: createCodeableConceptSchema().optional(),
+      processNote: z
+        .array(createPaymentReconciliationProcessNoteSchema())
+        .optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

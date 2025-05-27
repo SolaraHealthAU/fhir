@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -18,46 +19,48 @@ import { createCoverageCostToBeneficiarySchema } from "../coveragecosttobenefici
 /* Generated from FHIR JSON Schema */
 
 export function createCoverageSchema() {
-  const baseSchema: z.ZodType<types.Coverage> = z.object({
-    resourceType: z.literal("Coverage"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-    status: primitives.createCodeSchema(),
-    _status: z.lazy(() => createElementSchema()).optional(),
-    type: z.lazy(() => createCodeableConceptSchema()).optional(),
-    policyHolder: z.lazy(() => createReferenceSchema()).optional(),
-    subscriber: z.lazy(() => createReferenceSchema()).optional(),
-    subscriberId: primitives.createStringSchema().optional(),
-    _subscriberId: z.lazy(() => createElementSchema()).optional(),
-    beneficiary: z.lazy(() => createReferenceSchema()),
-    dependent: primitives.createStringSchema().optional(),
-    _dependent: z.lazy(() => createElementSchema()).optional(),
-    relationship: z.lazy(() => createCodeableConceptSchema()).optional(),
-    period: z.lazy(() => createPeriodSchema()).optional(),
-    payor: z.array(z.lazy(() => createReferenceSchema())),
-    class: z.array(z.lazy(() => createCoverageClassSchema())).optional(),
-    order: primitives.createPositiveIntSchema().optional(),
-    _order: z.lazy(() => createElementSchema()).optional(),
-    network: primitives.createStringSchema().optional(),
-    _network: z.lazy(() => createElementSchema()).optional(),
-    costToBeneficiary: z
-      .array(z.lazy(() => createCoverageCostToBeneficiarySchema()))
-      .optional(),
-    subrogation: primitives.createBooleanSchema().optional(),
-    _subrogation: z.lazy(() => createElementSchema()).optional(),
-    contract: z.array(z.lazy(() => createReferenceSchema())).optional(),
-  });
+  return getCachedSchema("Coverage", () => {
+    const baseSchema: z.ZodType<types.Coverage> = z.strictObject({
+      resourceType: z.literal("Coverage"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: z.lazy(() => createElementSchema()).optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(createResourceListSchema()).optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+      status: primitives.getCodeSchema(),
+      _status: z.lazy(() => createElementSchema()).optional(),
+      type: createCodeableConceptSchema().optional(),
+      policyHolder: createReferenceSchema().optional(),
+      subscriber: createReferenceSchema().optional(),
+      subscriberId: primitives.getStringSchema().optional(),
+      _subscriberId: z.lazy(() => createElementSchema()).optional(),
+      beneficiary: createReferenceSchema(),
+      dependent: primitives.getStringSchema().optional(),
+      _dependent: z.lazy(() => createElementSchema()).optional(),
+      relationship: createCodeableConceptSchema().optional(),
+      period: createPeriodSchema().optional(),
+      payor: z.array(createReferenceSchema()),
+      class: z.array(createCoverageClassSchema()).optional(),
+      order: primitives.getPositiveIntSchema().optional(),
+      _order: z.lazy(() => createElementSchema()).optional(),
+      network: primitives.getStringSchema().optional(),
+      _network: z.lazy(() => createElementSchema()).optional(),
+      costToBeneficiary: z
+        .array(createCoverageCostToBeneficiarySchema())
+        .optional(),
+      subrogation: primitives.getBooleanSchema().optional(),
+      _subrogation: z.lazy(() => createElementSchema()).optional(),
+      contract: z.array(createReferenceSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

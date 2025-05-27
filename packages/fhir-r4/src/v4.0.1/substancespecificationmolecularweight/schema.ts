@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -10,17 +11,19 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createSubstanceSpecificationMolecularWeightSchema() {
-  const baseSchema: z.ZodType<types.SubstanceSpecificationMolecularWeight> =
-    z.object({
-      id: primitives.createStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      method: z.lazy(() => createCodeableConceptSchema()).optional(),
-      type: z.lazy(() => createCodeableConceptSchema()).optional(),
-      amount: z.lazy(() => createQuantitySchema()).optional(),
-    });
+  return getCachedSchema("SubstanceSpecificationMolecularWeight", () => {
+    const baseSchema: z.ZodType<types.SubstanceSpecificationMolecularWeight> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        method: createCodeableConceptSchema().optional(),
+        type: createCodeableConceptSchema().optional(),
+        amount: createQuantitySchema().optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createRatioSchema,
@@ -12,28 +13,26 @@ import { createMedicinalProductIngredientReferenceStrengthSchema } from "../medi
 /* Generated from FHIR JSON Schema */
 
 export function createMedicinalProductIngredientStrengthSchema() {
-  const baseSchema: z.ZodType<types.MedicinalProductIngredientStrength> =
-    z.object({
-      id: primitives.createStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      presentation: z.lazy(() => createRatioSchema()),
-      presentationLowLimit: z.lazy(() => createRatioSchema()).optional(),
-      concentration: z.lazy(() => createRatioSchema()).optional(),
-      concentrationLowLimit: z.lazy(() => createRatioSchema()).optional(),
-      measurementPoint: primitives.createStringSchema().optional(),
-      _measurementPoint: z.lazy(() => createElementSchema()).optional(),
-      country: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-      referenceStrength: z
-        .array(
-          z.lazy(() =>
-            createMedicinalProductIngredientReferenceStrengthSchema(),
-          ),
-        )
-        .optional(),
-    });
+  return getCachedSchema("MedicinalProductIngredientStrength", () => {
+    const baseSchema: z.ZodType<types.MedicinalProductIngredientStrength> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        presentation: createRatioSchema(),
+        presentationLowLimit: createRatioSchema().optional(),
+        concentration: createRatioSchema().optional(),
+        concentrationLowLimit: createRatioSchema().optional(),
+        measurementPoint: primitives.getStringSchema().optional(),
+        _measurementPoint: z.lazy(() => createElementSchema()).optional(),
+        country: z.array(createCodeableConceptSchema()).optional(),
+        referenceStrength: z
+          .array(createMedicinalProductIngredientReferenceStrengthSchema())
+          .optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

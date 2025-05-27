@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -12,26 +13,22 @@ import { createMedicationKnowledgePatientCharacteristicsSchema } from "../medica
 /* Generated from FHIR JSON Schema */
 
 export function createMedicationKnowledgeAdministrationGuidelinesSchema() {
-  const baseSchema: z.ZodType<types.MedicationKnowledgeAdministrationGuidelines> =
-    z.object({
-      id: primitives.createStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      dosage: z
-        .array(z.lazy(() => createMedicationKnowledgeDosageSchema()))
-        .optional(),
-      indicationCodeableConcept: z
-        .lazy(() => createCodeableConceptSchema())
-        .optional(),
-      indicationReference: z.lazy(() => createReferenceSchema()).optional(),
-      patientCharacteristics: z
-        .array(
-          z.lazy(() => createMedicationKnowledgePatientCharacteristicsSchema()),
-        )
-        .optional(),
-    });
+  return getCachedSchema("MedicationKnowledgeAdministrationGuidelines", () => {
+    const baseSchema: z.ZodType<types.MedicationKnowledgeAdministrationGuidelines> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        dosage: z.array(createMedicationKnowledgeDosageSchema()).optional(),
+        indicationCodeableConcept: createCodeableConceptSchema().optional(),
+        indicationReference: createReferenceSchema().optional(),
+        patientCharacteristics: z
+          .array(createMedicationKnowledgePatientCharacteristicsSchema())
+          .optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -10,18 +11,20 @@ import { createMedicinalProductIngredientStrengthSchema } from "../medicinalprod
 /* Generated from FHIR JSON Schema */
 
 export function createMedicinalProductIngredientSubstanceSchema() {
-  const baseSchema: z.ZodType<types.MedicinalProductIngredientSubstance> =
-    z.object({
-      id: primitives.createStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      code: z.lazy(() => createCodeableConceptSchema()),
-      strength: z
-        .array(z.lazy(() => createMedicinalProductIngredientStrengthSchema()))
-        .optional(),
-    });
+  return getCachedSchema("MedicinalProductIngredientSubstance", () => {
+    const baseSchema: z.ZodType<types.MedicinalProductIngredientSubstance> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        code: createCodeableConceptSchema(),
+        strength: z
+          .array(createMedicinalProductIngredientStrengthSchema())
+          .optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

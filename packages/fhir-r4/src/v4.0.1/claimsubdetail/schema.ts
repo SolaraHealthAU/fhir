@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -13,28 +14,28 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createClaimSubDetailSchema() {
-  const baseSchema: z.ZodType<types.ClaimSubDetail> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    sequence: primitives.createPositiveIntSchema().optional(),
-    _sequence: z.lazy(() => createElementSchema()).optional(),
-    revenue: z.lazy(() => createCodeableConceptSchema()).optional(),
-    category: z.lazy(() => createCodeableConceptSchema()).optional(),
-    productOrService: z.lazy(() => createCodeableConceptSchema()),
-    modifier: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    programCode: z
-      .array(z.lazy(() => createCodeableConceptSchema()))
-      .optional(),
-    quantity: z.lazy(() => createQuantitySchema()).optional(),
-    unitPrice: z.lazy(() => createMoneySchema()).optional(),
-    factor: primitives.createDecimalSchema().optional(),
-    _factor: z.lazy(() => createElementSchema()).optional(),
-    net: z.lazy(() => createMoneySchema()).optional(),
-    udi: z.array(z.lazy(() => createReferenceSchema())).optional(),
-  });
+  return getCachedSchema("ClaimSubDetail", () => {
+    const baseSchema: z.ZodType<types.ClaimSubDetail> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      sequence: primitives.getPositiveIntSchema().optional(),
+      _sequence: z.lazy(() => createElementSchema()).optional(),
+      revenue: createCodeableConceptSchema().optional(),
+      category: createCodeableConceptSchema().optional(),
+      productOrService: createCodeableConceptSchema(),
+      modifier: z.array(createCodeableConceptSchema()).optional(),
+      programCode: z.array(createCodeableConceptSchema()).optional(),
+      quantity: createQuantitySchema().optional(),
+      unitPrice: createMoneySchema().optional(),
+      factor: primitives.getDecimalSchema().optional(),
+      _factor: z.lazy(() => createElementSchema()).optional(),
+      net: createMoneySchema().optional(),
+      udi: z.array(createReferenceSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

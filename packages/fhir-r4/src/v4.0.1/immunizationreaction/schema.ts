@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -10,18 +11,20 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createImmunizationReactionSchema() {
-  const baseSchema: z.ZodType<types.ImmunizationReaction> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    date: primitives.createDateTimeSchema().optional(),
-    _date: z.lazy(() => createElementSchema()).optional(),
-    detail: z.lazy(() => createReferenceSchema()).optional(),
-    reported: primitives.createBooleanSchema().optional(),
-    _reported: z.lazy(() => createElementSchema()).optional(),
-  });
+  return getCachedSchema("ImmunizationReaction", () => {
+    const baseSchema: z.ZodType<types.ImmunizationReaction> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      date: primitives.getDateTimeSchema().optional(),
+      _date: z.lazy(() => createElementSchema()).optional(),
+      detail: createReferenceSchema().optional(),
+      reported: primitives.getBooleanSchema().optional(),
+      _reported: z.lazy(() => createElementSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

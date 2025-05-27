@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -10,18 +11,21 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createDeviceDefinitionMaterialSchema() {
-  const baseSchema: z.ZodType<types.DeviceDefinitionMaterial> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    substance: z.lazy(() => createCodeableConceptSchema()),
-    alternate: primitives.createBooleanSchema().optional(),
-    _alternate: z.lazy(() => createElementSchema()).optional(),
-    allergenicIndicator: primitives.createBooleanSchema().optional(),
-    _allergenicIndicator: z.lazy(() => createElementSchema()).optional(),
-  });
+  return getCachedSchema("DeviceDefinitionMaterial", () => {
+    const baseSchema: z.ZodType<types.DeviceDefinitionMaterial> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        substance: createCodeableConceptSchema(),
+        alternate: primitives.getBooleanSchema().optional(),
+        _alternate: z.lazy(() => createElementSchema()).optional(),
+        allergenicIndicator: primitives.getBooleanSchema().optional(),
+        _allergenicIndicator: z.lazy(() => createElementSchema()).optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

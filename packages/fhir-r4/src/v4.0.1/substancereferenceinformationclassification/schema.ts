@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -10,18 +11,20 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createSubstanceReferenceInformationClassificationSchema() {
-  const baseSchema: z.ZodType<types.SubstanceReferenceInformationClassification> =
-    z.object({
-      id: primitives.createStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      domain: z.lazy(() => createCodeableConceptSchema()).optional(),
-      classification: z.lazy(() => createCodeableConceptSchema()).optional(),
-      subtype: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-      source: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    });
+  return getCachedSchema("SubstanceReferenceInformationClassification", () => {
+    const baseSchema: z.ZodType<types.SubstanceReferenceInformationClassification> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        domain: createCodeableConceptSchema().optional(),
+        classification: createCodeableConceptSchema().optional(),
+        subtype: z.array(createCodeableConceptSchema()).optional(),
+        source: z.array(createReferenceSchema()).optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

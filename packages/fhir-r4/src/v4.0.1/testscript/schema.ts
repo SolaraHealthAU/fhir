@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -25,62 +26,58 @@ import { createTestScriptTeardownSchema } from "../testscriptteardown/schema";
 /* Generated from FHIR JSON Schema */
 
 export function createTestScriptSchema() {
-  const baseSchema: z.ZodType<types.TestScript> = z.object({
-    resourceType: z.literal("TestScript"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    url: primitives.createUriSchema(),
-    _url: z.lazy(() => createElementSchema()).optional(),
-    identifier: z.lazy(() => createIdentifierSchema()).optional(),
-    version: primitives.createStringSchema().optional(),
-    _version: z.lazy(() => createElementSchema()).optional(),
-    name: primitives.createStringSchema(),
-    _name: z.lazy(() => createElementSchema()).optional(),
-    title: primitives.createStringSchema().optional(),
-    _title: z.lazy(() => createElementSchema()).optional(),
-    status: z.enum(["draft", "active", "retired", "unknown"]),
-    _status: z.lazy(() => createElementSchema()).optional(),
-    experimental: primitives.createBooleanSchema().optional(),
-    _experimental: z.lazy(() => createElementSchema()).optional(),
-    date: primitives.createDateTimeSchema().optional(),
-    _date: z.lazy(() => createElementSchema()).optional(),
-    publisher: primitives.createStringSchema().optional(),
-    _publisher: z.lazy(() => createElementSchema()).optional(),
-    contact: z.array(z.lazy(() => createContactDetailSchema())).optional(),
-    description: primitives.createMarkdownSchema().optional(),
-    _description: z.lazy(() => createElementSchema()).optional(),
-    useContext: z.array(z.lazy(() => createUsageContextSchema())).optional(),
-    jurisdiction: z
-      .array(z.lazy(() => createCodeableConceptSchema()))
-      .optional(),
-    purpose: primitives.createMarkdownSchema().optional(),
-    _purpose: z.lazy(() => createElementSchema()).optional(),
-    copyright: primitives.createMarkdownSchema().optional(),
-    _copyright: z.lazy(() => createElementSchema()).optional(),
-    origin: z.array(z.lazy(() => createTestScriptOriginSchema())).optional(),
-    destination: z
-      .array(z.lazy(() => createTestScriptDestinationSchema()))
-      .optional(),
-    metadata: z.lazy(() => createTestScriptMetadataSchema()).optional(),
-    fixture: z.array(z.lazy(() => createTestScriptFixtureSchema())).optional(),
-    profile: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    variable: z
-      .array(z.lazy(() => createTestScriptVariableSchema()))
-      .optional(),
-    setup: z.lazy(() => createTestScriptSetupSchema()).optional(),
-    test: z.array(z.lazy(() => createTestScriptTestSchema())).optional(),
-    teardown: z.lazy(() => createTestScriptTeardownSchema()).optional(),
-  });
+  return getCachedSchema("TestScript", () => {
+    const baseSchema: z.ZodType<types.TestScript> = z.strictObject({
+      resourceType: z.literal("TestScript"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: z.lazy(() => createElementSchema()).optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(createResourceListSchema()).optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      url: primitives.getUriSchema(),
+      _url: z.lazy(() => createElementSchema()).optional(),
+      identifier: z.lazy(() => createIdentifierSchema()).optional(),
+      version: primitives.getStringSchema().optional(),
+      _version: z.lazy(() => createElementSchema()).optional(),
+      name: primitives.getStringSchema(),
+      _name: z.lazy(() => createElementSchema()).optional(),
+      title: primitives.getStringSchema().optional(),
+      _title: z.lazy(() => createElementSchema()).optional(),
+      status: z.enum(["draft", "active", "retired", "unknown"]),
+      _status: z.lazy(() => createElementSchema()).optional(),
+      experimental: primitives.getBooleanSchema().optional(),
+      _experimental: z.lazy(() => createElementSchema()).optional(),
+      date: primitives.getDateTimeSchema().optional(),
+      _date: z.lazy(() => createElementSchema()).optional(),
+      publisher: primitives.getStringSchema().optional(),
+      _publisher: z.lazy(() => createElementSchema()).optional(),
+      contact: z.array(createContactDetailSchema()).optional(),
+      description: primitives.getMarkdownSchema().optional(),
+      _description: z.lazy(() => createElementSchema()).optional(),
+      useContext: z.array(createUsageContextSchema()).optional(),
+      jurisdiction: z.array(createCodeableConceptSchema()).optional(),
+      purpose: primitives.getMarkdownSchema().optional(),
+      _purpose: z.lazy(() => createElementSchema()).optional(),
+      copyright: primitives.getMarkdownSchema().optional(),
+      _copyright: z.lazy(() => createElementSchema()).optional(),
+      origin: z.array(createTestScriptOriginSchema()).optional(),
+      destination: z.array(createTestScriptDestinationSchema()).optional(),
+      metadata: createTestScriptMetadataSchema().optional(),
+      fixture: z.array(createTestScriptFixtureSchema()).optional(),
+      profile: z.array(createReferenceSchema()).optional(),
+      variable: z.array(createTestScriptVariableSchema()).optional(),
+      setup: createTestScriptSetupSchema().optional(),
+      test: z.array(createTestScriptTestSchema()).optional(),
+      teardown: createTestScriptTeardownSchema().optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

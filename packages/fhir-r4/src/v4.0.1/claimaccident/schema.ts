@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -12,18 +13,20 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createClaimAccidentSchema() {
-  const baseSchema: z.ZodType<types.ClaimAccident> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    date: primitives.createDateSchema(),
-    _date: z.lazy(() => createElementSchema()).optional(),
-    type: z.lazy(() => createCodeableConceptSchema()).optional(),
-    locationAddress: z.lazy(() => createAddressSchema()).optional(),
-    locationReference: z.lazy(() => createReferenceSchema()).optional(),
-  });
+  return getCachedSchema("ClaimAccident", () => {
+    const baseSchema: z.ZodType<types.ClaimAccident> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      date: primitives.getDateSchema(),
+      _date: z.lazy(() => createElementSchema()).optional(),
+      type: createCodeableConceptSchema().optional(),
+      locationAddress: createAddressSchema().optional(),
+      locationReference: createReferenceSchema().optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

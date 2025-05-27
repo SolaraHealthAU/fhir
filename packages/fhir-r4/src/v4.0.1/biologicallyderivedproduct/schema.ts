@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -19,45 +20,46 @@ import { createBiologicallyDerivedProductStorageSchema } from "../biologicallyde
 /* Generated from FHIR JSON Schema */
 
 export function createBiologicallyDerivedProductSchema() {
-  const baseSchema: z.ZodType<types.BiologicallyDerivedProduct> = z.object({
-    resourceType: z.literal("BiologicallyDerivedProduct"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-    productCategory: z
-      .enum(["organ", "tissue", "fluid", "cells", "biologicalAgent"])
-      .optional(),
-    _productCategory: z.lazy(() => createElementSchema()).optional(),
-    productCode: z.lazy(() => createCodeableConceptSchema()).optional(),
-    status: z.enum(["available", "unavailable"]).optional(),
-    _status: z.lazy(() => createElementSchema()).optional(),
-    request: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    quantity: primitives.createIntegerSchema().optional(),
-    _quantity: z.lazy(() => createElementSchema()).optional(),
-    parent: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    collection: z
-      .lazy(() => createBiologicallyDerivedProductCollectionSchema())
-      .optional(),
-    processing: z
-      .array(z.lazy(() => createBiologicallyDerivedProductProcessingSchema()))
-      .optional(),
-    manipulation: z
-      .lazy(() => createBiologicallyDerivedProductManipulationSchema())
-      .optional(),
-    storage: z
-      .array(z.lazy(() => createBiologicallyDerivedProductStorageSchema()))
-      .optional(),
-  });
+  return getCachedSchema("BiologicallyDerivedProduct", () => {
+    const baseSchema: z.ZodType<types.BiologicallyDerivedProduct> =
+      z.strictObject({
+        resourceType: z.literal("BiologicallyDerivedProduct"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: z.lazy(() => createElementSchema()).optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: z.lazy(() => createElementSchema()).optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(createResourceListSchema()).optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+        productCategory: z
+          .enum(["organ", "tissue", "fluid", "cells", "biologicalAgent"])
+          .optional(),
+        _productCategory: z.lazy(() => createElementSchema()).optional(),
+        productCode: createCodeableConceptSchema().optional(),
+        status: z.enum(["available", "unavailable"]).optional(),
+        _status: z.lazy(() => createElementSchema()).optional(),
+        request: z.array(createReferenceSchema()).optional(),
+        quantity: primitives.getIntegerSchema().optional(),
+        _quantity: z.lazy(() => createElementSchema()).optional(),
+        parent: z.array(createReferenceSchema()).optional(),
+        collection:
+          createBiologicallyDerivedProductCollectionSchema().optional(),
+        processing: z
+          .array(createBiologicallyDerivedProductProcessingSchema())
+          .optional(),
+        manipulation:
+          createBiologicallyDerivedProductManipulationSchema().optional(),
+        storage: z
+          .array(createBiologicallyDerivedProductStorageSchema())
+          .optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

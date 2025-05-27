@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -20,67 +21,67 @@ import { createFamilyMemberHistoryConditionSchema } from "../familymemberhistory
 /* Generated from FHIR JSON Schema */
 
 export function createFamilyMemberHistorySchema() {
-  const baseSchema: z.ZodType<types.FamilyMemberHistory> = z.object({
-    resourceType: z.literal("FamilyMemberHistory"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-    instantiatesCanonical: z
-      .array(primitives.createCanonicalSchema())
-      .optional(),
-    instantiatesUri: z.array(primitives.createUriSchema()).optional(),
-    _instantiatesUri: z.array(z.lazy(() => createElementSchema())).optional(),
-    status: z.enum([
-      "partial",
-      "completed",
-      "entered-in-error",
-      "health-unknown",
-    ]),
-    _status: z.lazy(() => createElementSchema()).optional(),
-    dataAbsentReason: z.lazy(() => createCodeableConceptSchema()).optional(),
-    patient: z.lazy(() => createReferenceSchema()),
-    date: primitives.createDateTimeSchema().optional(),
-    _date: z.lazy(() => createElementSchema()).optional(),
-    name: primitives.createStringSchema().optional(),
-    _name: z.lazy(() => createElementSchema()).optional(),
-    relationship: z.lazy(() => createCodeableConceptSchema()),
-    sex: z.lazy(() => createCodeableConceptSchema()).optional(),
-    bornPeriod: z.lazy(() => createPeriodSchema()).optional(),
-    bornDate: z.string().optional(),
-    _bornDate: z.lazy(() => createElementSchema()).optional(),
-    bornString: z.string().optional(),
-    _bornString: z.lazy(() => createElementSchema()).optional(),
-    ageAge: z.lazy(() => createAgeSchema()).optional(),
-    ageRange: z.lazy(() => createRangeSchema()).optional(),
-    ageString: z.string().optional(),
-    _ageString: z.lazy(() => createElementSchema()).optional(),
-    estimatedAge: primitives.createBooleanSchema().optional(),
-    _estimatedAge: z.lazy(() => createElementSchema()).optional(),
-    deceasedBoolean: z.boolean().optional(),
-    _deceasedBoolean: z.lazy(() => createElementSchema()).optional(),
-    deceasedAge: z.lazy(() => createAgeSchema()).optional(),
-    deceasedRange: z.lazy(() => createRangeSchema()).optional(),
-    deceasedDate: z.string().optional(),
-    _deceasedDate: z.lazy(() => createElementSchema()).optional(),
-    deceasedString: z.string().optional(),
-    _deceasedString: z.lazy(() => createElementSchema()).optional(),
-    reasonCode: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    reasonReference: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    note: z.array(z.lazy(() => createAnnotationSchema())).optional(),
-    condition: z
-      .array(z.lazy(() => createFamilyMemberHistoryConditionSchema()))
-      .optional(),
-  });
+  return getCachedSchema("FamilyMemberHistory", () => {
+    const baseSchema: z.ZodType<types.FamilyMemberHistory> = z.strictObject({
+      resourceType: z.literal("FamilyMemberHistory"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: z.lazy(() => createElementSchema()).optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(createResourceListSchema()).optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+      instantiatesCanonical: z
+        .array(primitives.getCanonicalSchema())
+        .optional(),
+      instantiatesUri: z.array(primitives.getUriSchema()).optional(),
+      _instantiatesUri: z.array(z.lazy(() => createElementSchema())).optional(),
+      status: z.enum([
+        "partial",
+        "completed",
+        "entered-in-error",
+        "health-unknown",
+      ]),
+      _status: z.lazy(() => createElementSchema()).optional(),
+      dataAbsentReason: createCodeableConceptSchema().optional(),
+      patient: createReferenceSchema(),
+      date: primitives.getDateTimeSchema().optional(),
+      _date: z.lazy(() => createElementSchema()).optional(),
+      name: primitives.getStringSchema().optional(),
+      _name: z.lazy(() => createElementSchema()).optional(),
+      relationship: createCodeableConceptSchema(),
+      sex: createCodeableConceptSchema().optional(),
+      bornPeriod: createPeriodSchema().optional(),
+      bornDate: z.string().optional(),
+      _bornDate: z.lazy(() => createElementSchema()).optional(),
+      bornString: z.string().optional(),
+      _bornString: z.lazy(() => createElementSchema()).optional(),
+      ageAge: createAgeSchema().optional(),
+      ageRange: createRangeSchema().optional(),
+      ageString: z.string().optional(),
+      _ageString: z.lazy(() => createElementSchema()).optional(),
+      estimatedAge: primitives.getBooleanSchema().optional(),
+      _estimatedAge: z.lazy(() => createElementSchema()).optional(),
+      deceasedBoolean: z.boolean().optional(),
+      _deceasedBoolean: z.lazy(() => createElementSchema()).optional(),
+      deceasedAge: createAgeSchema().optional(),
+      deceasedRange: createRangeSchema().optional(),
+      deceasedDate: z.string().optional(),
+      _deceasedDate: z.lazy(() => createElementSchema()).optional(),
+      deceasedString: z.string().optional(),
+      _deceasedString: z.lazy(() => createElementSchema()).optional(),
+      reasonCode: z.array(createCodeableConceptSchema()).optional(),
+      reasonReference: z.array(createReferenceSchema()).optional(),
+      note: z.array(createAnnotationSchema()).optional(),
+      condition: z.array(createFamilyMemberHistoryConditionSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

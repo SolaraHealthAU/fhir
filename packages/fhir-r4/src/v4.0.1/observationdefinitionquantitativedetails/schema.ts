@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -10,20 +11,22 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createObservationDefinitionQuantitativeDetailsSchema() {
-  const baseSchema: z.ZodType<types.ObservationDefinitionQuantitativeDetails> =
-    z.object({
-      id: primitives.createStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      customaryUnit: z.lazy(() => createCodeableConceptSchema()).optional(),
-      unit: z.lazy(() => createCodeableConceptSchema()).optional(),
-      conversionFactor: primitives.createDecimalSchema().optional(),
-      _conversionFactor: z.lazy(() => createElementSchema()).optional(),
-      decimalPrecision: primitives.createIntegerSchema().optional(),
-      _decimalPrecision: z.lazy(() => createElementSchema()).optional(),
-    });
+  return getCachedSchema("ObservationDefinitionQuantitativeDetails", () => {
+    const baseSchema: z.ZodType<types.ObservationDefinitionQuantitativeDetails> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        customaryUnit: createCodeableConceptSchema().optional(),
+        unit: createCodeableConceptSchema().optional(),
+        conversionFactor: primitives.getDecimalSchema().optional(),
+        _conversionFactor: z.lazy(() => createElementSchema()).optional(),
+        decimalPrecision: primitives.getIntegerSchema().optional(),
+        _decimalPrecision: z.lazy(() => createElementSchema()).optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

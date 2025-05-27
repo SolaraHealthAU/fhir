@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -17,53 +18,51 @@ import { createSubstanceSourceMaterialPartDescriptionSchema } from "../substance
 /* Generated from FHIR JSON Schema */
 
 export function createSubstanceSourceMaterialSchema() {
-  const baseSchema: z.ZodType<types.SubstanceSourceMaterial> = z.object({
-    resourceType: z.literal("SubstanceSourceMaterial"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    sourceMaterialClass: z.lazy(() => createCodeableConceptSchema()).optional(),
-    sourceMaterialType: z.lazy(() => createCodeableConceptSchema()).optional(),
-    sourceMaterialState: z.lazy(() => createCodeableConceptSchema()).optional(),
-    organismId: z.lazy(() => createIdentifierSchema()).optional(),
-    organismName: primitives.createStringSchema().optional(),
-    _organismName: z.lazy(() => createElementSchema()).optional(),
-    parentSubstanceId: z
-      .array(z.lazy(() => createIdentifierSchema()))
-      .optional(),
-    parentSubstanceName: z.array(primitives.createStringSchema()).optional(),
-    _parentSubstanceName: z
-      .array(z.lazy(() => createElementSchema()))
-      .optional(),
-    countryOfOrigin: z
-      .array(z.lazy(() => createCodeableConceptSchema()))
-      .optional(),
-    geographicalLocation: z.array(primitives.createStringSchema()).optional(),
-    _geographicalLocation: z
-      .array(z.lazy(() => createElementSchema()))
-      .optional(),
-    developmentStage: z.lazy(() => createCodeableConceptSchema()).optional(),
-    fractionDescription: z
-      .array(
-        z.lazy(() => createSubstanceSourceMaterialFractionDescriptionSchema()),
-      )
-      .optional(),
-    organism: z
-      .lazy(() => createSubstanceSourceMaterialOrganismSchema())
-      .optional(),
-    partDescription: z
-      .array(z.lazy(() => createSubstanceSourceMaterialPartDescriptionSchema()))
-      .optional(),
-  });
+  return getCachedSchema("SubstanceSourceMaterial", () => {
+    const baseSchema: z.ZodType<types.SubstanceSourceMaterial> = z.strictObject(
+      {
+        resourceType: z.literal("SubstanceSourceMaterial"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: z.lazy(() => createElementSchema()).optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: z.lazy(() => createElementSchema()).optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(createResourceListSchema()).optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        sourceMaterialClass: createCodeableConceptSchema().optional(),
+        sourceMaterialType: createCodeableConceptSchema().optional(),
+        sourceMaterialState: createCodeableConceptSchema().optional(),
+        organismId: z.lazy(() => createIdentifierSchema()).optional(),
+        organismName: primitives.getStringSchema().optional(),
+        _organismName: z.lazy(() => createElementSchema()).optional(),
+        parentSubstanceId: z
+          .array(z.lazy(() => createIdentifierSchema()))
+          .optional(),
+        parentSubstanceName: z.array(primitives.getStringSchema()).optional(),
+        _parentSubstanceName: z
+          .array(z.lazy(() => createElementSchema()))
+          .optional(),
+        countryOfOrigin: z.array(createCodeableConceptSchema()).optional(),
+        geographicalLocation: z.array(primitives.getStringSchema()).optional(),
+        _geographicalLocation: z
+          .array(z.lazy(() => createElementSchema()))
+          .optional(),
+        developmentStage: createCodeableConceptSchema().optional(),
+        fractionDescription: z
+          .array(createSubstanceSourceMaterialFractionDescriptionSchema())
+          .optional(),
+        organism: createSubstanceSourceMaterialOrganismSchema().optional(),
+        partDescription: z
+          .array(createSubstanceSourceMaterialPartDescriptionSchema())
+          .optional(),
+      },
+    );
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

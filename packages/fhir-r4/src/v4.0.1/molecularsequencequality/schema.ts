@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -12,39 +13,42 @@ import { createMolecularSequenceRocSchema } from "../molecularsequenceroc/schema
 /* Generated from FHIR JSON Schema */
 
 export function createMolecularSequenceQualitySchema() {
-  const baseSchema: z.ZodType<types.MolecularSequenceQuality> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    type: z.enum(["indel", "snp", "unknown"]),
-    _type: z.lazy(() => createElementSchema()).optional(),
-    standardSequence: z.lazy(() => createCodeableConceptSchema()).optional(),
-    start: primitives.createIntegerSchema().optional(),
-    _start: z.lazy(() => createElementSchema()).optional(),
-    end: primitives.createIntegerSchema().optional(),
-    _end: z.lazy(() => createElementSchema()).optional(),
-    score: z.lazy(() => createQuantitySchema()).optional(),
-    method: z.lazy(() => createCodeableConceptSchema()).optional(),
-    truthTP: primitives.createDecimalSchema().optional(),
-    _truthTP: z.lazy(() => createElementSchema()).optional(),
-    queryTP: primitives.createDecimalSchema().optional(),
-    _queryTP: z.lazy(() => createElementSchema()).optional(),
-    truthFN: primitives.createDecimalSchema().optional(),
-    _truthFN: z.lazy(() => createElementSchema()).optional(),
-    queryFP: primitives.createDecimalSchema().optional(),
-    _queryFP: z.lazy(() => createElementSchema()).optional(),
-    gtFP: primitives.createDecimalSchema().optional(),
-    _gtFP: z.lazy(() => createElementSchema()).optional(),
-    precision: primitives.createDecimalSchema().optional(),
-    _precision: z.lazy(() => createElementSchema()).optional(),
-    recall: primitives.createDecimalSchema().optional(),
-    _recall: z.lazy(() => createElementSchema()).optional(),
-    fScore: primitives.createDecimalSchema().optional(),
-    _fScore: z.lazy(() => createElementSchema()).optional(),
-    roc: z.lazy(() => createMolecularSequenceRocSchema()).optional(),
-  });
+  return getCachedSchema("MolecularSequenceQuality", () => {
+    const baseSchema: z.ZodType<types.MolecularSequenceQuality> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        type: z.enum(["indel", "snp", "unknown"]),
+        _type: z.lazy(() => createElementSchema()).optional(),
+        standardSequence: createCodeableConceptSchema().optional(),
+        start: primitives.getIntegerSchema().optional(),
+        _start: z.lazy(() => createElementSchema()).optional(),
+        end: primitives.getIntegerSchema().optional(),
+        _end: z.lazy(() => createElementSchema()).optional(),
+        score: createQuantitySchema().optional(),
+        method: createCodeableConceptSchema().optional(),
+        truthTP: primitives.getDecimalSchema().optional(),
+        _truthTP: z.lazy(() => createElementSchema()).optional(),
+        queryTP: primitives.getDecimalSchema().optional(),
+        _queryTP: z.lazy(() => createElementSchema()).optional(),
+        truthFN: primitives.getDecimalSchema().optional(),
+        _truthFN: z.lazy(() => createElementSchema()).optional(),
+        queryFP: primitives.getDecimalSchema().optional(),
+        _queryFP: z.lazy(() => createElementSchema()).optional(),
+        gtFP: primitives.getDecimalSchema().optional(),
+        _gtFP: z.lazy(() => createElementSchema()).optional(),
+        precision: primitives.getDecimalSchema().optional(),
+        _precision: z.lazy(() => createElementSchema()).optional(),
+        recall: primitives.getDecimalSchema().optional(),
+        _recall: z.lazy(() => createElementSchema()).optional(),
+        fScore: primitives.getDecimalSchema().optional(),
+        _fScore: z.lazy(() => createElementSchema()).optional(),
+        roc: createMolecularSequenceRocSchema().optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -13,28 +14,27 @@ import { createSubstanceNucleicAcidSugarSchema } from "../substancenucleicacidsu
 /* Generated from FHIR JSON Schema */
 
 export function createSubstanceNucleicAcidSubunitSchema() {
-  const baseSchema: z.ZodType<types.SubstanceNucleicAcidSubunit> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    subunit: primitives.createIntegerSchema().optional(),
-    _subunit: z.lazy(() => createElementSchema()).optional(),
-    sequence: primitives.createStringSchema().optional(),
-    _sequence: z.lazy(() => createElementSchema()).optional(),
-    length: primitives.createIntegerSchema().optional(),
-    _length: z.lazy(() => createElementSchema()).optional(),
-    sequenceAttachment: z.lazy(() => createAttachmentSchema()).optional(),
-    fivePrime: z.lazy(() => createCodeableConceptSchema()).optional(),
-    threePrime: z.lazy(() => createCodeableConceptSchema()).optional(),
-    linkage: z
-      .array(z.lazy(() => createSubstanceNucleicAcidLinkageSchema()))
-      .optional(),
-    sugar: z
-      .array(z.lazy(() => createSubstanceNucleicAcidSugarSchema()))
-      .optional(),
-  });
+  return getCachedSchema("SubstanceNucleicAcidSubunit", () => {
+    const baseSchema: z.ZodType<types.SubstanceNucleicAcidSubunit> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        subunit: primitives.getIntegerSchema().optional(),
+        _subunit: z.lazy(() => createElementSchema()).optional(),
+        sequence: primitives.getStringSchema().optional(),
+        _sequence: z.lazy(() => createElementSchema()).optional(),
+        length: primitives.getIntegerSchema().optional(),
+        _length: z.lazy(() => createElementSchema()).optional(),
+        sequenceAttachment: createAttachmentSchema().optional(),
+        fivePrime: createCodeableConceptSchema().optional(),
+        threePrime: createCodeableConceptSchema().optional(),
+        linkage: z.array(createSubstanceNucleicAcidLinkageSchema()).optional(),
+        sugar: z.array(createSubstanceNucleicAcidSugarSchema()).optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

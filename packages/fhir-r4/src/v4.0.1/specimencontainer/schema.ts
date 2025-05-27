@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createIdentifierSchema,
@@ -13,23 +14,23 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createSpecimenContainerSchema() {
-  const baseSchema: z.ZodType<types.SpecimenContainer> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-    description: primitives.createStringSchema().optional(),
-    _description: z.lazy(() => createElementSchema()).optional(),
-    type: z.lazy(() => createCodeableConceptSchema()).optional(),
-    capacity: z.lazy(() => createQuantitySchema()).optional(),
-    specimenQuantity: z.lazy(() => createQuantitySchema()).optional(),
-    additiveCodeableConcept: z
-      .lazy(() => createCodeableConceptSchema())
-      .optional(),
-    additiveReference: z.lazy(() => createReferenceSchema()).optional(),
-  });
+  return getCachedSchema("SpecimenContainer", () => {
+    const baseSchema: z.ZodType<types.SpecimenContainer> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+      description: primitives.getStringSchema().optional(),
+      _description: z.lazy(() => createElementSchema()).optional(),
+      type: createCodeableConceptSchema().optional(),
+      capacity: createQuantitySchema().optional(),
+      specimenQuantity: createQuantitySchema().optional(),
+      additiveCodeableConcept: createCodeableConceptSchema().optional(),
+      additiveReference: createReferenceSchema().optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -11,18 +12,21 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createClaimResponseAdjudicationSchema() {
-  const baseSchema: z.ZodType<types.ClaimResponseAdjudication> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    category: z.lazy(() => createCodeableConceptSchema()),
-    reason: z.lazy(() => createCodeableConceptSchema()).optional(),
-    amount: z.lazy(() => createMoneySchema()).optional(),
-    value: primitives.createDecimalSchema().optional(),
-    _value: z.lazy(() => createElementSchema()).optional(),
-  });
+  return getCachedSchema("ClaimResponseAdjudication", () => {
+    const baseSchema: z.ZodType<types.ClaimResponseAdjudication> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        category: createCodeableConceptSchema(),
+        reason: createCodeableConceptSchema().optional(),
+        amount: createMoneySchema().optional(),
+        value: primitives.getDecimalSchema().optional(),
+        _value: z.lazy(() => createElementSchema()).optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createIdentifierSchema,
@@ -11,30 +12,27 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createEncounterHospitalizationSchema() {
-  const baseSchema: z.ZodType<types.EncounterHospitalization> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    preAdmissionIdentifier: z.lazy(() => createIdentifierSchema()).optional(),
-    origin: z.lazy(() => createReferenceSchema()).optional(),
-    admitSource: z.lazy(() => createCodeableConceptSchema()).optional(),
-    reAdmission: z.lazy(() => createCodeableConceptSchema()).optional(),
-    dietPreference: z
-      .array(z.lazy(() => createCodeableConceptSchema()))
-      .optional(),
-    specialCourtesy: z
-      .array(z.lazy(() => createCodeableConceptSchema()))
-      .optional(),
-    specialArrangement: z
-      .array(z.lazy(() => createCodeableConceptSchema()))
-      .optional(),
-    destination: z.lazy(() => createReferenceSchema()).optional(),
-    dischargeDisposition: z
-      .lazy(() => createCodeableConceptSchema())
-      .optional(),
-  });
+  return getCachedSchema("EncounterHospitalization", () => {
+    const baseSchema: z.ZodType<types.EncounterHospitalization> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        preAdmissionIdentifier: z
+          .lazy(() => createIdentifierSchema())
+          .optional(),
+        origin: createReferenceSchema().optional(),
+        admitSource: createCodeableConceptSchema().optional(),
+        reAdmission: createCodeableConceptSchema().optional(),
+        dietPreference: z.array(createCodeableConceptSchema()).optional(),
+        specialCourtesy: z.array(createCodeableConceptSchema()).optional(),
+        specialArrangement: z.array(createCodeableConceptSchema()).optional(),
+        destination: createReferenceSchema().optional(),
+        dischargeDisposition: createCodeableConceptSchema().optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

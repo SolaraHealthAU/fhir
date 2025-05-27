@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -11,17 +12,25 @@ import { createProvenanceAgentSchema } from "../provenanceagent/schema";
 /* Generated from FHIR JSON Schema */
 
 export function createProvenanceEntitySchema() {
-  const baseSchema: z.ZodType<types.ProvenanceEntity> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    role: z.enum(["derivation", "revision", "quotation", "source", "removal"]),
-    _role: z.lazy(() => createElementSchema()).optional(),
-    what: z.lazy(() => createReferenceSchema()),
-    agent: z.array(z.lazy(() => createProvenanceAgentSchema())).optional(),
-  });
+  return getCachedSchema("ProvenanceEntity", () => {
+    const baseSchema: z.ZodType<types.ProvenanceEntity> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      role: z.enum([
+        "derivation",
+        "revision",
+        "quotation",
+        "source",
+        "removal",
+      ]),
+      _role: z.lazy(() => createElementSchema()).optional(),
+      what: createReferenceSchema(),
+      agent: z.array(createProvenanceAgentSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

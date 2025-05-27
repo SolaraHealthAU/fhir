@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -20,46 +21,48 @@ import { createLocationHoursOfOperationSchema } from "../locationhoursofoperatio
 /* Generated from FHIR JSON Schema */
 
 export function createLocationSchema() {
-  const baseSchema: z.ZodType<types.Location> = z.object({
-    resourceType: z.literal("Location"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-    status: z.enum(["active", "suspended", "inactive"]).optional(),
-    _status: z.lazy(() => createElementSchema()).optional(),
-    operationalStatus: z.lazy(() => createCodingSchema()).optional(),
-    name: primitives.createStringSchema().optional(),
-    _name: z.lazy(() => createElementSchema()).optional(),
-    alias: z.array(primitives.createStringSchema()).optional(),
-    _alias: z.array(z.lazy(() => createElementSchema())).optional(),
-    description: primitives.createStringSchema().optional(),
-    _description: z.lazy(() => createElementSchema()).optional(),
-    mode: z.enum(["instance", "kind"]).optional(),
-    _mode: z.lazy(() => createElementSchema()).optional(),
-    type: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    telecom: z.array(z.lazy(() => createContactPointSchema())).optional(),
-    address: z.lazy(() => createAddressSchema()).optional(),
-    physicalType: z.lazy(() => createCodeableConceptSchema()).optional(),
-    position: z.lazy(() => createLocationPositionSchema()).optional(),
-    managingOrganization: z.lazy(() => createReferenceSchema()).optional(),
-    partOf: z.lazy(() => createReferenceSchema()).optional(),
-    hoursOfOperation: z
-      .array(z.lazy(() => createLocationHoursOfOperationSchema()))
-      .optional(),
-    availabilityExceptions: primitives.createStringSchema().optional(),
-    _availabilityExceptions: z.lazy(() => createElementSchema()).optional(),
-    endpoint: z.array(z.lazy(() => createReferenceSchema())).optional(),
-  });
+  return getCachedSchema("Location", () => {
+    const baseSchema: z.ZodType<types.Location> = z.strictObject({
+      resourceType: z.literal("Location"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: z.lazy(() => createElementSchema()).optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(createResourceListSchema()).optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+      status: z.enum(["active", "suspended", "inactive"]).optional(),
+      _status: z.lazy(() => createElementSchema()).optional(),
+      operationalStatus: createCodingSchema().optional(),
+      name: primitives.getStringSchema().optional(),
+      _name: z.lazy(() => createElementSchema()).optional(),
+      alias: z.array(primitives.getStringSchema()).optional(),
+      _alias: z.array(z.lazy(() => createElementSchema())).optional(),
+      description: primitives.getStringSchema().optional(),
+      _description: z.lazy(() => createElementSchema()).optional(),
+      mode: z.enum(["instance", "kind"]).optional(),
+      _mode: z.lazy(() => createElementSchema()).optional(),
+      type: z.array(createCodeableConceptSchema()).optional(),
+      telecom: z.array(createContactPointSchema()).optional(),
+      address: createAddressSchema().optional(),
+      physicalType: createCodeableConceptSchema().optional(),
+      position: createLocationPositionSchema().optional(),
+      managingOrganization: createReferenceSchema().optional(),
+      partOf: createReferenceSchema().optional(),
+      hoursOfOperation: z
+        .array(createLocationHoursOfOperationSchema())
+        .optional(),
+      availabilityExceptions: primitives.getStringSchema().optional(),
+      _availabilityExceptions: z.lazy(() => createElementSchema()).optional(),
+      endpoint: z.array(createReferenceSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

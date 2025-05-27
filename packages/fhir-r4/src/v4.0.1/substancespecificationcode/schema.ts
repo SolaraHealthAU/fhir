@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -11,20 +12,23 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createSubstanceSpecificationCodeSchema() {
-  const baseSchema: z.ZodType<types.SubstanceSpecificationCode> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    code: z.lazy(() => createCodeableConceptSchema()).optional(),
-    status: z.lazy(() => createCodeableConceptSchema()).optional(),
-    statusDate: primitives.createDateTimeSchema().optional(),
-    _statusDate: z.lazy(() => createElementSchema()).optional(),
-    comment: primitives.createStringSchema().optional(),
-    _comment: z.lazy(() => createElementSchema()).optional(),
-    source: z.array(z.lazy(() => createReferenceSchema())).optional(),
-  });
+  return getCachedSchema("SubstanceSpecificationCode", () => {
+    const baseSchema: z.ZodType<types.SubstanceSpecificationCode> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        code: createCodeableConceptSchema().optional(),
+        status: createCodeableConceptSchema().optional(),
+        statusDate: primitives.getDateTimeSchema().optional(),
+        _statusDate: z.lazy(() => createElementSchema()).optional(),
+        comment: primitives.getStringSchema().optional(),
+        _comment: z.lazy(() => createElementSchema()).optional(),
+        source: z.array(createReferenceSchema()).optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

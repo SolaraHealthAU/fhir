@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -11,23 +12,21 @@ import { createSubstancePolymerRepeatUnitSchema } from "../substancepolymerrepea
 /* Generated from FHIR JSON Schema */
 
 export function createSubstancePolymerRepeatSchema() {
-  const baseSchema: z.ZodType<types.SubstancePolymerRepeat> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    numberOfUnits: primitives.createIntegerSchema().optional(),
-    _numberOfUnits: z.lazy(() => createElementSchema()).optional(),
-    averageMolecularFormula: primitives.createStringSchema().optional(),
-    _averageMolecularFormula: z.lazy(() => createElementSchema()).optional(),
-    repeatUnitAmountType: z
-      .lazy(() => createCodeableConceptSchema())
-      .optional(),
-    repeatUnit: z
-      .array(z.lazy(() => createSubstancePolymerRepeatUnitSchema()))
-      .optional(),
-  });
+  return getCachedSchema("SubstancePolymerRepeat", () => {
+    const baseSchema: z.ZodType<types.SubstancePolymerRepeat> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      numberOfUnits: primitives.getIntegerSchema().optional(),
+      _numberOfUnits: z.lazy(() => createElementSchema()).optional(),
+      averageMolecularFormula: primitives.getStringSchema().optional(),
+      _averageMolecularFormula: z.lazy(() => createElementSchema()).optional(),
+      repeatUnitAmountType: createCodeableConceptSchema().optional(),
+      repeatUnit: z.array(createSubstancePolymerRepeatUnitSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

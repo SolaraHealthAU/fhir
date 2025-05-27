@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -11,17 +12,19 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createCareTeamParticipantSchema() {
-  const baseSchema: z.ZodType<types.CareTeamParticipant> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    role: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    member: z.lazy(() => createReferenceSchema()).optional(),
-    onBehalfOf: z.lazy(() => createReferenceSchema()).optional(),
-    period: z.lazy(() => createPeriodSchema()).optional(),
-  });
+  return getCachedSchema("CareTeamParticipant", () => {
+    const baseSchema: z.ZodType<types.CareTeamParticipant> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      role: z.array(createCodeableConceptSchema()).optional(),
+      member: createReferenceSchema().optional(),
+      onBehalfOf: createReferenceSchema().optional(),
+      period: createPeriodSchema().optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

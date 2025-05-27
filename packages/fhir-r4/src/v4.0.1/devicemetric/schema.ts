@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -17,49 +18,54 @@ import { createDeviceMetricCalibrationSchema } from "../devicemetriccalibration/
 /* Generated from FHIR JSON Schema */
 
 export function createDeviceMetricSchema() {
-  const baseSchema: z.ZodType<types.DeviceMetric> = z.object({
-    resourceType: z.literal("DeviceMetric"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-    type: z.lazy(() => createCodeableConceptSchema()),
-    unit: z.lazy(() => createCodeableConceptSchema()).optional(),
-    source: z.lazy(() => createReferenceSchema()).optional(),
-    parent: z.lazy(() => createReferenceSchema()).optional(),
-    operationalStatus: z
-      .enum(["on", "off", "standby", "entered-in-error"])
-      .optional(),
-    _operationalStatus: z.lazy(() => createElementSchema()).optional(),
-    color: z
-      .enum([
-        "black",
-        "red",
-        "green",
-        "yellow",
-        "blue",
-        "magenta",
-        "cyan",
-        "white",
-      ])
-      .optional(),
-    _color: z.lazy(() => createElementSchema()).optional(),
-    category: z.enum(["measurement", "setting", "calculation", "unspecified"]),
-    _category: z.lazy(() => createElementSchema()).optional(),
-    measurementPeriod: z.lazy(() => createTimingSchema()).optional(),
-    calibration: z
-      .array(z.lazy(() => createDeviceMetricCalibrationSchema()))
-      .optional(),
-  });
+  return getCachedSchema("DeviceMetric", () => {
+    const baseSchema: z.ZodType<types.DeviceMetric> = z.strictObject({
+      resourceType: z.literal("DeviceMetric"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: z.lazy(() => createElementSchema()).optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(createResourceListSchema()).optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+      type: createCodeableConceptSchema(),
+      unit: createCodeableConceptSchema().optional(),
+      source: createReferenceSchema().optional(),
+      parent: createReferenceSchema().optional(),
+      operationalStatus: z
+        .enum(["on", "off", "standby", "entered-in-error"])
+        .optional(),
+      _operationalStatus: z.lazy(() => createElementSchema()).optional(),
+      color: z
+        .enum([
+          "black",
+          "red",
+          "green",
+          "yellow",
+          "blue",
+          "magenta",
+          "cyan",
+          "white",
+        ])
+        .optional(),
+      _color: z.lazy(() => createElementSchema()).optional(),
+      category: z.enum([
+        "measurement",
+        "setting",
+        "calculation",
+        "unspecified",
+      ]),
+      _category: z.lazy(() => createElementSchema()).optional(),
+      measurementPeriod: createTimingSchema().optional(),
+      calibration: z.array(createDeviceMetricCalibrationSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

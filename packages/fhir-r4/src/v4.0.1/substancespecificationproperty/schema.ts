@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -12,26 +13,26 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createSubstanceSpecificationPropertySchema() {
-  const baseSchema: z.ZodType<types.SubstanceSpecificationProperty> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    category: z.lazy(() => createCodeableConceptSchema()).optional(),
-    code: z.lazy(() => createCodeableConceptSchema()).optional(),
-    parameters: primitives.createStringSchema().optional(),
-    _parameters: z.lazy(() => createElementSchema()).optional(),
-    definingSubstanceReference: z
-      .lazy(() => createReferenceSchema())
-      .optional(),
-    definingSubstanceCodeableConcept: z
-      .lazy(() => createCodeableConceptSchema())
-      .optional(),
-    amountQuantity: z.lazy(() => createQuantitySchema()).optional(),
-    amountString: z.string().optional(),
-    _amountString: z.lazy(() => createElementSchema()).optional(),
-  });
+  return getCachedSchema("SubstanceSpecificationProperty", () => {
+    const baseSchema: z.ZodType<types.SubstanceSpecificationProperty> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        category: createCodeableConceptSchema().optional(),
+        code: createCodeableConceptSchema().optional(),
+        parameters: primitives.getStringSchema().optional(),
+        _parameters: z.lazy(() => createElementSchema()).optional(),
+        definingSubstanceReference: createReferenceSchema().optional(),
+        definingSubstanceCodeableConcept:
+          createCodeableConceptSchema().optional(),
+        amountQuantity: createQuantitySchema().optional(),
+        amountString: z.string().optional(),
+        _amountString: z.lazy(() => createElementSchema()).optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

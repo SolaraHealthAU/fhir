@@ -19,13 +19,14 @@ Our comprehensive testing shows excellent performance characteristics:
 
 | Metric                     | @solarahealth/fhir-r4 | vs @ahryman40k/ts-fhir-types |
 | -------------------------- | --------------------- | ---------------------------- |
-| **Parsing Throughput**     | 42,649 patients/sec   | 39% faster alternative       |
-| **Bundle Size (Minified)** | 235.70 KB             | **77.7% smaller**            |
-| **Bundle Size (Gzipped)**  | 46.28 KB              | **77.1% smaller**            |
+| **Parsing Throughput**     | 46,445 patients/sec   | 33% faster alternative       |
+| **Bundle Size (Minified)** | 235.81 KB             | **81.9% smaller**            |
+| **Bundle Size (Gzipped)**  | 46.63 KB              | **77.1% smaller**            |
+| **Cold-Start Time**        | 286.05ms              | **12.3% faster**             |
 | **Memory Usage**           | 390 bytes/patient     | Same efficiency              |
 | **Validation Success**     | 100%                  | Same reliability             |
 
-**Perfect for client-side applications**: Excellent performance with significantly smaller bundle sizes, while maintaining strong server-side performance for most use cases.
+**Perfect for client-side applications and serverless deployments**: Excellent performance with significantly smaller bundle sizes and faster cold-starts, while maintaining strong server-side performance for most use cases.
 
 > 📈 **Detailed analysis**: See [benchmarking/fhir-r4/BENCHMARKING_SUMMARY.md](https://github.com/SolaraHealthAU/fhir/blob/main/benchmarking/fhir-r4/BENCHMARKING_SUMMARY.md) for comprehensive performance analysis and recommendations.
 

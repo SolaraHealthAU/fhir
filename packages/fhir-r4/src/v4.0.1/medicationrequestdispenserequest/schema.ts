@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createDurationSchema,
@@ -14,24 +15,24 @@ import { createMedicationRequestInitialFillSchema } from "../medicationrequestin
 /* Generated from FHIR JSON Schema */
 
 export function createMedicationRequestDispenseRequestSchema() {
-  const baseSchema: z.ZodType<types.MedicationRequestDispenseRequest> =
-    z.object({
-      id: primitives.createStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      initialFill: z
-        .lazy(() => createMedicationRequestInitialFillSchema())
-        .optional(),
-      dispenseInterval: z.lazy(() => createDurationSchema()).optional(),
-      validityPeriod: z.lazy(() => createPeriodSchema()).optional(),
-      numberOfRepeatsAllowed: primitives.createUnsignedIntSchema().optional(),
-      _numberOfRepeatsAllowed: z.lazy(() => createElementSchema()).optional(),
-      quantity: z.lazy(() => createQuantitySchema()).optional(),
-      expectedSupplyDuration: z.lazy(() => createDurationSchema()).optional(),
-      performer: z.lazy(() => createReferenceSchema()).optional(),
-    });
+  return getCachedSchema("MedicationRequestDispenseRequest", () => {
+    const baseSchema: z.ZodType<types.MedicationRequestDispenseRequest> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        initialFill: createMedicationRequestInitialFillSchema().optional(),
+        dispenseInterval: createDurationSchema().optional(),
+        validityPeriod: createPeriodSchema().optional(),
+        numberOfRepeatsAllowed: primitives.getUnsignedIntSchema().optional(),
+        _numberOfRepeatsAllowed: z.lazy(() => createElementSchema()).optional(),
+        quantity: createQuantitySchema().optional(),
+        expectedSupplyDuration: createDurationSchema().optional(),
+        performer: createReferenceSchema().optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

@@ -49,6 +49,8 @@ const primitivesSchemaHeaderFile = fs.readFileSync(
   'utf-8',
 );
 
+const schemaCacheHeaderFile = fs.readFileSync(path.join(__dirname, './schema-cache.ts'), 'utf-8');
+
 const schemaContent = fs.readFileSync(schemaPath, 'utf-8');
 const dataElementsContent = fs.readFileSync(dataElementsPath, 'utf-8');
 
@@ -78,6 +80,7 @@ const dataElementsLookup = dataElements.entry.reduce(
 
 const primitives = Object.keys(spec.definitions ?? {}).filter((key) => /^[a-z]{1}/.test(key));
 const dataTypes = Object.keys(spec.definitions ?? {}).filter((key) => /^[A-Z]{1}/.test(key));
+const preferredLazy = ['Element', 'Extension', 'Identifier'];
 const extendedPrimitives = ['string', 'number', 'boolean'].concat(primitives);
 
 /* -------------------------------------------------------------------------- */
@@ -401,7 +404,10 @@ function outputZodProperty(property: Property, resourceType: string): string {
     if (primitives.includes(property.ref)) {
       return `${property.property}: ${referenceCreateTypeFunction(property.ref)}()${postfix}`;
     }
-    return `${property.property}: z.lazy(() => ${referenceCreateTypeFunction(property.ref)}())${postfix}`;
+    if (preferredLazy.includes(property.ref)) {
+      return `${property.property}: z.lazy(() => ${referenceCreateTypeFunction(property.ref)}())${postfix}`;
+    }
+    return `${property.property}: ${referenceCreateTypeFunction(property.ref)}()${postfix}`;
   }
 
   if (property.type === 'array' && property.items != null) {
@@ -411,7 +417,10 @@ function outputZodProperty(property: Property, resourceType: string): string {
           if (primitives.includes(i)) {
             return `${referenceCreateTypeFunction(i)}()`;
           }
-          return `z.lazy(() => ${referenceCreateTypeFunction(i)}())`;
+          if (preferredLazy.includes(i)) {
+            return `z.lazy(() => ${referenceCreateTypeFunction(i)}())`;
+          }
+          return `${referenceCreateTypeFunction(i)}()`;
         }
         return `z.any()`;
       })
@@ -508,13 +517,15 @@ function outputZodType(type: Definition): string {
 
   return `
 export function ${functionName}() {
-  const baseSchema: z.ZodType<types.${typeName}> = z.object({
-    ${type.properties.map((k) => outputZodProperty(k, type.type)).join(',\n    ')}
-  });
+  return getCachedSchema('${typeName}', () => {
+    const baseSchema: z.ZodType<types.${typeName}> = z.strictObject({
+      ${type.properties.map((k) => outputZodProperty(k, type.type)).join(',\n    ')}
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }
-`;
+  `;
 }
 
 function outputType(type: Definition): string {
@@ -791,6 +802,7 @@ async function writeFile(filePath: string, content: string) {
       `import { z } from 'zod/v4';`,
       `import * as types from './types';`,
       `import * as primitives from '../primitives';`,
+      `import { getCachedSchema } from '../schema-cache';`,
     ]);
 
     // Add imports from dependencies
@@ -889,7 +901,7 @@ async function writeFile(filePath: string, content: string) {
           // Replace direct primitive schema calls with primitives.* calls
           return schema.replace(
             /create(Base64Binary|Boolean|Canonical|Code|Date|DateTime|Decimal|Id|Instant|Integer|Markdown|Oid|PositiveInt|String|Time|UnsignedInt|Uri|Url|Uuid|Xhtml)Schema\(\)/g,
-            'primitives.create$1Schema()',
+            'primitives.get$1Schema()',
           );
         })
         .join('\n\n')}
@@ -952,4 +964,5 @@ async function writeFile(filePath: string, content: string) {
 
   // Write out the primitives schema file
   await writeFile(path.join(baseOutputDir, 'primitives.ts'), primitivesSchemaHeaderFile);
+  await writeFile(path.join(baseOutputDir, 'schema-cache.ts'), schemaCacheHeaderFile);
 })();

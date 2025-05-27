@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createIdentifierSchema,
@@ -12,20 +13,22 @@ import { createSubstanceSpecificationMolecularWeightSchema } from "../substances
 /* Generated from FHIR JSON Schema */
 
 export function createSubstanceSpecificationIsotopeSchema() {
-  const baseSchema: z.ZodType<types.SubstanceSpecificationIsotope> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    identifier: z.lazy(() => createIdentifierSchema()).optional(),
-    name: z.lazy(() => createCodeableConceptSchema()).optional(),
-    substitution: z.lazy(() => createCodeableConceptSchema()).optional(),
-    halfLife: z.lazy(() => createQuantitySchema()).optional(),
-    molecularWeight: z
-      .lazy(() => createSubstanceSpecificationMolecularWeightSchema())
-      .optional(),
-  });
+  return getCachedSchema("SubstanceSpecificationIsotope", () => {
+    const baseSchema: z.ZodType<types.SubstanceSpecificationIsotope> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        identifier: z.lazy(() => createIdentifierSchema()).optional(),
+        name: createCodeableConceptSchema().optional(),
+        substitution: createCodeableConceptSchema().optional(),
+        halfLife: createQuantitySchema().optional(),
+        molecularWeight:
+          createSubstanceSpecificationMolecularWeightSchema().optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

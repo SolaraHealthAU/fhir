@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createIdentifierSchema,
@@ -17,32 +18,30 @@ import { createContractActionSchema } from "../contractaction/schema";
 /* Generated from FHIR JSON Schema */
 
 export function createContractTermSchema() {
-  const baseSchema: z.ZodType<types.ContractTerm> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    identifier: z.lazy(() => createIdentifierSchema()).optional(),
-    issued: primitives.createDateTimeSchema().optional(),
-    _issued: z.lazy(() => createElementSchema()).optional(),
-    applies: z.lazy(() => createPeriodSchema()).optional(),
-    topicCodeableConcept: z
-      .lazy(() => createCodeableConceptSchema())
-      .optional(),
-    topicReference: z.lazy(() => createReferenceSchema()).optional(),
-    type: z.lazy(() => createCodeableConceptSchema()).optional(),
-    subType: z.lazy(() => createCodeableConceptSchema()).optional(),
-    text: primitives.createStringSchema().optional(),
-    _text: z.lazy(() => createElementSchema()).optional(),
-    securityLabel: z
-      .array(z.lazy(() => createContractSecurityLabelSchema()))
-      .optional(),
-    offer: z.lazy(() => createContractOfferSchema()),
-    asset: z.array(z.lazy(() => createContractAssetSchema())).optional(),
-    action: z.array(z.lazy(() => createContractActionSchema())).optional(),
-    group: z.array(z.lazy(() => createContractTermSchema())).optional(),
-  });
+  return getCachedSchema("ContractTerm", () => {
+    const baseSchema: z.ZodType<types.ContractTerm> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      identifier: z.lazy(() => createIdentifierSchema()).optional(),
+      issued: primitives.getDateTimeSchema().optional(),
+      _issued: z.lazy(() => createElementSchema()).optional(),
+      applies: createPeriodSchema().optional(),
+      topicCodeableConcept: createCodeableConceptSchema().optional(),
+      topicReference: createReferenceSchema().optional(),
+      type: createCodeableConceptSchema().optional(),
+      subType: createCodeableConceptSchema().optional(),
+      text: primitives.getStringSchema().optional(),
+      _text: z.lazy(() => createElementSchema()).optional(),
+      securityLabel: z.array(createContractSecurityLabelSchema()).optional(),
+      offer: createContractOfferSchema(),
+      asset: z.array(createContractAssetSchema()).optional(),
+      action: z.array(createContractActionSchema()).optional(),
+      group: z.array(createContractTermSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

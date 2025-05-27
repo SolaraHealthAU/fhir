@@ -1,22 +1,25 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import { createExtensionSchema, createElementSchema } from "../core/schema";
 
 /* Generated from FHIR JSON Schema */
 
 export function createMedicationBatchSchema() {
-  const baseSchema: z.ZodType<types.MedicationBatch> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    lotNumber: primitives.createStringSchema().optional(),
-    _lotNumber: z.lazy(() => createElementSchema()).optional(),
-    expirationDate: primitives.createDateTimeSchema().optional(),
-    _expirationDate: z.lazy(() => createElementSchema()).optional(),
-  });
+  return getCachedSchema("MedicationBatch", () => {
+    const baseSchema: z.ZodType<types.MedicationBatch> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      lotNumber: primitives.getStringSchema().optional(),
+      _lotNumber: z.lazy(() => createElementSchema()).optional(),
+      expirationDate: primitives.getDateTimeSchema().optional(),
+      _expirationDate: z.lazy(() => createElementSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

@@ -2,134 +2,79 @@
 
 import { z } from 'zod/v4';
 
-export function createBase64BinarySchema(): Base64BinarySchema {
-  return z.string().base64();
-}
-
-export type Base64BinarySchema = z.ZodString;
-
-export function createBooleanSchema(): BooleanSchema {
-  return z.boolean();
-}
-
-export type BooleanSchema = z.ZodBoolean;
-
-export function createCanonicalSchema(): CanonicalSchema {
-  return z.string();
-}
-
-export type CanonicalSchema = z.ZodString;
-
-export function createCodeSchema(): CodeSchema {
-  return z.string().regex(/^[^\s]+(\s[^\s]+)*$/);
-}
-
-export type CodeSchema = z.ZodString;
-
-export function createDateSchema(): DateSchema {
-  return z
+const PRIMITIVE_SCHEMAS = {
+  base64Binary: z.string().base64(),
+  boolean: z.boolean(),
+  canonical: z.string(),
+  code: z.string().regex(/^[^\s]+(\s[^\s]+)*$/),
+  date: z
     .string()
     .regex(
       /^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$/,
-    );
-}
-
-export type DateSchema = z.ZodString;
-
-export function createDateTimeSchema(): DateTimeSchema {
-  return z
+    ),
+  dateTime: z
     .string()
     .regex(
       /^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$/,
-    );
-}
-
-export type DateTimeSchema = z.ZodString;
-
-export function createDecimalSchema(): DecimalSchema {
-  return z.number();
-}
-
-export type DecimalSchema = z.ZodNumber;
-
-export function createIdSchema(): IdSchema {
-  return z.string().regex(/^[A-Za-z0-9\-.]{1,64}$/);
-}
-
-export type IdSchema = z.ZodString;
-
-export function createInstantSchema(): InstantSchema {
-  return z
+    ),
+  decimal: z.number(),
+  id: z.string().regex(/^[A-Za-z0-9\-.]{1,64}$/),
+  instant: z
     .string()
     .regex(
       /^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$/,
-    );
-}
+    ),
+  integer: z.number().int(),
+  markdown: z.string(),
+  oid: z.string().regex(/^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$/),
+  positiveInt: z.number().int().positive(),
+  string: z.string(),
+  time: z.string().regex(/^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$/),
+  unsignedInt: z.number().int().min(0),
+  uri: z.string().regex(/^\S*$/),
+  url: z.string().url(),
+  uuid: z.string().regex(/^urn:uuid:.+$/),
+  xhtml: z.string(),
+} as const;
 
+export const getBase64BinarySchema = () => PRIMITIVE_SCHEMAS.base64Binary;
+export const getBooleanSchema = () => PRIMITIVE_SCHEMAS.boolean;
+export const getCanonicalSchema = () => PRIMITIVE_SCHEMAS.canonical;
+export const getCodeSchema = () => PRIMITIVE_SCHEMAS.code;
+export const getDateSchema = () => PRIMITIVE_SCHEMAS.date;
+export const getDateTimeSchema = () => PRIMITIVE_SCHEMAS.dateTime;
+export const getDecimalSchema = () => PRIMITIVE_SCHEMAS.decimal;
+export const getIdSchema = () => PRIMITIVE_SCHEMAS.id;
+export const getInstantSchema = () => PRIMITIVE_SCHEMAS.instant;
+export const getIntegerSchema = () => PRIMITIVE_SCHEMAS.integer;
+export const getMarkdownSchema = () => PRIMITIVE_SCHEMAS.markdown;
+export const getOidSchema = () => PRIMITIVE_SCHEMAS.oid;
+export const getPositiveIntSchema = () => PRIMITIVE_SCHEMAS.positiveInt;
+export const getStringSchema = () => PRIMITIVE_SCHEMAS.string;
+export const getTimeSchema = () => PRIMITIVE_SCHEMAS.time;
+export const getUnsignedIntSchema = () => PRIMITIVE_SCHEMAS.unsignedInt;
+export const getUriSchema = () => PRIMITIVE_SCHEMAS.uri;
+export const getUrlSchema = () => PRIMITIVE_SCHEMAS.url;
+export const getUuidSchema = () => PRIMITIVE_SCHEMAS.uuid;
+export const getXhtmlSchema = () => PRIMITIVE_SCHEMAS.xhtml;
+
+export type Base64BinarySchema = z.ZodString;
+export type BooleanSchema = z.ZodBoolean;
+export type CanonicalSchema = z.ZodString;
+export type CodeSchema = z.ZodString;
+export type DateSchema = z.ZodString;
+export type DateTimeSchema = z.ZodString;
+export type DecimalSchema = z.ZodNumber;
+export type IdSchema = z.ZodString;
 export type InstantSchema = z.ZodString;
-
-export function createIntegerSchema(): IntegerSchema {
-  return z.number().int();
-}
-
 export type IntegerSchema = z.ZodNumber;
-
-export function createMarkdownSchema(): MarkdownSchema {
-  return z.string();
-}
-
 export type MarkdownSchema = z.ZodString;
-
-export function createOidSchema(): OidSchema {
-  return z.string().regex(/^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$/);
-}
-
 export type OidSchema = z.ZodString;
-
-export function createPositiveIntSchema(): PositiveIntSchema {
-  return z.number().int().positive();
-}
-
 export type PositiveIntSchema = z.ZodNumber;
-
-export function createStringSchema(): StringSchema {
-  return z.string();
-}
-
 export type StringSchema = z.ZodString;
-
-export function createTimeSchema(): TimeSchema {
-  return z.string().regex(/^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$/);
-}
-
 export type TimeSchema = z.ZodString;
-
-export function createUnsignedIntSchema(): UnsignedIntSchema {
-  return z.number().int().min(0);
-}
-
 export type UnsignedIntSchema = z.ZodNumber;
-
-export function createUriSchema(): UriSchema {
-  return z.string().regex(/^\S*$/);
-}
-
 export type UriSchema = z.ZodString;
-
-export function createUrlSchema(): UrlSchema {
-  return z.string().url();
-}
-
 export type UrlSchema = z.ZodString;
-
-export function createUuidSchema(): UuidSchema {
-  return z.string().regex(/^urn:uuid:.+$/);
-}
-
 export type UuidSchema = z.ZodString;
-
-export function createXhtmlSchema(): XhtmlSchema {
-  return z.string();
-}
-
 export type XhtmlSchema = z.ZodString;

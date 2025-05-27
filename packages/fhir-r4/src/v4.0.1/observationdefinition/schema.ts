@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -17,41 +18,44 @@ import { createObservationDefinitionQualifiedIntervalSchema } from "../observati
 /* Generated from FHIR JSON Schema */
 
 export function createObservationDefinitionSchema() {
-  const baseSchema: z.ZodType<types.ObservationDefinition> = z.object({
-    resourceType: z.literal("ObservationDefinition"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    category: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    code: z.lazy(() => createCodeableConceptSchema()),
-    identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-    permittedDataType: z.array(z.any()).optional(),
-    _permittedDataType: z.array(z.lazy(() => createElementSchema())).optional(),
-    multipleResultsAllowed: primitives.createBooleanSchema().optional(),
-    _multipleResultsAllowed: z.lazy(() => createElementSchema()).optional(),
-    method: z.lazy(() => createCodeableConceptSchema()).optional(),
-    preferredReportName: primitives.createStringSchema().optional(),
-    _preferredReportName: z.lazy(() => createElementSchema()).optional(),
-    quantitativeDetails: z
-      .lazy(() => createObservationDefinitionQuantitativeDetailsSchema())
-      .optional(),
-    qualifiedInterval: z
-      .array(z.lazy(() => createObservationDefinitionQualifiedIntervalSchema()))
-      .optional(),
-    validCodedValueSet: z.lazy(() => createReferenceSchema()).optional(),
-    normalCodedValueSet: z.lazy(() => createReferenceSchema()).optional(),
-    abnormalCodedValueSet: z.lazy(() => createReferenceSchema()).optional(),
-    criticalCodedValueSet: z.lazy(() => createReferenceSchema()).optional(),
-  });
+  return getCachedSchema("ObservationDefinition", () => {
+    const baseSchema: z.ZodType<types.ObservationDefinition> = z.strictObject({
+      resourceType: z.literal("ObservationDefinition"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: z.lazy(() => createElementSchema()).optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(createResourceListSchema()).optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      category: z.array(createCodeableConceptSchema()).optional(),
+      code: createCodeableConceptSchema(),
+      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+      permittedDataType: z.array(z.any()).optional(),
+      _permittedDataType: z
+        .array(z.lazy(() => createElementSchema()))
+        .optional(),
+      multipleResultsAllowed: primitives.getBooleanSchema().optional(),
+      _multipleResultsAllowed: z.lazy(() => createElementSchema()).optional(),
+      method: createCodeableConceptSchema().optional(),
+      preferredReportName: primitives.getStringSchema().optional(),
+      _preferredReportName: z.lazy(() => createElementSchema()).optional(),
+      quantitativeDetails:
+        createObservationDefinitionQuantitativeDetailsSchema().optional(),
+      qualifiedInterval: z
+        .array(createObservationDefinitionQualifiedIntervalSchema())
+        .optional(),
+      validCodedValueSet: createReferenceSchema().optional(),
+      normalCodedValueSet: createReferenceSchema().optional(),
+      abnormalCodedValueSet: createReferenceSchema().optional(),
+      criticalCodedValueSet: createReferenceSchema().optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

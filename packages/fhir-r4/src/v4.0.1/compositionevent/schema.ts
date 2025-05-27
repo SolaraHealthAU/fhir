@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -11,16 +12,18 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createCompositionEventSchema() {
-  const baseSchema: z.ZodType<types.CompositionEvent> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    code: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    period: z.lazy(() => createPeriodSchema()).optional(),
-    detail: z.array(z.lazy(() => createReferenceSchema())).optional(),
-  });
+  return getCachedSchema("CompositionEvent", () => {
+    const baseSchema: z.ZodType<types.CompositionEvent> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      code: z.array(createCodeableConceptSchema()).optional(),
+      period: createPeriodSchema().optional(),
+      detail: z.array(createReferenceSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

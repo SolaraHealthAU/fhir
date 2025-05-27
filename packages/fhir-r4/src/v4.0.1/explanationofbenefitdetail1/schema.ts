@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -14,28 +15,31 @@ import { createExplanationOfBenefitSubDetail1Schema } from "../explanationofbene
 /* Generated from FHIR JSON Schema */
 
 export function createExplanationOfBenefitDetail1Schema() {
-  const baseSchema: z.ZodType<types.ExplanationOfBenefitDetail1> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    productOrService: z.lazy(() => createCodeableConceptSchema()),
-    modifier: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    quantity: z.lazy(() => createQuantitySchema()).optional(),
-    unitPrice: z.lazy(() => createMoneySchema()).optional(),
-    factor: primitives.createDecimalSchema().optional(),
-    _factor: z.lazy(() => createElementSchema()).optional(),
-    net: z.lazy(() => createMoneySchema()).optional(),
-    noteNumber: z.array(primitives.createPositiveIntSchema()).optional(),
-    _noteNumber: z.array(z.lazy(() => createElementSchema())).optional(),
-    adjudication: z
-      .array(z.lazy(() => createExplanationOfBenefitAdjudicationSchema()))
-      .optional(),
-    subDetail: z
-      .array(z.lazy(() => createExplanationOfBenefitSubDetail1Schema()))
-      .optional(),
-  });
+  return getCachedSchema("ExplanationOfBenefitDetail1", () => {
+    const baseSchema: z.ZodType<types.ExplanationOfBenefitDetail1> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        productOrService: createCodeableConceptSchema(),
+        modifier: z.array(createCodeableConceptSchema()).optional(),
+        quantity: createQuantitySchema().optional(),
+        unitPrice: createMoneySchema().optional(),
+        factor: primitives.getDecimalSchema().optional(),
+        _factor: z.lazy(() => createElementSchema()).optional(),
+        net: createMoneySchema().optional(),
+        noteNumber: z.array(primitives.getPositiveIntSchema()).optional(),
+        _noteNumber: z.array(z.lazy(() => createElementSchema())).optional(),
+        adjudication: z
+          .array(createExplanationOfBenefitAdjudicationSchema())
+          .optional(),
+        subDetail: z
+          .array(createExplanationOfBenefitSubDetail1Schema())
+          .optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

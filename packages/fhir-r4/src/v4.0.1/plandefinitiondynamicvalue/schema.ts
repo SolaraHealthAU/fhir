@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -10,16 +11,19 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createPlanDefinitionDynamicValueSchema() {
-  const baseSchema: z.ZodType<types.PlanDefinitionDynamicValue> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    path: primitives.createStringSchema().optional(),
-    _path: z.lazy(() => createElementSchema()).optional(),
-    expression: z.lazy(() => createExpressionSchema()).optional(),
-  });
+  return getCachedSchema("PlanDefinitionDynamicValue", () => {
+    const baseSchema: z.ZodType<types.PlanDefinitionDynamicValue> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        path: primitives.getStringSchema().optional(),
+        _path: z.lazy(() => createElementSchema()).optional(),
+        expression: createExpressionSchema().optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

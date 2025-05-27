@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createReferenceSchema,
@@ -11,17 +12,20 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createVerificationResultValidatorSchema() {
-  const baseSchema: z.ZodType<types.VerificationResultValidator> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    organization: z.lazy(() => createReferenceSchema()),
-    identityCertificate: primitives.createStringSchema().optional(),
-    _identityCertificate: z.lazy(() => createElementSchema()).optional(),
-    attestationSignature: z.lazy(() => createSignatureSchema()).optional(),
-  });
+  return getCachedSchema("VerificationResultValidator", () => {
+    const baseSchema: z.ZodType<types.VerificationResultValidator> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        organization: createReferenceSchema(),
+        identityCertificate: primitives.getStringSchema().optional(),
+        _identityCertificate: z.lazy(() => createElementSchema()).optional(),
+        attestationSignature: createSignatureSchema().optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

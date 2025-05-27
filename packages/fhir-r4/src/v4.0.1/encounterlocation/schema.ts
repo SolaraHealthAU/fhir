@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createReferenceSchema,
@@ -12,18 +13,20 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createEncounterLocationSchema() {
-  const baseSchema: z.ZodType<types.EncounterLocation> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    location: z.lazy(() => createReferenceSchema()),
-    status: z.enum(["planned", "active", "reserved", "completed"]).optional(),
-    _status: z.lazy(() => createElementSchema()).optional(),
-    physicalType: z.lazy(() => createCodeableConceptSchema()).optional(),
-    period: z.lazy(() => createPeriodSchema()).optional(),
-  });
+  return getCachedSchema("EncounterLocation", () => {
+    const baseSchema: z.ZodType<types.EncounterLocation> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      location: createReferenceSchema(),
+      status: z.enum(["planned", "active", "reserved", "completed"]).optional(),
+      _status: z.lazy(() => createElementSchema()).optional(),
+      physicalType: createCodeableConceptSchema().optional(),
+      period: createPeriodSchema().optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

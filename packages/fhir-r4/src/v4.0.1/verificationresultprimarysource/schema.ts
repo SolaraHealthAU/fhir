@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createReferenceSchema,
@@ -11,27 +12,24 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createVerificationResultPrimarySourceSchema() {
-  const baseSchema: z.ZodType<types.VerificationResultPrimarySource> = z.object(
-    {
-      id: primitives.createStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      who: z.lazy(() => createReferenceSchema()).optional(),
-      type: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-      communicationMethod: z
-        .array(z.lazy(() => createCodeableConceptSchema()))
-        .optional(),
-      validationStatus: z.lazy(() => createCodeableConceptSchema()).optional(),
-      validationDate: primitives.createDateTimeSchema().optional(),
-      _validationDate: z.lazy(() => createElementSchema()).optional(),
-      canPushUpdates: z.lazy(() => createCodeableConceptSchema()).optional(),
-      pushTypeAvailable: z
-        .array(z.lazy(() => createCodeableConceptSchema()))
-        .optional(),
-    },
-  );
+  return getCachedSchema("VerificationResultPrimarySource", () => {
+    const baseSchema: z.ZodType<types.VerificationResultPrimarySource> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        who: createReferenceSchema().optional(),
+        type: z.array(createCodeableConceptSchema()).optional(),
+        communicationMethod: z.array(createCodeableConceptSchema()).optional(),
+        validationStatus: createCodeableConceptSchema().optional(),
+        validationDate: primitives.getDateTimeSchema().optional(),
+        _validationDate: z.lazy(() => createElementSchema()).optional(),
+        canPushUpdates: createCodeableConceptSchema().optional(),
+        pushTypeAvailable: z.array(createCodeableConceptSchema()).optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

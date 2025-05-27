@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -14,55 +15,55 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createCarePlanDetailSchema() {
-  const baseSchema: z.ZodType<types.CarePlanDetail> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    kind: primitives.createCodeSchema().optional(),
-    _kind: z.lazy(() => createElementSchema()).optional(),
-    instantiatesCanonical: z
-      .array(primitives.createCanonicalSchema())
-      .optional(),
-    instantiatesUri: z.array(primitives.createUriSchema()).optional(),
-    _instantiatesUri: z.array(z.lazy(() => createElementSchema())).optional(),
-    code: z.lazy(() => createCodeableConceptSchema()).optional(),
-    reasonCode: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    reasonReference: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    goal: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    status: z
-      .enum([
-        "not-started",
-        "scheduled",
-        "in-progress",
-        "on-hold",
-        "completed",
-        "cancelled",
-        "stopped",
-        "unknown",
-        "entered-in-error",
-      ])
-      .optional(),
-    _status: z.lazy(() => createElementSchema()).optional(),
-    statusReason: z.lazy(() => createCodeableConceptSchema()).optional(),
-    doNotPerform: primitives.createBooleanSchema().optional(),
-    _doNotPerform: z.lazy(() => createElementSchema()).optional(),
-    scheduledTiming: z.lazy(() => createTimingSchema()).optional(),
-    scheduledPeriod: z.lazy(() => createPeriodSchema()).optional(),
-    scheduledString: z.string().optional(),
-    _scheduledString: z.lazy(() => createElementSchema()).optional(),
-    location: z.lazy(() => createReferenceSchema()).optional(),
-    performer: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    productCodeableConcept: z
-      .lazy(() => createCodeableConceptSchema())
-      .optional(),
-    productReference: z.lazy(() => createReferenceSchema()).optional(),
-    dailyAmount: z.lazy(() => createQuantitySchema()).optional(),
-    quantity: z.lazy(() => createQuantitySchema()).optional(),
-    description: primitives.createStringSchema().optional(),
-    _description: z.lazy(() => createElementSchema()).optional(),
-  });
+  return getCachedSchema("CarePlanDetail", () => {
+    const baseSchema: z.ZodType<types.CarePlanDetail> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      kind: primitives.getCodeSchema().optional(),
+      _kind: z.lazy(() => createElementSchema()).optional(),
+      instantiatesCanonical: z
+        .array(primitives.getCanonicalSchema())
+        .optional(),
+      instantiatesUri: z.array(primitives.getUriSchema()).optional(),
+      _instantiatesUri: z.array(z.lazy(() => createElementSchema())).optional(),
+      code: createCodeableConceptSchema().optional(),
+      reasonCode: z.array(createCodeableConceptSchema()).optional(),
+      reasonReference: z.array(createReferenceSchema()).optional(),
+      goal: z.array(createReferenceSchema()).optional(),
+      status: z
+        .enum([
+          "not-started",
+          "scheduled",
+          "in-progress",
+          "on-hold",
+          "completed",
+          "cancelled",
+          "stopped",
+          "unknown",
+          "entered-in-error",
+        ])
+        .optional(),
+      _status: z.lazy(() => createElementSchema()).optional(),
+      statusReason: createCodeableConceptSchema().optional(),
+      doNotPerform: primitives.getBooleanSchema().optional(),
+      _doNotPerform: z.lazy(() => createElementSchema()).optional(),
+      scheduledTiming: createTimingSchema().optional(),
+      scheduledPeriod: createPeriodSchema().optional(),
+      scheduledString: z.string().optional(),
+      _scheduledString: z.lazy(() => createElementSchema()).optional(),
+      location: createReferenceSchema().optional(),
+      performer: z.array(createReferenceSchema()).optional(),
+      productCodeableConcept: createCodeableConceptSchema().optional(),
+      productReference: createReferenceSchema().optional(),
+      dailyAmount: createQuantitySchema().optional(),
+      quantity: createQuantitySchema().optional(),
+      description: primitives.getStringSchema().optional(),
+      _description: z.lazy(() => createElementSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

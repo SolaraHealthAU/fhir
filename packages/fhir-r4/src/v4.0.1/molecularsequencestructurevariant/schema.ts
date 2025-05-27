@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -12,21 +13,23 @@ import { createMolecularSequenceInnerSchema } from "../molecularsequenceinner/sc
 /* Generated from FHIR JSON Schema */
 
 export function createMolecularSequenceStructureVariantSchema() {
-  const baseSchema: z.ZodType<types.MolecularSequenceStructureVariant> =
-    z.object({
-      id: primitives.createStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      variantType: z.lazy(() => createCodeableConceptSchema()).optional(),
-      exact: primitives.createBooleanSchema().optional(),
-      _exact: z.lazy(() => createElementSchema()).optional(),
-      length: primitives.createIntegerSchema().optional(),
-      _length: z.lazy(() => createElementSchema()).optional(),
-      outer: z.lazy(() => createMolecularSequenceOuterSchema()).optional(),
-      inner: z.lazy(() => createMolecularSequenceInnerSchema()).optional(),
-    });
+  return getCachedSchema("MolecularSequenceStructureVariant", () => {
+    const baseSchema: z.ZodType<types.MolecularSequenceStructureVariant> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        variantType: createCodeableConceptSchema().optional(),
+        exact: primitives.getBooleanSchema().optional(),
+        _exact: z.lazy(() => createElementSchema()).optional(),
+        length: primitives.getIntegerSchema().optional(),
+        _length: z.lazy(() => createElementSchema()).optional(),
+        outer: createMolecularSequenceOuterSchema().optional(),
+        inner: createMolecularSequenceInnerSchema().optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createIdentifierSchema,
@@ -12,17 +13,20 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createPractitionerQualificationSchema() {
-  const baseSchema: z.ZodType<types.PractitionerQualification> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-    code: z.lazy(() => createCodeableConceptSchema()),
-    period: z.lazy(() => createPeriodSchema()).optional(),
-    issuer: z.lazy(() => createReferenceSchema()).optional(),
-  });
+  return getCachedSchema("PractitionerQualification", () => {
+    const baseSchema: z.ZodType<types.PractitionerQualification> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+        code: createCodeableConceptSchema(),
+        period: createPeriodSchema().optional(),
+        issuer: createReferenceSchema().optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

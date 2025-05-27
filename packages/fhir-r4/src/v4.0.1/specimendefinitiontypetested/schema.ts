@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -13,30 +14,27 @@ import { createSpecimenDefinitionHandlingSchema } from "../specimendefinitionhan
 /* Generated from FHIR JSON Schema */
 
 export function createSpecimenDefinitionTypeTestedSchema() {
-  const baseSchema: z.ZodType<types.SpecimenDefinitionTypeTested> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    isDerived: primitives.createBooleanSchema().optional(),
-    _isDerived: z.lazy(() => createElementSchema()).optional(),
-    type: z.lazy(() => createCodeableConceptSchema()).optional(),
-    preference: z.enum(["preferred", "alternate"]),
-    _preference: z.lazy(() => createElementSchema()).optional(),
-    container: z
-      .lazy(() => createSpecimenDefinitionContainerSchema())
-      .optional(),
-    requirement: primitives.createStringSchema().optional(),
-    _requirement: z.lazy(() => createElementSchema()).optional(),
-    retentionTime: z.lazy(() => createDurationSchema()).optional(),
-    rejectionCriterion: z
-      .array(z.lazy(() => createCodeableConceptSchema()))
-      .optional(),
-    handling: z
-      .array(z.lazy(() => createSpecimenDefinitionHandlingSchema()))
-      .optional(),
-  });
+  return getCachedSchema("SpecimenDefinitionTypeTested", () => {
+    const baseSchema: z.ZodType<types.SpecimenDefinitionTypeTested> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        isDerived: primitives.getBooleanSchema().optional(),
+        _isDerived: z.lazy(() => createElementSchema()).optional(),
+        type: createCodeableConceptSchema().optional(),
+        preference: z.enum(["preferred", "alternate"]),
+        _preference: z.lazy(() => createElementSchema()).optional(),
+        container: createSpecimenDefinitionContainerSchema().optional(),
+        requirement: primitives.getStringSchema().optional(),
+        _requirement: z.lazy(() => createElementSchema()).optional(),
+        retentionTime: createDurationSchema().optional(),
+        rejectionCriterion: z.array(createCodeableConceptSchema()).optional(),
+        handling: z.array(createSpecimenDefinitionHandlingSchema()).optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

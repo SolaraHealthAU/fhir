@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createReferenceSchema,
@@ -12,25 +13,27 @@ import { createAuditEventDetailSchema } from "../auditeventdetail/schema";
 /* Generated from FHIR JSON Schema */
 
 export function createAuditEventEntitySchema() {
-  const baseSchema: z.ZodType<types.AuditEventEntity> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    what: z.lazy(() => createReferenceSchema()).optional(),
-    type: z.lazy(() => createCodingSchema()).optional(),
-    role: z.lazy(() => createCodingSchema()).optional(),
-    lifecycle: z.lazy(() => createCodingSchema()).optional(),
-    securityLabel: z.array(z.lazy(() => createCodingSchema())).optional(),
-    name: primitives.createStringSchema().optional(),
-    _name: z.lazy(() => createElementSchema()).optional(),
-    description: primitives.createStringSchema().optional(),
-    _description: z.lazy(() => createElementSchema()).optional(),
-    query: primitives.createBase64BinarySchema().optional(),
-    _query: z.lazy(() => createElementSchema()).optional(),
-    detail: z.array(z.lazy(() => createAuditEventDetailSchema())).optional(),
-  });
+  return getCachedSchema("AuditEventEntity", () => {
+    const baseSchema: z.ZodType<types.AuditEventEntity> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      what: createReferenceSchema().optional(),
+      type: createCodingSchema().optional(),
+      role: createCodingSchema().optional(),
+      lifecycle: createCodingSchema().optional(),
+      securityLabel: z.array(createCodingSchema()).optional(),
+      name: primitives.getStringSchema().optional(),
+      _name: z.lazy(() => createElementSchema()).optional(),
+      description: primitives.getStringSchema().optional(),
+      _description: z.lazy(() => createElementSchema()).optional(),
+      query: primitives.getBase64BinarySchema().optional(),
+      _query: z.lazy(() => createElementSchema()).optional(),
+      detail: z.array(createAuditEventDetailSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

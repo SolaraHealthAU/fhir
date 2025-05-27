@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -10,17 +11,19 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createProvenanceAgentSchema() {
-  const baseSchema: z.ZodType<types.ProvenanceAgent> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    type: z.lazy(() => createCodeableConceptSchema()).optional(),
-    role: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    who: z.lazy(() => createReferenceSchema()),
-    onBehalfOf: z.lazy(() => createReferenceSchema()).optional(),
-  });
+  return getCachedSchema("ProvenanceAgent", () => {
+    const baseSchema: z.ZodType<types.ProvenanceAgent> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      type: createCodeableConceptSchema().optional(),
+      role: z.array(createCodeableConceptSchema()).optional(),
+      who: createReferenceSchema(),
+      onBehalfOf: createReferenceSchema().optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -10,17 +11,18 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createClinicalImpressionInvestigationSchema() {
-  const baseSchema: z.ZodType<types.ClinicalImpressionInvestigation> = z.object(
-    {
-      id: primitives.createStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      code: z.lazy(() => createCodeableConceptSchema()),
-      item: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    },
-  );
+  return getCachedSchema("ClinicalImpressionInvestigation", () => {
+    const baseSchema: z.ZodType<types.ClinicalImpressionInvestigation> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        code: createCodeableConceptSchema(),
+        item: z.array(createReferenceSchema()).optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

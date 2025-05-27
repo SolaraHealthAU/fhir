@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createAttachmentSchema,
@@ -10,15 +11,18 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createDocumentReferenceContentSchema() {
-  const baseSchema: z.ZodType<types.DocumentReferenceContent> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    attachment: z.lazy(() => createAttachmentSchema()),
-    format: z.lazy(() => createCodingSchema()).optional(),
-  });
+  return getCachedSchema("DocumentReferenceContent", () => {
+    const baseSchema: z.ZodType<types.DocumentReferenceContent> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        attachment: createAttachmentSchema(),
+        format: createCodingSchema().optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

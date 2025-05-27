@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createReferenceSchema,
@@ -11,17 +12,19 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createEncounterDiagnosisSchema() {
-  const baseSchema: z.ZodType<types.EncounterDiagnosis> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    condition: z.lazy(() => createReferenceSchema()),
-    use: z.lazy(() => createCodeableConceptSchema()).optional(),
-    rank: primitives.createPositiveIntSchema().optional(),
-    _rank: z.lazy(() => createElementSchema()).optional(),
-  });
+  return getCachedSchema("EncounterDiagnosis", () => {
+    const baseSchema: z.ZodType<types.EncounterDiagnosis> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      condition: createReferenceSchema(),
+      use: createCodeableConceptSchema().optional(),
+      rank: primitives.getPositiveIntSchema().optional(),
+      _rank: z.lazy(() => createElementSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

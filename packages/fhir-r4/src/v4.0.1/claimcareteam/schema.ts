@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -11,20 +12,22 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createClaimCareTeamSchema() {
-  const baseSchema: z.ZodType<types.ClaimCareTeam> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    sequence: primitives.createPositiveIntSchema(),
-    _sequence: z.lazy(() => createElementSchema()).optional(),
-    provider: z.lazy(() => createReferenceSchema()),
-    responsible: primitives.createBooleanSchema().optional(),
-    _responsible: z.lazy(() => createElementSchema()).optional(),
-    role: z.lazy(() => createCodeableConceptSchema()).optional(),
-    qualification: z.lazy(() => createCodeableConceptSchema()).optional(),
-  });
+  return getCachedSchema("ClaimCareTeam", () => {
+    const baseSchema: z.ZodType<types.ClaimCareTeam> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      sequence: primitives.getPositiveIntSchema(),
+      _sequence: z.lazy(() => createElementSchema()).optional(),
+      provider: createReferenceSchema(),
+      responsible: primitives.getBooleanSchema().optional(),
+      _responsible: z.lazy(() => createElementSchema()).optional(),
+      role: createCodeableConceptSchema().optional(),
+      qualification: createCodeableConceptSchema().optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

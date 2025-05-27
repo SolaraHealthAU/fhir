@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -10,19 +11,22 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createDataRequirementCodeFilterSchema() {
-  const baseSchema: z.ZodType<types.DataRequirementCodeFilter> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    path: primitives.createStringSchema().optional(),
-    _path: z.lazy(() => createElementSchema()).optional(),
-    searchParam: primitives.createStringSchema().optional(),
-    _searchParam: z.lazy(() => createElementSchema()).optional(),
-    valueSet: primitives.createCanonicalSchema().optional(),
-    code: z.array(z.lazy(() => createCodingSchema())).optional(),
-  });
+  return getCachedSchema("DataRequirementCodeFilter", () => {
+    const baseSchema: z.ZodType<types.DataRequirementCodeFilter> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        path: primitives.getStringSchema().optional(),
+        _path: z.lazy(() => createElementSchema()).optional(),
+        searchParam: primitives.getStringSchema().optional(),
+        _searchParam: z.lazy(() => createElementSchema()).optional(),
+        valueSet: primitives.getCanonicalSchema().optional(),
+        code: z.array(createCodingSchema()).optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

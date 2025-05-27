@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -20,62 +21,52 @@ import { createMedicationDispenseSubstitutionSchema } from "../medicationdispens
 /* Generated from FHIR JSON Schema */
 
 export function createMedicationDispenseSchema() {
-  const baseSchema: z.ZodType<types.MedicationDispense> = z.object({
-    resourceType: z.literal("MedicationDispense"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-    partOf: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    status: primitives.createCodeSchema(),
-    _status: z.lazy(() => createElementSchema()).optional(),
-    statusReasonCodeableConcept: z
-      .lazy(() => createCodeableConceptSchema())
-      .optional(),
-    statusReasonReference: z.lazy(() => createReferenceSchema()).optional(),
-    category: z.lazy(() => createCodeableConceptSchema()).optional(),
-    medicationCodeableConcept: z
-      .lazy(() => createCodeableConceptSchema())
-      .optional(),
-    medicationReference: z.lazy(() => createReferenceSchema()).optional(),
-    subject: z.lazy(() => createReferenceSchema()).optional(),
-    context: z.lazy(() => createReferenceSchema()).optional(),
-    supportingInformation: z
-      .array(z.lazy(() => createReferenceSchema()))
-      .optional(),
-    performer: z
-      .array(z.lazy(() => createMedicationDispensePerformerSchema()))
-      .optional(),
-    location: z.lazy(() => createReferenceSchema()).optional(),
-    authorizingPrescription: z
-      .array(z.lazy(() => createReferenceSchema()))
-      .optional(),
-    type: z.lazy(() => createCodeableConceptSchema()).optional(),
-    quantity: z.lazy(() => createQuantitySchema()).optional(),
-    daysSupply: z.lazy(() => createQuantitySchema()).optional(),
-    whenPrepared: primitives.createDateTimeSchema().optional(),
-    _whenPrepared: z.lazy(() => createElementSchema()).optional(),
-    whenHandedOver: primitives.createDateTimeSchema().optional(),
-    _whenHandedOver: z.lazy(() => createElementSchema()).optional(),
-    destination: z.lazy(() => createReferenceSchema()).optional(),
-    receiver: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    note: z.array(z.lazy(() => createAnnotationSchema())).optional(),
-    dosageInstruction: z.array(z.lazy(() => createDosageSchema())).optional(),
-    substitution: z
-      .lazy(() => createMedicationDispenseSubstitutionSchema())
-      .optional(),
-    detectedIssue: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    eventHistory: z.array(z.lazy(() => createReferenceSchema())).optional(),
-  });
+  return getCachedSchema("MedicationDispense", () => {
+    const baseSchema: z.ZodType<types.MedicationDispense> = z.strictObject({
+      resourceType: z.literal("MedicationDispense"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: z.lazy(() => createElementSchema()).optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(createResourceListSchema()).optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+      partOf: z.array(createReferenceSchema()).optional(),
+      status: primitives.getCodeSchema(),
+      _status: z.lazy(() => createElementSchema()).optional(),
+      statusReasonCodeableConcept: createCodeableConceptSchema().optional(),
+      statusReasonReference: createReferenceSchema().optional(),
+      category: createCodeableConceptSchema().optional(),
+      medicationCodeableConcept: createCodeableConceptSchema().optional(),
+      medicationReference: createReferenceSchema().optional(),
+      subject: createReferenceSchema().optional(),
+      context: createReferenceSchema().optional(),
+      supportingInformation: z.array(createReferenceSchema()).optional(),
+      performer: z.array(createMedicationDispensePerformerSchema()).optional(),
+      location: createReferenceSchema().optional(),
+      authorizingPrescription: z.array(createReferenceSchema()).optional(),
+      type: createCodeableConceptSchema().optional(),
+      quantity: createQuantitySchema().optional(),
+      daysSupply: createQuantitySchema().optional(),
+      whenPrepared: primitives.getDateTimeSchema().optional(),
+      _whenPrepared: z.lazy(() => createElementSchema()).optional(),
+      whenHandedOver: primitives.getDateTimeSchema().optional(),
+      _whenHandedOver: z.lazy(() => createElementSchema()).optional(),
+      destination: createReferenceSchema().optional(),
+      receiver: z.array(createReferenceSchema()).optional(),
+      note: z.array(createAnnotationSchema()).optional(),
+      dosageInstruction: z.array(createDosageSchema()).optional(),
+      substitution: createMedicationDispenseSubstitutionSchema().optional(),
+      detectedIssue: z.array(createReferenceSchema()).optional(),
+      eventHistory: z.array(createReferenceSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

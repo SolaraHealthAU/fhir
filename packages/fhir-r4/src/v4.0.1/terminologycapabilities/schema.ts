@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -22,75 +23,68 @@ import { createTerminologyCapabilitiesClosureSchema } from "../terminologycapabi
 /* Generated from FHIR JSON Schema */
 
 export function createTerminologyCapabilitiesSchema() {
-  const baseSchema: z.ZodType<types.TerminologyCapabilities> = z.object({
-    resourceType: z.literal("TerminologyCapabilities"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    url: primitives.createUriSchema().optional(),
-    _url: z.lazy(() => createElementSchema()).optional(),
-    version: primitives.createStringSchema().optional(),
-    _version: z.lazy(() => createElementSchema()).optional(),
-    name: primitives.createStringSchema().optional(),
-    _name: z.lazy(() => createElementSchema()).optional(),
-    title: primitives.createStringSchema().optional(),
-    _title: z.lazy(() => createElementSchema()).optional(),
-    status: z.enum(["draft", "active", "retired", "unknown"]),
-    _status: z.lazy(() => createElementSchema()).optional(),
-    experimental: primitives.createBooleanSchema().optional(),
-    _experimental: z.lazy(() => createElementSchema()).optional(),
-    date: primitives.createDateTimeSchema(),
-    _date: z.lazy(() => createElementSchema()).optional(),
-    publisher: primitives.createStringSchema().optional(),
-    _publisher: z.lazy(() => createElementSchema()).optional(),
-    contact: z.array(z.lazy(() => createContactDetailSchema())).optional(),
-    description: primitives.createMarkdownSchema().optional(),
-    _description: z.lazy(() => createElementSchema()).optional(),
-    useContext: z.array(z.lazy(() => createUsageContextSchema())).optional(),
-    jurisdiction: z
-      .array(z.lazy(() => createCodeableConceptSchema()))
-      .optional(),
-    purpose: primitives.createMarkdownSchema().optional(),
-    _purpose: z.lazy(() => createElementSchema()).optional(),
-    copyright: primitives.createMarkdownSchema().optional(),
-    _copyright: z.lazy(() => createElementSchema()).optional(),
-    kind: primitives.createCodeSchema(),
-    _kind: z.lazy(() => createElementSchema()).optional(),
-    software: z
-      .lazy(() => createTerminologyCapabilitiesSoftwareSchema())
-      .optional(),
-    implementation: z
-      .lazy(() => createTerminologyCapabilitiesImplementationSchema())
-      .optional(),
-    lockedDate: primitives.createBooleanSchema().optional(),
-    _lockedDate: z.lazy(() => createElementSchema()).optional(),
-    codeSystem: z
-      .array(z.lazy(() => createTerminologyCapabilitiesCodeSystemSchema()))
-      .optional(),
-    expansion: z
-      .lazy(() => createTerminologyCapabilitiesExpansionSchema())
-      .optional(),
-    codeSearch: z.enum(["explicit", "all"]).optional(),
-    _codeSearch: z.lazy(() => createElementSchema()).optional(),
-    validateCode: z
-      .lazy(() => createTerminologyCapabilitiesValidateCodeSchema())
-      .optional(),
-    translation: z
-      .lazy(() => createTerminologyCapabilitiesTranslationSchema())
-      .optional(),
-    closure: z
-      .lazy(() => createTerminologyCapabilitiesClosureSchema())
-      .optional(),
-  });
+  return getCachedSchema("TerminologyCapabilities", () => {
+    const baseSchema: z.ZodType<types.TerminologyCapabilities> = z.strictObject(
+      {
+        resourceType: z.literal("TerminologyCapabilities"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: z.lazy(() => createElementSchema()).optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: z.lazy(() => createElementSchema()).optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(createResourceListSchema()).optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        url: primitives.getUriSchema().optional(),
+        _url: z.lazy(() => createElementSchema()).optional(),
+        version: primitives.getStringSchema().optional(),
+        _version: z.lazy(() => createElementSchema()).optional(),
+        name: primitives.getStringSchema().optional(),
+        _name: z.lazy(() => createElementSchema()).optional(),
+        title: primitives.getStringSchema().optional(),
+        _title: z.lazy(() => createElementSchema()).optional(),
+        status: z.enum(["draft", "active", "retired", "unknown"]),
+        _status: z.lazy(() => createElementSchema()).optional(),
+        experimental: primitives.getBooleanSchema().optional(),
+        _experimental: z.lazy(() => createElementSchema()).optional(),
+        date: primitives.getDateTimeSchema(),
+        _date: z.lazy(() => createElementSchema()).optional(),
+        publisher: primitives.getStringSchema().optional(),
+        _publisher: z.lazy(() => createElementSchema()).optional(),
+        contact: z.array(createContactDetailSchema()).optional(),
+        description: primitives.getMarkdownSchema().optional(),
+        _description: z.lazy(() => createElementSchema()).optional(),
+        useContext: z.array(createUsageContextSchema()).optional(),
+        jurisdiction: z.array(createCodeableConceptSchema()).optional(),
+        purpose: primitives.getMarkdownSchema().optional(),
+        _purpose: z.lazy(() => createElementSchema()).optional(),
+        copyright: primitives.getMarkdownSchema().optional(),
+        _copyright: z.lazy(() => createElementSchema()).optional(),
+        kind: primitives.getCodeSchema(),
+        _kind: z.lazy(() => createElementSchema()).optional(),
+        software: createTerminologyCapabilitiesSoftwareSchema().optional(),
+        implementation:
+          createTerminologyCapabilitiesImplementationSchema().optional(),
+        lockedDate: primitives.getBooleanSchema().optional(),
+        _lockedDate: z.lazy(() => createElementSchema()).optional(),
+        codeSystem: z
+          .array(createTerminologyCapabilitiesCodeSystemSchema())
+          .optional(),
+        expansion: createTerminologyCapabilitiesExpansionSchema().optional(),
+        codeSearch: z.enum(["explicit", "all"]).optional(),
+        _codeSearch: z.lazy(() => createElementSchema()).optional(),
+        validateCode:
+          createTerminologyCapabilitiesValidateCodeSchema().optional(),
+        translation:
+          createTerminologyCapabilitiesTranslationSchema().optional(),
+        closure: createTerminologyCapabilitiesClosureSchema().optional(),
+      },
+    );
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

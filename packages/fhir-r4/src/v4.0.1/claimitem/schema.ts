@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -16,52 +17,56 @@ import { createClaimDetailSchema } from "../claimdetail/schema";
 /* Generated from FHIR JSON Schema */
 
 export function createClaimItemSchema() {
-  const baseSchema: z.ZodType<types.ClaimItem> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    sequence: primitives.createPositiveIntSchema(),
-    _sequence: z.lazy(() => createElementSchema()).optional(),
-    careTeamSequence: z.array(primitives.createPositiveIntSchema()).optional(),
-    _careTeamSequence: z.array(z.lazy(() => createElementSchema())).optional(),
-    diagnosisSequence: z.array(primitives.createPositiveIntSchema()).optional(),
-    _diagnosisSequence: z.array(z.lazy(() => createElementSchema())).optional(),
-    procedureSequence: z.array(primitives.createPositiveIntSchema()).optional(),
-    _procedureSequence: z.array(z.lazy(() => createElementSchema())).optional(),
-    informationSequence: z
-      .array(primitives.createPositiveIntSchema())
-      .optional(),
-    _informationSequence: z
-      .array(z.lazy(() => createElementSchema()))
-      .optional(),
-    revenue: z.lazy(() => createCodeableConceptSchema()).optional(),
-    category: z.lazy(() => createCodeableConceptSchema()).optional(),
-    productOrService: z.lazy(() => createCodeableConceptSchema()),
-    modifier: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    programCode: z
-      .array(z.lazy(() => createCodeableConceptSchema()))
-      .optional(),
-    servicedDate: z.string().optional(),
-    _servicedDate: z.lazy(() => createElementSchema()).optional(),
-    servicedPeriod: z.lazy(() => createPeriodSchema()).optional(),
-    locationCodeableConcept: z
-      .lazy(() => createCodeableConceptSchema())
-      .optional(),
-    locationAddress: z.lazy(() => createAddressSchema()).optional(),
-    locationReference: z.lazy(() => createReferenceSchema()).optional(),
-    quantity: z.lazy(() => createQuantitySchema()).optional(),
-    unitPrice: z.lazy(() => createMoneySchema()).optional(),
-    factor: primitives.createDecimalSchema().optional(),
-    _factor: z.lazy(() => createElementSchema()).optional(),
-    net: z.lazy(() => createMoneySchema()).optional(),
-    udi: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    bodySite: z.lazy(() => createCodeableConceptSchema()).optional(),
-    subSite: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    encounter: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    detail: z.array(z.lazy(() => createClaimDetailSchema())).optional(),
-  });
+  return getCachedSchema("ClaimItem", () => {
+    const baseSchema: z.ZodType<types.ClaimItem> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      sequence: primitives.getPositiveIntSchema(),
+      _sequence: z.lazy(() => createElementSchema()).optional(),
+      careTeamSequence: z.array(primitives.getPositiveIntSchema()).optional(),
+      _careTeamSequence: z
+        .array(z.lazy(() => createElementSchema()))
+        .optional(),
+      diagnosisSequence: z.array(primitives.getPositiveIntSchema()).optional(),
+      _diagnosisSequence: z
+        .array(z.lazy(() => createElementSchema()))
+        .optional(),
+      procedureSequence: z.array(primitives.getPositiveIntSchema()).optional(),
+      _procedureSequence: z
+        .array(z.lazy(() => createElementSchema()))
+        .optional(),
+      informationSequence: z
+        .array(primitives.getPositiveIntSchema())
+        .optional(),
+      _informationSequence: z
+        .array(z.lazy(() => createElementSchema()))
+        .optional(),
+      revenue: createCodeableConceptSchema().optional(),
+      category: createCodeableConceptSchema().optional(),
+      productOrService: createCodeableConceptSchema(),
+      modifier: z.array(createCodeableConceptSchema()).optional(),
+      programCode: z.array(createCodeableConceptSchema()).optional(),
+      servicedDate: z.string().optional(),
+      _servicedDate: z.lazy(() => createElementSchema()).optional(),
+      servicedPeriod: createPeriodSchema().optional(),
+      locationCodeableConcept: createCodeableConceptSchema().optional(),
+      locationAddress: createAddressSchema().optional(),
+      locationReference: createReferenceSchema().optional(),
+      quantity: createQuantitySchema().optional(),
+      unitPrice: createMoneySchema().optional(),
+      factor: primitives.getDecimalSchema().optional(),
+      _factor: z.lazy(() => createElementSchema()).optional(),
+      net: createMoneySchema().optional(),
+      udi: z.array(createReferenceSchema()).optional(),
+      bodySite: createCodeableConceptSchema().optional(),
+      subSite: z.array(createCodeableConceptSchema()).optional(),
+      encounter: z.array(createReferenceSchema()).optional(),
+      detail: z.array(createClaimDetailSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

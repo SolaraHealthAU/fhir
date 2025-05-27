@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -15,51 +16,51 @@ import { createContractSubjectSchema } from "../contractsubject/schema";
 /* Generated from FHIR JSON Schema */
 
 export function createContractActionSchema() {
-  const baseSchema: z.ZodType<types.ContractAction> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    doNotPerform: primitives.createBooleanSchema().optional(),
-    _doNotPerform: z.lazy(() => createElementSchema()).optional(),
-    type: z.lazy(() => createCodeableConceptSchema()),
-    subject: z.array(z.lazy(() => createContractSubjectSchema())).optional(),
-    intent: z.lazy(() => createCodeableConceptSchema()),
-    linkId: z.array(primitives.createStringSchema()).optional(),
-    _linkId: z.array(z.lazy(() => createElementSchema())).optional(),
-    status: z.lazy(() => createCodeableConceptSchema()),
-    context: z.lazy(() => createReferenceSchema()).optional(),
-    contextLinkId: z.array(primitives.createStringSchema()).optional(),
-    _contextLinkId: z.array(z.lazy(() => createElementSchema())).optional(),
-    occurrenceDateTime: z.string().optional(),
-    _occurrenceDateTime: z.lazy(() => createElementSchema()).optional(),
-    occurrencePeriod: z.lazy(() => createPeriodSchema()).optional(),
-    occurrenceTiming: z.lazy(() => createTimingSchema()).optional(),
-    requester: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    requesterLinkId: z.array(primitives.createStringSchema()).optional(),
-    _requesterLinkId: z.array(z.lazy(() => createElementSchema())).optional(),
-    performerType: z
-      .array(z.lazy(() => createCodeableConceptSchema()))
-      .optional(),
-    performerRole: z.lazy(() => createCodeableConceptSchema()).optional(),
-    performer: z.lazy(() => createReferenceSchema()).optional(),
-    performerLinkId: z.array(primitives.createStringSchema()).optional(),
-    _performerLinkId: z.array(z.lazy(() => createElementSchema())).optional(),
-    reasonCode: z.array(z.lazy(() => createCodeableConceptSchema())).optional(),
-    reasonReference: z.array(z.lazy(() => createReferenceSchema())).optional(),
-    reason: z.array(primitives.createStringSchema()).optional(),
-    _reason: z.array(z.lazy(() => createElementSchema())).optional(),
-    reasonLinkId: z.array(primitives.createStringSchema()).optional(),
-    _reasonLinkId: z.array(z.lazy(() => createElementSchema())).optional(),
-    note: z.array(z.lazy(() => createAnnotationSchema())).optional(),
-    securityLabelNumber: z
-      .array(primitives.createUnsignedIntSchema())
-      .optional(),
-    _securityLabelNumber: z
-      .array(z.lazy(() => createElementSchema()))
-      .optional(),
-  });
+  return getCachedSchema("ContractAction", () => {
+    const baseSchema: z.ZodType<types.ContractAction> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      doNotPerform: primitives.getBooleanSchema().optional(),
+      _doNotPerform: z.lazy(() => createElementSchema()).optional(),
+      type: createCodeableConceptSchema(),
+      subject: z.array(createContractSubjectSchema()).optional(),
+      intent: createCodeableConceptSchema(),
+      linkId: z.array(primitives.getStringSchema()).optional(),
+      _linkId: z.array(z.lazy(() => createElementSchema())).optional(),
+      status: createCodeableConceptSchema(),
+      context: createReferenceSchema().optional(),
+      contextLinkId: z.array(primitives.getStringSchema()).optional(),
+      _contextLinkId: z.array(z.lazy(() => createElementSchema())).optional(),
+      occurrenceDateTime: z.string().optional(),
+      _occurrenceDateTime: z.lazy(() => createElementSchema()).optional(),
+      occurrencePeriod: createPeriodSchema().optional(),
+      occurrenceTiming: createTimingSchema().optional(),
+      requester: z.array(createReferenceSchema()).optional(),
+      requesterLinkId: z.array(primitives.getStringSchema()).optional(),
+      _requesterLinkId: z.array(z.lazy(() => createElementSchema())).optional(),
+      performerType: z.array(createCodeableConceptSchema()).optional(),
+      performerRole: createCodeableConceptSchema().optional(),
+      performer: createReferenceSchema().optional(),
+      performerLinkId: z.array(primitives.getStringSchema()).optional(),
+      _performerLinkId: z.array(z.lazy(() => createElementSchema())).optional(),
+      reasonCode: z.array(createCodeableConceptSchema()).optional(),
+      reasonReference: z.array(createReferenceSchema()).optional(),
+      reason: z.array(primitives.getStringSchema()).optional(),
+      _reason: z.array(z.lazy(() => createElementSchema())).optional(),
+      reasonLinkId: z.array(primitives.getStringSchema()).optional(),
+      _reasonLinkId: z.array(z.lazy(() => createElementSchema())).optional(),
+      note: z.array(createAnnotationSchema()).optional(),
+      securityLabelNumber: z
+        .array(primitives.getUnsignedIntSchema())
+        .optional(),
+      _securityLabelNumber: z
+        .array(z.lazy(() => createElementSchema()))
+        .optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

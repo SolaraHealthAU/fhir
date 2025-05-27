@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -12,22 +13,20 @@ import { createInvoicePriceComponentSchema } from "../invoicepricecomponent/sche
 /* Generated from FHIR JSON Schema */
 
 export function createInvoiceLineItemSchema() {
-  const baseSchema: z.ZodType<types.InvoiceLineItem> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    sequence: primitives.createPositiveIntSchema().optional(),
-    _sequence: z.lazy(() => createElementSchema()).optional(),
-    chargeItemReference: z.lazy(() => createReferenceSchema()).optional(),
-    chargeItemCodeableConcept: z
-      .lazy(() => createCodeableConceptSchema())
-      .optional(),
-    priceComponent: z
-      .array(z.lazy(() => createInvoicePriceComponentSchema()))
-      .optional(),
-  });
+  return getCachedSchema("InvoiceLineItem", () => {
+    const baseSchema: z.ZodType<types.InvoiceLineItem> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      sequence: primitives.getPositiveIntSchema().optional(),
+      _sequence: z.lazy(() => createElementSchema()).optional(),
+      chargeItemReference: createReferenceSchema().optional(),
+      chargeItemCodeableConcept: createCodeableConceptSchema().optional(),
+      priceComponent: z.array(createInvoicePriceComponentSchema()).optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

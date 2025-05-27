@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -10,15 +11,17 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createNutritionOrderNutrientSchema() {
-  const baseSchema: z.ZodType<types.NutritionOrderNutrient> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    modifier: z.lazy(() => createCodeableConceptSchema()).optional(),
-    amount: z.lazy(() => createQuantitySchema()).optional(),
-  });
+  return getCachedSchema("NutritionOrderNutrient", () => {
+    const baseSchema: z.ZodType<types.NutritionOrderNutrient> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      modifier: createCodeableConceptSchema().optional(),
+      amount: createQuantitySchema().optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createIdentifierSchema,
@@ -12,25 +13,25 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createMedicinalProductSpecialDesignationSchema() {
-  const baseSchema: z.ZodType<types.MedicinalProductSpecialDesignation> =
-    z.object({
-      id: primitives.createStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-      type: z.lazy(() => createCodeableConceptSchema()).optional(),
-      intendedUse: z.lazy(() => createCodeableConceptSchema()).optional(),
-      indicationCodeableConcept: z
-        .lazy(() => createCodeableConceptSchema())
-        .optional(),
-      indicationReference: z.lazy(() => createReferenceSchema()).optional(),
-      status: z.lazy(() => createCodeableConceptSchema()).optional(),
-      date: primitives.createDateTimeSchema().optional(),
-      _date: z.lazy(() => createElementSchema()).optional(),
-      species: z.lazy(() => createCodeableConceptSchema()).optional(),
-    });
+  return getCachedSchema("MedicinalProductSpecialDesignation", () => {
+    const baseSchema: z.ZodType<types.MedicinalProductSpecialDesignation> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+        type: createCodeableConceptSchema().optional(),
+        intendedUse: createCodeableConceptSchema().optional(),
+        indicationCodeableConcept: createCodeableConceptSchema().optional(),
+        indicationReference: createReferenceSchema().optional(),
+        status: createCodeableConceptSchema().optional(),
+        date: primitives.getDateTimeSchema().optional(),
+        _date: z.lazy(() => createElementSchema()).optional(),
+        species: createCodeableConceptSchema().optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

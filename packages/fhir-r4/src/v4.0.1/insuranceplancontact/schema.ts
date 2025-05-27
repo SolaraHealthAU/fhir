@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -12,17 +13,19 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createInsurancePlanContactSchema() {
-  const baseSchema: z.ZodType<types.InsurancePlanContact> = z.object({
-    id: primitives.createStringSchema().optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    purpose: z.lazy(() => createCodeableConceptSchema()).optional(),
-    name: z.lazy(() => createHumanNameSchema()).optional(),
-    telecom: z.array(z.lazy(() => createContactPointSchema())).optional(),
-    address: z.lazy(() => createAddressSchema()).optional(),
-  });
+  return getCachedSchema("InsurancePlanContact", () => {
+    const baseSchema: z.ZodType<types.InsurancePlanContact> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      modifierExtension: z
+        .array(z.lazy(() => createExtensionSchema()))
+        .optional(),
+      purpose: createCodeableConceptSchema().optional(),
+      name: createHumanNameSchema().optional(),
+      telecom: z.array(createContactPointSchema()).optional(),
+      address: createAddressSchema().optional(),
+    });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

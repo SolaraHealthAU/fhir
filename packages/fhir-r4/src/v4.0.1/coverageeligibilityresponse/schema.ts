@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -18,48 +19,51 @@ import { createCoverageEligibilityResponseErrorSchema } from "../coverageeligibi
 /* Generated from FHIR JSON Schema */
 
 export function createCoverageEligibilityResponseSchema() {
-  const baseSchema: z.ZodType<types.CoverageEligibilityResponse> = z.object({
-    resourceType: z.literal("CoverageEligibilityResponse"),
-    id: primitives.createIdSchema().optional(),
-    meta: z.lazy(() => createMetaSchema()).optional(),
-    implicitRules: primitives.createUriSchema().optional(),
-    _implicitRules: z.lazy(() => createElementSchema()).optional(),
-    language: primitives.createCodeSchema().optional(),
-    _language: z.lazy(() => createElementSchema()).optional(),
-    text: z.lazy(() => createNarrativeSchema()).optional(),
-    contained: z.array(z.lazy(() => createResourceListSchema())).optional(),
-    extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-    modifierExtension: z
-      .array(z.lazy(() => createExtensionSchema()))
-      .optional(),
-    identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-    status: primitives.createCodeSchema(),
-    _status: z.lazy(() => createElementSchema()).optional(),
-    purpose: z.array(z.any()),
-    _purpose: z.array(z.lazy(() => createElementSchema())).optional(),
-    patient: z.lazy(() => createReferenceSchema()),
-    servicedDate: z.string().optional(),
-    _servicedDate: z.lazy(() => createElementSchema()).optional(),
-    servicedPeriod: z.lazy(() => createPeriodSchema()).optional(),
-    created: primitives.createDateTimeSchema(),
-    _created: z.lazy(() => createElementSchema()).optional(),
-    requestor: z.lazy(() => createReferenceSchema()).optional(),
-    request: z.lazy(() => createReferenceSchema()),
-    outcome: z.enum(["queued", "complete", "error", "partial"]),
-    _outcome: z.lazy(() => createElementSchema()).optional(),
-    disposition: primitives.createStringSchema().optional(),
-    _disposition: z.lazy(() => createElementSchema()).optional(),
-    insurer: z.lazy(() => createReferenceSchema()),
-    insurance: z
-      .array(z.lazy(() => createCoverageEligibilityResponseInsuranceSchema()))
-      .optional(),
-    preAuthRef: primitives.createStringSchema().optional(),
-    _preAuthRef: z.lazy(() => createElementSchema()).optional(),
-    form: z.lazy(() => createCodeableConceptSchema()).optional(),
-    error: z
-      .array(z.lazy(() => createCoverageEligibilityResponseErrorSchema()))
-      .optional(),
-  });
+  return getCachedSchema("CoverageEligibilityResponse", () => {
+    const baseSchema: z.ZodType<types.CoverageEligibilityResponse> =
+      z.strictObject({
+        resourceType: z.literal("CoverageEligibilityResponse"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: z.lazy(() => createElementSchema()).optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: z.lazy(() => createElementSchema()).optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(createResourceListSchema()).optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+        status: primitives.getCodeSchema(),
+        _status: z.lazy(() => createElementSchema()).optional(),
+        purpose: z.array(z.any()),
+        _purpose: z.array(z.lazy(() => createElementSchema())).optional(),
+        patient: createReferenceSchema(),
+        servicedDate: z.string().optional(),
+        _servicedDate: z.lazy(() => createElementSchema()).optional(),
+        servicedPeriod: createPeriodSchema().optional(),
+        created: primitives.getDateTimeSchema(),
+        _created: z.lazy(() => createElementSchema()).optional(),
+        requestor: createReferenceSchema().optional(),
+        request: createReferenceSchema(),
+        outcome: z.enum(["queued", "complete", "error", "partial"]),
+        _outcome: z.lazy(() => createElementSchema()).optional(),
+        disposition: primitives.getStringSchema().optional(),
+        _disposition: z.lazy(() => createElementSchema()).optional(),
+        insurer: createReferenceSchema(),
+        insurance: z
+          .array(createCoverageEligibilityResponseInsuranceSchema())
+          .optional(),
+        preAuthRef: primitives.getStringSchema().optional(),
+        _preAuthRef: z.lazy(() => createElementSchema()).optional(),
+        form: createCodeableConceptSchema().optional(),
+        error: z
+          .array(createCoverageEligibilityResponseErrorSchema())
+          .optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }

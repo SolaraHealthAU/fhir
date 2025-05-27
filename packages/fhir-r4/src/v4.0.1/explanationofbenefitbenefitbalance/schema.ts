@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
+import { getCachedSchema } from "../schema-cache";
 import {
   createExtensionSchema,
   createCodeableConceptSchema,
@@ -11,27 +12,29 @@ import { createExplanationOfBenefitFinancialSchema } from "../explanationofbenef
 /* Generated from FHIR JSON Schema */
 
 export function createExplanationOfBenefitBenefitBalanceSchema() {
-  const baseSchema: z.ZodType<types.ExplanationOfBenefitBenefitBalance> =
-    z.object({
-      id: primitives.createStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      category: z.lazy(() => createCodeableConceptSchema()),
-      excluded: primitives.createBooleanSchema().optional(),
-      _excluded: z.lazy(() => createElementSchema()).optional(),
-      name: primitives.createStringSchema().optional(),
-      _name: z.lazy(() => createElementSchema()).optional(),
-      description: primitives.createStringSchema().optional(),
-      _description: z.lazy(() => createElementSchema()).optional(),
-      network: z.lazy(() => createCodeableConceptSchema()).optional(),
-      unit: z.lazy(() => createCodeableConceptSchema()).optional(),
-      term: z.lazy(() => createCodeableConceptSchema()).optional(),
-      financial: z
-        .array(z.lazy(() => createExplanationOfBenefitFinancialSchema()))
-        .optional(),
-    });
+  return getCachedSchema("ExplanationOfBenefitBenefitBalance", () => {
+    const baseSchema: z.ZodType<types.ExplanationOfBenefitBenefitBalance> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+        modifierExtension: z
+          .array(z.lazy(() => createExtensionSchema()))
+          .optional(),
+        category: createCodeableConceptSchema(),
+        excluded: primitives.getBooleanSchema().optional(),
+        _excluded: z.lazy(() => createElementSchema()).optional(),
+        name: primitives.getStringSchema().optional(),
+        _name: z.lazy(() => createElementSchema()).optional(),
+        description: primitives.getStringSchema().optional(),
+        _description: z.lazy(() => createElementSchema()).optional(),
+        network: createCodeableConceptSchema().optional(),
+        unit: createCodeableConceptSchema().optional(),
+        term: createCodeableConceptSchema().optional(),
+        financial: z
+          .array(createExplanationOfBenefitFinancialSchema())
+          .optional(),
+      });
 
-  return baseSchema;
+    return baseSchema;
+  });
 }
