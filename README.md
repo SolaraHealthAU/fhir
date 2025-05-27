@@ -6,7 +6,7 @@ A comprehensive TypeScript ecosystem for working with HL7 FHIR R4 resources. Whe
 
 This project provides two complementary packages that work together to make FHIR development simple and type-safe:
 
-### 🏗️ **For Application Developers** - `@solarahealth/fhir-r4`
+### 🏗️ **For Application Developers** - `@solarahealth/fhir-r4` `@solarahealth/fhir-r5`
 
 Use FHIR types and validation in your own applications, whether you're building client apps, custom servers, or data processing pipelines.
 
@@ -16,10 +16,10 @@ Quickly build FHIR-compliant REST APIs with Express.js middleware that handles r
 
 ## 🎯 Key Features
 
-- **🔒 Complete Type Safety**: Full TypeScript definitions for all FHIR R4 resources
+- **🔒 Complete Type Safety**: Full TypeScript definitions for all FHIR R4/R5 resources
 - **✅ Runtime Validation**: Zod-powered schemas catch errors before they cause problems
 - **🚀 Express Integration**: Ready-to-use middleware for building FHIR servers
-- **📚 Comprehensive Coverage**: Support for all 150+ FHIR R4 resource types
+- **📚 Comprehensive Coverage**: Support for all 150+ FHIR R4/R5 resource types
 - **🌳 Tree Shakeable**: Only bundle what you use
 - **⚡ Auto-Generated**: Always up-to-date with official FHIR specifications
 - **🏗️ Builder Pattern**: Intuitive APIs for defining FHIR capabilities
