@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "esr src/index.ts",
+    "benchmark": "esr src/benchmark.ts",
+    "benchmark:results": "esr src/benchmark-results.ts",
+    "benchmark:tree-shaking": "esr src/tree-shaking-benchmark.ts",
+    "benchmark:all": "npm run benchmark && npm run benchmark:tree-shaking"
+  },
+  "dependencies": {
+    "@solarahealth/fhir-r4": "*"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.1",
+    "esbuild-runner": "^2.2.2",
+    "typescript": "5.4.5"
+  }
+}

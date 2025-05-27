@@ -1,0 +1,18 @@
+{
+  "name": "fhir-library-comparison",
+  "version": "1.0.0",
+  "description": "Performance comparison between @solarahealth/fhir-r4 and @ahryman40k/ts-fhir-types",
+  "private": true,
+  "scripts": {
+    "compare:tree-shaking": "esr compare-tree-shaking.ts",
+    "benchmark:all": "cd fhir-r4 && npm run benchmark:all && cd ../ahryman40k-ts-fhir-types && npm run benchmark:all",
+    "benchmark:tree-shaking": "cd fhir-r4 && npm run benchmark:tree-shaking && cd ../ahryman40k-ts-fhir-types && npm run benchmark:tree-shaking",
+    "benchmark:performance": "cd fhir-r4 && npm run benchmark && cd ../ahryman40k-ts-fhir-types && npm run benchmark"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "esbuild": "^0.25.1",
+    "esbuild-runner": "^2.2.2",
+    "typescript": "5.4.5"
+  }
+}

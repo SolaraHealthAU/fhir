@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "esr src/index.ts",
+    "benchmark": "esr src/benchmark.ts",
+    "benchmark:results": "esr src/benchmark-results.ts",
+    "benchmark:tree-shaking": "esr src/tree-shaking-benchmark.ts",
+    "benchmark:all": "npm run benchmark && npm run benchmark:tree-shaking"
+  },
+  "dependencies": {
+    "@ahryman40k/ts-fhir-types": "^4.0.0",
+    "fp-ts": "^2.16.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.1",
+    "esbuild-runner": "^2.2.2",
+    "typescript": "5.4.5"
+  }
+}

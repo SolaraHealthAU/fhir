@@ -1,0 +1,102 @@
+{
+  "fhirR4": {
+    "schemaCreation": {
+      "average": 0.27551659792661665,
+      "min": 0.1090409904718399,
+      "max": 1.333749994635582,
+      "samples": [
+        1.333749994635582,
+        0.15291599929332733,
+        0.22016701102256775,
+        0.11708301305770874,
+        0.11104199290275574,
+        0.1090409904718399,
+        0.1351669877767563,
+        0.11474999785423279,
+        0.31141699850559235,
+        0.14983299374580383
+      ]
+    },
+    "parsing": {
+      "individualAverage": 0.4033955991268158,
+      "individualMin": 0.187375009059906,
+      "individualMax": 1.4617500007152557,
+      "batchTotal": 121.49741700291634,
+      "averagePerPatient": 0.12149741700291633,
+      "throughputPerSecond": 8230.627651746678,
+      "successfullyParsed": 1000,
+      "totalPatients": 1000
+    },
+    "memory": {
+      "estimatedBytesPerPatient": 390,
+      "totalKB": 380.859375
+    },
+    "timestamp": "2025-05-27T03:14:03.342Z",
+    "nodeVersion": "v18.20.3",
+    "platform": "darwin"
+  },
+  "ahryman40k": {
+    "schemaAccess": {
+      "average": 0.0027164995670318605,
+      "min": 0.00037498772144317627,
+      "max": 0.019166991114616394,
+      "samples": [
+        0.019166991114616394,
+        0.0006249994039535522,
+        0.00045800209045410156,
+        0.00037498772144317627,
+        0.0018749982118606567,
+        0.0006249994039535522,
+        0.000415995717048645,
+        0.00041601061820983887,
+        0.0013750046491622925,
+        0.001833006739616394
+      ]
+    },
+    "parsing": {
+      "individualAverage": 0.1749084025621414,
+      "individualMin": 0.046875,
+      "individualMax": 1.0245420038700104,
+      "batchTotal": 17.773416996002197,
+      "averagePerPatient": 0.017773416996002198,
+      "throughputPerSecond": 56263.801171431,
+      "successfullyParsed": 1000,
+      "totalPatients": 1000,
+      "successRate": 100
+    },
+    "memory": {
+      "estimatedBytesPerPatient": 390,
+      "totalKB": 380.859375
+    },
+    "timestamp": "2025-05-27T03:14:05.518Z",
+    "nodeVersion": "v18.20.3",
+    "platform": "darwin",
+    "library": "@ahryman40k/ts-fhir-types"
+  },
+  "comparison": {
+    "schemaPerformance": {
+      "winner": "@ahryman40k/ts-fhir-types",
+      "fhirR4Time": 0.27551659792661665,
+      "ahryman40kTime": 0.0027164995670318605,
+      "difference": "10042.3% faster"
+    },
+    "parsingPerformance": {
+      "winner": "@ahryman40k/ts-fhir-types",
+      "fhirR4Throughput": 8230.627651746678,
+      "ahryman40kThroughput": 56263.801171431,
+      "difference": "583.6% faster"
+    },
+    "memoryUsage": {
+      "winner": "@ahryman40k/ts-fhir-types",
+      "fhirR4Memory": 390,
+      "ahryman40kMemory": 390,
+      "difference": "0.0% less memory"
+    },
+    "successRate": {
+      "fhirR4Rate": 100,
+      "ahryman40kRate": 100,
+      "winner": "@solarahealth/fhir-r4"
+    }
+  },
+  "timestamp": "2025-05-27T03:14:05.530Z"
+}

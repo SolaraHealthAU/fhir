@@ -3,7 +3,8 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "packages/fhir-r4-server/examples/*"
+    "packages/fhir-r4-server/examples/*",
+    "benchmarking/fhir-r4/fhir-r4"
   ],
   "scripts": {
     "build": "lerna run build",
