@@ -1,0 +1,1 @@
+// Resources schema header file
