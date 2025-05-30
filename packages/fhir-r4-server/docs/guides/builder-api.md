@@ -115,63 +115,101 @@ Always handle the case where a resource doesn't exist:
 
 Search operations allow querying for multiple resources with parameters.
 
+### Search Parameter Setup
+
+First, define your search parameters following the [Search Parameters](./search-parameters.md) guide:
+
+```typescript
+// patient-search-params.ts
+import * as rest from '@solarahealth/fhir-r4-server';
+import type { CapabilityStatementSearchParam } from '@solarahealth/fhir-r4';
+
+export const patientSearchParams = [
+  {
+    name: 'name',
+    documentation: 'Patient name search',
+    type: 'string',
+  },
+  {
+    name: 'birthdate',
+    documentation: 'Patient birth date',
+    type: 'date',
+  },
+  {
+    name: 'active',
+    documentation: 'Whether the patient is active',
+    type: 'token',
+  },
+] as const satisfies ReadonlyArray<CapabilityStatementSearchParam>;
+
+export const patientSearchSchema = rest.codecs.createSearchParametersSchema(patientSearchParams);
+export type PatientSearchParams = rest.codecs.ParamsToShape<typeof patientSearchParams>;
+```
+
 ### Basic Search Handler
 
 ```typescript
+import { patientSearchParams, patientSearchSchema } from './patient-search-params';
+
 const patientResource = builder
   .defineResource('Patient')
+  .searchParams(patientSearchParams)
   .search((builder) =>
-    builder
-      .parameters(
-        z.object({
-          name: z.string().optional(),
-          birthdate: z.string().optional(),
-          active: z.boolean().optional(),
-        }),
-      )
-      .searchWith(async (params, context) => {
-        const results = await context.database.searchPatients(params);
+    builder.params(patientSearchSchema).handler(async (context, params) => {
+      const results = await context.database.searchPatients(params);
 
-        return {
-          resourceType: 'Bundle',
-          type: 'searchset',
-          total: results.length,
-          entry: results.map((resource) => ({
-            resource,
-            search: { mode: 'match' },
-          })),
-        };
-      }),
+      return {
+        resourceType: 'Bundle',
+        type: 'searchset',
+        total: results.length,
+        entry: results.map((resource) => ({
+          resource,
+          search: { mode: 'match' },
+        })),
+      };
+    }),
   )
   .build();
 ```
 
-### Advanced Parameter Validation
+### Advanced Parameter Handling
 
-Use Zod's powerful validation for complex search parameters:
+Handle the double-array structure and parameter types correctly:
 
 ```typescript
-.parameters(z.object({
-  // Text search with minimum length
-  name: z.string().min(2, 'Name must be at least 2 characters').optional(),
+.handler(async (context, params) => {
+  // Helper functions for working with double-array search parameters
+  const getFirstValue = <T>(param: T[][] | undefined): T | undefined => {
+    return param?.[0]?.[0];
+  };
 
-  // Date validation
-  birthdate: z.string()
-    .regex(/^\d{4}-\d{2}-\d{2}$/, 'Date must be in YYYY-MM-DD format')
-    .optional(),
+  const getAllValues = <T>(param: T[][] | undefined): T[] => {
+    return param?.flat() || [];
+  };
 
-  // Enum values
-  gender: z.enum(['male', 'female', 'other', 'unknown']).optional(),
+  // Handle string parameters
+  const nameQuery = getFirstValue(params.name);
+  if (nameQuery) {
+    console.log(`Searching for names that ${nameQuery.op} "${nameQuery.value}"`);
+    // nameQuery.op could be 'startsWith', 'contains', or 'exact'
+  }
 
-  // Boolean conversion
-  active: z.preprocess(
-    (val) => val === 'true' || val === true,
-    z.boolean()
-  ).optional(),
+  // Handle date parameters
+  const birthdateQuery = getFirstValue(params.birthdate);
+  if (birthdateQuery) {
+    console.log(`Birthdate ${birthdateQuery.prefix} ${birthdateQuery.date.toISOString()}`);
+    // birthdateQuery.prefix could be 'eq', 'lt', 'gt', etc.
+  }
 
-  // Array of values
-  identifier: z.array(z.string()).optional(),
-}))
+  // Handle token parameters
+  const activeQuery = getFirstValue(params.active);
+  if (activeQuery?.codingCodeOrIdentifierValue) {
+    const isActive = activeQuery.codingCodeOrIdentifierValue === 'true';
+    console.log(`Active status: ${isActive}`);
+  }
+
+  // Your search implementation here...
+})
 ```
 
 ### Pagination Support
@@ -179,19 +217,42 @@ Use Zod's powerful validation for complex search parameters:
 Implement pagination in your search results:
 
 ```typescript
-.parameters(z.object({
-  name: z.string().optional(),
-  _count: z.number().min(1).max(100).default(20).optional(),
-  _offset: z.number().min(0).default(0).optional(),
-}))
-.searchWith(async (params, context) => {
-  const { _count = 20, _offset = 0, ...searchParams } = params;
+// Add pagination parameters to your search params
+export const patientSearchParams = [
+  // ... other parameters
+  {
+    name: '_count',
+    documentation: 'Number of results to return',
+    type: 'number',
+  },
+] as const satisfies ReadonlyArray<CapabilityStatementSearchParam>;
+
+// In your search handler
+.handler(async (context, params) => {
+  const count = params._count || 20;
 
   const { results, total } = await context.database.searchPatients({
-    ...searchParams,
-    limit: _count,
-    offset: _offset,
+    ...params,
+    limit: count,
   });
+
+  // Build URL for self link
+  const baseUrl = context.request.baseUrl;
+  const selfUrl = new URL(`${baseUrl}/Patient`);
+
+  // Convert params back to URL query format
+  const nameQuery = getFirstValue(params.name);
+  if (nameQuery) {
+    let searchValue = nameQuery.value;
+    if (nameQuery.op !== 'startsWith') {
+      searchValue = `:${nameQuery.op}=${searchValue}`;
+    }
+    selfUrl.searchParams.set('name', searchValue);
+  }
+
+  if (params._count) {
+    selfUrl.searchParams.set('_count', params._count.toString());
+  }
 
   return {
     resourceType: 'Bundle',
@@ -200,7 +261,7 @@ Implement pagination in your search results:
     link: [
       {
         relation: 'self',
-        url: `${context.baseUrl}/Patient?${new URLSearchParams(params)}`
+        url: selfUrl.toString(),
       },
       // Add next/previous links as needed
     ],
@@ -211,31 +272,55 @@ Implement pagination in your search results:
 
 ### Complex Search Logic
 
-Handle complex search scenarios:
+Handle complex search scenarios with proper parameter types:
 
 ```typescript
-.searchWith(async (params, context) => {
+.handler(async (context, params) => {
+  // Helper functions
+  const getFirstValue = <T>(param: T[][] | undefined): T | undefined => {
+    return param?.[0]?.[0];
+  };
+
   let query = context.database.patients.createQuery();
 
   // Text search across multiple fields
-  if (params.name) {
-    query = query.where(
-      'given_name', 'ILIKE', `%${params.name}%`
-    ).orWhere(
-      'family_name', 'ILIKE', `%${params.name}%`
-    );
+  const nameQuery = getFirstValue(params.name);
+  if (nameQuery) {
+    const searchTerm = nameQuery.value;
+    if (nameQuery.op === 'exact') {
+      query = query.where('given_name', '=', searchTerm)
+                   .orWhere('family_name', '=', searchTerm);
+    } else {
+      const pattern = nameQuery.op === 'contains' ? `%${searchTerm}%` : `${searchTerm}%`;
+      query = query.where('given_name', 'ILIKE', pattern)
+                   .orWhere('family_name', 'ILIKE', pattern);
+    }
   }
 
   // Date range search
-  if (params.birthdate) {
-    const date = new Date(params.birthdate);
-    const nextDay = new Date(date.getTime() + 24 * 60 * 60 * 1000);
-    query = query.whereBetween('birth_date', [date, nextDay]);
+  const birthdateQuery = getFirstValue(params.birthdate);
+  if (birthdateQuery) {
+    const date = birthdateQuery.date;
+    switch (birthdateQuery.prefix) {
+      case 'eq':
+        const nextDay = new Date(date.getTime() + 24 * 60 * 60 * 1000);
+        query = query.whereBetween('birth_date', [date, nextDay]);
+        break;
+      case 'lt':
+        query = query.where('birth_date', '<', date);
+        break;
+      case 'gt':
+        query = query.where('birth_date', '>', date);
+        break;
+      // ... other prefixes
+    }
   }
 
   // Boolean filter
-  if (params.active !== undefined) {
-    query = query.where('active', params.active);
+  const activeQuery = getFirstValue(params.active);
+  if (activeQuery?.codingCodeOrIdentifierValue !== undefined) {
+    const isActive = activeQuery.codingCodeOrIdentifierValue === 'true';
+    query = query.where('active', isActive);
   }
 
   const results = await query.execute();
@@ -255,21 +340,16 @@ You can add multiple operations to a single resource:
 ```typescript
 const patientResource = builder
   .defineResource('Patient')
+  .searchParams(patientSearchParams)
   .read((builder) =>
-    builder.id(z.string()).retrieveWith(async (id, context) => {
+    builder.id(z.string()).handler(async (id, context) => {
       // Read implementation
     }),
   )
   .search((builder) =>
-    builder
-      .parameters(
-        z.object({
-          name: z.string().optional(),
-        }),
-      )
-      .searchWith(async (params, context) => {
-        // Search implementation
-      }),
+    builder.params(patientSearchSchema).handler(async (context, params) => {
+      // Search implementation
+    }),
   )
   .build();
 ```
@@ -295,7 +375,7 @@ Define which search parameters your resource supports:
 ```typescript
 const resource = builder
   .defineResource('Patient')
-  .searchParams(['name', 'birthdate', 'gender', 'active', 'identifier'])
+  .searchParams(patientSearchParams)
   .search(/* handler */)
   .build();
 ```

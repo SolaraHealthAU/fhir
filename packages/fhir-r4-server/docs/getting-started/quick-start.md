@@ -129,7 +129,11 @@ const patientResource = builder
   .defineResource('Patient')
   .read((builder) =>
     builder.id(z.string()).retrieveWith(async (id) => {
-      // Your data retrieval logic here
+      const patient = patients[id];
+      if (!patient) {
+        throw new errors.ResourceNotFound('Patient', id);
+      }
+      return patient;
     }),
   )
   .build();
@@ -163,11 +167,31 @@ The middleware integrates seamlessly with your existing Express application.
 
 ## Adding Search Capability
 
-Let's extend our Patient resource to support search:
+Let's extend our Patient resource to support search using the proper search parameter patterns:
 
 ```typescript
+// First, define search parameters
+import type { CapabilityStatementSearchParam } from '@solarahealth/fhir-r4';
+
+const patientSearchParams = [
+  {
+    name: 'name',
+    documentation: 'Patient name search',
+    type: 'string',
+  },
+  {
+    name: 'family',
+    documentation: 'Family name search',
+    type: 'string',
+  },
+] as const satisfies ReadonlyArray<CapabilityStatementSearchParam>;
+
+// Generate search schema
+const patientSearchSchema = rest.codecs.createSearchParametersSchema(patientSearchParams);
+
 const patientResource = builder
   .defineResource('Patient')
+  .searchParams(patientSearchParams)
   .read((builder) =>
     builder.id(z.string()).retrieveWith(async (id) => {
       const patient = patients[id];
@@ -178,32 +202,34 @@ const patientResource = builder
     }),
   )
   .search((builder) =>
-    builder
-      .parameters(
-        z.object({
-          name: z.string().optional(),
-          family: z.string().optional(),
-        }),
-      )
-      .searchWith(async (params) => {
-        // Filter patients based on search parameters
-        const results = Object.values(patients).filter((patient) => {
-          if (params.name && !patient.name?.[0]?.given?.[0]?.includes(params.name)) {
-            return false;
-          }
-          if (params.family && patient.name?.[0]?.family !== params.family) {
-            return false;
-          }
-          return true;
-        });
+    builder.params(patientSearchSchema).handler(async (context, params) => {
+      // Helper functions for working with double-array search parameters
+      const getFirstValue = <T>(param: T[][] | undefined): T | undefined => {
+        return param?.[0]?.[0];
+      };
 
-        return {
-          resourceType: 'Bundle',
-          type: 'searchset',
-          total: results.length,
-          entry: results.map((resource) => ({ resource })),
-        };
-      }),
+      // Filter patients based on search parameters
+      const results = Object.values(patients).filter((patient) => {
+        const nameQuery = getFirstValue(params.name);
+        if (nameQuery && !patient.name?.[0]?.given?.[0]?.includes(nameQuery.value)) {
+          return false;
+        }
+
+        const familyQuery = getFirstValue(params.family);
+        if (familyQuery && patient.name?.[0]?.family !== familyQuery.value) {
+          return false;
+        }
+
+        return true;
+      });
+
+      return {
+        resourceType: 'Bundle',
+        type: 'searchset',
+        total: results.length,
+        entry: results.map((resource) => ({ resource })),
+      };
+    }),
   )
   .build();
 ```

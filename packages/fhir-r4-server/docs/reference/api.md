@@ -130,13 +130,13 @@ Adds read capability to the resource.
 )
 ```
 
-#### `.search(handler)`
+#### `.search(builder)`
 
-Adds search capability to the resource.
+Defines a search operation for the resource.
 
 **Parameters:**
 
-- `handler: (builder: SearchBuilder) => SearchDefinition` - Search operation handler
+- `builder: (SearchBuilder) => SearchDefinition` - Function to configure the search operation
 
 **Returns:** `ResourceBuilder` (for chaining)
 
@@ -144,13 +144,9 @@ Adds search capability to the resource.
 
 ```typescript
 .search((builder) =>
-  builder
-    .parameters(z.object({
-      name: z.string().optional(),
-    }))
-    .searchWith(async (params, context) => {
-      // Implementation
-    })
+  builder.params(patientSearchSchema).handler(async (context, params) => {
+    // Implementation
+  })
 )
 ```
 
@@ -166,13 +162,34 @@ Enables or disables conditional read support.
 
 #### `.searchParams(params)`
 
-Defines supported search parameters.
+Defines supported search parameters using the proper search parameter definition pattern.
 
 **Parameters:**
 
-- `params: string[]` - Array of supported search parameter names
+- `params: ReadonlyArray<CapabilityStatementSearchParam>` - Array of search parameter definitions
 
 **Returns:** `ResourceBuilder` (for chaining)
+
+**Example:**
+
+```typescript
+import type { CapabilityStatementSearchParam } from '@solarahealth/fhir-r4';
+
+const patientSearchParams = [
+  {
+    name: 'name',
+    documentation: 'Patient name search',
+    type: 'string',
+  },
+  {
+    name: 'birthdate',
+    documentation: 'Patient birth date',
+    type: 'date',
+  },
+] as const satisfies ReadonlyArray<CapabilityStatementSearchParam>;
+
+.searchParams(patientSearchParams)
+```
 
 #### `.build()`
 
@@ -200,7 +217,7 @@ Defines ID parameter validation.
 .id(z.string().uuid('ID must be a valid UUID'))
 ```
 
-#### `.retrieveWith(handler)`
+#### `.handler(handler)`
 
 Defines the read operation implementation.
 
@@ -217,7 +234,7 @@ type ReadHandler<C> = (id: string, context: C) => Promise<Resource>;
 **Example:**
 
 ```typescript
-.retrieveWith(async (id, context) => {
+.handler(async (id, context) => {
   const resource = await context.database.findById(id);
   if (!resource) {
     throw new errors.ResourceNotFound('Patient', id);
@@ -230,27 +247,41 @@ type ReadHandler<C> = (id: string, context: C) => Promise<Resource>;
 
 ### SearchBuilder
 
-#### `.parameters(schema)`
+#### `.params(schema)`
 
-Defines search parameter validation schema.
+Defines search parameter validation schema using the generated schema from search parameter definitions.
 
 **Parameters:**
 
-- `schema: ZodSchema` - Zod schema for search parameters
+- `schema: ZodSchema` - Generated Zod schema from search parameter definitions
 
 **Returns:** `SearchBuilder`
 
 **Example:**
 
 ```typescript
-.parameters(z.object({
-  name: z.string().optional(),
-  birthdate: z.string().optional(),
-  active: z.boolean().optional(),
-}))
+// First define search parameters
+const patientSearchParams = [
+  {
+    name: 'name',
+    documentation: 'Patient name',
+    type: 'string',
+  },
+  {
+    name: 'birthdate',
+    documentation: 'Patient birth date',
+    type: 'date',
+  },
+] as const satisfies ReadonlyArray<CapabilityStatementSearchParam>;
+
+// Generate schema
+const patientSearchSchema = rest.codecs.createSearchParametersSchema(patientSearchParams);
+
+// Use in builder
+.params(patientSearchSchema)
 ```
 
-#### `.searchWith(handler)`
+#### `.handler(handler)`
 
 Defines the search operation implementation.
 
@@ -261,13 +292,18 @@ Defines the search operation implementation.
 **Returns:** `SearchDefinition`
 
 ```typescript
-type SearchHandler<C> = (params: any, context: C) => Promise<Bundle>;
+type SearchHandler<C> = (context: C, params: any) => Promise<Bundle>;
 ```
 
 **Example:**
 
 ```typescript
-.searchWith(async (params, context) => {
+.handler(async (context, params) => {
+  // Helper functions for parameter handling
+  const getFirstValue = <T>(param: T[][] | undefined): T | undefined => {
+    return param?.[0]?.[0];
+  };
+
   const results = await context.database.search(params);
   return {
     resourceType: 'Bundle',

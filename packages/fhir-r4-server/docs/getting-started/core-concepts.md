@@ -77,21 +77,61 @@ Retrieves a single resource by ID:
 Handles search requests with parameters:
 
 ```typescript
+// First, define search parameters properly
+import * as rest from '@solarahealth/fhir-r4-server';
+import type { CapabilityStatementSearchParam } from '@solarahealth/fhir-r4';
+
+export const patientSearchParams = [
+  {
+    name: 'name',
+    documentation: 'Patient name search',
+    type: 'string',
+  },
+  {
+    name: 'birthdate',
+    documentation: 'Patient birth date',
+    type: 'date',
+  },
+] as const satisfies ReadonlyArray<CapabilityStatementSearchParam>;
+
+export const patientSearchSchema = rest.codecs.createSearchParametersSchema(patientSearchParams);
+
+// Use in resource definition
 .search((builder) =>
-  builder
-    .parameters(z.object({
-      name: z.string().optional(),
-      birthdate: z.string().optional(),
-    }))
-    .searchWith(async (params, context) => {
-      const results = await context.database.search(params);
-      return {
-        resourceType: 'Bundle',
-        type: 'searchset',
-        entry: results.map(resource => ({ resource })),
-      };
-    })
+  builder.params(patientSearchSchema).handler(async (context, params) => {
+    const results = await context.database.search(params);
+    return {
+      resourceType: 'Bundle',
+      type: 'searchset',
+      entry: results.map(resource => ({ resource })),
+    };
+  })
 )
+```
+
+### Example Parameter Validation
+
+```typescript
+// For search parameters, use the proper search parameter definition pattern
+export const patientSearchParams = [
+  {
+    name: 'name',
+    documentation: 'Name cannot be empty',
+    type: 'string',
+  },
+  {
+    name: 'birthdate',
+    documentation: 'Birth date in YYYY-MM-DD format',
+    type: 'date',
+  },
+  {
+    name: 'active',
+    documentation: 'Whether the patient is active',
+    type: 'token',
+  },
+] as const satisfies ReadonlyArray<CapabilityStatementSearchParam>;
+
+export const patientSearchSchema = rest.codecs.createSearchParametersSchema(patientSearchParams);
 ```
 
 ## 4. Validation with Zod
@@ -106,15 +146,21 @@ This package uses [Zod](https://zod.dev/) for runtime validation. Zod provides:
 ```typescript
 import { z } from 'zod';
 
-// Simple validation
+// ID validation
 .id(z.string())
 
-// Complex parameter validation
-.parameters(z.object({
-  name: z.string().min(1, 'Name cannot be empty').optional(),
-  birthdate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Invalid date format').optional(),
+// For search parameters, use the proper search parameter definition pattern
+// (See examples above - don't use manual Zod schemas for search parameters)
+
+// For resource validation (create/update operations), you can still use Zod:
+const patientCreateSchema = z.object({
+  name: z.array(z.object({
+    family: z.string().min(1, 'Family name is required'),
+    given: z.array(z.string()).min(1, 'At least one given name required'),
+  })).min(1, 'At least one name is required'),
+  birthDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Invalid date format').optional(),
   active: z.boolean().optional(),
-}))
+});
 ```
 
 ## 5. Error Handling

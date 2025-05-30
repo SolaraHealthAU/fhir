@@ -16,11 +16,12 @@ The package includes automatic error middleware that converts errors into FHIR-c
 
 ## ZOD Validation Errors
 
-When using ZOD schemas for validation, any `ZodError` thrown in your handlers is automatically converted to a FHIR `OperationOutcome`:
+When using ZOD schemas for validation, any `ZodError` thrown in your handlers is automatically converted to a FHIR `OperationOutcome`. However, for search parameters, you should use the proper search parameter definition patterns instead of manual Zod schemas.
+
+### Deprecated Pattern (Don't Use)
 
 ```typescript
-import { z } from 'zod';
-
+// ❌ Don't use manual Zod schemas for search parameters
 const patientSearchSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   birthdate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Date must be in YYYY-MM-DD format'),
@@ -28,11 +29,45 @@ const patientSearchSchema = z.object({
 });
 
 .searchWith(async (params, context) => {
-  // ZOD validation - errors automatically converted to OperationOutcome
+  // This approach is outdated
   const validatedParams = patientSearchSchema.parse(params);
-
-  // Continue with validated parameters...
 })
+```
+
+### Recommended Pattern (Use This)
+
+```typescript
+// ✅ Use proper search parameter definitions
+import * as rest from '@solarahealth/fhir-r4-server';
+import type { CapabilityStatementSearchParam } from '@solarahealth/fhir-r4';
+
+export const patientSearchParams = [
+  {
+    name: 'name',
+    documentation: 'Patient name search',
+    type: 'string',
+  },
+  {
+    name: 'birthdate',
+    documentation: 'Patient birth date',
+    type: 'date',
+  },
+  {
+    name: 'active',
+    documentation: 'Whether the patient is active',
+    type: 'token',
+  },
+] as const satisfies ReadonlyArray<CapabilityStatementSearchParam>;
+
+// Generate schema automatically
+export const patientSearchSchema = rest.codecs.createSearchParametersSchema(patientSearchParams);
+
+.search((builder) =>
+  builder.params(patientSearchSchema).handler(async (context, params) => {
+    // Automatic validation with proper FHIR parameter structure
+    // No manual parsing needed
+  })
+)
 ```
 
 **Automatic ZOD Error Response:**
@@ -46,16 +81,7 @@ HTTP 400 Bad Request
       "severity": "error",
       "code": "value",
       "details": {
-        "text": "Name must be at least 2 characters"
-      },
-      "diagnostics": "schema validation",
-      "expression": ["name"]
-    },
-    {
-      "severity": "error",
-      "code": "value",
-      "details": {
-        "text": "Date must be in YYYY-MM-DD format"
+        "text": "Invalid date format for birthdate parameter"
       },
       "diagnostics": "schema validation",
       "expression": ["birthdate"]
@@ -698,3 +724,122 @@ res.status(404).json(outcome);
 - Explore [Context Management](./context.md) for request handling
 - Check out [Deployment](./deployment.md) strategies
 - See [Builder API](./builder-api.md) for more patterns
+
+## Validation with Zod
+
+The FHIR server uses [Zod](https://zod.dev/) for runtime validation. When validation fails, ZOD errors are automatically converted to FHIR-compliant `OperationOutcome` responses.
+
+### Search Parameter Validation
+
+Use the proper search parameter definition and schema generation patterns:
+
+```typescript
+// Define search parameters as constants
+import * as rest from '@solarahealth/fhir-r4-server';
+import type { CapabilityStatementSearchParam } from '@solarahealth/fhir-r4';
+
+export const patientSearchParams = [
+  {
+    name: 'name',
+    documentation: 'Patient name (minimum 2 characters)',
+    type: 'string',
+  },
+  {
+    name: 'birthdate',
+    documentation: 'Patient birth date in YYYY-MM-DD format',
+    type: 'date',
+  },
+  {
+    name: 'active',
+    documentation: 'Whether the patient is active',
+    type: 'token',
+  },
+] as const satisfies ReadonlyArray<CapabilityStatementSearchParam>;
+
+// Generate schema with built-in validation
+export const patientSearchSchema = rest.codecs.createSearchParametersSchema(patientSearchParams);
+
+// Use in search handler
+.search((builder) =>
+  builder.params(patientSearchSchema).handler(async (context, params) => {
+    // Automatic validation - errors automatically converted to OperationOutcome
+    // No need for manual validation - the schema handles it
+
+    // Helper functions for parameter handling
+    const getFirstValue = <T>(param: T[][] | undefined): T | undefined => {
+      return param?.[0]?.[0];
+    };
+
+    const nameQuery = getFirstValue(params.name);
+    if (nameQuery) {
+      // nameQuery.value is guaranteed to be valid due to schema validation
+      console.log(`Searching for: ${nameQuery.value}`);
+    }
+
+    // Continue with validated parameters...
+  })
+)
+```
+
+**Automatic Schema Error Response:**
+
+When search parameters fail validation, the server automatically returns:
+
+```json
+HTTP 400 Bad Request
+{
+  "resourceType": "OperationOutcome",
+  "issue": [
+    {
+      "severity": "error",
+      "code": "value",
+      "details": {
+        "text": "Invalid date format for birthdate parameter"
+      },
+      "diagnostics": "schema validation",
+      "expression": ["birthdate"]
+    }
+  ]
+}
+```
+
+### Input Validation with Search Parameters
+
+Combine automatic schema validation with custom business logic:
+
+```typescript
+import { patientSearchParams, patientSearchSchema } from './patient-search-params';
+
+// The schema automatically validates parameter formats
+.search((builder) =>
+  builder.params(patientSearchSchema).handler(async (context, params) => {
+    // Parameters are already validated by the schema
+    const getFirstValue = <T>(param: T[][] | undefined): T | undefined => {
+      return param?.[0]?.[0];
+    };
+
+    // Additional business validation
+    const nameQuery = getFirstValue(params.name);
+    if (nameQuery && nameQuery.value.length < 2) {
+      throw new errors.BadRequest('Name must be at least 2 characters long');
+    }
+
+    const birthdateQuery = getFirstValue(params.birthdate);
+    if (birthdateQuery) {
+      const birthYear = birthdateQuery.date.getFullYear();
+      const currentYear = new Date().getFullYear();
+      if (birthYear > currentYear) {
+        throw new errors.BadRequest('Birth date cannot be in the future');
+      }
+    }
+
+    // Continue with search...
+    const results = await context.database.patients.search(params);
+    return {
+      resourceType: 'Bundle',
+      type: 'searchset',
+      entry: results.map(resource => ({ resource })),
+    };
+  })
+)
+```
