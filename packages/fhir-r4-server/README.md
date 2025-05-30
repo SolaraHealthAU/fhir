@@ -94,39 +94,39 @@ app.listen(3000, () => {
 
 ## Documentation
 
-📖 **[Complete Documentation](./docs/index.md)**
+📖 **[Complete Documentation](https://github.com/SolaraHealthAU/fhir/blob/main/packages/fhir-r4-server/docs/index.md)**
 
 ### Quick Links
 
 - **Getting Started**
 
-  - [Installation](./docs/getting-started/installation.md) - Set up the package
-  - [Quick Start](./docs/getting-started/quick-start.md) - Build your first FHIR server
-  - [Core Concepts](./docs/getting-started/core-concepts.md) - Understand the fundamentals
+  - [Installation](https://github.com/SolaraHealthAU/fhir/blob/main/packages/fhir-r4-server/docs/getting-started/installation.md) - Set up the package
+  - [Quick Start](https://github.com/SolaraHealthAU/fhir/blob/main/packages/fhir-r4-server/docs/getting-started/quick-start.md) - Build your first FHIR server
+  - [Core Concepts](https://github.com/SolaraHealthAU/fhir/blob/main/packages/fhir-r4-server/docs/getting-started/core-concepts.md) - Understand the fundamentals
 
 - **Guides**
 
-  - [Builder API](./docs/guides/builder-api.md) - Learn the resource builder pattern
-  - [Resource Operations](./docs/guides/resource-operations.md) - Implement read, search, and more
-  - [Search Parameters](./docs/guides/search-parameters.md) - Configure and implement FHIR search
-  - [Database Integration](./docs/guides/database-integration.md) - Connect to your data layer
-  - [Mapping Objects to FHIR Objects](./docs/guides/mapping-objects-to-fhir-objects.md) - Transform your data models
-  - [Context](./docs/guides/context.md) - Work with request context and user data
-  - [Error Handling](./docs/guides/error-handling.md) - Handle errors the FHIR way
-  - [Multitenancy](./docs/guides/multitenancy.md) - Build multi-tenant FHIR servers
-  - [XML Support](./docs/guides/xml-support.md) - Enable XML format support
-  - [Deployment](./docs/guides/deployment.md) - Deploy to various environments
+  - [Builder API](https://github.com/SolaraHealthAU/fhir/blob/main/packages/fhir-r4-server/docs/guides/builder-api.md) - Learn the resource builder pattern
+  - [Resource Operations](https://github.com/SolaraHealthAU/fhir/blob/main/packages/fhir-r4-server/docs/guides/resource-operations.md) - Implement read, search, and more
+  - [Search Parameters](https://github.com/SolaraHealthAU/fhir/blob/main/packages/fhir-r4-server/docs/guides/search-parameters.md) - Configure and implement FHIR search
+  - [Database Integration](https://github.com/SolaraHealthAU/fhir/blob/main/packages/fhir-r4-server/docs/guides/database-integration.md) - Connect to your data layer
+  - [Mapping Objects to FHIR Objects](https://github.com/SolaraHealthAU/fhir/blob/main/packages/fhir-r4-server/docs/guides/mapping-objects-to-fhir-objects.md) - Transform your data models
+  - [Context](https://github.com/SolaraHealthAU/fhir/blob/main/packages/fhir-r4-server/docs/guides/context.md) - Work with request context and user data
+  - [Error Handling](https://github.com/SolaraHealthAU/fhir/blob/main/packages/fhir-r4-server/docs/guides/error-handling.md) - Handle errors the FHIR way
+  - [Multitenancy](https://github.com/SolaraHealthAU/fhir/blob/main/packages/fhir-r4-server/docs/guides/multitenancy.md) - Build multi-tenant FHIR servers
+  - [XML Support](https://github.com/SolaraHealthAU/fhir/blob/main/packages/fhir-r4-server/docs/guides/xml-support.md) - Enable XML format support
+  - [Deployment](https://github.com/SolaraHealthAU/fhir/blob/main/packages/fhir-r4-server/docs/guides/deployment.md) - Deploy to various environments
 
 - **Reference**
-  - [API Reference](./docs/reference/api.md) - Complete API documentation
-  - [Feature Support](./docs/reference/feature-support.md) - What's implemented and what's planned
-  - [Requirements](./docs/reference/requirements.md) - System requirements and compatibility
+  - [API Reference](https://github.com/SolaraHealthAU/fhir/blob/main/packages/fhir-r4-server/docs/reference/api.md) - Complete API documentation
+  - [Feature Support](https://github.com/SolaraHealthAU/fhir/blob/main/packages/fhir-r4-server/docs/reference/feature-support.md) - What's implemented and what's planned
+  - [Requirements](https://github.com/SolaraHealthAU/fhir/blob/main/packages/fhir-r4-server/docs/reference/requirements.md) - System requirements and compatibility
 
 ## Examples
 
-Check out the [examples directory](./examples/) for complete working examples:
+Check out the [examples directory](https://github.com/SolaraHealthAU/fhir/tree/main/packages/fhir-r4-server/examples/) for complete working examples:
 
-- **[Simple Patient Record](./examples/simple-patient-record/)**: Basic FHIR server with Patient read capability
+- **[Simple Patient Record](https://github.com/SolaraHealthAU/fhir/tree/main/packages/fhir-r4-server/examples/simple-patient-record/)**: Basic FHIR server with Patient read capability
 
 ## Requirements
 
@@ -154,7 +154,7 @@ This package is designed for modern deployment scenarios:
 - **Container Orchestration**: Kubernetes, Docker Swarm
 - **Cloud Platforms**: AWS, Google Cloud, Azure
 
-See the [Deployment Guide](./docs/guides/deployment.md) for detailed instructions.
+See the [Deployment Guide](https://github.com/SolaraHealthAU/fhir/blob/main/packages/fhir-r4-server/docs/guides/deployment.md) for detailed instructions.
 
 ## Contributing
 
@@ -166,7 +166,7 @@ MIT License - see [LICENSE](./LICENSE) file for details.
 
 ## Support
 
-- 📖 [Documentation](./docs/index.md)
+- 📖 [Documentation](https://github.com/SolaraHealthAU/fhir/blob/main/packages/fhir-r4-server/docs/index.md)
 - 🐛 [Issue Tracker](https://github.com/SolaraHealthAU/fhir/issues)
 - 💬 [Discussions](https://github.com/SolaraHealthAU/fhir/discussions)
 

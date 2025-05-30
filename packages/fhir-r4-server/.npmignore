@@ -2,6 +2,8 @@
 src/
 scripts/
 examples/
+docs/
+coverage/
 
 # Development and build files
 *.test.ts
