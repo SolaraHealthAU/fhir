@@ -56,6 +56,7 @@ Organize your mapping logic in dedicated classes for maintainability:
 ```typescript
 import type { Patient } from '@solarahealth/fhir-r4';
 import { createPatientSchema } from '@solarahealth/fhir-r4';
+import { errors } from '@solarahealth/fhir-r4-server';
 
 export class PatientMapper {
   private schema = createPatientSchema();
@@ -79,7 +80,10 @@ export class PatientMapper {
     // Validate the mapped object
     const result = this.schema.safeParse(fhirPatient);
     if (!result.success) {
-      throw new Error(`Patient mapping validation failed: ${JSON.stringify(result.error.issues)}`);
+      throw new errors.ResourceInvalid(
+        'Patient',
+        `Patient mapping validation failed: ${JSON.stringify(result.error.issues)}`,
+      );
     }
 
     return result.data;
@@ -280,7 +284,8 @@ export class LabResultMapper {
     // Validate before returning
     const result = this.schema.safeParse(observation);
     if (!result.success) {
-      throw new Error(
+      throw new errors.ResourceInvalid(
+        'Observation',
         `Lab result mapping validation failed: ${JSON.stringify(result.error.issues)}`,
       );
     }
@@ -680,7 +685,10 @@ export class OptimizedMapper {
   static validatePatient(patient: Patient): Patient {
     const result = OptimizedMapper.patientSchema.safeParse(patient);
     if (!result.success) {
-      throw new Error(`Validation failed: ${JSON.stringify(result.error.issues)}`);
+      throw new errors.ResourceInvalid(
+        'Patient',
+        `Validation failed: ${JSON.stringify(result.error.issues)}`,
+      );
     }
     return result.data;
   }
@@ -732,7 +740,7 @@ private mapDate(dateInput: Date | string | null): string | undefined {
   try {
     const date = new Date(dateInput);
     if (isNaN(date.getTime())) {
-      throw new Error('Invalid date');
+      throw new errors.BadRequest('Invalid date');
     }
     return date.toISOString().split('T')[0]; // YYYY-MM-DD
   } catch (error) {
@@ -741,52 +749,3 @@ private mapDate(dateInput: Date | string | null): string | undefined {
   }
 }
 ```
-
-### 2. Null vs Undefined Handling
-
-FHIR prefers undefined over null for optional fields:
-
-```typescript
-private mapOptionalString(value: string | null | undefined): string | undefined {
-  return value || undefined; // Converts null/empty string to undefined
-}
-
-private mapOptionalArray<T>(items: T[] | null | undefined): T[] | undefined {
-  return items && items.length > 0 ? items : undefined;
-}
-```
-
-### 3. Code System Mapping
-
-Maintain centralized code system mappings:
-
-```typescript
-export const CODE_SYSTEMS = {
-  LOINC: 'http://loinc.org',
-  SNOMED: 'http://snomed.info/sct',
-  ICD10: 'http://hl7.org/fhir/sid/icd-10-cm',
-  UCUM: 'http://unitsofmeasure.org',
-} as const;
-
-export const OBSERVATION_CATEGORIES = {
-  VITAL_SIGNS: {
-    system: 'http://terminology.hl7.org/CodeSystem/observation-category',
-    code: 'vital-signs',
-    display: 'Vital Signs',
-  },
-  LABORATORY: {
-    system: 'http://terminology.hl7.org/CodeSystem/observation-category',
-    code: 'laboratory',
-    display: 'Laboratory',
-  },
-} as const;
-```
-
-## Next Steps
-
-- Review [Database Integration](./database-integration.md) for storage patterns
-- Check [Validation and Error Handling](./validation-and-error-handling.md) for advanced validation techniques
-- Explore [Resource Operations](./resource-operations.md) for CRUD operations with mapped objects
-- See [Testing Guide](./testing.md) for comprehensive testing strategies
-
-This mapping approach ensures your healthcare data maintains FHIR compliance while providing the flexibility to work with your existing data structures.

@@ -85,7 +85,7 @@ export const createMultiTenantContext = async (args: {
   const tenantId = args.req.params.tenant;
 
   if (!tenantId) {
-    throw new Error('Tenant ID is required');
+    throw new errors.BadRequest('Tenant ID is required');
   }
 
   // Validate tenant exists and user has access
@@ -221,7 +221,7 @@ export const createHeaderBasedContext: ExpressContextFunction<HeaderBasedContext
   const authToken = args.req.headers.authorization;
 
   if (!tenantId) {
-    throw new Error('X-Tenant-ID header is required');
+    throw new errors.BadRequest('X-Tenant-ID header is required');
   }
 
   // Validate token has access to tenant
@@ -364,6 +364,8 @@ Always validate tenant access before processing requests:
 
 ```typescript
 // src/security/tenant-validator.ts
+import { errors } from '@solarahealth/fhir-r4-server';
+
 export async function validateTenantAccess(
   token: string,
   tenantId: string,
@@ -372,7 +374,7 @@ export async function validateTenantAccess(
 
   // Check if user has access to tenant
   if (!decodedToken.tenants?.includes(tenantId)) {
-    throw new Error('Unauthorized access to tenant');
+    throw new errors.Forbidden('Unauthorized access to tenant');
   }
 
   return {
@@ -389,16 +391,18 @@ Implement safeguards to prevent accidental cross-tenant data access:
 
 ```typescript
 // src/security/data-access-guard.ts
+import { errors } from '@solarahealth/fhir-r4-server';
+
 export function createDataAccessGuard(allowedTenantId: string) {
   return {
     beforeQuery: (query: DatabaseQuery) => {
       // Ensure all queries include tenant filter
       if (!query.where?.tenantId) {
-        throw new Error('All queries must include tenant filter');
+        throw new errors.BadRequest('All queries must include tenant filter');
       }
 
       if (query.where.tenantId !== allowedTenantId) {
-        throw new Error('Cross-tenant data access attempted');
+        throw new errors.Forbidden('Cross-tenant data access attempted');
       }
     },
   };
@@ -479,12 +483,12 @@ const createContext = async (args: {
   const userId = args.req.headers['x-user-id'] as string;
 
   if (!tenantId) {
-    throw new Error('Tenant ID is required');
+    throw new errors.BadRequest('Tenant ID is required');
   }
 
   // Validate tenant exists
   if (!tenantData[tenantId]) {
-    throw new Error(`Tenant '${tenantId}' not found`);
+    throw new errors.NotFound(`Tenant '${tenantId}' not found`);
   }
 
   return {

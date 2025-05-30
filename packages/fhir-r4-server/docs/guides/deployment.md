@@ -603,7 +603,8 @@ TERMINOLOGY_SERVER_URL=https://tx.fhir.org
 ### Configuration Management
 
 ```typescript
-// config.ts
+import { errors } from '@solarahealth/fhir-r4-server';
+
 interface Config {
   port: number;
   nodeEnv: string;
@@ -644,7 +645,9 @@ function validateConfig(config: Config) {
   const missing = required.filter((key) => !process.env[key]);
 
   if (missing.length > 0) {
-    throw new Error(`Missing required environment variables: ${missing.join(', ')}`);
+    throw new errors.InternalServerError(
+      `Missing required environment variables: ${missing.join(', ')}`,
+    );
   }
 }
 

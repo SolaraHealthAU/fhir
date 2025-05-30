@@ -1043,6 +1043,7 @@ Sometimes you need to integrate with external FHIR servers or APIs.
 // services/external-api.service.ts
 import axios, { AxiosInstance } from 'axios';
 import type { Patient as FhirPatient, Bundle } from '@solarahealth/fhir-r4';
+import { errors } from '@solarahealth/fhir-r4-server';
 import type { PatientSearchParams } from '../database/patient-search-params';
 
 export class ExternalApiService {
@@ -1067,7 +1068,7 @@ export class ExternalApiService {
       if (error.response?.status === 404) {
         return null;
       }
-      throw new Error(`Failed to fetch patient: ${error.message}`);
+      throw new errors.InternalServerError(`Failed to fetch patient: ${error.message}`);
     }
   }
 
@@ -1154,7 +1155,7 @@ export class ExternalApiService {
         total: bundle.total || 0,
       };
     } catch (error) {
-      throw new Error(`Failed to search patients: ${error.message}`);
+      throw new errors.InternalServerError(`Failed to search patients: ${error.message}`);
     }
   }
 }
@@ -1303,160 +1304,3 @@ export async function teardownTestDatabase() {
   await testDataSource.destroy();
 }
 ```
-
-### Repository Testing
-
-```typescript
-// tests/patient-repository.test.ts
-import { setupTestDatabase, teardownTestDatabase } from './database-setup';
-import { PatientService } from '../services/patient.service';
-
-describe('PatientService', () => {
-  let dataSource: DataSource;
-  let patientService: PatientService;
-
-  beforeAll(async () => {
-    dataSource = await setupTestDatabase();
-    patientService = new PatientService(dataSource.getRepository(PatientEntity));
-  });
-
-  afterAll(async () => {
-    await teardownTestDatabase();
-  });
-
-  beforeEach(async () => {
-    // Clear data before each test
-    await dataSource.getRepository(PatientEntity).clear();
-  });
-
-  it('should find patient by id', async () => {
-    // Create test patient
-    const patientEntity = dataSource.getRepository(PatientEntity).create({
-      id: 'test-123',
-      active: true,
-      name: [{ given: ['John'], family: 'Doe' }],
-    });
-    await dataSource.getRepository(PatientEntity).save(patientEntity);
-
-    // Test retrieval
-    const patient = await patientService.findById('test-123');
-
-    expect(patient).toBeTruthy();
-    expect(patient?.id).toBe('test-123');
-    expect(patient?.name?.[0]?.given?.[0]).toBe('John');
-  });
-
-  it('should return null for non-existent patient', async () => {
-    const patient = await patientService.findById('non-existent');
-    expect(patient).toBeNull();
-  });
-
-  it('should search patients with proper parameter handling', async () => {
-    // Create test patients
-    const patients = [
-      {
-        id: 'test-1',
-        name: [{ given: ['John'], family: 'Doe' }],
-        gender: 'male',
-        active: true,
-      },
-      {
-        id: 'test-2',
-        name: [{ given: ['Jane'], family: 'Smith' }],
-        gender: 'female',
-        active: true,
-      },
-    ];
-
-    for (const patientData of patients) {
-      const entity = dataSource.getRepository(PatientEntity).create(patientData);
-      await dataSource.getRepository(PatientEntity).save(entity);
-    }
-
-    // Test search with properly structured parameters
-    const mockSearchParams = {
-      name: [[{ op: 'startsWith' as const, value: 'John' }]],
-      _count: 10,
-    };
-
-    const results = await patientService.search(mockSearchParams);
-
-    expect(results.patients).toHaveLength(1);
-    expect(results.patients[0].name?.[0]?.given?.[0]).toBe('John');
-    expect(results.total).toBe(1);
-  });
-});
-```
-
-## Best Practices
-
-### 1. Use Transactions for Data Consistency
-
-```typescript
-async function createPatientWithObservations(patientData: any, observations: any[]) {
-  return db.transaction(async (trx) => {
-    // Create patient
-    const [patient] = await trx('patients').insert(patientData).returning('*');
-
-    // Create observations
-    const observationData = observations.map((obs) => ({
-      ...obs,
-      patient_id: patient.id,
-    }));
-
-    await trx('observations').insert(observationData);
-
-    return patient;
-  });
-}
-```
-
-### 2. Handle Database Errors Gracefully
-
-```typescript
-async function findPatientWithErrorHandling(id: string): Promise<FhirPatient | null> {
-  try {
-    return await patientRepository.findById(id);
-  } catch (error) {
-    if (error.code === 'ECONNREFUSED') {
-      throw new errors.InternalServerError('Database connection failed');
-    }
-    if (error.code === '23505') {
-      // Unique constraint violation
-      throw new errors.Conflict('Patient already exists');
-    }
-    throw new errors.InternalServerError('Database error occurred');
-  }
-}
-```
-
-### 3. Optimize Queries with Indexes
-
-```sql
--- Create indexes for common search patterns
-CREATE INDEX idx_patients_active ON patients(active);
-CREATE INDEX idx_patients_gender ON patients(gender);
-CREATE INDEX idx_patients_birth_date ON patients(birth_date);
-CREATE INDEX idx_patients_name_gin ON patients USING GIN ((name::jsonb));
-CREATE INDEX idx_patients_full_text ON patients USING GIN (to_tsvector('english', given_name || ' ' || family_name));
-```
-
-### 4. Use Connection Pooling
-
-```typescript
-// Configure appropriate pool sizes based on your load
-const poolConfig = {
-  min: process.env.NODE_ENV === 'production' ? 5 : 2,
-  max: process.env.NODE_ENV === 'production' ? 20 : 10,
-  acquireTimeoutMillis: 30000,
-  idleTimeoutMillis: 30000,
-};
-```
-
-## Next Steps
-
-- **Start with** [Mapping Objects to FHIR Objects](./mapping-objects-to-fhir-objects.md) for best practices on transforming your data to FHIR format
-- Review [Error Handling](./error-handling.md) for database error patterns
-- Check [Deployment](./deployment.md) for production database setup
-- Explore [Context Management](./context.md) for database connection handling
-- See [Resource Operations](./resource-operations.md) for advanced query patterns
