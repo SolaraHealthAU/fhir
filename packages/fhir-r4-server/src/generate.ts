@@ -3,7 +3,7 @@ import type { CapabilityStatement } from '@solarahealth/fhir-r4';
 export async function generate(capabilityStatement: CapabilityStatement) {
   let output = `
 import { z } from 'zod';
-import * as rest from '@healiocloud/fhir-rest-server-core';
+import * as rest from '@solarahealth/fhir-r4-server';
 import type { CapabilityStatementSearchParam } from '@solarahealth/fhir-r4';
 `;
 
@@ -20,10 +20,10 @@ const definition${typeName} = ${JSON.stringify(
         })),
       )} as const satisfies ReadonlyArray<CapabilityStatementSearchParam>;
 export function create${typeName}Schema(): z.ZodType<${typeName}> {
-  return rest.FhirR4.codecs.createSearchParametersSchema(definition${typeName});
+  return rest.codecs.createSearchParametersSchema(definition${typeName});
 };
 
-export type ${typeName} = rest.FhirR4.codecs.ParamsToShape<typeof definition${typeName}>;
+export type ${typeName} = rest.codecs.ParamsToShape<typeof definition${typeName}>;
 `;
     }
   }
