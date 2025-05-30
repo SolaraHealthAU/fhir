@@ -90,21 +90,29 @@ Always handle the case where a resource doesn't exist:
 ```typescript
 .retrieveWith(async (id, context) => {
   try {
-    const resource = await context.database.findById(id);
+    const patient = await context.database.patients.findById(id);
 
-    if (!resource) {
+    if (!patient) {
       throw new errors.ResourceNotFound('Patient', id);
     }
 
-    // Check permissions
-    if (!context.user.canRead(resource)) {
+    // Check permissions using context
+    if (context.user && !await context.user.canReadResource('Patient', id)) {
       throw new errors.Forbidden('Insufficient permissions');
     }
 
-    return resource;
+    return patient;
   } catch (error) {
+    // Log error with context information
+    context.logger?.error('Failed to retrieve patient', {
+      id,
+      userId: context.user?.id,
+      requestId: context.requestId,
+      error: error.message,
+    });
+
     if (error instanceof DatabaseError) {
-      throw new errors.InternalServerError('Database error');
+      throw new errors.InternalServerError('Database temporarily unavailable');
     }
     throw error; // Re-throw FHIR errors
   }
@@ -156,16 +164,45 @@ const patientResource = builder
   .searchParams(patientSearchParams)
   .search((builder) =>
     builder.params(patientSearchSchema).handler(async (context, params) => {
-      const results = await context.database.searchPatients(params);
+      const count = params._count || 20;
+
+      const { patients, total } = await context.database.patients.search({
+        ...params,
+        limit: count,
+      });
+
+      // Build URL for self link (if needed for your API)
+      const baseUrl = context.request?.baseUrl;
+      const selfUrl = baseUrl ? new URL(`${baseUrl}/Patient`) : null;
+
+      // Convert params back to URL query format
+      const nameQuery = getFirstValue(params.name);
+      if (nameQuery && selfUrl) {
+        let searchValue = nameQuery.value;
+        if (nameQuery.op !== 'startsWith') {
+          searchValue = `:${nameQuery.op}=${searchValue}`;
+        }
+        selfUrl.searchParams.set('name', searchValue);
+      }
+
+      if (params._count && selfUrl) {
+        selfUrl.searchParams.set('_count', params._count.toString());
+      }
 
       return {
         resourceType: 'Bundle',
         type: 'searchset',
-        total: results.length,
-        entry: results.map((resource) => ({
-          resource,
-          search: { mode: 'match' },
-        })),
+        total,
+        link: selfUrl
+          ? [
+              {
+                relation: 'self',
+                url: selfUrl.toString(),
+              },
+              // Add next/previous links as needed
+            ]
+          : undefined,
+        entry: patients.map((resource) => ({ resource })),
       };
     }),
   )
@@ -226,49 +263,9 @@ export const patientSearchParams = [
     type: 'number',
   },
 ] as const satisfies ReadonlyArray<CapabilityStatementSearchParam>;
-
-// In your search handler
-.handler(async (context, params) => {
-  const count = params._count || 20;
-
-  const { results, total } = await context.database.searchPatients({
-    ...params,
-    limit: count,
-  });
-
-  // Build URL for self link
-  const baseUrl = context.request.baseUrl;
-  const selfUrl = new URL(`${baseUrl}/Patient`);
-
-  // Convert params back to URL query format
-  const nameQuery = getFirstValue(params.name);
-  if (nameQuery) {
-    let searchValue = nameQuery.value;
-    if (nameQuery.op !== 'startsWith') {
-      searchValue = `:${nameQuery.op}=${searchValue}`;
-    }
-    selfUrl.searchParams.set('name', searchValue);
-  }
-
-  if (params._count) {
-    selfUrl.searchParams.set('_count', params._count.toString());
-  }
-
-  return {
-    resourceType: 'Bundle',
-    type: 'searchset',
-    total,
-    link: [
-      {
-        relation: 'self',
-        url: selfUrl.toString(),
-      },
-      // Add next/previous links as needed
-    ],
-    entry: results.map(resource => ({ resource })),
-  };
-})
 ```
+
+For the handler implementation, see the complete example in the Basic Search Handler section above.
 
 ### Complex Search Logic
 
@@ -382,72 +379,62 @@ const resource = builder
 
 ## Advanced Patterns
 
-### Resource Factory Pattern
+### Context-Based Resource Pattern
 
-Create reusable resource builders:
+Leverage the context system for clean resource implementations:
 
 ```typescript
-function createPatientResource(database: DatabaseConnection) {
-  return builder
-    .defineResource('Patient')
-    .read((builder) =>
-      builder.id(z.string()).retrieveWith(async (id) => {
-        return await database.patients.findById(id);
-      }),
-    )
-    .search((builder) =>
-      builder
-        .parameters(
-          z.object({
-            name: z.string().optional(),
-          }),
-        )
-        .searchWith(async (params) => {
-          const results = await database.patients.search(params);
-          return {
-            resourceType: 'Bundle',
-            type: 'searchset',
-            entry: results.map((resource) => ({ resource })),
-          };
-        }),
-    )
-    .build();
+interface AppContext extends Context {
+  database: {
+    patients: PatientRepository;
+    practitioners: PractitionerRepository;
+  };
+  user?: AuthenticatedUser;
+  requestId: string;
 }
+
+const patientResource = builder
+  .defineResource('Patient')
+  .read((builder) =>
+    builder.id(z.string().uuid()).retrieveWith(async (id, context) => {
+      const patient = await context.database.patients.findById(id);
+      if (!patient) {
+        throw new errors.ResourceNotFound('Patient', id);
+      }
+      return patient;
+    }),
+  )
+  .search((builder) =>
+    builder.params(patientSearchSchema).handler(async (context, params) => {
+      const results = await context.database.patients.search(params);
+      return {
+        resourceType: 'Bundle',
+        type: 'searchset',
+        total: results.total,
+        entry: results.patients.map((resource) => ({ resource })),
+      };
+    }),
+  )
+  .build();
 ```
 
-### Generic Resource Builder
+### Authorization Middleware Pattern
 
-Create generic builders for common patterns:
+Use context for consistent authorization across resources:
 
 ```typescript
-function createBasicResource<T extends Resource>(
-  resourceType: string,
-  dataAccess: ResourceDataAccess<T>,
-) {
-  return builder
-    .defineResource(resourceType)
-    .read((builder) =>
-      builder.id(z.string()).retrieveWith(async (id, context) => {
-        const resource = await dataAccess.findById(id, context);
-        if (!resource) {
-          throw new errors.ResourceNotFound(resourceType, id);
-        }
-        return resource;
-      }),
-    )
-    .build();
+interface AuthenticatedContext extends Context {
+  user: AuthenticatedUser; // Non-optional when using this pattern
+  database: DatabaseConnection;
 }
-```
 
-### Middleware Pattern
+// Helper function to ensure authentication
+function requireAuth<T extends any[], R>(
+  handler: (...args: [...T, AuthenticatedContext]) => Promise<R>,
+): (...args: [...T, Context]) => Promise<R> {
+  return async (...args) => {
+    const context = args[args.length - 1] as Context;
 
-Add common logic to all handlers:
-
-```typescript
-function withAuth<T>(
-  handler: (params: T, context: AuthenticatedContext) => Promise<any>
-) {
-  return async (params: T, context: AppContext) => {
     if (!context.user) {
       throw new errors.Unauthorized('Authentication required');
     }
@@ -457,48 +444,149 @@ function withAuth<T>(
       user: context.user,
     };
 
-    return handler(params, authenticatedContext);
+    return handler(...(args.slice(0, -1) as T), authenticatedContext);
   };
 }
 
 // Usage
-.retrieveWith(withAuth(async (id, context) => {
-  // context.user is guaranteed to exist
-  return await context.database.findById(id);
-}))
+const securePatientResource = builder
+  .defineResource('Patient')
+  .read((builder) =>
+    builder.id(z.string()).retrieveWith(
+      requireAuth(async (id, context) => {
+        // context.user is guaranteed to exist
+        const canRead = await context.user.canReadPatient(id);
+        if (!canRead) {
+          throw new errors.Forbidden('Insufficient permissions');
+        }
+
+        return await context.database.patients.findById(id);
+      }),
+    ),
+  )
+  .build();
+```
+
+### Repository Pattern with Context
+
+Structure your data access layer to work seamlessly with context:
+
+```typescript
+// repositories/patient-repository.ts
+export class PatientRepository {
+  constructor(private db: DatabaseConnection) {}
+
+  async findById(id: string, userContext?: { userId: string }): Promise<Patient | null> {
+    let query = this.db.patients.where({ id });
+
+    // Apply user-specific filtering if context provided
+    if (userContext?.userId) {
+      query = query.where({ accessibleBy: userContext.userId });
+    }
+
+    return await query.first();
+  }
+
+  async search(params: PatientSearchParams, userContext?: { userId: string }) {
+    // Implementation with user context consideration
+  }
+}
+
+// context.ts
+export const createContext = async ({ req }): Promise<AppContext> => {
+  return {
+    database: {
+      patients: new PatientRepository(getDatabaseConnection()),
+      practitioners: new PractitionerRepository(getDatabaseConnection()),
+    },
+    user: await authenticateUser(req.headers.authorization),
+    requestId: generateRequestId(),
+  };
+};
 ```
 
 ## Best Practices
 
-### 1. Use Strong Typing
+### 1. Use Strong Typing with Context
 
-Always define proper TypeScript interfaces:
+Always define proper TypeScript interfaces for your context:
 
 ```typescript
-interface AppContext {
-  database: DatabaseConnection;
-  user?: User;
+interface AppContext extends Context {
+  database: {
+    patients: PatientRepository;
+    observations: ObservationRepository;
+  };
+  user?: AuthenticatedUser;
   requestId: string;
+  logger: Logger;
 }
 
 const resource = builder
   .defineResource('Patient')
   .read((builder) =>
     builder
-      .id(z.string())
+      .id(z.string().uuid())
       .retrieveWith(async (id: string, context: AppContext): Promise<Patient> => {
-        // Implementation
+        context.logger.info(`Reading patient ${id}`, { requestId: context.requestId });
+        const patient = await context.database.patients.findById(id);
+
+        if (!patient) {
+          throw new errors.ResourceNotFound('Patient', id);
+        }
+
+        return patient;
       }),
   )
   .build();
 ```
 
-### 2. Validate Early
+### 2. Leverage Context for Shared Resources
+
+Use context to manage database connections, caching, and other shared resources:
+
+```typescript
+// context.ts
+export const createContext = async ({ req }): Promise<AppContext> => {
+  const requestId = req.headers['x-request-id'] || generateId();
+
+  return {
+    database: {
+      patients: new PatientRepository(getDbConnection()),
+      observations: new ObservationRepository(getDbConnection()),
+    },
+    user: await authenticateUser(req.headers.authorization),
+    requestId,
+    logger: createLogger({ requestId }),
+    cache: getCacheService(),
+  };
+};
+
+// Usage in handlers
+.retrieveWith(async (id, context) => {
+  // Check cache first
+  const cached = await context.cache.get(`patient:${id}`);
+  if (cached) return cached;
+
+  // Fetch from database
+  const patient = await context.database.patients.findById(id);
+
+  // Cache result
+  if (patient) {
+    await context.cache.set(`patient:${id}`, patient, 300);
+  }
+
+  return patient;
+})
+```
+
+### 3. Validate Early with Zod
 
 Use Zod's validation features to catch errors early:
 
 ```typescript
-.parameters(z.object({
+.id(z.string().uuid('ID must be a valid UUID'))
+.params(z.object({
   name: z.string().min(1).max(100),
   birthdate: z.string().datetime().optional(),
 }).refine(data => {
@@ -509,19 +597,25 @@ Use Zod's validation features to catch errors early:
 }))
 ```
 
-### 3. Handle Errors Gracefully
+### 4. Handle Errors Gracefully
 
-Always provide meaningful error messages:
+Always provide meaningful error messages and use context for logging:
 
 ```typescript
 .retrieveWith(async (id, context) => {
   try {
-    const resource = await context.database.findById(id);
-    if (!resource) {
+    const patient = await context.database.patients.findById(id);
+    if (!patient) {
       throw new errors.ResourceNotFound('Patient', id);
     }
-    return resource;
+    return patient;
   } catch (error) {
+    context.logger.error('Failed to retrieve patient', {
+      id,
+      error: error.message,
+      requestId: context.requestId
+    });
+
     if (error instanceof ValidationError) {
       throw new errors.BadRequest(`Invalid data: ${error.message}`);
     }
@@ -533,23 +627,40 @@ Always provide meaningful error messages:
 })
 ```
 
-### 4. Use Consistent Patterns
+### 5. Use Consistent Context Patterns
 
-Establish consistent patterns across your resources:
+Establish consistent patterns for context usage across your application:
 
 ```typescript
-// Create a base class or utility functions
-class ResourceBuilder {
-  static standardRead<T>(dataAccess: DataAccess<T>) {
-    return (builder: any) =>
-      builder.id(z.string().uuid()).retrieveWith(async (id: string, context: AppContext) => {
-        const resource = await dataAccess.findById(id, context);
-        if (!resource) {
-          throw new errors.ResourceNotFound(dataAccess.resourceType, id);
-        }
-        return resource;
-      });
+// Base context interface
+interface BaseContext extends Context {
+  requestId: string;
+  logger: Logger;
+  user?: AuthenticatedUser;
+}
+
+// Resource-specific context extensions
+interface DatabaseContext extends BaseContext {
+  database: DatabaseConnection;
+}
+
+interface CachedContext extends BaseContext {
+  cache: CacheService;
+  database: DatabaseConnection;
+}
+
+// Consistent error handling
+function handleDatabaseError(error: unknown, context: BaseContext): never {
+  context.logger.error('Database operation failed', {
+    error: error instanceof Error ? error.message : 'Unknown error',
+    requestId: context.requestId,
+  });
+
+  if (error instanceof DatabaseConnectionError) {
+    throw new errors.ServiceUnavailable('Database temporarily unavailable');
   }
+
+  throw new errors.InternalServerError('An unexpected error occurred');
 }
 ```
 
