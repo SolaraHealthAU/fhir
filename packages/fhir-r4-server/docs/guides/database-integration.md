@@ -348,7 +348,7 @@ export const patientResource = rest
   .resource('Patient')
   .searchParams(patientSearchParams)
   .read((builder) =>
-    builder.id(z.string()).handler(async (id, context) => {
+    builder.id(z.string()).retrieveWith(async (id, context) => {
       const patient = await context.database.patients.findById(id);
       if (!patient) {
         throw new errors.ResourceNotFound('Patient', id);
@@ -357,15 +357,9 @@ export const patientResource = rest
     }),
   )
   .search((builder) =>
-    builder.params(patientSearchSchema).handler(async (context, params) => {
+    builder.params(patientSearchSchema).list(async (params, context, req) => {
       const results = await context.database.patients.search(params);
-
-      return {
-        resourceType: 'Bundle',
-        type: 'searchset',
-        total: results.total,
-        entry: results.patients.map((resource) => ({ resource })),
-      };
+      return results;
     }),
   );
 

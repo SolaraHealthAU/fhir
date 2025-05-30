@@ -186,23 +186,17 @@ export type PatientSearchParams = rest.codecs.ParamsToShape<typeof patientSearch
 ### Basic Search Implementation
 
 ```typescript
-import { patientSearchParams, patientSearchSchema } from './patient-search-params';
-
 const patientResource = builder
   .defineResource('Patient')
   .searchParams(patientSearchParams)
   .search((builder) =>
-    builder.params(patientSearchSchema).handler(async (context, params) => {
+    builder.params(patientSearchSchema).list(async (params, context, req) => {
       const results = await context.database.patients.search(params);
-
       return {
         resourceType: 'Bundle',
         type: 'searchset',
         total: results.total,
-        entry: results.patients.map((patient) => ({
-          resource: patient,
-          search: { mode: 'match' },
-        })),
+        entry: results.patients.map((resource) => ({ resource })),
       };
     }),
   )
@@ -215,172 +209,175 @@ const patientResource = builder
 GET [base]/Patient?name=John&active=true
 ```
 
-### Advanced Search with Proper Parameter Handling
+### Advanced Search Implementation
+
+Handle complex queries and parameter processing:
 
 ```typescript
-.search((builder) =>
-  builder.params(patientSearchSchema).handler(async (context, params) => {
-    // Helper functions for working with double-array search parameters
-    const getFirstValue = <T>(param: T[][] | undefined): T | undefined => {
-      return param?.[0]?.[0];
-    };
+const patientResource = builder
+  .defineResource('Patient')
+  .searchParams(patientSearchParams)
+  .search((builder) =>
+    builder.params(patientSearchSchema).list(async (params, context, req) => {
+      // Helper function to extract first value from double array
+      const getFirstValue = <T>(param: T[][] | undefined): T | undefined => {
+        return param?.[0]?.[0];
+      };
 
-    const getAllValues = <T>(param: T[][] | undefined): T[] => {
-      return param?.flat() || [];
-    };
+      // Build query
+      let query = context.database.patients.createQuery();
 
-    // Build query
-    let query = context.database.patients.createQuery();
-
-    // Handle string parameters
-    const nameQuery = getFirstValue(params.name);
-    if (nameQuery) {
-      const searchTerm = nameQuery.value;
-      if (nameQuery.op === 'exact') {
-        query = query.whereRaw(
-          "CONCAT(given_name, ' ', family_name) = ?",
-          [searchTerm]
-        );
-      } else {
-        const pattern = nameQuery.op === 'contains' ? `%${searchTerm}%` : `${searchTerm}%`;
-        query = query.whereRaw(
-          "CONCAT(given_name, ' ', family_name) ILIKE ?",
-          [pattern]
-        );
+      // Handle string parameters
+      const nameQuery = getFirstValue(params.name);
+      if (nameQuery) {
+        const searchTerm = nameQuery.value;
+        if (nameQuery.op === 'exact') {
+          query = query.whereRaw("CONCAT(given_name, ' ', family_name) = ?", [searchTerm]);
+        } else {
+          const pattern = nameQuery.op === 'contains' ? `%${searchTerm}%` : `${searchTerm}%`;
+          query = query.whereRaw("CONCAT(given_name, ' ', family_name) ILIKE ?", [pattern]);
+        }
       }
-    }
 
-    const familyQuery = getFirstValue(params.family);
-    if (familyQuery) {
-      const pattern = familyQuery.op === 'exact' ? familyQuery.value :
-                     familyQuery.op === 'contains' ? `%${familyQuery.value}%` : `${familyQuery.value}%`;
-      const operator = familyQuery.op === 'exact' ? '=' : 'ILIKE';
-      query = query.where('family_name', operator, pattern);
-    }
-
-    const givenQuery = getFirstValue(params.given);
-    if (givenQuery) {
-      const pattern = givenQuery.op === 'exact' ? givenQuery.value :
-                     givenQuery.op === 'contains' ? `%${givenQuery.value}%` : `${givenQuery.value}%`;
-      const operator = givenQuery.op === 'exact' ? '=' : 'ILIKE';
-      query = query.where('given_name', operator, pattern);
-    }
-
-    // Handle date parameters
-    const birthdateQuery = getFirstValue(params.birthdate);
-    if (birthdateQuery) {
-      const date = birthdateQuery.date;
-      switch (birthdateQuery.prefix) {
-        case 'eq':
-          const nextDay = new Date(date.getTime() + 24 * 60 * 60 * 1000);
-          query = query.whereBetween('birth_date', [date, nextDay]);
-          break;
-        case 'lt':
-          query = query.where('birth_date', '<', date);
-          break;
-        case 'le':
-          query = query.where('birth_date', '<=', date);
-          break;
-        case 'gt':
-          query = query.where('birth_date', '>', date);
-          break;
-        case 'ge':
-          query = query.where('birth_date', '>=', date);
-          break;
-        case 'ne':
-          query = query.where('birth_date', '!=', date);
-          break;
+      const familyQuery = getFirstValue(params.family);
+      if (familyQuery) {
+        const pattern =
+          familyQuery.op === 'exact'
+            ? familyQuery.value
+            : familyQuery.op === 'contains'
+              ? `%${familyQuery.value}%`
+              : `${familyQuery.value}%`;
+        const operator = familyQuery.op === 'exact' ? '=' : 'ILIKE';
+        query = query.where('family_name', operator, pattern);
       }
-    }
 
-    // Handle token parameters
-    const genderQuery = getFirstValue(params.gender);
-    if (genderQuery?.codingCodeOrIdentifierValue) {
-      query = query.where('gender', genderQuery.codingCodeOrIdentifierValue);
-    }
+      const givenQuery = getFirstValue(params.given);
+      if (givenQuery) {
+        const pattern =
+          givenQuery.op === 'exact'
+            ? givenQuery.value
+            : givenQuery.op === 'contains'
+              ? `%${givenQuery.value}%`
+              : `${givenQuery.value}%`;
+        const operator = givenQuery.op === 'exact' ? '=' : 'ILIKE';
+        query = query.where('given_name', operator, pattern);
+      }
 
-    const activeQuery = getFirstValue(params.active);
-    if (activeQuery?.codingCodeOrIdentifierValue) {
-      query = query.where('active', activeQuery.codingCodeOrIdentifierValue === 'true');
-    }
+      // Handle date parameters
+      const birthdateQuery = getFirstValue(params.birthdate);
+      if (birthdateQuery) {
+        const date = birthdateQuery.date;
+        switch (birthdateQuery.prefix) {
+          case 'eq':
+            const nextDay = new Date(date.getTime() + 24 * 60 * 60 * 1000);
+            query = query.whereBetween('birth_date', [date, nextDay]);
+            break;
+          case 'lt':
+            query = query.where('birth_date', '<', date);
+            break;
+          case 'le':
+            query = query.where('birth_date', '<=', date);
+            break;
+          case 'gt':
+            query = query.where('birth_date', '>', date);
+            break;
+          case 'ge':
+            query = query.where('birth_date', '>=', date);
+            break;
+          case 'ne':
+            query = query.where('birth_date', '!=', date);
+            break;
+        }
+      }
 
-    // Handle multiple identifiers (OR logic)
-    const allIdentifiers = getAllValues(params.identifier);
-    if (allIdentifiers.length > 0) {
-      query = query.where(function () {
-        allIdentifiers.forEach((id) => {
-          this.orWhere('identifier', id.codingCodeOrIdentifierValue);
+      // Handle token parameters
+      const genderQuery = getFirstValue(params.gender);
+      if (genderQuery?.codingCodeOrIdentifierValue) {
+        query = query.where('gender', genderQuery.codingCodeOrIdentifierValue);
+      }
+
+      const activeQuery = getFirstValue(params.active);
+      if (activeQuery?.codingCodeOrIdentifierValue) {
+        query = query.where('active', activeQuery.codingCodeOrIdentifierValue === 'true');
+      }
+
+      // Handle multiple identifiers (OR logic)
+      const allIdentifiers = getAllValues(params.identifier);
+      if (allIdentifiers.length > 0) {
+        query = query.where(function () {
+          allIdentifiers.forEach((id) => {
+            this.orWhere('identifier', id.codingCodeOrIdentifierValue);
+          });
         });
-      });
-    }
-
-    // Apply sorting
-    if (params._sort) {
-      params._sort.forEach((sort) => {
-        query = query.orderBy(sort.field, sort.direction);
-      });
-    } else {
-      query = query.orderBy('updated_at', 'desc');
-    }
-
-    // Get total count (before pagination)
-    const totalQuery = query.clone();
-    const total = await totalQuery.count('* as count').first();
-
-    // Apply pagination
-    const count = params._count || 20;
-    query = query.limit(count);
-
-    // Execute query
-    const patients = await query;
-
-    // Build response bundle
-    const baseUrl = context.request.baseUrl;
-    const searchUrl = new URL(`${baseUrl}/Patient`);
-
-    // Convert search parameters back to URL format for links
-    const urlParams = new URLSearchParams();
-
-    if (nameQuery) {
-      let value = nameQuery.value;
-      if (nameQuery.op !== 'startsWith') {
-        value = `:${nameQuery.op}=${value}`;
       }
-      urlParams.append('name', value);
-    }
 
-    if (familyQuery) {
-      let value = familyQuery.value;
-      if (familyQuery.op !== 'startsWith') {
-        value = `:${familyQuery.op}=${value}`;
+      // Apply sorting
+      if (params._sort) {
+        params._sort.forEach((sort) => {
+          query = query.orderBy(sort.field, sort.direction);
+        });
+      } else {
+        query = query.orderBy('updated_at', 'desc');
       }
-      urlParams.append('family', value);
-    }
 
-    if (params._count) {
-      urlParams.append('_count', params._count.toString());
-    }
+      // Get total count (before pagination)
+      const totalQuery = query.clone();
+      const total = await totalQuery.count('* as count').first();
 
-    const bundle: Bundle = {
-      resourceType: 'Bundle',
-      type: 'searchset',
-      total: total.count,
-      link: [
-        {
-          relation: 'self',
-          url: `${searchUrl}?${urlParams}`,
-        },
-      ],
-      entry: patients.map(patient => ({
-        resource: await context.transformer.toFhir(patient),
-        search: { mode: 'match' },
-        fullUrl: `${baseUrl}/Patient/${patient.id}`,
-      })),
-    };
+      // Apply pagination
+      const count = params._count || 20;
+      query = query.limit(count);
 
-    return bundle;
-  })
-)
+      // Execute query
+      const patients = await query;
+
+      // Build response bundle
+      const baseUrl = context.request.baseUrl;
+      const searchUrl = new URL(`${baseUrl}/Patient`);
+
+      // Convert search parameters back to URL format for links
+      const urlParams = new URLSearchParams();
+
+      if (nameQuery) {
+        let value = nameQuery.value;
+        if (nameQuery.op !== 'startsWith') {
+          value = `:${nameQuery.op}=${value}`;
+        }
+        urlParams.append('name', value);
+      }
+
+      if (familyQuery) {
+        let value = familyQuery.value;
+        if (familyQuery.op !== 'startsWith') {
+          value = `:${familyQuery.op}=${value}`;
+        }
+        urlParams.append('family', value);
+      }
+
+      if (params._count) {
+        urlParams.append('_count', params._count.toString());
+      }
+
+      const bundle: Bundle = {
+        resourceType: 'Bundle',
+        type: 'searchset',
+        total: total.count,
+        link: [
+          {
+            relation: 'self',
+            url: `${searchUrl}?${urlParams}`,
+          },
+        ],
+        entry: patients.map((patient) => ({
+          resource: await context.transformer.toFhir(patient),
+          search: { mode: 'match' },
+          fullUrl: `${baseUrl}/Patient/${patient.id}`,
+        })),
+      };
+
+      return bundle;
+    }),
+  );
 ```
 
 ### Search with Includes
@@ -388,7 +385,7 @@ GET [base]/Patient?name=John&active=true
 Support `_include` parameters for related resources:
 
 ```typescript
-.handler(async (context, params) => {
+.list(async (params, context, req) => {
   // Helper function for working with double-array search parameters
   const getFirstValue = <T>(param: T[][] | undefined): T | undefined => {
     return param?.[0]?.[0];
@@ -488,7 +485,7 @@ const resource = rest
   .resource('Patient')
   .searchParams(patientSearchParams)
   .search((builder) =>
-    builder.params(patientSearchSchema).handler(async (context, params) => {
+    builder.params(patientSearchSchema).list(async (params, context, req) => {
       // Implementation with proper parameter handling
     }),
   );

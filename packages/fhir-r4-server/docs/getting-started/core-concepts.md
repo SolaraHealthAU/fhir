@@ -98,13 +98,9 @@ export const patientSearchSchema = rest.codecs.createSearchParametersSchema(pati
 
 // Use in resource definition
 .search((builder) =>
-  builder.params(patientSearchSchema).handler(async (context, params) => {
-    const results = await context.database.search(params);
-    return {
-      resourceType: 'Bundle',
-      type: 'searchset',
-      entry: results.map(resource => ({ resource })),
-    };
+  builder.params(patientSearchSchema).list(async (params, context, req) => {
+    const results = await context.database.searchPatients(params);
+    return createSearchBundle(results);
   })
 )
 ```

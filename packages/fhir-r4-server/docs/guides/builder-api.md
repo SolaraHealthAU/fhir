@@ -163,46 +163,13 @@ const patientResource = builder
   .defineResource('Patient')
   .searchParams(patientSearchParams)
   .search((builder) =>
-    builder.params(patientSearchSchema).handler(async (context, params) => {
-      const count = params._count || 20;
-
-      const { patients, total } = await context.database.patients.search({
-        ...params,
-        limit: count,
-      });
-
-      // Build URL for self link (if needed for your API)
-      const baseUrl = context.request?.baseUrl;
-      const selfUrl = baseUrl ? new URL(`${baseUrl}/Patient`) : null;
-
-      // Convert params back to URL query format
-      const nameQuery = getFirstValue(params.name);
-      if (nameQuery && selfUrl) {
-        let searchValue = nameQuery.value;
-        if (nameQuery.op !== 'startsWith') {
-          searchValue = `:${nameQuery.op}=${searchValue}`;
-        }
-        selfUrl.searchParams.set('name', searchValue);
-      }
-
-      if (params._count && selfUrl) {
-        selfUrl.searchParams.set('_count', params._count.toString());
-      }
-
+    builder.params(patientSearchSchema).list(async (params, context, req) => {
+      const results = await context.database.patients.search(params);
       return {
         resourceType: 'Bundle',
         type: 'searchset',
-        total,
-        link: selfUrl
-          ? [
-              {
-                relation: 'self',
-                url: selfUrl.toString(),
-              },
-              // Add next/previous links as needed
-            ]
-          : undefined,
-        entry: patients.map((resource) => ({ resource })),
+        total: results.total,
+        entry: results.patients.map((resource) => ({ resource })),
       };
     }),
   )
@@ -214,7 +181,7 @@ const patientResource = builder
 Handle the double-array structure and parameter types correctly:
 
 ```typescript
-.handler(async (context, params) => {
+.list(async (params, context, req) => {
   // Helper functions for working with double-array search parameters
   const getFirstValue = <T>(param: T[][] | undefined): T | undefined => {
     return param?.[0]?.[0];
@@ -272,7 +239,7 @@ For the handler implementation, see the complete example in the Basic Search Han
 Handle complex search scenarios with proper parameter types:
 
 ```typescript
-.handler(async (context, params) => {
+.list(async (params, context, req) => {
   // Helper functions
   const getFirstValue = <T>(param: T[][] | undefined): T | undefined => {
     return param?.[0]?.[0];
@@ -339,12 +306,12 @@ const patientResource = builder
   .defineResource('Patient')
   .searchParams(patientSearchParams)
   .read((builder) =>
-    builder.id(z.string()).handler(async (id, context) => {
+    builder.id(z.string()).retrieveWith(async (id, context) => {
       // Read implementation
     }),
   )
   .search((builder) =>
-    builder.params(patientSearchSchema).handler(async (context, params) => {
+    builder.params(patientSearchSchema).list(async (params, context, req) => {
       // Search implementation
     }),
   )
@@ -405,7 +372,7 @@ const patientResource = builder
     }),
   )
   .search((builder) =>
-    builder.params(patientSearchSchema).handler(async (context, params) => {
+    builder.params(patientSearchSchema).list(async (params, context, req) => {
       const results = await context.database.patients.search(params);
       return {
         resourceType: 'Bundle',

@@ -202,7 +202,7 @@ const patientResource = builder
     }),
   )
   .search((builder) =>
-    builder.params(patientSearchSchema).handler(async (context, params) => {
+    builder.params(patientSearchSchema).list(async (params, context, req) => {
       // Helper functions for working with double-array search parameters
       const getFirstValue = <T>(param: T[][] | undefined): T | undefined => {
         return param?.[0]?.[0];

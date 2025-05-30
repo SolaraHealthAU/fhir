@@ -103,6 +103,9 @@ Starts building a resource definition.
 **Example:**
 
 ```typescript
+import { builder } from '@solarahealth/fhir-r4-server';
+// or: import { defineResource } from '@solarahealth/fhir-r4-server/builder';
+
 const patientResource = builder.defineResource('Patient').read(/* handler */).build();
 ```
 
@@ -114,7 +117,7 @@ Adds read capability to the resource.
 
 **Parameters:**
 
-- `handler: (builder: ReadBuilder) => ReadDefinition` - Read operation handler
+- `handler: (builder: ReadBuilder) => ReadBuilder` - Read operation handler
 
 **Returns:** `ResourceBuilder` (for chaining)
 
@@ -136,7 +139,7 @@ Defines a search operation for the resource.
 
 **Parameters:**
 
-- `builder: (SearchBuilder) => SearchDefinition` - Function to configure the search operation
+- `builder: (SearchBuilder) => SearchBuilder` - Function to configure the search operation
 
 **Returns:** `ResourceBuilder` (for chaining)
 
@@ -144,7 +147,7 @@ Defines a search operation for the resource.
 
 ```typescript
 .search((builder) =>
-  builder.params(patientSearchSchema).handler(async (context, params) => {
+  builder.params(patientSearchSchema).list(async (params, context, req) => {
     // Implementation
   })
 )
@@ -217,7 +220,7 @@ Defines ID parameter validation.
 .id(z.string().uuid('ID must be a valid UUID'))
 ```
 
-#### `.handler(handler)`
+#### `.retrieveWith(handler)`
 
 Defines the read operation implementation.
 
@@ -225,7 +228,7 @@ Defines the read operation implementation.
 
 - `handler: ReadHandler<C>` - Function to retrieve the resource
 
-**Returns:** `ReadDefinition`
+**Returns:** `ReadBuilder`
 
 ```typescript
 type ReadHandler<C> = (id: string, context: C) => Promise<Resource>;
@@ -234,7 +237,7 @@ type ReadHandler<C> = (id: string, context: C) => Promise<Resource>;
 **Example:**
 
 ```typescript
-.handler(async (id, context) => {
+.retrieveWith(async (id, context) => {
   const resource = await context.database.findById(id);
   if (!resource) {
     throw new errors.ResourceNotFound('Patient', id);
@@ -281,7 +284,7 @@ const patientSearchSchema = rest.codecs.createSearchParametersSchema(patientSear
 .params(patientSearchSchema)
 ```
 
-#### `.handler(handler)`
+#### `.list(handler)`
 
 Defines the search operation implementation.
 
@@ -289,16 +292,20 @@ Defines the search operation implementation.
 
 - `handler: SearchHandler<C>` - Function to perform the search
 
-**Returns:** `SearchDefinition`
+**Returns:** `SearchBuilder`
 
 ```typescript
-type SearchHandler<C> = (context: C, params: any) => Promise<Bundle>;
+type SearchHandler<C> = (
+  params: ParamsOut,
+  context: C,
+  req: { query: Record<string, string | string[]> },
+) => Promise<Bundle>;
 ```
 
 **Example:**
 
 ```typescript
-.handler(async (context, params) => {
+.list(async (params, context, req) => {
   // Helper functions for parameter handling
   const getFirstValue = <T>(param: T[][] | undefined): T | undefined => {
     return param?.[0]?.[0];

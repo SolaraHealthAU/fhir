@@ -63,7 +63,7 @@ export const patientSearchParams = [
 export const patientSearchSchema = rest.codecs.createSearchParametersSchema(patientSearchParams);
 
 .search((builder) =>
-  builder.params(patientSearchSchema).handler(async (context, params) => {
+  builder.params(patientSearchSchema).list(async (params, context, req) => {
     // Automatic validation with proper FHIR parameter structure
     // No manual parsing needed
   })
@@ -761,7 +761,7 @@ export const patientSearchSchema = rest.codecs.createSearchParametersSchema(pati
 
 // Use in search handler
 .search((builder) =>
-  builder.params(patientSearchSchema).handler(async (context, params) => {
+  builder.params(patientSearchSchema).list(async (params, context, req) => {
     // Automatic validation - errors automatically converted to OperationOutcome
     // No need for manual validation - the schema handles it
 
@@ -812,7 +812,7 @@ import { patientSearchParams, patientSearchSchema } from './patient-search-param
 
 // The schema automatically validates parameter formats
 .search((builder) =>
-  builder.params(patientSearchSchema).handler(async (context, params) => {
+  builder.params(patientSearchSchema).list(async (params, context, req) => {
     // Parameters are already validated by the schema
     const getFirstValue = <T>(param: T[][] | undefined): T | undefined => {
       return param?.[0]?.[0];
