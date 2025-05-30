@@ -2,6 +2,19 @@
 
 A TypeScript-first FHIR R4 server middleware for Node.js Express applications. This package provides a builder-based approach to create FHIR-compliant REST APIs with minimal boilerplate, allowing you to focus on mapping your data to FHIR resources.
 
+Built as a modern alternative to traditional FHIR server frameworks, this package emphasizes developer experience, type safety, and deployment flexibility for today's TypeScript developers.
+
+## Why This Package?
+
+While existing FHIR server implementations like [bluehalo/node-fhir-server-core](https://github.com/bluehalo/node-fhir-server-core) provide comprehensive solutions, they often come with complex configurations and opinionated architectures. Our approach focuses on:
+
+- **TypeScript-First**: Built from the ground up with TypeScript, providing excellent IntelliSense and compile-time safety
+- **Express Integration**: Works seamlessly alongside your existing Express routes and middleware
+- **Builder Pattern**: Intuitive, fluent API that makes FHIR resource definition straightforward
+- **Modern Deployment**: Designed for serverless environments (AWS Lambda, Vercel) and containerized deployments
+- **Unopinionated Data Layer**: You control how data is stored and retrieved using your preferred strategies
+- **Minimal Dependencies**: Lightweight core with only essential dependencies
+
 ## Features
 
 - 🚀 **Express Middleware**: Easy integration with existing Express.js applications
@@ -11,12 +24,53 @@ A TypeScript-first FHIR R4 server middleware for Node.js Express applications. T
 - 📊 **Auto-generated Capability Statement**: Automatically generates FHIR capability statements
 - ⚡ **Validation**: Built-in request/response validation using Zod
 - 🎯 **FHIR Compliant**: Follows FHIR R4 REST API specifications
+- ☁️ **Serverless Ready**: Deploy to AWS Lambda, Vercel, or any Node.js environment
+- 🔧 **Developer Experience**: IntelliSense, type checking, and excellent IDE support
+
+## Feature Support
+
+This package is a work in progress. Below is the current implementation status:
+
+### Instance Level Interactions
+
+- ✅ **read**: Retrieve a resource by ID
+- ⏳ **vread**: Retrieve a specific version of a resource (todo)
+- ⏳ **update**: Update a resource (todo)
+- ⏳ **patch**: Partial update of a resource (todo)
+- ⏳ **delete**: Delete a resource (todo)
+- ⏳ **history**: Retrieve change history for a resource (todo)
+
+### Type Level Interactions
+
+- ⏳ **create**: Create new resources (todo)
+- ✅ **search**: Search for resources with parameters
+- ⏳ **history**: Retrieve change history for a resource type (todo)
+
+### Whole System Interactions
+
+- ✅ **capabilities**: Capability statement generation
+- ⏳ **batch/transaction**: Process multiple operations (todo)
+- ⏳ **history**: Retrieve change history for the server (todo)
+- ⏳ **search**: Search across all resource types (todo)
+
+### General Features
+
+- 🟡 **\_format**: Limited support for response format
+- ⏳ **\_pretty**: Pretty-print JSON responses (todo)
+
+### Content Types and Encoding
+
+- 🟡 **XML**: Available via `fhir` package
+- ✅ **JSON**: Full support
+- ⏳ **RDF**: Resource Description Framework support (todo)
 
 ## Installation
 
 ```bash
 npm install @solarahealth/fhir-r4-server @solarahealth/fhir-r4 express
 ```
+
+**Note**: This package is designed to be unopinionated about your data storage and retrieval strategies. Use the companion [`@solarahealth/fhir-r4`](https://www.npmjs.com/package/@solarahealth/fhir-r4) package to help translate your data models to FHIR-compliant resources.
 
 ## Quick Start
 
@@ -312,6 +366,74 @@ const patientResource = builder
   .build();
 ```
 
+## Deployment
+
+This package is designed for modern deployment scenarios:
+
+### Traditional Server Deployment
+
+```typescript
+// server.ts
+import express from 'express';
+import { RestServer, builder } from '@solarahealth/fhir-r4-server';
+
+const app = express();
+app.use(express.json());
+
+// Your FHIR server setup
+const fhirServer = RestServer.init(/* ... */);
+app.use('/fhir', RestServer.expressMiddleware(fhirServer, { context: createContext }));
+
+app.listen(process.env.PORT || 3000);
+```
+
+### AWS Lambda Deployment
+
+```typescript
+// lambda.ts
+import serverless from 'serverless-http';
+import express from 'express';
+import { RestServer, builder } from '@solarahealth/fhir-r4-server';
+
+const app = express();
+app.use(express.json());
+
+// Your FHIR server setup
+const fhirServer = RestServer.init(/* ... */);
+app.use('/fhir', RestServer.expressMiddleware(fhirServer, { context: createContext }));
+
+export const handler = serverless(app);
+```
+
+### Vercel Deployment
+
+```typescript
+// api/fhir/[...slug].ts
+import type { VercelRequest, VercelResponse } from '@vercel/node';
+import express from 'express';
+import { RestServer, builder } from '@solarahealth/fhir-r4-server';
+
+const app = express();
+app.use(express.json());
+
+const fhirServer = RestServer.init(/* ... */);
+app.use('/api/fhir', RestServer.expressMiddleware(fhirServer, { context: createContext }));
+
+export default app;
+```
+
+### Docker Deployment
+
+```dockerfile
+FROM node:18-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+EXPOSE 3000
+CMD ["node", "dist/server.js"]
+```
+
 ## Examples
 
 Check out the [examples directory](./examples/) for complete working examples:
@@ -320,15 +442,15 @@ Check out the [examples directory](./examples/) for complete working examples:
 
 ## Requirements
 
-- Node.js >= 16.0.0
+- Node.js >= 18.0.0 (for modern JavaScript features and optimal performance)
 - Express.js ^5.1.0
-- TypeScript (recommended)
+- TypeScript >= 4.5.0 (strongly recommended for the best development experience)
 
 ## Dependencies
 
-- `@solarahealth/fhir-r4`: FHIR R4 type definitions and utilities
+- `@solarahealth/fhir-r4`: FHIR R4 type definitions, utilities, and data transformation helpers
 - `express`: Web framework (peer dependency)
-- `zod`: Runtime type validation
+- `zod`: Runtime type validation and schema parsing
 
 ## Contributing
 
