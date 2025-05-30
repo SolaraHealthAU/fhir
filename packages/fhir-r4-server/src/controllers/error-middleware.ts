@@ -87,7 +87,6 @@ const errorMiddleware =
           });
 
         default:
-          console.log('error', error);
           // Handle unexpected errors
           return sendFhirResponse(deps)(req, res, {
             status: 500,

@@ -282,15 +282,20 @@ const patientResource = builder
       return await context.database.findPatient(id);
     }),
   )
+  .searchParams([
+    {
+      name: 'name',
+      type: 'string',
+    },
+  ])
   .search((builder) =>
     builder
-      .parameters(
+      .params(
         z.object({
           name: z.string().optional(),
-          birthdate: z.string().optional(),
         }),
       )
-      .searchWith(async (params, context) => {
+      .list(async (params, context, req) => {
         const results = await context.database.searchPatients(params);
         return {
           resourceType: 'Bundle',
