@@ -37,11 +37,14 @@ While existing FHIR server implementations like [bluehalo/node-fhir-server-core]
 
 - [Builder API](./guides/builder-api.md) - Learn the resource builder pattern
 - [Resource Operations](./guides/resource-operations.md) - Implement read, search, and other operations
+- [Search Parameters](./guides/search-parameters.md) - Implement and customize search functionality
+- [Mapping Objects to FHIR Objects](./guides/mapping-objects-to-fhir-objects.md) - Transform your data to FHIR resources
 - [Context Management](./guides/context.md) - Request-scoped data handling
 - [Error Handling](./guides/error-handling.md) - Handle errors the FHIR way
-- [Deployment](./guides/deployment.md) - Deploy to various environments
 - [Database Integration](./guides/database-integration.md) - Connect to your data layer
-- [XML Support](./guides/application-xml-support.md) - Working with XML responses
+- [Multitenancy](./guides/multitenancy.md) - Build multi-tenant FHIR applications
+- [Deployment](./guides/deployment.md) - Deploy to various environments
+- [XML Support](./guides/xml-support.md) - Working with XML responses
 
 ### Reference
 
@@ -53,7 +56,9 @@ While existing FHIR server implementations like [bluehalo/node-fhir-server-core]
 
 **New to FHIR servers?** Start with [Installation](./getting-started/installation.md) and [Quick Start](./getting-started/quick-start.md).
 
-**Building resources?** Check out the [Builder API Guide](./guides/builder-api.md) and [Resource Operations](./guides/resource-operations.md).
+**Building resources?** Check out the [Builder API Guide](./guides/builder-api.md), [Resource Operations](./guides/resource-operations.md), [Search Parameters](./guides/search-parameters.md), and [Mapping Objects to FHIR Objects](./guides/mapping-objects-to-fhir-objects.md).
+
+**Managing multi-tenant applications?** See the [Multitenancy Guide](./guides/multitenancy.md).
 
 **Ready to deploy?** See our [Deployment Guide](./guides/deployment.md) for various deployment scenarios.
 
