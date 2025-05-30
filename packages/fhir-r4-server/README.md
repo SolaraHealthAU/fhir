@@ -108,8 +108,13 @@ app.listen(3000, () => {
 
   - [Builder API](./docs/guides/builder-api.md) - Learn the resource builder pattern
   - [Resource Operations](./docs/guides/resource-operations.md) - Implement read, search, and more
+  - [Search Parameters](./docs/guides/search-parameters.md) - Configure and implement FHIR search
   - [Database Integration](./docs/guides/database-integration.md) - Connect to your data layer
+  - [Mapping Objects to FHIR Objects](./docs/guides/mapping-objects-to-fhir-objects.md) - Transform your data models
+  - [Context](./docs/guides/context.md) - Work with request context and user data
   - [Error Handling](./docs/guides/error-handling.md) - Handle errors the FHIR way
+  - [Multitenancy](./docs/guides/multitenancy.md) - Build multi-tenant FHIR servers
+  - [XML Support](./docs/guides/xml-support.md) - Enable XML format support
   - [Deployment](./docs/guides/deployment.md) - Deploy to various environments
 
 - **Reference**
