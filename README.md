@@ -6,7 +6,7 @@ A comprehensive TypeScript ecosystem for working with HL7 FHIR R4 resources. Whe
 
 This project provides two complementary packages that work together to make FHIR development simple and type-safe:
 
-### 🏗️ **For Application Developers** - `@solarahealth/fhir-r4` `@solarahealth/fhir-r5`
+### 🏗️ **For Application Developers** - `@solarahealth/fhir-r4`
 
 Use FHIR types and validation in your own applications, whether you're building client apps, custom servers, or data processing pipelines.
 
@@ -16,13 +16,14 @@ Quickly build FHIR-compliant REST APIs with Express.js middleware that handles r
 
 ## 🎯 Key Features
 
-- **🔒 Complete Type Safety**: Full TypeScript definitions for all FHIR R4/R5 resources
+- **🔒 Complete Type Safety**: Full TypeScript definitions for all FHIR R4 resources
 - **✅ Runtime Validation**: Zod-powered schemas catch errors before they cause problems
 - **🚀 Express Integration**: Ready-to-use middleware for building FHIR servers
-- **📚 Comprehensive Coverage**: Support for all 150+ FHIR R4/R5 resource types
+- **📚 Comprehensive Coverage**: Support for all 150+ FHIR R4 resource types
 - **🌳 Tree Shakeable**: Only bundle what you use
 - **⚡ Auto-Generated**: Always up-to-date with official FHIR specifications
 - **🏗️ Builder Pattern**: Intuitive APIs for defining FHIR capabilities
+- **☁️ Modern Deployment**: Built for serverless environments (AWS Lambda, Vercel) and traditional servers
 
 ## 📊 Performance at a Glance
 
@@ -67,11 +68,13 @@ npm install @solarahealth/fhir-r4
 - Support for both CommonJS and ES modules
 - Tree-shakeable exports
 
+📚 **[View detailed documentation →](packages/fhir-r4/README.md)**
+
 ### `@solarahealth/fhir-r4-server`
 
 **Express.js middleware for building FHIR REST APIs**
 
-Perfect for developers who want to quickly expose their healthcare data through a FHIR-compliant REST API.
+Perfect for developers who want to quickly expose their healthcare data through a FHIR-compliant REST API with modern deployment capabilities.
 
 ```bash
 npm install @solarahealth/fhir-r4-server @solarahealth/fhir-r4 express
@@ -83,6 +86,7 @@ npm install @solarahealth/fhir-r4-server @solarahealth/fhir-r4 express
 - Exposing existing healthcare data via FHIR
 - Creating FHIR facades for legacy systems
 - Rapid prototyping of FHIR servers
+- Serverless FHIR API deployment
 
 **Key Features:**
 
@@ -91,6 +95,9 @@ npm install @solarahealth/fhir-r4-server @solarahealth/fhir-r4 express
 - Built-in request/response validation
 - Flexible data access layer (bring your own database)
 - FHIR R4 REST API compliance
+- Modern deployment support (AWS Lambda, Vercel, etc.)
+
+📚 **[View detailed documentation →](packages/fhir-r4-server/README.md)**
 
 ## 🏁 Quick Start Examples
 
@@ -187,21 +194,37 @@ app.listen(3000, () => {
 
 ## 🎯 Choose Your Path
 
-### I want to work with FHIR data in my application
+### 🏥 I want to work with FHIR data in my application
 
-→ Start with `@solarahealth/fhir-r4` for types and validation
+**Scenario**: You're building a healthcare app, need to validate FHIR resources, or want to work with FHIR data in your existing application.
 
-### I want to build a FHIR REST API
+→ **Start with** [`@solarahealth/fhir-r4`](packages/fhir-r4/README.md) for types and validation
 
-→ Use both packages: `@solarahealth/fhir-r4-server` + `@solarahealth/fhir-r4`
+**Examples**: Client applications, data processors, FHIR validators, integration utilities
 
-### I want to integrate with existing FHIR systems
+### 🌐 I want to build a FHIR REST API server
 
-→ Start with `@solarahealth/fhir-r4` for client-side validation and types
+**Scenario**: You need to expose healthcare data through a FHIR-compliant REST API, either from scratch or as a facade over existing systems.
 
-### I want to expose legacy healthcare data via FHIR
+→ **Use both packages**: [`@solarahealth/fhir-r4-server`](packages/fhir-r4-server/README.md) + [`@solarahealth/fhir-r4`](packages/fhir-r4/README.md)
 
-→ Use `@solarahealth/fhir-r4-server` to create a FHIR facade
+**Examples**: FHIR servers, API gateways, healthcare data APIs, legacy system facades
+
+### 🔗 I want to integrate with existing FHIR systems
+
+**Scenario**: You need to consume data from FHIR APIs, validate incoming FHIR resources, or build FHIR-compatible clients.
+
+→ **Start with** [`@solarahealth/fhir-r4`](packages/fhir-r4/README.md) for client-side validation and types
+
+**Examples**: EHR integrations, FHIR clients, data synchronization tools
+
+### 🔧 I want to modernize legacy healthcare data systems
+
+**Scenario**: You have existing healthcare data in non-FHIR formats and want to expose it through a modern FHIR REST API.
+
+→ **Use** [`@solarahealth/fhir-r4-server`](packages/fhir-r4-server/README.md) to create a FHIR facade with your data mapping logic
+
+**Examples**: Legacy database APIs, HL7 v2 to FHIR converters, proprietary format bridges
 
 ## 💡 More Examples
 
@@ -448,18 +471,44 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🔗 Related Links
 
-- [HL7 FHIR R4 Specification](https://hl7.org/fhir/R4/)
-- [Zod Documentation](https://zod.dev/)
-- [TypeScript Documentation](https://www.typescriptlang.org/)
+- **[HL7 FHIR R4 Specification](https://hl7.org/fhir/R4/)** - Official FHIR R4 documentation
+- **[FHIR R4 Resource Index](https://hl7.org/fhir/R4/resourcelist.html)** - Complete list of FHIR R4 resources
+- **[US Core Implementation Guide](https://hl7.org/fhir/us/core/)** - US-specific FHIR profiles
+- **[Zod Documentation](https://zod.dev/)** - Runtime validation library used in our packages
+- **[TypeScript Documentation](https://www.typescriptlang.org/)** - TypeScript language reference
+- **[Express.js Documentation](https://expressjs.com/)** - Express web framework for Node.js
 
 ## 🆘 Support
 
-If you encounter any issues or have questions about either package:
+If you encounter any issues or have questions:
+
+### 📋 General Support
 
 1. Check the [existing issues](../../issues)
-2. Create a new issue with a detailed description
-3. Include code examples and error messages when applicable
-4. Specify which package you're using (`@solarahealth/fhir-r4` or `@solarahealth/fhir-r4-server`)
+2. Search the package-specific documentation for your use case
+3. Create a new issue with a detailed description
+4. Include code examples and error messages when applicable
+
+### 📚 Package-Specific Help
+
+**For `@solarahealth/fhir-r4` (types and validation)**:
+
+- 📖 [Complete documentation](packages/fhir-r4/README.md)
+- Common issues: Schema validation, TypeScript compilation, import/export problems
+
+**For `@solarahealth/fhir-r4-server` (REST API middleware)**:
+
+- 📖 [Complete documentation](packages/fhir-r4-server/README.md)
+- Common issues: Express integration, resource handlers, deployment configurations
+
+### 💬 Getting Help
+
+When reporting issues, please specify:
+
+- Which package you're using (`@solarahealth/fhir-r4` or `@solarahealth/fhir-r4-server`)
+- Your Node.js and TypeScript versions
+- Minimal code example that reproduces the issue
+- Expected vs actual behavior
 
 ### Package-Specific Documentation
 
