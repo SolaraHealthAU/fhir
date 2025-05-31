@@ -3,6 +3,7 @@ src/
 scripts/
 bin/
 specifications/
+tests/
 
 # Development and build files
 *.test.ts

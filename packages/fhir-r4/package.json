@@ -50,6 +50,7 @@
     "test": "NODE_ENV=test && jest",
     "lint": "eslint src",
     "generate:r4": "esr scripts/generate/R4/generate.ts",
+    "generate:fixtures": "esr scripts/generate/R4/generate-tests-and-fixtures.ts",
     "generate": "./bin/download-specifications && npm run generate:r4",
     "prepublishOnly": "npm run build"
   },
