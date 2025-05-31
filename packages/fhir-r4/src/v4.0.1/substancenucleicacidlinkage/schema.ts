@@ -15,17 +15,15 @@ export function createSubstanceNucleicAcidLinkageSchema() {
     const baseSchema: z.ZodType<types.SubstanceNucleicAcidLinkage> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         connectivity: primitives.getStringSchema().optional(),
-        _connectivity: z.lazy(() => createElementSchema()).optional(),
-        identifier: z.lazy(() => createIdentifierSchema()).optional(),
+        _connectivity: createElementSchema().optional(),
+        identifier: createIdentifierSchema().optional(),
         name: primitives.getStringSchema().optional(),
-        _name: z.lazy(() => createElementSchema()).optional(),
+        _name: createElementSchema().optional(),
         residueSite: primitives.getStringSchema().optional(),
-        _residueSite: z.lazy(() => createElementSchema()).optional(),
+        _residueSite: createElementSchema().optional(),
       });
 
     return baseSchema;

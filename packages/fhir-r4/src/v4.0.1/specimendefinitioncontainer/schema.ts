@@ -17,22 +17,20 @@ export function createSpecimenDefinitionContainerSchema() {
     const baseSchema: z.ZodType<types.SpecimenDefinitionContainer> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         material: createCodeableConceptSchema().optional(),
         type: createCodeableConceptSchema().optional(),
         cap: createCodeableConceptSchema().optional(),
         description: primitives.getStringSchema().optional(),
-        _description: z.lazy(() => createElementSchema()).optional(),
+        _description: createElementSchema().optional(),
         capacity: createQuantitySchema().optional(),
         minimumVolumeQuantity: createQuantitySchema().optional(),
         minimumVolumeString: z.string().optional(),
-        _minimumVolumeString: z.lazy(() => createElementSchema()).optional(),
+        _minimumVolumeString: createElementSchema().optional(),
         additive: z.array(createSpecimenDefinitionAdditiveSchema()).optional(),
         preparation: primitives.getStringSchema().optional(),
-        _preparation: z.lazy(() => createElementSchema()).optional(),
+        _preparation: createElementSchema().optional(),
       });
 
     return baseSchema;

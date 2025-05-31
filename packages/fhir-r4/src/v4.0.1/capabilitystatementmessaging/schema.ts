@@ -13,15 +13,13 @@ export function createCapabilityStatementMessagingSchema() {
     const baseSchema: z.ZodType<types.CapabilityStatementMessaging> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         endpoint: z.array(createCapabilityStatementEndpointSchema()).optional(),
         reliableCache: primitives.getUnsignedIntSchema().optional(),
-        _reliableCache: z.lazy(() => createElementSchema()).optional(),
+        _reliableCache: createElementSchema().optional(),
         documentation: primitives.getMarkdownSchema().optional(),
-        _documentation: z.lazy(() => createElementSchema()).optional(),
+        _documentation: createElementSchema().optional(),
         supportedMessage: z
           .array(createCapabilityStatementSupportedMessageSchema())
           .optional(),

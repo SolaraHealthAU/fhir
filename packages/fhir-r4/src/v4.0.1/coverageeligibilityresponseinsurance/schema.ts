@@ -17,13 +17,11 @@ export function createCoverageEligibilityResponseInsuranceSchema() {
     const baseSchema: z.ZodType<types.CoverageEligibilityResponseInsurance> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         coverage: createReferenceSchema(),
         inforce: primitives.getBooleanSchema().optional(),
-        _inforce: z.lazy(() => createElementSchema()).optional(),
+        _inforce: createElementSchema().optional(),
         benefitPeriod: createPeriodSchema().optional(),
         item: z.array(createCoverageEligibilityResponseItemSchema()).optional(),
       });

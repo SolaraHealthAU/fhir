@@ -15,15 +15,13 @@ export function createDeviceDefinitionMaterialSchema() {
     const baseSchema: z.ZodType<types.DeviceDefinitionMaterial> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         substance: createCodeableConceptSchema(),
         alternate: primitives.getBooleanSchema().optional(),
-        _alternate: z.lazy(() => createElementSchema()).optional(),
+        _alternate: createElementSchema().optional(),
         allergenicIndicator: primitives.getBooleanSchema().optional(),
-        _allergenicIndicator: z.lazy(() => createElementSchema()).optional(),
+        _allergenicIndicator: createElementSchema().optional(),
       });
 
     return baseSchema;

@@ -16,10 +16,8 @@ export function createMeasureReportStratumSchema() {
   return getCachedSchema("MeasureReportStratum", () => {
     const baseSchema: z.ZodType<types.MeasureReportStratum> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       value: createCodeableConceptSchema().optional(),
       component: z.array(createMeasureReportComponentSchema()).optional(),
       population: z.array(createMeasureReportPopulation1Schema()).optional(),

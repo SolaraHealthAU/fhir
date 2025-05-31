@@ -15,13 +15,11 @@ export function createAdverseEventCausalitySchema() {
   return getCachedSchema("AdverseEventCausality", () => {
     const baseSchema: z.ZodType<types.AdverseEventCausality> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       assessment: createCodeableConceptSchema().optional(),
       productRelatedness: primitives.getStringSchema().optional(),
-      _productRelatedness: z.lazy(() => createElementSchema()).optional(),
+      _productRelatedness: createElementSchema().optional(),
       author: createReferenceSchema().optional(),
       method: createCodeableConceptSchema().optional(),
     });

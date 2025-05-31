@@ -17,20 +17,18 @@ export function createCoverageEligibilityResponseItemSchema() {
     const baseSchema: z.ZodType<types.CoverageEligibilityResponseItem> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         category: createCodeableConceptSchema().optional(),
         productOrService: createCodeableConceptSchema().optional(),
         modifier: z.array(createCodeableConceptSchema()).optional(),
         provider: createReferenceSchema().optional(),
         excluded: primitives.getBooleanSchema().optional(),
-        _excluded: z.lazy(() => createElementSchema()).optional(),
+        _excluded: createElementSchema().optional(),
         name: primitives.getStringSchema().optional(),
-        _name: z.lazy(() => createElementSchema()).optional(),
+        _name: createElementSchema().optional(),
         description: primitives.getStringSchema().optional(),
-        _description: z.lazy(() => createElementSchema()).optional(),
+        _description: createElementSchema().optional(),
         network: createCodeableConceptSchema().optional(),
         unit: createCodeableConceptSchema().optional(),
         term: createCodeableConceptSchema().optional(),
@@ -38,12 +36,12 @@ export function createCoverageEligibilityResponseItemSchema() {
           .array(createCoverageEligibilityResponseBenefitSchema())
           .optional(),
         authorizationRequired: primitives.getBooleanSchema().optional(),
-        _authorizationRequired: z.lazy(() => createElementSchema()).optional(),
+        _authorizationRequired: createElementSchema().optional(),
         authorizationSupporting: z
           .array(createCodeableConceptSchema())
           .optional(),
         authorizationUrl: primitives.getUriSchema().optional(),
-        _authorizationUrl: z.lazy(() => createElementSchema()).optional(),
+        _authorizationUrl: createElementSchema().optional(),
       });
 
     return baseSchema;

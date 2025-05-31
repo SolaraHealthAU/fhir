@@ -27,23 +27,21 @@ export function createMedicinalProductSchema() {
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),
       implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      _implicitRules: createElementSchema().optional(),
       language: primitives.getCodeSchema().optional(),
-      _language: z.lazy(() => createElementSchema()).optional(),
+      _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
       contained: z.array(createResourceListSchema()).optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      identifier: z.array(createIdentifierSchema()).optional(),
       type: createCodeableConceptSchema().optional(),
       domain: createCodingSchema().optional(),
       combinedPharmaceuticalDoseForm: createCodeableConceptSchema().optional(),
       legalStatusOfSupply: createCodeableConceptSchema().optional(),
       additionalMonitoringIndicator: createCodeableConceptSchema().optional(),
       specialMeasures: z.array(primitives.getStringSchema()).optional(),
-      _specialMeasures: z.array(z.lazy(() => createElementSchema())).optional(),
+      _specialMeasures: z.array(createElementSchema()).optional(),
       paediatricUseIndicator: createCodeableConceptSchema().optional(),
       productClassification: z.array(createCodeableConceptSchema()).optional(),
       marketingStatus: z.array(createMarketingStatusSchema()).optional(),
@@ -54,9 +52,7 @@ export function createMedicinalProductSchema() {
       contact: z.array(createReferenceSchema()).optional(),
       clinicalTrial: z.array(createReferenceSchema()).optional(),
       name: z.array(createMedicinalProductNameSchema()),
-      crossReference: z
-        .array(z.lazy(() => createIdentifierSchema()))
-        .optional(),
+      crossReference: z.array(createIdentifierSchema()).optional(),
       manufacturingBusinessOperation: z
         .array(createMedicinalProductManufacturingBusinessOperationSchema())
         .optional(),

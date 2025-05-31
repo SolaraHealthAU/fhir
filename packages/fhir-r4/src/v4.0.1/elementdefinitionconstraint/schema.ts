@@ -11,22 +11,20 @@ export function createElementDefinitionConstraintSchema() {
     const baseSchema: z.ZodType<types.ElementDefinitionConstraint> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         key: primitives.getIdSchema(),
-        _key: z.lazy(() => createElementSchema()).optional(),
+        _key: createElementSchema().optional(),
         requirements: primitives.getStringSchema().optional(),
-        _requirements: z.lazy(() => createElementSchema()).optional(),
+        _requirements: createElementSchema().optional(),
         severity: z.enum(["error", "warning"]),
-        _severity: z.lazy(() => createElementSchema()).optional(),
+        _severity: createElementSchema().optional(),
         human: primitives.getStringSchema(),
-        _human: z.lazy(() => createElementSchema()).optional(),
+        _human: createElementSchema().optional(),
         expression: primitives.getStringSchema().optional(),
-        _expression: z.lazy(() => createElementSchema()).optional(),
+        _expression: createElementSchema().optional(),
         xpath: primitives.getStringSchema().optional(),
-        _xpath: z.lazy(() => createElementSchema()).optional(),
+        _xpath: createElementSchema().optional(),
         source: primitives.getCanonicalSchema().optional(),
       });
 

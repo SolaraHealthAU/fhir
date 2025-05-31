@@ -13,18 +13,16 @@ export function createExampleScenarioInstanceSchema() {
     const baseSchema: z.ZodType<types.ExampleScenarioInstance> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         resourceId: primitives.getStringSchema(),
-        _resourceId: z.lazy(() => createElementSchema()).optional(),
+        _resourceId: createElementSchema().optional(),
         resourceType: z.literal("ExampleScenarioInstance"),
-        _resourceType: z.lazy(() => createElementSchema()).optional(),
+        _resourceType: createElementSchema().optional(),
         name: primitives.getStringSchema().optional(),
-        _name: z.lazy(() => createElementSchema()).optional(),
+        _name: createElementSchema().optional(),
         description: primitives.getMarkdownSchema().optional(),
-        _description: z.lazy(() => createElementSchema()).optional(),
+        _description: createElementSchema().optional(),
         version: z.array(createExampleScenarioVersionSchema()).optional(),
         containedInstance: z
           .array(createExampleScenarioContainedInstanceSchema())

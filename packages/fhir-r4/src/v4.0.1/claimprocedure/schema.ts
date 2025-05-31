@@ -15,15 +15,13 @@ export function createClaimProcedureSchema() {
   return getCachedSchema("ClaimProcedure", () => {
     const baseSchema: z.ZodType<types.ClaimProcedure> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       sequence: primitives.getPositiveIntSchema(),
-      _sequence: z.lazy(() => createElementSchema()).optional(),
+      _sequence: createElementSchema().optional(),
       type: z.array(createCodeableConceptSchema()).optional(),
       date: primitives.getDateTimeSchema().optional(),
-      _date: z.lazy(() => createElementSchema()).optional(),
+      _date: createElementSchema().optional(),
       procedureCodeableConcept: createCodeableConceptSchema().optional(),
       procedureReference: createReferenceSchema().optional(),
       udi: z.array(createReferenceSchema()).optional(),

@@ -16,16 +16,14 @@ export function createAppointmentParticipantSchema() {
   return getCachedSchema("AppointmentParticipant", () => {
     const baseSchema: z.ZodType<types.AppointmentParticipant> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       type: z.array(createCodeableConceptSchema()).optional(),
       actor: createReferenceSchema().optional(),
       required: z.enum(["required", "optional", "information-only"]).optional(),
-      _required: z.lazy(() => createElementSchema()).optional(),
+      _required: createElementSchema().optional(),
       status: z.enum(["accepted", "declined", "tentative", "needs-action"]),
-      _status: z.lazy(() => createElementSchema()).optional(),
+      _status: createElementSchema().optional(),
       period: createPeriodSchema().optional(),
     });
 

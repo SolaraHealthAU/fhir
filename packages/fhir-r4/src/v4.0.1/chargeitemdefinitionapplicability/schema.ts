@@ -11,16 +11,14 @@ export function createChargeItemDefinitionApplicabilitySchema() {
     const baseSchema: z.ZodType<types.ChargeItemDefinitionApplicability> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         description: primitives.getStringSchema().optional(),
-        _description: z.lazy(() => createElementSchema()).optional(),
+        _description: createElementSchema().optional(),
         language: primitives.getStringSchema().optional(),
-        _language: z.lazy(() => createElementSchema()).optional(),
+        _language: createElementSchema().optional(),
         expression: primitives.getStringSchema().optional(),
-        _expression: z.lazy(() => createElementSchema()).optional(),
+        _expression: createElementSchema().optional(),
       });
 
     return baseSchema;

@@ -11,18 +11,16 @@ export function createLocationHoursOfOperationSchema() {
     const baseSchema: z.ZodType<types.LocationHoursOfOperation> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         daysOfWeek: z.array(primitives.getCodeSchema()).optional(),
-        _daysOfWeek: z.array(z.lazy(() => createElementSchema())).optional(),
+        _daysOfWeek: z.array(createElementSchema()).optional(),
         allDay: primitives.getBooleanSchema().optional(),
-        _allDay: z.lazy(() => createElementSchema()).optional(),
+        _allDay: createElementSchema().optional(),
         openingTime: primitives.getTimeSchema().optional(),
-        _openingTime: z.lazy(() => createElementSchema()).optional(),
+        _openingTime: createElementSchema().optional(),
         closingTime: primitives.getTimeSchema().optional(),
-        _closingTime: z.lazy(() => createElementSchema()).optional(),
+        _closingTime: createElementSchema().optional(),
       });
 
     return baseSchema;

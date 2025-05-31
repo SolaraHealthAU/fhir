@@ -15,15 +15,13 @@ export function createCapabilityStatementSecuritySchema() {
     const baseSchema: z.ZodType<types.CapabilityStatementSecurity> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         cors: primitives.getBooleanSchema().optional(),
-        _cors: z.lazy(() => createElementSchema()).optional(),
+        _cors: createElementSchema().optional(),
         service: z.array(createCodeableConceptSchema()).optional(),
         description: primitives.getMarkdownSchema().optional(),
-        _description: z.lazy(() => createElementSchema()).optional(),
+        _description: createElementSchema().optional(),
       });
 
     return baseSchema;

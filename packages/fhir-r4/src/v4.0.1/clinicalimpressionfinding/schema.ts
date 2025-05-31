@@ -16,14 +16,12 @@ export function createClinicalImpressionFindingSchema() {
     const baseSchema: z.ZodType<types.ClinicalImpressionFinding> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         itemCodeableConcept: createCodeableConceptSchema().optional(),
         itemReference: createReferenceSchema().optional(),
         basis: primitives.getStringSchema().optional(),
-        _basis: z.lazy(() => createElementSchema()).optional(),
+        _basis: createElementSchema().optional(),
       });
 
     return baseSchema;

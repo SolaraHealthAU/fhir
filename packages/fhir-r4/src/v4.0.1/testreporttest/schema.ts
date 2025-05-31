@@ -11,14 +11,12 @@ export function createTestReportTestSchema() {
   return getCachedSchema("TestReportTest", () => {
     const baseSchema: z.ZodType<types.TestReportTest> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       name: primitives.getStringSchema().optional(),
-      _name: z.lazy(() => createElementSchema()).optional(),
+      _name: createElementSchema().optional(),
       description: primitives.getStringSchema().optional(),
-      _description: z.lazy(() => createElementSchema()).optional(),
+      _description: createElementSchema().optional(),
       action: z.array(createTestReportAction1Schema()),
     });
 

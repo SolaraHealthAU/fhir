@@ -16,10 +16,8 @@ export function createPlanDefinitionTargetSchema() {
   return getCachedSchema("PlanDefinitionTarget", () => {
     const baseSchema: z.ZodType<types.PlanDefinitionTarget> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       measure: createCodeableConceptSchema().optional(),
       detailQuantity: createQuantitySchema().optional(),
       detailRange: createRangeSchema().optional(),

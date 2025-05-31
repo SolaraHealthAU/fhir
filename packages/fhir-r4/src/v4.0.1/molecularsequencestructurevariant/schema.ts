@@ -17,15 +17,13 @@ export function createMolecularSequenceStructureVariantSchema() {
     const baseSchema: z.ZodType<types.MolecularSequenceStructureVariant> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         variantType: createCodeableConceptSchema().optional(),
         exact: primitives.getBooleanSchema().optional(),
-        _exact: z.lazy(() => createElementSchema()).optional(),
+        _exact: createElementSchema().optional(),
         length: primitives.getIntegerSchema().optional(),
-        _length: z.lazy(() => createElementSchema()).optional(),
+        _length: createElementSchema().optional(),
         outer: createMolecularSequenceOuterSchema().optional(),
         inner: createMolecularSequenceInnerSchema().optional(),
       });

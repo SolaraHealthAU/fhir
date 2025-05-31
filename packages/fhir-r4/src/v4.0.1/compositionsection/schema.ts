@@ -16,18 +16,16 @@ export function createCompositionSectionSchema() {
   return getCachedSchema("CompositionSection", () => {
     const baseSchema: z.ZodType<types.CompositionSection> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       title: primitives.getStringSchema().optional(),
-      _title: z.lazy(() => createElementSchema()).optional(),
+      _title: createElementSchema().optional(),
       code: createCodeableConceptSchema().optional(),
       author: z.array(createReferenceSchema()).optional(),
       focus: createReferenceSchema().optional(),
       text: createNarrativeSchema().optional(),
       mode: primitives.getCodeSchema().optional(),
-      _mode: z.lazy(() => createElementSchema()).optional(),
+      _mode: createElementSchema().optional(),
       orderedBy: createCodeableConceptSchema().optional(),
       entry: z.array(createReferenceSchema()).optional(),
       emptyReason: createCodeableConceptSchema().optional(),

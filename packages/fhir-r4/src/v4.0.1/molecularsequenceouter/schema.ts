@@ -10,14 +10,12 @@ export function createMolecularSequenceOuterSchema() {
   return getCachedSchema("MolecularSequenceOuter", () => {
     const baseSchema: z.ZodType<types.MolecularSequenceOuter> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       start: primitives.getIntegerSchema().optional(),
-      _start: z.lazy(() => createElementSchema()).optional(),
+      _start: createElementSchema().optional(),
       end: primitives.getIntegerSchema().optional(),
-      _end: z.lazy(() => createElementSchema()).optional(),
+      _end: createElementSchema().optional(),
     });
 
     return baseSchema;

@@ -10,9 +10,9 @@ export function createNarrativeSchema() {
   return getCachedSchema("Narrative", () => {
     const baseSchema: z.ZodType<types.Narrative> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
+      extension: z.array(createExtensionSchema()).optional(),
       status: z.enum(["generated", "extensions", "additional", "empty"]),
-      _status: z.lazy(() => createElementSchema()).optional(),
+      _status: createElementSchema().optional(),
       div: primitives.getXhtmlSchema(),
     });
 

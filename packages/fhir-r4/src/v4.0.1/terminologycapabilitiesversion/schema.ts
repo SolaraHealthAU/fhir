@@ -12,21 +12,19 @@ export function createTerminologyCapabilitiesVersionSchema() {
     const baseSchema: z.ZodType<types.TerminologyCapabilitiesVersion> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         code: primitives.getStringSchema().optional(),
-        _code: z.lazy(() => createElementSchema()).optional(),
+        _code: createElementSchema().optional(),
         isDefault: primitives.getBooleanSchema().optional(),
-        _isDefault: z.lazy(() => createElementSchema()).optional(),
+        _isDefault: createElementSchema().optional(),
         compositional: primitives.getBooleanSchema().optional(),
-        _compositional: z.lazy(() => createElementSchema()).optional(),
+        _compositional: createElementSchema().optional(),
         language: z.array(primitives.getCodeSchema()).optional(),
-        _language: z.array(z.lazy(() => createElementSchema())).optional(),
+        _language: z.array(createElementSchema()).optional(),
         filter: z.array(createTerminologyCapabilitiesFilterSchema()).optional(),
         property: z.array(primitives.getCodeSchema()).optional(),
-        _property: z.array(z.lazy(() => createElementSchema())).optional(),
+        _property: z.array(createElementSchema()).optional(),
       });
 
     return baseSchema;

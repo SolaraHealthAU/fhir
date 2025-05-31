@@ -14,12 +14,10 @@ export function createLinkageItemSchema() {
   return getCachedSchema("LinkageItem", () => {
     const baseSchema: z.ZodType<types.LinkageItem> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       type: z.enum(["source", "alternate", "historical"]),
-      _type: z.lazy(() => createElementSchema()).optional(),
+      _type: createElementSchema().optional(),
       resource: createReferenceSchema(),
     });
 

@@ -15,14 +15,12 @@ export function createSubstancePolymerRepeatSchema() {
   return getCachedSchema("SubstancePolymerRepeat", () => {
     const baseSchema: z.ZodType<types.SubstancePolymerRepeat> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       numberOfUnits: primitives.getIntegerSchema().optional(),
-      _numberOfUnits: z.lazy(() => createElementSchema()).optional(),
+      _numberOfUnits: createElementSchema().optional(),
       averageMolecularFormula: primitives.getStringSchema().optional(),
-      _averageMolecularFormula: z.lazy(() => createElementSchema()).optional(),
+      _averageMolecularFormula: createElementSchema().optional(),
       repeatUnitAmountType: createCodeableConceptSchema().optional(),
       repeatUnit: z.array(createSubstancePolymerRepeatUnitSchema()).optional(),
     });

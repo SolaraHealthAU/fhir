@@ -16,13 +16,11 @@ export function createMeasureGroupSchema() {
   return getCachedSchema("MeasureGroup", () => {
     const baseSchema: z.ZodType<types.MeasureGroup> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       code: createCodeableConceptSchema().optional(),
       description: primitives.getStringSchema().optional(),
-      _description: z.lazy(() => createElementSchema()).optional(),
+      _description: createElementSchema().optional(),
       population: z.array(createMeasurePopulationSchema()).optional(),
       stratifier: z.array(createMeasureStratifierSchema()).optional(),
     });

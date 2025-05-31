@@ -14,10 +14,8 @@ export function createInvoiceParticipantSchema() {
   return getCachedSchema("InvoiceParticipant", () => {
     const baseSchema: z.ZodType<types.InvoiceParticipant> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       role: createCodeableConceptSchema().optional(),
       actor: createReferenceSchema(),
     });

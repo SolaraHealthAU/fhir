@@ -15,10 +15,8 @@ export function createDeviceDefinitionPropertySchema() {
     const baseSchema: z.ZodType<types.DeviceDefinitionProperty> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         type: createCodeableConceptSchema(),
         valueQuantity: z.array(createQuantitySchema()).optional(),
         valueCode: z.array(createCodeableConceptSchema()).optional(),

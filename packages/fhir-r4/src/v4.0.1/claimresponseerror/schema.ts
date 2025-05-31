@@ -14,16 +14,14 @@ export function createClaimResponseErrorSchema() {
   return getCachedSchema("ClaimResponseError", () => {
     const baseSchema: z.ZodType<types.ClaimResponseError> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       itemSequence: primitives.getPositiveIntSchema().optional(),
-      _itemSequence: z.lazy(() => createElementSchema()).optional(),
+      _itemSequence: createElementSchema().optional(),
       detailSequence: primitives.getPositiveIntSchema().optional(),
-      _detailSequence: z.lazy(() => createElementSchema()).optional(),
+      _detailSequence: createElementSchema().optional(),
       subDetailSequence: primitives.getPositiveIntSchema().optional(),
-      _subDetailSequence: z.lazy(() => createElementSchema()).optional(),
+      _subDetailSequence: createElementSchema().optional(),
       code: createCodeableConceptSchema(),
     });
 

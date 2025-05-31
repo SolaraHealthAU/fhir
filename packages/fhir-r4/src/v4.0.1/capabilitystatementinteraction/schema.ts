@@ -11,10 +11,8 @@ export function createCapabilityStatementInteractionSchema() {
     const baseSchema: z.ZodType<types.CapabilityStatementInteraction> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         code: z
           .enum([
             "read",
@@ -28,9 +26,9 @@ export function createCapabilityStatementInteractionSchema() {
             "search-type",
           ])
           .optional(),
-        _code: z.lazy(() => createElementSchema()).optional(),
+        _code: createElementSchema().optional(),
         documentation: primitives.getMarkdownSchema().optional(),
-        _documentation: z.lazy(() => createElementSchema()).optional(),
+        _documentation: createElementSchema().optional(),
       });
 
     return baseSchema;

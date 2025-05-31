@@ -16,16 +16,14 @@ export function createSubstanceSpecificationCodeSchema() {
     const baseSchema: z.ZodType<types.SubstanceSpecificationCode> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         code: createCodeableConceptSchema().optional(),
         status: createCodeableConceptSchema().optional(),
         statusDate: primitives.getDateTimeSchema().optional(),
-        _statusDate: z.lazy(() => createElementSchema()).optional(),
+        _statusDate: createElementSchema().optional(),
         comment: primitives.getStringSchema().optional(),
-        _comment: z.lazy(() => createElementSchema()).optional(),
+        _comment: createElementSchema().optional(),
         source: z.array(createReferenceSchema()).optional(),
       });
 

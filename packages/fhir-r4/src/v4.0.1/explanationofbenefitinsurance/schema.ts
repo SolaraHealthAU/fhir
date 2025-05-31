@@ -15,15 +15,13 @@ export function createExplanationOfBenefitInsuranceSchema() {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitInsurance> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         focal: primitives.getBooleanSchema(),
-        _focal: z.lazy(() => createElementSchema()).optional(),
+        _focal: createElementSchema().optional(),
         coverage: createReferenceSchema(),
         preAuthRef: z.array(primitives.getStringSchema()).optional(),
-        _preAuthRef: z.array(z.lazy(() => createElementSchema())).optional(),
+        _preAuthRef: z.array(createElementSchema()).optional(),
       });
 
     return baseSchema;

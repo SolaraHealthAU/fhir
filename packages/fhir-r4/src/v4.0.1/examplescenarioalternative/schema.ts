@@ -12,14 +12,12 @@ export function createExampleScenarioAlternativeSchema() {
     const baseSchema: z.ZodType<types.ExampleScenarioAlternative> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         title: primitives.getStringSchema().optional(),
-        _title: z.lazy(() => createElementSchema()).optional(),
+        _title: createElementSchema().optional(),
         description: primitives.getMarkdownSchema().optional(),
-        _description: z.lazy(() => createElementSchema()).optional(),
+        _description: createElementSchema().optional(),
         step: z.array(createExampleScenarioStepSchema()).optional(),
       });
 

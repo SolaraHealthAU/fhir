@@ -11,16 +11,14 @@ export function createElementDefinitionDiscriminatorSchema() {
     const baseSchema: z.ZodType<types.ElementDefinitionDiscriminator> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         type: z
           .enum(["value", "exists", "pattern", "type", "profile"])
           .optional(),
-        _type: z.lazy(() => createElementSchema()).optional(),
+        _type: createElementSchema().optional(),
         path: primitives.getStringSchema().optional(),
-        _path: z.lazy(() => createElementSchema()).optional(),
+        _path: createElementSchema().optional(),
       });
 
     return baseSchema;

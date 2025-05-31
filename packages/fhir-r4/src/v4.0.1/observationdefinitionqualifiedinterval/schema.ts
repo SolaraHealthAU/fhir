@@ -16,21 +16,19 @@ export function createObservationDefinitionQualifiedIntervalSchema() {
     const baseSchema: z.ZodType<types.ObservationDefinitionQualifiedInterval> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         category: z.enum(["reference", "critical", "absolute"]).optional(),
-        _category: z.lazy(() => createElementSchema()).optional(),
+        _category: createElementSchema().optional(),
         range: createRangeSchema().optional(),
         context: createCodeableConceptSchema().optional(),
         appliesTo: z.array(createCodeableConceptSchema()).optional(),
         gender: z.enum(["male", "female", "other", "unknown"]).optional(),
-        _gender: z.lazy(() => createElementSchema()).optional(),
+        _gender: createElementSchema().optional(),
         age: createRangeSchema().optional(),
         gestationalAge: createRangeSchema().optional(),
         condition: primitives.getStringSchema().optional(),
-        _condition: z.lazy(() => createElementSchema()).optional(),
+        _condition: createElementSchema().optional(),
       });
 
     return baseSchema;

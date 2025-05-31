@@ -10,18 +10,16 @@ export function createImmunizationEducationSchema() {
   return getCachedSchema("ImmunizationEducation", () => {
     const baseSchema: z.ZodType<types.ImmunizationEducation> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       documentType: primitives.getStringSchema().optional(),
-      _documentType: z.lazy(() => createElementSchema()).optional(),
+      _documentType: createElementSchema().optional(),
       reference: primitives.getUriSchema().optional(),
-      _reference: z.lazy(() => createElementSchema()).optional(),
+      _reference: createElementSchema().optional(),
       publicationDate: primitives.getDateTimeSchema().optional(),
-      _publicationDate: z.lazy(() => createElementSchema()).optional(),
+      _publicationDate: createElementSchema().optional(),
       presentationDate: primitives.getDateTimeSchema().optional(),
-      _presentationDate: z.lazy(() => createElementSchema()).optional(),
+      _presentationDate: createElementSchema().optional(),
     });
 
     return baseSchema;

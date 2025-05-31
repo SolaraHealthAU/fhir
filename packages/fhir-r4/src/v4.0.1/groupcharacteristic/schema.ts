@@ -18,19 +18,17 @@ export function createGroupCharacteristicSchema() {
   return getCachedSchema("GroupCharacteristic", () => {
     const baseSchema: z.ZodType<types.GroupCharacteristic> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       code: createCodeableConceptSchema(),
       valueCodeableConcept: createCodeableConceptSchema().optional(),
       valueBoolean: z.boolean().optional(),
-      _valueBoolean: z.lazy(() => createElementSchema()).optional(),
+      _valueBoolean: createElementSchema().optional(),
       valueQuantity: createQuantitySchema().optional(),
       valueRange: createRangeSchema().optional(),
       valueReference: createReferenceSchema().optional(),
       exclude: primitives.getBooleanSchema(),
-      _exclude: z.lazy(() => createElementSchema()).optional(),
+      _exclude: createElementSchema().optional(),
       period: createPeriodSchema().optional(),
     });
 

@@ -16,15 +16,13 @@ export function createExplanationOfBenefitCareTeamSchema() {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitCareTeam> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         sequence: primitives.getPositiveIntSchema(),
-        _sequence: z.lazy(() => createElementSchema()).optional(),
+        _sequence: createElementSchema().optional(),
         provider: createReferenceSchema(),
         responsible: primitives.getBooleanSchema().optional(),
-        _responsible: z.lazy(() => createElementSchema()).optional(),
+        _responsible: createElementSchema().optional(),
         role: createCodeableConceptSchema().optional(),
         qualification: createCodeableConceptSchema().optional(),
       });

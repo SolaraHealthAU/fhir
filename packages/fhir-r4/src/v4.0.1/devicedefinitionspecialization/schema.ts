@@ -11,14 +11,12 @@ export function createDeviceDefinitionSpecializationSchema() {
     const baseSchema: z.ZodType<types.DeviceDefinitionSpecialization> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         systemType: primitives.getStringSchema(),
-        _systemType: z.lazy(() => createElementSchema()).optional(),
+        _systemType: createElementSchema().optional(),
         version: primitives.getStringSchema().optional(),
-        _version: z.lazy(() => createElementSchema()).optional(),
+        _version: createElementSchema().optional(),
       });
 
     return baseSchema;

@@ -15,16 +15,14 @@ export function createObservationDefinitionQuantitativeDetailsSchema() {
     const baseSchema: z.ZodType<types.ObservationDefinitionQuantitativeDetails> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         customaryUnit: createCodeableConceptSchema().optional(),
         unit: createCodeableConceptSchema().optional(),
         conversionFactor: primitives.getDecimalSchema().optional(),
-        _conversionFactor: z.lazy(() => createElementSchema()).optional(),
+        _conversionFactor: createElementSchema().optional(),
         decimalPrecision: primitives.getIntegerSchema().optional(),
-        _decimalPrecision: z.lazy(() => createElementSchema()).optional(),
+        _decimalPrecision: createElementSchema().optional(),
       });
 
     return baseSchema;

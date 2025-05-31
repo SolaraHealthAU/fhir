@@ -16,25 +16,23 @@ export function createMolecularSequenceReferenceSeqSchema() {
     const baseSchema: z.ZodType<types.MolecularSequenceReferenceSeq> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         chromosome: createCodeableConceptSchema().optional(),
         genomeBuild: primitives.getStringSchema().optional(),
-        _genomeBuild: z.lazy(() => createElementSchema()).optional(),
+        _genomeBuild: createElementSchema().optional(),
         orientation: z.enum(["sense", "antisense"]).optional(),
-        _orientation: z.lazy(() => createElementSchema()).optional(),
+        _orientation: createElementSchema().optional(),
         referenceSeqId: createCodeableConceptSchema().optional(),
         referenceSeqPointer: createReferenceSchema().optional(),
         referenceSeqString: primitives.getStringSchema().optional(),
-        _referenceSeqString: z.lazy(() => createElementSchema()).optional(),
+        _referenceSeqString: createElementSchema().optional(),
         strand: z.enum(["watson", "crick"]).optional(),
-        _strand: z.lazy(() => createElementSchema()).optional(),
+        _strand: createElementSchema().optional(),
         windowStart: primitives.getIntegerSchema().optional(),
-        _windowStart: z.lazy(() => createElementSchema()).optional(),
+        _windowStart: createElementSchema().optional(),
         windowEnd: primitives.getIntegerSchema().optional(),
-        _windowEnd: z.lazy(() => createElementSchema()).optional(),
+        _windowEnd: createElementSchema().optional(),
       });
 
     return baseSchema;

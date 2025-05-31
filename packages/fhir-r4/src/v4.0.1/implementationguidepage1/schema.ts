@@ -11,16 +11,14 @@ export function createImplementationGuidePage1Schema() {
     const baseSchema: z.ZodType<types.ImplementationGuidePage1> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         name: primitives.getStringSchema().optional(),
-        _name: z.lazy(() => createElementSchema()).optional(),
+        _name: createElementSchema().optional(),
         title: primitives.getStringSchema().optional(),
-        _title: z.lazy(() => createElementSchema()).optional(),
+        _title: createElementSchema().optional(),
         anchor: z.array(primitives.getStringSchema()).optional(),
-        _anchor: z.array(z.lazy(() => createElementSchema())).optional(),
+        _anchor: z.array(createElementSchema()).optional(),
       });
 
     return baseSchema;

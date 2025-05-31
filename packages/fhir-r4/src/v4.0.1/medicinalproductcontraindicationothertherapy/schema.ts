@@ -15,10 +15,8 @@ export function createMedicinalProductContraindicationOtherTherapySchema() {
     const baseSchema: z.ZodType<types.MedicinalProductContraindicationOtherTherapy> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         therapyRelationshipType: createCodeableConceptSchema(),
         medicationCodeableConcept: createCodeableConceptSchema().optional(),
         medicationReference: createReferenceSchema().optional(),

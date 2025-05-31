@@ -33,23 +33,21 @@ export function createMedicationKnowledgeSchema() {
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),
       implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      _implicitRules: createElementSchema().optional(),
       language: primitives.getCodeSchema().optional(),
-      _language: z.lazy(() => createElementSchema()).optional(),
+      _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
       contained: z.array(createResourceListSchema()).optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       code: createCodeableConceptSchema().optional(),
       status: primitives.getCodeSchema().optional(),
-      _status: z.lazy(() => createElementSchema()).optional(),
+      _status: createElementSchema().optional(),
       manufacturer: createReferenceSchema().optional(),
       doseForm: createCodeableConceptSchema().optional(),
       amount: createQuantitySchema().optional(),
       synonym: z.array(primitives.getStringSchema()).optional(),
-      _synonym: z.array(z.lazy(() => createElementSchema())).optional(),
+      _synonym: z.array(createElementSchema()).optional(),
       relatedMedicationKnowledge: z
         .array(createMedicationKnowledgeRelatedMedicationKnowledgeSchema())
         .optional(),
@@ -60,7 +58,7 @@ export function createMedicationKnowledgeSchema() {
         .array(createMedicationKnowledgeIngredientSchema())
         .optional(),
       preparationInstruction: primitives.getMarkdownSchema().optional(),
-      _preparationInstruction: z.lazy(() => createElementSchema()).optional(),
+      _preparationInstruction: createElementSchema().optional(),
       intendedRoute: z.array(createCodeableConceptSchema()).optional(),
       cost: z.array(createMedicationKnowledgeCostSchema()).optional(),
       monitoringProgram: z

@@ -19,16 +19,12 @@ export function createMedicinalProductManufacturingBusinessOperationSchema() {
       const baseSchema: z.ZodType<types.MedicinalProductManufacturingBusinessOperation> =
         z.strictObject({
           id: primitives.getStringSchema().optional(),
-          extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-          modifierExtension: z
-            .array(z.lazy(() => createExtensionSchema()))
-            .optional(),
+          extension: z.array(createExtensionSchema()).optional(),
+          modifierExtension: z.array(createExtensionSchema()).optional(),
           operationType: createCodeableConceptSchema().optional(),
-          authorisationReferenceNumber: z
-            .lazy(() => createIdentifierSchema())
-            .optional(),
+          authorisationReferenceNumber: createIdentifierSchema().optional(),
           effectiveDate: primitives.getDateTimeSchema().optional(),
-          _effectiveDate: z.lazy(() => createElementSchema()).optional(),
+          _effectiveDate: createElementSchema().optional(),
           confidentialityIndicator: createCodeableConceptSchema().optional(),
           manufacturer: z.array(createReferenceSchema()).optional(),
           regulator: createReferenceSchema().optional(),

@@ -14,15 +14,13 @@ export function createValueSetDesignationSchema() {
   return getCachedSchema("ValueSetDesignation", () => {
     const baseSchema: z.ZodType<types.ValueSetDesignation> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       language: primitives.getCodeSchema().optional(),
-      _language: z.lazy(() => createElementSchema()).optional(),
+      _language: createElementSchema().optional(),
       use: createCodingSchema().optional(),
       value: primitives.getStringSchema().optional(),
-      _value: z.lazy(() => createElementSchema()).optional(),
+      _value: createElementSchema().optional(),
     });
 
     return baseSchema;

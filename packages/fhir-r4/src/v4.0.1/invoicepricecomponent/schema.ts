@@ -15,10 +15,8 @@ export function createInvoicePriceComponentSchema() {
   return getCachedSchema("InvoicePriceComponent", () => {
     const baseSchema: z.ZodType<types.InvoicePriceComponent> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       type: z
         .enum([
           "base",
@@ -29,10 +27,10 @@ export function createInvoicePriceComponentSchema() {
           "informational",
         ])
         .optional(),
-      _type: z.lazy(() => createElementSchema()).optional(),
+      _type: createElementSchema().optional(),
       code: createCodeableConceptSchema().optional(),
       factor: primitives.getDecimalSchema().optional(),
-      _factor: z.lazy(() => createElementSchema()).optional(),
+      _factor: createElementSchema().optional(),
       amount: createMoneySchema().optional(),
     });
 

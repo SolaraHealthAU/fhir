@@ -10,17 +10,15 @@ export function createStructureMapStructureSchema() {
   return getCachedSchema("StructureMapStructure", () => {
     const baseSchema: z.ZodType<types.StructureMapStructure> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       url: primitives.getCanonicalSchema(),
       mode: z.enum(["source", "queried", "target", "produced"]),
-      _mode: z.lazy(() => createElementSchema()).optional(),
+      _mode: createElementSchema().optional(),
       alias: primitives.getStringSchema().optional(),
-      _alias: z.lazy(() => createElementSchema()).optional(),
+      _alias: createElementSchema().optional(),
       documentation: primitives.getStringSchema().optional(),
-      _documentation: z.lazy(() => createElementSchema()).optional(),
+      _documentation: createElementSchema().optional(),
     });
 
     return baseSchema;

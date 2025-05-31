@@ -11,12 +11,10 @@ export function createCapabilityStatementSearchParamSchema() {
     const baseSchema: z.ZodType<types.CapabilityStatementSearchParam> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         name: primitives.getStringSchema().optional(),
-        _name: z.lazy(() => createElementSchema()).optional(),
+        _name: createElementSchema().optional(),
         definition: primitives.getCanonicalSchema().optional(),
         type: z
           .enum([
@@ -31,9 +29,9 @@ export function createCapabilityStatementSearchParamSchema() {
             "special",
           ])
           .optional(),
-        _type: z.lazy(() => createElementSchema()).optional(),
+        _type: createElementSchema().optional(),
         documentation: primitives.getMarkdownSchema().optional(),
-        _documentation: z.lazy(() => createElementSchema()).optional(),
+        _documentation: createElementSchema().optional(),
       });
 
     return baseSchema;

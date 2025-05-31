@@ -16,12 +16,10 @@ export function createSubstanceReferenceInformationGeneElementSchema() {
     const baseSchema: z.ZodType<types.SubstanceReferenceInformationGeneElement> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         type: createCodeableConceptSchema().optional(),
-        element: z.lazy(() => createIdentifierSchema()).optional(),
+        element: createIdentifierSchema().optional(),
         source: z.array(createReferenceSchema()).optional(),
       });
 

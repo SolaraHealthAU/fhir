@@ -19,20 +19,18 @@ export function createSubstanceSpecificationRelationshipSchema() {
     const baseSchema: z.ZodType<types.SubstanceSpecificationRelationship> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         substanceReference: createReferenceSchema().optional(),
         substanceCodeableConcept: createCodeableConceptSchema().optional(),
         relationship: createCodeableConceptSchema().optional(),
         isDefining: primitives.getBooleanSchema().optional(),
-        _isDefining: z.lazy(() => createElementSchema()).optional(),
+        _isDefining: createElementSchema().optional(),
         amountQuantity: createQuantitySchema().optional(),
         amountRange: createRangeSchema().optional(),
         amountRatio: createRatioSchema().optional(),
         amountString: z.string().optional(),
-        _amountString: z.lazy(() => createElementSchema()).optional(),
+        _amountString: createElementSchema().optional(),
         amountRatioLowLimit: createRatioSchema().optional(),
         amountType: createCodeableConceptSchema().optional(),
         source: z.array(createReferenceSchema()).optional(),

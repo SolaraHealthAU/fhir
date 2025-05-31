@@ -26,17 +26,15 @@ export function createSpecimenSchema() {
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),
       implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      _implicitRules: createElementSchema().optional(),
       language: primitives.getCodeSchema().optional(),
-      _language: z.lazy(() => createElementSchema()).optional(),
+      _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
       contained: z.array(createResourceListSchema()).optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
-      accessionIdentifier: z.lazy(() => createIdentifierSchema()).optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      identifier: z.array(createIdentifierSchema()).optional(),
+      accessionIdentifier: createIdentifierSchema().optional(),
       status: z
         .enum([
           "available",
@@ -45,11 +43,11 @@ export function createSpecimenSchema() {
           "entered-in-error",
         ])
         .optional(),
-      _status: z.lazy(() => createElementSchema()).optional(),
+      _status: createElementSchema().optional(),
       type: createCodeableConceptSchema().optional(),
       subject: createReferenceSchema().optional(),
       receivedTime: primitives.getDateTimeSchema().optional(),
-      _receivedTime: z.lazy(() => createElementSchema()).optional(),
+      _receivedTime: createElementSchema().optional(),
       parent: z.array(createReferenceSchema()).optional(),
       request: z.array(createReferenceSchema()).optional(),
       collection: createSpecimenCollectionSchema().optional(),

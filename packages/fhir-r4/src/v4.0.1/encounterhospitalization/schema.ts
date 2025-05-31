@@ -16,13 +16,9 @@ export function createEncounterHospitalizationSchema() {
     const baseSchema: z.ZodType<types.EncounterHospitalization> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
-        preAdmissionIdentifier: z
-          .lazy(() => createIdentifierSchema())
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        preAdmissionIdentifier: createIdentifierSchema().optional(),
         origin: createReferenceSchema().optional(),
         admitSource: createCodeableConceptSchema().optional(),
         reAdmission: createCodeableConceptSchema().optional(),

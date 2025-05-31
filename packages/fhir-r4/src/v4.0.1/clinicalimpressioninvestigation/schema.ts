@@ -15,10 +15,8 @@ export function createClinicalImpressionInvestigationSchema() {
     const baseSchema: z.ZodType<types.ClinicalImpressionInvestigation> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         code: createCodeableConceptSchema(),
         item: z.array(createReferenceSchema()).optional(),
       });

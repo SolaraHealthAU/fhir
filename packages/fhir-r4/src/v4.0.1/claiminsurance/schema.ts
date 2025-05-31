@@ -15,20 +15,18 @@ export function createClaimInsuranceSchema() {
   return getCachedSchema("ClaimInsurance", () => {
     const baseSchema: z.ZodType<types.ClaimInsurance> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       sequence: primitives.getPositiveIntSchema(),
-      _sequence: z.lazy(() => createElementSchema()).optional(),
+      _sequence: createElementSchema().optional(),
       focal: primitives.getBooleanSchema(),
-      _focal: z.lazy(() => createElementSchema()).optional(),
-      identifier: z.lazy(() => createIdentifierSchema()).optional(),
+      _focal: createElementSchema().optional(),
+      identifier: createIdentifierSchema().optional(),
       coverage: createReferenceSchema(),
       businessArrangement: primitives.getStringSchema().optional(),
-      _businessArrangement: z.lazy(() => createElementSchema()).optional(),
+      _businessArrangement: createElementSchema().optional(),
       preAuthRef: z.array(primitives.getStringSchema()).optional(),
-      _preAuthRef: z.array(z.lazy(() => createElementSchema())).optional(),
+      _preAuthRef: z.array(createElementSchema()).optional(),
       claimResponse: createReferenceSchema().optional(),
     });
 

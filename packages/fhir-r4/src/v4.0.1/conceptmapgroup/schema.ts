@@ -12,18 +12,16 @@ export function createConceptMapGroupSchema() {
   return getCachedSchema("ConceptMapGroup", () => {
     const baseSchema: z.ZodType<types.ConceptMapGroup> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       source: primitives.getUriSchema().optional(),
-      _source: z.lazy(() => createElementSchema()).optional(),
+      _source: createElementSchema().optional(),
       sourceVersion: primitives.getStringSchema().optional(),
-      _sourceVersion: z.lazy(() => createElementSchema()).optional(),
+      _sourceVersion: createElementSchema().optional(),
       target: primitives.getUriSchema().optional(),
-      _target: z.lazy(() => createElementSchema()).optional(),
+      _target: createElementSchema().optional(),
       targetVersion: primitives.getStringSchema().optional(),
-      _targetVersion: z.lazy(() => createElementSchema()).optional(),
+      _targetVersion: createElementSchema().optional(),
       element: z.array(createConceptMapElementSchema()),
       unmapped: createConceptMapUnmappedSchema().optional(),
     });

@@ -15,15 +15,13 @@ export function createListEntrySchema() {
   return getCachedSchema("ListEntry", () => {
     const baseSchema: z.ZodType<types.ListEntry> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       flag: createCodeableConceptSchema().optional(),
       deleted: primitives.getBooleanSchema().optional(),
-      _deleted: z.lazy(() => createElementSchema()).optional(),
+      _deleted: createElementSchema().optional(),
       date: primitives.getDateTimeSchema().optional(),
-      _date: z.lazy(() => createElementSchema()).optional(),
+      _date: createElementSchema().optional(),
       item: createReferenceSchema(),
     });
 

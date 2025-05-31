@@ -12,10 +12,8 @@ export function createAdverseEventSuspectEntitySchema() {
     const baseSchema: z.ZodType<types.AdverseEventSuspectEntity> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         instance: createReferenceSchema(),
         causality: z.array(createAdverseEventCausalitySchema()).optional(),
       });

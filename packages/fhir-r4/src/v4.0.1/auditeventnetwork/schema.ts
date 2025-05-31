@@ -10,14 +10,12 @@ export function createAuditEventNetworkSchema() {
   return getCachedSchema("AuditEventNetwork", () => {
     const baseSchema: z.ZodType<types.AuditEventNetwork> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       address: primitives.getStringSchema().optional(),
-      _address: z.lazy(() => createElementSchema()).optional(),
+      _address: createElementSchema().optional(),
       type: z.enum(["1", "2", "3", "4", "5"]).optional(),
-      _type: z.lazy(() => createElementSchema()).optional(),
+      _type: createElementSchema().optional(),
     });
 
     return baseSchema;

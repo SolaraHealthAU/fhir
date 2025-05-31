@@ -15,10 +15,8 @@ export function createContractSignerSchema() {
   return getCachedSchema("ContractSigner", () => {
     const baseSchema: z.ZodType<types.ContractSigner> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       type: createCodingSchema(),
       party: createReferenceSchema(),
       signature: z.array(createSignatureSchema()),

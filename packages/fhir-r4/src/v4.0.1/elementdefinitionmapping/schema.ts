@@ -11,18 +11,16 @@ export function createElementDefinitionMappingSchema() {
     const baseSchema: z.ZodType<types.ElementDefinitionMapping> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         identity: primitives.getIdSchema(),
-        _identity: z.lazy(() => createElementSchema()).optional(),
+        _identity: createElementSchema().optional(),
         language: primitives.getCodeSchema().optional(),
-        _language: z.lazy(() => createElementSchema()).optional(),
+        _language: createElementSchema().optional(),
         map: primitives.getStringSchema(),
-        _map: z.lazy(() => createElementSchema()).optional(),
+        _map: createElementSchema().optional(),
         comment: primitives.getStringSchema().optional(),
-        _comment: z.lazy(() => createElementSchema()).optional(),
+        _comment: createElementSchema().optional(),
       });
 
     return baseSchema;

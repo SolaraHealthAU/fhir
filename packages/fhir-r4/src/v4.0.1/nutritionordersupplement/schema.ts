@@ -17,17 +17,15 @@ export function createNutritionOrderSupplementSchema() {
     const baseSchema: z.ZodType<types.NutritionOrderSupplement> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         type: createCodeableConceptSchema().optional(),
         productName: primitives.getStringSchema().optional(),
-        _productName: z.lazy(() => createElementSchema()).optional(),
+        _productName: createElementSchema().optional(),
         schedule: z.array(createTimingSchema()).optional(),
         quantity: createQuantitySchema().optional(),
         instruction: primitives.getStringSchema().optional(),
-        _instruction: z.lazy(() => createElementSchema()).optional(),
+        _instruction: createElementSchema().optional(),
       });
 
     return baseSchema;

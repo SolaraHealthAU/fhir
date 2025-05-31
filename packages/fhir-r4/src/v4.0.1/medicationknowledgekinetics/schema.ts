@@ -15,10 +15,8 @@ export function createMedicationKnowledgeKineticsSchema() {
     const baseSchema: z.ZodType<types.MedicationKnowledgeKinetics> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         areaUnderCurve: z.array(createQuantitySchema()).optional(),
         lethalDose50: z.array(createQuantitySchema()).optional(),
         halfLifePeriod: createDurationSchema().optional(),

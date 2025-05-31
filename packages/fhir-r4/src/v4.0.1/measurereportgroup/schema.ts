@@ -16,10 +16,8 @@ export function createMeasureReportGroupSchema() {
   return getCachedSchema("MeasureReportGroup", () => {
     const baseSchema: z.ZodType<types.MeasureReportGroup> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       code: createCodeableConceptSchema().optional(),
       population: z.array(createMeasureReportPopulationSchema()).optional(),
       measureScore: createQuantitySchema().optional(),

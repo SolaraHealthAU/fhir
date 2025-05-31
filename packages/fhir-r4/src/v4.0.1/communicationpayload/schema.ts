@@ -15,12 +15,10 @@ export function createCommunicationPayloadSchema() {
   return getCachedSchema("CommunicationPayload", () => {
     const baseSchema: z.ZodType<types.CommunicationPayload> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       contentString: z.string().optional(),
-      _contentString: z.lazy(() => createElementSchema()).optional(),
+      _contentString: createElementSchema().optional(),
       contentAttachment: createAttachmentSchema().optional(),
       contentReference: createReferenceSchema().optional(),
     });

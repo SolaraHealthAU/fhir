@@ -11,22 +11,20 @@ export function createStructureMapTargetSchema() {
   return getCachedSchema("StructureMapTarget", () => {
     const baseSchema: z.ZodType<types.StructureMapTarget> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       context: primitives.getIdSchema().optional(),
-      _context: z.lazy(() => createElementSchema()).optional(),
+      _context: createElementSchema().optional(),
       contextType: z.enum(["type", "variable"]).optional(),
-      _contextType: z.lazy(() => createElementSchema()).optional(),
+      _contextType: createElementSchema().optional(),
       element: primitives.getStringSchema().optional(),
-      _element: z.lazy(() => createElementSchema()).optional(),
+      _element: createElementSchema().optional(),
       variable: primitives.getIdSchema().optional(),
-      _variable: z.lazy(() => createElementSchema()).optional(),
+      _variable: createElementSchema().optional(),
       listMode: z.array(z.any()).optional(),
-      _listMode: z.array(z.lazy(() => createElementSchema())).optional(),
+      _listMode: z.array(createElementSchema()).optional(),
       listRuleId: primitives.getIdSchema().optional(),
-      _listRuleId: z.lazy(() => createElementSchema()).optional(),
+      _listRuleId: createElementSchema().optional(),
       transform: z
         .enum([
           "create",
@@ -48,7 +46,7 @@ export function createStructureMapTargetSchema() {
           "cp",
         ])
         .optional(),
-      _transform: z.lazy(() => createElementSchema()).optional(),
+      _transform: createElementSchema().optional(),
       parameter: z.array(createStructureMapParameterSchema()).optional(),
     });
 

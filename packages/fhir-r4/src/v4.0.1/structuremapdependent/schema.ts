@@ -10,14 +10,12 @@ export function createStructureMapDependentSchema() {
   return getCachedSchema("StructureMapDependent", () => {
     const baseSchema: z.ZodType<types.StructureMapDependent> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       name: primitives.getIdSchema().optional(),
-      _name: z.lazy(() => createElementSchema()).optional(),
+      _name: createElementSchema().optional(),
       variable: z.array(primitives.getStringSchema()).optional(),
-      _variable: z.array(z.lazy(() => createElementSchema())).optional(),
+      _variable: z.array(createElementSchema()).optional(),
     });
 
     return baseSchema;

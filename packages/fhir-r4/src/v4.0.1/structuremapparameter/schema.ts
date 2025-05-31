@@ -10,20 +10,18 @@ export function createStructureMapParameterSchema() {
   return getCachedSchema("StructureMapParameter", () => {
     const baseSchema: z.ZodType<types.StructureMapParameter> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       valueId: z.string().optional(),
-      _valueId: z.lazy(() => createElementSchema()).optional(),
+      _valueId: createElementSchema().optional(),
       valueString: z.string().optional(),
-      _valueString: z.lazy(() => createElementSchema()).optional(),
+      _valueString: createElementSchema().optional(),
       valueBoolean: z.boolean().optional(),
-      _valueBoolean: z.lazy(() => createElementSchema()).optional(),
+      _valueBoolean: createElementSchema().optional(),
       valueInteger: z.number().optional(),
-      _valueInteger: z.lazy(() => createElementSchema()).optional(),
+      _valueInteger: createElementSchema().optional(),
       valueDecimal: z.number().optional(),
-      _valueDecimal: z.lazy(() => createElementSchema()).optional(),
+      _valueDecimal: createElementSchema().optional(),
     });
 
     return baseSchema;

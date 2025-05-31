@@ -15,13 +15,11 @@ export function createCapabilityStatementEndpointSchema() {
     const baseSchema: z.ZodType<types.CapabilityStatementEndpoint> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         protocol: createCodingSchema(),
         address: primitives.getUrlSchema().optional(),
-        _address: z.lazy(() => createElementSchema()).optional(),
+        _address: createElementSchema().optional(),
       });
 
     return baseSchema;

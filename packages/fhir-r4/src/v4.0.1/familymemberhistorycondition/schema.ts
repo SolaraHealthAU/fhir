@@ -19,19 +19,17 @@ export function createFamilyMemberHistoryConditionSchema() {
     const baseSchema: z.ZodType<types.FamilyMemberHistoryCondition> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         code: createCodeableConceptSchema(),
         outcome: createCodeableConceptSchema().optional(),
         contributedToDeath: primitives.getBooleanSchema().optional(),
-        _contributedToDeath: z.lazy(() => createElementSchema()).optional(),
+        _contributedToDeath: createElementSchema().optional(),
         onsetAge: createAgeSchema().optional(),
         onsetRange: createRangeSchema().optional(),
         onsetPeriod: createPeriodSchema().optional(),
         onsetString: z.string().optional(),
-        _onsetString: z.lazy(() => createElementSchema()).optional(),
+        _onsetString: createElementSchema().optional(),
         note: z.array(createAnnotationSchema()).optional(),
       });
 

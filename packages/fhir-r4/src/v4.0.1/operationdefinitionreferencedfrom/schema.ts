@@ -11,14 +11,12 @@ export function createOperationDefinitionReferencedFromSchema() {
     const baseSchema: z.ZodType<types.OperationDefinitionReferencedFrom> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         source: primitives.getStringSchema().optional(),
-        _source: z.lazy(() => createElementSchema()).optional(),
+        _source: createElementSchema().optional(),
         sourceId: primitives.getStringSchema().optional(),
-        _sourceId: z.lazy(() => createElementSchema()).optional(),
+        _sourceId: createElementSchema().optional(),
       });
 
     return baseSchema;

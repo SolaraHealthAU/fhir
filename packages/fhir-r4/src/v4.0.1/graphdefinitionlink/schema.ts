@@ -11,20 +11,18 @@ export function createGraphDefinitionLinkSchema() {
   return getCachedSchema("GraphDefinitionLink", () => {
     const baseSchema: z.ZodType<types.GraphDefinitionLink> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       path: primitives.getStringSchema().optional(),
-      _path: z.lazy(() => createElementSchema()).optional(),
+      _path: createElementSchema().optional(),
       sliceName: primitives.getStringSchema().optional(),
-      _sliceName: z.lazy(() => createElementSchema()).optional(),
+      _sliceName: createElementSchema().optional(),
       min: primitives.getIntegerSchema().optional(),
-      _min: z.lazy(() => createElementSchema()).optional(),
+      _min: createElementSchema().optional(),
       max: primitives.getStringSchema().optional(),
-      _max: z.lazy(() => createElementSchema()).optional(),
+      _max: createElementSchema().optional(),
       description: primitives.getStringSchema().optional(),
-      _description: z.lazy(() => createElementSchema()).optional(),
+      _description: createElementSchema().optional(),
       target: z.array(createGraphDefinitionTargetSchema()).optional(),
     });
 

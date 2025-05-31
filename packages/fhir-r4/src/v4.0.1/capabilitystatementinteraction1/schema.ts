@@ -11,16 +11,14 @@ export function createCapabilityStatementInteraction1Schema() {
     const baseSchema: z.ZodType<types.CapabilityStatementInteraction1> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         code: z
           .enum(["transaction", "batch", "search-system", "history-system"])
           .optional(),
-        _code: z.lazy(() => createElementSchema()).optional(),
+        _code: createElementSchema().optional(),
         documentation: primitives.getMarkdownSchema().optional(),
-        _documentation: z.lazy(() => createElementSchema()).optional(),
+        _documentation: createElementSchema().optional(),
       });
 
     return baseSchema;

@@ -17,14 +17,14 @@ export function createBinarySchema() {
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),
       implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      _implicitRules: createElementSchema().optional(),
       language: primitives.getCodeSchema().optional(),
-      _language: z.lazy(() => createElementSchema()).optional(),
+      _language: createElementSchema().optional(),
       contentType: primitives.getCodeSchema(),
-      _contentType: z.lazy(() => createElementSchema()).optional(),
+      _contentType: createElementSchema().optional(),
       securityContext: createReferenceSchema().optional(),
       data: primitives.getBase64BinarySchema().optional(),
-      _data: z.lazy(() => createElementSchema()).optional(),
+      _data: createElementSchema().optional(),
     });
 
     return baseSchema;

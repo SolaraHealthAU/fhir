@@ -17,11 +17,9 @@ export function createSubstanceSpecificationIsotopeSchema() {
     const baseSchema: z.ZodType<types.SubstanceSpecificationIsotope> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
-        identifier: z.lazy(() => createIdentifierSchema()).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: createIdentifierSchema().optional(),
         name: createCodeableConceptSchema().optional(),
         substitution: createCodeableConceptSchema().optional(),
         halfLife: createQuantitySchema().optional(),

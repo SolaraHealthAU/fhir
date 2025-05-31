@@ -26,18 +26,16 @@ export function createPractitionerRoleSchema() {
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),
       implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      _implicitRules: createElementSchema().optional(),
       language: primitives.getCodeSchema().optional(),
-      _language: z.lazy(() => createElementSchema()).optional(),
+      _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
       contained: z.array(createResourceListSchema()).optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      identifier: z.array(createIdentifierSchema()).optional(),
       active: primitives.getBooleanSchema().optional(),
-      _active: z.lazy(() => createElementSchema()).optional(),
+      _active: createElementSchema().optional(),
       period: createPeriodSchema().optional(),
       practitioner: createReferenceSchema().optional(),
       organization: createReferenceSchema().optional(),
@@ -53,7 +51,7 @@ export function createPractitionerRoleSchema() {
         .array(createPractitionerRoleNotAvailableSchema())
         .optional(),
       availabilityExceptions: primitives.getStringSchema().optional(),
-      _availabilityExceptions: z.lazy(() => createElementSchema()).optional(),
+      _availabilityExceptions: createElementSchema().optional(),
       endpoint: z.array(createReferenceSchema()).optional(),
     });
 

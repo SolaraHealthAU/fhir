@@ -16,13 +16,11 @@ export function createMeasureStratifierSchema() {
   return getCachedSchema("MeasureStratifier", () => {
     const baseSchema: z.ZodType<types.MeasureStratifier> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       code: createCodeableConceptSchema().optional(),
       description: primitives.getStringSchema().optional(),
-      _description: z.lazy(() => createElementSchema()).optional(),
+      _description: createElementSchema().optional(),
       criteria: createExpressionSchema().optional(),
       component: z.array(createMeasureComponentSchema()).optional(),
     });

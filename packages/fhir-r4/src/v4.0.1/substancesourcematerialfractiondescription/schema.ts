@@ -15,12 +15,10 @@ export function createSubstanceSourceMaterialFractionDescriptionSchema() {
     const baseSchema: z.ZodType<types.SubstanceSourceMaterialFractionDescription> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         fraction: primitives.getStringSchema().optional(),
-        _fraction: z.lazy(() => createElementSchema()).optional(),
+        _fraction: createElementSchema().optional(),
         materialType: createCodeableConceptSchema().optional(),
       });
 

@@ -18,23 +18,21 @@ export function createGoalTargetSchema() {
   return getCachedSchema("GoalTarget", () => {
     const baseSchema: z.ZodType<types.GoalTarget> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       measure: createCodeableConceptSchema().optional(),
       detailQuantity: createQuantitySchema().optional(),
       detailRange: createRangeSchema().optional(),
       detailCodeableConcept: createCodeableConceptSchema().optional(),
       detailString: z.string().optional(),
-      _detailString: z.lazy(() => createElementSchema()).optional(),
+      _detailString: createElementSchema().optional(),
       detailBoolean: z.boolean().optional(),
-      _detailBoolean: z.lazy(() => createElementSchema()).optional(),
+      _detailBoolean: createElementSchema().optional(),
       detailInteger: z.number().optional(),
-      _detailInteger: z.lazy(() => createElementSchema()).optional(),
+      _detailInteger: createElementSchema().optional(),
       detailRatio: createRatioSchema().optional(),
       dueDate: z.string().optional(),
-      _dueDate: z.lazy(() => createElementSchema()).optional(),
+      _dueDate: createElementSchema().optional(),
       dueDuration: createDurationSchema().optional(),
     });
 

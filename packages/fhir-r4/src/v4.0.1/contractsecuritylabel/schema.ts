@@ -14,12 +14,10 @@ export function createContractSecurityLabelSchema() {
   return getCachedSchema("ContractSecurityLabel", () => {
     const baseSchema: z.ZodType<types.ContractSecurityLabel> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       number: z.array(primitives.getUnsignedIntSchema()).optional(),
-      _number: z.array(z.lazy(() => createElementSchema())).optional(),
+      _number: z.array(createElementSchema()).optional(),
       classification: createCodingSchema(),
       category: z.array(createCodingSchema()).optional(),
       control: z.array(createCodingSchema()).optional(),

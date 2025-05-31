@@ -17,16 +17,14 @@ export function createNutritionOrderEnteralFormulaSchema() {
     const baseSchema: z.ZodType<types.NutritionOrderEnteralFormula> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         baseFormulaType: createCodeableConceptSchema().optional(),
         baseFormulaProductName: primitives.getStringSchema().optional(),
-        _baseFormulaProductName: z.lazy(() => createElementSchema()).optional(),
+        _baseFormulaProductName: createElementSchema().optional(),
         additiveType: createCodeableConceptSchema().optional(),
         additiveProductName: primitives.getStringSchema().optional(),
-        _additiveProductName: z.lazy(() => createElementSchema()).optional(),
+        _additiveProductName: createElementSchema().optional(),
         caloricDensity: createQuantitySchema().optional(),
         routeofAdministration: createCodeableConceptSchema().optional(),
         administration: z
@@ -34,9 +32,7 @@ export function createNutritionOrderEnteralFormulaSchema() {
           .optional(),
         maxVolumeToDeliver: createQuantitySchema().optional(),
         administrationInstruction: primitives.getStringSchema().optional(),
-        _administrationInstruction: z
-          .lazy(() => createElementSchema())
-          .optional(),
+        _administrationInstruction: createElementSchema().optional(),
       });
 
     return baseSchema;

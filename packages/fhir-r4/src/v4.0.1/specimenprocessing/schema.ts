@@ -16,16 +16,14 @@ export function createSpecimenProcessingSchema() {
   return getCachedSchema("SpecimenProcessing", () => {
     const baseSchema: z.ZodType<types.SpecimenProcessing> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       description: primitives.getStringSchema().optional(),
-      _description: z.lazy(() => createElementSchema()).optional(),
+      _description: createElementSchema().optional(),
       procedure: createCodeableConceptSchema().optional(),
       additive: z.array(createReferenceSchema()).optional(),
       timeDateTime: z.string().optional(),
-      _timeDateTime: z.lazy(() => createElementSchema()).optional(),
+      _timeDateTime: createElementSchema().optional(),
       timePeriod: createPeriodSchema().optional(),
     });
 

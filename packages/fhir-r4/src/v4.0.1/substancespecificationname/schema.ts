@@ -17,16 +17,14 @@ export function createSubstanceSpecificationNameSchema() {
     const baseSchema: z.ZodType<types.SubstanceSpecificationName> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         name: primitives.getStringSchema(),
-        _name: z.lazy(() => createElementSchema()).optional(),
+        _name: createElementSchema().optional(),
         type: createCodeableConceptSchema().optional(),
         status: createCodeableConceptSchema().optional(),
         preferred: primitives.getBooleanSchema().optional(),
-        _preferred: z.lazy(() => createElementSchema()).optional(),
+        _preferred: createElementSchema().optional(),
         language: z.array(createCodeableConceptSchema()).optional(),
         domain: z.array(createCodeableConceptSchema()).optional(),
         jurisdiction: z.array(createCodeableConceptSchema()).optional(),

@@ -17,17 +17,15 @@ export function createNutritionOrderOralDietSchema() {
   return getCachedSchema("NutritionOrderOralDiet", () => {
     const baseSchema: z.ZodType<types.NutritionOrderOralDiet> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       type: z.array(createCodeableConceptSchema()).optional(),
       schedule: z.array(createTimingSchema()).optional(),
       nutrient: z.array(createNutritionOrderNutrientSchema()).optional(),
       texture: z.array(createNutritionOrderTextureSchema()).optional(),
       fluidConsistencyType: z.array(createCodeableConceptSchema()).optional(),
       instruction: primitives.getStringSchema().optional(),
-      _instruction: z.lazy(() => createElementSchema()).optional(),
+      _instruction: createElementSchema().optional(),
     });
 
     return baseSchema;

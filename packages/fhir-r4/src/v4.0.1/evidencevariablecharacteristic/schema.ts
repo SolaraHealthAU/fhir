@@ -23,26 +23,22 @@ export function createEvidenceVariableCharacteristicSchema() {
     const baseSchema: z.ZodType<types.EvidenceVariableCharacteristic> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         description: primitives.getStringSchema().optional(),
-        _description: z.lazy(() => createElementSchema()).optional(),
+        _description: createElementSchema().optional(),
         definitionReference: createReferenceSchema().optional(),
         definitionCanonical: z.string().optional(),
-        _definitionCanonical: z.lazy(() => createElementSchema()).optional(),
+        _definitionCanonical: createElementSchema().optional(),
         definitionCodeableConcept: createCodeableConceptSchema().optional(),
         definitionExpression: createExpressionSchema().optional(),
         definitionDataRequirement: createDataRequirementSchema().optional(),
         definitionTriggerDefinition: createTriggerDefinitionSchema().optional(),
         usageContext: z.array(createUsageContextSchema()).optional(),
         exclude: primitives.getBooleanSchema().optional(),
-        _exclude: z.lazy(() => createElementSchema()).optional(),
+        _exclude: createElementSchema().optional(),
         participantEffectiveDateTime: z.string().optional(),
-        _participantEffectiveDateTime: z
-          .lazy(() => createElementSchema())
-          .optional(),
+        _participantEffectiveDateTime: createElementSchema().optional(),
         participantEffectivePeriod: createPeriodSchema().optional(),
         participantEffectiveDuration: createDurationSchema().optional(),
         participantEffectiveTiming: createTimingSchema().optional(),
@@ -57,7 +53,7 @@ export function createEvidenceVariableCharacteristicSchema() {
             "median-of-median",
           ])
           .optional(),
-        _groupMeasure: z.lazy(() => createElementSchema()).optional(),
+        _groupMeasure: createElementSchema().optional(),
       });
 
     return baseSchema;

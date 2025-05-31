@@ -17,14 +17,12 @@ export function createMedicationKnowledgeIngredientSchema() {
     const baseSchema: z.ZodType<types.MedicationKnowledgeIngredient> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         itemCodeableConcept: createCodeableConceptSchema().optional(),
         itemReference: createReferenceSchema().optional(),
         isActive: primitives.getBooleanSchema().optional(),
-        _isActive: z.lazy(() => createElementSchema()).optional(),
+        _isActive: createElementSchema().optional(),
         strength: createRatioSchema().optional(),
       });
 

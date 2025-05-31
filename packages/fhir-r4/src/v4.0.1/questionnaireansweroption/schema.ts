@@ -16,22 +16,20 @@ export function createQuestionnaireAnswerOptionSchema() {
     const baseSchema: z.ZodType<types.QuestionnaireAnswerOption> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         valueInteger: z.number().optional(),
-        _valueInteger: z.lazy(() => createElementSchema()).optional(),
+        _valueInteger: createElementSchema().optional(),
         valueDate: z.string().optional(),
-        _valueDate: z.lazy(() => createElementSchema()).optional(),
+        _valueDate: createElementSchema().optional(),
         valueTime: z.string().optional(),
-        _valueTime: z.lazy(() => createElementSchema()).optional(),
+        _valueTime: createElementSchema().optional(),
         valueString: z.string().optional(),
-        _valueString: z.lazy(() => createElementSchema()).optional(),
+        _valueString: createElementSchema().optional(),
         valueCoding: createCodingSchema().optional(),
         valueReference: createReferenceSchema().optional(),
         initialSelected: primitives.getBooleanSchema().optional(),
-        _initialSelected: z.lazy(() => createElementSchema()).optional(),
+        _initialSelected: createElementSchema().optional(),
       });
 
     return baseSchema;

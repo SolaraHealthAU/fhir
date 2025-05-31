@@ -19,16 +19,12 @@ export function createCoverageEligibilityRequestItemSchema() {
     const baseSchema: z.ZodType<types.CoverageEligibilityRequestItem> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         supportingInfoSequence: z
           .array(primitives.getPositiveIntSchema())
           .optional(),
-        _supportingInfoSequence: z
-          .array(z.lazy(() => createElementSchema()))
-          .optional(),
+        _supportingInfoSequence: z.array(createElementSchema()).optional(),
         category: createCodeableConceptSchema().optional(),
         productOrService: createCodeableConceptSchema().optional(),
         modifier: z.array(createCodeableConceptSchema()).optional(),

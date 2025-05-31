@@ -17,11 +17,9 @@ export function createPractitionerQualificationSchema() {
     const baseSchema: z.ZodType<types.PractitionerQualification> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
-        identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: z.array(createIdentifierSchema()).optional(),
         code: createCodeableConceptSchema(),
         period: createPeriodSchema().optional(),
         issuer: createReferenceSchema().optional(),

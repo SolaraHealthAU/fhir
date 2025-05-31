@@ -14,10 +14,8 @@ export function createProcedureFocalDeviceSchema() {
   return getCachedSchema("ProcedureFocalDevice", () => {
     const baseSchema: z.ZodType<types.ProcedureFocalDevice> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       action: createCodeableConceptSchema().optional(),
       manipulated: createReferenceSchema(),
     });

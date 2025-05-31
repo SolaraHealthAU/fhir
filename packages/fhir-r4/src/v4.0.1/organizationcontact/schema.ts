@@ -16,10 +16,8 @@ export function createOrganizationContactSchema() {
   return getCachedSchema("OrganizationContact", () => {
     const baseSchema: z.ZodType<types.OrganizationContact> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       purpose: createCodeableConceptSchema().optional(),
       name: createHumanNameSchema().optional(),
       telecom: z.array(createContactPointSchema()).optional(),

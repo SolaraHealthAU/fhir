@@ -16,13 +16,11 @@ export function createMeasureReportPopulationSchema() {
     const baseSchema: z.ZodType<types.MeasureReportPopulation> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         code: createCodeableConceptSchema().optional(),
         count: primitives.getIntegerSchema().optional(),
-        _count: z.lazy(() => createElementSchema()).optional(),
+        _count: createElementSchema().optional(),
         subjectResults: createReferenceSchema().optional(),
       },
     );

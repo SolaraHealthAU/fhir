@@ -14,12 +14,10 @@ export function createRequestGroupConditionSchema() {
   return getCachedSchema("RequestGroupCondition", () => {
     const baseSchema: z.ZodType<types.RequestGroupCondition> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       kind: primitives.getCodeSchema().optional(),
-      _kind: z.lazy(() => createElementSchema()).optional(),
+      _kind: createElementSchema().optional(),
       expression: createExpressionSchema().optional(),
     });
 

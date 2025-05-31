@@ -12,18 +12,16 @@ export function createValueSetExpansionSchema() {
   return getCachedSchema("ValueSetExpansion", () => {
     const baseSchema: z.ZodType<types.ValueSetExpansion> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: primitives.getUriSchema().optional(),
-      _identifier: z.lazy(() => createElementSchema()).optional(),
+      _identifier: createElementSchema().optional(),
       timestamp: primitives.getDateTimeSchema(),
-      _timestamp: z.lazy(() => createElementSchema()).optional(),
+      _timestamp: createElementSchema().optional(),
       total: primitives.getIntegerSchema().optional(),
-      _total: z.lazy(() => createElementSchema()).optional(),
+      _total: createElementSchema().optional(),
       offset: primitives.getIntegerSchema().optional(),
-      _offset: z.lazy(() => createElementSchema()).optional(),
+      _offset: createElementSchema().optional(),
       parameter: z.array(createValueSetParameterSchema()).optional(),
       contains: z.array(createValueSetContainsSchema()).optional(),
     });

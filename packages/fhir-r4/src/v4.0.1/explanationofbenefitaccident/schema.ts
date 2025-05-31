@@ -17,12 +17,10 @@ export function createExplanationOfBenefitAccidentSchema() {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitAccident> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         date: primitives.getDateSchema().optional(),
-        _date: z.lazy(() => createElementSchema()).optional(),
+        _date: createElementSchema().optional(),
         type: createCodeableConceptSchema().optional(),
         locationAddress: createAddressSchema().optional(),
         locationReference: createReferenceSchema().optional(),

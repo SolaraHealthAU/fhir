@@ -14,14 +14,12 @@ export function createMessageHeaderResponseSchema() {
   return getCachedSchema("MessageHeaderResponse", () => {
     const baseSchema: z.ZodType<types.MessageHeaderResponse> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: primitives.getIdSchema(),
-      _identifier: z.lazy(() => createElementSchema()).optional(),
+      _identifier: createElementSchema().optional(),
       code: z.enum(["ok", "transient-error", "fatal-error"]),
-      _code: z.lazy(() => createElementSchema()).optional(),
+      _code: createElementSchema().optional(),
       details: createReferenceSchema().optional(),
     });
 

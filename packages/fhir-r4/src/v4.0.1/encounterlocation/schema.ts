@@ -16,13 +16,11 @@ export function createEncounterLocationSchema() {
   return getCachedSchema("EncounterLocation", () => {
     const baseSchema: z.ZodType<types.EncounterLocation> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       location: createReferenceSchema(),
       status: z.enum(["planned", "active", "reserved", "completed"]).optional(),
-      _status: z.lazy(() => createElementSchema()).optional(),
+      _status: createElementSchema().optional(),
       physicalType: createCodeableConceptSchema().optional(),
       period: createPeriodSchema().optional(),
     });

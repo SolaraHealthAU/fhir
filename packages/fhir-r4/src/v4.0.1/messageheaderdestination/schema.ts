@@ -15,15 +15,13 @@ export function createMessageHeaderDestinationSchema() {
     const baseSchema: z.ZodType<types.MessageHeaderDestination> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         name: primitives.getStringSchema().optional(),
-        _name: z.lazy(() => createElementSchema()).optional(),
+        _name: createElementSchema().optional(),
         target: createReferenceSchema().optional(),
         endpoint: primitives.getUrlSchema(),
-        _endpoint: z.lazy(() => createElementSchema()).optional(),
+        _endpoint: createElementSchema().optional(),
         receiver: createReferenceSchema().optional(),
       });
 

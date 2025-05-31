@@ -10,16 +10,14 @@ export function createConceptMapUnmappedSchema() {
   return getCachedSchema("ConceptMapUnmapped", () => {
     const baseSchema: z.ZodType<types.ConceptMapUnmapped> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       mode: z.enum(["provided", "fixed", "other-map"]).optional(),
-      _mode: z.lazy(() => createElementSchema()).optional(),
+      _mode: createElementSchema().optional(),
       code: primitives.getCodeSchema().optional(),
-      _code: z.lazy(() => createElementSchema()).optional(),
+      _code: createElementSchema().optional(),
       display: primitives.getStringSchema().optional(),
-      _display: z.lazy(() => createElementSchema()).optional(),
+      _display: createElementSchema().optional(),
       url: primitives.getCanonicalSchema().optional(),
     });
 

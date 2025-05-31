@@ -16,14 +16,12 @@ export function createRequestGroupRelatedActionSchema() {
     const baseSchema: z.ZodType<types.RequestGroupRelatedAction> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         actionId: primitives.getIdSchema().optional(),
-        _actionId: z.lazy(() => createElementSchema()).optional(),
+        _actionId: createElementSchema().optional(),
         relationship: primitives.getCodeSchema().optional(),
-        _relationship: z.lazy(() => createElementSchema()).optional(),
+        _relationship: createElementSchema().optional(),
         offsetDuration: createDurationSchema().optional(),
         offsetRange: createRangeSchema().optional(),
       });

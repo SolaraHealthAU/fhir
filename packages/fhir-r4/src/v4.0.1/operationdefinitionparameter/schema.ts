@@ -13,22 +13,20 @@ export function createOperationDefinitionParameterSchema() {
     const baseSchema: z.ZodType<types.OperationDefinitionParameter> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         name: primitives.getCodeSchema(),
-        _name: z.lazy(() => createElementSchema()).optional(),
+        _name: createElementSchema().optional(),
         use: z.enum(["in", "out"]),
-        _use: z.lazy(() => createElementSchema()).optional(),
+        _use: createElementSchema().optional(),
         min: primitives.getIntegerSchema(),
-        _min: z.lazy(() => createElementSchema()).optional(),
+        _min: createElementSchema().optional(),
         max: primitives.getStringSchema(),
-        _max: z.lazy(() => createElementSchema()).optional(),
+        _max: createElementSchema().optional(),
         documentation: primitives.getStringSchema().optional(),
-        _documentation: z.lazy(() => createElementSchema()).optional(),
+        _documentation: createElementSchema().optional(),
         type: primitives.getCodeSchema().optional(),
-        _type: z.lazy(() => createElementSchema()).optional(),
+        _type: createElementSchema().optional(),
         targetProfile: z.array(primitives.getCanonicalSchema()).optional(),
         searchType: z
           .enum([
@@ -43,7 +41,7 @@ export function createOperationDefinitionParameterSchema() {
             "special",
           ])
           .optional(),
-        _searchType: z.lazy(() => createElementSchema()).optional(),
+        _searchType: createElementSchema().optional(),
         binding: createOperationDefinitionBindingSchema().optional(),
         referencedFrom: z
           .array(createOperationDefinitionReferencedFromSchema())

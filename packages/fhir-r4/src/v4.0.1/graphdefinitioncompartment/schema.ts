@@ -11,22 +11,20 @@ export function createGraphDefinitionCompartmentSchema() {
     const baseSchema: z.ZodType<types.GraphDefinitionCompartment> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         use: z.enum(["condition", "requirement"]).optional(),
-        _use: z.lazy(() => createElementSchema()).optional(),
+        _use: createElementSchema().optional(),
         code: primitives.getCodeSchema().optional(),
-        _code: z.lazy(() => createElementSchema()).optional(),
+        _code: createElementSchema().optional(),
         rule: z
           .enum(["identical", "matching", "different", "custom"])
           .optional(),
-        _rule: z.lazy(() => createElementSchema()).optional(),
+        _rule: createElementSchema().optional(),
         expression: primitives.getStringSchema().optional(),
-        _expression: z.lazy(() => createElementSchema()).optional(),
+        _expression: createElementSchema().optional(),
         description: primitives.getStringSchema().optional(),
-        _description: z.lazy(() => createElementSchema()).optional(),
+        _description: createElementSchema().optional(),
       });
 
     return baseSchema;

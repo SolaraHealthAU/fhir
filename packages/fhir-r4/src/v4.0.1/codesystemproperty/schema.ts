@@ -10,16 +10,14 @@ export function createCodeSystemPropertySchema() {
   return getCachedSchema("CodeSystemProperty", () => {
     const baseSchema: z.ZodType<types.CodeSystemProperty> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       code: primitives.getCodeSchema(),
-      _code: z.lazy(() => createElementSchema()).optional(),
+      _code: createElementSchema().optional(),
       uri: primitives.getUriSchema().optional(),
-      _uri: z.lazy(() => createElementSchema()).optional(),
+      _uri: createElementSchema().optional(),
       description: primitives.getStringSchema().optional(),
-      _description: z.lazy(() => createElementSchema()).optional(),
+      _description: createElementSchema().optional(),
       type: z.enum([
         "code",
         "Coding",
@@ -29,7 +27,7 @@ export function createCodeSystemPropertySchema() {
         "dateTime",
         "decimal",
       ]),
-      _type: z.lazy(() => createElementSchema()).optional(),
+      _type: createElementSchema().optional(),
     });
 
     return baseSchema;

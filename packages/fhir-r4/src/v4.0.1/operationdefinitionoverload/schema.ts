@@ -11,14 +11,12 @@ export function createOperationDefinitionOverloadSchema() {
     const baseSchema: z.ZodType<types.OperationDefinitionOverload> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         parameterName: z.array(primitives.getStringSchema()).optional(),
-        _parameterName: z.array(z.lazy(() => createElementSchema())).optional(),
+        _parameterName: z.array(createElementSchema()).optional(),
         comment: primitives.getStringSchema().optional(),
-        _comment: z.lazy(() => createElementSchema()).optional(),
+        _comment: createElementSchema().optional(),
       });
 
     return baseSchema;

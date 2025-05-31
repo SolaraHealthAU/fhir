@@ -12,18 +12,16 @@ export function createStructureMapGroupSchema() {
   return getCachedSchema("StructureMapGroup", () => {
     const baseSchema: z.ZodType<types.StructureMapGroup> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       name: primitives.getIdSchema(),
-      _name: z.lazy(() => createElementSchema()).optional(),
+      _name: createElementSchema().optional(),
       extends: primitives.getIdSchema().optional(),
-      _extends: z.lazy(() => createElementSchema()).optional(),
+      _extends: createElementSchema().optional(),
       typeMode: z.enum(["none", "types", "type-and-types"]),
-      _typeMode: z.lazy(() => createElementSchema()).optional(),
+      _typeMode: createElementSchema().optional(),
       documentation: primitives.getStringSchema().optional(),
-      _documentation: z.lazy(() => createElementSchema()).optional(),
+      _documentation: createElementSchema().optional(),
       input: z.array(createStructureMapInputSchema()),
       rule: z.array(createStructureMapRuleSchema()),
     });

@@ -11,14 +11,12 @@ export function createValueSetComposeSchema() {
   return getCachedSchema("ValueSetCompose", () => {
     const baseSchema: z.ZodType<types.ValueSetCompose> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       lockedDate: primitives.getDateSchema().optional(),
-      _lockedDate: z.lazy(() => createElementSchema()).optional(),
+      _lockedDate: createElementSchema().optional(),
       inactive: primitives.getBooleanSchema().optional(),
-      _inactive: z.lazy(() => createElementSchema()).optional(),
+      _inactive: createElementSchema().optional(),
       include: z.array(createValueSetIncludeSchema()),
       exclude: z.array(createValueSetIncludeSchema()).optional(),
     });

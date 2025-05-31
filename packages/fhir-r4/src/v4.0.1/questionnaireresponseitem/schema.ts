@@ -12,16 +12,14 @@ export function createQuestionnaireResponseItemSchema() {
     const baseSchema: z.ZodType<types.QuestionnaireResponseItem> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         linkId: primitives.getStringSchema(),
-        _linkId: z.lazy(() => createElementSchema()).optional(),
+        _linkId: createElementSchema().optional(),
         definition: primitives.getUriSchema().optional(),
-        _definition: z.lazy(() => createElementSchema()).optional(),
+        _definition: createElementSchema().optional(),
         text: primitives.getStringSchema().optional(),
-        _text: z.lazy(() => createElementSchema()).optional(),
+        _text: createElementSchema().optional(),
         answer: z.array(createQuestionnaireResponseAnswerSchema()).optional(),
         item: z.array(createQuestionnaireResponseItemSchema()).optional(),
       });

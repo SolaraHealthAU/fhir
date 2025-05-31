@@ -11,14 +11,12 @@ export function createVisionPrescriptionPrismSchema() {
     const baseSchema: z.ZodType<types.VisionPrescriptionPrism> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         amount: primitives.getDecimalSchema().optional(),
-        _amount: z.lazy(() => createElementSchema()).optional(),
+        _amount: createElementSchema().optional(),
         base: z.enum(["up", "down", "in", "out"]).optional(),
-        _base: z.lazy(() => createElementSchema()).optional(),
+        _base: createElementSchema().optional(),
       },
     );
 

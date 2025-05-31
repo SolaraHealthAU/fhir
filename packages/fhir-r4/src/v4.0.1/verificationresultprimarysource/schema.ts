@@ -16,16 +16,14 @@ export function createVerificationResultPrimarySourceSchema() {
     const baseSchema: z.ZodType<types.VerificationResultPrimarySource> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         who: createReferenceSchema().optional(),
         type: z.array(createCodeableConceptSchema()).optional(),
         communicationMethod: z.array(createCodeableConceptSchema()).optional(),
         validationStatus: createCodeableConceptSchema().optional(),
         validationDate: primitives.getDateTimeSchema().optional(),
-        _validationDate: z.lazy(() => createElementSchema()).optional(),
+        _validationDate: createElementSchema().optional(),
         canPushUpdates: createCodeableConceptSchema().optional(),
         pushTypeAvailable: z.array(createCodeableConceptSchema()).optional(),
       });

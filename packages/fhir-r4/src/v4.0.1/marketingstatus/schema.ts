@@ -15,16 +15,14 @@ export function createMarketingStatusSchema() {
   return getCachedSchema("MarketingStatus", () => {
     const baseSchema: z.ZodType<types.MarketingStatus> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       country: createCodeableConceptSchema(),
       jurisdiction: createCodeableConceptSchema().optional(),
       status: createCodeableConceptSchema(),
       dateRange: createPeriodSchema(),
       restoreDate: primitives.getDateTimeSchema().optional(),
-      _restoreDate: z.lazy(() => createElementSchema()).optional(),
+      _restoreDate: createElementSchema().optional(),
     });
 
     return baseSchema;

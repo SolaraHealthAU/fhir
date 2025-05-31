@@ -11,18 +11,16 @@ export function createExampleScenarioProcessSchema() {
   return getCachedSchema("ExampleScenarioProcess", () => {
     const baseSchema: z.ZodType<types.ExampleScenarioProcess> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       title: primitives.getStringSchema(),
-      _title: z.lazy(() => createElementSchema()).optional(),
+      _title: createElementSchema().optional(),
       description: primitives.getMarkdownSchema().optional(),
-      _description: z.lazy(() => createElementSchema()).optional(),
+      _description: createElementSchema().optional(),
       preConditions: primitives.getMarkdownSchema().optional(),
-      _preConditions: z.lazy(() => createElementSchema()).optional(),
+      _preConditions: createElementSchema().optional(),
       postConditions: primitives.getMarkdownSchema().optional(),
-      _postConditions: z.lazy(() => createElementSchema()).optional(),
+      _postConditions: createElementSchema().optional(),
       step: z.array(createExampleScenarioStepSchema()).optional(),
     });
 

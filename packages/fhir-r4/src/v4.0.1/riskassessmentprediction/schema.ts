@@ -17,21 +17,19 @@ export function createRiskAssessmentPredictionSchema() {
     const baseSchema: z.ZodType<types.RiskAssessmentPrediction> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         outcome: createCodeableConceptSchema().optional(),
         probabilityDecimal: z.number().optional(),
-        _probabilityDecimal: z.lazy(() => createElementSchema()).optional(),
+        _probabilityDecimal: createElementSchema().optional(),
         probabilityRange: createRangeSchema().optional(),
         qualitativeRisk: createCodeableConceptSchema().optional(),
         relativeRisk: primitives.getDecimalSchema().optional(),
-        _relativeRisk: z.lazy(() => createElementSchema()).optional(),
+        _relativeRisk: createElementSchema().optional(),
         whenPeriod: createPeriodSchema().optional(),
         whenRange: createRangeSchema().optional(),
         rationale: primitives.getStringSchema().optional(),
-        _rationale: z.lazy(() => createElementSchema()).optional(),
+        _rationale: createElementSchema().optional(),
       });
 
     return baseSchema;

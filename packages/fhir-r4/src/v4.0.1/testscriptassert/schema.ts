@@ -10,34 +10,30 @@ export function createTestScriptAssertSchema() {
   return getCachedSchema("TestScriptAssert", () => {
     const baseSchema: z.ZodType<types.TestScriptAssert> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       label: primitives.getStringSchema().optional(),
-      _label: z.lazy(() => createElementSchema()).optional(),
+      _label: createElementSchema().optional(),
       description: primitives.getStringSchema().optional(),
-      _description: z.lazy(() => createElementSchema()).optional(),
+      _description: createElementSchema().optional(),
       direction: z.enum(["response", "request"]).optional(),
-      _direction: z.lazy(() => createElementSchema()).optional(),
+      _direction: createElementSchema().optional(),
       compareToSourceId: primitives.getStringSchema().optional(),
-      _compareToSourceId: z.lazy(() => createElementSchema()).optional(),
+      _compareToSourceId: createElementSchema().optional(),
       compareToSourceExpression: primitives.getStringSchema().optional(),
-      _compareToSourceExpression: z
-        .lazy(() => createElementSchema())
-        .optional(),
+      _compareToSourceExpression: createElementSchema().optional(),
       compareToSourcePath: primitives.getStringSchema().optional(),
-      _compareToSourcePath: z.lazy(() => createElementSchema()).optional(),
+      _compareToSourcePath: createElementSchema().optional(),
       contentType: primitives.getCodeSchema().optional(),
-      _contentType: z.lazy(() => createElementSchema()).optional(),
+      _contentType: createElementSchema().optional(),
       expression: primitives.getStringSchema().optional(),
-      _expression: z.lazy(() => createElementSchema()).optional(),
+      _expression: createElementSchema().optional(),
       headerField: primitives.getStringSchema().optional(),
-      _headerField: z.lazy(() => createElementSchema()).optional(),
+      _headerField: createElementSchema().optional(),
       minimumId: primitives.getStringSchema().optional(),
-      _minimumId: z.lazy(() => createElementSchema()).optional(),
+      _minimumId: createElementSchema().optional(),
       navigationLinks: primitives.getBooleanSchema().optional(),
-      _navigationLinks: z.lazy(() => createElementSchema()).optional(),
+      _navigationLinks: createElementSchema().optional(),
       operator: z
         .enum([
           "equals",
@@ -53,17 +49,17 @@ export function createTestScriptAssertSchema() {
           "eval",
         ])
         .optional(),
-      _operator: z.lazy(() => createElementSchema()).optional(),
+      _operator: createElementSchema().optional(),
       path: primitives.getStringSchema().optional(),
-      _path: z.lazy(() => createElementSchema()).optional(),
+      _path: createElementSchema().optional(),
       requestMethod: z
         .enum(["delete", "get", "options", "patch", "post", "put", "head"])
         .optional(),
-      _requestMethod: z.lazy(() => createElementSchema()).optional(),
+      _requestMethod: createElementSchema().optional(),
       requestURL: primitives.getStringSchema().optional(),
-      _requestURL: z.lazy(() => createElementSchema()).optional(),
+      _requestURL: createElementSchema().optional(),
       resource: primitives.getCodeSchema().optional(),
-      _resource: z.lazy(() => createElementSchema()).optional(),
+      _resource: createElementSchema().optional(),
       response: z
         .enum([
           "okay",
@@ -80,17 +76,17 @@ export function createTestScriptAssertSchema() {
           "unprocessable",
         ])
         .optional(),
-      _response: z.lazy(() => createElementSchema()).optional(),
+      _response: createElementSchema().optional(),
       responseCode: primitives.getStringSchema().optional(),
-      _responseCode: z.lazy(() => createElementSchema()).optional(),
+      _responseCode: createElementSchema().optional(),
       sourceId: primitives.getIdSchema().optional(),
-      _sourceId: z.lazy(() => createElementSchema()).optional(),
+      _sourceId: createElementSchema().optional(),
       validateProfileId: primitives.getIdSchema().optional(),
-      _validateProfileId: z.lazy(() => createElementSchema()).optional(),
+      _validateProfileId: createElementSchema().optional(),
       value: primitives.getStringSchema().optional(),
-      _value: z.lazy(() => createElementSchema()).optional(),
+      _value: createElementSchema().optional(),
       warningOnly: primitives.getBooleanSchema().optional(),
-      _warningOnly: z.lazy(() => createElementSchema()).optional(),
+      _warningOnly: createElementSchema().optional(),
     });
 
     return baseSchema;

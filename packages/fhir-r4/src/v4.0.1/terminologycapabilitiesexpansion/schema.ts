@@ -12,21 +12,19 @@ export function createTerminologyCapabilitiesExpansionSchema() {
     const baseSchema: z.ZodType<types.TerminologyCapabilitiesExpansion> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         hierarchical: primitives.getBooleanSchema().optional(),
-        _hierarchical: z.lazy(() => createElementSchema()).optional(),
+        _hierarchical: createElementSchema().optional(),
         paging: primitives.getBooleanSchema().optional(),
-        _paging: z.lazy(() => createElementSchema()).optional(),
+        _paging: createElementSchema().optional(),
         incomplete: primitives.getBooleanSchema().optional(),
-        _incomplete: z.lazy(() => createElementSchema()).optional(),
+        _incomplete: createElementSchema().optional(),
         parameter: z
           .array(createTerminologyCapabilitiesParameterSchema())
           .optional(),
         textFilter: primitives.getMarkdownSchema().optional(),
-        _textFilter: z.lazy(() => createElementSchema()).optional(),
+        _textFilter: createElementSchema().optional(),
       });
 
     return baseSchema;

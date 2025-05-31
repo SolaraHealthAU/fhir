@@ -11,14 +11,12 @@ export function createStructureDefinitionContextSchema() {
     const baseSchema: z.ZodType<types.StructureDefinitionContext> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         type: z.enum(["fhirpath", "element", "extension"]),
-        _type: z.lazy(() => createElementSchema()).optional(),
+        _type: createElementSchema().optional(),
         expression: primitives.getStringSchema(),
-        _expression: z.lazy(() => createElementSchema()).optional(),
+        _expression: createElementSchema().optional(),
       });
 
     return baseSchema;

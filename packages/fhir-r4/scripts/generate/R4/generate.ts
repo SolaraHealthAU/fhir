@@ -80,7 +80,7 @@ const dataElementsLookup = dataElements.entry.reduce(
 
 const primitives = Object.keys(spec.definitions ?? {}).filter((key) => /^[a-z]{1}/.test(key));
 const dataTypes = Object.keys(spec.definitions ?? {}).filter((key) => /^[A-Z]{1}/.test(key));
-const preferredLazy = ['Element', 'Extension', 'Identifier'];
+const preferredLazy = []; // ['Element', 'Extension', 'Identifier'];
 const extendedPrimitives = ['string', 'number', 'boolean'].concat(primitives);
 
 /* -------------------------------------------------------------------------- */

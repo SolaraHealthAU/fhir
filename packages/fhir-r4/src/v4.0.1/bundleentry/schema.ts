@@ -15,13 +15,11 @@ export function createBundleEntrySchema() {
   return getCachedSchema("BundleEntry", () => {
     const baseSchema: z.ZodType<types.BundleEntry> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       link: z.array(createBundleLinkSchema()).optional(),
       fullUrl: primitives.getUriSchema().optional(),
-      _fullUrl: z.lazy(() => createElementSchema()).optional(),
+      _fullUrl: createElementSchema().optional(),
       resource: createResourceListSchema().optional(),
       search: createBundleSearchSchema().optional(),
       request: createBundleRequestSchema().optional(),

@@ -17,10 +17,8 @@ export function createImmunizationRecommendationRecommendationSchema() {
     const baseSchema: z.ZodType<types.ImmunizationRecommendationRecommendation> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         vaccineCode: z.array(createCodeableConceptSchema()).optional(),
         targetDisease: createCodeableConceptSchema().optional(),
         contraindicatedVaccineCode: z
@@ -32,17 +30,17 @@ export function createImmunizationRecommendationRecommendationSchema() {
           .array(createImmunizationRecommendationDateCriterionSchema())
           .optional(),
         description: primitives.getStringSchema().optional(),
-        _description: z.lazy(() => createElementSchema()).optional(),
+        _description: createElementSchema().optional(),
         series: primitives.getStringSchema().optional(),
-        _series: z.lazy(() => createElementSchema()).optional(),
+        _series: createElementSchema().optional(),
         doseNumberPositiveInt: z.number().optional(),
-        _doseNumberPositiveInt: z.lazy(() => createElementSchema()).optional(),
+        _doseNumberPositiveInt: createElementSchema().optional(),
         doseNumberString: z.string().optional(),
-        _doseNumberString: z.lazy(() => createElementSchema()).optional(),
+        _doseNumberString: createElementSchema().optional(),
         seriesDosesPositiveInt: z.number().optional(),
-        _seriesDosesPositiveInt: z.lazy(() => createElementSchema()).optional(),
+        _seriesDosesPositiveInt: createElementSchema().optional(),
         seriesDosesString: z.string().optional(),
-        _seriesDosesString: z.lazy(() => createElementSchema()).optional(),
+        _seriesDosesString: createElementSchema().optional(),
         supportingImmunization: z.array(createReferenceSchema()).optional(),
         supportingPatientInformation: z
           .array(createReferenceSchema())

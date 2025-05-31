@@ -11,14 +11,12 @@ export function createConceptMapTargetSchema() {
   return getCachedSchema("ConceptMapTarget", () => {
     const baseSchema: z.ZodType<types.ConceptMapTarget> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       code: primitives.getCodeSchema().optional(),
-      _code: z.lazy(() => createElementSchema()).optional(),
+      _code: createElementSchema().optional(),
       display: primitives.getStringSchema().optional(),
-      _display: z.lazy(() => createElementSchema()).optional(),
+      _display: createElementSchema().optional(),
       equivalence: z
         .enum([
           "relatedto",
@@ -33,9 +31,9 @@ export function createConceptMapTargetSchema() {
           "disjoint",
         ])
         .optional(),
-      _equivalence: z.lazy(() => createElementSchema()).optional(),
+      _equivalence: createElementSchema().optional(),
       comment: primitives.getStringSchema().optional(),
-      _comment: z.lazy(() => createElementSchema()).optional(),
+      _comment: createElementSchema().optional(),
       dependsOn: z.array(createConceptMapDependsOnSchema()).optional(),
       product: z.array(createConceptMapDependsOnSchema()).optional(),
     });

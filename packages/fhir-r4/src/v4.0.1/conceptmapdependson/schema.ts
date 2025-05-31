@@ -10,17 +10,15 @@ export function createConceptMapDependsOnSchema() {
   return getCachedSchema("ConceptMapDependsOn", () => {
     const baseSchema: z.ZodType<types.ConceptMapDependsOn> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       property: primitives.getUriSchema().optional(),
-      _property: z.lazy(() => createElementSchema()).optional(),
+      _property: createElementSchema().optional(),
       system: primitives.getCanonicalSchema().optional(),
       value: primitives.getStringSchema().optional(),
-      _value: z.lazy(() => createElementSchema()).optional(),
+      _value: createElementSchema().optional(),
       display: primitives.getStringSchema().optional(),
-      _display: z.lazy(() => createElementSchema()).optional(),
+      _display: createElementSchema().optional(),
     });
 
     return baseSchema;

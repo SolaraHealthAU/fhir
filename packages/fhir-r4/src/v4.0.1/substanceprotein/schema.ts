@@ -21,22 +21,18 @@ export function createSubstanceProteinSchema() {
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),
       implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      _implicitRules: createElementSchema().optional(),
       language: primitives.getCodeSchema().optional(),
-      _language: z.lazy(() => createElementSchema()).optional(),
+      _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
       contained: z.array(createResourceListSchema()).optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       sequenceType: createCodeableConceptSchema().optional(),
       numberOfSubunits: primitives.getIntegerSchema().optional(),
-      _numberOfSubunits: z.lazy(() => createElementSchema()).optional(),
+      _numberOfSubunits: createElementSchema().optional(),
       disulfideLinkage: z.array(primitives.getStringSchema()).optional(),
-      _disulfideLinkage: z
-        .array(z.lazy(() => createElementSchema()))
-        .optional(),
+      _disulfideLinkage: z.array(createElementSchema()).optional(),
       subunit: z.array(createSubstanceProteinSubunitSchema()).optional(),
     });
 

@@ -15,17 +15,15 @@ export function createImplementationGuidePageSchema() {
     const baseSchema: z.ZodType<types.ImplementationGuidePage> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         nameUrl: z.string().optional(),
-        _nameUrl: z.lazy(() => createElementSchema()).optional(),
+        _nameUrl: createElementSchema().optional(),
         nameReference: createReferenceSchema().optional(),
         title: primitives.getStringSchema().optional(),
-        _title: z.lazy(() => createElementSchema()).optional(),
+        _title: createElementSchema().optional(),
         generation: z.enum(["html", "markdown", "xml", "generated"]).optional(),
-        _generation: z.lazy(() => createElementSchema()).optional(),
+        _generation: createElementSchema().optional(),
         page: z.array(createImplementationGuidePageSchema()).optional(),
       },
     );

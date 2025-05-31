@@ -19,11 +19,9 @@ export function createSubstanceReferenceInformationTargetSchema() {
     const baseSchema: z.ZodType<types.SubstanceReferenceInformationTarget> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
-        target: z.lazy(() => createIdentifierSchema()).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        target: createIdentifierSchema().optional(),
         type: createCodeableConceptSchema().optional(),
         interaction: createCodeableConceptSchema().optional(),
         organism: createCodeableConceptSchema().optional(),
@@ -31,7 +29,7 @@ export function createSubstanceReferenceInformationTargetSchema() {
         amountQuantity: createQuantitySchema().optional(),
         amountRange: createRangeSchema().optional(),
         amountString: z.string().optional(),
-        _amountString: z.lazy(() => createElementSchema()).optional(),
+        _amountString: createElementSchema().optional(),
         amountType: createCodeableConceptSchema().optional(),
         source: z.array(createReferenceSchema()).optional(),
       });

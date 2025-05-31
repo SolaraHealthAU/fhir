@@ -14,10 +14,8 @@ export function createProvenanceAgentSchema() {
   return getCachedSchema("ProvenanceAgent", () => {
     const baseSchema: z.ZodType<types.ProvenanceAgent> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       type: createCodeableConceptSchema().optional(),
       role: z.array(createCodeableConceptSchema()).optional(),
       who: createReferenceSchema(),

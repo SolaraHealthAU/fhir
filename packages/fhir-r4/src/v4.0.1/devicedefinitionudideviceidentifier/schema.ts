@@ -11,16 +11,14 @@ export function createDeviceDefinitionUdiDeviceIdentifierSchema() {
     const baseSchema: z.ZodType<types.DeviceDefinitionUdiDeviceIdentifier> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         deviceIdentifier: primitives.getStringSchema(),
-        _deviceIdentifier: z.lazy(() => createElementSchema()).optional(),
+        _deviceIdentifier: createElementSchema().optional(),
         issuer: primitives.getUriSchema(),
-        _issuer: z.lazy(() => createElementSchema()).optional(),
+        _issuer: createElementSchema().optional(),
         jurisdiction: primitives.getUriSchema(),
-        _jurisdiction: z.lazy(() => createElementSchema()).optional(),
+        _jurisdiction: createElementSchema().optional(),
       });
 
     return baseSchema;

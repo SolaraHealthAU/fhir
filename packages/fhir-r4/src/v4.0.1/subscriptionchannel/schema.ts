@@ -10,18 +10,16 @@ export function createSubscriptionChannelSchema() {
   return getCachedSchema("SubscriptionChannel", () => {
     const baseSchema: z.ZodType<types.SubscriptionChannel> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       type: z.enum(["rest-hook", "websocket", "email", "sms", "message"]),
-      _type: z.lazy(() => createElementSchema()).optional(),
+      _type: createElementSchema().optional(),
       endpoint: primitives.getUrlSchema().optional(),
-      _endpoint: z.lazy(() => createElementSchema()).optional(),
+      _endpoint: createElementSchema().optional(),
       payload: primitives.getCodeSchema().optional(),
-      _payload: z.lazy(() => createElementSchema()).optional(),
+      _payload: createElementSchema().optional(),
       header: z.array(primitives.getStringSchema()).optional(),
-      _header: z.array(z.lazy(() => createElementSchema())).optional(),
+      _header: z.array(createElementSchema()).optional(),
     });
 
     return baseSchema;

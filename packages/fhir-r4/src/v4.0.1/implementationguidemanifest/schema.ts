@@ -13,18 +13,16 @@ export function createImplementationGuideManifestSchema() {
     const baseSchema: z.ZodType<types.ImplementationGuideManifest> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         rendering: primitives.getUrlSchema().optional(),
-        _rendering: z.lazy(() => createElementSchema()).optional(),
+        _rendering: createElementSchema().optional(),
         resource: z.array(createImplementationGuideResource1Schema()),
         page: z.array(createImplementationGuidePage1Schema()).optional(),
         image: z.array(primitives.getStringSchema()).optional(),
-        _image: z.array(z.lazy(() => createElementSchema())).optional(),
+        _image: z.array(createElementSchema()).optional(),
         other: z.array(primitives.getStringSchema()).optional(),
-        _other: z.array(z.lazy(() => createElementSchema())).optional(),
+        _other: z.array(createElementSchema()).optional(),
       });
 
     return baseSchema;

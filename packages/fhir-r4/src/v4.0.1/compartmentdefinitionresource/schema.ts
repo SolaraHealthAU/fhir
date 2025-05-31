@@ -11,16 +11,14 @@ export function createCompartmentDefinitionResourceSchema() {
     const baseSchema: z.ZodType<types.CompartmentDefinitionResource> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         code: primitives.getCodeSchema(),
-        _code: z.lazy(() => createElementSchema()).optional(),
+        _code: createElementSchema().optional(),
         param: z.array(primitives.getStringSchema()).optional(),
-        _param: z.array(z.lazy(() => createElementSchema())).optional(),
+        _param: z.array(createElementSchema()).optional(),
         documentation: primitives.getStringSchema().optional(),
-        _documentation: z.lazy(() => createElementSchema()).optional(),
+        _documentation: createElementSchema().optional(),
       });
 
     return baseSchema;

@@ -16,18 +16,16 @@ export function createAllergyIntoleranceReactionSchema() {
     const baseSchema: z.ZodType<types.AllergyIntoleranceReaction> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         substance: createCodeableConceptSchema().optional(),
         manifestation: z.array(createCodeableConceptSchema()),
         description: primitives.getStringSchema().optional(),
-        _description: z.lazy(() => createElementSchema()).optional(),
+        _description: createElementSchema().optional(),
         onset: primitives.getDateTimeSchema().optional(),
-        _onset: z.lazy(() => createElementSchema()).optional(),
+        _onset: createElementSchema().optional(),
         severity: z.enum(["mild", "moderate", "severe"]).optional(),
-        _severity: z.lazy(() => createElementSchema()).optional(),
+        _severity: createElementSchema().optional(),
         exposureRoute: createCodeableConceptSchema().optional(),
         note: z.array(createAnnotationSchema()).optional(),
       });

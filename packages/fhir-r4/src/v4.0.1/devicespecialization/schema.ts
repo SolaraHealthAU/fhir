@@ -14,13 +14,11 @@ export function createDeviceSpecializationSchema() {
   return getCachedSchema("DeviceSpecialization", () => {
     const baseSchema: z.ZodType<types.DeviceSpecialization> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       systemType: createCodeableConceptSchema(),
       version: primitives.getStringSchema().optional(),
-      _version: z.lazy(() => createElementSchema()).optional(),
+      _version: createElementSchema().optional(),
     });
 
     return baseSchema;

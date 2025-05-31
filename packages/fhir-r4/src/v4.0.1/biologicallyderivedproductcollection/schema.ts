@@ -16,14 +16,12 @@ export function createBiologicallyDerivedProductCollectionSchema() {
     const baseSchema: z.ZodType<types.BiologicallyDerivedProductCollection> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         collector: createReferenceSchema().optional(),
         source: createReferenceSchema().optional(),
         collectedDateTime: z.string().optional(),
-        _collectedDateTime: z.lazy(() => createElementSchema()).optional(),
+        _collectedDateTime: createElementSchema().optional(),
         collectedPeriod: createPeriodSchema().optional(),
       });
 

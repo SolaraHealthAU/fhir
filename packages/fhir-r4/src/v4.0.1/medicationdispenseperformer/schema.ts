@@ -15,10 +15,8 @@ export function createMedicationDispensePerformerSchema() {
     const baseSchema: z.ZodType<types.MedicationDispensePerformer> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         function: createCodeableConceptSchema().optional(),
         actor: createReferenceSchema(),
       });

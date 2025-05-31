@@ -11,12 +11,10 @@ export function createTerminologyCapabilitiesTranslationSchema() {
     const baseSchema: z.ZodType<types.TerminologyCapabilitiesTranslation> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         needsMap: primitives.getBooleanSchema(),
-        _needsMap: z.lazy(() => createElementSchema()).optional(),
+        _needsMap: createElementSchema().optional(),
       });
 
     return baseSchema;

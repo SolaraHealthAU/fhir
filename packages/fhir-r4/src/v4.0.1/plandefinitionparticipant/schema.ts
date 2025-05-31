@@ -15,14 +15,12 @@ export function createPlanDefinitionParticipantSchema() {
     const baseSchema: z.ZodType<types.PlanDefinitionParticipant> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         type: z
           .enum(["patient", "practitioner", "related-person", "device"])
           .optional(),
-        _type: z.lazy(() => createElementSchema()).optional(),
+        _type: createElementSchema().optional(),
         role: createCodeableConceptSchema().optional(),
       });
 

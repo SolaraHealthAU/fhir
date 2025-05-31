@@ -18,36 +18,32 @@ export function createContractValuedItemSchema() {
   return getCachedSchema("ContractValuedItem", () => {
     const baseSchema: z.ZodType<types.ContractValuedItem> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       entityCodeableConcept: createCodeableConceptSchema().optional(),
       entityReference: createReferenceSchema().optional(),
-      identifier: z.lazy(() => createIdentifierSchema()).optional(),
+      identifier: createIdentifierSchema().optional(),
       effectiveTime: primitives.getDateTimeSchema().optional(),
-      _effectiveTime: z.lazy(() => createElementSchema()).optional(),
+      _effectiveTime: createElementSchema().optional(),
       quantity: createQuantitySchema().optional(),
       unitPrice: createMoneySchema().optional(),
       factor: primitives.getDecimalSchema().optional(),
-      _factor: z.lazy(() => createElementSchema()).optional(),
+      _factor: createElementSchema().optional(),
       points: primitives.getDecimalSchema().optional(),
-      _points: z.lazy(() => createElementSchema()).optional(),
+      _points: createElementSchema().optional(),
       net: createMoneySchema().optional(),
       payment: primitives.getStringSchema().optional(),
-      _payment: z.lazy(() => createElementSchema()).optional(),
+      _payment: createElementSchema().optional(),
       paymentDate: primitives.getDateTimeSchema().optional(),
-      _paymentDate: z.lazy(() => createElementSchema()).optional(),
+      _paymentDate: createElementSchema().optional(),
       responsible: createReferenceSchema().optional(),
       recipient: createReferenceSchema().optional(),
       linkId: z.array(primitives.getStringSchema()).optional(),
-      _linkId: z.array(z.lazy(() => createElementSchema())).optional(),
+      _linkId: z.array(createElementSchema()).optional(),
       securityLabelNumber: z
         .array(primitives.getUnsignedIntSchema())
         .optional(),
-      _securityLabelNumber: z
-        .array(z.lazy(() => createElementSchema()))
-        .optional(),
+      _securityLabelNumber: z.array(createElementSchema()).optional(),
     });
 
     return baseSchema;

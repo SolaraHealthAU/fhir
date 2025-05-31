@@ -16,12 +16,10 @@ export function createPlanDefinitionRelatedActionSchema() {
     const baseSchema: z.ZodType<types.PlanDefinitionRelatedAction> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         actionId: primitives.getIdSchema().optional(),
-        _actionId: z.lazy(() => createElementSchema()).optional(),
+        _actionId: createElementSchema().optional(),
         relationship: z
           .enum([
             "before-start",
@@ -35,7 +33,7 @@ export function createPlanDefinitionRelatedActionSchema() {
             "after-end",
           ])
           .optional(),
-        _relationship: z.lazy(() => createElementSchema()).optional(),
+        _relationship: createElementSchema().optional(),
         offsetDuration: createDurationSchema().optional(),
         offsetRange: createRangeSchema().optional(),
       });

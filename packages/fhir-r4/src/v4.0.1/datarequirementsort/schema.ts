@@ -10,14 +10,12 @@ export function createDataRequirementSortSchema() {
   return getCachedSchema("DataRequirementSort", () => {
     const baseSchema: z.ZodType<types.DataRequirementSort> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       path: primitives.getStringSchema(),
-      _path: z.lazy(() => createElementSchema()).optional(),
+      _path: createElementSchema().optional(),
       direction: z.enum(["ascending", "descending"]),
-      _direction: z.lazy(() => createElementSchema()).optional(),
+      _direction: createElementSchema().optional(),
     });
 
     return baseSchema;

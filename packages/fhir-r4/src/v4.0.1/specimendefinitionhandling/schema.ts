@@ -17,15 +17,13 @@ export function createSpecimenDefinitionHandlingSchema() {
     const baseSchema: z.ZodType<types.SpecimenDefinitionHandling> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         temperatureQualifier: createCodeableConceptSchema().optional(),
         temperatureRange: createRangeSchema().optional(),
         maxDuration: createDurationSchema().optional(),
         instruction: primitives.getStringSchema().optional(),
-        _instruction: z.lazy(() => createElementSchema()).optional(),
+        _instruction: createElementSchema().optional(),
       });
 
     return baseSchema;

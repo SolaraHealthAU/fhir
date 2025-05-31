@@ -17,17 +17,15 @@ export function createSubstanceAmountSchema() {
   return getCachedSchema("SubstanceAmount", () => {
     const baseSchema: z.ZodType<types.SubstanceAmount> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       amountQuantity: createQuantitySchema().optional(),
       amountRange: createRangeSchema().optional(),
       amountString: z.string().optional(),
-      _amountString: z.lazy(() => createElementSchema()).optional(),
+      _amountString: createElementSchema().optional(),
       amountType: createCodeableConceptSchema().optional(),
       amountText: primitives.getStringSchema().optional(),
-      _amountText: z.lazy(() => createElementSchema()).optional(),
+      _amountText: createElementSchema().optional(),
       referenceRange: createSubstanceAmountReferenceRangeSchema().optional(),
     });
 

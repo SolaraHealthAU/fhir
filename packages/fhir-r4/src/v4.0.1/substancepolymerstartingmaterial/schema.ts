@@ -16,14 +16,12 @@ export function createSubstancePolymerStartingMaterialSchema() {
     const baseSchema: z.ZodType<types.SubstancePolymerStartingMaterial> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         material: createCodeableConceptSchema().optional(),
         type: createCodeableConceptSchema().optional(),
         isDefining: primitives.getBooleanSchema().optional(),
-        _isDefining: z.lazy(() => createElementSchema()).optional(),
+        _isDefining: createElementSchema().optional(),
         amount: createSubstanceAmountSchema().optional(),
       });
 

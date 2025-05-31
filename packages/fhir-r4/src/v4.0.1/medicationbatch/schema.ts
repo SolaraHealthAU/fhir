@@ -10,14 +10,12 @@ export function createMedicationBatchSchema() {
   return getCachedSchema("MedicationBatch", () => {
     const baseSchema: z.ZodType<types.MedicationBatch> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       lotNumber: primitives.getStringSchema().optional(),
-      _lotNumber: z.lazy(() => createElementSchema()).optional(),
+      _lotNumber: createElementSchema().optional(),
       expirationDate: primitives.getDateTimeSchema().optional(),
-      _expirationDate: z.lazy(() => createElementSchema()).optional(),
+      _expirationDate: createElementSchema().optional(),
     });
 
     return baseSchema;

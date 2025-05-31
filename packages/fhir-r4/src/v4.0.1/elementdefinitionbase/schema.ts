@@ -10,16 +10,14 @@ export function createElementDefinitionBaseSchema() {
   return getCachedSchema("ElementDefinitionBase", () => {
     const baseSchema: z.ZodType<types.ElementDefinitionBase> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       path: primitives.getStringSchema(),
-      _path: z.lazy(() => createElementSchema()).optional(),
+      _path: createElementSchema().optional(),
       min: primitives.getUnsignedIntSchema(),
-      _min: z.lazy(() => createElementSchema()).optional(),
+      _min: createElementSchema().optional(),
       max: primitives.getStringSchema(),
-      _max: z.lazy(() => createElementSchema()).optional(),
+      _max: createElementSchema().optional(),
     });
 
     return baseSchema;

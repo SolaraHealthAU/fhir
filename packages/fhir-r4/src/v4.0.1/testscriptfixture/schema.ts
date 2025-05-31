@@ -14,14 +14,12 @@ export function createTestScriptFixtureSchema() {
   return getCachedSchema("TestScriptFixture", () => {
     const baseSchema: z.ZodType<types.TestScriptFixture> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       autocreate: primitives.getBooleanSchema(),
-      _autocreate: z.lazy(() => createElementSchema()).optional(),
+      _autocreate: createElementSchema().optional(),
       autodelete: primitives.getBooleanSchema(),
-      _autodelete: z.lazy(() => createElementSchema()).optional(),
+      _autodelete: createElementSchema().optional(),
       resource: createReferenceSchema().optional(),
     });
 

@@ -14,12 +14,10 @@ export function createOperationOutcomeIssueSchema() {
   return getCachedSchema("OperationOutcomeIssue", () => {
     const baseSchema: z.ZodType<types.OperationOutcomeIssue> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       severity: z.enum(["fatal", "error", "warning", "information"]),
-      _severity: z.lazy(() => createElementSchema()).optional(),
+      _severity: createElementSchema().optional(),
       code: z.enum([
         "invalid",
         "structure",
@@ -53,14 +51,14 @@ export function createOperationOutcomeIssueSchema() {
         "throttled",
         "informational",
       ]),
-      _code: z.lazy(() => createElementSchema()).optional(),
+      _code: createElementSchema().optional(),
       details: createCodeableConceptSchema().optional(),
       diagnostics: primitives.getStringSchema().optional(),
-      _diagnostics: z.lazy(() => createElementSchema()).optional(),
+      _diagnostics: createElementSchema().optional(),
       location: z.array(primitives.getStringSchema()).optional(),
-      _location: z.array(z.lazy(() => createElementSchema())).optional(),
+      _location: z.array(createElementSchema()).optional(),
       expression: z.array(primitives.getStringSchema()).optional(),
-      _expression: z.array(z.lazy(() => createElementSchema())).optional(),
+      _expression: z.array(createElementSchema()).optional(),
     });
 
     return baseSchema;

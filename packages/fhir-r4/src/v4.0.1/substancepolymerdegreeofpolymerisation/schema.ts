@@ -15,10 +15,8 @@ export function createSubstancePolymerDegreeOfPolymerisationSchema() {
     const baseSchema: z.ZodType<types.SubstancePolymerDegreeOfPolymerisation> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         degree: createCodeableConceptSchema().optional(),
         amount: createSubstanceAmountSchema().optional(),
       });

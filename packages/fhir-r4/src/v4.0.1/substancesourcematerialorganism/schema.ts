@@ -18,18 +18,14 @@ export function createSubstanceSourceMaterialOrganismSchema() {
     const baseSchema: z.ZodType<types.SubstanceSourceMaterialOrganism> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         family: createCodeableConceptSchema().optional(),
         genus: createCodeableConceptSchema().optional(),
         species: createCodeableConceptSchema().optional(),
         intraspecificType: createCodeableConceptSchema().optional(),
         intraspecificDescription: primitives.getStringSchema().optional(),
-        _intraspecificDescription: z
-          .lazy(() => createElementSchema())
-          .optional(),
+        _intraspecificDescription: createElementSchema().optional(),
         author: z.array(createSubstanceSourceMaterialAuthorSchema()).optional(),
         hybrid: createSubstanceSourceMaterialHybridSchema().optional(),
         organismGeneral:

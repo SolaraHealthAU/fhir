@@ -15,16 +15,14 @@ export function createClaimResponseProcessNoteSchema() {
     const baseSchema: z.ZodType<types.ClaimResponseProcessNote> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         number: primitives.getPositiveIntSchema().optional(),
-        _number: z.lazy(() => createElementSchema()).optional(),
+        _number: createElementSchema().optional(),
         type: z.enum(["display", "print", "printoper"]).optional(),
-        _type: z.lazy(() => createElementSchema()).optional(),
+        _type: createElementSchema().optional(),
         text: primitives.getStringSchema(),
-        _text: z.lazy(() => createElementSchema()).optional(),
+        _text: createElementSchema().optional(),
         language: createCodeableConceptSchema().optional(),
       });
 

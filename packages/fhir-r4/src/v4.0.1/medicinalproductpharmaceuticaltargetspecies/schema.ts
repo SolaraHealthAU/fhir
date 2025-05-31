@@ -15,10 +15,8 @@ export function createMedicinalProductPharmaceuticalTargetSpeciesSchema() {
     const baseSchema: z.ZodType<types.MedicinalProductPharmaceuticalTargetSpecies> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         code: createCodeableConceptSchema(),
         withdrawalPeriod: z
           .array(createMedicinalProductPharmaceuticalWithdrawalPeriodSchema())

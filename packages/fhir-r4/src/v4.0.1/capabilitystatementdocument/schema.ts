@@ -11,14 +11,12 @@ export function createCapabilityStatementDocumentSchema() {
     const baseSchema: z.ZodType<types.CapabilityStatementDocument> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         mode: z.enum(["producer", "consumer"]),
-        _mode: z.lazy(() => createElementSchema()).optional(),
+        _mode: createElementSchema().optional(),
         documentation: primitives.getMarkdownSchema().optional(),
-        _documentation: z.lazy(() => createElementSchema()).optional(),
+        _documentation: createElementSchema().optional(),
         profile: primitives.getCanonicalSchema(),
       });
 

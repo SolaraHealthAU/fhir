@@ -21,20 +21,18 @@ export function createContractTermSchema() {
   return getCachedSchema("ContractTerm", () => {
     const baseSchema: z.ZodType<types.ContractTerm> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      identifier: z.lazy(() => createIdentifierSchema()).optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      identifier: createIdentifierSchema().optional(),
       issued: primitives.getDateTimeSchema().optional(),
-      _issued: z.lazy(() => createElementSchema()).optional(),
+      _issued: createElementSchema().optional(),
       applies: createPeriodSchema().optional(),
       topicCodeableConcept: createCodeableConceptSchema().optional(),
       topicReference: createReferenceSchema().optional(),
       type: createCodeableConceptSchema().optional(),
       subType: createCodeableConceptSchema().optional(),
       text: primitives.getStringSchema().optional(),
-      _text: z.lazy(() => createElementSchema()).optional(),
+      _text: createElementSchema().optional(),
       securityLabel: z.array(createContractSecurityLabelSchema()).optional(),
       offer: createContractOfferSchema(),
       asset: z.array(createContractAssetSchema()).optional(),

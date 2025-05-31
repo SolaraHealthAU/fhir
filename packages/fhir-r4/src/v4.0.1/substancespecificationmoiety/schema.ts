@@ -17,21 +17,19 @@ export function createSubstanceSpecificationMoietySchema() {
     const baseSchema: z.ZodType<types.SubstanceSpecificationMoiety> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         role: createCodeableConceptSchema().optional(),
-        identifier: z.lazy(() => createIdentifierSchema()).optional(),
+        identifier: createIdentifierSchema().optional(),
         name: primitives.getStringSchema().optional(),
-        _name: z.lazy(() => createElementSchema()).optional(),
+        _name: createElementSchema().optional(),
         stereochemistry: createCodeableConceptSchema().optional(),
         opticalActivity: createCodeableConceptSchema().optional(),
         molecularFormula: primitives.getStringSchema().optional(),
-        _molecularFormula: z.lazy(() => createElementSchema()).optional(),
+        _molecularFormula: createElementSchema().optional(),
         amountQuantity: createQuantitySchema().optional(),
         amountString: z.string().optional(),
-        _amountString: z.lazy(() => createElementSchema()).optional(),
+        _amountString: createElementSchema().optional(),
       });
 
     return baseSchema;

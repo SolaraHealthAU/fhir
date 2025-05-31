@@ -15,17 +15,15 @@ export function createRiskEvidenceSynthesisPrecisionEstimateSchema() {
     const baseSchema: z.ZodType<types.RiskEvidenceSynthesisPrecisionEstimate> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         type: createCodeableConceptSchema().optional(),
         level: primitives.getDecimalSchema().optional(),
-        _level: z.lazy(() => createElementSchema()).optional(),
+        _level: createElementSchema().optional(),
         from: primitives.getDecimalSchema().optional(),
-        _from: z.lazy(() => createElementSchema()).optional(),
+        _from: createElementSchema().optional(),
         to: primitives.getDecimalSchema().optional(),
-        _to: z.lazy(() => createElementSchema()).optional(),
+        _to: createElementSchema().optional(),
       });
 
     return baseSchema;

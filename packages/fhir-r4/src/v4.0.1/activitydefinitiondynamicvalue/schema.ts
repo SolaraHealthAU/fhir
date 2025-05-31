@@ -15,12 +15,10 @@ export function createActivityDefinitionDynamicValueSchema() {
     const baseSchema: z.ZodType<types.ActivityDefinitionDynamicValue> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         path: primitives.getStringSchema(),
-        _path: z.lazy(() => createElementSchema()).optional(),
+        _path: createElementSchema().optional(),
         expression: createExpressionSchema(),
       });
 

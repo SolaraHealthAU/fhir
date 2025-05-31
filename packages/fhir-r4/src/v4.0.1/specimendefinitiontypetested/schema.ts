@@ -18,18 +18,16 @@ export function createSpecimenDefinitionTypeTestedSchema() {
     const baseSchema: z.ZodType<types.SpecimenDefinitionTypeTested> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         isDerived: primitives.getBooleanSchema().optional(),
-        _isDerived: z.lazy(() => createElementSchema()).optional(),
+        _isDerived: createElementSchema().optional(),
         type: createCodeableConceptSchema().optional(),
         preference: z.enum(["preferred", "alternate"]),
-        _preference: z.lazy(() => createElementSchema()).optional(),
+        _preference: createElementSchema().optional(),
         container: createSpecimenDefinitionContainerSchema().optional(),
         requirement: primitives.getStringSchema().optional(),
-        _requirement: z.lazy(() => createElementSchema()).optional(),
+        _requirement: createElementSchema().optional(),
         retentionTime: createDurationSchema().optional(),
         rejectionCriterion: z.array(createCodeableConceptSchema()).optional(),
         handling: z.array(createSpecimenDefinitionHandlingSchema()).optional(),

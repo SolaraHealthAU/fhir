@@ -10,24 +10,22 @@ export function createBundleRequestSchema() {
   return getCachedSchema("BundleRequest", () => {
     const baseSchema: z.ZodType<types.BundleRequest> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       method: z
         .enum(["GET", "HEAD", "POST", "PUT", "DELETE", "PATCH"])
         .optional(),
-      _method: z.lazy(() => createElementSchema()).optional(),
+      _method: createElementSchema().optional(),
       url: primitives.getUriSchema().optional(),
-      _url: z.lazy(() => createElementSchema()).optional(),
+      _url: createElementSchema().optional(),
       ifNoneMatch: primitives.getStringSchema().optional(),
-      _ifNoneMatch: z.lazy(() => createElementSchema()).optional(),
+      _ifNoneMatch: createElementSchema().optional(),
       ifModifiedSince: primitives.getInstantSchema().optional(),
-      _ifModifiedSince: z.lazy(() => createElementSchema()).optional(),
+      _ifModifiedSince: createElementSchema().optional(),
       ifMatch: primitives.getStringSchema().optional(),
-      _ifMatch: z.lazy(() => createElementSchema()).optional(),
+      _ifMatch: createElementSchema().optional(),
       ifNoneExist: primitives.getStringSchema().optional(),
-      _ifNoneExist: z.lazy(() => createElementSchema()).optional(),
+      _ifNoneExist: createElementSchema().optional(),
     });
 
     return baseSchema;

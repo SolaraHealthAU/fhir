@@ -17,20 +17,18 @@ export function createSubstanceSpecificationPropertySchema() {
     const baseSchema: z.ZodType<types.SubstanceSpecificationProperty> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         category: createCodeableConceptSchema().optional(),
         code: createCodeableConceptSchema().optional(),
         parameters: primitives.getStringSchema().optional(),
-        _parameters: z.lazy(() => createElementSchema()).optional(),
+        _parameters: createElementSchema().optional(),
         definingSubstanceReference: createReferenceSchema().optional(),
         definingSubstanceCodeableConcept:
           createCodeableConceptSchema().optional(),
         amountQuantity: createQuantitySchema().optional(),
         amountString: z.string().optional(),
-        _amountString: z.lazy(() => createElementSchema()).optional(),
+        _amountString: createElementSchema().optional(),
       });
 
     return baseSchema;

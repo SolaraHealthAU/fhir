@@ -12,10 +12,8 @@ export function createTestScriptAction1Schema() {
   return getCachedSchema("TestScriptAction1", () => {
     const baseSchema: z.ZodType<types.TestScriptAction1> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       operation: createTestScriptOperationSchema().optional(),
       assert: createTestScriptAssertSchema().optional(),
     });

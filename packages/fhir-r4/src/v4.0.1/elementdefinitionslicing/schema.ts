@@ -12,19 +12,17 @@ export function createElementDefinitionSlicingSchema() {
     const baseSchema: z.ZodType<types.ElementDefinitionSlicing> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         discriminator: z
           .array(createElementDefinitionDiscriminatorSchema())
           .optional(),
         description: primitives.getStringSchema().optional(),
-        _description: z.lazy(() => createElementSchema()).optional(),
+        _description: createElementSchema().optional(),
         ordered: primitives.getBooleanSchema().optional(),
-        _ordered: z.lazy(() => createElementSchema()).optional(),
+        _ordered: createElementSchema().optional(),
         rules: z.enum(["closed", "open", "openAtEnd"]),
-        _rules: z.lazy(() => createElementSchema()).optional(),
+        _rules: createElementSchema().optional(),
       });
 
     return baseSchema;

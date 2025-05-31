@@ -16,20 +16,18 @@ export function createCoverageEligibilityResponseBenefitSchema() {
     const baseSchema: z.ZodType<types.CoverageEligibilityResponseBenefit> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         type: createCodeableConceptSchema(),
         allowedUnsignedInt: z.number().optional(),
-        _allowedUnsignedInt: z.lazy(() => createElementSchema()).optional(),
+        _allowedUnsignedInt: createElementSchema().optional(),
         allowedString: z.string().optional(),
-        _allowedString: z.lazy(() => createElementSchema()).optional(),
+        _allowedString: createElementSchema().optional(),
         allowedMoney: createMoneySchema().optional(),
         usedUnsignedInt: z.number().optional(),
-        _usedUnsignedInt: z.lazy(() => createElementSchema()).optional(),
+        _usedUnsignedInt: createElementSchema().optional(),
         usedString: z.string().optional(),
-        _usedString: z.lazy(() => createElementSchema()).optional(),
+        _usedString: createElementSchema().optional(),
         usedMoney: createMoneySchema().optional(),
       });
 

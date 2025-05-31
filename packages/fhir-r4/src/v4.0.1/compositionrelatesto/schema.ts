@@ -15,13 +15,11 @@ export function createCompositionRelatesToSchema() {
   return getCachedSchema("CompositionRelatesTo", () => {
     const baseSchema: z.ZodType<types.CompositionRelatesTo> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       code: primitives.getCodeSchema(),
-      _code: z.lazy(() => createElementSchema()).optional(),
-      targetIdentifier: z.lazy(() => createIdentifierSchema()).optional(),
+      _code: createElementSchema().optional(),
+      targetIdentifier: createIdentifierSchema().optional(),
       targetReference: createReferenceSchema().optional(),
     });
 

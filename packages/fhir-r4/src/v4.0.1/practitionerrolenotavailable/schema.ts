@@ -15,12 +15,10 @@ export function createPractitionerRoleNotAvailableSchema() {
     const baseSchema: z.ZodType<types.PractitionerRoleNotAvailable> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         description: primitives.getStringSchema(),
-        _description: z.lazy(() => createElementSchema()).optional(),
+        _description: createElementSchema().optional(),
         during: createPeriodSchema().optional(),
       });
 

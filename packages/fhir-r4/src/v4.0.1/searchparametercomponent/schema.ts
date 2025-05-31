@@ -11,13 +11,11 @@ export function createSearchParameterComponentSchema() {
     const baseSchema: z.ZodType<types.SearchParameterComponent> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         definition: primitives.getCanonicalSchema(),
         expression: primitives.getStringSchema(),
-        _expression: z.lazy(() => createElementSchema()).optional(),
+        _expression: createElementSchema().optional(),
       });
 
     return baseSchema;

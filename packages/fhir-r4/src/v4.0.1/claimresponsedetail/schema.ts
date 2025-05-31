@@ -12,14 +12,12 @@ export function createClaimResponseDetailSchema() {
   return getCachedSchema("ClaimResponseDetail", () => {
     const baseSchema: z.ZodType<types.ClaimResponseDetail> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       detailSequence: primitives.getPositiveIntSchema().optional(),
-      _detailSequence: z.lazy(() => createElementSchema()).optional(),
+      _detailSequence: createElementSchema().optional(),
       noteNumber: z.array(primitives.getPositiveIntSchema()).optional(),
-      _noteNumber: z.array(z.lazy(() => createElementSchema())).optional(),
+      _noteNumber: z.array(createElementSchema()).optional(),
       adjudication: z.array(createClaimResponseAdjudicationSchema()),
       subDetail: z.array(createClaimResponseSubDetailSchema()).optional(),
     });

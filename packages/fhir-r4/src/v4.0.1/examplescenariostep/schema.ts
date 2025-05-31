@@ -13,13 +13,11 @@ export function createExampleScenarioStepSchema() {
   return getCachedSchema("ExampleScenarioStep", () => {
     const baseSchema: z.ZodType<types.ExampleScenarioStep> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       process: z.array(createExampleScenarioProcessSchema()).optional(),
       pause: primitives.getBooleanSchema().optional(),
-      _pause: z.lazy(() => createElementSchema()).optional(),
+      _pause: createElementSchema().optional(),
       operation: createExampleScenarioOperationSchema().optional(),
       alternative: z.array(createExampleScenarioAlternativeSchema()).optional(),
     });

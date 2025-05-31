@@ -15,13 +15,11 @@ export function createMedicationKnowledgeSubstitutionSchema() {
     const baseSchema: z.ZodType<types.MedicationKnowledgeSubstitution> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         type: createCodeableConceptSchema(),
         allowed: primitives.getBooleanSchema().optional(),
-        _allowed: z.lazy(() => createElementSchema()).optional(),
+        _allowed: createElementSchema().optional(),
       });
 
     return baseSchema;

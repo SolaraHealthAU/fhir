@@ -11,14 +11,12 @@ export function createTestScriptRequestHeaderSchema() {
     const baseSchema: z.ZodType<types.TestScriptRequestHeader> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         field: primitives.getStringSchema().optional(),
-        _field: z.lazy(() => createElementSchema()).optional(),
+        _field: createElementSchema().optional(),
         value: primitives.getStringSchema().optional(),
-        _value: z.lazy(() => createElementSchema()).optional(),
+        _value: createElementSchema().optional(),
       },
     );
 

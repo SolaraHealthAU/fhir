@@ -15,16 +15,14 @@ export function createBiologicallyDerivedProductStorageSchema() {
     const baseSchema: z.ZodType<types.BiologicallyDerivedProductStorage> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         description: primitives.getStringSchema().optional(),
-        _description: z.lazy(() => createElementSchema()).optional(),
+        _description: createElementSchema().optional(),
         temperature: primitives.getDecimalSchema().optional(),
-        _temperature: z.lazy(() => createElementSchema()).optional(),
+        _temperature: createElementSchema().optional(),
         scale: z.enum(["farenheit", "celsius", "kelvin"]).optional(),
-        _scale: z.lazy(() => createElementSchema()).optional(),
+        _scale: createElementSchema().optional(),
         duration: createPeriodSchema().optional(),
       });
 

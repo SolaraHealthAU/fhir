@@ -10,16 +10,14 @@ export function createLocationPositionSchema() {
   return getCachedSchema("LocationPosition", () => {
     const baseSchema: z.ZodType<types.LocationPosition> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       longitude: primitives.getDecimalSchema(),
-      _longitude: z.lazy(() => createElementSchema()).optional(),
+      _longitude: createElementSchema().optional(),
       latitude: primitives.getDecimalSchema(),
-      _latitude: z.lazy(() => createElementSchema()).optional(),
+      _latitude: createElementSchema().optional(),
       altitude: primitives.getDecimalSchema().optional(),
-      _altitude: z.lazy(() => createElementSchema()).optional(),
+      _altitude: createElementSchema().optional(),
     });
 
     return baseSchema;

@@ -16,16 +16,14 @@ export function createInsurancePlanGeneralCostSchema() {
     const baseSchema: z.ZodType<types.InsurancePlanGeneralCost> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         type: createCodeableConceptSchema().optional(),
         groupSize: primitives.getPositiveIntSchema().optional(),
-        _groupSize: z.lazy(() => createElementSchema()).optional(),
+        _groupSize: createElementSchema().optional(),
         cost: createMoneySchema().optional(),
         comment: primitives.getStringSchema().optional(),
-        _comment: z.lazy(() => createElementSchema()).optional(),
+        _comment: createElementSchema().optional(),
       });
 
     return baseSchema;

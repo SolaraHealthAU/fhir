@@ -11,15 +11,13 @@ export function createImplementationGuideDependsOnSchema() {
     const baseSchema: z.ZodType<types.ImplementationGuideDependsOn> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         uri: primitives.getCanonicalSchema(),
         packageId: primitives.getIdSchema().optional(),
-        _packageId: z.lazy(() => createElementSchema()).optional(),
+        _packageId: createElementSchema().optional(),
         version: primitives.getStringSchema().optional(),
-        _version: z.lazy(() => createElementSchema()).optional(),
+        _version: createElementSchema().optional(),
       });
 
     return baseSchema;

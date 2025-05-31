@@ -10,16 +10,14 @@ export function createTestReportParticipantSchema() {
   return getCachedSchema("TestReportParticipant", () => {
     const baseSchema: z.ZodType<types.TestReportParticipant> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       type: z.enum(["test-engine", "client", "server"]),
-      _type: z.lazy(() => createElementSchema()).optional(),
+      _type: createElementSchema().optional(),
       uri: primitives.getUriSchema(),
-      _uri: z.lazy(() => createElementSchema()).optional(),
+      _uri: createElementSchema().optional(),
       display: primitives.getStringSchema().optional(),
-      _display: z.lazy(() => createElementSchema()).optional(),
+      _display: createElementSchema().optional(),
     });
 
     return baseSchema;

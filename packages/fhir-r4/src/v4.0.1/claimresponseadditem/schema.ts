@@ -21,24 +21,20 @@ export function createClaimResponseAddItemSchema() {
   return getCachedSchema("ClaimResponseAddItem", () => {
     const baseSchema: z.ZodType<types.ClaimResponseAddItem> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       itemSequence: z.array(primitives.getPositiveIntSchema()).optional(),
-      _itemSequence: z.array(z.lazy(() => createElementSchema())).optional(),
+      _itemSequence: z.array(createElementSchema()).optional(),
       detailSequence: z.array(primitives.getPositiveIntSchema()).optional(),
-      _detailSequence: z.array(z.lazy(() => createElementSchema())).optional(),
+      _detailSequence: z.array(createElementSchema()).optional(),
       subdetailSequence: z.array(primitives.getPositiveIntSchema()).optional(),
-      _subdetailSequence: z
-        .array(z.lazy(() => createElementSchema()))
-        .optional(),
+      _subdetailSequence: z.array(createElementSchema()).optional(),
       provider: z.array(createReferenceSchema()).optional(),
       productOrService: createCodeableConceptSchema(),
       modifier: z.array(createCodeableConceptSchema()).optional(),
       programCode: z.array(createCodeableConceptSchema()).optional(),
       servicedDate: z.string().optional(),
-      _servicedDate: z.lazy(() => createElementSchema()).optional(),
+      _servicedDate: createElementSchema().optional(),
       servicedPeriod: createPeriodSchema().optional(),
       locationCodeableConcept: createCodeableConceptSchema().optional(),
       locationAddress: createAddressSchema().optional(),
@@ -46,12 +42,12 @@ export function createClaimResponseAddItemSchema() {
       quantity: createQuantitySchema().optional(),
       unitPrice: createMoneySchema().optional(),
       factor: primitives.getDecimalSchema().optional(),
-      _factor: z.lazy(() => createElementSchema()).optional(),
+      _factor: createElementSchema().optional(),
       net: createMoneySchema().optional(),
       bodySite: createCodeableConceptSchema().optional(),
       subSite: z.array(createCodeableConceptSchema()).optional(),
       noteNumber: z.array(primitives.getPositiveIntSchema()).optional(),
-      _noteNumber: z.array(z.lazy(() => createElementSchema())).optional(),
+      _noteNumber: z.array(createElementSchema()).optional(),
       adjudication: z.array(createClaimResponseAdjudicationSchema()),
       detail: z.array(createClaimResponseDetail1Schema()).optional(),
     });

@@ -15,12 +15,10 @@ export function createPlanDefinitionConditionSchema() {
     const baseSchema: z.ZodType<types.PlanDefinitionCondition> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         kind: z.enum(["applicability", "start", "stop"]).optional(),
-        _kind: z.lazy(() => createElementSchema()).optional(),
+        _kind: createElementSchema().optional(),
         expression: createExpressionSchema().optional(),
       },
     );

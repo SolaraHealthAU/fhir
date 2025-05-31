@@ -10,16 +10,14 @@ export function createAuditEventDetailSchema() {
   return getCachedSchema("AuditEventDetail", () => {
     const baseSchema: z.ZodType<types.AuditEventDetail> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       type: primitives.getStringSchema().optional(),
-      _type: z.lazy(() => createElementSchema()).optional(),
+      _type: createElementSchema().optional(),
       valueString: z.string().optional(),
-      _valueString: z.lazy(() => createElementSchema()).optional(),
+      _valueString: createElementSchema().optional(),
       valueBase64Binary: z.string().optional(),
-      _valueBase64Binary: z.lazy(() => createElementSchema()).optional(),
+      _valueBase64Binary: createElementSchema().optional(),
     });
 
     return baseSchema;

@@ -16,10 +16,8 @@ export function createCarePlanActivitySchema() {
   return getCachedSchema("CarePlanActivity", () => {
     const baseSchema: z.ZodType<types.CarePlanActivity> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       outcomeCodeableConcept: z.array(createCodeableConceptSchema()).optional(),
       outcomeReference: z.array(createReferenceSchema()).optional(),
       progress: z.array(createAnnotationSchema()).optional(),

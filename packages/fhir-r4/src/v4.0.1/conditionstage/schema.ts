@@ -14,10 +14,8 @@ export function createConditionStageSchema() {
   return getCachedSchema("ConditionStage", () => {
     const baseSchema: z.ZodType<types.ConditionStage> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       summary: createCodeableConceptSchema().optional(),
       assessment: z.array(createReferenceSchema()).optional(),
       type: createCodeableConceptSchema().optional(),

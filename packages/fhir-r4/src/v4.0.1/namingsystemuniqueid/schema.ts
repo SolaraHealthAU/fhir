@@ -14,18 +14,16 @@ export function createNamingSystemUniqueIdSchema() {
   return getCachedSchema("NamingSystemUniqueId", () => {
     const baseSchema: z.ZodType<types.NamingSystemUniqueId> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       type: z.enum(["oid", "uuid", "uri", "other"]),
-      _type: z.lazy(() => createElementSchema()).optional(),
+      _type: createElementSchema().optional(),
       value: primitives.getStringSchema(),
-      _value: z.lazy(() => createElementSchema()).optional(),
+      _value: createElementSchema().optional(),
       preferred: primitives.getBooleanSchema().optional(),
-      _preferred: z.lazy(() => createElementSchema()).optional(),
+      _preferred: createElementSchema().optional(),
       comment: primitives.getStringSchema().optional(),
-      _comment: z.lazy(() => createElementSchema()).optional(),
+      _comment: createElementSchema().optional(),
       period: createPeriodSchema().optional(),
     });
 

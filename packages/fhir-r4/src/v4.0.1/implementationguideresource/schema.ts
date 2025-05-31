@@ -15,23 +15,21 @@ export function createImplementationGuideResourceSchema() {
     const baseSchema: z.ZodType<types.ImplementationGuideResource> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         reference: createReferenceSchema(),
         fhirVersion: z.array(z.any()).optional(),
-        _fhirVersion: z.array(z.lazy(() => createElementSchema())).optional(),
+        _fhirVersion: z.array(createElementSchema()).optional(),
         name: primitives.getStringSchema().optional(),
-        _name: z.lazy(() => createElementSchema()).optional(),
+        _name: createElementSchema().optional(),
         description: primitives.getStringSchema().optional(),
-        _description: z.lazy(() => createElementSchema()).optional(),
+        _description: createElementSchema().optional(),
         exampleBoolean: z.boolean().optional(),
-        _exampleBoolean: z.lazy(() => createElementSchema()).optional(),
+        _exampleBoolean: createElementSchema().optional(),
         exampleCanonical: z.string().optional(),
-        _exampleCanonical: z.lazy(() => createElementSchema()).optional(),
+        _exampleCanonical: createElementSchema().optional(),
         groupingId: primitives.getIdSchema().optional(),
-        _groupingId: z.lazy(() => createElementSchema()).optional(),
+        _groupingId: createElementSchema().optional(),
       });
 
     return baseSchema;

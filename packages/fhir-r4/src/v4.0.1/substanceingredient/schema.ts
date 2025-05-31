@@ -15,10 +15,8 @@ export function createSubstanceIngredientSchema() {
   return getCachedSchema("SubstanceIngredient", () => {
     const baseSchema: z.ZodType<types.SubstanceIngredient> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       quantity: createRatioSchema().optional(),
       substanceCodeableConcept: createCodeableConceptSchema().optional(),
       substanceReference: createReferenceSchema().optional(),

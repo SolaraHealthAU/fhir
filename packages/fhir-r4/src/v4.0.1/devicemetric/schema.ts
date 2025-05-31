@@ -24,16 +24,14 @@ export function createDeviceMetricSchema() {
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),
       implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      _implicitRules: createElementSchema().optional(),
       language: primitives.getCodeSchema().optional(),
-      _language: z.lazy(() => createElementSchema()).optional(),
+      _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
       contained: z.array(createResourceListSchema()).optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      identifier: z.array(createIdentifierSchema()).optional(),
       type: createCodeableConceptSchema(),
       unit: createCodeableConceptSchema().optional(),
       source: createReferenceSchema().optional(),
@@ -41,7 +39,7 @@ export function createDeviceMetricSchema() {
       operationalStatus: z
         .enum(["on", "off", "standby", "entered-in-error"])
         .optional(),
-      _operationalStatus: z.lazy(() => createElementSchema()).optional(),
+      _operationalStatus: createElementSchema().optional(),
       color: z
         .enum([
           "black",
@@ -54,14 +52,14 @@ export function createDeviceMetricSchema() {
           "white",
         ])
         .optional(),
-      _color: z.lazy(() => createElementSchema()).optional(),
+      _color: createElementSchema().optional(),
       category: z.enum([
         "measurement",
         "setting",
         "calculation",
         "unspecified",
       ]),
-      _category: z.lazy(() => createElementSchema()).optional(),
+      _category: createElementSchema().optional(),
       measurementPeriod: createTimingSchema().optional(),
       calibration: z.array(createDeviceMetricCalibrationSchema()).optional(),
     });

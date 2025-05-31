@@ -19,12 +19,10 @@ export function createExplanationOfBenefitSubDetailSchema() {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitSubDetail> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         sequence: primitives.getPositiveIntSchema().optional(),
-        _sequence: z.lazy(() => createElementSchema()).optional(),
+        _sequence: createElementSchema().optional(),
         revenue: createCodeableConceptSchema().optional(),
         category: createCodeableConceptSchema().optional(),
         productOrService: createCodeableConceptSchema(),
@@ -33,11 +31,11 @@ export function createExplanationOfBenefitSubDetailSchema() {
         quantity: createQuantitySchema().optional(),
         unitPrice: createMoneySchema().optional(),
         factor: primitives.getDecimalSchema().optional(),
-        _factor: z.lazy(() => createElementSchema()).optional(),
+        _factor: createElementSchema().optional(),
         net: createMoneySchema().optional(),
         udi: z.array(createReferenceSchema()).optional(),
         noteNumber: z.array(primitives.getPositiveIntSchema()).optional(),
-        _noteNumber: z.array(z.lazy(() => createElementSchema())).optional(),
+        _noteNumber: z.array(createElementSchema()).optional(),
         adjudication: z
           .array(createExplanationOfBenefitAdjudicationSchema())
           .optional(),

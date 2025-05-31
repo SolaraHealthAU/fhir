@@ -15,10 +15,8 @@ export function createSubstanceSpecificationMolecularWeightSchema() {
     const baseSchema: z.ZodType<types.SubstanceSpecificationMolecularWeight> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         method: createCodeableConceptSchema().optional(),
         type: createCodeableConceptSchema().optional(),
         amount: createQuantitySchema().optional(),

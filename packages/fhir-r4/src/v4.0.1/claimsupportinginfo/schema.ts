@@ -18,21 +18,19 @@ export function createClaimSupportingInfoSchema() {
   return getCachedSchema("ClaimSupportingInfo", () => {
     const baseSchema: z.ZodType<types.ClaimSupportingInfo> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       sequence: primitives.getPositiveIntSchema(),
-      _sequence: z.lazy(() => createElementSchema()).optional(),
+      _sequence: createElementSchema().optional(),
       category: createCodeableConceptSchema(),
       code: createCodeableConceptSchema().optional(),
       timingDate: z.string().optional(),
-      _timingDate: z.lazy(() => createElementSchema()).optional(),
+      _timingDate: createElementSchema().optional(),
       timingPeriod: createPeriodSchema().optional(),
       valueBoolean: z.boolean().optional(),
-      _valueBoolean: z.lazy(() => createElementSchema()).optional(),
+      _valueBoolean: createElementSchema().optional(),
       valueString: z.string().optional(),
-      _valueString: z.lazy(() => createElementSchema()).optional(),
+      _valueString: createElementSchema().optional(),
       valueQuantity: createQuantitySchema().optional(),
       valueAttachment: createAttachmentSchema().optional(),
       valueReference: createReferenceSchema().optional(),

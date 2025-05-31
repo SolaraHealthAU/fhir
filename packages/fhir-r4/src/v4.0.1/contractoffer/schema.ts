@@ -18,11 +18,9 @@ export function createContractOfferSchema() {
   return getCachedSchema("ContractOffer", () => {
     const baseSchema: z.ZodType<types.ContractOffer> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      identifier: z.array(createIdentifierSchema()).optional(),
       party: z.array(createContractPartySchema()).optional(),
       topic: createReferenceSchema().optional(),
       type: createCodeableConceptSchema().optional(),
@@ -30,15 +28,13 @@ export function createContractOfferSchema() {
       decisionMode: z.array(createCodeableConceptSchema()).optional(),
       answer: z.array(createContractAnswerSchema()).optional(),
       text: primitives.getStringSchema().optional(),
-      _text: z.lazy(() => createElementSchema()).optional(),
+      _text: createElementSchema().optional(),
       linkId: z.array(primitives.getStringSchema()).optional(),
-      _linkId: z.array(z.lazy(() => createElementSchema())).optional(),
+      _linkId: z.array(createElementSchema()).optional(),
       securityLabelNumber: z
         .array(primitives.getUnsignedIntSchema())
         .optional(),
-      _securityLabelNumber: z
-        .array(z.lazy(() => createElementSchema()))
-        .optional(),
+      _securityLabelNumber: z.array(createElementSchema()).optional(),
     });
 
     return baseSchema;

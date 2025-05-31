@@ -15,14 +15,12 @@ export function createGroupMemberSchema() {
   return getCachedSchema("GroupMember", () => {
     const baseSchema: z.ZodType<types.GroupMember> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       entity: createReferenceSchema(),
       period: createPeriodSchema().optional(),
       inactive: primitives.getBooleanSchema().optional(),
-      _inactive: z.lazy(() => createElementSchema()).optional(),
+      _inactive: createElementSchema().optional(),
     });
 
     return baseSchema;

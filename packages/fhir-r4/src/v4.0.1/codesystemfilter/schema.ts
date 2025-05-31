@@ -10,18 +10,16 @@ export function createCodeSystemFilterSchema() {
   return getCachedSchema("CodeSystemFilter", () => {
     const baseSchema: z.ZodType<types.CodeSystemFilter> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       code: primitives.getCodeSchema(),
-      _code: z.lazy(() => createElementSchema()).optional(),
+      _code: createElementSchema().optional(),
       description: primitives.getStringSchema().optional(),
-      _description: z.lazy(() => createElementSchema()).optional(),
+      _description: createElementSchema().optional(),
       operator: z.array(primitives.getCodeSchema()),
-      _operator: z.array(z.lazy(() => createElementSchema())).optional(),
+      _operator: z.array(createElementSchema()).optional(),
       value: primitives.getStringSchema(),
-      _value: z.lazy(() => createElementSchema()).optional(),
+      _value: createElementSchema().optional(),
     });
 
     return baseSchema;

@@ -16,10 +16,8 @@ export function createImplementationGuideDefinitionSchema() {
     const baseSchema: z.ZodType<types.ImplementationGuideDefinition> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         grouping: z.array(createImplementationGuideGroupingSchema()).optional(),
         resource: z.array(createImplementationGuideResourceSchema()),
         page: createImplementationGuidePageSchema().optional(),

@@ -23,18 +23,16 @@ export function createMedicinalProductInteractionSchema() {
         id: primitives.getIdSchema().optional(),
         meta: createMetaSchema().optional(),
         implicitRules: primitives.getUriSchema().optional(),
-        _implicitRules: z.lazy(() => createElementSchema()).optional(),
+        _implicitRules: createElementSchema().optional(),
         language: primitives.getCodeSchema().optional(),
-        _language: z.lazy(() => createElementSchema()).optional(),
+        _language: createElementSchema().optional(),
         text: createNarrativeSchema().optional(),
         contained: z.array(createResourceListSchema()).optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         subject: z.array(createReferenceSchema()).optional(),
         description: primitives.getStringSchema().optional(),
-        _description: z.lazy(() => createElementSchema()).optional(),
+        _description: createElementSchema().optional(),
         interactant: z
           .array(createMedicinalProductInteractionInteractantSchema())
           .optional(),

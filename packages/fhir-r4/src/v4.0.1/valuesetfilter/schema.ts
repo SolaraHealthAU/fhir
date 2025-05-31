@@ -10,12 +10,10 @@ export function createValueSetFilterSchema() {
   return getCachedSchema("ValueSetFilter", () => {
     const baseSchema: z.ZodType<types.ValueSetFilter> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       property: primitives.getCodeSchema().optional(),
-      _property: z.lazy(() => createElementSchema()).optional(),
+      _property: createElementSchema().optional(),
       op: z
         .enum([
           "=",
@@ -29,9 +27,9 @@ export function createValueSetFilterSchema() {
           "exists",
         ])
         .optional(),
-      _op: z.lazy(() => createElementSchema()).optional(),
+      _op: createElementSchema().optional(),
       value: primitives.getStringSchema().optional(),
-      _value: z.lazy(() => createElementSchema()).optional(),
+      _value: createElementSchema().optional(),
     });
 
     return baseSchema;

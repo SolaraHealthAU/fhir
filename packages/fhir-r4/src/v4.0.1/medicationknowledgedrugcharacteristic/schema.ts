@@ -16,17 +16,15 @@ export function createMedicationKnowledgeDrugCharacteristicSchema() {
     const baseSchema: z.ZodType<types.MedicationKnowledgeDrugCharacteristic> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         type: createCodeableConceptSchema().optional(),
         valueCodeableConcept: createCodeableConceptSchema().optional(),
         valueString: z.string().optional(),
-        _valueString: z.lazy(() => createElementSchema()).optional(),
+        _valueString: createElementSchema().optional(),
         valueQuantity: createQuantitySchema().optional(),
         valueBase64Binary: z.string().optional(),
-        _valueBase64Binary: z.lazy(() => createElementSchema()).optional(),
+        _valueBase64Binary: createElementSchema().optional(),
       });
 
     return baseSchema;

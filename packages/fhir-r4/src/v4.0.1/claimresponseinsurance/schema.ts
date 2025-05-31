@@ -14,17 +14,15 @@ export function createClaimResponseInsuranceSchema() {
   return getCachedSchema("ClaimResponseInsurance", () => {
     const baseSchema: z.ZodType<types.ClaimResponseInsurance> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       sequence: primitives.getPositiveIntSchema(),
-      _sequence: z.lazy(() => createElementSchema()).optional(),
+      _sequence: createElementSchema().optional(),
       focal: primitives.getBooleanSchema(),
-      _focal: z.lazy(() => createElementSchema()).optional(),
+      _focal: createElementSchema().optional(),
       coverage: createReferenceSchema(),
       businessArrangement: primitives.getStringSchema().optional(),
-      _businessArrangement: z.lazy(() => createElementSchema()).optional(),
+      _businessArrangement: createElementSchema().optional(),
       claimResponse: createReferenceSchema().optional(),
     });
 

@@ -14,15 +14,13 @@ export function createConsentVerificationSchema() {
   return getCachedSchema("ConsentVerification", () => {
     const baseSchema: z.ZodType<types.ConsentVerification> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       verified: primitives.getBooleanSchema(),
-      _verified: z.lazy(() => createElementSchema()).optional(),
+      _verified: createElementSchema().optional(),
       verifiedWith: createReferenceSchema().optional(),
       verificationDate: primitives.getDateTimeSchema().optional(),
-      _verificationDate: z.lazy(() => createElementSchema()).optional(),
+      _verificationDate: createElementSchema().optional(),
     });
 
     return baseSchema;

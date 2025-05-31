@@ -10,14 +10,12 @@ export function createExampleScenarioVersionSchema() {
   return getCachedSchema("ExampleScenarioVersion", () => {
     const baseSchema: z.ZodType<types.ExampleScenarioVersion> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       versionId: primitives.getStringSchema().optional(),
-      _versionId: z.lazy(() => createElementSchema()).optional(),
+      _versionId: createElementSchema().optional(),
       description: primitives.getMarkdownSchema().optional(),
-      _description: z.lazy(() => createElementSchema()).optional(),
+      _description: createElementSchema().optional(),
     });
 
     return baseSchema;

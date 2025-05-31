@@ -15,12 +15,10 @@ export function createMedicinalProductNamePartSchema() {
     const baseSchema: z.ZodType<types.MedicinalProductNamePart> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         part: primitives.getStringSchema().optional(),
-        _part: z.lazy(() => createElementSchema()).optional(),
+        _part: createElementSchema().optional(),
         type: createCodingSchema(),
       });
 

@@ -27,25 +27,23 @@ export function createPlanDefinitionActionSchema() {
   return getCachedSchema("PlanDefinitionAction", () => {
     const baseSchema: z.ZodType<types.PlanDefinitionAction> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       prefix: primitives.getStringSchema().optional(),
-      _prefix: z.lazy(() => createElementSchema()).optional(),
+      _prefix: createElementSchema().optional(),
       title: primitives.getStringSchema().optional(),
-      _title: z.lazy(() => createElementSchema()).optional(),
+      _title: createElementSchema().optional(),
       description: primitives.getStringSchema().optional(),
-      _description: z.lazy(() => createElementSchema()).optional(),
+      _description: createElementSchema().optional(),
       textEquivalent: primitives.getStringSchema().optional(),
-      _textEquivalent: z.lazy(() => createElementSchema()).optional(),
+      _textEquivalent: createElementSchema().optional(),
       priority: primitives.getCodeSchema().optional(),
-      _priority: z.lazy(() => createElementSchema()).optional(),
+      _priority: createElementSchema().optional(),
       code: z.array(createCodeableConceptSchema()).optional(),
       reason: z.array(createCodeableConceptSchema()).optional(),
       documentation: z.array(createRelatedArtifactSchema()).optional(),
       goalId: z.array(primitives.getIdSchema()).optional(),
-      _goalId: z.array(z.lazy(() => createElementSchema())).optional(),
+      _goalId: z.array(createElementSchema()).optional(),
       subjectCodeableConcept: createCodeableConceptSchema().optional(),
       subjectReference: createReferenceSchema().optional(),
       trigger: z.array(createTriggerDefinitionSchema()).optional(),
@@ -56,7 +54,7 @@ export function createPlanDefinitionActionSchema() {
         .array(createPlanDefinitionRelatedActionSchema())
         .optional(),
       timingDateTime: z.string().optional(),
-      _timingDateTime: z.lazy(() => createElementSchema()).optional(),
+      _timingDateTime: createElementSchema().optional(),
       timingAge: createAgeSchema().optional(),
       timingPeriod: createPeriodSchema().optional(),
       timingDuration: createDurationSchema().optional(),
@@ -67,7 +65,7 @@ export function createPlanDefinitionActionSchema() {
       groupingBehavior: z
         .enum(["visual-group", "logical-group", "sentence-group"])
         .optional(),
-      _groupingBehavior: z.lazy(() => createElementSchema()).optional(),
+      _groupingBehavior: createElementSchema().optional(),
       selectionBehavior: z
         .enum([
           "any",
@@ -78,19 +76,19 @@ export function createPlanDefinitionActionSchema() {
           "one-or-more",
         ])
         .optional(),
-      _selectionBehavior: z.lazy(() => createElementSchema()).optional(),
+      _selectionBehavior: createElementSchema().optional(),
       requiredBehavior: z
         .enum(["must", "could", "must-unless-documented"])
         .optional(),
-      _requiredBehavior: z.lazy(() => createElementSchema()).optional(),
+      _requiredBehavior: createElementSchema().optional(),
       precheckBehavior: z.enum(["yes", "no"]).optional(),
-      _precheckBehavior: z.lazy(() => createElementSchema()).optional(),
+      _precheckBehavior: createElementSchema().optional(),
       cardinalityBehavior: z.enum(["single", "multiple"]).optional(),
-      _cardinalityBehavior: z.lazy(() => createElementSchema()).optional(),
+      _cardinalityBehavior: createElementSchema().optional(),
       definitionCanonical: z.string().optional(),
-      _definitionCanonical: z.lazy(() => createElementSchema()).optional(),
+      _definitionCanonical: createElementSchema().optional(),
       definitionUri: z.string().optional(),
-      _definitionUri: z.lazy(() => createElementSchema()).optional(),
+      _definitionUri: createElementSchema().optional(),
       transform: primitives.getCanonicalSchema().optional(),
       dynamicValue: z
         .array(createPlanDefinitionDynamicValueSchema())

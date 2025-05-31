@@ -10,14 +10,12 @@ export function createBundleLinkSchema() {
   return getCachedSchema("BundleLink", () => {
     const baseSchema: z.ZodType<types.BundleLink> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       relation: primitives.getStringSchema(),
-      _relation: z.lazy(() => createElementSchema()).optional(),
+      _relation: createElementSchema().optional(),
       url: primitives.getUriSchema(),
-      _url: z.lazy(() => createElementSchema()).optional(),
+      _url: createElementSchema().optional(),
     });
 
     return baseSchema;

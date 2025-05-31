@@ -11,12 +11,10 @@ export function createDeviceMetricCalibrationSchema() {
     const baseSchema: z.ZodType<types.DeviceMetricCalibration> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         type: z.enum(["unspecified", "offset", "gain", "two-point"]).optional(),
-        _type: z.lazy(() => createElementSchema()).optional(),
+        _type: createElementSchema().optional(),
         state: z
           .enum([
             "not-calibrated",
@@ -25,9 +23,9 @@ export function createDeviceMetricCalibrationSchema() {
             "unspecified",
           ])
           .optional(),
-        _state: z.lazy(() => createElementSchema()).optional(),
+        _state: createElementSchema().optional(),
         time: primitives.getInstantSchema().optional(),
-        _time: z.lazy(() => createElementSchema()).optional(),
+        _time: createElementSchema().optional(),
       },
     );
 

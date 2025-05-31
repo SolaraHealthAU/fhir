@@ -11,14 +11,12 @@ export function createTerminologyCapabilitiesFilterSchema() {
     const baseSchema: z.ZodType<types.TerminologyCapabilitiesFilter> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         code: primitives.getCodeSchema().optional(),
-        _code: z.lazy(() => createElementSchema()).optional(),
+        _code: createElementSchema().optional(),
         op: z.array(primitives.getCodeSchema()).optional(),
-        _op: z.array(z.lazy(() => createElementSchema())).optional(),
+        _op: z.array(createElementSchema()).optional(),
       });
 
     return baseSchema;

@@ -14,13 +14,11 @@ export function createPatientCommunicationSchema() {
   return getCachedSchema("PatientCommunication", () => {
     const baseSchema: z.ZodType<types.PatientCommunication> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       language: createCodeableConceptSchema(),
       preferred: primitives.getBooleanSchema().optional(),
-      _preferred: z.lazy(() => createElementSchema()).optional(),
+      _preferred: createElementSchema().optional(),
     });
 
     return baseSchema;

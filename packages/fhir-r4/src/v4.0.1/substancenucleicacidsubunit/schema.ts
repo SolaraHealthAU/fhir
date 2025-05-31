@@ -18,16 +18,14 @@ export function createSubstanceNucleicAcidSubunitSchema() {
     const baseSchema: z.ZodType<types.SubstanceNucleicAcidSubunit> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         subunit: primitives.getIntegerSchema().optional(),
-        _subunit: z.lazy(() => createElementSchema()).optional(),
+        _subunit: createElementSchema().optional(),
         sequence: primitives.getStringSchema().optional(),
-        _sequence: z.lazy(() => createElementSchema()).optional(),
+        _sequence: createElementSchema().optional(),
         length: primitives.getIntegerSchema().optional(),
-        _length: z.lazy(() => createElementSchema()).optional(),
+        _length: createElementSchema().optional(),
         sequenceAttachment: createAttachmentSchema().optional(),
         fivePrime: createCodeableConceptSchema().optional(),
         threePrime: createCodeableConceptSchema().optional(),

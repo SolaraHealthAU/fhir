@@ -16,14 +16,12 @@ export function createEffectEvidenceSynthesisResultsByExposureSchema() {
     const baseSchema: z.ZodType<types.EffectEvidenceSynthesisResultsByExposure> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         description: primitives.getStringSchema().optional(),
-        _description: z.lazy(() => createElementSchema()).optional(),
+        _description: createElementSchema().optional(),
         exposureState: z.enum(["exposure", "exposure-alternative"]).optional(),
-        _exposureState: z.lazy(() => createElementSchema()).optional(),
+        _exposureState: createElementSchema().optional(),
         variantState: createCodeableConceptSchema().optional(),
         riskEvidenceSynthesis: createReferenceSchema(),
       });

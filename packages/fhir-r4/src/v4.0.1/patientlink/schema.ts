@@ -14,13 +14,11 @@ export function createPatientLinkSchema() {
   return getCachedSchema("PatientLink", () => {
     const baseSchema: z.ZodType<types.PatientLink> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       other: createReferenceSchema(),
       type: z.enum(["replaced-by", "replaces", "refer", "seealso"]),
-      _type: z.lazy(() => createElementSchema()).optional(),
+      _type: createElementSchema().optional(),
     });
 
     return baseSchema;

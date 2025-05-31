@@ -16,13 +16,11 @@ export function createMedicationKnowledgeCostSchema() {
     const baseSchema: z.ZodType<types.MedicationKnowledgeCost> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         type: createCodeableConceptSchema(),
         source: primitives.getStringSchema().optional(),
-        _source: z.lazy(() => createElementSchema()).optional(),
+        _source: createElementSchema().optional(),
         cost: createMoneySchema(),
       },
     );

@@ -11,22 +11,20 @@ export function createValueSetContainsSchema() {
   return getCachedSchema("ValueSetContains", () => {
     const baseSchema: z.ZodType<types.ValueSetContains> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       system: primitives.getUriSchema().optional(),
-      _system: z.lazy(() => createElementSchema()).optional(),
+      _system: createElementSchema().optional(),
       abstract: primitives.getBooleanSchema().optional(),
-      _abstract: z.lazy(() => createElementSchema()).optional(),
+      _abstract: createElementSchema().optional(),
       inactive: primitives.getBooleanSchema().optional(),
-      _inactive: z.lazy(() => createElementSchema()).optional(),
+      _inactive: createElementSchema().optional(),
       version: primitives.getStringSchema().optional(),
-      _version: z.lazy(() => createElementSchema()).optional(),
+      _version: createElementSchema().optional(),
       code: primitives.getCodeSchema().optional(),
-      _code: z.lazy(() => createElementSchema()).optional(),
+      _code: createElementSchema().optional(),
       display: primitives.getStringSchema().optional(),
-      _display: z.lazy(() => createElementSchema()).optional(),
+      _display: createElementSchema().optional(),
       designation: z.array(createValueSetDesignationSchema()).optional(),
       contains: z.array(createValueSetContainsSchema()).optional(),
     });

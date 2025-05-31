@@ -16,22 +16,20 @@ export function createImmunizationProtocolAppliedSchema() {
     const baseSchema: z.ZodType<types.ImmunizationProtocolApplied> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         series: primitives.getStringSchema().optional(),
-        _series: z.lazy(() => createElementSchema()).optional(),
+        _series: createElementSchema().optional(),
         authority: createReferenceSchema().optional(),
         targetDisease: z.array(createCodeableConceptSchema()).optional(),
         doseNumberPositiveInt: z.number().optional(),
-        _doseNumberPositiveInt: z.lazy(() => createElementSchema()).optional(),
+        _doseNumberPositiveInt: createElementSchema().optional(),
         doseNumberString: z.string().optional(),
-        _doseNumberString: z.lazy(() => createElementSchema()).optional(),
+        _doseNumberString: createElementSchema().optional(),
         seriesDosesPositiveInt: z.number().optional(),
-        _seriesDosesPositiveInt: z.lazy(() => createElementSchema()).optional(),
+        _seriesDosesPositiveInt: createElementSchema().optional(),
         seriesDosesString: z.string().optional(),
-        _seriesDosesString: z.lazy(() => createElementSchema()).optional(),
+        _seriesDosesString: createElementSchema().optional(),
       });
 
     return baseSchema;

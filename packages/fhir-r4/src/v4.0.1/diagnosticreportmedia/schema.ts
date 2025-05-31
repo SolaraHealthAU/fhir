@@ -14,12 +14,10 @@ export function createDiagnosticReportMediaSchema() {
   return getCachedSchema("DiagnosticReportMedia", () => {
     const baseSchema: z.ZodType<types.DiagnosticReportMedia> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       comment: primitives.getStringSchema().optional(),
-      _comment: z.lazy(() => createElementSchema()).optional(),
+      _comment: createElementSchema().optional(),
       link: createReferenceSchema(),
     });
 

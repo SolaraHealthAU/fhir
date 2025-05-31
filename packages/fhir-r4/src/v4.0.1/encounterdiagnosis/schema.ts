@@ -15,14 +15,12 @@ export function createEncounterDiagnosisSchema() {
   return getCachedSchema("EncounterDiagnosis", () => {
     const baseSchema: z.ZodType<types.EncounterDiagnosis> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       condition: createReferenceSchema(),
       use: createCodeableConceptSchema().optional(),
       rank: primitives.getPositiveIntSchema().optional(),
-      _rank: z.lazy(() => createElementSchema()).optional(),
+      _rank: createElementSchema().optional(),
     });
 
     return baseSchema;

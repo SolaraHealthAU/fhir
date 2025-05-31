@@ -12,12 +12,10 @@ export function createMedicinalProductNameSchema() {
   return getCachedSchema("MedicinalProductName", () => {
     const baseSchema: z.ZodType<types.MedicinalProductName> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       productName: primitives.getStringSchema(),
-      _productName: z.lazy(() => createElementSchema()).optional(),
+      _productName: createElementSchema().optional(),
       namePart: z.array(createMedicinalProductNamePartSchema()).optional(),
       countryLanguage: z
         .array(createMedicinalProductCountryLanguageSchema())

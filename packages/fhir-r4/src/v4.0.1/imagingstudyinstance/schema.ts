@@ -14,17 +14,15 @@ export function createImagingStudyInstanceSchema() {
   return getCachedSchema("ImagingStudyInstance", () => {
     const baseSchema: z.ZodType<types.ImagingStudyInstance> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       uid: primitives.getIdSchema().optional(),
-      _uid: z.lazy(() => createElementSchema()).optional(),
+      _uid: createElementSchema().optional(),
       sopClass: createCodingSchema(),
       number: primitives.getUnsignedIntSchema().optional(),
-      _number: z.lazy(() => createElementSchema()).optional(),
+      _number: createElementSchema().optional(),
       title: primitives.getStringSchema().optional(),
-      _title: z.lazy(() => createElementSchema()).optional(),
+      _title: createElementSchema().optional(),
     });
 
     return baseSchema;

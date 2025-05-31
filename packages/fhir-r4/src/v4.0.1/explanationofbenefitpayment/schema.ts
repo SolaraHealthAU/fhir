@@ -17,17 +17,15 @@ export function createExplanationOfBenefitPaymentSchema() {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitPayment> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         type: createCodeableConceptSchema().optional(),
         adjustment: createMoneySchema().optional(),
         adjustmentReason: createCodeableConceptSchema().optional(),
         date: primitives.getDateSchema().optional(),
-        _date: z.lazy(() => createElementSchema()).optional(),
+        _date: createElementSchema().optional(),
         amount: createMoneySchema().optional(),
-        identifier: z.lazy(() => createIdentifierSchema()).optional(),
+        identifier: createIdentifierSchema().optional(),
       });
 
     return baseSchema;

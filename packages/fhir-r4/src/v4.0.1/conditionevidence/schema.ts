@@ -14,10 +14,8 @@ export function createConditionEvidenceSchema() {
   return getCachedSchema("ConditionEvidence", () => {
     const baseSchema: z.ZodType<types.ConditionEvidence> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       code: z.array(createCodeableConceptSchema()).optional(),
       detail: z.array(createReferenceSchema()).optional(),
     });

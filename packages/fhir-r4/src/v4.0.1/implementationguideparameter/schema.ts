@@ -11,10 +11,8 @@ export function createImplementationGuideParameterSchema() {
     const baseSchema: z.ZodType<types.ImplementationGuideParameter> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         code: z
           .enum([
             "apply",
@@ -29,9 +27,9 @@ export function createImplementationGuideParameterSchema() {
             "html-template",
           ])
           .optional(),
-        _code: z.lazy(() => createElementSchema()).optional(),
+        _code: createElementSchema().optional(),
         value: primitives.getStringSchema().optional(),
-        _value: z.lazy(() => createElementSchema()).optional(),
+        _value: createElementSchema().optional(),
       });
 
     return baseSchema;

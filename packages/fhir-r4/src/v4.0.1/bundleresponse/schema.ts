@@ -11,18 +11,16 @@ export function createBundleResponseSchema() {
   return getCachedSchema("BundleResponse", () => {
     const baseSchema: z.ZodType<types.BundleResponse> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       status: primitives.getStringSchema().optional(),
-      _status: z.lazy(() => createElementSchema()).optional(),
+      _status: createElementSchema().optional(),
       location: primitives.getUriSchema().optional(),
-      _location: z.lazy(() => createElementSchema()).optional(),
+      _location: createElementSchema().optional(),
       etag: primitives.getStringSchema().optional(),
-      _etag: z.lazy(() => createElementSchema()).optional(),
+      _etag: createElementSchema().optional(),
       lastModified: primitives.getInstantSchema().optional(),
-      _lastModified: z.lazy(() => createElementSchema()).optional(),
+      _lastModified: createElementSchema().optional(),
       outcome: createResourceListSchema().optional(),
     });
 

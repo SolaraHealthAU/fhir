@@ -22,20 +22,18 @@ export function createSpecimenDefinitionSchema() {
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),
       implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: z.lazy(() => createElementSchema()).optional(),
+      _implicitRules: createElementSchema().optional(),
       language: primitives.getCodeSchema().optional(),
-      _language: z.lazy(() => createElementSchema()).optional(),
+      _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
       contained: z.array(createResourceListSchema()).optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      identifier: z.lazy(() => createIdentifierSchema()).optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      identifier: createIdentifierSchema().optional(),
       typeCollected: createCodeableConceptSchema().optional(),
       patientPreparation: z.array(createCodeableConceptSchema()).optional(),
       timeAspect: primitives.getStringSchema().optional(),
-      _timeAspect: z.lazy(() => createElementSchema()).optional(),
+      _timeAspect: createElementSchema().optional(),
       collection: z.array(createCodeableConceptSchema()).optional(),
       typeTested: z
         .array(createSpecimenDefinitionTypeTestedSchema())

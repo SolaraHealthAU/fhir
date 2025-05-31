@@ -12,16 +12,14 @@ export function createTerminologyCapabilitiesCodeSystemSchema() {
     const baseSchema: z.ZodType<types.TerminologyCapabilitiesCodeSystem> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         uri: primitives.getCanonicalSchema().optional(),
         version: z
           .array(createTerminologyCapabilitiesVersionSchema())
           .optional(),
         subsumption: primitives.getBooleanSchema().optional(),
-        _subsumption: z.lazy(() => createElementSchema()).optional(),
+        _subsumption: createElementSchema().optional(),
       });
 
     return baseSchema;

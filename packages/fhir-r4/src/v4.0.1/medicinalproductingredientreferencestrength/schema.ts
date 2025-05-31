@@ -16,15 +16,13 @@ export function createMedicinalProductIngredientReferenceStrengthSchema() {
     const baseSchema: z.ZodType<types.MedicinalProductIngredientReferenceStrength> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         substance: createCodeableConceptSchema().optional(),
         strength: createRatioSchema(),
         strengthLowLimit: createRatioSchema().optional(),
         measurementPoint: primitives.getStringSchema().optional(),
-        _measurementPoint: z.lazy(() => createElementSchema()).optional(),
+        _measurementPoint: createElementSchema().optional(),
         country: z.array(createCodeableConceptSchema()).optional(),
       });
 

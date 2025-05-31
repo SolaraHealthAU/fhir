@@ -14,29 +14,27 @@ export function createCapabilityStatementResourceSchema() {
     const baseSchema: z.ZodType<types.CapabilityStatementResource> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         type: primitives.getCodeSchema().optional(),
-        _type: z.lazy(() => createElementSchema()).optional(),
+        _type: createElementSchema().optional(),
         profile: primitives.getCanonicalSchema().optional(),
         supportedProfile: z.array(primitives.getCanonicalSchema()).optional(),
         documentation: primitives.getMarkdownSchema().optional(),
-        _documentation: z.lazy(() => createElementSchema()).optional(),
+        _documentation: createElementSchema().optional(),
         interaction: z
           .array(createCapabilityStatementInteractionSchema())
           .optional(),
         versioning: z
           .enum(["no-version", "versioned", "versioned-update"])
           .optional(),
-        _versioning: z.lazy(() => createElementSchema()).optional(),
+        _versioning: createElementSchema().optional(),
         readHistory: primitives.getBooleanSchema().optional(),
-        _readHistory: z.lazy(() => createElementSchema()).optional(),
+        _readHistory: createElementSchema().optional(),
         updateCreate: primitives.getBooleanSchema().optional(),
-        _updateCreate: z.lazy(() => createElementSchema()).optional(),
+        _updateCreate: createElementSchema().optional(),
         conditionalCreate: primitives.getBooleanSchema().optional(),
-        _conditionalCreate: z.lazy(() => createElementSchema()).optional(),
+        _conditionalCreate: createElementSchema().optional(),
         conditionalRead: z
           .enum([
             "not-supported",
@@ -45,23 +43,19 @@ export function createCapabilityStatementResourceSchema() {
             "full-support",
           ])
           .optional(),
-        _conditionalRead: z.lazy(() => createElementSchema()).optional(),
+        _conditionalRead: createElementSchema().optional(),
         conditionalUpdate: primitives.getBooleanSchema().optional(),
-        _conditionalUpdate: z.lazy(() => createElementSchema()).optional(),
+        _conditionalUpdate: createElementSchema().optional(),
         conditionalDelete: z
           .enum(["not-supported", "single", "multiple"])
           .optional(),
-        _conditionalDelete: z.lazy(() => createElementSchema()).optional(),
+        _conditionalDelete: createElementSchema().optional(),
         referencePolicy: z.array(z.any()).optional(),
-        _referencePolicy: z
-          .array(z.lazy(() => createElementSchema()))
-          .optional(),
+        _referencePolicy: z.array(createElementSchema()).optional(),
         searchInclude: z.array(primitives.getStringSchema()).optional(),
-        _searchInclude: z.array(z.lazy(() => createElementSchema())).optional(),
+        _searchInclude: z.array(createElementSchema()).optional(),
         searchRevInclude: z.array(primitives.getStringSchema()).optional(),
-        _searchRevInclude: z
-          .array(z.lazy(() => createElementSchema()))
-          .optional(),
+        _searchRevInclude: z.array(createElementSchema()).optional(),
         searchParam: z
           .array(createCapabilityStatementSearchParamSchema())
           .optional(),

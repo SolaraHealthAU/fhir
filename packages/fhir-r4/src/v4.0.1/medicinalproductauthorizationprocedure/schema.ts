@@ -17,15 +17,13 @@ export function createMedicinalProductAuthorizationProcedureSchema() {
     const baseSchema: z.ZodType<types.MedicinalProductAuthorizationProcedure> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
-        identifier: z.lazy(() => createIdentifierSchema()).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: createIdentifierSchema().optional(),
         type: createCodeableConceptSchema(),
         datePeriod: createPeriodSchema().optional(),
         dateDateTime: z.string().optional(),
-        _dateDateTime: z.lazy(() => createElementSchema()).optional(),
+        _dateDateTime: createElementSchema().optional(),
         application: z
           .array(createMedicinalProductAuthorizationProcedureSchema())
           .optional(),

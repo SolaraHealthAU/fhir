@@ -14,10 +14,8 @@ export function createEncounterStatusHistorySchema() {
   return getCachedSchema("EncounterStatusHistory", () => {
     const baseSchema: z.ZodType<types.EncounterStatusHistory> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       status: z.enum([
         "planned",
         "arrived",
@@ -29,7 +27,7 @@ export function createEncounterStatusHistorySchema() {
         "entered-in-error",
         "unknown",
       ]),
-      _status: z.lazy(() => createElementSchema()).optional(),
+      _status: createElementSchema().optional(),
       period: createPeriodSchema(),
     });
 

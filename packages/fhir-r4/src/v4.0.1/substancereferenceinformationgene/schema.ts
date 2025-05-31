@@ -15,10 +15,8 @@ export function createSubstanceReferenceInformationGeneSchema() {
     const baseSchema: z.ZodType<types.SubstanceReferenceInformationGene> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         geneSequenceOrigin: createCodeableConceptSchema().optional(),
         gene: createCodeableConceptSchema().optional(),
         source: z.array(createReferenceSchema()).optional(),

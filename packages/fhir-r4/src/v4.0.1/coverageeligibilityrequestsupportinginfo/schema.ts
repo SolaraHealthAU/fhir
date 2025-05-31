@@ -15,15 +15,13 @@ export function createCoverageEligibilityRequestSupportingInfoSchema() {
     const baseSchema: z.ZodType<types.CoverageEligibilityRequestSupportingInfo> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         sequence: primitives.getPositiveIntSchema(),
-        _sequence: z.lazy(() => createElementSchema()).optional(),
+        _sequence: createElementSchema().optional(),
         information: createReferenceSchema(),
         appliesToAll: primitives.getBooleanSchema().optional(),
-        _appliesToAll: z.lazy(() => createElementSchema()).optional(),
+        _appliesToAll: createElementSchema().optional(),
       });
 
     return baseSchema;

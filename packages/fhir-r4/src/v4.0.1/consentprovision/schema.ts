@@ -18,12 +18,10 @@ export function createConsentProvisionSchema() {
   return getCachedSchema("ConsentProvision", () => {
     const baseSchema: z.ZodType<types.ConsentProvision> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       type: z.enum(["deny", "permit"]).optional(),
-      _type: z.lazy(() => createElementSchema()).optional(),
+      _type: createElementSchema().optional(),
       period: createPeriodSchema().optional(),
       actor: z.array(createConsentActorSchema()).optional(),
       action: z.array(createCodeableConceptSchema()).optional(),

@@ -10,16 +10,14 @@ export function createTestReportAssertSchema() {
   return getCachedSchema("TestReportAssert", () => {
     const baseSchema: z.ZodType<types.TestReportAssert> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       result: z.enum(["pass", "skip", "fail", "warning", "error"]).optional(),
-      _result: z.lazy(() => createElementSchema()).optional(),
+      _result: createElementSchema().optional(),
       message: primitives.getMarkdownSchema().optional(),
-      _message: z.lazy(() => createElementSchema()).optional(),
+      _message: createElementSchema().optional(),
       detail: primitives.getStringSchema().optional(),
-      _detail: z.lazy(() => createElementSchema()).optional(),
+      _detail: createElementSchema().optional(),
     });
 
     return baseSchema;

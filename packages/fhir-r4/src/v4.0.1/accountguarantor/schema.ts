@@ -15,13 +15,11 @@ export function createAccountGuarantorSchema() {
   return getCachedSchema("AccountGuarantor", () => {
     const baseSchema: z.ZodType<types.AccountGuarantor> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       party: createReferenceSchema(),
       onHold: primitives.getBooleanSchema().optional(),
-      _onHold: z.lazy(() => createElementSchema()).optional(),
+      _onHold: createElementSchema().optional(),
       period: createPeriodSchema().optional(),
     });
 

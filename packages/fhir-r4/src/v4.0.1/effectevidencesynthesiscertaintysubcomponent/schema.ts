@@ -15,10 +15,8 @@ export function createEffectEvidenceSynthesisCertaintySubcomponentSchema() {
     const baseSchema: z.ZodType<types.EffectEvidenceSynthesisCertaintySubcomponent> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         type: createCodeableConceptSchema().optional(),
         rating: z.array(createCodeableConceptSchema()).optional(),
         note: z.array(createAnnotationSchema()).optional(),

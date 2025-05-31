@@ -11,12 +11,10 @@ export function createMedicinalProductPackagedBatchIdentifierSchema() {
     const baseSchema: z.ZodType<types.MedicinalProductPackagedBatchIdentifier> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
-        outerPackaging: z.lazy(() => createIdentifierSchema()),
-        immediatePackaging: z.lazy(() => createIdentifierSchema()).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        outerPackaging: createIdentifierSchema(),
+        immediatePackaging: createIdentifierSchema().optional(),
       });
 
     return baseSchema;

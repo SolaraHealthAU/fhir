@@ -15,13 +15,11 @@ export function createImmunizationRecommendationDateCriterionSchema() {
     const baseSchema: z.ZodType<types.ImmunizationRecommendationDateCriterion> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         code: createCodeableConceptSchema(),
         value: primitives.getDateTimeSchema().optional(),
-        _value: z.lazy(() => createElementSchema()).optional(),
+        _value: createElementSchema().optional(),
       });
 
     return baseSchema;

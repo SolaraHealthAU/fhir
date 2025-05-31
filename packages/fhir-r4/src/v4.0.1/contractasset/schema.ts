@@ -20,10 +20,8 @@ export function createContractAssetSchema() {
   return getCachedSchema("ContractAsset", () => {
     const baseSchema: z.ZodType<types.ContractAsset> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       scope: createCodeableConceptSchema().optional(),
       type: z.array(createCodeableConceptSchema()).optional(),
       typeReference: z.array(createReferenceSchema()).optional(),
@@ -31,21 +29,19 @@ export function createContractAssetSchema() {
       relationship: createCodingSchema().optional(),
       context: z.array(createContractContextSchema()).optional(),
       condition: primitives.getStringSchema().optional(),
-      _condition: z.lazy(() => createElementSchema()).optional(),
+      _condition: createElementSchema().optional(),
       periodType: z.array(createCodeableConceptSchema()).optional(),
       period: z.array(createPeriodSchema()).optional(),
       usePeriod: z.array(createPeriodSchema()).optional(),
       text: primitives.getStringSchema().optional(),
-      _text: z.lazy(() => createElementSchema()).optional(),
+      _text: createElementSchema().optional(),
       linkId: z.array(primitives.getStringSchema()).optional(),
-      _linkId: z.array(z.lazy(() => createElementSchema())).optional(),
+      _linkId: z.array(createElementSchema()).optional(),
       answer: z.array(createContractAnswerSchema()).optional(),
       securityLabelNumber: z
         .array(primitives.getUnsignedIntSchema())
         .optional(),
-      _securityLabelNumber: z
-        .array(z.lazy(() => createElementSchema()))
-        .optional(),
+      _securityLabelNumber: z.array(createElementSchema()).optional(),
       valuedItem: z.array(createContractValuedItemSchema()).optional(),
     });
 

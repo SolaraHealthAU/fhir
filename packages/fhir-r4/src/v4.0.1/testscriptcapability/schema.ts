@@ -10,22 +10,20 @@ export function createTestScriptCapabilitySchema() {
   return getCachedSchema("TestScriptCapability", () => {
     const baseSchema: z.ZodType<types.TestScriptCapability> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       required: primitives.getBooleanSchema().optional(),
-      _required: z.lazy(() => createElementSchema()).optional(),
+      _required: createElementSchema().optional(),
       validated: primitives.getBooleanSchema().optional(),
-      _validated: z.lazy(() => createElementSchema()).optional(),
+      _validated: createElementSchema().optional(),
       description: primitives.getStringSchema().optional(),
-      _description: z.lazy(() => createElementSchema()).optional(),
+      _description: createElementSchema().optional(),
       origin: z.array(primitives.getIntegerSchema()).optional(),
-      _origin: z.array(z.lazy(() => createElementSchema())).optional(),
+      _origin: z.array(createElementSchema()).optional(),
       destination: primitives.getIntegerSchema().optional(),
-      _destination: z.lazy(() => createElementSchema()).optional(),
+      _destination: createElementSchema().optional(),
       link: z.array(primitives.getUriSchema()).optional(),
-      _link: z.array(z.lazy(() => createElementSchema())).optional(),
+      _link: z.array(createElementSchema()).optional(),
       capabilities: primitives.getCanonicalSchema(),
     });
 

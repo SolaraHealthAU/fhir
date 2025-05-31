@@ -15,12 +15,10 @@ export function createDocumentReferenceRelatesToSchema() {
     const baseSchema: z.ZodType<types.DocumentReferenceRelatesTo> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         code: z.enum(["replaces", "transforms", "signs", "appends"]),
-        _code: z.lazy(() => createElementSchema()).optional(),
+        _code: createElementSchema().optional(),
         target: createReferenceSchema(),
       });
 

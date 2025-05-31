@@ -12,14 +12,12 @@ export function createValueSetIncludeSchema() {
   return getCachedSchema("ValueSetInclude", () => {
     const baseSchema: z.ZodType<types.ValueSetInclude> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       system: primitives.getUriSchema().optional(),
-      _system: z.lazy(() => createElementSchema()).optional(),
+      _system: createElementSchema().optional(),
       version: primitives.getStringSchema().optional(),
-      _version: z.lazy(() => createElementSchema()).optional(),
+      _version: createElementSchema().optional(),
       concept: z.array(createValueSetConceptSchema()).optional(),
       filter: z.array(createValueSetFilterSchema()).optional(),
       valueSet: z.array(primitives.getCanonicalSchema()).optional(),

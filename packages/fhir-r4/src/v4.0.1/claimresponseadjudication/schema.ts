@@ -16,15 +16,13 @@ export function createClaimResponseAdjudicationSchema() {
     const baseSchema: z.ZodType<types.ClaimResponseAdjudication> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         category: createCodeableConceptSchema(),
         reason: createCodeableConceptSchema().optional(),
         amount: createMoneySchema().optional(),
         value: primitives.getDecimalSchema().optional(),
-        _value: z.lazy(() => createElementSchema()).optional(),
+        _value: createElementSchema().optional(),
       });
 
     return baseSchema;

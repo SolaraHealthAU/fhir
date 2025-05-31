@@ -10,17 +10,15 @@ export function createMessageDefinitionFocusSchema() {
   return getCachedSchema("MessageDefinitionFocus", () => {
     const baseSchema: z.ZodType<types.MessageDefinitionFocus> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       code: primitives.getCodeSchema(),
-      _code: z.lazy(() => createElementSchema()).optional(),
+      _code: createElementSchema().optional(),
       profile: primitives.getCanonicalSchema().optional(),
       min: primitives.getUnsignedIntSchema(),
-      _min: z.lazy(() => createElementSchema()).optional(),
+      _min: createElementSchema().optional(),
       max: primitives.getStringSchema().optional(),
-      _max: z.lazy(() => createElementSchema()).optional(),
+      _max: createElementSchema().optional(),
     });
 
     return baseSchema;

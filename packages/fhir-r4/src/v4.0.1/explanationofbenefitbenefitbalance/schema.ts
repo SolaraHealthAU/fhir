@@ -16,17 +16,15 @@ export function createExplanationOfBenefitBenefitBalanceSchema() {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitBenefitBalance> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         category: createCodeableConceptSchema(),
         excluded: primitives.getBooleanSchema().optional(),
-        _excluded: z.lazy(() => createElementSchema()).optional(),
+        _excluded: createElementSchema().optional(),
         name: primitives.getStringSchema().optional(),
-        _name: z.lazy(() => createElementSchema()).optional(),
+        _name: createElementSchema().optional(),
         description: primitives.getStringSchema().optional(),
-        _description: z.lazy(() => createElementSchema()).optional(),
+        _description: createElementSchema().optional(),
         network: createCodeableConceptSchema().optional(),
         unit: createCodeableConceptSchema().optional(),
         term: createCodeableConceptSchema().optional(),

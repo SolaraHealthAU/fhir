@@ -15,14 +15,12 @@ export function createCapabilityStatementImplementationSchema() {
     const baseSchema: z.ZodType<types.CapabilityStatementImplementation> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         description: primitives.getStringSchema(),
-        _description: z.lazy(() => createElementSchema()).optional(),
+        _description: createElementSchema().optional(),
         url: primitives.getUrlSchema().optional(),
-        _url: z.lazy(() => createElementSchema()).optional(),
+        _url: createElementSchema().optional(),
         custodian: createReferenceSchema().optional(),
       });
 

@@ -15,10 +15,8 @@ export function createEncounterParticipantSchema() {
   return getCachedSchema("EncounterParticipant", () => {
     const baseSchema: z.ZodType<types.EncounterParticipant> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       type: z.array(createCodeableConceptSchema()).optional(),
       period: createPeriodSchema().optional(),
       individual: createReferenceSchema().optional(),

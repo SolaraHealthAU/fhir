@@ -15,10 +15,8 @@ export function createProvenanceEntitySchema() {
   return getCachedSchema("ProvenanceEntity", () => {
     const baseSchema: z.ZodType<types.ProvenanceEntity> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       role: z.enum([
         "derivation",
         "revision",
@@ -26,7 +24,7 @@ export function createProvenanceEntitySchema() {
         "source",
         "removal",
       ]),
-      _role: z.lazy(() => createElementSchema()).optional(),
+      _role: createElementSchema().optional(),
       what: createReferenceSchema(),
       agent: z.array(createProvenanceAgentSchema()).optional(),
     });

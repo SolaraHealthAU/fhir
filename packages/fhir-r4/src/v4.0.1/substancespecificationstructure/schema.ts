@@ -19,18 +19,14 @@ export function createSubstanceSpecificationStructureSchema() {
     const baseSchema: z.ZodType<types.SubstanceSpecificationStructure> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         stereochemistry: createCodeableConceptSchema().optional(),
         opticalActivity: createCodeableConceptSchema().optional(),
         molecularFormula: primitives.getStringSchema().optional(),
-        _molecularFormula: z.lazy(() => createElementSchema()).optional(),
+        _molecularFormula: createElementSchema().optional(),
         molecularFormulaByMoiety: primitives.getStringSchema().optional(),
-        _molecularFormulaByMoiety: z
-          .lazy(() => createElementSchema())
-          .optional(),
+        _molecularFormulaByMoiety: createElementSchema().optional(),
         isotope: z
           .array(createSubstanceSpecificationIsotopeSchema())
           .optional(),

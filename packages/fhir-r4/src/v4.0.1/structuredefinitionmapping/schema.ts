@@ -11,18 +11,16 @@ export function createStructureDefinitionMappingSchema() {
     const baseSchema: z.ZodType<types.StructureDefinitionMapping> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         identity: primitives.getIdSchema(),
-        _identity: z.lazy(() => createElementSchema()).optional(),
+        _identity: createElementSchema().optional(),
         uri: primitives.getUriSchema().optional(),
-        _uri: z.lazy(() => createElementSchema()).optional(),
+        _uri: createElementSchema().optional(),
         name: primitives.getStringSchema().optional(),
-        _name: z.lazy(() => createElementSchema()).optional(),
+        _name: createElementSchema().optional(),
         comment: primitives.getStringSchema().optional(),
-        _comment: z.lazy(() => createElementSchema()).optional(),
+        _comment: createElementSchema().optional(),
       });
 
     return baseSchema;

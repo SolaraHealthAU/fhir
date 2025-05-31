@@ -10,12 +10,10 @@ export function createDeviceDeviceNameSchema() {
   return getCachedSchema("DeviceDeviceName", () => {
     const baseSchema: z.ZodType<types.DeviceDeviceName> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       name: primitives.getStringSchema(),
-      _name: z.lazy(() => createElementSchema()).optional(),
+      _name: createElementSchema().optional(),
       type: z.enum([
         "udi-label-name",
         "user-friendly-name",
@@ -24,7 +22,7 @@ export function createDeviceDeviceNameSchema() {
         "model-name",
         "other",
       ]),
-      _type: z.lazy(() => createElementSchema()).optional(),
+      _type: createElementSchema().optional(),
     });
 
     return baseSchema;

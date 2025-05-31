@@ -14,13 +14,11 @@ export function createAccountCoverageSchema() {
   return getCachedSchema("AccountCoverage", () => {
     const baseSchema: z.ZodType<types.AccountCoverage> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       coverage: createReferenceSchema(),
       priority: primitives.getPositiveIntSchema().optional(),
-      _priority: z.lazy(() => createElementSchema()).optional(),
+      _priority: createElementSchema().optional(),
     });
 
     return baseSchema;

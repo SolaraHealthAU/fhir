@@ -15,10 +15,8 @@ export function createSubstanceReferenceInformationClassificationSchema() {
     const baseSchema: z.ZodType<types.SubstanceReferenceInformationClassification> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         domain: createCodeableConceptSchema().optional(),
         classification: createCodeableConceptSchema().optional(),
         subtype: z.array(createCodeableConceptSchema()).optional(),

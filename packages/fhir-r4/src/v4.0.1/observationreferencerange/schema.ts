@@ -17,17 +17,15 @@ export function createObservationReferenceRangeSchema() {
     const baseSchema: z.ZodType<types.ObservationReferenceRange> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         low: createQuantitySchema().optional(),
         high: createQuantitySchema().optional(),
         type: createCodeableConceptSchema().optional(),
         appliesTo: z.array(createCodeableConceptSchema()).optional(),
         age: createRangeSchema().optional(),
         text: primitives.getStringSchema().optional(),
-        _text: z.lazy(() => createElementSchema()).optional(),
+        _text: createElementSchema().optional(),
       });
 
     return baseSchema;

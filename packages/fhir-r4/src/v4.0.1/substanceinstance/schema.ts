@@ -15,13 +15,11 @@ export function createSubstanceInstanceSchema() {
   return getCachedSchema("SubstanceInstance", () => {
     const baseSchema: z.ZodType<types.SubstanceInstance> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      identifier: z.lazy(() => createIdentifierSchema()).optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      identifier: createIdentifierSchema().optional(),
       expiry: primitives.getDateTimeSchema().optional(),
-      _expiry: z.lazy(() => createElementSchema()).optional(),
+      _expiry: createElementSchema().optional(),
       quantity: createQuantitySchema().optional(),
     });
 

@@ -15,20 +15,18 @@ export function createMolecularSequenceVariantSchema() {
     const baseSchema: z.ZodType<types.MolecularSequenceVariant> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         start: primitives.getIntegerSchema().optional(),
-        _start: z.lazy(() => createElementSchema()).optional(),
+        _start: createElementSchema().optional(),
         end: primitives.getIntegerSchema().optional(),
-        _end: z.lazy(() => createElementSchema()).optional(),
+        _end: createElementSchema().optional(),
         observedAllele: primitives.getStringSchema().optional(),
-        _observedAllele: z.lazy(() => createElementSchema()).optional(),
+        _observedAllele: createElementSchema().optional(),
         referenceAllele: primitives.getStringSchema().optional(),
-        _referenceAllele: z.lazy(() => createElementSchema()).optional(),
+        _referenceAllele: createElementSchema().optional(),
         cigar: primitives.getStringSchema().optional(),
-        _cigar: z.lazy(() => createElementSchema()).optional(),
+        _cigar: createElementSchema().optional(),
         variantPointer: createReferenceSchema().optional(),
       });
 

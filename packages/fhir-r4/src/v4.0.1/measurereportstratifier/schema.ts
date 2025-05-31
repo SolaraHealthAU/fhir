@@ -15,10 +15,8 @@ export function createMeasureReportStratifierSchema() {
     const baseSchema: z.ZodType<types.MeasureReportStratifier> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         code: z.array(createCodeableConceptSchema()).optional(),
         stratum: z.array(createMeasureReportStratumSchema()).optional(),
       },

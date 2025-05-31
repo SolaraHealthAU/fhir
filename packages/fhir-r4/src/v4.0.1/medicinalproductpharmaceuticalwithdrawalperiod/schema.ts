@@ -18,16 +18,12 @@ export function createMedicinalProductPharmaceuticalWithdrawalPeriodSchema() {
       const baseSchema: z.ZodType<types.MedicinalProductPharmaceuticalWithdrawalPeriod> =
         z.strictObject({
           id: primitives.getStringSchema().optional(),
-          extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-          modifierExtension: z
-            .array(z.lazy(() => createExtensionSchema()))
-            .optional(),
+          extension: z.array(createExtensionSchema()).optional(),
+          modifierExtension: z.array(createExtensionSchema()).optional(),
           tissue: createCodeableConceptSchema(),
           value: createQuantitySchema(),
           supportingInformation: primitives.getStringSchema().optional(),
-          _supportingInformation: z
-            .lazy(() => createElementSchema())
-            .optional(),
+          _supportingInformation: createElementSchema().optional(),
         });
 
       return baseSchema;

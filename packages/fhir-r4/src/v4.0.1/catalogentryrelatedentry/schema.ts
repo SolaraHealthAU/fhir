@@ -15,12 +15,10 @@ export function createCatalogEntryRelatedEntrySchema() {
     const baseSchema: z.ZodType<types.CatalogEntryRelatedEntry> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         relationtype: z.enum(["triggers", "is-replaced-by"]),
-        _relationtype: z.lazy(() => createElementSchema()).optional(),
+        _relationtype: createElementSchema().optional(),
         item: createReferenceSchema(),
       });
 

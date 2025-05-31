@@ -16,19 +16,17 @@ export function createContractContentDefinitionSchema() {
     const baseSchema: z.ZodType<types.ContractContentDefinition> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         type: createCodeableConceptSchema(),
         subType: createCodeableConceptSchema().optional(),
         publisher: createReferenceSchema().optional(),
         publicationDate: primitives.getDateTimeSchema().optional(),
-        _publicationDate: z.lazy(() => createElementSchema()).optional(),
+        _publicationDate: createElementSchema().optional(),
         publicationStatus: primitives.getCodeSchema(),
-        _publicationStatus: z.lazy(() => createElementSchema()).optional(),
+        _publicationStatus: createElementSchema().optional(),
         copyright: primitives.getMarkdownSchema().optional(),
-        _copyright: z.lazy(() => createElementSchema()).optional(),
+        _copyright: createElementSchema().optional(),
       });
 
     return baseSchema;

@@ -10,26 +10,24 @@ export function createTestScriptVariableSchema() {
   return getCachedSchema("TestScriptVariable", () => {
     const baseSchema: z.ZodType<types.TestScriptVariable> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       name: primitives.getStringSchema(),
-      _name: z.lazy(() => createElementSchema()).optional(),
+      _name: createElementSchema().optional(),
       defaultValue: primitives.getStringSchema().optional(),
-      _defaultValue: z.lazy(() => createElementSchema()).optional(),
+      _defaultValue: createElementSchema().optional(),
       description: primitives.getStringSchema().optional(),
-      _description: z.lazy(() => createElementSchema()).optional(),
+      _description: createElementSchema().optional(),
       expression: primitives.getStringSchema().optional(),
-      _expression: z.lazy(() => createElementSchema()).optional(),
+      _expression: createElementSchema().optional(),
       headerField: primitives.getStringSchema().optional(),
-      _headerField: z.lazy(() => createElementSchema()).optional(),
+      _headerField: createElementSchema().optional(),
       hint: primitives.getStringSchema().optional(),
-      _hint: z.lazy(() => createElementSchema()).optional(),
+      _hint: createElementSchema().optional(),
       path: primitives.getStringSchema().optional(),
-      _path: z.lazy(() => createElementSchema()).optional(),
+      _path: createElementSchema().optional(),
       sourceId: primitives.getIdSchema().optional(),
-      _sourceId: z.lazy(() => createElementSchema()).optional(),
+      _sourceId: createElementSchema().optional(),
     });
 
     return baseSchema;

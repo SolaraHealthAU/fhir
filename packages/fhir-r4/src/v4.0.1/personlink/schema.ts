@@ -14,13 +14,11 @@ export function createPersonLinkSchema() {
   return getCachedSchema("PersonLink", () => {
     const baseSchema: z.ZodType<types.PersonLink> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       target: createReferenceSchema(),
       assurance: z.enum(["level1", "level2", "level3", "level4"]).optional(),
-      _assurance: z.lazy(() => createElementSchema()).optional(),
+      _assurance: createElementSchema().optional(),
     });
 
     return baseSchema;

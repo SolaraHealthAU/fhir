@@ -15,13 +15,11 @@ export function createInsurancePlanBenefitSchema() {
   return getCachedSchema("InsurancePlanBenefit", () => {
     const baseSchema: z.ZodType<types.InsurancePlanBenefit> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       type: createCodeableConceptSchema(),
       requirement: primitives.getStringSchema().optional(),
-      _requirement: z.lazy(() => createElementSchema()).optional(),
+      _requirement: createElementSchema().optional(),
       limit: z.array(createInsurancePlanLimitSchema()).optional(),
     });
 

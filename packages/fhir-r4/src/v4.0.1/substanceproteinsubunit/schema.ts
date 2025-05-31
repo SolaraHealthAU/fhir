@@ -16,27 +16,21 @@ export function createSubstanceProteinSubunitSchema() {
     const baseSchema: z.ZodType<types.SubstanceProteinSubunit> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         subunit: primitives.getIntegerSchema().optional(),
-        _subunit: z.lazy(() => createElementSchema()).optional(),
+        _subunit: createElementSchema().optional(),
         sequence: primitives.getStringSchema().optional(),
-        _sequence: z.lazy(() => createElementSchema()).optional(),
+        _sequence: createElementSchema().optional(),
         length: primitives.getIntegerSchema().optional(),
-        _length: z.lazy(() => createElementSchema()).optional(),
+        _length: createElementSchema().optional(),
         sequenceAttachment: createAttachmentSchema().optional(),
-        nTerminalModificationId: z
-          .lazy(() => createIdentifierSchema())
-          .optional(),
+        nTerminalModificationId: createIdentifierSchema().optional(),
         nTerminalModification: primitives.getStringSchema().optional(),
-        _nTerminalModification: z.lazy(() => createElementSchema()).optional(),
-        cTerminalModificationId: z
-          .lazy(() => createIdentifierSchema())
-          .optional(),
+        _nTerminalModification: createElementSchema().optional(),
+        cTerminalModificationId: createIdentifierSchema().optional(),
         cTerminalModification: primitives.getStringSchema().optional(),
-        _cTerminalModification: z.lazy(() => createElementSchema()).optional(),
+        _cTerminalModification: createElementSchema().optional(),
       },
     );
 

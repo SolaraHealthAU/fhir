@@ -19,16 +19,14 @@ export function createPatientContactSchema() {
   return getCachedSchema("PatientContact", () => {
     const baseSchema: z.ZodType<types.PatientContact> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       relationship: z.array(createCodeableConceptSchema()).optional(),
       name: createHumanNameSchema().optional(),
       telecom: z.array(createContactPointSchema()).optional(),
       address: createAddressSchema().optional(),
       gender: z.enum(["male", "female", "other", "unknown"]).optional(),
-      _gender: z.lazy(() => createElementSchema()).optional(),
+      _gender: createElementSchema().optional(),
       organization: createReferenceSchema().optional(),
       period: createPeriodSchema().optional(),
     });

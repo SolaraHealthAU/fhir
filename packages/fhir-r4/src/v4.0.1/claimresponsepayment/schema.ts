@@ -16,17 +16,15 @@ export function createClaimResponsePaymentSchema() {
   return getCachedSchema("ClaimResponsePayment", () => {
     const baseSchema: z.ZodType<types.ClaimResponsePayment> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       type: createCodeableConceptSchema(),
       adjustment: createMoneySchema().optional(),
       adjustmentReason: createCodeableConceptSchema().optional(),
       date: primitives.getDateSchema().optional(),
-      _date: z.lazy(() => createElementSchema()).optional(),
+      _date: createElementSchema().optional(),
       amount: createMoneySchema(),
-      identifier: z.lazy(() => createIdentifierSchema()).optional(),
+      identifier: createIdentifierSchema().optional(),
     });
 
     return baseSchema;

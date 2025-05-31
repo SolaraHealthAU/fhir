@@ -15,10 +15,8 @@ export function createInsurancePlanCoverageSchema() {
   return getCachedSchema("InsurancePlanCoverage", () => {
     const baseSchema: z.ZodType<types.InsurancePlanCoverage> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       type: createCodeableConceptSchema(),
       network: z.array(createReferenceSchema()).optional(),
       benefit: z.array(createInsurancePlanBenefitSchema()),

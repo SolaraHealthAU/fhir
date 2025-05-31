@@ -10,14 +10,12 @@ export function createConsentPolicySchema() {
   return getCachedSchema("ConsentPolicy", () => {
     const baseSchema: z.ZodType<types.ConsentPolicy> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       authority: primitives.getUriSchema().optional(),
-      _authority: z.lazy(() => createElementSchema()).optional(),
+      _authority: createElementSchema().optional(),
       uri: primitives.getUriSchema().optional(),
-      _uri: z.lazy(() => createElementSchema()).optional(),
+      _uri: createElementSchema().optional(),
     });
 
     return baseSchema;

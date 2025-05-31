@@ -15,13 +15,11 @@ export function createClaimRelatedSchema() {
   return getCachedSchema("ClaimRelated", () => {
     const baseSchema: z.ZodType<types.ClaimRelated> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       claim: createReferenceSchema().optional(),
       relationship: createCodeableConceptSchema().optional(),
-      reference: z.lazy(() => createIdentifierSchema()).optional(),
+      reference: createIdentifierSchema().optional(),
     });
 
     return baseSchema;

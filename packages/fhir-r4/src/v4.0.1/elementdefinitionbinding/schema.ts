@@ -11,14 +11,12 @@ export function createElementDefinitionBindingSchema() {
     const baseSchema: z.ZodType<types.ElementDefinitionBinding> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         strength: z.enum(["required", "extensible", "preferred", "example"]),
-        _strength: z.lazy(() => createElementSchema()).optional(),
+        _strength: createElementSchema().optional(),
         description: primitives.getStringSchema().optional(),
-        _description: z.lazy(() => createElementSchema()).optional(),
+        _description: createElementSchema().optional(),
         valueSet: primitives.getCanonicalSchema().optional(),
       });
 

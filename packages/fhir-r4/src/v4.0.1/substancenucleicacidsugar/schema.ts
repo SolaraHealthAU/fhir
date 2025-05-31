@@ -15,15 +15,13 @@ export function createSubstanceNucleicAcidSugarSchema() {
     const baseSchema: z.ZodType<types.SubstanceNucleicAcidSugar> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
-        identifier: z.lazy(() => createIdentifierSchema()).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: createIdentifierSchema().optional(),
         name: primitives.getStringSchema().optional(),
-        _name: z.lazy(() => createElementSchema()).optional(),
+        _name: createElementSchema().optional(),
         residueSite: primitives.getStringSchema().optional(),
-        _residueSite: z.lazy(() => createElementSchema()).optional(),
+        _residueSite: createElementSchema().optional(),
       });
 
     return baseSchema;

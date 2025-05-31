@@ -11,13 +11,11 @@ export function createMessageDefinitionAllowedResponseSchema() {
     const baseSchema: z.ZodType<types.MessageDefinitionAllowedResponse> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         message: primitives.getCanonicalSchema(),
         situation: primitives.getMarkdownSchema().optional(),
-        _situation: z.lazy(() => createElementSchema()).optional(),
+        _situation: createElementSchema().optional(),
       });
 
     return baseSchema;

@@ -17,18 +17,16 @@ export function createMedicinalProductSpecialDesignationSchema() {
     const baseSchema: z.ZodType<types.MedicinalProductSpecialDesignation> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
-        identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: z.array(createIdentifierSchema()).optional(),
         type: createCodeableConceptSchema().optional(),
         intendedUse: createCodeableConceptSchema().optional(),
         indicationCodeableConcept: createCodeableConceptSchema().optional(),
         indicationReference: createReferenceSchema().optional(),
         status: createCodeableConceptSchema().optional(),
         date: primitives.getDateTimeSchema().optional(),
-        _date: z.lazy(() => createElementSchema()).optional(),
+        _date: createElementSchema().optional(),
         species: createCodeableConceptSchema().optional(),
       });
 

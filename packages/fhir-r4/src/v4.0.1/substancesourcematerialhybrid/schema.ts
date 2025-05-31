@@ -15,18 +15,16 @@ export function createSubstanceSourceMaterialHybridSchema() {
     const baseSchema: z.ZodType<types.SubstanceSourceMaterialHybrid> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         maternalOrganismId: primitives.getStringSchema().optional(),
-        _maternalOrganismId: z.lazy(() => createElementSchema()).optional(),
+        _maternalOrganismId: createElementSchema().optional(),
         maternalOrganismName: primitives.getStringSchema().optional(),
-        _maternalOrganismName: z.lazy(() => createElementSchema()).optional(),
+        _maternalOrganismName: createElementSchema().optional(),
         paternalOrganismId: primitives.getStringSchema().optional(),
-        _paternalOrganismId: z.lazy(() => createElementSchema()).optional(),
+        _paternalOrganismId: createElementSchema().optional(),
         paternalOrganismName: primitives.getStringSchema().optional(),
-        _paternalOrganismName: z.lazy(() => createElementSchema()).optional(),
+        _paternalOrganismName: createElementSchema().optional(),
         hybridType: createCodeableConceptSchema().optional(),
       });
 

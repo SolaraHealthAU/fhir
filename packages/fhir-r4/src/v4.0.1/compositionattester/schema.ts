@@ -14,14 +14,12 @@ export function createCompositionAttesterSchema() {
   return getCachedSchema("CompositionAttester", () => {
     const baseSchema: z.ZodType<types.CompositionAttester> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       mode: z.enum(["personal", "professional", "legal", "official"]),
-      _mode: z.lazy(() => createElementSchema()).optional(),
+      _mode: createElementSchema().optional(),
       time: primitives.getDateTimeSchema().optional(),
-      _time: z.lazy(() => createElementSchema()).optional(),
+      _time: createElementSchema().optional(),
       party: createReferenceSchema().optional(),
     });
 

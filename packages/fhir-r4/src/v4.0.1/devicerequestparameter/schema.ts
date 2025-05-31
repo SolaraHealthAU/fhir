@@ -16,16 +16,14 @@ export function createDeviceRequestParameterSchema() {
   return getCachedSchema("DeviceRequestParameter", () => {
     const baseSchema: z.ZodType<types.DeviceRequestParameter> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       code: createCodeableConceptSchema().optional(),
       valueCodeableConcept: createCodeableConceptSchema().optional(),
       valueQuantity: createQuantitySchema().optional(),
       valueRange: createRangeSchema().optional(),
       valueBoolean: z.boolean().optional(),
-      _valueBoolean: z.lazy(() => createElementSchema()).optional(),
+      _valueBoolean: createElementSchema().optional(),
     });
 
     return baseSchema;

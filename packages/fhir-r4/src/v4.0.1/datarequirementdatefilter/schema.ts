@@ -16,16 +16,14 @@ export function createDataRequirementDateFilterSchema() {
     const baseSchema: z.ZodType<types.DataRequirementDateFilter> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         path: primitives.getStringSchema().optional(),
-        _path: z.lazy(() => createElementSchema()).optional(),
+        _path: createElementSchema().optional(),
         searchParam: primitives.getStringSchema().optional(),
-        _searchParam: z.lazy(() => createElementSchema()).optional(),
+        _searchParam: createElementSchema().optional(),
         valueDateTime: z.string().optional(),
-        _valueDateTime: z.lazy(() => createElementSchema()).optional(),
+        _valueDateTime: createElementSchema().optional(),
         valuePeriod: createPeriodSchema().optional(),
         valueDuration: createDurationSchema().optional(),
       });

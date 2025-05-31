@@ -17,12 +17,10 @@ export function createMedicationAdministrationDosageSchema() {
     const baseSchema: z.ZodType<types.MedicationAdministrationDosage> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         text: primitives.getStringSchema().optional(),
-        _text: z.lazy(() => createElementSchema()).optional(),
+        _text: createElementSchema().optional(),
         site: createCodeableConceptSchema().optional(),
         route: createCodeableConceptSchema().optional(),
         method: createCodeableConceptSchema().optional(),

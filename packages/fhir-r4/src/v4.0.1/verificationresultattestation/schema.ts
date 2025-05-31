@@ -17,23 +17,17 @@ export function createVerificationResultAttestationSchema() {
     const baseSchema: z.ZodType<types.VerificationResultAttestation> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
-        extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-        modifierExtension: z
-          .array(z.lazy(() => createExtensionSchema()))
-          .optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
         who: createReferenceSchema().optional(),
         onBehalfOf: createReferenceSchema().optional(),
         communicationMethod: createCodeableConceptSchema().optional(),
         date: primitives.getDateSchema().optional(),
-        _date: z.lazy(() => createElementSchema()).optional(),
+        _date: createElementSchema().optional(),
         sourceIdentityCertificate: primitives.getStringSchema().optional(),
-        _sourceIdentityCertificate: z
-          .lazy(() => createElementSchema())
-          .optional(),
+        _sourceIdentityCertificate: createElementSchema().optional(),
         proxyIdentityCertificate: primitives.getStringSchema().optional(),
-        _proxyIdentityCertificate: z
-          .lazy(() => createElementSchema())
-          .optional(),
+        _proxyIdentityCertificate: createElementSchema().optional(),
         proxySignature: createSignatureSchema().optional(),
         sourceSignature: createSignatureSchema().optional(),
       });

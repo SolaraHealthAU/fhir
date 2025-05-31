@@ -17,13 +17,11 @@ export function createSpecimenContainerSchema() {
   return getCachedSchema("SpecimenContainer", () => {
     const baseSchema: z.ZodType<types.SpecimenContainer> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
-      identifier: z.array(z.lazy(() => createIdentifierSchema())).optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      identifier: z.array(createIdentifierSchema()).optional(),
       description: primitives.getStringSchema().optional(),
-      _description: z.lazy(() => createElementSchema()).optional(),
+      _description: createElementSchema().optional(),
       type: createCodeableConceptSchema().optional(),
       capacity: createQuantitySchema().optional(),
       specimenQuantity: createQuantitySchema().optional(),

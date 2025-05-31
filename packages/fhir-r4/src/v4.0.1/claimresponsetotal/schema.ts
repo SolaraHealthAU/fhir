@@ -14,10 +14,8 @@ export function createClaimResponseTotalSchema() {
   return getCachedSchema("ClaimResponseTotal", () => {
     const baseSchema: z.ZodType<types.ClaimResponseTotal> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       category: createCodeableConceptSchema(),
       amount: createMoneySchema(),
     });

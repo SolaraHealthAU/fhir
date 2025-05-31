@@ -10,24 +10,22 @@ export function createDeviceUdiCarrierSchema() {
   return getCachedSchema("DeviceUdiCarrier", () => {
     const baseSchema: z.ZodType<types.DeviceUdiCarrier> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       deviceIdentifier: primitives.getStringSchema().optional(),
-      _deviceIdentifier: z.lazy(() => createElementSchema()).optional(),
+      _deviceIdentifier: createElementSchema().optional(),
       issuer: primitives.getUriSchema().optional(),
-      _issuer: z.lazy(() => createElementSchema()).optional(),
+      _issuer: createElementSchema().optional(),
       jurisdiction: primitives.getUriSchema().optional(),
-      _jurisdiction: z.lazy(() => createElementSchema()).optional(),
+      _jurisdiction: createElementSchema().optional(),
       carrierAIDC: primitives.getBase64BinarySchema().optional(),
-      _carrierAIDC: z.lazy(() => createElementSchema()).optional(),
+      _carrierAIDC: createElementSchema().optional(),
       carrierHRF: primitives.getStringSchema().optional(),
-      _carrierHRF: z.lazy(() => createElementSchema()).optional(),
+      _carrierHRF: createElementSchema().optional(),
       entryType: z
         .enum(["barcode", "rfid", "manual", "card", "self-reported", "unknown"])
         .optional(),
-      _entryType: z.lazy(() => createElementSchema()).optional(),
+      _entryType: createElementSchema().optional(),
     });
 
     return baseSchema;

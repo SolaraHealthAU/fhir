@@ -15,14 +15,12 @@ export function createDeviceVersionSchema() {
   return getCachedSchema("DeviceVersion", () => {
     const baseSchema: z.ZodType<types.DeviceVersion> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       type: createCodeableConceptSchema().optional(),
-      component: z.lazy(() => createIdentifierSchema()).optional(),
+      component: createIdentifierSchema().optional(),
       value: primitives.getStringSchema(),
-      _value: z.lazy(() => createElementSchema()).optional(),
+      _value: createElementSchema().optional(),
     });
 
     return baseSchema;

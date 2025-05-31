@@ -14,12 +14,10 @@ export function createTestScriptOriginSchema() {
   return getCachedSchema("TestScriptOrigin", () => {
     const baseSchema: z.ZodType<types.TestScriptOrigin> = z.strictObject({
       id: primitives.getStringSchema().optional(),
-      extension: z.array(z.lazy(() => createExtensionSchema())).optional(),
-      modifierExtension: z
-        .array(z.lazy(() => createExtensionSchema()))
-        .optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
       index: primitives.getIntegerSchema(),
-      _index: z.lazy(() => createElementSchema()).optional(),
+      _index: createElementSchema().optional(),
       profile: createCodingSchema(),
     });
 
