@@ -149,13 +149,9 @@ async function generateFixtures(): Promise<void> {
 
         const fixtureContent = fixtureMap.get(resourceType)!;
 
-        // Add import for the resource type - relative to the test directory
-        const relativePathToTypes = path.relative(
-          getTargetDirectory(resourceType),
-          path.join(sourceTypeDir, 'types'),
-        );
+        // Add import for the resource type using relative path
         fixtureContent.imports.add(
-          `import type { ${resourceType} } from '${relativePathToTypes}';`,
+          `import type { ${resourceType} } from '../../src/v4.0.1/${resourceType.toLowerCase()}/types';`,
         );
 
         // Clean the resource to remove null values that cause TypeScript issues
@@ -199,9 +195,8 @@ async function generateFixtures(): Promise<void> {
 
         // Import all fixtures and the schema function
         const fixtureImports = content.fixtures.map((f) => f.name).join(', ');
-        const relativePathToIndex = path.relative(getTargetDirectory(resourceType), 'src');
 
-        const testFileContent = `import { ${schemaFunctionName} } from '${relativePathToIndex}';
+        const testFileContent = `import { ${schemaFunctionName} } from '../../src';
 import { ${fixtureImports} } from './fixture';
 import { z } from 'zod/v4';
 

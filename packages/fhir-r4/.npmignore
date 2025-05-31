@@ -15,6 +15,9 @@ eslint.config.js
 tsconfig*.json
 .gitignore
 
+# Source maps (exclude from publishing)
+**/*.map
+
 # Development dependencies and caches
 node_modules/
 .npm/
