@@ -17,7 +17,7 @@ import type { ResourceList } from "../resourcelist/types";
 import type { ProductShelfLife } from "../productshelflife/types";
 import type { ProdCharacteristic } from "../prodcharacteristic/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** A type of a manufactured item that is used in the provision of healthcare without being substantially changed through that activity. The device may be a medical or non-medical device. */
 

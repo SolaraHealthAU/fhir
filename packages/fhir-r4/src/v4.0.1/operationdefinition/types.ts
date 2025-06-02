@@ -9,7 +9,7 @@ import type {
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction). */
 

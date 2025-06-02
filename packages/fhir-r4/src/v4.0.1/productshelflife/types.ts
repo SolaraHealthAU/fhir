@@ -5,7 +5,7 @@ import type {
   Quantity,
 } from "../core/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** The shelf-life and storage information for a medicinal product item or container can be described using this class. */
 

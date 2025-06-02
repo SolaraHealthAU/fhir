@@ -26,41 +26,42 @@ export function createPaymentReconciliationSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("PaymentReconciliation", [contained], () => {
-    const baseSchema: z.ZodType<types.PaymentReconciliation> = z.strictObject({
-      resourceType: z.literal("PaymentReconciliation"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      identifier: z.array(createIdentifierSchema()).optional(),
-      status: primitives.getCodeSchema(),
-      _status: createElementSchema().optional(),
-      period: createPeriodSchema().optional(),
-      created: primitives.getDateTimeSchema(),
-      _created: createElementSchema().optional(),
-      paymentIssuer: createReferenceSchema().optional(),
-      request: createReferenceSchema().optional(),
-      requestor: createReferenceSchema().optional(),
-      outcome: z.enum(["queued", "complete", "error", "partial"]).optional(),
-      _outcome: createElementSchema().optional(),
-      disposition: primitives.getStringSchema().optional(),
-      _disposition: createElementSchema().optional(),
-      paymentDate: primitives.getDateSchema(),
-      _paymentDate: createElementSchema().optional(),
-      paymentAmount: createMoneySchema(),
-      paymentIdentifier: createIdentifierSchema().optional(),
-      detail: z.array(createPaymentReconciliationDetailSchema()).optional(),
-      formCode: createCodeableConceptSchema().optional(),
-      processNote: z
-        .array(createPaymentReconciliationProcessNoteSchema())
-        .optional(),
-    });
+    const baseSchema: z.ZodType<types.PaymentReconciliation<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("PaymentReconciliation"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: z.array(createIdentifierSchema()).optional(),
+        status: primitives.getCodeSchema(),
+        _status: createElementSchema().optional(),
+        period: createPeriodSchema().optional(),
+        created: primitives.getDateTimeSchema(),
+        _created: createElementSchema().optional(),
+        paymentIssuer: createReferenceSchema().optional(),
+        request: createReferenceSchema().optional(),
+        requestor: createReferenceSchema().optional(),
+        outcome: z.enum(["queued", "complete", "error", "partial"]).optional(),
+        _outcome: createElementSchema().optional(),
+        disposition: primitives.getStringSchema().optional(),
+        _disposition: createElementSchema().optional(),
+        paymentDate: primitives.getDateSchema(),
+        _paymentDate: createElementSchema().optional(),
+        paymentAmount: createMoneySchema(),
+        paymentIdentifier: createIdentifierSchema().optional(),
+        detail: z.array(createPaymentReconciliationDetailSchema()).optional(),
+        formCode: createCodeableConceptSchema().optional(),
+        processNote: z
+          .array(createPaymentReconciliationProcessNoteSchema())
+          .optional(),
+      });
 
     return baseSchema;
   });

@@ -32,7 +32,7 @@ export function createContractSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Contract", [contained], () => {
-    const baseSchema: z.ZodType<types.Contract> = z.strictObject({
+    const baseSchema: z.ZodType<types.Contract<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Contract"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

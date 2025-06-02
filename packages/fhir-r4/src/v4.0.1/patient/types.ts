@@ -14,7 +14,7 @@ import type {
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** Demographics and other administrative information about an individual or animal receiving care or other health-related services. */
 

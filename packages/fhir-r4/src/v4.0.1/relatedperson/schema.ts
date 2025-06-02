@@ -29,36 +29,37 @@ export function createRelatedPersonSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("RelatedPerson", [contained], () => {
-    const baseSchema: z.ZodType<types.RelatedPerson> = z.strictObject({
-      resourceType: z.literal("RelatedPerson"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      identifier: z.array(createIdentifierSchema()).optional(),
-      active: primitives.getBooleanSchema().optional(),
-      _active: createElementSchema().optional(),
-      patient: createReferenceSchema(),
-      relationship: z.array(createCodeableConceptSchema()).optional(),
-      name: z.array(createHumanNameSchema()).optional(),
-      telecom: z.array(createContactPointSchema()).optional(),
-      gender: z.enum(["male", "female", "other", "unknown"]).optional(),
-      _gender: createElementSchema().optional(),
-      birthDate: primitives.getDateSchema().optional(),
-      _birthDate: createElementSchema().optional(),
-      address: z.array(createAddressSchema()).optional(),
-      photo: z.array(createAttachmentSchema()).optional(),
-      period: createPeriodSchema().optional(),
-      communication: z
-        .array(createRelatedPersonCommunicationSchema())
-        .optional(),
-    });
+    const baseSchema: z.ZodType<types.RelatedPerson<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("RelatedPerson"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: z.array(createIdentifierSchema()).optional(),
+        active: primitives.getBooleanSchema().optional(),
+        _active: createElementSchema().optional(),
+        patient: createReferenceSchema(),
+        relationship: z.array(createCodeableConceptSchema()).optional(),
+        name: z.array(createHumanNameSchema()).optional(),
+        telecom: z.array(createContactPointSchema()).optional(),
+        gender: z.enum(["male", "female", "other", "unknown"]).optional(),
+        _gender: createElementSchema().optional(),
+        birthDate: primitives.getDateSchema().optional(),
+        _birthDate: createElementSchema().optional(),
+        address: z.array(createAddressSchema()).optional(),
+        photo: z.array(createAttachmentSchema()).optional(),
+        period: createPeriodSchema().optional(),
+        communication: z
+          .array(createRelatedPersonCommunicationSchema())
+          .optional(),
+      });
 
     return baseSchema;
   });

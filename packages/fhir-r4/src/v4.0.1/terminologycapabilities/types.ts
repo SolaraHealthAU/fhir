@@ -9,7 +9,7 @@ import type {
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** A TerminologyCapabilities resource documents a set of capabilities (behaviors) of a FHIR Terminology Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation. */
 

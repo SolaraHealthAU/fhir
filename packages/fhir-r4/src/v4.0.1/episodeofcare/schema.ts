@@ -25,42 +25,43 @@ export function createEpisodeOfCareSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("EpisodeOfCare", [contained], () => {
-    const baseSchema: z.ZodType<types.EpisodeOfCare> = z.strictObject({
-      resourceType: z.literal("EpisodeOfCare"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      identifier: z.array(createIdentifierSchema()).optional(),
-      status: z.enum([
-        "planned",
-        "waitlist",
-        "active",
-        "onhold",
-        "finished",
-        "cancelled",
-        "entered-in-error",
-      ]),
-      _status: createElementSchema().optional(),
-      statusHistory: z
-        .array(createEpisodeOfCareStatusHistorySchema())
-        .optional(),
-      type: z.array(createCodeableConceptSchema()).optional(),
-      diagnosis: z.array(createEpisodeOfCareDiagnosisSchema()).optional(),
-      patient: createReferenceSchema(),
-      managingOrganization: createReferenceSchema().optional(),
-      period: createPeriodSchema().optional(),
-      referralRequest: z.array(createReferenceSchema()).optional(),
-      careManager: createReferenceSchema().optional(),
-      team: z.array(createReferenceSchema()).optional(),
-      account: z.array(createReferenceSchema()).optional(),
-    });
+    const baseSchema: z.ZodType<types.EpisodeOfCare<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("EpisodeOfCare"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: z.array(createIdentifierSchema()).optional(),
+        status: z.enum([
+          "planned",
+          "waitlist",
+          "active",
+          "onhold",
+          "finished",
+          "cancelled",
+          "entered-in-error",
+        ]),
+        _status: createElementSchema().optional(),
+        statusHistory: z
+          .array(createEpisodeOfCareStatusHistorySchema())
+          .optional(),
+        type: z.array(createCodeableConceptSchema()).optional(),
+        diagnosis: z.array(createEpisodeOfCareDiagnosisSchema()).optional(),
+        patient: createReferenceSchema(),
+        managingOrganization: createReferenceSchema().optional(),
+        period: createPeriodSchema().optional(),
+        referralRequest: z.array(createReferenceSchema()).optional(),
+        careManager: createReferenceSchema().optional(),
+        team: z.array(createReferenceSchema()).optional(),
+        account: z.array(createReferenceSchema()).optional(),
+      });
 
     return baseSchema;
   });

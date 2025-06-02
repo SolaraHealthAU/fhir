@@ -25,32 +25,33 @@ export function createMessageHeaderSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("MessageHeader", [contained], () => {
-    const baseSchema: z.ZodType<types.MessageHeader> = z.strictObject({
-      resourceType: z.literal("MessageHeader"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      eventCoding: createCodingSchema().optional(),
-      eventUri: z.string().optional(),
-      _eventUri: createElementSchema().optional(),
-      destination: z.array(createMessageHeaderDestinationSchema()).optional(),
-      sender: createReferenceSchema().optional(),
-      enterer: createReferenceSchema().optional(),
-      author: createReferenceSchema().optional(),
-      source: createMessageHeaderSourceSchema(),
-      responsible: createReferenceSchema().optional(),
-      reason: createCodeableConceptSchema().optional(),
-      response: createMessageHeaderResponseSchema().optional(),
-      focus: z.array(createReferenceSchema()).optional(),
-      definition: primitives.getCanonicalSchema().optional(),
-    });
+    const baseSchema: z.ZodType<types.MessageHeader<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("MessageHeader"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        eventCoding: createCodingSchema().optional(),
+        eventUri: z.string().optional(),
+        _eventUri: createElementSchema().optional(),
+        destination: z.array(createMessageHeaderDestinationSchema()).optional(),
+        sender: createReferenceSchema().optional(),
+        enterer: createReferenceSchema().optional(),
+        author: createReferenceSchema().optional(),
+        source: createMessageHeaderSourceSchema(),
+        responsible: createReferenceSchema().optional(),
+        reason: createCodeableConceptSchema().optional(),
+        response: createMessageHeaderResponseSchema().optional(),
+        focus: z.array(createReferenceSchema()).optional(),
+        definition: primitives.getCanonicalSchema().optional(),
+      });
 
     return baseSchema;
   });

@@ -35,7 +35,7 @@ import type {
 } from "../core/types";
 import type { ResourceList } from "../resourcelist/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** This resource is a non-persisted resource used to pass information into and back from an [operation](operations.html). It has no other use, and there is no RESTful endpoint associated with it. */
 

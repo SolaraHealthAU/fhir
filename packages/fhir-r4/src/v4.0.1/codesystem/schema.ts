@@ -26,7 +26,7 @@ export function createCodeSystemSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("CodeSystem", [contained], () => {
-    const baseSchema: z.ZodType<types.CodeSystem> = z.strictObject({
+    const baseSchema: z.ZodType<types.CodeSystem<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("CodeSystem"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

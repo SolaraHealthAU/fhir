@@ -16,7 +16,7 @@ import type {
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** This resource is primarily used for the identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use. */
 

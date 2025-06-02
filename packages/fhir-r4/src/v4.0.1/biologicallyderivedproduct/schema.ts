@@ -25,7 +25,7 @@ export function createBiologicallyDerivedProductSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("BiologicallyDerivedProduct", [contained], () => {
-    const baseSchema: z.ZodType<types.BiologicallyDerivedProduct> =
+    const baseSchema: z.ZodType<types.BiologicallyDerivedProduct<z.infer<C>>> =
       z.strictObject({
         resourceType: z.literal("BiologicallyDerivedProduct"),
         id: primitives.getIdSchema().optional(),

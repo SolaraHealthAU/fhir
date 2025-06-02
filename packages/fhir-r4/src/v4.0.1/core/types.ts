@@ -1,4 +1,4 @@
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** Base definition for all elements in a resource. */
 

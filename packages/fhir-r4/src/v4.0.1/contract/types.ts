@@ -17,7 +17,7 @@ import type {
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement. */
 

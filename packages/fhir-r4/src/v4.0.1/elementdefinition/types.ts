@@ -34,7 +34,7 @@ import type {
   Meta,
 } from "../core/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** Captures constraints on each element within the resource, profile, or extension. */
 

@@ -2,7 +2,7 @@ import type { Meta, Element, Extension, CodeableConcept } from "../core/types";
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** A collection of error, warning, or information messages that result from a system action. */
 

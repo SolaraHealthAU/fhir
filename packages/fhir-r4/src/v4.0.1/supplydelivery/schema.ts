@@ -27,36 +27,37 @@ export function createSupplyDeliverySchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("SupplyDelivery", [contained], () => {
-    const baseSchema: z.ZodType<types.SupplyDelivery> = z.strictObject({
-      resourceType: z.literal("SupplyDelivery"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      identifier: z.array(createIdentifierSchema()).optional(),
-      basedOn: z.array(createReferenceSchema()).optional(),
-      partOf: z.array(createReferenceSchema()).optional(),
-      status: z
-        .enum(["in-progress", "completed", "abandoned", "entered-in-error"])
-        .optional(),
-      _status: createElementSchema().optional(),
-      patient: createReferenceSchema().optional(),
-      type: createCodeableConceptSchema().optional(),
-      suppliedItem: createSupplyDeliverySuppliedItemSchema().optional(),
-      occurrenceDateTime: z.string().optional(),
-      _occurrenceDateTime: createElementSchema().optional(),
-      occurrencePeriod: createPeriodSchema().optional(),
-      occurrenceTiming: createTimingSchema().optional(),
-      supplier: createReferenceSchema().optional(),
-      destination: createReferenceSchema().optional(),
-      receiver: z.array(createReferenceSchema()).optional(),
-    });
+    const baseSchema: z.ZodType<types.SupplyDelivery<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("SupplyDelivery"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: z.array(createIdentifierSchema()).optional(),
+        basedOn: z.array(createReferenceSchema()).optional(),
+        partOf: z.array(createReferenceSchema()).optional(),
+        status: z
+          .enum(["in-progress", "completed", "abandoned", "entered-in-error"])
+          .optional(),
+        _status: createElementSchema().optional(),
+        patient: createReferenceSchema().optional(),
+        type: createCodeableConceptSchema().optional(),
+        suppliedItem: createSupplyDeliverySuppliedItemSchema().optional(),
+        occurrenceDateTime: z.string().optional(),
+        _occurrenceDateTime: createElementSchema().optional(),
+        occurrencePeriod: createPeriodSchema().optional(),
+        occurrenceTiming: createTimingSchema().optional(),
+        supplier: createReferenceSchema().optional(),
+        destination: createReferenceSchema().optional(),
+        receiver: z.array(createReferenceSchema()).optional(),
+      });
 
     return baseSchema;
   });

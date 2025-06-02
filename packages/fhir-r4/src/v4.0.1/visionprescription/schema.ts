@@ -26,32 +26,33 @@ export function createVisionPrescriptionSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("VisionPrescription", [contained], () => {
-    const baseSchema: z.ZodType<types.VisionPrescription> = z.strictObject({
-      resourceType: z.literal("VisionPrescription"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      identifier: z.array(createIdentifierSchema()).optional(),
-      status: primitives.getCodeSchema(),
-      _status: createElementSchema().optional(),
-      created: primitives.getDateTimeSchema(),
-      _created: createElementSchema().optional(),
-      patient: createReferenceSchema(),
-      encounter: createReferenceSchema().optional(),
-      dateWritten: primitives.getDateTimeSchema(),
-      _dateWritten: createElementSchema().optional(),
-      prescriber: createReferenceSchema(),
-      lensSpecification: z.array(
-        createVisionPrescriptionLensSpecificationSchema(),
-      ),
-    });
+    const baseSchema: z.ZodType<types.VisionPrescription<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("VisionPrescription"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: z.array(createIdentifierSchema()).optional(),
+        status: primitives.getCodeSchema(),
+        _status: createElementSchema().optional(),
+        created: primitives.getDateTimeSchema(),
+        _created: createElementSchema().optional(),
+        patient: createReferenceSchema(),
+        encounter: createReferenceSchema().optional(),
+        dateWritten: primitives.getDateTimeSchema(),
+        _dateWritten: createElementSchema().optional(),
+        prescriber: createReferenceSchema(),
+        lensSpecification: z.array(
+          createVisionPrescriptionLensSpecificationSchema(),
+        ),
+      });
 
     return baseSchema;
   });

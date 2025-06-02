@@ -12,7 +12,7 @@ import type {
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** Details and position information for a physical place where services are provided and resources and participants may be stored, found, contained, or accommodated. */
 

@@ -25,7 +25,7 @@ export function createConceptMapSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("ConceptMap", [contained], () => {
-    const baseSchema: z.ZodType<types.ConceptMap> = z.strictObject({
+    const baseSchema: z.ZodType<types.ConceptMap<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("ConceptMap"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

@@ -25,7 +25,7 @@ export function createProvenanceSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Provenance", [contained], () => {
-    const baseSchema: z.ZodType<types.Provenance> = z.strictObject({
+    const baseSchema: z.ZodType<types.Provenance<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Provenance"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

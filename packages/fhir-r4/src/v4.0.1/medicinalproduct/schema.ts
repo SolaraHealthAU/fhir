@@ -33,44 +33,48 @@ export function createMedicinalProductSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("MedicinalProduct", [contained], () => {
-    const baseSchema: z.ZodType<types.MedicinalProduct> = z.strictObject({
-      resourceType: z.literal("MedicinalProduct"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      identifier: z.array(createIdentifierSchema()).optional(),
-      type: createCodeableConceptSchema().optional(),
-      domain: createCodingSchema().optional(),
-      combinedPharmaceuticalDoseForm: createCodeableConceptSchema().optional(),
-      legalStatusOfSupply: createCodeableConceptSchema().optional(),
-      additionalMonitoringIndicator: createCodeableConceptSchema().optional(),
-      specialMeasures: z.array(primitives.getStringSchema()).optional(),
-      _specialMeasures: z.array(createElementSchema()).optional(),
-      paediatricUseIndicator: createCodeableConceptSchema().optional(),
-      productClassification: z.array(createCodeableConceptSchema()).optional(),
-      marketingStatus: z.array(createMarketingStatusSchema()).optional(),
-      pharmaceuticalProduct: z.array(createReferenceSchema()).optional(),
-      packagedMedicinalProduct: z.array(createReferenceSchema()).optional(),
-      attachedDocument: z.array(createReferenceSchema()).optional(),
-      masterFile: z.array(createReferenceSchema()).optional(),
-      contact: z.array(createReferenceSchema()).optional(),
-      clinicalTrial: z.array(createReferenceSchema()).optional(),
-      name: z.array(createMedicinalProductNameSchema()),
-      crossReference: z.array(createIdentifierSchema()).optional(),
-      manufacturingBusinessOperation: z
-        .array(createMedicinalProductManufacturingBusinessOperationSchema())
-        .optional(),
-      specialDesignation: z
-        .array(createMedicinalProductSpecialDesignationSchema())
-        .optional(),
-    });
+    const baseSchema: z.ZodType<types.MedicinalProduct<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("MedicinalProduct"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: z.array(createIdentifierSchema()).optional(),
+        type: createCodeableConceptSchema().optional(),
+        domain: createCodingSchema().optional(),
+        combinedPharmaceuticalDoseForm:
+          createCodeableConceptSchema().optional(),
+        legalStatusOfSupply: createCodeableConceptSchema().optional(),
+        additionalMonitoringIndicator: createCodeableConceptSchema().optional(),
+        specialMeasures: z.array(primitives.getStringSchema()).optional(),
+        _specialMeasures: z.array(createElementSchema()).optional(),
+        paediatricUseIndicator: createCodeableConceptSchema().optional(),
+        productClassification: z
+          .array(createCodeableConceptSchema())
+          .optional(),
+        marketingStatus: z.array(createMarketingStatusSchema()).optional(),
+        pharmaceuticalProduct: z.array(createReferenceSchema()).optional(),
+        packagedMedicinalProduct: z.array(createReferenceSchema()).optional(),
+        attachedDocument: z.array(createReferenceSchema()).optional(),
+        masterFile: z.array(createReferenceSchema()).optional(),
+        contact: z.array(createReferenceSchema()).optional(),
+        clinicalTrial: z.array(createReferenceSchema()).optional(),
+        name: z.array(createMedicinalProductNameSchema()),
+        crossReference: z.array(createIdentifierSchema()).optional(),
+        manufacturingBusinessOperation: z
+          .array(createMedicinalProductManufacturingBusinessOperationSchema())
+          .optional(),
+        specialDesignation: z
+          .array(createMedicinalProductSpecialDesignationSchema())
+          .optional(),
+      });
 
     return baseSchema;
   });
@@ -181,45 +185,46 @@ export function createMedicinalProductAuthorizationSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("MedicinalProductAuthorization", [contained], () => {
-    const baseSchema: z.ZodType<types.MedicinalProductAuthorization> =
-      z.strictObject({
-        resourceType: z.literal("MedicinalProductAuthorization"),
-        id: primitives.getIdSchema().optional(),
-        meta: createMetaSchema().optional(),
-        implicitRules: primitives.getUriSchema().optional(),
-        _implicitRules: createElementSchema().optional(),
-        language: primitives.getCodeSchema().optional(),
-        _language: createElementSchema().optional(),
-        text: createNarrativeSchema().optional(),
-        contained: z.array(contained).optional(),
-        extension: z.array(createExtensionSchema()).optional(),
-        modifierExtension: z.array(createExtensionSchema()).optional(),
-        identifier: z.array(createIdentifierSchema()).optional(),
-        subject: createReferenceSchema().optional(),
-        country: z.array(createCodeableConceptSchema()).optional(),
-        jurisdiction: z.array(createCodeableConceptSchema()).optional(),
-        status: createCodeableConceptSchema().optional(),
-        statusDate: primitives.getDateTimeSchema().optional(),
-        _statusDate: createElementSchema().optional(),
-        restoreDate: primitives.getDateTimeSchema().optional(),
-        _restoreDate: createElementSchema().optional(),
-        validityPeriod: createPeriodSchema().optional(),
-        dataExclusivityPeriod: createPeriodSchema().optional(),
-        dateOfFirstAuthorization: primitives.getDateTimeSchema().optional(),
-        _dateOfFirstAuthorization: createElementSchema().optional(),
-        internationalBirthDate: primitives.getDateTimeSchema().optional(),
-        _internationalBirthDate: createElementSchema().optional(),
-        legalBasis: createCodeableConceptSchema().optional(),
-        jurisdictionalAuthorization: z
-          .array(
-            createMedicinalProductAuthorizationJurisdictionalAuthorizationSchema(),
-          )
-          .optional(),
-        holder: createReferenceSchema().optional(),
-        regulator: createReferenceSchema().optional(),
-        procedure:
-          createMedicinalProductAuthorizationProcedureSchema().optional(),
-      });
+    const baseSchema: z.ZodType<
+      types.MedicinalProductAuthorization<z.infer<C>>
+    > = z.strictObject({
+      resourceType: z.literal("MedicinalProductAuthorization"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: createElementSchema().optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: createElementSchema().optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(contained).optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      identifier: z.array(createIdentifierSchema()).optional(),
+      subject: createReferenceSchema().optional(),
+      country: z.array(createCodeableConceptSchema()).optional(),
+      jurisdiction: z.array(createCodeableConceptSchema()).optional(),
+      status: createCodeableConceptSchema().optional(),
+      statusDate: primitives.getDateTimeSchema().optional(),
+      _statusDate: createElementSchema().optional(),
+      restoreDate: primitives.getDateTimeSchema().optional(),
+      _restoreDate: createElementSchema().optional(),
+      validityPeriod: createPeriodSchema().optional(),
+      dataExclusivityPeriod: createPeriodSchema().optional(),
+      dateOfFirstAuthorization: primitives.getDateTimeSchema().optional(),
+      _dateOfFirstAuthorization: createElementSchema().optional(),
+      internationalBirthDate: primitives.getDateTimeSchema().optional(),
+      _internationalBirthDate: createElementSchema().optional(),
+      legalBasis: createCodeableConceptSchema().optional(),
+      jurisdictionalAuthorization: z
+        .array(
+          createMedicinalProductAuthorizationJurisdictionalAuthorizationSchema(),
+        )
+        .optional(),
+      holder: createReferenceSchema().optional(),
+      regulator: createReferenceSchema().optional(),
+      procedure:
+        createMedicinalProductAuthorizationProcedureSchema().optional(),
+    });
 
     return baseSchema;
   });
@@ -280,29 +285,30 @@ export function createMedicinalProductContraindicationSchema<
     "MedicinalProductContraindication",
     [contained],
     () => {
-      const baseSchema: z.ZodType<types.MedicinalProductContraindication> =
-        z.strictObject({
-          resourceType: z.literal("MedicinalProductContraindication"),
-          id: primitives.getIdSchema().optional(),
-          meta: createMetaSchema().optional(),
-          implicitRules: primitives.getUriSchema().optional(),
-          _implicitRules: createElementSchema().optional(),
-          language: primitives.getCodeSchema().optional(),
-          _language: createElementSchema().optional(),
-          text: createNarrativeSchema().optional(),
-          contained: z.array(contained).optional(),
-          extension: z.array(createExtensionSchema()).optional(),
-          modifierExtension: z.array(createExtensionSchema()).optional(),
-          subject: z.array(createReferenceSchema()).optional(),
-          disease: createCodeableConceptSchema().optional(),
-          diseaseStatus: createCodeableConceptSchema().optional(),
-          comorbidity: z.array(createCodeableConceptSchema()).optional(),
-          therapeuticIndication: z.array(createReferenceSchema()).optional(),
-          otherTherapy: z
-            .array(createMedicinalProductContraindicationOtherTherapySchema())
-            .optional(),
-          population: z.array(createPopulationSchema()).optional(),
-        });
+      const baseSchema: z.ZodType<
+        types.MedicinalProductContraindication<z.infer<C>>
+      > = z.strictObject({
+        resourceType: z.literal("MedicinalProductContraindication"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        subject: z.array(createReferenceSchema()).optional(),
+        disease: createCodeableConceptSchema().optional(),
+        diseaseStatus: createCodeableConceptSchema().optional(),
+        comorbidity: z.array(createCodeableConceptSchema()).optional(),
+        therapeuticIndication: z.array(createReferenceSchema()).optional(),
+        otherTherapy: z
+          .array(createMedicinalProductContraindicationOtherTherapySchema())
+          .optional(),
+        population: z.array(createPopulationSchema()).optional(),
+      });
 
       return baseSchema;
     },
@@ -338,7 +344,7 @@ export function createMedicinalProductIndicationSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("MedicinalProductIndication", [contained], () => {
-    const baseSchema: z.ZodType<types.MedicinalProductIndication> =
+    const baseSchema: z.ZodType<types.MedicinalProductIndication<z.infer<C>>> =
       z.strictObject({
         resourceType: z.literal("MedicinalProductIndication"),
         id: primitives.getIdSchema().optional(),
@@ -393,7 +399,7 @@ export function createMedicinalProductIngredientSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("MedicinalProductIngredient", [contained], () => {
-    const baseSchema: z.ZodType<types.MedicinalProductIngredient> =
+    const baseSchema: z.ZodType<types.MedicinalProductIngredient<z.infer<C>>> =
       z.strictObject({
         resourceType: z.literal("MedicinalProductIngredient"),
         id: primitives.getIdSchema().optional(),
@@ -516,7 +522,7 @@ export function createMedicinalProductInteractionSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("MedicinalProductInteraction", [contained], () => {
-    const baseSchema: z.ZodType<types.MedicinalProductInteraction> =
+    const baseSchema: z.ZodType<types.MedicinalProductInteraction<z.infer<C>>> =
       z.strictObject({
         resourceType: z.literal("MedicinalProductInteraction"),
         id: primitives.getIdSchema().optional(),
@@ -569,27 +575,28 @@ export function createMedicinalProductManufacturedSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("MedicinalProductManufactured", [contained], () => {
-    const baseSchema: z.ZodType<types.MedicinalProductManufactured> =
-      z.strictObject({
-        resourceType: z.literal("MedicinalProductManufactured"),
-        id: primitives.getIdSchema().optional(),
-        meta: createMetaSchema().optional(),
-        implicitRules: primitives.getUriSchema().optional(),
-        _implicitRules: createElementSchema().optional(),
-        language: primitives.getCodeSchema().optional(),
-        _language: createElementSchema().optional(),
-        text: createNarrativeSchema().optional(),
-        contained: z.array(contained).optional(),
-        extension: z.array(createExtensionSchema()).optional(),
-        modifierExtension: z.array(createExtensionSchema()).optional(),
-        manufacturedDoseForm: createCodeableConceptSchema(),
-        unitOfPresentation: createCodeableConceptSchema().optional(),
-        quantity: createQuantitySchema(),
-        manufacturer: z.array(createReferenceSchema()).optional(),
-        ingredient: z.array(createReferenceSchema()).optional(),
-        physicalCharacteristics: createProdCharacteristicSchema().optional(),
-        otherCharacteristics: z.array(createCodeableConceptSchema()).optional(),
-      });
+    const baseSchema: z.ZodType<
+      types.MedicinalProductManufactured<z.infer<C>>
+    > = z.strictObject({
+      resourceType: z.literal("MedicinalProductManufactured"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: createElementSchema().optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: createElementSchema().optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(contained).optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      manufacturedDoseForm: createCodeableConceptSchema(),
+      unitOfPresentation: createCodeableConceptSchema().optional(),
+      quantity: createQuantitySchema(),
+      manufacturer: z.array(createReferenceSchema()).optional(),
+      ingredient: z.array(createReferenceSchema()).optional(),
+      physicalCharacteristics: createProdCharacteristicSchema().optional(),
+      otherCharacteristics: z.array(createCodeableConceptSchema()).optional(),
+    });
 
     return baseSchema;
   });
@@ -604,7 +611,7 @@ export function createMedicinalProductPackagedSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("MedicinalProductPackaged", [contained], () => {
-    const baseSchema: z.ZodType<types.MedicinalProductPackaged> =
+    const baseSchema: z.ZodType<types.MedicinalProductPackaged<z.infer<C>>> =
       z.strictObject({
         resourceType: z.literal("MedicinalProductPackaged"),
         id: primitives.getIdSchema().optional(),
@@ -686,31 +693,32 @@ export function createMedicinalProductPharmaceuticalSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("MedicinalProductPharmaceutical", [contained], () => {
-    const baseSchema: z.ZodType<types.MedicinalProductPharmaceutical> =
-      z.strictObject({
-        resourceType: z.literal("MedicinalProductPharmaceutical"),
-        id: primitives.getIdSchema().optional(),
-        meta: createMetaSchema().optional(),
-        implicitRules: primitives.getUriSchema().optional(),
-        _implicitRules: createElementSchema().optional(),
-        language: primitives.getCodeSchema().optional(),
-        _language: createElementSchema().optional(),
-        text: createNarrativeSchema().optional(),
-        contained: z.array(contained).optional(),
-        extension: z.array(createExtensionSchema()).optional(),
-        modifierExtension: z.array(createExtensionSchema()).optional(),
-        identifier: z.array(createIdentifierSchema()).optional(),
-        administrableDoseForm: createCodeableConceptSchema(),
-        unitOfPresentation: createCodeableConceptSchema().optional(),
-        ingredient: z.array(createReferenceSchema()).optional(),
-        device: z.array(createReferenceSchema()).optional(),
-        characteristics: z
-          .array(createMedicinalProductPharmaceuticalCharacteristicsSchema())
-          .optional(),
-        routeOfAdministration: z.array(
-          createMedicinalProductPharmaceuticalRouteOfAdministrationSchema(),
-        ),
-      });
+    const baseSchema: z.ZodType<
+      types.MedicinalProductPharmaceutical<z.infer<C>>
+    > = z.strictObject({
+      resourceType: z.literal("MedicinalProductPharmaceutical"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: createElementSchema().optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: createElementSchema().optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(contained).optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      identifier: z.array(createIdentifierSchema()).optional(),
+      administrableDoseForm: createCodeableConceptSchema(),
+      unitOfPresentation: createCodeableConceptSchema().optional(),
+      ingredient: z.array(createReferenceSchema()).optional(),
+      device: z.array(createReferenceSchema()).optional(),
+      characteristics: z
+        .array(createMedicinalProductPharmaceuticalCharacteristicsSchema())
+        .optional(),
+      routeOfAdministration: z.array(
+        createMedicinalProductPharmaceuticalRouteOfAdministrationSchema(),
+      ),
+    });
 
     return baseSchema;
   });
@@ -815,25 +823,26 @@ export function createMedicinalProductUndesirableEffectSchema<
     "MedicinalProductUndesirableEffect",
     [contained],
     () => {
-      const baseSchema: z.ZodType<types.MedicinalProductUndesirableEffect> =
-        z.strictObject({
-          resourceType: z.literal("MedicinalProductUndesirableEffect"),
-          id: primitives.getIdSchema().optional(),
-          meta: createMetaSchema().optional(),
-          implicitRules: primitives.getUriSchema().optional(),
-          _implicitRules: createElementSchema().optional(),
-          language: primitives.getCodeSchema().optional(),
-          _language: createElementSchema().optional(),
-          text: createNarrativeSchema().optional(),
-          contained: z.array(contained).optional(),
-          extension: z.array(createExtensionSchema()).optional(),
-          modifierExtension: z.array(createExtensionSchema()).optional(),
-          subject: z.array(createReferenceSchema()).optional(),
-          symptomConditionEffect: createCodeableConceptSchema().optional(),
-          classification: createCodeableConceptSchema().optional(),
-          frequencyOfOccurrence: createCodeableConceptSchema().optional(),
-          population: z.array(createPopulationSchema()).optional(),
-        });
+      const baseSchema: z.ZodType<
+        types.MedicinalProductUndesirableEffect<z.infer<C>>
+      > = z.strictObject({
+        resourceType: z.literal("MedicinalProductUndesirableEffect"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        subject: z.array(createReferenceSchema()).optional(),
+        symptomConditionEffect: createCodeableConceptSchema().optional(),
+        classification: createCodeableConceptSchema().optional(),
+        frequencyOfOccurrence: createCodeableConceptSchema().optional(),
+        population: z.array(createPopulationSchema()).optional(),
+      });
 
       return baseSchema;
     },

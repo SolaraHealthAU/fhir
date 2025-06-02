@@ -26,7 +26,7 @@ export function createInvoiceSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Invoice", [contained], () => {
-    const baseSchema: z.ZodType<types.Invoice> = z.strictObject({
+    const baseSchema: z.ZodType<types.Invoice<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Invoice"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

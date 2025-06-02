@@ -27,7 +27,7 @@ export function createCoverageSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Coverage", [contained], () => {
-    const baseSchema: z.ZodType<types.Coverage> = z.strictObject({
+    const baseSchema: z.ZodType<types.Coverage<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Coverage"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),
@@ -127,7 +127,7 @@ export function createCoverageEligibilityRequestSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("CoverageEligibilityRequest", [contained], () => {
-    const baseSchema: z.ZodType<types.CoverageEligibilityRequest> =
+    const baseSchema: z.ZodType<types.CoverageEligibilityRequest<z.infer<C>>> =
       z.strictObject({
         resourceType: z.literal("CoverageEligibilityRequest"),
         id: primitives.getIdSchema().optional(),
@@ -259,7 +259,7 @@ export function createCoverageEligibilityResponseSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("CoverageEligibilityResponse", [contained], () => {
-    const baseSchema: z.ZodType<types.CoverageEligibilityResponse> =
+    const baseSchema: z.ZodType<types.CoverageEligibilityResponse<z.infer<C>>> =
       z.strictObject({
         resourceType: z.literal("CoverageEligibilityResponse"),
         id: primitives.getIdSchema().optional(),

@@ -27,7 +27,7 @@ export function createTestScriptSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("TestScript", [contained], () => {
-    const baseSchema: z.ZodType<types.TestScript> = z.strictObject({
+    const baseSchema: z.ZodType<types.TestScript<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("TestScript"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

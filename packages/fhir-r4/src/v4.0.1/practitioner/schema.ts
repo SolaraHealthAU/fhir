@@ -29,34 +29,35 @@ export function createPractitionerSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Practitioner", [contained], () => {
-    const baseSchema: z.ZodType<types.Practitioner> = z.strictObject({
-      resourceType: z.literal("Practitioner"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      identifier: z.array(createIdentifierSchema()).optional(),
-      active: primitives.getBooleanSchema().optional(),
-      _active: createElementSchema().optional(),
-      name: z.array(createHumanNameSchema()).optional(),
-      telecom: z.array(createContactPointSchema()).optional(),
-      address: z.array(createAddressSchema()).optional(),
-      gender: z.enum(["male", "female", "other", "unknown"]).optional(),
-      _gender: createElementSchema().optional(),
-      birthDate: primitives.getDateSchema().optional(),
-      _birthDate: createElementSchema().optional(),
-      photo: z.array(createAttachmentSchema()).optional(),
-      qualification: z
-        .array(createPractitionerQualificationSchema())
-        .optional(),
-      communication: z.array(createCodeableConceptSchema()).optional(),
-    });
+    const baseSchema: z.ZodType<types.Practitioner<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("Practitioner"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: z.array(createIdentifierSchema()).optional(),
+        active: primitives.getBooleanSchema().optional(),
+        _active: createElementSchema().optional(),
+        name: z.array(createHumanNameSchema()).optional(),
+        telecom: z.array(createContactPointSchema()).optional(),
+        address: z.array(createAddressSchema()).optional(),
+        gender: z.enum(["male", "female", "other", "unknown"]).optional(),
+        _gender: createElementSchema().optional(),
+        birthDate: primitives.getDateSchema().optional(),
+        _birthDate: createElementSchema().optional(),
+        photo: z.array(createAttachmentSchema()).optional(),
+        qualification: z
+          .array(createPractitionerQualificationSchema())
+          .optional(),
+        communication: z.array(createCodeableConceptSchema()).optional(),
+      });
 
     return baseSchema;
   });
@@ -88,39 +89,40 @@ export function createPractitionerRoleSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("PractitionerRole", [contained], () => {
-    const baseSchema: z.ZodType<types.PractitionerRole> = z.strictObject({
-      resourceType: z.literal("PractitionerRole"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      identifier: z.array(createIdentifierSchema()).optional(),
-      active: primitives.getBooleanSchema().optional(),
-      _active: createElementSchema().optional(),
-      period: createPeriodSchema().optional(),
-      practitioner: createReferenceSchema().optional(),
-      organization: createReferenceSchema().optional(),
-      code: z.array(createCodeableConceptSchema()).optional(),
-      specialty: z.array(createCodeableConceptSchema()).optional(),
-      location: z.array(createReferenceSchema()).optional(),
-      healthcareService: z.array(createReferenceSchema()).optional(),
-      telecom: z.array(createContactPointSchema()).optional(),
-      availableTime: z
-        .array(createPractitionerRoleAvailableTimeSchema())
-        .optional(),
-      notAvailable: z
-        .array(createPractitionerRoleNotAvailableSchema())
-        .optional(),
-      availabilityExceptions: primitives.getStringSchema().optional(),
-      _availabilityExceptions: createElementSchema().optional(),
-      endpoint: z.array(createReferenceSchema()).optional(),
-    });
+    const baseSchema: z.ZodType<types.PractitionerRole<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("PractitionerRole"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: z.array(createIdentifierSchema()).optional(),
+        active: primitives.getBooleanSchema().optional(),
+        _active: createElementSchema().optional(),
+        period: createPeriodSchema().optional(),
+        practitioner: createReferenceSchema().optional(),
+        organization: createReferenceSchema().optional(),
+        code: z.array(createCodeableConceptSchema()).optional(),
+        specialty: z.array(createCodeableConceptSchema()).optional(),
+        location: z.array(createReferenceSchema()).optional(),
+        healthcareService: z.array(createReferenceSchema()).optional(),
+        telecom: z.array(createContactPointSchema()).optional(),
+        availableTime: z
+          .array(createPractitionerRoleAvailableTimeSchema())
+          .optional(),
+        notAvailable: z
+          .array(createPractitionerRoleNotAvailableSchema())
+          .optional(),
+        availabilityExceptions: primitives.getStringSchema().optional(),
+        _availabilityExceptions: createElementSchema().optional(),
+        endpoint: z.array(createReferenceSchema()).optional(),
+      });
 
     return baseSchema;
   });

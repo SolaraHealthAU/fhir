@@ -13,7 +13,7 @@ import type {
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident. */
 

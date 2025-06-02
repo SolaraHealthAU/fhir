@@ -27,7 +27,7 @@ export function createEndpointSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Endpoint", [contained], () => {
-    const baseSchema: z.ZodType<types.Endpoint> = z.strictObject({
+    const baseSchema: z.ZodType<types.Endpoint<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Endpoint"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

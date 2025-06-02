@@ -28,7 +28,7 @@ export function createConditionSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Condition", [contained], () => {
-    const baseSchema: z.ZodType<types.Condition> = z.strictObject({
+    const baseSchema: z.ZodType<types.Condition<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Condition"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

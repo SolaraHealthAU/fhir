@@ -29,7 +29,7 @@ export function createPatientSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Patient", [contained], () => {
-    const baseSchema: z.ZodType<types.Patient> = z.strictObject({
+    const baseSchema: z.ZodType<types.Patient<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Patient"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

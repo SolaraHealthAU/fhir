@@ -12,7 +12,7 @@ import type {
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** The Care Team includes all the people and organizations who plan to participate in the coordination and delivery of care for a patient. */
 

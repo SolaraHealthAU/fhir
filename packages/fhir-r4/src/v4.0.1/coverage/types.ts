@@ -12,7 +12,7 @@ import type {
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** Financial instrument which may be used to reimburse or pay for health care products and services. Includes both insurance and self-payment. */
 

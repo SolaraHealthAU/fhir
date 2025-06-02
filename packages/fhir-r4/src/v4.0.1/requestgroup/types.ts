@@ -17,7 +17,7 @@ import type {
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** A group of related requests that can be used to capture intended activities that have inter-dependencies such as "give this medication after that one". */
 

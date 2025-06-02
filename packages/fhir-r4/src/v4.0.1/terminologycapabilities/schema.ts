@@ -24,8 +24,8 @@ export function createTerminologyCapabilitiesSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("TerminologyCapabilities", [contained], () => {
-    const baseSchema: z.ZodType<types.TerminologyCapabilities> = z.strictObject(
-      {
+    const baseSchema: z.ZodType<types.TerminologyCapabilities<z.infer<C>>> =
+      z.strictObject({
         resourceType: z.literal("TerminologyCapabilities"),
         id: primitives.getIdSchema().optional(),
         meta: createMetaSchema().optional(),
@@ -80,8 +80,7 @@ export function createTerminologyCapabilitiesSchema<
         translation:
           createTerminologyCapabilitiesTranslationSchema().optional(),
         closure: createTerminologyCapabilitiesClosureSchema().optional(),
-      },
-    );
+      });
 
     return baseSchema;
   });

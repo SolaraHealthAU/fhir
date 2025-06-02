@@ -5,7 +5,7 @@ import type {
   Element,
 } from "../core/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available. */
 

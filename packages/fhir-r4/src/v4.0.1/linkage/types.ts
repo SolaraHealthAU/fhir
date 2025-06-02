@@ -2,7 +2,7 @@ import type { Meta, Element, Extension, Reference } from "../core/types";
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** Identifies two or more records (resource instances) that refer to the same real-world "occurrence". */
 

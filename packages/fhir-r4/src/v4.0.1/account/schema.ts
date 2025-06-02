@@ -25,7 +25,7 @@ export function createAccountSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Account", [contained], () => {
-    const baseSchema: z.ZodType<types.Account> = z.strictObject({
+    const baseSchema: z.ZodType<types.Account<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Account"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

@@ -28,7 +28,7 @@ export function createProcedureSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Procedure", [contained], () => {
-    const baseSchema: z.ZodType<types.Procedure> = z.strictObject({
+    const baseSchema: z.ZodType<types.Procedure<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Procedure"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

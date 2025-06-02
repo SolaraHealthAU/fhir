@@ -29,7 +29,7 @@ export function createSubstanceSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Substance", [contained], () => {
-    const baseSchema: z.ZodType<types.Substance> = z.strictObject({
+    const baseSchema: z.ZodType<types.Substance<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Substance"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),
@@ -96,26 +96,27 @@ export function createSubstanceNucleicAcidSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("SubstanceNucleicAcid", [contained], () => {
-    const baseSchema: z.ZodType<types.SubstanceNucleicAcid> = z.strictObject({
-      resourceType: z.literal("SubstanceNucleicAcid"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      sequenceType: createCodeableConceptSchema().optional(),
-      numberOfSubunits: primitives.getIntegerSchema().optional(),
-      _numberOfSubunits: createElementSchema().optional(),
-      areaOfHybridisation: primitives.getStringSchema().optional(),
-      _areaOfHybridisation: createElementSchema().optional(),
-      oligoNucleotideType: createCodeableConceptSchema().optional(),
-      subunit: z.array(createSubstanceNucleicAcidSubunitSchema()).optional(),
-    });
+    const baseSchema: z.ZodType<types.SubstanceNucleicAcid<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("SubstanceNucleicAcid"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        sequenceType: createCodeableConceptSchema().optional(),
+        numberOfSubunits: primitives.getIntegerSchema().optional(),
+        _numberOfSubunits: createElementSchema().optional(),
+        areaOfHybridisation: primitives.getStringSchema().optional(),
+        _areaOfHybridisation: createElementSchema().optional(),
+        oligoNucleotideType: createCodeableConceptSchema().optional(),
+        subunit: z.array(createSubstanceNucleicAcidSubunitSchema()).optional(),
+      });
 
     return baseSchema;
   });
@@ -192,26 +193,31 @@ export function createSubstancePolymerSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("SubstancePolymer", [contained], () => {
-    const baseSchema: z.ZodType<types.SubstancePolymer> = z.strictObject({
-      resourceType: z.literal("SubstancePolymer"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      class: createCodeableConceptSchema().optional(),
-      geometry: createCodeableConceptSchema().optional(),
-      copolymerConnectivity: z.array(createCodeableConceptSchema()).optional(),
-      modification: z.array(primitives.getStringSchema()).optional(),
-      _modification: z.array(createElementSchema()).optional(),
-      monomerSet: z.array(createSubstancePolymerMonomerSetSchema()).optional(),
-      repeat: z.array(createSubstancePolymerRepeatSchema()).optional(),
-    });
+    const baseSchema: z.ZodType<types.SubstancePolymer<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("SubstancePolymer"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        class: createCodeableConceptSchema().optional(),
+        geometry: createCodeableConceptSchema().optional(),
+        copolymerConnectivity: z
+          .array(createCodeableConceptSchema())
+          .optional(),
+        modification: z.array(primitives.getStringSchema()).optional(),
+        _modification: z.array(createElementSchema()).optional(),
+        monomerSet: z
+          .array(createSubstancePolymerMonomerSetSchema())
+          .optional(),
+        repeat: z.array(createSubstancePolymerRepeatSchema()).optional(),
+      });
 
     return baseSchema;
   });
@@ -334,25 +340,26 @@ export function createSubstanceProteinSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("SubstanceProtein", [contained], () => {
-    const baseSchema: z.ZodType<types.SubstanceProtein> = z.strictObject({
-      resourceType: z.literal("SubstanceProtein"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      sequenceType: createCodeableConceptSchema().optional(),
-      numberOfSubunits: primitives.getIntegerSchema().optional(),
-      _numberOfSubunits: createElementSchema().optional(),
-      disulfideLinkage: z.array(primitives.getStringSchema()).optional(),
-      _disulfideLinkage: z.array(createElementSchema()).optional(),
-      subunit: z.array(createSubstanceProteinSubunitSchema()).optional(),
-    });
+    const baseSchema: z.ZodType<types.SubstanceProtein<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("SubstanceProtein"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        sequenceType: createCodeableConceptSchema().optional(),
+        numberOfSubunits: primitives.getIntegerSchema().optional(),
+        _numberOfSubunits: createElementSchema().optional(),
+        disulfideLinkage: z.array(primitives.getStringSchema()).optional(),
+        _disulfideLinkage: z.array(createElementSchema()).optional(),
+        subunit: z.array(createSubstanceProteinSubunitSchema()).optional(),
+      });
 
     return baseSchema;
   });
@@ -394,34 +401,33 @@ export function createSubstanceReferenceInformationSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("SubstanceReferenceInformation", [contained], () => {
-    const baseSchema: z.ZodType<types.SubstanceReferenceInformation> =
-      z.strictObject({
-        resourceType: z.literal("SubstanceReferenceInformation"),
-        id: primitives.getIdSchema().optional(),
-        meta: createMetaSchema().optional(),
-        implicitRules: primitives.getUriSchema().optional(),
-        _implicitRules: createElementSchema().optional(),
-        language: primitives.getCodeSchema().optional(),
-        _language: createElementSchema().optional(),
-        text: createNarrativeSchema().optional(),
-        contained: z.array(contained).optional(),
-        extension: z.array(createExtensionSchema()).optional(),
-        modifierExtension: z.array(createExtensionSchema()).optional(),
-        comment: primitives.getStringSchema().optional(),
-        _comment: createElementSchema().optional(),
-        gene: z
-          .array(createSubstanceReferenceInformationGeneSchema())
-          .optional(),
-        geneElement: z
-          .array(createSubstanceReferenceInformationGeneElementSchema())
-          .optional(),
-        classification: z
-          .array(createSubstanceReferenceInformationClassificationSchema())
-          .optional(),
-        target: z
-          .array(createSubstanceReferenceInformationTargetSchema())
-          .optional(),
-      });
+    const baseSchema: z.ZodType<
+      types.SubstanceReferenceInformation<z.infer<C>>
+    > = z.strictObject({
+      resourceType: z.literal("SubstanceReferenceInformation"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: createElementSchema().optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: createElementSchema().optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(contained).optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      comment: primitives.getStringSchema().optional(),
+      _comment: createElementSchema().optional(),
+      gene: z.array(createSubstanceReferenceInformationGeneSchema()).optional(),
+      geneElement: z
+        .array(createSubstanceReferenceInformationGeneElementSchema())
+        .optional(),
+      classification: z
+        .array(createSubstanceReferenceInformationClassificationSchema())
+        .optional(),
+      target: z
+        .array(createSubstanceReferenceInformationTargetSchema())
+        .optional(),
+    });
 
     return baseSchema;
   });
@@ -513,8 +519,8 @@ export function createSubstanceSourceMaterialSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("SubstanceSourceMaterial", [contained], () => {
-    const baseSchema: z.ZodType<types.SubstanceSourceMaterial> = z.strictObject(
-      {
+    const baseSchema: z.ZodType<types.SubstanceSourceMaterial<z.infer<C>>> =
+      z.strictObject({
         resourceType: z.literal("SubstanceSourceMaterial"),
         id: primitives.getIdSchema().optional(),
         meta: createMetaSchema().optional(),
@@ -546,8 +552,7 @@ export function createSubstanceSourceMaterialSchema<
         partDescription: z
           .array(createSubstanceSourceMaterialPartDescriptionSchema())
           .optional(),
-      },
-    );
+      });
 
     return baseSchema;
   });
@@ -675,46 +680,47 @@ export function createSubstanceSpecificationSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("SubstanceSpecification", [contained], () => {
-    const baseSchema: z.ZodType<types.SubstanceSpecification> = z.strictObject({
-      resourceType: z.literal("SubstanceSpecification"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      identifier: createIdentifierSchema().optional(),
-      type: createCodeableConceptSchema().optional(),
-      status: createCodeableConceptSchema().optional(),
-      domain: createCodeableConceptSchema().optional(),
-      description: primitives.getStringSchema().optional(),
-      _description: createElementSchema().optional(),
-      source: z.array(createReferenceSchema()).optional(),
-      comment: primitives.getStringSchema().optional(),
-      _comment: createElementSchema().optional(),
-      moiety: z.array(createSubstanceSpecificationMoietySchema()).optional(),
-      property: z
-        .array(createSubstanceSpecificationPropertySchema())
-        .optional(),
-      referenceInformation: createReferenceSchema().optional(),
-      structure: createSubstanceSpecificationStructureSchema().optional(),
-      code: z.array(createSubstanceSpecificationCodeSchema()).optional(),
-      name: z.array(createSubstanceSpecificationNameSchema()).optional(),
-      molecularWeight: z
-        .array(createSubstanceSpecificationMolecularWeightSchema())
-        .optional(),
-      relationship: z
-        .array(createSubstanceSpecificationRelationshipSchema())
-        .optional(),
-      nucleicAcid: createReferenceSchema().optional(),
-      polymer: createReferenceSchema().optional(),
-      protein: createReferenceSchema().optional(),
-      sourceMaterial: createReferenceSchema().optional(),
-    });
+    const baseSchema: z.ZodType<types.SubstanceSpecification<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("SubstanceSpecification"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: createIdentifierSchema().optional(),
+        type: createCodeableConceptSchema().optional(),
+        status: createCodeableConceptSchema().optional(),
+        domain: createCodeableConceptSchema().optional(),
+        description: primitives.getStringSchema().optional(),
+        _description: createElementSchema().optional(),
+        source: z.array(createReferenceSchema()).optional(),
+        comment: primitives.getStringSchema().optional(),
+        _comment: createElementSchema().optional(),
+        moiety: z.array(createSubstanceSpecificationMoietySchema()).optional(),
+        property: z
+          .array(createSubstanceSpecificationPropertySchema())
+          .optional(),
+        referenceInformation: createReferenceSchema().optional(),
+        structure: createSubstanceSpecificationStructureSchema().optional(),
+        code: z.array(createSubstanceSpecificationCodeSchema()).optional(),
+        name: z.array(createSubstanceSpecificationNameSchema()).optional(),
+        molecularWeight: z
+          .array(createSubstanceSpecificationMolecularWeightSchema())
+          .optional(),
+        relationship: z
+          .array(createSubstanceSpecificationRelationshipSchema())
+          .optional(),
+        nucleicAcid: createReferenceSchema().optional(),
+        polymer: createReferenceSchema().optional(),
+        protein: createReferenceSchema().optional(),
+        sourceMaterial: createReferenceSchema().optional(),
+      });
 
     return baseSchema;
   });

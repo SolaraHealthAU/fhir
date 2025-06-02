@@ -13,7 +13,7 @@ import type {
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** Significant health conditions for a person related to the patient relevant in the context of care for the patient. */
 

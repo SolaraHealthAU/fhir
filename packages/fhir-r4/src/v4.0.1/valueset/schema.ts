@@ -26,7 +26,7 @@ export function createValueSetSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("ValueSet", [contained], () => {
-    const baseSchema: z.ZodType<types.ValueSet> = z.strictObject({
+    const baseSchema: z.ZodType<types.ValueSet<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("ValueSet"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

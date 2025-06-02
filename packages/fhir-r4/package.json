@@ -5,6 +5,18 @@
   "main": "dist/cjs/src/index.js",
   "module": "dist/esm/src/index.js",
   "types": "dist/esm/src/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/src/index.js",
+      "require": "./dist/cjs/src/index.js",
+      "types": "./dist/esm/src/index.d.ts"
+    },
+    "./all": {
+      "import": "./dist/esm/src/all.js",
+      "require": "./dist/cjs/src/all.js",
+      "types": "./dist/esm/src/all.d.ts"
+    }
+  },
   "private": false,
   "publishConfig": {
     "access": "public"

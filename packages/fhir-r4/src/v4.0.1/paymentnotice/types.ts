@@ -10,7 +10,7 @@ import type {
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** This resource provides the status of the payment for goods and services rendered, and the request and response resource references. */
 

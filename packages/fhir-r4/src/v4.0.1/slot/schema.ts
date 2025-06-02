@@ -24,7 +24,7 @@ export function createSlotSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Slot", [contained], () => {
-    const baseSchema: z.ZodType<types.Slot> = z.strictObject({
+    const baseSchema: z.ZodType<types.Slot<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Slot"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

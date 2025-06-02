@@ -27,7 +27,7 @@ export function createGroupSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Group", [contained], () => {
-    const baseSchema: z.ZodType<types.Group> = z.strictObject({
+    const baseSchema: z.ZodType<types.Group<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Group"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

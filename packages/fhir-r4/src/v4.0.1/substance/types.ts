@@ -14,7 +14,7 @@ import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
 import type { SubstanceAmount } from "../substanceamount/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** A homogeneous material with a definite composition. */
 

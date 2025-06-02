@@ -18,7 +18,7 @@ import type { Population } from "../population/types";
 import type { ProdCharacteristic } from "../prodcharacteristic/types";
 import type { ProductShelfLife } from "../productshelflife/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** Detailed definition of a medicinal product, typically for uses other than direct patient care (e.g. regulatory use). */
 

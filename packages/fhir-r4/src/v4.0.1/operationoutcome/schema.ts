@@ -22,20 +22,21 @@ export function createOperationOutcomeSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("OperationOutcome", [contained], () => {
-    const baseSchema: z.ZodType<types.OperationOutcome> = z.strictObject({
-      resourceType: z.literal("OperationOutcome"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      issue: z.array(createOperationOutcomeIssueSchema()),
-    });
+    const baseSchema: z.ZodType<types.OperationOutcome<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("OperationOutcome"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        issue: z.array(createOperationOutcomeIssueSchema()),
+      });
 
     return baseSchema;
   });

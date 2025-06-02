@@ -29,7 +29,7 @@ export function createGoalSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Goal", [contained], () => {
-    const baseSchema: z.ZodType<types.Goal> = z.strictObject({
+    const baseSchema: z.ZodType<types.Goal<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Goal"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

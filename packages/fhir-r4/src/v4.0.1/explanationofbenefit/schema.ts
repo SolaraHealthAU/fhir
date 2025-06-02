@@ -30,81 +30,84 @@ export function createExplanationOfBenefitSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("ExplanationOfBenefit", [contained], () => {
-    const baseSchema: z.ZodType<types.ExplanationOfBenefit> = z.strictObject({
-      resourceType: z.literal("ExplanationOfBenefit"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      identifier: z.array(createIdentifierSchema()).optional(),
-      status: z.enum(["active", "cancelled", "draft", "entered-in-error"]),
-      _status: createElementSchema().optional(),
-      type: createCodeableConceptSchema(),
-      subType: createCodeableConceptSchema().optional(),
-      use: primitives.getCodeSchema(),
-      _use: createElementSchema().optional(),
-      patient: createReferenceSchema(),
-      billablePeriod: createPeriodSchema().optional(),
-      created: primitives.getDateTimeSchema(),
-      _created: createElementSchema().optional(),
-      enterer: createReferenceSchema().optional(),
-      insurer: createReferenceSchema(),
-      provider: createReferenceSchema(),
-      priority: createCodeableConceptSchema().optional(),
-      fundsReserveRequested: createCodeableConceptSchema().optional(),
-      fundsReserve: createCodeableConceptSchema().optional(),
-      related: z.array(createExplanationOfBenefitRelatedSchema()).optional(),
-      prescription: createReferenceSchema().optional(),
-      originalPrescription: createReferenceSchema().optional(),
-      payee: createExplanationOfBenefitPayeeSchema().optional(),
-      referral: createReferenceSchema().optional(),
-      facility: createReferenceSchema().optional(),
-      claim: createReferenceSchema().optional(),
-      claimResponse: createReferenceSchema().optional(),
-      outcome: primitives.getCodeSchema(),
-      _outcome: createElementSchema().optional(),
-      disposition: primitives.getStringSchema().optional(),
-      _disposition: createElementSchema().optional(),
-      preAuthRef: z.array(primitives.getStringSchema()).optional(),
-      _preAuthRef: z.array(createElementSchema()).optional(),
-      preAuthRefPeriod: z.array(createPeriodSchema()).optional(),
-      careTeam: z.array(createExplanationOfBenefitCareTeamSchema()).optional(),
-      supportingInfo: z
-        .array(createExplanationOfBenefitSupportingInfoSchema())
-        .optional(),
-      diagnosis: z
-        .array(createExplanationOfBenefitDiagnosisSchema())
-        .optional(),
-      procedure: z
-        .array(createExplanationOfBenefitProcedureSchema())
-        .optional(),
-      precedence: primitives.getPositiveIntSchema().optional(),
-      _precedence: createElementSchema().optional(),
-      insurance: z.array(createExplanationOfBenefitInsuranceSchema()),
-      accident: createExplanationOfBenefitAccidentSchema().optional(),
-      item: z.array(createExplanationOfBenefitItemSchema()).optional(),
-      addItem: z.array(createExplanationOfBenefitAddItemSchema()).optional(),
-      adjudication: z
-        .array(createExplanationOfBenefitAdjudicationSchema())
-        .optional(),
-      total: z.array(createExplanationOfBenefitTotalSchema()).optional(),
-      payment: createExplanationOfBenefitPaymentSchema().optional(),
-      formCode: createCodeableConceptSchema().optional(),
-      form: createAttachmentSchema().optional(),
-      processNote: z
-        .array(createExplanationOfBenefitProcessNoteSchema())
-        .optional(),
-      benefitPeriod: createPeriodSchema().optional(),
-      benefitBalance: z
-        .array(createExplanationOfBenefitBenefitBalanceSchema())
-        .optional(),
-    });
+    const baseSchema: z.ZodType<types.ExplanationOfBenefit<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("ExplanationOfBenefit"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: z.array(createIdentifierSchema()).optional(),
+        status: z.enum(["active", "cancelled", "draft", "entered-in-error"]),
+        _status: createElementSchema().optional(),
+        type: createCodeableConceptSchema(),
+        subType: createCodeableConceptSchema().optional(),
+        use: primitives.getCodeSchema(),
+        _use: createElementSchema().optional(),
+        patient: createReferenceSchema(),
+        billablePeriod: createPeriodSchema().optional(),
+        created: primitives.getDateTimeSchema(),
+        _created: createElementSchema().optional(),
+        enterer: createReferenceSchema().optional(),
+        insurer: createReferenceSchema(),
+        provider: createReferenceSchema(),
+        priority: createCodeableConceptSchema().optional(),
+        fundsReserveRequested: createCodeableConceptSchema().optional(),
+        fundsReserve: createCodeableConceptSchema().optional(),
+        related: z.array(createExplanationOfBenefitRelatedSchema()).optional(),
+        prescription: createReferenceSchema().optional(),
+        originalPrescription: createReferenceSchema().optional(),
+        payee: createExplanationOfBenefitPayeeSchema().optional(),
+        referral: createReferenceSchema().optional(),
+        facility: createReferenceSchema().optional(),
+        claim: createReferenceSchema().optional(),
+        claimResponse: createReferenceSchema().optional(),
+        outcome: primitives.getCodeSchema(),
+        _outcome: createElementSchema().optional(),
+        disposition: primitives.getStringSchema().optional(),
+        _disposition: createElementSchema().optional(),
+        preAuthRef: z.array(primitives.getStringSchema()).optional(),
+        _preAuthRef: z.array(createElementSchema()).optional(),
+        preAuthRefPeriod: z.array(createPeriodSchema()).optional(),
+        careTeam: z
+          .array(createExplanationOfBenefitCareTeamSchema())
+          .optional(),
+        supportingInfo: z
+          .array(createExplanationOfBenefitSupportingInfoSchema())
+          .optional(),
+        diagnosis: z
+          .array(createExplanationOfBenefitDiagnosisSchema())
+          .optional(),
+        procedure: z
+          .array(createExplanationOfBenefitProcedureSchema())
+          .optional(),
+        precedence: primitives.getPositiveIntSchema().optional(),
+        _precedence: createElementSchema().optional(),
+        insurance: z.array(createExplanationOfBenefitInsuranceSchema()),
+        accident: createExplanationOfBenefitAccidentSchema().optional(),
+        item: z.array(createExplanationOfBenefitItemSchema()).optional(),
+        addItem: z.array(createExplanationOfBenefitAddItemSchema()).optional(),
+        adjudication: z
+          .array(createExplanationOfBenefitAdjudicationSchema())
+          .optional(),
+        total: z.array(createExplanationOfBenefitTotalSchema()).optional(),
+        payment: createExplanationOfBenefitPaymentSchema().optional(),
+        formCode: createCodeableConceptSchema().optional(),
+        form: createAttachmentSchema().optional(),
+        processNote: z
+          .array(createExplanationOfBenefitProcessNoteSchema())
+          .optional(),
+        benefitPeriod: createPeriodSchema().optional(),
+        benefitBalance: z
+          .array(createExplanationOfBenefitBenefitBalanceSchema())
+          .optional(),
+      });
 
     return baseSchema;
   });

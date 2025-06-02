@@ -25,7 +25,7 @@ export function createAuditEventSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("AuditEvent", [contained], () => {
-    const baseSchema: z.ZodType<types.AuditEvent> = z.strictObject({
+    const baseSchema: z.ZodType<types.AuditEvent<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("AuditEvent"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

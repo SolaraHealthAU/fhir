@@ -32,7 +32,7 @@ export function createResearchElementDefinitionSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("ResearchElementDefinition", [contained], () => {
-    const baseSchema: z.ZodType<types.ResearchElementDefinition> =
+    const baseSchema: z.ZodType<types.ResearchElementDefinition<z.infer<C>>> =
       z.strictObject({
         resourceType: z.literal("ResearchElementDefinition"),
         id: primitives.getIdSchema().optional(),

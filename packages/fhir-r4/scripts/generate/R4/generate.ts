@@ -538,6 +538,22 @@ function interceptAdditionalElementsZod(property: Property, resourceType: string
     return `contained: z.array(contained).optional()`;
   }
 
+  if (resourceType === 'BundleEntry' && property.property === 'resource') {
+    return `resource: resource.optional()`;
+  }
+
+  if (resourceType === 'BundleEntry' && property.property === 'response') {
+    return `response: createBundleResponseSchema<O>({ outcome: options?.outcome }).optional()`;
+  }
+
+  if (resourceType === 'BundleResponse' && property.property === 'outcome') {
+    return `outcome: outcome.optional()`;
+  }
+
+  if (resourceType === 'Bundle' && property.property === 'entry') {
+    return `entry: z.array(createBundleEntrySchema<O, R>({ resource: options?.resource, outcome: options?.outcome })).optional()`;
+  }
+
   if (resourceType === 'QuestionnaireItem' && property.property === 'linkId') {
     // There appears to be some circumstances where linkId is not present (in examples, mainly in display )
     return `linkId: primitives.getStringSchema().optional()`;
@@ -581,31 +597,79 @@ function outputZodType(type: Definition): string {
     `;
   }
 
-  const hasContained = type.properties.find((p) => p.property === 'contained');
+  const generics: string[] = [];
+  const parameters: string[] = [];
+  const statements: string[] = [];
+  const dependencies: string[] = [];
+  const typeGenerics: string[] = [];
 
-  const header = (() => {
-    if (hasContained) {
-      return `
-export function ${functionName}<
-  C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
-  const contained =
+  const hasContained = type.properties.find((p) => p.property === 'contained');
+  const hasResourceList =
+    typeName === 'BundleEntry' && type.properties.find((p) => p.property === 'resource');
+  const hasBundleResponseResourceList =
+    typeName === 'BundleResponse' && type.properties.find((p) => p.property === 'outcome');
+
+  const isBundle = typeName === 'Bundle';
+  const isBundleEntry = typeName === 'BundleEntry';
+
+  if (hasContained) {
+    generics.push('C extends z.ZodTypeAny = z.ZodUnknown');
+    parameters.push('contained?: C');
+    parameters.push('allowNested?: boolean');
+    statements.push(`const contained =
     options?.allowNested === false
       ? ZodNever
-      : options?.contained ?? createResourceListSchema();
-      `;
-    }
+      : options?.contained ?? createResourceListSchema()`);
+    dependencies.push('contained');
+    typeGenerics.push('z.infer<C>');
+  }
 
-    return `
-export function ${functionName}() {
-      `;
-  })();
+  if (isBundle) {
+    generics.push('O extends z.ZodTypeAny = z.ZodUnknown');
+    parameters.push('outcome?: O');
+    dependencies.push('options?.outcome ?? null');
+    typeGenerics.push('z.infer<O>');
+
+    generics.push('R extends z.ZodTypeAny = z.ZodUnknown');
+    parameters.push('resource?: R');
+    dependencies.push('options?.resource ?? null');
+    typeGenerics.push('z.infer<R>');
+  }
+
+  if (isBundleEntry) {
+    generics.push('O extends z.ZodTypeAny = z.ZodUnknown');
+    parameters.push('outcome?: O');
+    dependencies.push('options?.outcome ?? null');
+    typeGenerics.push('z.infer<O>');
+    typeGenerics.push('z.infer<R>');
+  }
+
+  if (hasResourceList) {
+    generics.push('R extends z.ZodTypeAny = z.ZodUnknown');
+    parameters.push('resource?: R');
+    dependencies.push('resource');
+    statements.push(`const resource = options?.resource ?? createResourceListSchema()`);
+  }
+
+  if (hasBundleResponseResourceList) {
+    generics.push('O extends z.ZodTypeAny = z.ZodUnknown');
+    parameters.push('outcome?: O');
+    statements.push(`const outcome = options?.outcome ?? createResourceListSchema()`);
+    dependencies.push('outcome');
+    typeGenerics.push('z.infer<O>');
+  }
+
+  const genericsString = generics.length > 0 ? `<${generics.join(', ')}>` : '';
+  const optionsString = parameters.length > 0 ? `options?: { ${parameters.join(', ')} }` : '';
+  const dependenciesString = dependencies.length > 0 ? dependencies.join(', ') : '';
+  const typeGenericsString = typeGenerics.length > 0 ? `<${typeGenerics.join(', ')}>` : '';
 
   return `
-  ${header}
+export function ${functionName}${genericsString}(${optionsString}) {
+  ${statements.join(';\n  ')}
 
-  return getCachedSchema('${typeName}', [${hasContained ? 'contained' : ''}], () => {
-    const baseSchema: z.ZodType<types.${typeName}> = z.strictObject({
+  return getCachedSchema('${typeName}', [${dependenciesString}], () => {
+    const baseSchema: z.ZodType<types.${typeName}${typeGenericsString}> = z.strictObject({
       ${type.properties.map((k) => interceptAdditionalElementsZod(k, type.type)).join(',\n    ')}
     });
 
@@ -620,6 +684,22 @@ function interceptAdditionalElements(property: Property, resourceType: string): 
 
   if (property.property === 'contained') {
     return `contained?: Contained[]`;
+  }
+
+  if (resourceType === 'Bundle' && property.property === 'entry') {
+    return `entry?: BundleEntry<O, R>[]`;
+  }
+
+  if (resourceType === 'BundleEntry' && property.property === 'resource') {
+    return `resource?: R`;
+  }
+
+  if (resourceType === 'BundleEntry' && property.property === 'response') {
+    return `response?: BundleResponse<O>`;
+  }
+
+  if (resourceType === 'BundleResponse' && property.property === 'outcome') {
+    return `outcome?: O`;
   }
 
   if (resourceType === 'QuestionnaireItem' && property.property === 'linkId') {
@@ -661,6 +741,21 @@ function outputType(type: Definition): string {
     if (hasContained) {
       return `
       export interface ${type.type}<Contained = ResourceList> {
+      `;
+    }
+
+    if (type.type === 'Bundle') {
+      return `export interface Bundle<O = ResourceList, R = ResourceList> {
+      `;
+    }
+
+    if (type.type === 'BundleEntry') {
+      return `export interface BundleEntry<O = ResourceList, R = ResourceList> {
+      `;
+    }
+
+    if (type.type === 'BundleResponse') {
+      return `export interface BundleResponse<O = ResourceList> {
       `;
     }
 
@@ -1204,7 +1299,7 @@ async function writeFile(filePath: string, content: string) {
     const typesOutput = `
       ${Array.from(typesImports).join('\n')}
 
-      /** Generated from FHIR JSON Schema */
+      /* Generated from FHIR JSON Schema */
       ${group.types.map((t) => outputType({ ...t, type: normalizeTypeName(t.type) })).join('\n\n')}
     `;
 
@@ -1281,7 +1376,7 @@ async function writeFile(filePath: string, content: string) {
   });
 
   const allOutput = `
-    import { makeContainedUnion } from './utils';
+    import { makeResourceList } from './utils';
     ${resourceSchemaImports.join('\n')}
 
     // Import all resource types
@@ -1301,13 +1396,12 @@ async function writeFile(filePath: string, content: string) {
 
     /**
      * A discriminated-union that accepts *any* FHIR resource.
-     * Downstream bundles will be ~2–3 MB, so import intentionally!
      */
-    export const allContained = makeContainedUnion(
+    export const createResourceListSchema = () => makeResourceList(
       ${resourceSchemaFunctions.join(',\n      ')}
     );
 
-    export type AllContained = ${resourceTypes.join(' | ')};
+    export type ResourceList = ${resourceTypes.join(' | ')};
   `;
 
   await writeFile(path.join(__dirname, '..', '..', '..', 'src', 'all.ts'), allOutput);

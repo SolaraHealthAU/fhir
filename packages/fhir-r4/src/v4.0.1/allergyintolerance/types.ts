@@ -13,7 +13,7 @@ import type {
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance. */
 

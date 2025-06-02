@@ -27,55 +27,56 @@ export function createHealthcareServiceSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("HealthcareService", [contained], () => {
-    const baseSchema: z.ZodType<types.HealthcareService> = z.strictObject({
-      resourceType: z.literal("HealthcareService"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      identifier: z.array(createIdentifierSchema()).optional(),
-      active: primitives.getBooleanSchema().optional(),
-      _active: createElementSchema().optional(),
-      providedBy: createReferenceSchema().optional(),
-      category: z.array(createCodeableConceptSchema()).optional(),
-      type: z.array(createCodeableConceptSchema()).optional(),
-      specialty: z.array(createCodeableConceptSchema()).optional(),
-      location: z.array(createReferenceSchema()).optional(),
-      name: primitives.getStringSchema().optional(),
-      _name: createElementSchema().optional(),
-      comment: primitives.getStringSchema().optional(),
-      _comment: createElementSchema().optional(),
-      extraDetails: primitives.getMarkdownSchema().optional(),
-      _extraDetails: createElementSchema().optional(),
-      photo: createAttachmentSchema().optional(),
-      telecom: z.array(createContactPointSchema()).optional(),
-      coverageArea: z.array(createReferenceSchema()).optional(),
-      serviceProvisionCode: z.array(createCodeableConceptSchema()).optional(),
-      eligibility: z
-        .array(createHealthcareServiceEligibilitySchema())
-        .optional(),
-      program: z.array(createCodeableConceptSchema()).optional(),
-      characteristic: z.array(createCodeableConceptSchema()).optional(),
-      communication: z.array(createCodeableConceptSchema()).optional(),
-      referralMethod: z.array(createCodeableConceptSchema()).optional(),
-      appointmentRequired: primitives.getBooleanSchema().optional(),
-      _appointmentRequired: createElementSchema().optional(),
-      availableTime: z
-        .array(createHealthcareServiceAvailableTimeSchema())
-        .optional(),
-      notAvailable: z
-        .array(createHealthcareServiceNotAvailableSchema())
-        .optional(),
-      availabilityExceptions: primitives.getStringSchema().optional(),
-      _availabilityExceptions: createElementSchema().optional(),
-      endpoint: z.array(createReferenceSchema()).optional(),
-    });
+    const baseSchema: z.ZodType<types.HealthcareService<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("HealthcareService"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: z.array(createIdentifierSchema()).optional(),
+        active: primitives.getBooleanSchema().optional(),
+        _active: createElementSchema().optional(),
+        providedBy: createReferenceSchema().optional(),
+        category: z.array(createCodeableConceptSchema()).optional(),
+        type: z.array(createCodeableConceptSchema()).optional(),
+        specialty: z.array(createCodeableConceptSchema()).optional(),
+        location: z.array(createReferenceSchema()).optional(),
+        name: primitives.getStringSchema().optional(),
+        _name: createElementSchema().optional(),
+        comment: primitives.getStringSchema().optional(),
+        _comment: createElementSchema().optional(),
+        extraDetails: primitives.getMarkdownSchema().optional(),
+        _extraDetails: createElementSchema().optional(),
+        photo: createAttachmentSchema().optional(),
+        telecom: z.array(createContactPointSchema()).optional(),
+        coverageArea: z.array(createReferenceSchema()).optional(),
+        serviceProvisionCode: z.array(createCodeableConceptSchema()).optional(),
+        eligibility: z
+          .array(createHealthcareServiceEligibilitySchema())
+          .optional(),
+        program: z.array(createCodeableConceptSchema()).optional(),
+        characteristic: z.array(createCodeableConceptSchema()).optional(),
+        communication: z.array(createCodeableConceptSchema()).optional(),
+        referralMethod: z.array(createCodeableConceptSchema()).optional(),
+        appointmentRequired: primitives.getBooleanSchema().optional(),
+        _appointmentRequired: createElementSchema().optional(),
+        availableTime: z
+          .array(createHealthcareServiceAvailableTimeSchema())
+          .optional(),
+        notAvailable: z
+          .array(createHealthcareServiceNotAvailableSchema())
+          .optional(),
+        availabilityExceptions: primitives.getStringSchema().optional(),
+        _availabilityExceptions: createElementSchema().optional(),
+        endpoint: z.array(createReferenceSchema()).optional(),
+      });
 
     return baseSchema;
   });

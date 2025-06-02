@@ -7,11 +7,10 @@ import type {
 } from "../core/types";
 import type { ResourceList } from "../resourcelist/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** A container for a collection of resources. */
-
-export interface Bundle {
+export interface Bundle<O = ResourceList, R = ResourceList> {
   resourceType: `Bundle`;
   /** The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes. */
   id?: string;
@@ -50,8 +49,7 @@ export interface Bundle {
   _total?: Element;
 
   link?: BundleLink[];
-
-  entry?: BundleEntry[];
+  entry?: BundleEntry<O, R>[];
   /** Digital Signature - base64 encoded. XML-DSig or a JWT. */
   signature?: Signature;
 }
@@ -78,8 +76,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** A container for a collection of resources. */
-
-export interface BundleEntry {
+export interface BundleEntry<O = ResourceList, R = ResourceList> {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
   /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
@@ -96,14 +93,12 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   fullUrl?: string;
 
   _fullUrl?: Element;
-  /** The Resource for the entry. The purpose/meaning of the resource is determined by the Bundle.type. */
-  resource?: ResourceList;
+  resource?: R;
 
   search?: BundleSearch;
 
   request?: BundleRequest;
-
-  response?: BundleResponse;
+  response?: BundleResponse<O>;
 }
 
 /** A container for a collection of resources. */
@@ -159,8 +154,7 @@ export interface BundleRequest {
 }
 
 /** A container for a collection of resources. */
-
-export interface BundleResponse {
+export interface BundleResponse<O = ResourceList> {
   id?: string;
 
   extension?: Extension[];
@@ -182,6 +176,5 @@ export interface BundleResponse {
   lastModified?: string;
 
   _lastModified?: Element;
-
-  outcome?: ResourceList;
+  outcome?: O;
 }

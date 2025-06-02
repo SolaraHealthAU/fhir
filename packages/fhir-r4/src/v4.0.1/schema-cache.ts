@@ -14,7 +14,29 @@ function createCacheKey(key: string, dependencies?: unknown): string {
 
   // Create a stable representation of the dependency
   let depString: string;
-  if (
+
+  if (Array.isArray(dependencies)) {
+    // Handle arrays by serializing each element
+    const arrayElements = dependencies.map((item, index) => {
+      if (item === undefined) {
+        return `undefined@${index}`;
+      } else if (item === null) {
+        return `null@${index}`;
+      } else if (item && typeof item === "object" && "def" in item) {
+        // For Zod types, use their type information
+        return `${(item as any).def?.typeName ?? "unknown"}@${index}`;
+      } else if (
+        typeof item === "string" ||
+        typeof item === "number" ||
+        typeof item === "boolean"
+      ) {
+        return `${String(item)}@${index}`;
+      } else {
+        return `unknown@${index}`;
+      }
+    });
+    depString = `[${arrayElements.join(",")}]`;
+  } else if (
     dependencies &&
     typeof dependencies === "object" &&
     "def" in dependencies

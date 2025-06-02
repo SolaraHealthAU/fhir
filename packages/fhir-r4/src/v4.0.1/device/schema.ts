@@ -32,7 +32,7 @@ export function createDeviceSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Device", [contained], () => {
-    const baseSchema: z.ZodType<types.Device> = z.strictObject({
+    const baseSchema: z.ZodType<types.Device<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Device"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),
@@ -192,51 +192,56 @@ export function createDeviceDefinitionSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("DeviceDefinition", [contained], () => {
-    const baseSchema: z.ZodType<types.DeviceDefinition> = z.strictObject({
-      resourceType: z.literal("DeviceDefinition"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      identifier: z.array(createIdentifierSchema()).optional(),
-      udiDeviceIdentifier: z
-        .array(createDeviceDefinitionUdiDeviceIdentifierSchema())
-        .optional(),
-      manufacturerString: z.string().optional(),
-      _manufacturerString: createElementSchema().optional(),
-      manufacturerReference: createReferenceSchema().optional(),
-      deviceName: z.array(createDeviceDefinitionDeviceNameSchema()).optional(),
-      modelNumber: primitives.getStringSchema().optional(),
-      _modelNumber: createElementSchema().optional(),
-      type: createCodeableConceptSchema().optional(),
-      specialization: z
-        .array(createDeviceDefinitionSpecializationSchema())
-        .optional(),
-      version: z.array(primitives.getStringSchema()).optional(),
-      _version: z.array(createElementSchema()).optional(),
-      safety: z.array(createCodeableConceptSchema()).optional(),
-      shelfLifeStorage: z.array(createProductShelfLifeSchema()).optional(),
-      physicalCharacteristics: createProdCharacteristicSchema().optional(),
-      languageCode: z.array(createCodeableConceptSchema()).optional(),
-      capability: z.array(createDeviceDefinitionCapabilitySchema()).optional(),
-      property: z.array(createDeviceDefinitionPropertySchema()).optional(),
-      owner: createReferenceSchema().optional(),
-      contact: z.array(createContactPointSchema()).optional(),
-      url: primitives.getUriSchema().optional(),
-      _url: createElementSchema().optional(),
-      onlineInformation: primitives.getUriSchema().optional(),
-      _onlineInformation: createElementSchema().optional(),
-      note: z.array(createAnnotationSchema()).optional(),
-      quantity: createQuantitySchema().optional(),
-      parentDevice: createReferenceSchema().optional(),
-      material: z.array(createDeviceDefinitionMaterialSchema()).optional(),
-    });
+    const baseSchema: z.ZodType<types.DeviceDefinition<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("DeviceDefinition"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: z.array(createIdentifierSchema()).optional(),
+        udiDeviceIdentifier: z
+          .array(createDeviceDefinitionUdiDeviceIdentifierSchema())
+          .optional(),
+        manufacturerString: z.string().optional(),
+        _manufacturerString: createElementSchema().optional(),
+        manufacturerReference: createReferenceSchema().optional(),
+        deviceName: z
+          .array(createDeviceDefinitionDeviceNameSchema())
+          .optional(),
+        modelNumber: primitives.getStringSchema().optional(),
+        _modelNumber: createElementSchema().optional(),
+        type: createCodeableConceptSchema().optional(),
+        specialization: z
+          .array(createDeviceDefinitionSpecializationSchema())
+          .optional(),
+        version: z.array(primitives.getStringSchema()).optional(),
+        _version: z.array(createElementSchema()).optional(),
+        safety: z.array(createCodeableConceptSchema()).optional(),
+        shelfLifeStorage: z.array(createProductShelfLifeSchema()).optional(),
+        physicalCharacteristics: createProdCharacteristicSchema().optional(),
+        languageCode: z.array(createCodeableConceptSchema()).optional(),
+        capability: z
+          .array(createDeviceDefinitionCapabilitySchema())
+          .optional(),
+        property: z.array(createDeviceDefinitionPropertySchema()).optional(),
+        owner: createReferenceSchema().optional(),
+        contact: z.array(createContactPointSchema()).optional(),
+        url: primitives.getUriSchema().optional(),
+        _url: createElementSchema().optional(),
+        onlineInformation: primitives.getUriSchema().optional(),
+        _onlineInformation: createElementSchema().optional(),
+        note: z.array(createAnnotationSchema()).optional(),
+        quantity: createQuantitySchema().optional(),
+        parentDevice: createReferenceSchema().optional(),
+        material: z.array(createDeviceDefinitionMaterialSchema()).optional(),
+      });
 
     return baseSchema;
   });
@@ -360,50 +365,51 @@ export function createDeviceMetricSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("DeviceMetric", [contained], () => {
-    const baseSchema: z.ZodType<types.DeviceMetric> = z.strictObject({
-      resourceType: z.literal("DeviceMetric"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      identifier: z.array(createIdentifierSchema()).optional(),
-      type: createCodeableConceptSchema(),
-      unit: createCodeableConceptSchema().optional(),
-      source: createReferenceSchema().optional(),
-      parent: createReferenceSchema().optional(),
-      operationalStatus: z
-        .enum(["on", "off", "standby", "entered-in-error"])
-        .optional(),
-      _operationalStatus: createElementSchema().optional(),
-      color: z
-        .enum([
-          "black",
-          "red",
-          "green",
-          "yellow",
-          "blue",
-          "magenta",
-          "cyan",
-          "white",
-        ])
-        .optional(),
-      _color: createElementSchema().optional(),
-      category: z.enum([
-        "measurement",
-        "setting",
-        "calculation",
-        "unspecified",
-      ]),
-      _category: createElementSchema().optional(),
-      measurementPeriod: createTimingSchema().optional(),
-      calibration: z.array(createDeviceMetricCalibrationSchema()).optional(),
-    });
+    const baseSchema: z.ZodType<types.DeviceMetric<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("DeviceMetric"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: z.array(createIdentifierSchema()).optional(),
+        type: createCodeableConceptSchema(),
+        unit: createCodeableConceptSchema().optional(),
+        source: createReferenceSchema().optional(),
+        parent: createReferenceSchema().optional(),
+        operationalStatus: z
+          .enum(["on", "off", "standby", "entered-in-error"])
+          .optional(),
+        _operationalStatus: createElementSchema().optional(),
+        color: z
+          .enum([
+            "black",
+            "red",
+            "green",
+            "yellow",
+            "blue",
+            "magenta",
+            "cyan",
+            "white",
+          ])
+          .optional(),
+        _color: createElementSchema().optional(),
+        category: z.enum([
+          "measurement",
+          "setting",
+          "calculation",
+          "unspecified",
+        ]),
+        _category: createElementSchema().optional(),
+        measurementPeriod: createTimingSchema().optional(),
+        calibration: z.array(createDeviceMetricCalibrationSchema()).optional(),
+      });
 
     return baseSchema;
   });
@@ -445,54 +451,55 @@ export function createDeviceRequestSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("DeviceRequest", [contained], () => {
-    const baseSchema: z.ZodType<types.DeviceRequest> = z.strictObject({
-      resourceType: z.literal("DeviceRequest"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      identifier: z.array(createIdentifierSchema()).optional(),
-      instantiatesCanonical: z
-        .array(primitives.getCanonicalSchema())
-        .optional(),
-      instantiatesUri: z.array(primitives.getUriSchema()).optional(),
-      _instantiatesUri: z.array(createElementSchema()).optional(),
-      basedOn: z.array(createReferenceSchema()).optional(),
-      priorRequest: z.array(createReferenceSchema()).optional(),
-      groupIdentifier: createIdentifierSchema().optional(),
-      status: primitives.getCodeSchema().optional(),
-      _status: createElementSchema().optional(),
-      intent: primitives.getCodeSchema(),
-      _intent: createElementSchema().optional(),
-      priority: primitives.getCodeSchema().optional(),
-      _priority: createElementSchema().optional(),
-      codeReference: createReferenceSchema().optional(),
-      codeCodeableConcept: createCodeableConceptSchema().optional(),
-      parameter: z.array(createDeviceRequestParameterSchema()).optional(),
-      subject: createReferenceSchema(),
-      encounter: createReferenceSchema().optional(),
-      occurrenceDateTime: z.string().optional(),
-      _occurrenceDateTime: createElementSchema().optional(),
-      occurrencePeriod: createPeriodSchema().optional(),
-      occurrenceTiming: createTimingSchema().optional(),
-      authoredOn: primitives.getDateTimeSchema().optional(),
-      _authoredOn: createElementSchema().optional(),
-      requester: createReferenceSchema().optional(),
-      performerType: createCodeableConceptSchema().optional(),
-      performer: createReferenceSchema().optional(),
-      reasonCode: z.array(createCodeableConceptSchema()).optional(),
-      reasonReference: z.array(createReferenceSchema()).optional(),
-      insurance: z.array(createReferenceSchema()).optional(),
-      supportingInfo: z.array(createReferenceSchema()).optional(),
-      note: z.array(createAnnotationSchema()).optional(),
-      relevantHistory: z.array(createReferenceSchema()).optional(),
-    });
+    const baseSchema: z.ZodType<types.DeviceRequest<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("DeviceRequest"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: z.array(createIdentifierSchema()).optional(),
+        instantiatesCanonical: z
+          .array(primitives.getCanonicalSchema())
+          .optional(),
+        instantiatesUri: z.array(primitives.getUriSchema()).optional(),
+        _instantiatesUri: z.array(createElementSchema()).optional(),
+        basedOn: z.array(createReferenceSchema()).optional(),
+        priorRequest: z.array(createReferenceSchema()).optional(),
+        groupIdentifier: createIdentifierSchema().optional(),
+        status: primitives.getCodeSchema().optional(),
+        _status: createElementSchema().optional(),
+        intent: primitives.getCodeSchema(),
+        _intent: createElementSchema().optional(),
+        priority: primitives.getCodeSchema().optional(),
+        _priority: createElementSchema().optional(),
+        codeReference: createReferenceSchema().optional(),
+        codeCodeableConcept: createCodeableConceptSchema().optional(),
+        parameter: z.array(createDeviceRequestParameterSchema()).optional(),
+        subject: createReferenceSchema(),
+        encounter: createReferenceSchema().optional(),
+        occurrenceDateTime: z.string().optional(),
+        _occurrenceDateTime: createElementSchema().optional(),
+        occurrencePeriod: createPeriodSchema().optional(),
+        occurrenceTiming: createTimingSchema().optional(),
+        authoredOn: primitives.getDateTimeSchema().optional(),
+        _authoredOn: createElementSchema().optional(),
+        requester: createReferenceSchema().optional(),
+        performerType: createCodeableConceptSchema().optional(),
+        performer: createReferenceSchema().optional(),
+        reasonCode: z.array(createCodeableConceptSchema()).optional(),
+        reasonReference: z.array(createReferenceSchema()).optional(),
+        insurance: z.array(createReferenceSchema()).optional(),
+        supportingInfo: z.array(createReferenceSchema()).optional(),
+        note: z.array(createAnnotationSchema()).optional(),
+        relevantHistory: z.array(createReferenceSchema()).optional(),
+      });
 
     return baseSchema;
   });
@@ -525,44 +532,45 @@ export function createDeviceUseStatementSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("DeviceUseStatement", [contained], () => {
-    const baseSchema: z.ZodType<types.DeviceUseStatement> = z.strictObject({
-      resourceType: z.literal("DeviceUseStatement"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      identifier: z.array(createIdentifierSchema()).optional(),
-      basedOn: z.array(createReferenceSchema()).optional(),
-      status: z.enum([
-        "active",
-        "completed",
-        "entered-in-error",
-        "intended",
-        "stopped",
-        "on-hold",
-      ]),
-      _status: createElementSchema().optional(),
-      subject: createReferenceSchema(),
-      derivedFrom: z.array(createReferenceSchema()).optional(),
-      timingTiming: createTimingSchema().optional(),
-      timingPeriod: createPeriodSchema().optional(),
-      timingDateTime: z.string().optional(),
-      _timingDateTime: createElementSchema().optional(),
-      recordedOn: primitives.getDateTimeSchema().optional(),
-      _recordedOn: createElementSchema().optional(),
-      source: createReferenceSchema().optional(),
-      device: createReferenceSchema(),
-      reasonCode: z.array(createCodeableConceptSchema()).optional(),
-      reasonReference: z.array(createReferenceSchema()).optional(),
-      bodySite: createCodeableConceptSchema().optional(),
-      note: z.array(createAnnotationSchema()).optional(),
-    });
+    const baseSchema: z.ZodType<types.DeviceUseStatement<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("DeviceUseStatement"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: z.array(createIdentifierSchema()).optional(),
+        basedOn: z.array(createReferenceSchema()).optional(),
+        status: z.enum([
+          "active",
+          "completed",
+          "entered-in-error",
+          "intended",
+          "stopped",
+          "on-hold",
+        ]),
+        _status: createElementSchema().optional(),
+        subject: createReferenceSchema(),
+        derivedFrom: z.array(createReferenceSchema()).optional(),
+        timingTiming: createTimingSchema().optional(),
+        timingPeriod: createPeriodSchema().optional(),
+        timingDateTime: z.string().optional(),
+        _timingDateTime: createElementSchema().optional(),
+        recordedOn: primitives.getDateTimeSchema().optional(),
+        _recordedOn: createElementSchema().optional(),
+        source: createReferenceSchema().optional(),
+        device: createReferenceSchema(),
+        reasonCode: z.array(createCodeableConceptSchema()).optional(),
+        reasonReference: z.array(createReferenceSchema()).optional(),
+        bodySite: createCodeableConceptSchema().optional(),
+        note: z.array(createAnnotationSchema()).optional(),
+      });
 
     return baseSchema;
   });

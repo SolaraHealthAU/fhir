@@ -22,7 +22,7 @@ export function createLinkageSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Linkage", [contained], () => {
-    const baseSchema: z.ZodType<types.Linkage> = z.strictObject({
+    const baseSchema: z.ZodType<types.Linkage<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Linkage"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

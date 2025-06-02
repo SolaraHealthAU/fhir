@@ -30,7 +30,7 @@ export function createMeasureSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Measure", [contained], () => {
-    const baseSchema: z.ZodType<types.Measure> = z.strictObject({
+    const baseSchema: z.ZodType<types.Measure<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Measure"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),
@@ -210,38 +210,39 @@ export function createMeasureReportSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("MeasureReport", [contained], () => {
-    const baseSchema: z.ZodType<types.MeasureReport> = z.strictObject({
-      resourceType: z.literal("MeasureReport"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      identifier: z.array(createIdentifierSchema()).optional(),
-      status: z.enum(["complete", "pending", "error"]),
-      _status: createElementSchema().optional(),
-      type: z.enum([
-        "individual",
-        "subject-list",
-        "summary",
-        "data-collection",
-      ]),
-      _type: createElementSchema().optional(),
-      measure: primitives.getCanonicalSchema(),
-      subject: createReferenceSchema().optional(),
-      date: primitives.getDateTimeSchema().optional(),
-      _date: createElementSchema().optional(),
-      reporter: createReferenceSchema().optional(),
-      period: createPeriodSchema(),
-      improvementNotation: createCodeableConceptSchema().optional(),
-      group: z.array(createMeasureReportGroupSchema()).optional(),
-      evaluatedResource: z.array(createReferenceSchema()).optional(),
-    });
+    const baseSchema: z.ZodType<types.MeasureReport<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("MeasureReport"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: z.array(createIdentifierSchema()).optional(),
+        status: z.enum(["complete", "pending", "error"]),
+        _status: createElementSchema().optional(),
+        type: z.enum([
+          "individual",
+          "subject-list",
+          "summary",
+          "data-collection",
+        ]),
+        _type: createElementSchema().optional(),
+        measure: primitives.getCanonicalSchema(),
+        subject: createReferenceSchema().optional(),
+        date: primitives.getDateTimeSchema().optional(),
+        _date: createElementSchema().optional(),
+        reporter: createReferenceSchema().optional(),
+        period: createPeriodSchema(),
+        improvementNotation: createCodeableConceptSchema().optional(),
+        group: z.array(createMeasureReportGroupSchema()).optional(),
+        evaluatedResource: z.array(createReferenceSchema()).optional(),
+      });
 
     return baseSchema;
   });

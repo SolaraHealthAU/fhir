@@ -25,7 +25,7 @@ export function createScheduleSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Schedule", [contained], () => {
-    const baseSchema: z.ZodType<types.Schedule> = z.strictObject({
+    const baseSchema: z.ZodType<types.Schedule<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Schedule"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

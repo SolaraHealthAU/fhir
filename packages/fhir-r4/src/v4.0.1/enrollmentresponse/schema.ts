@@ -23,31 +23,32 @@ export function createEnrollmentResponseSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("EnrollmentResponse", [contained], () => {
-    const baseSchema: z.ZodType<types.EnrollmentResponse> = z.strictObject({
-      resourceType: z.literal("EnrollmentResponse"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      identifier: z.array(createIdentifierSchema()).optional(),
-      status: primitives.getCodeSchema().optional(),
-      _status: createElementSchema().optional(),
-      request: createReferenceSchema().optional(),
-      outcome: z.enum(["queued", "complete", "error", "partial"]).optional(),
-      _outcome: createElementSchema().optional(),
-      disposition: primitives.getStringSchema().optional(),
-      _disposition: createElementSchema().optional(),
-      created: primitives.getDateTimeSchema().optional(),
-      _created: createElementSchema().optional(),
-      organization: createReferenceSchema().optional(),
-      requestProvider: createReferenceSchema().optional(),
-    });
+    const baseSchema: z.ZodType<types.EnrollmentResponse<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("EnrollmentResponse"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: z.array(createIdentifierSchema()).optional(),
+        status: primitives.getCodeSchema().optional(),
+        _status: createElementSchema().optional(),
+        request: createReferenceSchema().optional(),
+        outcome: z.enum(["queued", "complete", "error", "partial"]).optional(),
+        _outcome: createElementSchema().optional(),
+        disposition: primitives.getStringSchema().optional(),
+        _disposition: createElementSchema().optional(),
+        created: primitives.getDateTimeSchema().optional(),
+        _created: createElementSchema().optional(),
+        organization: createReferenceSchema().optional(),
+        requestProvider: createReferenceSchema().optional(),
+      });
 
     return baseSchema;
   });

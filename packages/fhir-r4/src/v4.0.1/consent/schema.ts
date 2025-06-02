@@ -27,7 +27,7 @@ export function createConsentSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Consent", [contained], () => {
-    const baseSchema: z.ZodType<types.Consent> = z.strictObject({
+    const baseSchema: z.ZodType<types.Consent<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Consent"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

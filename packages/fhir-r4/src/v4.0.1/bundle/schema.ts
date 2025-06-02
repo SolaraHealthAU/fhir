@@ -13,40 +13,55 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createBundleSchema() {
-  return getCachedSchema("Bundle", [], () => {
-    const baseSchema: z.ZodType<types.Bundle> = z.strictObject({
-      resourceType: z.literal("Bundle"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      identifier: createIdentifierSchema().optional(),
-      type: z.enum([
-        "document",
-        "message",
-        "transaction",
-        "transaction-response",
-        "batch",
-        "batch-response",
-        "history",
-        "searchset",
-        "collection",
-      ]),
-      _type: createElementSchema().optional(),
-      timestamp: primitives.getInstantSchema().optional(),
-      _timestamp: createElementSchema().optional(),
-      total: primitives.getUnsignedIntSchema().optional(),
-      _total: createElementSchema().optional(),
-      link: z.array(createBundleLinkSchema()).optional(),
-      entry: z.array(createBundleEntrySchema()).optional(),
-      signature: createSignatureSchema().optional(),
-    });
+export function createBundleSchema<
+  O extends z.ZodTypeAny = z.ZodUnknown,
+  R extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { outcome?: O; resource?: R }) {
+  return getCachedSchema(
+    "Bundle",
+    [options?.outcome ?? null, options?.resource ?? null],
+    () => {
+      const baseSchema: z.ZodType<types.Bundle<z.infer<O>, z.infer<R>>> =
+        z.strictObject({
+          resourceType: z.literal("Bundle"),
+          id: primitives.getIdSchema().optional(),
+          meta: createMetaSchema().optional(),
+          implicitRules: primitives.getUriSchema().optional(),
+          _implicitRules: createElementSchema().optional(),
+          language: primitives.getCodeSchema().optional(),
+          _language: createElementSchema().optional(),
+          identifier: createIdentifierSchema().optional(),
+          type: z.enum([
+            "document",
+            "message",
+            "transaction",
+            "transaction-response",
+            "batch",
+            "batch-response",
+            "history",
+            "searchset",
+            "collection",
+          ]),
+          _type: createElementSchema().optional(),
+          timestamp: primitives.getInstantSchema().optional(),
+          _timestamp: createElementSchema().optional(),
+          total: primitives.getUnsignedIntSchema().optional(),
+          _total: createElementSchema().optional(),
+          link: z.array(createBundleLinkSchema()).optional(),
+          entry: z
+            .array(
+              createBundleEntrySchema<O, R>({
+                resource: options?.resource,
+                outcome: options?.outcome,
+              }),
+            )
+            .optional(),
+          signature: createSignatureSchema().optional(),
+        });
 
-    return baseSchema;
-  });
+      return baseSchema;
+    },
+  );
 }
 
 export function createBundleLinkSchema() {
@@ -65,23 +80,35 @@ export function createBundleLinkSchema() {
   });
 }
 
-export function createBundleEntrySchema() {
-  return getCachedSchema("BundleEntry", [], () => {
-    const baseSchema: z.ZodType<types.BundleEntry> = z.strictObject({
-      id: primitives.getStringSchema().optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      link: z.array(createBundleLinkSchema()).optional(),
-      fullUrl: primitives.getUriSchema().optional(),
-      _fullUrl: createElementSchema().optional(),
-      resource: createResourceListSchema().optional(),
-      search: createBundleSearchSchema().optional(),
-      request: createBundleRequestSchema().optional(),
-      response: createBundleResponseSchema().optional(),
-    });
+export function createBundleEntrySchema<
+  O extends z.ZodTypeAny = z.ZodUnknown,
+  R extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { outcome?: O; resource?: R }) {
+  const resource = options?.resource ?? createResourceListSchema();
 
-    return baseSchema;
-  });
+  return getCachedSchema(
+    "BundleEntry",
+    [options?.outcome ?? null, resource],
+    () => {
+      const baseSchema: z.ZodType<types.BundleEntry<z.infer<O>, z.infer<R>>> =
+        z.strictObject({
+          id: primitives.getStringSchema().optional(),
+          extension: z.array(createExtensionSchema()).optional(),
+          modifierExtension: z.array(createExtensionSchema()).optional(),
+          link: z.array(createBundleLinkSchema()).optional(),
+          fullUrl: primitives.getUriSchema().optional(),
+          _fullUrl: createElementSchema().optional(),
+          resource: resource.optional(),
+          search: createBundleSearchSchema().optional(),
+          request: createBundleRequestSchema().optional(),
+          response: createBundleResponseSchema<O>({
+            outcome: options?.outcome,
+          }).optional(),
+        });
+
+      return baseSchema;
+    },
+  );
 }
 
 export function createBundleSearchSchema() {
@@ -126,22 +153,27 @@ export function createBundleRequestSchema() {
   });
 }
 
-export function createBundleResponseSchema() {
-  return getCachedSchema("BundleResponse", [], () => {
-    const baseSchema: z.ZodType<types.BundleResponse> = z.strictObject({
-      id: primitives.getStringSchema().optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      status: primitives.getStringSchema().optional(),
-      _status: createElementSchema().optional(),
-      location: primitives.getUriSchema().optional(),
-      _location: createElementSchema().optional(),
-      etag: primitives.getStringSchema().optional(),
-      _etag: createElementSchema().optional(),
-      lastModified: primitives.getInstantSchema().optional(),
-      _lastModified: createElementSchema().optional(),
-      outcome: createResourceListSchema().optional(),
-    });
+export function createBundleResponseSchema<
+  O extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { outcome?: O }) {
+  const outcome = options?.outcome ?? createResourceListSchema();
+
+  return getCachedSchema("BundleResponse", [outcome], () => {
+    const baseSchema: z.ZodType<types.BundleResponse<z.infer<O>>> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        status: primitives.getStringSchema().optional(),
+        _status: createElementSchema().optional(),
+        location: primitives.getUriSchema().optional(),
+        _location: createElementSchema().optional(),
+        etag: primitives.getStringSchema().optional(),
+        _etag: createElementSchema().optional(),
+        lastModified: primitives.getInstantSchema().optional(),
+        _lastModified: createElementSchema().optional(),
+        outcome: outcome.optional(),
+      });
 
     return baseSchema;
   });

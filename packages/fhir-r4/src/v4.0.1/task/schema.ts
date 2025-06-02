@@ -51,7 +51,7 @@ export function createTaskSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Task", [contained], () => {
-    const baseSchema: z.ZodType<types.Task> = z.strictObject({
+    const baseSchema: z.ZodType<types.Task<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Task"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

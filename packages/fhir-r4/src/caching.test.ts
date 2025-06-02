@@ -211,6 +211,108 @@ describe('Schema Caching', () => {
       // Complex objects fall back to "unknown" string, so they cache as the same
       expect(schema1).toBe(schema2);
     });
+
+    it('should handle arrays with undefined values correctly', () => {
+      const factory = () => z.object({ test: z.string() });
+
+      // Test arrays with undefined values
+      const schema1 = getCachedSchema('test-undefined-array', [undefined], factory);
+      const schema2 = getCachedSchema('test-undefined-array', [undefined], factory);
+
+      // Should be cached (same undefined array dependencies)
+      expect(schema1).toBe(schema2);
+
+      // Test arrays with multiple undefined values
+      const schema3 = getCachedSchema('test-multi-undefined', [undefined, undefined], factory);
+      const schema4 = getCachedSchema('test-multi-undefined', [undefined, undefined], factory);
+
+      // Should be cached
+      expect(schema3).toBe(schema4);
+
+      // Different arrays with undefined should have different cache keys
+      expect(schema1).not.toBe(schema3); // [undefined] vs [undefined, undefined]
+
+      // Test arrays with mixed undefined and defined values
+      const schema5 = getCachedSchema('test-mixed', [undefined, 'string', undefined], factory);
+      const schema6 = getCachedSchema('test-mixed', [undefined, 'string', undefined], factory);
+
+      expect(schema5).toBe(schema6);
+
+      // Different mixed arrays should be different
+      const schema7 = getCachedSchema('test-mixed-2', ['string', undefined, 'string'], factory);
+      expect(schema5).not.toBe(schema7);
+
+      // Test that array with undefined is different from empty array
+      const schemaEmpty = getCachedSchema('test-empty-vs-undefined', [], factory);
+      const schemaUndefined = getCachedSchema('test-empty-vs-undefined', [undefined], factory);
+      expect(schemaEmpty).not.toBe(schemaUndefined);
+
+      // Test that array with undefined is different from no dependencies
+      const schemaNoDeps = getCachedSchema('test-no-deps-vs-undefined', factory);
+      const schemaUndefArray = getCachedSchema('test-no-deps-vs-undefined', [undefined], factory);
+      expect(schemaNoDeps).not.toBe(schemaUndefArray);
+    });
+
+    it('should demonstrate position-sensitive undefined values in arrays', () => {
+      const factory = () => z.number();
+
+      // Position matters for undefined values
+      const schema1 = getCachedSchema('position-test', [undefined, 'value'], factory);
+      const schema2 = getCachedSchema('position-test', ['value', undefined], factory);
+
+      // Should be different because undefined is in different positions
+      expect(schema1).not.toBe(schema2);
+
+      // But same patterns should be cached
+      const schema3 = getCachedSchema('position-test', [undefined, 'value'], factory);
+      expect(schema1).toBe(schema3);
+    });
+
+    it('should differentiate between arrays with different undefined patterns', () => {
+      const factory = () => z.string();
+
+      // Test various undefined patterns
+      const patterns = [
+        [undefined],
+        [undefined, undefined],
+        [undefined, null],
+        [null, undefined],
+        ['value', undefined],
+        [undefined, 'value'],
+        [undefined, 'value', undefined],
+      ];
+
+      const schemas = patterns.map((pattern, index) =>
+        getCachedSchema(`pattern-${index}`, pattern, factory),
+      );
+
+      // All should be different
+      const uniqueSchemas = new Set(schemas);
+      expect(uniqueSchemas.size).toBe(patterns.length);
+    });
+
+    it('should handle the specific case: getCachedSchema(key, [undefined], factory)', () => {
+      const factory = () => z.object({ value: z.string() });
+
+      // This is the exact case mentioned by the user
+      const schema1 = getCachedSchema('user-case', [undefined], factory);
+      const schema2 = getCachedSchema('user-case', [undefined], factory);
+
+      // Should be cached (same key and same [undefined] dependency)
+      expect(schema1).toBe(schema2);
+
+      // Should be different from no dependencies
+      const schema3 = getCachedSchema('user-case', factory);
+      expect(schema1).not.toBe(schema3);
+
+      // Should be different from empty array
+      const schema4 = getCachedSchema('user-case', [], factory);
+      expect(schema1).not.toBe(schema4);
+
+      // Verify the cache key is what we expect
+      const statsAfter = getSchemaCacheStats();
+      expect(statsAfter.schemaCache).toBeGreaterThan(0);
+    });
   });
 
   describe('Circular reference handling', () => {

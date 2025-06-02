@@ -27,7 +27,7 @@ export function createLocationSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Location", [contained], () => {
-    const baseSchema: z.ZodType<types.Location> = z.strictObject({
+    const baseSchema: z.ZodType<types.Location<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Location"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

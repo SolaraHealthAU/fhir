@@ -29,8 +29,8 @@ export function createEffectEvidenceSynthesisSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("EffectEvidenceSynthesis", [contained], () => {
-    const baseSchema: z.ZodType<types.EffectEvidenceSynthesis> = z.strictObject(
-      {
+    const baseSchema: z.ZodType<types.EffectEvidenceSynthesis<z.infer<C>>> =
+      z.strictObject({
         resourceType: z.literal("EffectEvidenceSynthesis"),
         id: primitives.getIdSchema().optional(),
         meta: createMetaSchema().optional(),
@@ -92,8 +92,7 @@ export function createEffectEvidenceSynthesisSchema<
         certainty: z
           .array(createEffectEvidenceSynthesisCertaintySchema())
           .optional(),
-      },
-    );
+      });
 
     return baseSchema;
   });

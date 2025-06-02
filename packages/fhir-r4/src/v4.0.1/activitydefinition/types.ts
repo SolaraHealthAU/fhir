@@ -20,7 +20,7 @@ import type {
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
 
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 
 /** This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context. */
 

@@ -24,7 +24,7 @@ export function createBasicSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Basic", [contained], () => {
-    const baseSchema: z.ZodType<types.Basic> = z.strictObject({
+    const baseSchema: z.ZodType<types.Basic<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Basic"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

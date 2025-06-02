@@ -27,7 +27,7 @@ export function createEncounterSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Encounter", [contained], () => {
-    const baseSchema: z.ZodType<types.Encounter> = z.strictObject({
+    const baseSchema: z.ZodType<types.Encounter<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Encounter"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

@@ -29,7 +29,7 @@ export function createSpecimenSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Specimen", [contained], () => {
-    const baseSchema: z.ZodType<types.Specimen> = z.strictObject({
+    const baseSchema: z.ZodType<types.Specimen<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Specimen"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),
@@ -139,28 +139,29 @@ export function createSpecimenDefinitionSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("SpecimenDefinition", [contained], () => {
-    const baseSchema: z.ZodType<types.SpecimenDefinition> = z.strictObject({
-      resourceType: z.literal("SpecimenDefinition"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      identifier: createIdentifierSchema().optional(),
-      typeCollected: createCodeableConceptSchema().optional(),
-      patientPreparation: z.array(createCodeableConceptSchema()).optional(),
-      timeAspect: primitives.getStringSchema().optional(),
-      _timeAspect: createElementSchema().optional(),
-      collection: z.array(createCodeableConceptSchema()).optional(),
-      typeTested: z
-        .array(createSpecimenDefinitionTypeTestedSchema())
-        .optional(),
-    });
+    const baseSchema: z.ZodType<types.SpecimenDefinition<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("SpecimenDefinition"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: createIdentifierSchema().optional(),
+        typeCollected: createCodeableConceptSchema().optional(),
+        patientPreparation: z.array(createCodeableConceptSchema()).optional(),
+        timeAspect: primitives.getStringSchema().optional(),
+        _timeAspect: createElementSchema().optional(),
+        collection: z.array(createCodeableConceptSchema()).optional(),
+        typeTested: z
+          .array(createSpecimenDefinitionTypeTestedSchema())
+          .optional(),
+      });
 
     return baseSchema;
   });

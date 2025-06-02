@@ -26,50 +26,51 @@ export function createClinicalImpressionSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("ClinicalImpression", [contained], () => {
-    const baseSchema: z.ZodType<types.ClinicalImpression> = z.strictObject({
-      resourceType: z.literal("ClinicalImpression"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      identifier: z.array(createIdentifierSchema()).optional(),
-      status: primitives.getCodeSchema(),
-      _status: createElementSchema().optional(),
-      statusReason: createCodeableConceptSchema().optional(),
-      code: createCodeableConceptSchema().optional(),
-      description: primitives.getStringSchema().optional(),
-      _description: createElementSchema().optional(),
-      subject: createReferenceSchema(),
-      encounter: createReferenceSchema().optional(),
-      effectiveDateTime: z.string().optional(),
-      _effectiveDateTime: createElementSchema().optional(),
-      effectivePeriod: createPeriodSchema().optional(),
-      date: primitives.getDateTimeSchema().optional(),
-      _date: createElementSchema().optional(),
-      assessor: createReferenceSchema().optional(),
-      previous: createReferenceSchema().optional(),
-      problem: z.array(createReferenceSchema()).optional(),
-      investigation: z
-        .array(createClinicalImpressionInvestigationSchema())
-        .optional(),
-      protocol: z.array(primitives.getUriSchema()).optional(),
-      _protocol: z.array(createElementSchema()).optional(),
-      summary: primitives.getStringSchema().optional(),
-      _summary: createElementSchema().optional(),
-      finding: z.array(createClinicalImpressionFindingSchema()).optional(),
-      prognosisCodeableConcept: z
-        .array(createCodeableConceptSchema())
-        .optional(),
-      prognosisReference: z.array(createReferenceSchema()).optional(),
-      supportingInfo: z.array(createReferenceSchema()).optional(),
-      note: z.array(createAnnotationSchema()).optional(),
-    });
+    const baseSchema: z.ZodType<types.ClinicalImpression<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("ClinicalImpression"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: z.array(createIdentifierSchema()).optional(),
+        status: primitives.getCodeSchema(),
+        _status: createElementSchema().optional(),
+        statusReason: createCodeableConceptSchema().optional(),
+        code: createCodeableConceptSchema().optional(),
+        description: primitives.getStringSchema().optional(),
+        _description: createElementSchema().optional(),
+        subject: createReferenceSchema(),
+        encounter: createReferenceSchema().optional(),
+        effectiveDateTime: z.string().optional(),
+        _effectiveDateTime: createElementSchema().optional(),
+        effectivePeriod: createPeriodSchema().optional(),
+        date: primitives.getDateTimeSchema().optional(),
+        _date: createElementSchema().optional(),
+        assessor: createReferenceSchema().optional(),
+        previous: createReferenceSchema().optional(),
+        problem: z.array(createReferenceSchema()).optional(),
+        investigation: z
+          .array(createClinicalImpressionInvestigationSchema())
+          .optional(),
+        protocol: z.array(primitives.getUriSchema()).optional(),
+        _protocol: z.array(createElementSchema()).optional(),
+        summary: primitives.getStringSchema().optional(),
+        _summary: createElementSchema().optional(),
+        finding: z.array(createClinicalImpressionFindingSchema()).optional(),
+        prognosisCodeableConcept: z
+          .array(createCodeableConceptSchema())
+          .optional(),
+        prognosisReference: z.array(createReferenceSchema()).optional(),
+        supportingInfo: z.array(createReferenceSchema()).optional(),
+        note: z.array(createAnnotationSchema()).optional(),
+      });
 
     return baseSchema;
   });

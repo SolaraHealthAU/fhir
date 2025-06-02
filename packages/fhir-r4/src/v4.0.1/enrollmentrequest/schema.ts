@@ -23,28 +23,29 @@ export function createEnrollmentRequestSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("EnrollmentRequest", [contained], () => {
-    const baseSchema: z.ZodType<types.EnrollmentRequest> = z.strictObject({
-      resourceType: z.literal("EnrollmentRequest"),
-      id: primitives.getIdSchema().optional(),
-      meta: createMetaSchema().optional(),
-      implicitRules: primitives.getUriSchema().optional(),
-      _implicitRules: createElementSchema().optional(),
-      language: primitives.getCodeSchema().optional(),
-      _language: createElementSchema().optional(),
-      text: createNarrativeSchema().optional(),
-      contained: z.array(contained).optional(),
-      extension: z.array(createExtensionSchema()).optional(),
-      modifierExtension: z.array(createExtensionSchema()).optional(),
-      identifier: z.array(createIdentifierSchema()).optional(),
-      status: primitives.getCodeSchema().optional(),
-      _status: createElementSchema().optional(),
-      created: primitives.getDateTimeSchema().optional(),
-      _created: createElementSchema().optional(),
-      insurer: createReferenceSchema().optional(),
-      provider: createReferenceSchema().optional(),
-      candidate: createReferenceSchema().optional(),
-      coverage: createReferenceSchema().optional(),
-    });
+    const baseSchema: z.ZodType<types.EnrollmentRequest<z.infer<C>>> =
+      z.strictObject({
+        resourceType: z.literal("EnrollmentRequest"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(contained).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: z.array(createIdentifierSchema()).optional(),
+        status: primitives.getCodeSchema().optional(),
+        _status: createElementSchema().optional(),
+        created: primitives.getDateTimeSchema().optional(),
+        _created: createElementSchema().optional(),
+        insurer: createReferenceSchema().optional(),
+        provider: createReferenceSchema().optional(),
+        candidate: createReferenceSchema().optional(),
+        coverage: createReferenceSchema().optional(),
+      });
 
     return baseSchema;
   });

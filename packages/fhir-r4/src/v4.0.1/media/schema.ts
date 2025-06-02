@@ -27,7 +27,7 @@ export function createMediaSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Media", [contained], () => {
-    const baseSchema: z.ZodType<types.Media> = z.strictObject({
+    const baseSchema: z.ZodType<types.Media<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Media"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

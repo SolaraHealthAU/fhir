@@ -25,7 +25,7 @@ export function createListSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("List", [contained], () => {
-    const baseSchema: z.ZodType<types.List> = z.strictObject({
+    const baseSchema: z.ZodType<types.List<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("List"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),

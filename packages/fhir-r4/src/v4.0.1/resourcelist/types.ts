@@ -1,2 +1,2 @@
-/** Generated from FHIR JSON Schema */
+/* Generated from FHIR JSON Schema */
 export type ResourceList = unknown;

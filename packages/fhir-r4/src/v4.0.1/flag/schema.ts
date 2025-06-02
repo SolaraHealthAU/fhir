@@ -25,7 +25,7 @@ export function createFlagSchema<
       : (options?.contained ?? createResourceListSchema());
 
   return getCachedSchema("Flag", [contained], () => {
-    const baseSchema: z.ZodType<types.Flag> = z.strictObject({
+    const baseSchema: z.ZodType<types.Flag<z.infer<C>>> = z.strictObject({
       resourceType: z.literal("Flag"),
       id: primitives.getIdSchema().optional(),
       meta: createMetaSchema().optional(),
