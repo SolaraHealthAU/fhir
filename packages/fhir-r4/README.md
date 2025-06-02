@@ -132,6 +132,89 @@ const bundleSchema = createBundleSchema();
 const bundleResult = bundleSchema.safeParse(patientBundle);
 ```
 
+## 🎯 Advanced Usage & Type Safety
+
+### Working with All FHIR Resources
+
+When you need to handle any FHIR resource type (useful for generic processors, middleware, or testing), you can import from the `/all` export:
+
+```typescript
+import { createResourceListSchema, type ResourceList } from '@solarahealth/fhir-r4/all';
+
+// This schema accepts any valid FHIR R4 resource
+const anyResourceSchema = createResourceListSchema();
+
+// Validate any FHIR resource
+const unknownData = getSomeResourceFromAPI();
+const result = anyResourceSchema.safeParse(unknownData);
+
+if (result.success) {
+  // TypeScript knows this is any FHIR resource
+  const resource: ResourceList = result.data;
+  console.log(`Processing ${resource.resourceType}`);
+}
+```
+
+> **⚠️ Bundle Size Note**: The `/all` export includes schemas for all 150+ FHIR resource types. While excellent for flexibility, it significantly increases your bundle size. Use it only when you truly need to handle arbitrary FHIR resources.
+
+### When to Use Different Approaches
+
+| Approach               | Best For                                    | Bundle Impact |
+| ---------------------- | ------------------------------------------- | ------------- |
+| **Individual imports** | Production apps with known resource types   | ✅ Minimal    |
+| **Selective unions**   | Apps with predictable resource combinations | ✅ Small      |
+| **`/all` export**      | Generic processors, testing, middleware     | ⚠️ Large      |
+
+```typescript
+// ✅ Minimal bundle size - specific resources only
+import { createPatientSchema, createObservationSchema } from '@solarahealth/fhir-r4';
+
+// ✅ Small bundle size - controlled union
+import { makeContainedUnion } from '@solarahealth/fhir-r4';
+const specificResources = makeContainedUnion(createPatientSchema(), createObservationSchema());
+
+// ⚠️ Large bundle size - all resources included
+import { createResourceListSchema } from '@solarahealth/fhir-r4/all';
+```
+
+## 📚 In-Depth Guides
+
+For complex scenarios involving contained resources and bundles, we've prepared detailed guides:
+
+### [📖 Working with Contained Resources](./docs/contained-resources.md)
+
+**Read this when you encounter:**
+
+- Resources with nested/embedded resources in the `contained` array
+- Type safety challenges with `contained: unknown[]`
+- Bundle size concerns when working with contained resources
+- Questions about tree-shaking and performance optimization
+
+**Covers:**
+
+- Understanding FHIR contained resources and their typing challenges
+- Three strategies for handling contained resources (none, specific, or all)
+- Application patterns for configuring contained resource types
+- Tree-shaking optimization and bundle size management
+
+### [📖 Working with Bundle Resources](./docs/working-with-bundle.md)
+
+**Read this when you're working with:**
+
+- FHIR Bundle resources containing multiple resource types
+- Transaction bundles with response outcomes
+- Type-safe bundle entry processing
+- Complex bundle scenarios with nested contained resources
+
+**Covers:**
+
+- Understanding FHIR Bundle resources and entry typing
+- Configuring bundle resource and outcome types
+- Application patterns for different bundle types (document, transaction, searchset)
+- Combining bundle resources with contained resource strategies
+
+These guides provide production-ready patterns and help you choose the right approach for your application's performance and type safety requirements.
+
 ## 🛠️ Development & Contributing
 
 Want to contribute or customize the generation? We'd love your help!
