@@ -15,8 +15,13 @@ export function createElementDefinitionTypeSchema() {
       code: primitives.getUriSchema(),
       _code: createElementSchema().optional(),
       profile: z.array(primitives.getCanonicalSchema()).optional(),
+      _profile: z.array(createElementSchema()).optional(),
       targetProfile: z.array(primitives.getCanonicalSchema()).optional(),
-      aggregation: z.array(z.any()).optional(),
+      _targetProfile: z.array(createElementSchema()).optional(),
+      aggregation: z
+        .enum(["contained", "referenced", "bundled"])
+        .array()
+        .optional(),
       _aggregation: z.array(createElementSchema()).optional(),
       versioning: z.enum(["either", "independent", "specific"]).optional(),
       _versioning: createElementSchema().optional(),

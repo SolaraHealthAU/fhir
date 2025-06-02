@@ -494,6 +494,7 @@ import {
   UrlProfile,
   UsagecontextProfile,
   UuidProfile,
+  XhtmlProfile,
 } from "./fixture";
 import { z } from "zod/v4";
 
@@ -7557,6 +7558,18 @@ describe("StructureDefinition Schema Validation", () => {
       console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
       throw new Error(
         `Schema validation failed for UuidProfile: ${result.error.message}`,
+      );
+    }
+    expect(result.success).toBe(true);
+  });
+
+  it("should validate XhtmlProfile fixture", () => {
+    const result = createStructureDefinitionSchema().safeParse(XhtmlProfile);
+    if (!result.success) {
+      console.error("Validation failed for XhtmlProfile:");
+      console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
+      throw new Error(
+        `Schema validation failed for XhtmlProfile: ${result.error.message}`,
       );
     }
     expect(result.success).toBe(true);

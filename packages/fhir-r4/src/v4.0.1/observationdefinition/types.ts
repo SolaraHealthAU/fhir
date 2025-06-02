@@ -45,7 +45,19 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   /** A unique identifier assigned to this ObservationDefinition artifact. */
   identifier?: Identifier[];
   /** The data types allowed for the value element of the instance observations conforming to this ObservationDefinition. */
-  permittedDataType?: any;
+  permittedDataType?: (
+    | "Quantity"
+    | "CodeableConcept"
+    | "string"
+    | "boolean"
+    | "integer"
+    | "Range"
+    | "Ratio"
+    | "SampledData"
+    | "time"
+    | "dateTime"
+    | "Period"
+  )[];
 
   _permittedDataType?: Element[];
   /** Multiple results allowed for observations conforming to this ObservationDefinition. */

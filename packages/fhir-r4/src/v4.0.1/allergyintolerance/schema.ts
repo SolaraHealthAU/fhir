@@ -39,7 +39,10 @@ export function createAllergyIntoleranceSchema() {
       verificationStatus: createCodeableConceptSchema().optional(),
       type: z.enum(["allergy", "intolerance"]).optional(),
       _type: createElementSchema().optional(),
-      category: z.array(z.any()).optional(),
+      category: z
+        .enum(["food", "medication", "environment", "biologic"])
+        .array()
+        .optional(),
       _category: z.array(createElementSchema()).optional(),
       criticality: z.enum(["low", "high", "unable-to-assess"]).optional(),
       _criticality: createElementSchema().optional(),

@@ -441,3 +441,83 @@ export const SearchparameterFilter: SearchParameter = {
   base: ["Resource"],
   type: "special",
 } as const;
+
+export const ValuesetExtensionsValuesetAuthor: SearchParameter = {
+  resourceType: "SearchParameter",
+  id: "valueset-extensions-ValueSet-author",
+  url: "http://hl7.org/fhir/SearchParameter/valueset-extensions-ValueSet-author",
+  version: "4.0.1",
+  name: "author",
+  status: "draft",
+  experimental: true,
+  description: "Optional Extensions Element",
+  code: "author",
+  type: "string",
+  xpath:
+    "f:ValueSet/f:extension[@url='http://hl7.org/fhir/StructureDefinition/valueset-author'] | /f:#author",
+  xpathUsage: "normal",
+} as const;
+
+export const ValuesetExtensionsValuesetEffective: SearchParameter = {
+  resourceType: "SearchParameter",
+  id: "valueset-extensions-ValueSet-effective",
+  url: "http://hl7.org/fhir/SearchParameter/valueset-extensions-ValueSet-effective",
+  version: "4.0.1",
+  name: "effective",
+  status: "draft",
+  experimental: true,
+  description: "Optional Extensions Element",
+  code: "effective",
+  type: "date",
+  xpath:
+    "f:ValueSet/f:extension[@url='http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate'] | /f:#effectiveDate",
+  xpathUsage: "normal",
+} as const;
+
+export const ValuesetExtensionsValuesetEnd: SearchParameter = {
+  resourceType: "SearchParameter",
+  id: "valueset-extensions-ValueSet-end",
+  url: "http://hl7.org/fhir/SearchParameter/valueset-extensions-ValueSet-end",
+  version: "4.0.1",
+  name: "end",
+  status: "draft",
+  experimental: true,
+  description: "Optional Extensions Element",
+  code: "end",
+  type: "date",
+  xpath:
+    "f:ValueSet/f:extension[@url='http://hl7.org/fhir/StructureDefinition/valueset-expirationDate'] | /f:#expirationDate",
+  xpathUsage: "normal",
+} as const;
+
+export const ValuesetExtensionsValuesetKeyword: SearchParameter = {
+  resourceType: "SearchParameter",
+  id: "valueset-extensions-ValueSet-keyword",
+  url: "http://hl7.org/fhir/SearchParameter/valueset-extensions-ValueSet-keyword",
+  version: "4.0.1",
+  name: "keyword",
+  status: "draft",
+  experimental: true,
+  description: "Optional Extensions Element",
+  code: "keyword",
+  type: "string",
+  xpath:
+    "f:ValueSet/f:extension[@url='http://hl7.org/fhir/StructureDefinition/valueset-keyWord'] | /f:#keyWord",
+  xpathUsage: "normal",
+} as const;
+
+export const ValuesetExtensionsValuesetWorkflow: SearchParameter = {
+  resourceType: "SearchParameter",
+  id: "valueset-extensions-ValueSet-workflow",
+  url: "http://hl7.org/fhir/SearchParameter/valueset-extensions-ValueSet-workflow",
+  version: "4.0.1",
+  name: "workflow",
+  status: "draft",
+  experimental: true,
+  description: "Optional Extensions Element",
+  code: "workflow",
+  type: "token",
+  xpath:
+    "f:ValueSet/f:extension[@url='http://hl7.org/fhir/StructureDefinition/valueset-workflowStatus'] | /f:#workflowStatus",
+  xpathUsage: "normal",
+} as const;

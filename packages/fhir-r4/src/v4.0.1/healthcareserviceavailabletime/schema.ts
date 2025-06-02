@@ -13,7 +13,10 @@ export function createHealthcareServiceAvailableTimeSchema() {
         id: primitives.getStringSchema().optional(),
         extension: z.array(createExtensionSchema()).optional(),
         modifierExtension: z.array(createExtensionSchema()).optional(),
-        daysOfWeek: z.array(z.any()).optional(),
+        daysOfWeek: z
+          .enum(["mon", "tue", "wed", "thu", "fri", "sat", "sun"])
+          .array()
+          .optional(),
         _daysOfWeek: z.array(createElementSchema()).optional(),
         allDay: primitives.getBooleanSchema().optional(),
         _allDay: createElementSchema().optional(),

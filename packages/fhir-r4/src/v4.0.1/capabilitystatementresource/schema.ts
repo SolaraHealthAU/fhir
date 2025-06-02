@@ -50,7 +50,10 @@ export function createCapabilityStatementResourceSchema() {
           .enum(["not-supported", "single", "multiple"])
           .optional(),
         _conditionalDelete: createElementSchema().optional(),
-        referencePolicy: z.array(z.any()).optional(),
+        referencePolicy: z
+          .enum(["literal", "logical", "resolves", "enforced", "local"])
+          .array()
+          .optional(),
         _referencePolicy: z.array(createElementSchema()).optional(),
         searchInclude: z.array(primitives.getStringSchema()).optional(),
         _searchInclude: z.array(createElementSchema()).optional(),

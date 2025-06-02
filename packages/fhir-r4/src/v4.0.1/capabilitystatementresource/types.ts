@@ -59,7 +59,13 @@ export interface CapabilityStatementResource {
 
   _conditionalDelete?: Element;
 
-  referencePolicy?: any;
+  referencePolicy?: (
+    | "literal"
+    | "logical"
+    | "resolves"
+    | "enforced"
+    | "local"
+  )[];
 
   _referencePolicy?: Element[];
 

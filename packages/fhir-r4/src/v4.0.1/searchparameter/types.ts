@@ -85,8 +85,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   code: string;
 
   _code?: Element;
-  /** The base resource type(s) that this search parameter can be used against. */
-  base: string[];
+  base?: string[];
 
   _base?: Element[];
   /** The type of value that a search parameter may contain, and how the content is interpreted. */
@@ -127,11 +126,24 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
   _multipleAnd?: Element;
   /** Comparators supported for the search parameter. */
-  comparator?: any;
+  comparator?: ("eq" | "ne" | "gt" | "lt" | "ge" | "le" | "sa" | "eb" | "ap")[];
 
   _comparator?: Element[];
   /** A modifier supported for the search parameter. */
-  modifier?: any;
+  modifier?: (
+    | "missing"
+    | "exact"
+    | "contains"
+    | "not"
+    | "text"
+    | "in"
+    | "not-in"
+    | "below"
+    | "above"
+    | "type"
+    | "identifier"
+    | "ofType"
+  )[];
 
   _modifier?: Element[];
   /** Contains the names of any search parameters which may be chained to the containing search parameter. Chained parameters may be added to search parameters of type reference and specify that resources will only be returned if they contain a reference to a resource which matches the chained parameter value. Values for this field should be drawn from SearchParameter.code for a parameter on the target resource type. */

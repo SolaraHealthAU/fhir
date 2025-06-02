@@ -21,7 +21,10 @@ export function createStructureMapTargetSchema() {
       _element: createElementSchema().optional(),
       variable: primitives.getIdSchema().optional(),
       _variable: createElementSchema().optional(),
-      listMode: z.array(z.any()).optional(),
+      listMode: z
+        .enum(["first", "share", "last", "collate"])
+        .array()
+        .optional(),
       _listMode: z.array(createElementSchema()).optional(),
       listRuleId: primitives.getIdSchema().optional(),
       _listRuleId: createElementSchema().optional(),

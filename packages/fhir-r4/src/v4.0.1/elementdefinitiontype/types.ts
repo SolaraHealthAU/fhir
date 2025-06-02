@@ -15,10 +15,12 @@ export interface ElementDefinitionType {
   _code?: Element;
   /** Identifies a profile structure or implementation Guide that applies to the datatype this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the type SHALL conform to at least one profile defined in the implementation guide. */
   profile?: string[];
+  _profile?: Element[];
   /** Used when the type is "Reference" or "canonical", and identifies a profile structure or implementation Guide that applies to the target of the reference this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the target resource SHALL conform to at least one profile defined in the implementation guide. */
   targetProfile?: string[];
+  _targetProfile?: Element[];
   /** If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle. */
-  aggregation?: any;
+  aggregation?: ("contained" | "referenced" | "bundled")[];
 
   _aggregation?: Element[];
   /** Whether this reference needs to be version specific or version independent, or whether either can be used. */

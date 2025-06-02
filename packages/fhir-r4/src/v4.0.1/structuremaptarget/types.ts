@@ -27,7 +27,7 @@ export interface StructureMapTarget {
 
   _variable?: Element;
 
-  listMode?: any;
+  listMode?: ("first" | "share" | "last" | "collate")[];
 
   _listMode?: Element[];
 

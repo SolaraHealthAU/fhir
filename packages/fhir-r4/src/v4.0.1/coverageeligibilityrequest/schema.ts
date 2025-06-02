@@ -38,7 +38,9 @@ export function createCoverageEligibilityRequestSchema() {
         status: primitives.getCodeSchema(),
         _status: createElementSchema().optional(),
         priority: createCodeableConceptSchema().optional(),
-        purpose: z.array(z.any()),
+        purpose: z
+          .enum(["auth-requirements", "benefits", "discovery", "validation"])
+          .array(),
         _purpose: z.array(createElementSchema()).optional(),
         patient: createReferenceSchema(),
         servicedDate: z.string().optional(),

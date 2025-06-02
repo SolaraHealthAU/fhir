@@ -49,7 +49,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   /** When the requestor expects the processor to complete processing. */
   priority?: CodeableConcept;
   /** Code to specify whether requesting: prior authorization requirements for some service categories or billing codes; benefits for coverages specified or discovered; discovery and return of coverages for the patient; and/or validation that the specified coverage is in-force at the date/period specified or 'now' if not specified. */
-  purpose: any;
+  purpose: ("auth-requirements" | "benefits" | "discovery" | "validation")[];
 
   _purpose?: Element[];
   /** The party who is the beneficiary of the supplied coverage and for whom eligibility is sought. */

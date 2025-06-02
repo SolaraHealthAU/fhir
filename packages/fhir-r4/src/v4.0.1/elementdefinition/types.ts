@@ -55,7 +55,7 @@ export interface ElementDefinition {
 
   _path?: Element;
   /** Codes that define how this element is represented in instances, when the deviation varies from the normal case. */
-  representation?: any;
+  representation?: ("xmlAttr" | "xmlText" | "typeAttr" | "cdaText" | "xhtml")[];
 
   _representation?: Element[];
   /** The name of this element definition slice, when slicing is working. The name must be a token with no dots or spaces. This is a unique name referring to a specific set of constraints applied to this element, used to provide a name to different slices of the same element. */

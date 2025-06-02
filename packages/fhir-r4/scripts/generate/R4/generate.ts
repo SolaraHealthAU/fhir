@@ -80,7 +80,7 @@ const dataElementsLookup = dataElements.entry.reduce(
 
 const primitives = Object.keys(spec.definitions ?? {}).filter((key) => /^[a-z]{1}/.test(key));
 const dataTypes = Object.keys(spec.definitions ?? {}).filter((key) => /^[A-Z]{1}/.test(key));
-const preferredLazy = []; // ['Element', 'Extension', 'Identifier'];
+const preferredLazy: string[] = []; // ['Element', 'Extension', 'Identifier'];
 const extendedPrimitives = ['string', 'number', 'boolean'].concat(primitives);
 
 /* -------------------------------------------------------------------------- */
@@ -221,6 +221,19 @@ function mapProperty(
     }
 
     if (propertyDefinition?.type === 'array') {
+      if (
+        propertyDefinition.items != null &&
+        'enum' in propertyDefinition.items &&
+        Array.isArray(propertyDefinition.items.enum)
+      ) {
+        return {
+          property: propertyKey,
+          type: 'array',
+          path: pathVal,
+          itemsEnum: propertyDefinition.items.enum as string[],
+        };
+      }
+
       const items = Array.isArray(propertyDefinition.items)
         ? propertyDefinition.items
         : [propertyDefinition.items];
@@ -429,6 +442,10 @@ function outputZodProperty(property: Property, resourceType: string): string {
     return `${property.property}: z.array(${itemReferences})${postfix}`;
   }
 
+  if (property.type === 'array' && property.itemsEnum != null) {
+    return `${property.property}: z.enum([${property.itemsEnum.map((e) => `'${e}'`).join(', ')}]).array()${postfix}`;
+  }
+
   if (property.type === 'reference' && property.ref != null) {
     if (primitives.includes(property.ref)) {
       return `${property.property}: ${referenceCreateTypeFunction(property.ref)}()${postfix}`;
@@ -494,6 +511,12 @@ function outputInterfaceType(property: Property, resourceType: string): string {
     }
   }
 
+  if (property.type === 'array' && property.itemsEnum != null) {
+    return `${comment}\n  ${property.property}${optional}: (${property.itemsEnum
+      .map((e) => `'${e}'`)
+      .join(' | ')})[]`;
+  }
+
   if (property.type === 'reference' && property.ref != null) {
     return `${comment}\n  ${property.property}${optional}: ${createTypeName(property.ref, true)}`;
   }
@@ -508,6 +531,36 @@ function outputInterfaceType(property: Property, resourceType: string): string {
 
 type Definition = (typeof definitions)[number];
 
+function interceptAdditionalElementsZod(property: Property, resourceType: string): string {
+  const result = outputZodProperty(property, resourceType);
+
+  if (resourceType === 'QuestionnaireItem' && property.property === 'linkId') {
+    // There appears to be some circumstances where linkId is not present (in examples, mainly in display )
+    return `linkId: primitives.getStringSchema()`;
+  }
+
+  if (resourceType === 'SearchParameter' && property.property === 'base') {
+    return `base: z.array(primitives.getCodeSchema()).optional()`;
+  }
+
+  if (resourceType === 'ExampleScenarioInstance' && property.property === 'resourceType') {
+    return `resourceType: primitives.getCodeSchema()`;
+  }
+
+  if (resourceType === 'ElementDefinitionType') {
+    // Edge cases, found in ElementDefinition_Type examples
+    if (property.property === 'profile') {
+      return `${result},\n  _profile: z.array(createElementSchema()).optional()`;
+    }
+
+    if (property.property === 'targetProfile') {
+      return `${result},\n  _targetProfile: z.array(createElementSchema()).optional()`;
+    }
+  }
+
+  return result;
+}
+
 /**
  * Outputs a combined string for Zod and interface definitions of a single type.
  */
@@ -519,7 +572,7 @@ function outputZodType(type: Definition): string {
 export function ${functionName}() {
   return getCachedSchema('${typeName}', () => {
     const baseSchema: z.ZodType<types.${typeName}> = z.strictObject({
-      ${type.properties.map((k) => outputZodProperty(k, type.type)).join(',\n    ')}
+      ${type.properties.map((k) => interceptAdditionalElementsZod(k, type.type)).join(',\n    ')}
     });
 
     return baseSchema;
@@ -528,11 +581,41 @@ export function ${functionName}() {
   `;
 }
 
+function interceptAdditionalElements(property: Property, resourceType: string): string {
+  const result = outputInterfaceType(property, resourceType);
+
+  if (resourceType === 'QuestionnaireItem' && property.property === 'linkId') {
+    // There appears to be some circumstances where linkId is not present (in examples, mainly in display )
+    return `linkId?: string`;
+  }
+
+  if (resourceType === 'SearchParameter' && property.property === 'base') {
+    return `base?: string[]`;
+  }
+
+  if (resourceType === 'ExampleScenarioInstance' && property.property === 'resourceType') {
+    return `resourceType: string`;
+  }
+
+  if (resourceType === 'ElementDefinitionType') {
+    // Edge cases, found in ElementDefinition_Type examples
+    if (property.property === 'profile') {
+      return `${result};\n  _profile?: Element[]`;
+    }
+
+    if (property.property === 'targetProfile') {
+      return `${result};\n  _targetProfile?: Element[]`;
+    }
+  }
+
+  return result;
+}
+
 function outputType(type: Definition): string {
   return `
 ${type.description ? `/** ${type.description} */` : ''}
 export interface ${type.type} {
-  ${type.properties.map((k) => outputInterfaceType(k, type.type)).join(';\n  ')}
+  ${type.properties.map((k) => interceptAdditionalElements(k, type.type)).join(';\n  ')}
 }
 `;
 }

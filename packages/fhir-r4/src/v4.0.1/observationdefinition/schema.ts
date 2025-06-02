@@ -34,7 +34,22 @@ export function createObservationDefinitionSchema() {
       category: z.array(createCodeableConceptSchema()).optional(),
       code: createCodeableConceptSchema(),
       identifier: z.array(createIdentifierSchema()).optional(),
-      permittedDataType: z.array(z.any()).optional(),
+      permittedDataType: z
+        .enum([
+          "Quantity",
+          "CodeableConcept",
+          "string",
+          "boolean",
+          "integer",
+          "Range",
+          "Ratio",
+          "SampledData",
+          "time",
+          "dateTime",
+          "Period",
+        ])
+        .array()
+        .optional(),
       _permittedDataType: z.array(createElementSchema()).optional(),
       multipleResultsAllowed: primitives.getBooleanSchema().optional(),
       _multipleResultsAllowed: createElementSchema().optional(),

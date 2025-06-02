@@ -17,7 +17,7 @@ export function createExampleScenarioInstanceSchema() {
         modifierExtension: z.array(createExtensionSchema()).optional(),
         resourceId: primitives.getStringSchema(),
         _resourceId: createElementSchema().optional(),
-        resourceType: z.literal("ExampleScenarioInstance"),
+        resourceType: primitives.getCodeSchema(),
         _resourceType: createElementSchema().optional(),
         name: primitives.getStringSchema().optional(),
         _name: createElementSchema().optional(),

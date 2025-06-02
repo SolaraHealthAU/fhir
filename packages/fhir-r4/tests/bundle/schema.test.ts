@@ -26,6 +26,7 @@ import {
   PatientExamplesGeneral,
   PractitionerExamplesGeneral,
   PractitionerroleExamplesGeneral,
+  XdsExample,
 } from "./fixture";
 import { z } from "zod/v4";
 
@@ -365,6 +366,18 @@ describe("Bundle Schema Validation", () => {
       console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
       throw new Error(
         `Schema validation failed for PractitionerroleExamplesGeneral: ${result.error.message}`,
+      );
+    }
+    expect(result.success).toBe(true);
+  });
+
+  it("should validate XdsExample fixture", () => {
+    const result = createBundleSchema().safeParse(XdsExample);
+    if (!result.success) {
+      console.error("Validation failed for XdsExample:");
+      console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
+      throw new Error(
+        `Schema validation failed for XdsExample: ${result.error.message}`,
       );
     }
     expect(result.success).toBe(true);

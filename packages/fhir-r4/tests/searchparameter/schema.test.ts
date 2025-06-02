@@ -20,6 +20,11 @@ import {
   SearchparameterExampleReference,
   SearchparameterExample,
   SearchparameterFilter,
+  ValuesetExtensionsValuesetAuthor,
+  ValuesetExtensionsValuesetEffective,
+  ValuesetExtensionsValuesetEnd,
+  ValuesetExtensionsValuesetKeyword,
+  ValuesetExtensionsValuesetWorkflow,
 } from "./fixture";
 import { z } from "zod/v4";
 
@@ -325,6 +330,80 @@ describe("SearchParameter Schema Validation", () => {
       console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
       throw new Error(
         `Schema validation failed for SearchparameterFilter: ${result.error.message}`,
+      );
+    }
+    expect(result.success).toBe(true);
+  });
+
+  it("should validate ValuesetExtensionsValuesetAuthor fixture", () => {
+    const result = createSearchParameterSchema().safeParse(
+      ValuesetExtensionsValuesetAuthor,
+    );
+    if (!result.success) {
+      console.error("Validation failed for ValuesetExtensionsValuesetAuthor:");
+      console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
+      throw new Error(
+        `Schema validation failed for ValuesetExtensionsValuesetAuthor: ${result.error.message}`,
+      );
+    }
+    expect(result.success).toBe(true);
+  });
+
+  it("should validate ValuesetExtensionsValuesetEffective fixture", () => {
+    const result = createSearchParameterSchema().safeParse(
+      ValuesetExtensionsValuesetEffective,
+    );
+    if (!result.success) {
+      console.error(
+        "Validation failed for ValuesetExtensionsValuesetEffective:",
+      );
+      console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
+      throw new Error(
+        `Schema validation failed for ValuesetExtensionsValuesetEffective: ${result.error.message}`,
+      );
+    }
+    expect(result.success).toBe(true);
+  });
+
+  it("should validate ValuesetExtensionsValuesetEnd fixture", () => {
+    const result = createSearchParameterSchema().safeParse(
+      ValuesetExtensionsValuesetEnd,
+    );
+    if (!result.success) {
+      console.error("Validation failed for ValuesetExtensionsValuesetEnd:");
+      console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
+      throw new Error(
+        `Schema validation failed for ValuesetExtensionsValuesetEnd: ${result.error.message}`,
+      );
+    }
+    expect(result.success).toBe(true);
+  });
+
+  it("should validate ValuesetExtensionsValuesetKeyword fixture", () => {
+    const result = createSearchParameterSchema().safeParse(
+      ValuesetExtensionsValuesetKeyword,
+    );
+    if (!result.success) {
+      console.error("Validation failed for ValuesetExtensionsValuesetKeyword:");
+      console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
+      throw new Error(
+        `Schema validation failed for ValuesetExtensionsValuesetKeyword: ${result.error.message}`,
+      );
+    }
+    expect(result.success).toBe(true);
+  });
+
+  it("should validate ValuesetExtensionsValuesetWorkflow fixture", () => {
+    const result = createSearchParameterSchema().safeParse(
+      ValuesetExtensionsValuesetWorkflow,
+    );
+    if (!result.success) {
+      console.error(
+        "Validation failed for ValuesetExtensionsValuesetWorkflow:",
+      );
+      console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
+      throw new Error(
+        `Schema validation failed for ValuesetExtensionsValuesetWorkflow: ${result.error.message}`,
       );
     }
     expect(result.success).toBe(true);

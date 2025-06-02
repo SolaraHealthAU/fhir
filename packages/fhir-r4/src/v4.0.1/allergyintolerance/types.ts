@@ -52,7 +52,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 
   _type?: Element;
   /** Category of the identified substance. */
-  category?: any;
+  category?: ("food" | "medication" | "environment" | "biologic")[];
 
   _category?: Element[];
   /** Estimate of the potential clinical harm, or seriousness, of the reaction to the identified substance. */

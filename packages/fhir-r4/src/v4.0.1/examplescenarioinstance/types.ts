@@ -18,8 +18,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   resourceId: string;
 
   _resourceId?: Element;
-  /** The type of the resource. */
-  resourceType: `ExampleScenarioInstance`;
+  resourceType: string;
 
   _resourceType?: Element;
   /** A short name for the resource instance. */

@@ -8,6 +8,8 @@ interface FHIRResource {
   [key: string]: any;
 }
 
+const excludeExamples: string[] = [];
+
 interface FixtureContent {
   imports: Set<string>;
   exports: string[];
@@ -95,7 +97,7 @@ async function generateFixtures(): Promise<void> {
     console.log(`Found ${jsonFiles.length} JSON files to process`);
 
     let processedCount = 0;
-    const maxFilesToProcess = 2000; // Limit to prevent memory issues
+    const maxFilesToProcess = 3000; // Limit to prevent memory issues
 
     for (const file of jsonFiles) {
       if (processedCount >= maxFilesToProcess) {
@@ -124,6 +126,12 @@ async function generateFixtures(): Promise<void> {
 
         const resourceType = resource.resourceType;
         const constantName = toConstantName(file);
+
+        // Check if this example should be excluded
+        if (excludeExamples.includes(constantName)) {
+          console.log(`Skipping ${file}: Example '${constantName}' is in exclude list`);
+          continue;
+        }
 
         // Validate the constant name
         if (!/^[A-Z][a-zA-Z0-9_]*$/.test(constantName)) {

@@ -117,6 +117,8 @@ import {
   SupplydeliveryQuestionnaire,
   SupplyrequestQuestionnaire,
   SynthesisQuestionnaire,
+  VerificationresultQuestionnaire,
+  VisionprescriptionQuestionnaire,
 } from "./fixture";
 import { z } from "zod/v4";
 
@@ -1760,6 +1762,34 @@ describe("Questionnaire Schema Validation", () => {
       console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
       throw new Error(
         `Schema validation failed for SynthesisQuestionnaire: ${result.error.message}`,
+      );
+    }
+    expect(result.success).toBe(true);
+  });
+
+  it("should validate VerificationresultQuestionnaire fixture", () => {
+    const result = createQuestionnaireSchema().safeParse(
+      VerificationresultQuestionnaire,
+    );
+    if (!result.success) {
+      console.error("Validation failed for VerificationresultQuestionnaire:");
+      console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
+      throw new Error(
+        `Schema validation failed for VerificationresultQuestionnaire: ${result.error.message}`,
+      );
+    }
+    expect(result.success).toBe(true);
+  });
+
+  it("should validate VisionprescriptionQuestionnaire fixture", () => {
+    const result = createQuestionnaireSchema().safeParse(
+      VisionprescriptionQuestionnaire,
+    );
+    if (!result.success) {
+      console.error("Validation failed for VisionprescriptionQuestionnaire:");
+      console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
+      throw new Error(
+        `Schema validation failed for VisionprescriptionQuestionnaire: ${result.error.message}`,
       );
     }
     expect(result.success).toBe(true);

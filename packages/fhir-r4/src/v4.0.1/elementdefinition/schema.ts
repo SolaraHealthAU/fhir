@@ -55,7 +55,10 @@ export function createElementDefinitionSchema() {
       modifierExtension: z.array(createExtensionSchema()).optional(),
       path: primitives.getStringSchema(),
       _path: createElementSchema().optional(),
-      representation: z.array(z.any()).optional(),
+      representation: z
+        .enum(["xmlAttr", "xmlText", "typeAttr", "cdaText", "xhtml"])
+        .array()
+        .optional(),
       _representation: z.array(createElementSchema()).optional(),
       sliceName: primitives.getStringSchema().optional(),
       _sliceName: createElementSchema().optional(),

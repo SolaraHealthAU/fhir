@@ -13,7 +13,7 @@ export interface HealthcareServiceAvailableTime {
 Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
   modifierExtension?: Extension[];
   /** Indicates which days of the week are available between the start and end Times. */
-  daysOfWeek?: any;
+  daysOfWeek?: ("mon" | "tue" | "wed" | "thu" | "fri" | "sat" | "sun")[];
 
   _daysOfWeek?: Element[];
   /** Is this always available? (hence times are irrelevant) e.g. 24 hour service. */

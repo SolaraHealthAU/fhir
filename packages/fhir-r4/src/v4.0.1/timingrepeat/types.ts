@@ -70,7 +70,34 @@ export interface TimingRepeat {
 
   _timeOfDay?: Element[];
   /** An approximate time period during the day, potentially linked to an event of daily living that indicates when the action should occur. */
-  when?: any;
+  when?: (
+    | "MORN"
+    | "MORN.early"
+    | "MORN.late"
+    | "NOON"
+    | "AFT"
+    | "AFT.early"
+    | "AFT.late"
+    | "EVE"
+    | "EVE.early"
+    | "EVE.late"
+    | "NIGHT"
+    | "PHS"
+    | "HS"
+    | "WAKE"
+    | "C"
+    | "CM"
+    | "CD"
+    | "CV"
+    | "AC"
+    | "ACM"
+    | "ACD"
+    | "ACV"
+    | "PC"
+    | "PCM"
+    | "PCD"
+    | "PCV"
+  )[];
 
   _when?: Element[];
   /** The number of minutes from the event. If the event code does not indicate whether the minutes is before or after the event, then the offset is assumed to be after the event. */

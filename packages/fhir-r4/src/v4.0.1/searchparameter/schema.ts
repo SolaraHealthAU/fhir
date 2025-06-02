@@ -54,7 +54,7 @@ export function createSearchParameterSchema() {
       _purpose: createElementSchema().optional(),
       code: primitives.getCodeSchema(),
       _code: createElementSchema().optional(),
-      base: z.array(primitives.getCodeSchema()),
+      base: z.array(primitives.getCodeSchema()).optional(),
       _base: z.array(createElementSchema()).optional(),
       type: z.enum([
         "number",
@@ -82,9 +82,28 @@ export function createSearchParameterSchema() {
       _multipleOr: createElementSchema().optional(),
       multipleAnd: primitives.getBooleanSchema().optional(),
       _multipleAnd: createElementSchema().optional(),
-      comparator: z.array(z.any()).optional(),
+      comparator: z
+        .enum(["eq", "ne", "gt", "lt", "ge", "le", "sa", "eb", "ap"])
+        .array()
+        .optional(),
       _comparator: z.array(createElementSchema()).optional(),
-      modifier: z.array(z.any()).optional(),
+      modifier: z
+        .enum([
+          "missing",
+          "exact",
+          "contains",
+          "not",
+          "text",
+          "in",
+          "not-in",
+          "below",
+          "above",
+          "type",
+          "identifier",
+          "ofType",
+        ])
+        .array()
+        .optional(),
       _modifier: z.array(createElementSchema()).optional(),
       chain: z.array(primitives.getStringSchema()).optional(),
       _chain: z.array(createElementSchema()).optional(),
