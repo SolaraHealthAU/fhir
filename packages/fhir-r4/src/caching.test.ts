@@ -1,5 +1,9 @@
 import { z } from 'zod/v4';
-import { createAccountSchema } from './v4.0.1/account/schema';
+import {
+  createAccountSchema,
+  createAccountCoverageSchema,
+  createAccountGuarantorSchema,
+} from './v4.0.1/account/schema';
 import { getCachedSchema, clearSchemaCache, getSchemaCacheStats } from './v4.0.1/schema-cache';
 
 describe('Schema Caching', () => {
@@ -139,6 +143,38 @@ describe('Schema Caching', () => {
       const schemas = [schema1, schema2, schema3];
       const uniqueSchemas = new Set(schemas);
       expect(uniqueSchemas.size).toBe(3);
+    });
+
+    it('should handle empty arrays as dependencies', () => {
+      // Test both direct usage and real-world examples
+      const factory = () => z.object({ test: z.string() });
+
+      // Direct test with empty arrays
+      const schema1 = getCachedSchema('test-empty-array', [], factory);
+      const schema2 = getCachedSchema('test-empty-array', [], factory);
+
+      // Should be cached (same empty array dependencies)
+      expect(schema1).toBe(schema2);
+
+      // Test with real examples from the codebase
+      const coverageSchema1 = createAccountCoverageSchema();
+      const coverageSchema2 = createAccountCoverageSchema();
+      const guarantorSchema1 = createAccountGuarantorSchema();
+      const guarantorSchema2 = createAccountGuarantorSchema();
+
+      // Each schema type should be cached independently
+      expect(coverageSchema1).toBe(coverageSchema2);
+      expect(guarantorSchema1).toBe(guarantorSchema2);
+
+      // But different schema types should be different
+      expect(coverageSchema1).not.toBe(guarantorSchema1);
+
+      // Test that empty array is different from undefined dependencies
+      const schemaWithoutDeps = getCachedSchema('test-no-deps', factory);
+      const schemaWithEmptyArray = getCachedSchema('test-no-deps', [], factory);
+
+      // These should be different because undefined vs [] dependencies
+      expect(schemaWithoutDeps).not.toBe(schemaWithEmptyArray);
     });
 
     it('should demonstrate Zod type dependency behavior', () => {
