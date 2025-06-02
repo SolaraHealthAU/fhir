@@ -9,8 +9,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("TestScript Schema Validation", () => {
-  it("should validate TestscriptExampleHistory fixture", () => {
+describe("Testscript Group Schema Validation", () => {
+  it("should validate TestscriptExampleHistory fixture (TestScript)", () => {
     const result = createTestScriptSchema().safeParse(TestscriptExampleHistory);
     if (!result.success) {
       console.error("Validation failed for TestscriptExampleHistory:");
@@ -22,7 +22,7 @@ describe("TestScript Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate TestscriptExampleMultisystem fixture", () => {
+  it("should validate TestscriptExampleMultisystem fixture (TestScript)", () => {
     const result = createTestScriptSchema().safeParse(
       TestscriptExampleMultisystem,
     );
@@ -36,7 +36,7 @@ describe("TestScript Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate TestscriptExampleReadtest fixture", () => {
+  it("should validate TestscriptExampleReadtest fixture (TestScript)", () => {
     const result = createTestScriptSchema().safeParse(
       TestscriptExampleReadtest,
     );
@@ -50,7 +50,7 @@ describe("TestScript Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate TestscriptExampleSearch fixture", () => {
+  it("should validate TestscriptExampleSearch fixture (TestScript)", () => {
     const result = createTestScriptSchema().safeParse(TestscriptExampleSearch);
     if (!result.success) {
       console.error("Validation failed for TestscriptExampleSearch:");
@@ -62,7 +62,7 @@ describe("TestScript Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate TestscriptExampleUpdate fixture", () => {
+  it("should validate TestscriptExampleUpdate fixture (TestScript)", () => {
     const result = createTestScriptSchema().safeParse(TestscriptExampleUpdate);
     if (!result.success) {
       console.error("Validation failed for TestscriptExampleUpdate:");
@@ -74,7 +74,7 @@ describe("TestScript Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate TestscriptExample fixture", () => {
+  it("should validate TestscriptExample fixture (TestScript)", () => {
     const result = createTestScriptSchema().safeParse(TestscriptExample);
     if (!result.success) {
       console.error("Validation failed for TestscriptExample:");

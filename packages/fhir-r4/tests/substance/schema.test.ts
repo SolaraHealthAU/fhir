@@ -9,8 +9,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Substance Schema Validation", () => {
-  it("should validate SubstanceExampleAmoxicillinClavulanate fixture", () => {
+describe("Substance Group Schema Validation", () => {
+  it("should validate SubstanceExampleAmoxicillinClavulanate fixture (Substance)", () => {
     const result = createSubstanceSchema().safeParse(
       SubstanceExampleAmoxicillinClavulanate,
     );
@@ -26,7 +26,7 @@ describe("Substance Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SubstanceExampleF201Dust fixture", () => {
+  it("should validate SubstanceExampleF201Dust fixture (Substance)", () => {
     const result = createSubstanceSchema().safeParse(SubstanceExampleF201Dust);
     if (!result.success) {
       console.error("Validation failed for SubstanceExampleF201Dust:");
@@ -38,7 +38,7 @@ describe("Substance Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SubstanceExampleF202Staphylococcus fixture", () => {
+  it("should validate SubstanceExampleF202Staphylococcus fixture (Substance)", () => {
     const result = createSubstanceSchema().safeParse(
       SubstanceExampleF202Staphylococcus,
     );
@@ -54,7 +54,7 @@ describe("Substance Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SubstanceExampleF203Potassium fixture", () => {
+  it("should validate SubstanceExampleF203Potassium fixture (Substance)", () => {
     const result = createSubstanceSchema().safeParse(
       SubstanceExampleF203Potassium,
     );
@@ -68,7 +68,7 @@ describe("Substance Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SubstanceExampleSilverNitrateProduct fixture", () => {
+  it("should validate SubstanceExampleSilverNitrateProduct fixture (Substance)", () => {
     const result = createSubstanceSchema().safeParse(
       SubstanceExampleSilverNitrateProduct,
     );
@@ -84,7 +84,7 @@ describe("Substance Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SubstanceExample fixture", () => {
+  it("should validate SubstanceExample fixture (Substance)", () => {
     const result = createSubstanceSchema().safeParse(SubstanceExample);
     if (!result.success) {
       console.error("Validation failed for SubstanceExample:");

@@ -14,8 +14,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("CarePlan Schema Validation", () => {
-  it("should validate CareplanExampleGpvisit fixture", () => {
+describe("Careplan Group Schema Validation", () => {
+  it("should validate CareplanExampleGpvisit fixture (CarePlan)", () => {
     const result = createCarePlanSchema().safeParse(CareplanExampleGpvisit);
     if (!result.success) {
       console.error("Validation failed for CareplanExampleGpvisit:");
@@ -27,7 +27,7 @@ describe("CarePlan Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CareplanExampleF001Heart fixture", () => {
+  it("should validate CareplanExampleF001Heart fixture (CarePlan)", () => {
     const result = createCarePlanSchema().safeParse(CareplanExampleF001Heart);
     if (!result.success) {
       console.error("Validation failed for CareplanExampleF001Heart:");
@@ -39,7 +39,7 @@ describe("CarePlan Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CareplanExampleF002Lung fixture", () => {
+  it("should validate CareplanExampleF002Lung fixture (CarePlan)", () => {
     const result = createCarePlanSchema().safeParse(CareplanExampleF002Lung);
     if (!result.success) {
       console.error("Validation failed for CareplanExampleF002Lung:");
@@ -51,7 +51,7 @@ describe("CarePlan Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CareplanExampleF003Pharynx fixture", () => {
+  it("should validate CareplanExampleF003Pharynx fixture (CarePlan)", () => {
     const result = createCarePlanSchema().safeParse(CareplanExampleF003Pharynx);
     if (!result.success) {
       console.error("Validation failed for CareplanExampleF003Pharynx:");
@@ -63,7 +63,7 @@ describe("CarePlan Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CareplanExampleF201Renal fixture", () => {
+  it("should validate CareplanExampleF201Renal fixture (CarePlan)", () => {
     const result = createCarePlanSchema().safeParse(CareplanExampleF201Renal);
     if (!result.success) {
       console.error("Validation failed for CareplanExampleF201Renal:");
@@ -75,7 +75,7 @@ describe("CarePlan Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CareplanExampleF202Malignancy fixture", () => {
+  it("should validate CareplanExampleF202Malignancy fixture (CarePlan)", () => {
     const result = createCarePlanSchema().safeParse(
       CareplanExampleF202Malignancy,
     );
@@ -89,7 +89,7 @@ describe("CarePlan Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CareplanExampleF203Sepsis fixture", () => {
+  it("should validate CareplanExampleF203Sepsis fixture (CarePlan)", () => {
     const result = createCarePlanSchema().safeParse(CareplanExampleF203Sepsis);
     if (!result.success) {
       console.error("Validation failed for CareplanExampleF203Sepsis:");
@@ -101,7 +101,7 @@ describe("CarePlan Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CareplanExampleIntegrated fixture", () => {
+  it("should validate CareplanExampleIntegrated fixture (CarePlan)", () => {
     const result = createCarePlanSchema().safeParse(CareplanExampleIntegrated);
     if (!result.success) {
       console.error("Validation failed for CareplanExampleIntegrated:");
@@ -113,7 +113,7 @@ describe("CarePlan Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CareplanExampleObesityNarrative fixture", () => {
+  it("should validate CareplanExampleObesityNarrative fixture (CarePlan)", () => {
     const result = createCarePlanSchema().safeParse(
       CareplanExampleObesityNarrative,
     );
@@ -127,7 +127,7 @@ describe("CarePlan Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CareplanExamplePregnancy fixture", () => {
+  it("should validate CareplanExamplePregnancy fixture (CarePlan)", () => {
     const result = createCarePlanSchema().safeParse(CareplanExamplePregnancy);
     if (!result.success) {
       console.error("Validation failed for CareplanExamplePregnancy:");
@@ -139,7 +139,7 @@ describe("CarePlan Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CareplanExample fixture", () => {
+  it("should validate CareplanExample fixture (CarePlan)", () => {
     const result = createCarePlanSchema().safeParse(CareplanExample);
     if (!result.success) {
       console.error("Validation failed for CareplanExample:");

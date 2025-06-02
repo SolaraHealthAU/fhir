@@ -11,7 +11,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createCompartmentDefinitionResourceSchema } from "../compartmentdefinitionresource/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -61,6 +60,25 @@ export function createCompartmentDefinitionSchema() {
       _search: createElementSchema().optional(),
       resource: z.array(createCompartmentDefinitionResourceSchema()).optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createCompartmentDefinitionResourceSchema() {
+  return getCachedSchema("CompartmentDefinitionResource", () => {
+    const baseSchema: z.ZodType<types.CompartmentDefinitionResource> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        code: primitives.getCodeSchema(),
+        _code: createElementSchema().optional(),
+        param: z.array(primitives.getStringSchema()).optional(),
+        _param: z.array(createElementSchema()).optional(),
+        documentation: primitives.getStringSchema().optional(),
+        _documentation: createElementSchema().optional(),
+      });
 
     return baseSchema;
   });

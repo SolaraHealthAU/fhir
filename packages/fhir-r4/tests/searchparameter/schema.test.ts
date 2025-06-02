@@ -28,8 +28,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("SearchParameter Schema Validation", () => {
-  it("should validate CodesystemExtensionsCodesystemAuthor fixture", () => {
+describe("Searchparameter Group Schema Validation", () => {
+  it("should validate CodesystemExtensionsCodesystemAuthor fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       CodesystemExtensionsCodesystemAuthor,
     );
@@ -45,7 +45,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExtensionsCodesystemEffective fixture", () => {
+  it("should validate CodesystemExtensionsCodesystemEffective fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       CodesystemExtensionsCodesystemEffective,
     );
@@ -61,7 +61,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExtensionsCodesystemEnd fixture", () => {
+  it("should validate CodesystemExtensionsCodesystemEnd fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       CodesystemExtensionsCodesystemEnd,
     );
@@ -75,7 +75,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExtensionsCodesystemKeyword fixture", () => {
+  it("should validate CodesystemExtensionsCodesystemKeyword fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       CodesystemExtensionsCodesystemKeyword,
     );
@@ -91,7 +91,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExtensionsCodesystemWorkflow fixture", () => {
+  it("should validate CodesystemExtensionsCodesystemWorkflow fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       CodesystemExtensionsCodesystemWorkflow,
     );
@@ -107,7 +107,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DeviceExtensionsDeviceDin fixture", () => {
+  it("should validate DeviceExtensionsDeviceDin fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       DeviceExtensionsDeviceDin,
     );
@@ -121,7 +121,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DiagnosticreportGeneticDiagnosticreportAssessedCondition fixture", () => {
+  it("should validate DiagnosticreportGeneticDiagnosticreportAssessedCondition fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       DiagnosticreportGeneticDiagnosticreportAssessedCondition,
     );
@@ -137,7 +137,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationGeneticObservationAminoAcidChange fixture", () => {
+  it("should validate ObservationGeneticObservationAminoAcidChange fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       ObservationGeneticObservationAminoAcidChange,
     );
@@ -153,7 +153,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationGeneticObservationDnaVariant fixture", () => {
+  it("should validate ObservationGeneticObservationDnaVariant fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       ObservationGeneticObservationDnaVariant,
     );
@@ -169,7 +169,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationGeneticObservationGeneAminoAcidChange fixture", () => {
+  it("should validate ObservationGeneticObservationGeneAminoAcidChange fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       ObservationGeneticObservationGeneAminoAcidChange,
     );
@@ -185,7 +185,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationGeneticObservationGeneDnavariant fixture", () => {
+  it("should validate ObservationGeneticObservationGeneDnavariant fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       ObservationGeneticObservationGeneDnavariant,
     );
@@ -201,7 +201,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationGeneticObservationGeneIdentifier fixture", () => {
+  it("should validate ObservationGeneticObservationGeneIdentifier fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       ObservationGeneticObservationGeneIdentifier,
     );
@@ -217,7 +217,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExtensionsPatientAge fixture", () => {
+  it("should validate PatientExtensionsPatientAge fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       PatientExtensionsPatientAge,
     );
@@ -231,7 +231,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExtensionsPatientBirthorderboolean fixture", () => {
+  it("should validate PatientExtensionsPatientBirthorderboolean fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       PatientExtensionsPatientBirthorderboolean,
     );
@@ -247,7 +247,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExtensionsPatientMothersmaidenname fixture", () => {
+  it("should validate PatientExtensionsPatientMothersmaidenname fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       PatientExtensionsPatientMothersmaidenname,
     );
@@ -263,7 +263,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate QuestionnaireresponseExtensionsQuestionnaireresponseItemSubject fixture", () => {
+  it("should validate QuestionnaireresponseExtensionsQuestionnaireresponseItemSubject fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       QuestionnaireresponseExtensionsQuestionnaireresponseItemSubject,
     );
@@ -279,7 +279,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SearchparameterExampleExtension fixture", () => {
+  it("should validate SearchparameterExampleExtension fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       SearchparameterExampleExtension,
     );
@@ -293,7 +293,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SearchparameterExampleReference fixture", () => {
+  it("should validate SearchparameterExampleReference fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       SearchparameterExampleReference,
     );
@@ -307,7 +307,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SearchparameterExample fixture", () => {
+  it("should validate SearchparameterExample fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       SearchparameterExample,
     );
@@ -321,7 +321,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SearchparameterFilter fixture", () => {
+  it("should validate SearchparameterFilter fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       SearchparameterFilter,
     );
@@ -335,7 +335,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExtensionsValuesetAuthor fixture", () => {
+  it("should validate ValuesetExtensionsValuesetAuthor fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       ValuesetExtensionsValuesetAuthor,
     );
@@ -349,7 +349,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExtensionsValuesetEffective fixture", () => {
+  it("should validate ValuesetExtensionsValuesetEffective fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       ValuesetExtensionsValuesetEffective,
     );
@@ -365,7 +365,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExtensionsValuesetEnd fixture", () => {
+  it("should validate ValuesetExtensionsValuesetEnd fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       ValuesetExtensionsValuesetEnd,
     );
@@ -379,7 +379,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExtensionsValuesetKeyword fixture", () => {
+  it("should validate ValuesetExtensionsValuesetKeyword fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       ValuesetExtensionsValuesetKeyword,
     );
@@ -393,7 +393,7 @@ describe("SearchParameter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExtensionsValuesetWorkflow fixture", () => {
+  it("should validate ValuesetExtensionsValuesetWorkflow fixture (SearchParameter)", () => {
     const result = createSearchParameterSchema().safeParse(
       ValuesetExtensionsValuesetWorkflow,
     );

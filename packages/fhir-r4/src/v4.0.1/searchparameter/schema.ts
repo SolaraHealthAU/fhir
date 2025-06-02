@@ -12,7 +12,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createSearchParameterComponentSchema } from "../searchparametercomponent/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -109,6 +108,22 @@ export function createSearchParameterSchema() {
       _chain: z.array(createElementSchema()).optional(),
       component: z.array(createSearchParameterComponentSchema()).optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createSearchParameterComponentSchema() {
+  return getCachedSchema("SearchParameterComponent", () => {
+    const baseSchema: z.ZodType<types.SearchParameterComponent> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        definition: primitives.getCanonicalSchema(),
+        expression: primitives.getStringSchema(),
+        _expression: createElementSchema().optional(),
+      });
 
     return baseSchema;
   });

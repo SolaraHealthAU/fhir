@@ -2,8 +2,8 @@ import { createRiskEvidenceSynthesisSchema } from "../../src";
 import { RiskevidencesynthesisExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("RiskEvidenceSynthesis Schema Validation", () => {
-  it("should validate RiskevidencesynthesisExample fixture", () => {
+describe("Riskevidencesynthesis Group Schema Validation", () => {
+  it("should validate RiskevidencesynthesisExample fixture (RiskEvidenceSynthesis)", () => {
     const result = createRiskEvidenceSynthesisSchema().safeParse(
       RiskevidencesynthesisExample,
     );

@@ -2,8 +2,8 @@ import { createResearchStudySchema } from "../../src";
 import { ResearchstudyExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("ResearchStudy Schema Validation", () => {
-  it("should validate ResearchstudyExample fixture", () => {
+describe("Researchstudy Group Schema Validation", () => {
+  it("should validate ResearchstudyExample fixture (ResearchStudy)", () => {
     const result = createResearchStudySchema().safeParse(ResearchstudyExample);
     if (!result.success) {
       console.error("Validation failed for ResearchstudyExample:");

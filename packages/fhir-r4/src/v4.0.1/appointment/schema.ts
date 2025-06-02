@@ -13,7 +13,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createAppointmentParticipantSchema } from "../appointmentparticipant/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -73,6 +72,57 @@ export function createAppointmentSchema() {
       basedOn: z.array(createReferenceSchema()).optional(),
       participant: z.array(createAppointmentParticipantSchema()),
       requestedPeriod: z.array(createPeriodSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createAppointmentParticipantSchema() {
+  return getCachedSchema("AppointmentParticipant", () => {
+    const baseSchema: z.ZodType<types.AppointmentParticipant> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      type: z.array(createCodeableConceptSchema()).optional(),
+      actor: createReferenceSchema().optional(),
+      required: z.enum(["required", "optional", "information-only"]).optional(),
+      _required: createElementSchema().optional(),
+      status: z.enum(["accepted", "declined", "tentative", "needs-action"]),
+      _status: createElementSchema().optional(),
+      period: createPeriodSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createAppointmentResponseSchema() {
+  return getCachedSchema("AppointmentResponse", () => {
+    const baseSchema: z.ZodType<types.AppointmentResponse> = z.strictObject({
+      resourceType: z.literal("AppointmentResponse"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: createElementSchema().optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: createElementSchema().optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(createResourceListSchema()).optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      identifier: z.array(createIdentifierSchema()).optional(),
+      appointment: createReferenceSchema(),
+      start: primitives.getInstantSchema().optional(),
+      _start: createElementSchema().optional(),
+      end: primitives.getInstantSchema().optional(),
+      _end: createElementSchema().optional(),
+      participantType: z.array(createCodeableConceptSchema()).optional(),
+      actor: createReferenceSchema().optional(),
+      participantStatus: primitives.getCodeSchema(),
+      _participantStatus: createElementSchema().optional(),
+      comment: primitives.getStringSchema().optional(),
+      _comment: createElementSchema().optional(),
     });
 
     return baseSchema;

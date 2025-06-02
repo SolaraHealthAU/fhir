@@ -6,8 +6,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("MessageDefinition Schema Validation", () => {
-  it("should validate MessagedefinitionExample fixture", () => {
+describe("Messagedefinition Group Schema Validation", () => {
+  it("should validate MessagedefinitionExample fixture (MessageDefinition)", () => {
     const result = createMessageDefinitionSchema().safeParse(
       MessagedefinitionExample,
     );
@@ -21,7 +21,7 @@ describe("MessageDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MessagedefinitionPatientLinkNotification fixture", () => {
+  it("should validate MessagedefinitionPatientLinkNotification fixture (MessageDefinition)", () => {
     const result = createMessageDefinitionSchema().safeParse(
       MessagedefinitionPatientLinkNotification,
     );
@@ -37,7 +37,7 @@ describe("MessageDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MessagedefinitionPatientLinkResponse fixture", () => {
+  it("should validate MessagedefinitionPatientLinkResponse fixture (MessageDefinition)", () => {
     const result = createMessageDefinitionSchema().safeParse(
       MessagedefinitionPatientLinkResponse,
     );

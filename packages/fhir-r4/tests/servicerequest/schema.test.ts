@@ -23,8 +23,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("ServiceRequest Schema Validation", () => {
-  it("should validate ServicerequestExampleAmbulation fixture", () => {
+describe("Servicerequest Group Schema Validation", () => {
+  it("should validate ServicerequestExampleAmbulation fixture (ServiceRequest)", () => {
     const result = createServiceRequestSchema().safeParse(
       ServicerequestExampleAmbulation,
     );
@@ -38,7 +38,7 @@ describe("ServiceRequest Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestExampleAppendectomy fixture", () => {
+  it("should validate ServicerequestExampleAppendectomy fixture (ServiceRequest)", () => {
     const result = createServiceRequestSchema().safeParse(
       ServicerequestExampleAppendectomy,
     );
@@ -52,7 +52,7 @@ describe("ServiceRequest Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestExampleColonoscopyBx fixture", () => {
+  it("should validate ServicerequestExampleColonoscopyBx fixture (ServiceRequest)", () => {
     const result = createServiceRequestSchema().safeParse(
       ServicerequestExampleColonoscopyBx,
     );
@@ -68,7 +68,7 @@ describe("ServiceRequest Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestExampleColonoscopy fixture", () => {
+  it("should validate ServicerequestExampleColonoscopy fixture (ServiceRequest)", () => {
     const result = createServiceRequestSchema().safeParse(
       ServicerequestExampleColonoscopy,
     );
@@ -82,7 +82,7 @@ describe("ServiceRequest Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestExampleDi fixture", () => {
+  it("should validate ServicerequestExampleDi fixture (ServiceRequest)", () => {
     const result = createServiceRequestSchema().safeParse(
       ServicerequestExampleDi,
     );
@@ -96,7 +96,7 @@ describe("ServiceRequest Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestExampleEdu fixture", () => {
+  it("should validate ServicerequestExampleEdu fixture (ServiceRequest)", () => {
     const result = createServiceRequestSchema().safeParse(
       ServicerequestExampleEdu,
     );
@@ -110,7 +110,7 @@ describe("ServiceRequest Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestExampleFt4 fixture", () => {
+  it("should validate ServicerequestExampleFt4 fixture (ServiceRequest)", () => {
     const result = createServiceRequestSchema().safeParse(
       ServicerequestExampleFt4,
     );
@@ -124,7 +124,7 @@ describe("ServiceRequest Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestExampleImplant fixture", () => {
+  it("should validate ServicerequestExampleImplant fixture (ServiceRequest)", () => {
     const result = createServiceRequestSchema().safeParse(
       ServicerequestExampleImplant,
     );
@@ -138,7 +138,7 @@ describe("ServiceRequest Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestExampleLipid fixture", () => {
+  it("should validate ServicerequestExampleLipid fixture (ServiceRequest)", () => {
     const result = createServiceRequestSchema().safeParse(
       ServicerequestExampleLipid,
     );
@@ -152,7 +152,7 @@ describe("ServiceRequest Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestExampleMyringotomy fixture", () => {
+  it("should validate ServicerequestExampleMyringotomy fixture (ServiceRequest)", () => {
     const result = createServiceRequestSchema().safeParse(
       ServicerequestExampleMyringotomy,
     );
@@ -166,7 +166,7 @@ describe("ServiceRequest Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestExampleOb fixture", () => {
+  it("should validate ServicerequestExampleOb fixture (ServiceRequest)", () => {
     const result = createServiceRequestSchema().safeParse(
       ServicerequestExampleOb,
     );
@@ -180,7 +180,7 @@ describe("ServiceRequest Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestExamplePgx fixture", () => {
+  it("should validate ServicerequestExamplePgx fixture (ServiceRequest)", () => {
     const result = createServiceRequestSchema().safeParse(
       ServicerequestExamplePgx,
     );
@@ -194,7 +194,7 @@ describe("ServiceRequest Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestExamplePt fixture", () => {
+  it("should validate ServicerequestExamplePt fixture (ServiceRequest)", () => {
     const result = createServiceRequestSchema().safeParse(
       ServicerequestExamplePt,
     );
@@ -208,7 +208,7 @@ describe("ServiceRequest Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestExampleSubrequest fixture", () => {
+  it("should validate ServicerequestExampleSubrequest fixture (ServiceRequest)", () => {
     const result = createServiceRequestSchema().safeParse(
       ServicerequestExampleSubrequest,
     );
@@ -222,7 +222,7 @@ describe("ServiceRequest Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestExampleVentilation fixture", () => {
+  it("should validate ServicerequestExampleVentilation fixture (ServiceRequest)", () => {
     const result = createServiceRequestSchema().safeParse(
       ServicerequestExampleVentilation,
     );
@@ -236,7 +236,7 @@ describe("ServiceRequest Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestExample fixture", () => {
+  it("should validate ServicerequestExample fixture (ServiceRequest)", () => {
     const result = createServiceRequestSchema().safeParse(
       ServicerequestExample,
     );
@@ -250,7 +250,7 @@ describe("ServiceRequest Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestExample2 fixture", () => {
+  it("should validate ServicerequestExample2 fixture (ServiceRequest)", () => {
     const result = createServiceRequestSchema().safeParse(
       ServicerequestExample2,
     );
@@ -264,7 +264,7 @@ describe("ServiceRequest Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestExample3 fixture", () => {
+  it("should validate ServicerequestExample3 fixture (ServiceRequest)", () => {
     const result = createServiceRequestSchema().safeParse(
       ServicerequestExample3,
     );
@@ -278,7 +278,7 @@ describe("ServiceRequest Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestExample4 fixture", () => {
+  it("should validate ServicerequestExample4 fixture (ServiceRequest)", () => {
     const result = createServiceRequestSchema().safeParse(
       ServicerequestExample4,
     );
@@ -292,7 +292,7 @@ describe("ServiceRequest Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestGeneticsExample1 fixture", () => {
+  it("should validate ServicerequestGeneticsExample1 fixture (ServiceRequest)", () => {
     const result = createServiceRequestSchema().safeParse(
       ServicerequestGeneticsExample1,
     );

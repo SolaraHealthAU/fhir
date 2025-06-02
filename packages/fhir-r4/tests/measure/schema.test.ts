@@ -10,8 +10,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Measure Schema Validation", () => {
-  it("should validate MeasureCms146Example fixture", () => {
+describe("Measure Group Schema Validation", () => {
+  it("should validate MeasureCms146Example fixture (Measure)", () => {
     const result = createMeasureSchema().safeParse(MeasureCms146Example);
     if (!result.success) {
       console.error("Validation failed for MeasureCms146Example:");
@@ -23,7 +23,7 @@ describe("Measure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MeasureComponentAExample fixture", () => {
+  it("should validate MeasureComponentAExample fixture (Measure)", () => {
     const result = createMeasureSchema().safeParse(MeasureComponentAExample);
     if (!result.success) {
       console.error("Validation failed for MeasureComponentAExample:");
@@ -35,7 +35,7 @@ describe("Measure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MeasureComponentBExample fixture", () => {
+  it("should validate MeasureComponentBExample fixture (Measure)", () => {
     const result = createMeasureSchema().safeParse(MeasureComponentBExample);
     if (!result.success) {
       console.error("Validation failed for MeasureComponentBExample:");
@@ -47,7 +47,7 @@ describe("Measure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MeasureCompositeExample fixture", () => {
+  it("should validate MeasureCompositeExample fixture (Measure)", () => {
     const result = createMeasureSchema().safeParse(MeasureCompositeExample);
     if (!result.success) {
       console.error("Validation failed for MeasureCompositeExample:");
@@ -59,7 +59,7 @@ describe("Measure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MeasureExclusiveBreastfeeding fixture", () => {
+  it("should validate MeasureExclusiveBreastfeeding fixture (Measure)", () => {
     const result = createMeasureSchema().safeParse(
       MeasureExclusiveBreastfeeding,
     );
@@ -73,7 +73,7 @@ describe("Measure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MeasureHivIndicators fixture", () => {
+  it("should validate MeasureHivIndicators fixture (Measure)", () => {
     const result = createMeasureSchema().safeParse(MeasureHivIndicators);
     if (!result.success) {
       console.error("Validation failed for MeasureHivIndicators:");
@@ -85,7 +85,7 @@ describe("Measure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MeasurePredecessorExample fixture", () => {
+  it("should validate MeasurePredecessorExample fixture (Measure)", () => {
     const result = createMeasureSchema().safeParse(MeasurePredecessorExample);
     if (!result.success) {
       console.error("Validation failed for MeasurePredecessorExample:");

@@ -2,8 +2,8 @@ import { createCatalogEntrySchema } from "../../src";
 import { CatalogentryExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("CatalogEntry Schema Validation", () => {
-  it("should validate CatalogentryExample fixture", () => {
+describe("Catalogentry Group Schema Validation", () => {
+  it("should validate CatalogentryExample fixture (CatalogEntry)", () => {
     const result = createCatalogEntrySchema().safeParse(CatalogentryExample);
     if (!result.success) {
       console.error("Validation failed for CatalogentryExample:");

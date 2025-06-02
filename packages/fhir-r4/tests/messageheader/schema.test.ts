@@ -2,8 +2,8 @@ import { createMessageHeaderSchema } from "../../src";
 import { MessageheaderExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("MessageHeader Schema Validation", () => {
-  it("should validate MessageheaderExample fixture", () => {
+describe("Messageheader Group Schema Validation", () => {
+  it("should validate MessageheaderExample fixture (MessageHeader)", () => {
     const result = createMessageHeaderSchema().safeParse(MessageheaderExample);
     if (!result.success) {
       console.error("Validation failed for MessageheaderExample:");

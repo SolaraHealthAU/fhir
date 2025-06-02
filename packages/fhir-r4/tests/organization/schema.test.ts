@@ -16,8 +16,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Organization Schema Validation", () => {
-  it("should validate OrganizationExampleF001Burgers fixture", () => {
+describe("Organization Group Schema Validation", () => {
+  it("should validate OrganizationExampleF001Burgers fixture (Organization)", () => {
     const result = createOrganizationSchema().safeParse(
       OrganizationExampleF001Burgers,
     );
@@ -31,7 +31,7 @@ describe("Organization Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OrganizationExampleF002BurgersCard fixture", () => {
+  it("should validate OrganizationExampleF002BurgersCard fixture (Organization)", () => {
     const result = createOrganizationSchema().safeParse(
       OrganizationExampleF002BurgersCard,
     );
@@ -47,7 +47,7 @@ describe("Organization Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OrganizationExampleF003BurgersEnt fixture", () => {
+  it("should validate OrganizationExampleF003BurgersEnt fixture (Organization)", () => {
     const result = createOrganizationSchema().safeParse(
       OrganizationExampleF003BurgersEnt,
     );
@@ -61,7 +61,7 @@ describe("Organization Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OrganizationExampleF201Aumc fixture", () => {
+  it("should validate OrganizationExampleF201Aumc fixture (Organization)", () => {
     const result = createOrganizationSchema().safeParse(
       OrganizationExampleF201Aumc,
     );
@@ -75,7 +75,7 @@ describe("Organization Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OrganizationExampleF203Bumc fixture", () => {
+  it("should validate OrganizationExampleF203Bumc fixture (Organization)", () => {
     const result = createOrganizationSchema().safeParse(
       OrganizationExampleF203Bumc,
     );
@@ -89,7 +89,7 @@ describe("Organization Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OrganizationExampleGastro fixture", () => {
+  it("should validate OrganizationExampleGastro fixture (Organization)", () => {
     const result = createOrganizationSchema().safeParse(
       OrganizationExampleGastro,
     );
@@ -103,7 +103,7 @@ describe("Organization Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OrganizationExampleGoodHealthCare fixture", () => {
+  it("should validate OrganizationExampleGoodHealthCare fixture (Organization)", () => {
     const result = createOrganizationSchema().safeParse(
       OrganizationExampleGoodHealthCare,
     );
@@ -117,7 +117,7 @@ describe("Organization Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OrganizationExampleHl7pay fixture", () => {
+  it("should validate OrganizationExampleHl7pay fixture (Organization)", () => {
     const result = createOrganizationSchema().safeParse(
       OrganizationExampleHl7pay,
     );
@@ -131,7 +131,7 @@ describe("Organization Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OrganizationExampleInsurer fixture", () => {
+  it("should validate OrganizationExampleInsurer fixture (Organization)", () => {
     const result = createOrganizationSchema().safeParse(
       OrganizationExampleInsurer,
     );
@@ -145,7 +145,7 @@ describe("Organization Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OrganizationExampleLab fixture", () => {
+  it("should validate OrganizationExampleLab fixture (Organization)", () => {
     const result = createOrganizationSchema().safeParse(OrganizationExampleLab);
     if (!result.success) {
       console.error("Validation failed for OrganizationExampleLab:");
@@ -157,7 +157,7 @@ describe("Organization Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OrganizationExampleMihealth fixture", () => {
+  it("should validate OrganizationExampleMihealth fixture (Organization)", () => {
     const result = createOrganizationSchema().safeParse(
       OrganizationExampleMihealth,
     );
@@ -171,7 +171,7 @@ describe("Organization Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OrganizationExampleMmanu fixture", () => {
+  it("should validate OrganizationExampleMmanu fixture (Organization)", () => {
     const result = createOrganizationSchema().safeParse(
       OrganizationExampleMmanu,
     );
@@ -185,7 +185,7 @@ describe("Organization Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OrganizationExample fixture", () => {
+  it("should validate OrganizationExample fixture (Organization)", () => {
     const result = createOrganizationSchema().safeParse(OrganizationExample);
     if (!result.success) {
       console.error("Validation failed for OrganizationExample:");

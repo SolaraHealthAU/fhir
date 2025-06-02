@@ -2,8 +2,8 @@ import { createTerminologyCapabilitiesSchema } from "../../src";
 import { TerminologycapabilitiesExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("TerminologyCapabilities Schema Validation", () => {
-  it("should validate TerminologycapabilitiesExample fixture", () => {
+describe("Terminologycapabilities Group Schema Validation", () => {
+  it("should validate TerminologycapabilitiesExample fixture (TerminologyCapabilities)", () => {
     const result = createTerminologyCapabilitiesSchema().safeParse(
       TerminologycapabilitiesExample,
     );

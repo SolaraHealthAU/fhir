@@ -21,8 +21,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("PlanDefinition Schema Validation", () => {
-  it("should validate PlandefinitionChlamydiaScreeningIntervention fixture", () => {
+describe("Plandefinition Group Schema Validation", () => {
+  it("should validate PlandefinitionChlamydiaScreeningIntervention fixture (PlanDefinition)", () => {
     const result = createPlanDefinitionSchema().safeParse(
       PlandefinitionChlamydiaScreeningIntervention,
     );
@@ -38,7 +38,7 @@ describe("PlanDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PlandefinitionExampleCardiologyOs fixture", () => {
+  it("should validate PlandefinitionExampleCardiologyOs fixture (PlanDefinition)", () => {
     const result = createPlanDefinitionSchema().safeParse(
       PlandefinitionExampleCardiologyOs,
     );
@@ -52,7 +52,7 @@ describe("PlanDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PlandefinitionExampleKdn5Simplified fixture", () => {
+  it("should validate PlandefinitionExampleKdn5Simplified fixture (PlanDefinition)", () => {
     const result = createPlanDefinitionSchema().safeParse(
       PlandefinitionExampleKdn5Simplified,
     );
@@ -68,7 +68,7 @@ describe("PlanDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PlandefinitionExample fixture", () => {
+  it("should validate PlandefinitionExample fixture (PlanDefinition)", () => {
     const result = createPlanDefinitionSchema().safeParse(
       PlandefinitionExample,
     );
@@ -82,7 +82,7 @@ describe("PlanDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PlandefinitionExclusiveBreastfeedingIntervention01 fixture", () => {
+  it("should validate PlandefinitionExclusiveBreastfeedingIntervention01 fixture (PlanDefinition)", () => {
     const result = createPlanDefinitionSchema().safeParse(
       PlandefinitionExclusiveBreastfeedingIntervention01,
     );
@@ -98,7 +98,7 @@ describe("PlanDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PlandefinitionExclusiveBreastfeedingIntervention02 fixture", () => {
+  it("should validate PlandefinitionExclusiveBreastfeedingIntervention02 fixture (PlanDefinition)", () => {
     const result = createPlanDefinitionSchema().safeParse(
       PlandefinitionExclusiveBreastfeedingIntervention02,
     );
@@ -114,7 +114,7 @@ describe("PlanDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PlandefinitionExclusiveBreastfeedingIntervention03 fixture", () => {
+  it("should validate PlandefinitionExclusiveBreastfeedingIntervention03 fixture (PlanDefinition)", () => {
     const result = createPlanDefinitionSchema().safeParse(
       PlandefinitionExclusiveBreastfeedingIntervention03,
     );
@@ -130,7 +130,7 @@ describe("PlanDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PlandefinitionExclusiveBreastfeedingIntervention04 fixture", () => {
+  it("should validate PlandefinitionExclusiveBreastfeedingIntervention04 fixture (PlanDefinition)", () => {
     const result = createPlanDefinitionSchema().safeParse(
       PlandefinitionExclusiveBreastfeedingIntervention04,
     );
@@ -146,7 +146,7 @@ describe("PlanDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PlandefinitionOpioidcds04 fixture", () => {
+  it("should validate PlandefinitionOpioidcds04 fixture (PlanDefinition)", () => {
     const result = createPlanDefinitionSchema().safeParse(
       PlandefinitionOpioidcds04,
     );
@@ -160,7 +160,7 @@ describe("PlanDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PlandefinitionOpioidcds05 fixture", () => {
+  it("should validate PlandefinitionOpioidcds05 fixture (PlanDefinition)", () => {
     const result = createPlanDefinitionSchema().safeParse(
       PlandefinitionOpioidcds05,
     );
@@ -174,7 +174,7 @@ describe("PlanDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PlandefinitionOpioidcds07 fixture", () => {
+  it("should validate PlandefinitionOpioidcds07 fixture (PlanDefinition)", () => {
     const result = createPlanDefinitionSchema().safeParse(
       PlandefinitionOpioidcds07,
     );
@@ -188,7 +188,7 @@ describe("PlanDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PlandefinitionOpioidcds08 fixture", () => {
+  it("should validate PlandefinitionOpioidcds08 fixture (PlanDefinition)", () => {
     const result = createPlanDefinitionSchema().safeParse(
       PlandefinitionOpioidcds08,
     );
@@ -202,7 +202,7 @@ describe("PlanDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PlandefinitionOpioidcds10 fixture", () => {
+  it("should validate PlandefinitionOpioidcds10 fixture (PlanDefinition)", () => {
     const result = createPlanDefinitionSchema().safeParse(
       PlandefinitionOpioidcds10,
     );
@@ -216,7 +216,7 @@ describe("PlanDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PlandefinitionOpioidcds11 fixture", () => {
+  it("should validate PlandefinitionOpioidcds11 fixture (PlanDefinition)", () => {
     const result = createPlanDefinitionSchema().safeParse(
       PlandefinitionOpioidcds11,
     );
@@ -230,7 +230,7 @@ describe("PlanDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PlandefinitionOptionsExample fixture", () => {
+  it("should validate PlandefinitionOptionsExample fixture (PlanDefinition)", () => {
     const result = createPlanDefinitionSchema().safeParse(
       PlandefinitionOptionsExample,
     );
@@ -244,7 +244,7 @@ describe("PlanDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PlandefinitionPredecessorExample fixture", () => {
+  it("should validate PlandefinitionPredecessorExample fixture (PlanDefinition)", () => {
     const result = createPlanDefinitionSchema().safeParse(
       PlandefinitionPredecessorExample,
     );
@@ -258,7 +258,7 @@ describe("PlanDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PlandefinitionProtocolExample fixture", () => {
+  it("should validate PlandefinitionProtocolExample fixture (PlanDefinition)", () => {
     const result = createPlanDefinitionSchema().safeParse(
       PlandefinitionProtocolExample,
     );
@@ -272,7 +272,7 @@ describe("PlanDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PlandefinitionZikaVirusIntervention fixture", () => {
+  it("should validate PlandefinitionZikaVirusIntervention fixture (PlanDefinition)", () => {
     const result = createPlanDefinitionSchema().safeParse(
       PlandefinitionZikaVirusIntervention,
     );

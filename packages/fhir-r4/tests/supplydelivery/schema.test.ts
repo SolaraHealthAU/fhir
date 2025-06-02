@@ -5,8 +5,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("SupplyDelivery Schema Validation", () => {
-  it("should validate SupplydeliveryExamplePumpdelivery fixture", () => {
+describe("Supplydelivery Group Schema Validation", () => {
+  it("should validate SupplydeliveryExamplePumpdelivery fixture (SupplyDelivery)", () => {
     const result = createSupplyDeliverySchema().safeParse(
       SupplydeliveryExamplePumpdelivery,
     );
@@ -20,7 +20,7 @@ describe("SupplyDelivery Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SupplydeliveryExample fixture", () => {
+  it("should validate SupplydeliveryExample fixture (SupplyDelivery)", () => {
     const result = createSupplyDeliverySchema().safeParse(
       SupplydeliveryExample,
     );

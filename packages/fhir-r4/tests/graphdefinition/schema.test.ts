@@ -2,8 +2,8 @@ import { createGraphDefinitionSchema } from "../../src";
 import { GraphdefinitionExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("GraphDefinition Schema Validation", () => {
-  it("should validate GraphdefinitionExample fixture", () => {
+describe("Graphdefinition Group Schema Validation", () => {
+  it("should validate GraphdefinitionExample fixture (GraphDefinition)", () => {
     const result = createGraphDefinitionSchema().safeParse(
       GraphdefinitionExample,
     );

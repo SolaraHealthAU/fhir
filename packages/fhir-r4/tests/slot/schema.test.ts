@@ -7,8 +7,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Slot Schema Validation", () => {
-  it("should validate SlotExampleBusy fixture", () => {
+describe("Slot Group Schema Validation", () => {
+  it("should validate SlotExampleBusy fixture (Slot)", () => {
     const result = createSlotSchema().safeParse(SlotExampleBusy);
     if (!result.success) {
       console.error("Validation failed for SlotExampleBusy:");
@@ -20,7 +20,7 @@ describe("Slot Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SlotExampleTentative fixture", () => {
+  it("should validate SlotExampleTentative fixture (Slot)", () => {
     const result = createSlotSchema().safeParse(SlotExampleTentative);
     if (!result.success) {
       console.error("Validation failed for SlotExampleTentative:");
@@ -32,7 +32,7 @@ describe("Slot Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SlotExampleUnavailable fixture", () => {
+  it("should validate SlotExampleUnavailable fixture (Slot)", () => {
     const result = createSlotSchema().safeParse(SlotExampleUnavailable);
     if (!result.success) {
       console.error("Validation failed for SlotExampleUnavailable:");
@@ -44,7 +44,7 @@ describe("Slot Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SlotExample fixture", () => {
+  it("should validate SlotExample fixture (Slot)", () => {
     const result = createSlotSchema().safeParse(SlotExample);
     if (!result.success) {
       console.error("Validation failed for SlotExample:");

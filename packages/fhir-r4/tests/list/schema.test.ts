@@ -12,8 +12,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("List Schema Validation", () => {
-  it("should validate ListExampleAllergies fixture", () => {
+describe("List Group Schema Validation", () => {
+  it("should validate ListExampleAllergies fixture (List)", () => {
     const result = createListSchema().safeParse(ListExampleAllergies);
     if (!result.success) {
       console.error("Validation failed for ListExampleAllergies:");
@@ -25,7 +25,7 @@ describe("List Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ListExampleDoubleCousinRelationshipPedigree fixture", () => {
+  it("should validate ListExampleDoubleCousinRelationshipPedigree fixture (List)", () => {
     const result = createListSchema().safeParse(
       ListExampleDoubleCousinRelationshipPedigree,
     );
@@ -41,7 +41,7 @@ describe("List Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ListExampleEmpty fixture", () => {
+  it("should validate ListExampleEmpty fixture (List)", () => {
     const result = createListSchema().safeParse(ListExampleEmpty);
     if (!result.success) {
       console.error("Validation failed for ListExampleEmpty:");
@@ -53,7 +53,7 @@ describe("List Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ListExampleFamilyhistoryF201Roel fixture", () => {
+  it("should validate ListExampleFamilyhistoryF201Roel fixture (List)", () => {
     const result = createListSchema().safeParse(
       ListExampleFamilyhistoryF201Roel,
     );
@@ -67,7 +67,7 @@ describe("List Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ListExampleFamilyhistoryGeneticsProfile fixture", () => {
+  it("should validate ListExampleFamilyhistoryGeneticsProfile fixture (List)", () => {
     const result = createListSchema().safeParse(
       ListExampleFamilyhistoryGeneticsProfile,
     );
@@ -83,7 +83,7 @@ describe("List Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ListExampleLong fixture", () => {
+  it("should validate ListExampleLong fixture (List)", () => {
     const result = createListSchema().safeParse(ListExampleLong);
     if (!result.success) {
       console.error("Validation failed for ListExampleLong:");
@@ -95,7 +95,7 @@ describe("List Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ListExampleMedlist fixture", () => {
+  it("should validate ListExampleMedlist fixture (List)", () => {
     const result = createListSchema().safeParse(ListExampleMedlist);
     if (!result.success) {
       console.error("Validation failed for ListExampleMedlist:");
@@ -107,7 +107,7 @@ describe("List Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ListExampleSimpleEmpty fixture", () => {
+  it("should validate ListExampleSimpleEmpty fixture (List)", () => {
     const result = createListSchema().safeParse(ListExampleSimpleEmpty);
     if (!result.success) {
       console.error("Validation failed for ListExampleSimpleEmpty:");
@@ -119,7 +119,7 @@ describe("List Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ListExample fixture", () => {
+  it("should validate ListExample fixture (List)", () => {
     const result = createListSchema().safeParse(ListExample);
     if (!result.success) {
       console.error("Validation failed for ListExample:");

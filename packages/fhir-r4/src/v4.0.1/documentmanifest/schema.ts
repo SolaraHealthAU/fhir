@@ -12,7 +12,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createDocumentManifestRelatedSchema } from "../documentmanifestrelated/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -47,6 +46,22 @@ export function createDocumentManifestSchema() {
       content: z.array(createReferenceSchema()),
       related: z.array(createDocumentManifestRelatedSchema()).optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createDocumentManifestRelatedSchema() {
+  return getCachedSchema("DocumentManifestRelated", () => {
+    const baseSchema: z.ZodType<types.DocumentManifestRelated> = z.strictObject(
+      {
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: createIdentifierSchema().optional(),
+        ref: createReferenceSchema().optional(),
+      },
+    );
 
     return baseSchema;
   });

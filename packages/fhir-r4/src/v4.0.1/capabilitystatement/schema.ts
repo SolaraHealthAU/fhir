@@ -9,14 +9,11 @@ import {
   createContactDetailSchema,
   createUsageContextSchema,
   createCodeableConceptSchema,
+  createReferenceSchema,
+  createCodingSchema,
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createCapabilityStatementSoftwareSchema } from "../capabilitystatementsoftware/schema";
-import { createCapabilityStatementImplementationSchema } from "../capabilitystatementimplementation/schema";
-import { createCapabilityStatementRestSchema } from "../capabilitystatementrest/schema";
-import { createCapabilityStatementMessagingSchema } from "../capabilitystatementmessaging/schema";
-import { createCapabilityStatementDocumentSchema } from "../capabilitystatementdocument/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -100,6 +97,322 @@ export function createCapabilityStatementSchema() {
       messaging: z.array(createCapabilityStatementMessagingSchema()).optional(),
       document: z.array(createCapabilityStatementDocumentSchema()).optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createCapabilityStatementSoftwareSchema() {
+  return getCachedSchema("CapabilityStatementSoftware", () => {
+    const baseSchema: z.ZodType<types.CapabilityStatementSoftware> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        name: primitives.getStringSchema(),
+        _name: createElementSchema().optional(),
+        version: primitives.getStringSchema().optional(),
+        _version: createElementSchema().optional(),
+        releaseDate: primitives.getDateTimeSchema().optional(),
+        _releaseDate: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createCapabilityStatementImplementationSchema() {
+  return getCachedSchema("CapabilityStatementImplementation", () => {
+    const baseSchema: z.ZodType<types.CapabilityStatementImplementation> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        description: primitives.getStringSchema(),
+        _description: createElementSchema().optional(),
+        url: primitives.getUrlSchema().optional(),
+        _url: createElementSchema().optional(),
+        custodian: createReferenceSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createCapabilityStatementRestSchema() {
+  return getCachedSchema("CapabilityStatementRest", () => {
+    const baseSchema: z.ZodType<types.CapabilityStatementRest> = z.strictObject(
+      {
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        mode: z.enum(["client", "server"]),
+        _mode: createElementSchema().optional(),
+        documentation: primitives.getMarkdownSchema().optional(),
+        _documentation: createElementSchema().optional(),
+        security: createCapabilityStatementSecuritySchema().optional(),
+        resource: z.array(createCapabilityStatementResourceSchema()).optional(),
+        interaction: z
+          .array(createCapabilityStatementInteraction1Schema())
+          .optional(),
+        searchParam: z
+          .array(createCapabilityStatementSearchParamSchema())
+          .optional(),
+        operation: z
+          .array(createCapabilityStatementOperationSchema())
+          .optional(),
+        compartment: z.array(primitives.getCanonicalSchema()).optional(),
+      },
+    );
+
+    return baseSchema;
+  });
+}
+
+export function createCapabilityStatementSecuritySchema() {
+  return getCachedSchema("CapabilityStatementSecurity", () => {
+    const baseSchema: z.ZodType<types.CapabilityStatementSecurity> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        cors: primitives.getBooleanSchema().optional(),
+        _cors: createElementSchema().optional(),
+        service: z.array(createCodeableConceptSchema()).optional(),
+        description: primitives.getMarkdownSchema().optional(),
+        _description: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createCapabilityStatementResourceSchema() {
+  return getCachedSchema("CapabilityStatementResource", () => {
+    const baseSchema: z.ZodType<types.CapabilityStatementResource> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        type: primitives.getCodeSchema().optional(),
+        _type: createElementSchema().optional(),
+        profile: primitives.getCanonicalSchema().optional(),
+        supportedProfile: z.array(primitives.getCanonicalSchema()).optional(),
+        documentation: primitives.getMarkdownSchema().optional(),
+        _documentation: createElementSchema().optional(),
+        interaction: z
+          .array(createCapabilityStatementInteractionSchema())
+          .optional(),
+        versioning: z
+          .enum(["no-version", "versioned", "versioned-update"])
+          .optional(),
+        _versioning: createElementSchema().optional(),
+        readHistory: primitives.getBooleanSchema().optional(),
+        _readHistory: createElementSchema().optional(),
+        updateCreate: primitives.getBooleanSchema().optional(),
+        _updateCreate: createElementSchema().optional(),
+        conditionalCreate: primitives.getBooleanSchema().optional(),
+        _conditionalCreate: createElementSchema().optional(),
+        conditionalRead: z
+          .enum([
+            "not-supported",
+            "modified-since",
+            "not-match",
+            "full-support",
+          ])
+          .optional(),
+        _conditionalRead: createElementSchema().optional(),
+        conditionalUpdate: primitives.getBooleanSchema().optional(),
+        _conditionalUpdate: createElementSchema().optional(),
+        conditionalDelete: z
+          .enum(["not-supported", "single", "multiple"])
+          .optional(),
+        _conditionalDelete: createElementSchema().optional(),
+        referencePolicy: z
+          .enum(["literal", "logical", "resolves", "enforced", "local"])
+          .array()
+          .optional(),
+        _referencePolicy: z.array(createElementSchema()).optional(),
+        searchInclude: z.array(primitives.getStringSchema()).optional(),
+        _searchInclude: z.array(createElementSchema()).optional(),
+        searchRevInclude: z.array(primitives.getStringSchema()).optional(),
+        _searchRevInclude: z.array(createElementSchema()).optional(),
+        searchParam: z
+          .array(createCapabilityStatementSearchParamSchema())
+          .optional(),
+        operation: z
+          .array(createCapabilityStatementOperationSchema())
+          .optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createCapabilityStatementInteractionSchema() {
+  return getCachedSchema("CapabilityStatementInteraction", () => {
+    const baseSchema: z.ZodType<types.CapabilityStatementInteraction> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        code: z
+          .enum([
+            "read",
+            "vread",
+            "update",
+            "patch",
+            "delete",
+            "history-instance",
+            "history-type",
+            "create",
+            "search-type",
+          ])
+          .optional(),
+        _code: createElementSchema().optional(),
+        documentation: primitives.getMarkdownSchema().optional(),
+        _documentation: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createCapabilityStatementSearchParamSchema() {
+  return getCachedSchema("CapabilityStatementSearchParam", () => {
+    const baseSchema: z.ZodType<types.CapabilityStatementSearchParam> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        name: primitives.getStringSchema().optional(),
+        _name: createElementSchema().optional(),
+        definition: primitives.getCanonicalSchema().optional(),
+        type: z
+          .enum([
+            "number",
+            "date",
+            "string",
+            "token",
+            "reference",
+            "composite",
+            "quantity",
+            "uri",
+            "special",
+          ])
+          .optional(),
+        _type: createElementSchema().optional(),
+        documentation: primitives.getMarkdownSchema().optional(),
+        _documentation: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createCapabilityStatementOperationSchema() {
+  return getCachedSchema("CapabilityStatementOperation", () => {
+    const baseSchema: z.ZodType<types.CapabilityStatementOperation> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        name: primitives.getStringSchema().optional(),
+        _name: createElementSchema().optional(),
+        definition: primitives.getCanonicalSchema(),
+        documentation: primitives.getMarkdownSchema().optional(),
+        _documentation: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createCapabilityStatementInteraction1Schema() {
+  return getCachedSchema("CapabilityStatementInteraction1", () => {
+    const baseSchema: z.ZodType<types.CapabilityStatementInteraction1> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        code: z
+          .enum(["transaction", "batch", "search-system", "history-system"])
+          .optional(),
+        _code: createElementSchema().optional(),
+        documentation: primitives.getMarkdownSchema().optional(),
+        _documentation: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createCapabilityStatementMessagingSchema() {
+  return getCachedSchema("CapabilityStatementMessaging", () => {
+    const baseSchema: z.ZodType<types.CapabilityStatementMessaging> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        endpoint: z.array(createCapabilityStatementEndpointSchema()).optional(),
+        reliableCache: primitives.getUnsignedIntSchema().optional(),
+        _reliableCache: createElementSchema().optional(),
+        documentation: primitives.getMarkdownSchema().optional(),
+        _documentation: createElementSchema().optional(),
+        supportedMessage: z
+          .array(createCapabilityStatementSupportedMessageSchema())
+          .optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createCapabilityStatementEndpointSchema() {
+  return getCachedSchema("CapabilityStatementEndpoint", () => {
+    const baseSchema: z.ZodType<types.CapabilityStatementEndpoint> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        protocol: createCodingSchema(),
+        address: primitives.getUrlSchema().optional(),
+        _address: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createCapabilityStatementSupportedMessageSchema() {
+  return getCachedSchema("CapabilityStatementSupportedMessage", () => {
+    const baseSchema: z.ZodType<types.CapabilityStatementSupportedMessage> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        mode: z.enum(["sender", "receiver"]).optional(),
+        _mode: createElementSchema().optional(),
+        definition: primitives.getCanonicalSchema(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createCapabilityStatementDocumentSchema() {
+  return getCachedSchema("CapabilityStatementDocument", () => {
+    const baseSchema: z.ZodType<types.CapabilityStatementDocument> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        mode: z.enum(["producer", "consumer"]),
+        _mode: createElementSchema().optional(),
+        documentation: primitives.getMarkdownSchema().optional(),
+        _documentation: createElementSchema().optional(),
+        profile: primitives.getCanonicalSchema(),
+      });
 
     return baseSchema;
   });

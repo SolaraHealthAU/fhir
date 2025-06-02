@@ -11,12 +11,6 @@ import type {
 } from "../core/types";
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
-import type { EncounterStatusHistory } from "../encounterstatushistory/types";
-import type { EncounterClassHistory } from "../encounterclasshistory/types";
-import type { EncounterParticipant } from "../encounterparticipant/types";
-import type { EncounterDiagnosis } from "../encounterdiagnosis/types";
-import type { EncounterHospitalization } from "../encounterhospitalization/types";
-import type { EncounterLocation } from "../encounterlocation/types";
 
 /** Generated from FHIR JSON Schema */
 
@@ -102,4 +96,137 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   serviceProvider?: Reference;
   /** Another Encounter of which this encounter is a part of (administratively or in time). */
   partOf?: Reference;
+}
+
+/** An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient. */
+export interface EncounterStatusHistory {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** planned | arrived | triaged | in-progress | onleave | finished | cancelled +. */
+  status:
+    | "planned"
+    | "arrived"
+    | "triaged"
+    | "in-progress"
+    | "onleave"
+    | "finished"
+    | "cancelled"
+    | "entered-in-error"
+    | "unknown";
+
+  _status?: Element;
+  /** The time that the episode was in the specified status. */
+  period: Period;
+}
+
+/** An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient. */
+export interface EncounterClassHistory {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** inpatient | outpatient | ambulatory | emergency +. */
+  class: Coding;
+  /** The time that the episode was in the specified class. */
+  period: Period;
+}
+
+/** An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient. */
+export interface EncounterParticipant {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** Role of participant in encounter. */
+  type?: CodeableConcept[];
+  /** The period of time that the specified participant participated in the encounter. These can overlap or be sub-sets of the overall encounter's period. */
+  period?: Period;
+  /** Persons involved in the encounter other than the patient. */
+  individual?: Reference;
+}
+
+/** An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient. */
+export interface EncounterDiagnosis {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** Reason the encounter takes place, as specified using information from another resource. For admissions, this is the admission diagnosis. The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure. */
+  condition: Reference;
+  /** Role that this diagnosis has within the encounter (e.g. admission, billing, discharge …). */
+  use?: CodeableConcept;
+  /** Ranking of the diagnosis (for each role type). */
+  rank?: number;
+
+  _rank?: Element;
+}
+
+/** An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient. */
+export interface EncounterHospitalization {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** Pre-admission identifier. */
+  preAdmissionIdentifier?: Identifier;
+  /** The location/organization from which the patient came before admission. */
+  origin?: Reference;
+  /** From where patient was admitted (physician referral, transfer). */
+  admitSource?: CodeableConcept;
+  /** Whether this hospitalization is a readmission and why if known. */
+  reAdmission?: CodeableConcept;
+  /** Diet preferences reported by the patient. */
+  dietPreference?: CodeableConcept[];
+  /** Special courtesies (VIP, board member). */
+  specialCourtesy?: CodeableConcept[];
+  /** Any special requests that have been made for this hospitalization encounter, such as the provision of specific equipment or other things. */
+  specialArrangement?: CodeableConcept[];
+  /** Location/organization to which the patient is discharged. */
+  destination?: Reference;
+  /** Category or kind of location after discharge. */
+  dischargeDisposition?: CodeableConcept;
+}
+
+/** An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient. */
+export interface EncounterLocation {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** The location where the encounter takes place. */
+  location: Reference;
+  /** The status of the participants' presence at the specified location during the period specified. If the participant is no longer at the location, then the period will have an end date/time. */
+  status?: "planned" | "active" | "reserved" | "completed";
+
+  _status?: Element;
+  /** This will be used to specify the required levels (bed/ward/room/etc.) desired to be recorded to simplify either messaging or query. */
+  physicalType?: CodeableConcept;
+  /** Time period during which the patient was present at the location. */
+  period?: Period;
 }

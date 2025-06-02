@@ -9,12 +9,10 @@ import type {
   CodeableConcept,
   Attachment,
   Reference,
+  Period,
 } from "../core/types";
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
-import type { PatientContact } from "../patientcontact/types";
-import type { PatientCommunication } from "../patientcommunication/types";
-import type { PatientLink } from "../patientlink/types";
 
 /** Generated from FHIR JSON Schema */
 
@@ -98,4 +96,68 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
   managingOrganization?: Reference;
 
   link?: PatientLink[];
+}
+
+/** Demographics and other administrative information about an individual or animal receiving care or other health-related services. */
+export interface PatientContact {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** The nature of the relationship between the patient and the contact person. */
+  relationship?: CodeableConcept[];
+  /** A name associated with the contact person. */
+  name?: HumanName;
+  /** A contact detail for the person, e.g. a telephone number or an email address. */
+  telecom?: ContactPoint[];
+  /** Address for the contact person. */
+  address?: Address;
+  /** Administrative Gender - the gender that the contact person is considered to have for administration and record keeping purposes. */
+  gender?: "male" | "female" | "other" | "unknown";
+
+  _gender?: Element;
+  /** Organization on behalf of which the contact is acting or for which the contact is working. */
+  organization?: Reference;
+  /** The period during which this contact person or organization is valid to be contacted relating to this patient. */
+  period?: Period;
+}
+
+/** Demographics and other administrative information about an individual or animal receiving care or other health-related services. */
+export interface PatientCommunication {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. "en" for English, or "en-US" for American English versus "en-EN" for England English. */
+  language: CodeableConcept;
+  /** Indicates whether or not the patient prefers this language (over other languages he masters up a certain level). */
+  preferred?: boolean;
+
+  _preferred?: Element;
+}
+
+/** Demographics and other administrative information about an individual or animal receiving care or other health-related services. */
+export interface PatientLink {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** The other patient resource that the link refers to. */
+  other: Reference;
+  /** The type of link between this patient resource and another patient resource. */
+  type: "replaced-by" | "replaces" | "refer" | "seealso";
+
+  _type?: Element;
 }

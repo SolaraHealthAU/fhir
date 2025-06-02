@@ -12,8 +12,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createOperationDefinitionParameterSchema } from "../operationdefinitionparameter/schema";
-import { createOperationDefinitionOverloadSchema } from "../operationdefinitionoverload/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -76,6 +74,103 @@ export function createOperationDefinitionSchema() {
       parameter: z.array(createOperationDefinitionParameterSchema()).optional(),
       overload: z.array(createOperationDefinitionOverloadSchema()).optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createOperationDefinitionParameterSchema() {
+  return getCachedSchema("OperationDefinitionParameter", () => {
+    const baseSchema: z.ZodType<types.OperationDefinitionParameter> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        name: primitives.getCodeSchema(),
+        _name: createElementSchema().optional(),
+        use: z.enum(["in", "out"]),
+        _use: createElementSchema().optional(),
+        min: primitives.getIntegerSchema(),
+        _min: createElementSchema().optional(),
+        max: primitives.getStringSchema(),
+        _max: createElementSchema().optional(),
+        documentation: primitives.getStringSchema().optional(),
+        _documentation: createElementSchema().optional(),
+        type: primitives.getCodeSchema().optional(),
+        _type: createElementSchema().optional(),
+        targetProfile: z.array(primitives.getCanonicalSchema()).optional(),
+        searchType: z
+          .enum([
+            "number",
+            "date",
+            "string",
+            "token",
+            "reference",
+            "composite",
+            "quantity",
+            "uri",
+            "special",
+          ])
+          .optional(),
+        _searchType: createElementSchema().optional(),
+        binding: createOperationDefinitionBindingSchema().optional(),
+        referencedFrom: z
+          .array(createOperationDefinitionReferencedFromSchema())
+          .optional(),
+        part: z.array(createOperationDefinitionParameterSchema()).optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createOperationDefinitionBindingSchema() {
+  return getCachedSchema("OperationDefinitionBinding", () => {
+    const baseSchema: z.ZodType<types.OperationDefinitionBinding> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        strength: z
+          .enum(["required", "extensible", "preferred", "example"])
+          .optional(),
+        _strength: createElementSchema().optional(),
+        valueSet: primitives.getCanonicalSchema(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createOperationDefinitionReferencedFromSchema() {
+  return getCachedSchema("OperationDefinitionReferencedFrom", () => {
+    const baseSchema: z.ZodType<types.OperationDefinitionReferencedFrom> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        source: primitives.getStringSchema().optional(),
+        _source: createElementSchema().optional(),
+        sourceId: primitives.getStringSchema().optional(),
+        _sourceId: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createOperationDefinitionOverloadSchema() {
+  return getCachedSchema("OperationDefinitionOverload", () => {
+    const baseSchema: z.ZodType<types.OperationDefinitionOverload> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        parameterName: z.array(primitives.getStringSchema()).optional(),
+        _parameterName: z.array(createElementSchema()).optional(),
+        comment: primitives.getStringSchema().optional(),
+        _comment: createElementSchema().optional(),
+      });
 
     return baseSchema;
   });

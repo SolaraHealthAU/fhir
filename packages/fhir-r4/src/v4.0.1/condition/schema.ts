@@ -16,8 +16,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createConditionStageSchema } from "../conditionstage/schema";
-import { createConditionEvidenceSchema } from "../conditionevidence/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -65,6 +63,35 @@ export function createConditionSchema() {
       stage: z.array(createConditionStageSchema()).optional(),
       evidence: z.array(createConditionEvidenceSchema()).optional(),
       note: z.array(createAnnotationSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createConditionStageSchema() {
+  return getCachedSchema("ConditionStage", () => {
+    const baseSchema: z.ZodType<types.ConditionStage> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      summary: createCodeableConceptSchema().optional(),
+      assessment: z.array(createReferenceSchema()).optional(),
+      type: createCodeableConceptSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createConditionEvidenceSchema() {
+  return getCachedSchema("ConditionEvidence", () => {
+    const baseSchema: z.ZodType<types.ConditionEvidence> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      code: z.array(createCodeableConceptSchema()).optional(),
+      detail: z.array(createReferenceSchema()).optional(),
     });
 
     return baseSchema;

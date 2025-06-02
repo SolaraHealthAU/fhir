@@ -5,14 +5,11 @@ import type {
   ContactDetail,
   UsageContext,
   CodeableConcept,
+  Reference,
+  Coding,
 } from "../core/types";
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
-import type { CapabilityStatementSoftware } from "../capabilitystatementsoftware/types";
-import type { CapabilityStatementImplementation } from "../capabilitystatementimplementation/types";
-import type { CapabilityStatementRest } from "../capabilitystatementrest/types";
-import type { CapabilityStatementMessaging } from "../capabilitystatementmessaging/types";
-import type { CapabilityStatementDocument } from "../capabilitystatementdocument/types";
 
 /** Generated from FHIR JSON Schema */
 
@@ -145,4 +142,348 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   messaging?: CapabilityStatementMessaging[];
 
   document?: CapabilityStatementDocument[];
+}
+
+/** A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation. */
+export interface CapabilityStatementSoftware {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** Name the software is known by. */
+  name: string;
+
+  _name?: Element;
+  /** The version identifier for the software covered by this statement. */
+  version?: string;
+
+  _version?: Element;
+  /** Date this version of the software was released. */
+  releaseDate?: string;
+
+  _releaseDate?: Element;
+}
+
+/** A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation. */
+export interface CapabilityStatementImplementation {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** Information about the specific installation that this capability statement relates to. */
+  description: string;
+
+  _description?: Element;
+  /** An absolute base URL for the implementation.  This forms the base for REST interfaces as well as the mailbox and document interfaces. */
+  url?: string;
+
+  _url?: Element;
+  /** The organization responsible for the management of the instance and oversight of the data on the server at the specified URL. */
+  custodian?: Reference;
+}
+
+/** A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation. */
+export interface CapabilityStatementRest {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** Identifies whether this portion of the statement is describing the ability to initiate or receive restful operations. */
+  mode: "client" | "server";
+
+  _mode?: Element;
+  /** Information about the system's restful capabilities that apply across all applications, such as security. */
+  documentation?: string;
+
+  _documentation?: Element;
+
+  security?: CapabilityStatementSecurity;
+
+  resource?: CapabilityStatementResource[];
+
+  interaction?: CapabilityStatementInteraction1[];
+
+  searchParam?: CapabilityStatementSearchParam[];
+
+  operation?: CapabilityStatementOperation[];
+  /** An absolute URI which is a reference to the definition of a compartment that the system supports. The reference is to a CompartmentDefinition resource by its canonical URL . */
+  compartment?: string[];
+}
+
+/** A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation. */
+export interface CapabilityStatementSecurity {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  cors?: boolean;
+
+  _cors?: Element;
+
+  service?: CodeableConcept[];
+
+  description?: string;
+
+  _description?: Element;
+}
+
+/** A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation. */
+export interface CapabilityStatementResource {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  type?: string;
+
+  _type?: Element;
+
+  profile?: string;
+
+  supportedProfile?: string[];
+
+  documentation?: string;
+
+  _documentation?: Element;
+
+  interaction?: CapabilityStatementInteraction[];
+
+  versioning?: "no-version" | "versioned" | "versioned-update";
+
+  _versioning?: Element;
+
+  readHistory?: boolean;
+
+  _readHistory?: Element;
+
+  updateCreate?: boolean;
+
+  _updateCreate?: Element;
+
+  conditionalCreate?: boolean;
+
+  _conditionalCreate?: Element;
+
+  conditionalRead?:
+    | "not-supported"
+    | "modified-since"
+    | "not-match"
+    | "full-support";
+
+  _conditionalRead?: Element;
+
+  conditionalUpdate?: boolean;
+
+  _conditionalUpdate?: Element;
+
+  conditionalDelete?: "not-supported" | "single" | "multiple";
+
+  _conditionalDelete?: Element;
+
+  referencePolicy?: (
+    | "literal"
+    | "logical"
+    | "resolves"
+    | "enforced"
+    | "local"
+  )[];
+
+  _referencePolicy?: Element[];
+
+  searchInclude?: string[];
+
+  _searchInclude?: Element[];
+
+  searchRevInclude?: string[];
+
+  _searchRevInclude?: Element[];
+
+  searchParam?: CapabilityStatementSearchParam[];
+
+  operation?: CapabilityStatementOperation[];
+}
+
+/** A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation. */
+export interface CapabilityStatementInteraction {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  code?:
+    | "read"
+    | "vread"
+    | "update"
+    | "patch"
+    | "delete"
+    | "history-instance"
+    | "history-type"
+    | "create"
+    | "search-type";
+
+  _code?: Element;
+
+  documentation?: string;
+
+  _documentation?: Element;
+}
+
+/** A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation. */
+export interface CapabilityStatementSearchParam {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  name?: string;
+
+  _name?: Element;
+
+  definition?: string;
+
+  type?:
+    | "number"
+    | "date"
+    | "string"
+    | "token"
+    | "reference"
+    | "composite"
+    | "quantity"
+    | "uri"
+    | "special";
+
+  _type?: Element;
+
+  documentation?: string;
+
+  _documentation?: Element;
+}
+
+/** A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation. */
+export interface CapabilityStatementOperation {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  name?: string;
+
+  _name?: Element;
+
+  definition: string;
+
+  documentation?: string;
+
+  _documentation?: Element;
+}
+
+/** A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation. */
+export interface CapabilityStatementInteraction1 {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  code?: "transaction" | "batch" | "search-system" | "history-system";
+
+  _code?: Element;
+
+  documentation?: string;
+
+  _documentation?: Element;
+}
+
+/** A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation. */
+export interface CapabilityStatementMessaging {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+
+  endpoint?: CapabilityStatementEndpoint[];
+  /** Length if the receiver's reliable messaging cache in minutes (if a receiver) or how long the cache length on the receiver should be (if a sender). */
+  reliableCache?: number;
+
+  _reliableCache?: Element;
+  /** Documentation about the system's messaging capabilities for this endpoint not otherwise documented by the capability statement.  For example, the process for becoming an authorized messaging exchange partner. */
+  documentation?: string;
+
+  _documentation?: Element;
+
+  supportedMessage?: CapabilityStatementSupportedMessage[];
+}
+
+/** A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation. */
+export interface CapabilityStatementEndpoint {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  protocol: Coding;
+
+  address?: string;
+
+  _address?: Element;
+}
+
+/** A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation. */
+export interface CapabilityStatementSupportedMessage {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  mode?: "sender" | "receiver";
+
+  _mode?: Element;
+
+  definition: string;
+}
+
+/** A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation. */
+export interface CapabilityStatementDocument {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** Mode of this document declaration - whether an application is a producer or consumer. */
+  mode: "producer" | "consumer";
+
+  _mode?: Element;
+  /** A description of how the application supports or uses the specified document profile.  For example, when documents are created, what action is taken with consumed documents, etc. */
+  documentation?: string;
+
+  _documentation?: Element;
+  /** A profile on the document Bundle that constrains which resources are present, and their contents. */
+  profile: string;
 }

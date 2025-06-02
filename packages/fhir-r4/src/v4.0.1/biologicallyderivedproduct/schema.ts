@@ -9,13 +9,10 @@ import {
   createIdentifierSchema,
   createCodeableConceptSchema,
   createReferenceSchema,
+  createPeriodSchema,
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createBiologicallyDerivedProductCollectionSchema } from "../biologicallyderivedproductcollection/schema";
-import { createBiologicallyDerivedProductProcessingSchema } from "../biologicallyderivedproductprocessing/schema";
-import { createBiologicallyDerivedProductManipulationSchema } from "../biologicallyderivedproductmanipulation/schema";
-import { createBiologicallyDerivedProductStorageSchema } from "../biologicallyderivedproductstorage/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -56,6 +53,82 @@ export function createBiologicallyDerivedProductSchema() {
         storage: z
           .array(createBiologicallyDerivedProductStorageSchema())
           .optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createBiologicallyDerivedProductCollectionSchema() {
+  return getCachedSchema("BiologicallyDerivedProductCollection", () => {
+    const baseSchema: z.ZodType<types.BiologicallyDerivedProductCollection> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        collector: createReferenceSchema().optional(),
+        source: createReferenceSchema().optional(),
+        collectedDateTime: z.string().optional(),
+        _collectedDateTime: createElementSchema().optional(),
+        collectedPeriod: createPeriodSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createBiologicallyDerivedProductProcessingSchema() {
+  return getCachedSchema("BiologicallyDerivedProductProcessing", () => {
+    const baseSchema: z.ZodType<types.BiologicallyDerivedProductProcessing> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        description: primitives.getStringSchema().optional(),
+        _description: createElementSchema().optional(),
+        procedure: createCodeableConceptSchema().optional(),
+        additive: createReferenceSchema().optional(),
+        timeDateTime: z.string().optional(),
+        _timeDateTime: createElementSchema().optional(),
+        timePeriod: createPeriodSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createBiologicallyDerivedProductManipulationSchema() {
+  return getCachedSchema("BiologicallyDerivedProductManipulation", () => {
+    const baseSchema: z.ZodType<types.BiologicallyDerivedProductManipulation> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        description: primitives.getStringSchema().optional(),
+        _description: createElementSchema().optional(),
+        timeDateTime: z.string().optional(),
+        _timeDateTime: createElementSchema().optional(),
+        timePeriod: createPeriodSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createBiologicallyDerivedProductStorageSchema() {
+  return getCachedSchema("BiologicallyDerivedProductStorage", () => {
+    const baseSchema: z.ZodType<types.BiologicallyDerivedProductStorage> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        description: primitives.getStringSchema().optional(),
+        _description: createElementSchema().optional(),
+        temperature: primitives.getDecimalSchema().optional(),
+        _temperature: createElementSchema().optional(),
+        scale: z.enum(["farenheit", "celsius", "kelvin"]).optional(),
+        _scale: createElementSchema().optional(),
+        duration: createPeriodSchema().optional(),
       });
 
     return baseSchema;

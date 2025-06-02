@@ -9,8 +9,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("CompartmentDefinition Schema Validation", () => {
-  it("should validate CompartmentdefinitionDevice fixture", () => {
+describe("Compartmentdefinition Group Schema Validation", () => {
+  it("should validate CompartmentdefinitionDevice fixture (CompartmentDefinition)", () => {
     const result = createCompartmentDefinitionSchema().safeParse(
       CompartmentdefinitionDevice,
     );
@@ -24,7 +24,7 @@ describe("CompartmentDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CompartmentdefinitionEncounter fixture", () => {
+  it("should validate CompartmentdefinitionEncounter fixture (CompartmentDefinition)", () => {
     const result = createCompartmentDefinitionSchema().safeParse(
       CompartmentdefinitionEncounter,
     );
@@ -38,7 +38,7 @@ describe("CompartmentDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CompartmentdefinitionExample fixture", () => {
+  it("should validate CompartmentdefinitionExample fixture (CompartmentDefinition)", () => {
     const result = createCompartmentDefinitionSchema().safeParse(
       CompartmentdefinitionExample,
     );
@@ -52,7 +52,7 @@ describe("CompartmentDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CompartmentdefinitionPatient fixture", () => {
+  it("should validate CompartmentdefinitionPatient fixture (CompartmentDefinition)", () => {
     const result = createCompartmentDefinitionSchema().safeParse(
       CompartmentdefinitionPatient,
     );
@@ -66,7 +66,7 @@ describe("CompartmentDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CompartmentdefinitionPractitioner fixture", () => {
+  it("should validate CompartmentdefinitionPractitioner fixture (CompartmentDefinition)", () => {
     const result = createCompartmentDefinitionSchema().safeParse(
       CompartmentdefinitionPractitioner,
     );
@@ -80,7 +80,7 @@ describe("CompartmentDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CompartmentdefinitionRelatedperson fixture", () => {
+  it("should validate CompartmentdefinitionRelatedperson fixture (CompartmentDefinition)", () => {
     const result = createCompartmentDefinitionSchema().safeParse(
       CompartmentdefinitionRelatedperson,
     );

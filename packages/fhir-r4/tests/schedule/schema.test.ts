@@ -6,8 +6,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Schedule Schema Validation", () => {
-  it("should validate ScheduleExample fixture", () => {
+describe("Schedule Group Schema Validation", () => {
+  it("should validate ScheduleExample fixture (Schedule)", () => {
     const result = createScheduleSchema().safeParse(ScheduleExample);
     if (!result.success) {
       console.error("Validation failed for ScheduleExample:");
@@ -19,7 +19,7 @@ describe("Schedule Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScheduleProviderLocation1Example fixture", () => {
+  it("should validate ScheduleProviderLocation1Example fixture (Schedule)", () => {
     const result = createScheduleSchema().safeParse(
       ScheduleProviderLocation1Example,
     );
@@ -33,7 +33,7 @@ describe("Schedule Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScheduleProviderLocation2Example fixture", () => {
+  it("should validate ScheduleProviderLocation2Example fixture (Schedule)", () => {
     const result = createScheduleSchema().safeParse(
       ScheduleProviderLocation2Example,
     );

@@ -2,8 +2,8 @@ import { createChargeItemSchema } from "../../src";
 import { ChargeitemExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("ChargeItem Schema Validation", () => {
-  it("should validate ChargeitemExample fixture", () => {
+describe("Chargeitem Group Schema Validation", () => {
+  it("should validate ChargeitemExample fixture (ChargeItem)", () => {
     const result = createChargeItemSchema().safeParse(ChargeitemExample);
     if (!result.success) {
       console.error("Validation failed for ChargeitemExample:");

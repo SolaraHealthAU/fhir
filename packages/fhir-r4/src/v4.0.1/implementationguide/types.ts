@@ -5,13 +5,10 @@ import type {
   ContactDetail,
   UsageContext,
   CodeableConcept,
+  Reference,
 } from "../core/types";
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
-import type { ImplementationGuideDependsOn } from "../implementationguidedependson/types";
-import type { ImplementationGuideGlobal } from "../implementationguideglobal/types";
-import type { ImplementationGuideDefinition } from "../implementationguidedefinition/types";
-import type { ImplementationGuideManifest } from "../implementationguidemanifest/types";
 
 /** Generated from FHIR JSON Schema */
 
@@ -475,4 +472,286 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   definition?: ImplementationGuideDefinition;
 
   manifest?: ImplementationGuideManifest;
+}
+
+/** A set of rules of how a particular interoperability or standards problem is solved - typically through the use of FHIR resources. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts. */
+export interface ImplementationGuideDependsOn {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** A canonical reference to the Implementation guide for the dependency. */
+  uri: string;
+  /** The NPM package name for the Implementation Guide that this IG depends on. */
+  packageId?: string;
+
+  _packageId?: Element;
+  /** The version of the IG that is depended on, when the correct version is required to understand the IG correctly. */
+  version?: string;
+
+  _version?: Element;
+}
+
+/** A set of rules of how a particular interoperability or standards problem is solved - typically through the use of FHIR resources. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts. */
+export interface ImplementationGuideGlobal {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** The type of resource that all instances must conform to. */
+  type: string;
+
+  _type?: Element;
+  /** A reference to the profile that all instances must conform to. */
+  profile: string;
+}
+
+/** A set of rules of how a particular interoperability or standards problem is solved - typically through the use of FHIR resources. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts. */
+export interface ImplementationGuideDefinition {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+
+  grouping?: ImplementationGuideGrouping[];
+
+  resource: ImplementationGuideResource[];
+
+  page?: ImplementationGuidePage;
+
+  parameter?: ImplementationGuideParameter[];
+
+  template?: ImplementationGuideTemplate[];
+}
+
+/** A set of rules of how a particular interoperability or standards problem is solved - typically through the use of FHIR resources. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts. */
+export interface ImplementationGuideGrouping {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  name?: string;
+
+  _name?: Element;
+
+  description?: string;
+
+  _description?: Element;
+}
+
+/** A set of rules of how a particular interoperability or standards problem is solved - typically through the use of FHIR resources. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts. */
+export interface ImplementationGuideResource {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  reference: Reference;
+
+  fhirVersion?: (
+    | "0.01"
+    | "0.05"
+    | "0.06"
+    | "0.11"
+    | "0.0.80"
+    | "0.0.81"
+    | "0.0.82"
+    | "0.4.0"
+    | "0.5.0"
+    | "1.0.0"
+    | "1.0.1"
+    | "1.0.2"
+    | "1.1.0"
+    | "1.4.0"
+    | "1.6.0"
+    | "1.8.0"
+    | "3.0.0"
+    | "3.0.1"
+    | "3.3.0"
+    | "3.5.0"
+    | "4.0.0"
+    | "4.0.1"
+  )[];
+
+  _fhirVersion?: Element[];
+
+  name?: string;
+
+  _name?: Element;
+
+  description?: string;
+
+  _description?: Element;
+
+  exampleBoolean?: boolean;
+
+  _exampleBoolean?: Element;
+
+  exampleCanonical?: string;
+
+  _exampleCanonical?: Element;
+
+  groupingId?: string;
+
+  _groupingId?: Element;
+}
+
+/** A set of rules of how a particular interoperability or standards problem is solved - typically through the use of FHIR resources. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts. */
+export interface ImplementationGuidePage {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  nameUrl?: string;
+
+  _nameUrl?: Element;
+
+  nameReference?: Reference;
+
+  title?: string;
+
+  _title?: Element;
+
+  generation?: "html" | "markdown" | "xml" | "generated";
+
+  _generation?: Element;
+
+  page?: ImplementationGuidePage[];
+}
+
+/** A set of rules of how a particular interoperability or standards problem is solved - typically through the use of FHIR resources. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts. */
+export interface ImplementationGuideParameter {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  code?:
+    | "apply"
+    | "path-resource"
+    | "path-pages"
+    | "path-tx-cache"
+    | "expansion-parameter"
+    | "rule-broken-links"
+    | "generate-xml"
+    | "generate-json"
+    | "generate-turtle"
+    | "html-template";
+
+  _code?: Element;
+
+  value?: string;
+
+  _value?: Element;
+}
+
+/** A set of rules of how a particular interoperability or standards problem is solved - typically through the use of FHIR resources. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts. */
+export interface ImplementationGuideTemplate {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  code?: string;
+
+  _code?: Element;
+
+  source?: string;
+
+  _source?: Element;
+
+  scope?: string;
+
+  _scope?: Element;
+}
+
+/** A set of rules of how a particular interoperability or standards problem is solved - typically through the use of FHIR resources. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts. */
+export interface ImplementationGuideManifest {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** A pointer to official web page, PDF or other rendering of the implementation guide. */
+  rendering?: string;
+
+  _rendering?: Element;
+
+  resource: ImplementationGuideResource1[];
+
+  page?: ImplementationGuidePage1[];
+  /** Indicates a relative path to an image that exists within the IG. */
+  image?: string[];
+
+  _image?: Element[];
+  /** Indicates the relative path of an additional non-page, non-image file that is part of the IG - e.g. zip, jar and similar files that could be the target of a hyperlink in a derived IG. */
+  other?: string[];
+
+  _other?: Element[];
+}
+
+/** A set of rules of how a particular interoperability or standards problem is solved - typically through the use of FHIR resources. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts. */
+export interface ImplementationGuideResource1 {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  reference: Reference;
+
+  exampleBoolean?: boolean;
+
+  _exampleBoolean?: Element;
+
+  exampleCanonical?: string;
+
+  _exampleCanonical?: Element;
+
+  relativePath?: string;
+
+  _relativePath?: Element;
+}
+
+/** A set of rules of how a particular interoperability or standards problem is solved - typically through the use of FHIR resources. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts. */
+export interface ImplementationGuidePage1 {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  name?: string;
+
+  _name?: Element;
+
+  title?: string;
+
+  _title?: Element;
+
+  anchor?: string[];
+
+  _anchor?: Element[];
 }

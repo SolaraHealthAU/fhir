@@ -12,7 +12,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createGraphDefinitionLinkSchema } from "../graphdefinitionlink/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -56,6 +55,73 @@ export function createGraphDefinitionSchema() {
       profile: primitives.getCanonicalSchema().optional(),
       link: z.array(createGraphDefinitionLinkSchema()).optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createGraphDefinitionLinkSchema() {
+  return getCachedSchema("GraphDefinitionLink", () => {
+    const baseSchema: z.ZodType<types.GraphDefinitionLink> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      path: primitives.getStringSchema().optional(),
+      _path: createElementSchema().optional(),
+      sliceName: primitives.getStringSchema().optional(),
+      _sliceName: createElementSchema().optional(),
+      min: primitives.getIntegerSchema().optional(),
+      _min: createElementSchema().optional(),
+      max: primitives.getStringSchema().optional(),
+      _max: createElementSchema().optional(),
+      description: primitives.getStringSchema().optional(),
+      _description: createElementSchema().optional(),
+      target: z.array(createGraphDefinitionTargetSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createGraphDefinitionTargetSchema() {
+  return getCachedSchema("GraphDefinitionTarget", () => {
+    const baseSchema: z.ZodType<types.GraphDefinitionTarget> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      type: primitives.getCodeSchema().optional(),
+      _type: createElementSchema().optional(),
+      params: primitives.getStringSchema().optional(),
+      _params: createElementSchema().optional(),
+      profile: primitives.getCanonicalSchema().optional(),
+      compartment: z.array(createGraphDefinitionCompartmentSchema()).optional(),
+      link: z.array(createGraphDefinitionLinkSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createGraphDefinitionCompartmentSchema() {
+  return getCachedSchema("GraphDefinitionCompartment", () => {
+    const baseSchema: z.ZodType<types.GraphDefinitionCompartment> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        use: z.enum(["condition", "requirement"]).optional(),
+        _use: createElementSchema().optional(),
+        code: primitives.getCodeSchema().optional(),
+        _code: createElementSchema().optional(),
+        rule: z
+          .enum(["identical", "matching", "different", "custom"])
+          .optional(),
+        _rule: createElementSchema().optional(),
+        expression: primitives.getStringSchema().optional(),
+        _expression: createElementSchema().optional(),
+        description: primitives.getStringSchema().optional(),
+        _description: createElementSchema().optional(),
+      });
 
     return baseSchema;
   });

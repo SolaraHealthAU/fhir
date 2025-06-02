@@ -26,8 +26,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Patient Schema Validation", () => {
-  it("should validate JsonEdgeCases fixture", () => {
+describe("Patient Group Schema Validation", () => {
+  it("should validate JsonEdgeCases fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(JsonEdgeCases);
     if (!result.success) {
       console.error("Validation failed for JsonEdgeCases:");
@@ -39,7 +39,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExampleA fixture", () => {
+  it("should validate PatientExampleA fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientExampleA);
     if (!result.success) {
       console.error("Validation failed for PatientExampleA:");
@@ -51,7 +51,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExampleAnimal fixture", () => {
+  it("should validate PatientExampleAnimal fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientExampleAnimal);
     if (!result.success) {
       console.error("Validation failed for PatientExampleAnimal:");
@@ -63,7 +63,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExampleB fixture", () => {
+  it("should validate PatientExampleB fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientExampleB);
     if (!result.success) {
       console.error("Validation failed for PatientExampleB:");
@@ -75,7 +75,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExampleC fixture", () => {
+  it("should validate PatientExampleC fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientExampleC);
     if (!result.success) {
       console.error("Validation failed for PatientExampleC:");
@@ -87,7 +87,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExampleChinese fixture", () => {
+  it("should validate PatientExampleChinese fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientExampleChinese);
     if (!result.success) {
       console.error("Validation failed for PatientExampleChinese:");
@@ -99,7 +99,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExampleD fixture", () => {
+  it("should validate PatientExampleD fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientExampleD);
     if (!result.success) {
       console.error("Validation failed for PatientExampleD:");
@@ -111,7 +111,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExampleDicom fixture", () => {
+  it("should validate PatientExampleDicom fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientExampleDicom);
     if (!result.success) {
       console.error("Validation failed for PatientExampleDicom:");
@@ -123,7 +123,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExampleF001Pieter fixture", () => {
+  it("should validate PatientExampleF001Pieter fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientExampleF001Pieter);
     if (!result.success) {
       console.error("Validation failed for PatientExampleF001Pieter:");
@@ -135,7 +135,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExampleF201Roel fixture", () => {
+  it("should validate PatientExampleF201Roel fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientExampleF201Roel);
     if (!result.success) {
       console.error("Validation failed for PatientExampleF201Roel:");
@@ -147,7 +147,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExampleIhePcd fixture", () => {
+  it("should validate PatientExampleIhePcd fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientExampleIhePcd);
     if (!result.success) {
       console.error("Validation failed for PatientExampleIhePcd:");
@@ -159,7 +159,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExampleInfantFetal fixture", () => {
+  it("should validate PatientExampleInfantFetal fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientExampleInfantFetal);
     if (!result.success) {
       console.error("Validation failed for PatientExampleInfantFetal:");
@@ -171,7 +171,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExampleInfantMom fixture", () => {
+  it("should validate PatientExampleInfantMom fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientExampleInfantMom);
     if (!result.success) {
       console.error("Validation failed for PatientExampleInfantMom:");
@@ -183,7 +183,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExampleInfantTwin1 fixture", () => {
+  it("should validate PatientExampleInfantTwin1 fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientExampleInfantTwin1);
     if (!result.success) {
       console.error("Validation failed for PatientExampleInfantTwin1:");
@@ -195,7 +195,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExampleInfantTwin2 fixture", () => {
+  it("should validate PatientExampleInfantTwin2 fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientExampleInfantTwin2);
     if (!result.success) {
       console.error("Validation failed for PatientExampleInfantTwin2:");
@@ -207,7 +207,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExampleMom fixture", () => {
+  it("should validate PatientExampleMom fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientExampleMom);
     if (!result.success) {
       console.error("Validation failed for PatientExampleMom:");
@@ -219,7 +219,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExampleNewborn fixture", () => {
+  it("should validate PatientExampleNewborn fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientExampleNewborn);
     if (!result.success) {
       console.error("Validation failed for PatientExampleNewborn:");
@@ -231,7 +231,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExampleProband fixture", () => {
+  it("should validate PatientExampleProband fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientExampleProband);
     if (!result.success) {
       console.error("Validation failed for PatientExampleProband:");
@@ -243,7 +243,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExampleXcda fixture", () => {
+  it("should validate PatientExampleXcda fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientExampleXcda);
     if (!result.success) {
       console.error("Validation failed for PatientExampleXcda:");
@@ -255,7 +255,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExampleXds fixture", () => {
+  it("should validate PatientExampleXds fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientExampleXds);
     if (!result.success) {
       console.error("Validation failed for PatientExampleXds:");
@@ -267,7 +267,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExample fixture", () => {
+  it("should validate PatientExample fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientExample);
     if (!result.success) {
       console.error("Validation failed for PatientExample:");
@@ -279,7 +279,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientGeneticsExample1 fixture", () => {
+  it("should validate PatientGeneticsExample1 fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientGeneticsExample1);
     if (!result.success) {
       console.error("Validation failed for PatientGeneticsExample1:");
@@ -291,7 +291,7 @@ describe("Patient Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientGlossyExample fixture", () => {
+  it("should validate PatientGlossyExample fixture (Patient)", () => {
     const result = createPatientSchema().safeParse(PatientGlossyExample);
     if (!result.success) {
       console.error("Validation failed for PatientGlossyExample:");

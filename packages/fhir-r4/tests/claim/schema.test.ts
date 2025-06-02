@@ -20,8 +20,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Claim Schema Validation", () => {
-  it("should validate ClaimExampleCms1500Medical fixture", () => {
+describe("Claim Group Schema Validation", () => {
+  it("should validate ClaimExampleCms1500Medical fixture (Claim)", () => {
     const result = createClaimSchema().safeParse(ClaimExampleCms1500Medical);
     if (!result.success) {
       console.error("Validation failed for ClaimExampleCms1500Medical:");
@@ -33,7 +33,7 @@ describe("Claim Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ClaimExampleInstitutionalRich fixture", () => {
+  it("should validate ClaimExampleInstitutionalRich fixture (Claim)", () => {
     const result = createClaimSchema().safeParse(ClaimExampleInstitutionalRich);
     if (!result.success) {
       console.error("Validation failed for ClaimExampleInstitutionalRich:");
@@ -45,7 +45,7 @@ describe("Claim Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ClaimExampleInstitutional fixture", () => {
+  it("should validate ClaimExampleInstitutional fixture (Claim)", () => {
     const result = createClaimSchema().safeParse(ClaimExampleInstitutional);
     if (!result.success) {
       console.error("Validation failed for ClaimExampleInstitutional:");
@@ -57,7 +57,7 @@ describe("Claim Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ClaimExampleOralAverage fixture", () => {
+  it("should validate ClaimExampleOralAverage fixture (Claim)", () => {
     const result = createClaimSchema().safeParse(ClaimExampleOralAverage);
     if (!result.success) {
       console.error("Validation failed for ClaimExampleOralAverage:");
@@ -69,7 +69,7 @@ describe("Claim Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ClaimExampleOralBridge fixture", () => {
+  it("should validate ClaimExampleOralBridge fixture (Claim)", () => {
     const result = createClaimSchema().safeParse(ClaimExampleOralBridge);
     if (!result.success) {
       console.error("Validation failed for ClaimExampleOralBridge:");
@@ -81,7 +81,7 @@ describe("Claim Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ClaimExampleOralContainedIdentifier fixture", () => {
+  it("should validate ClaimExampleOralContainedIdentifier fixture (Claim)", () => {
     const result = createClaimSchema().safeParse(
       ClaimExampleOralContainedIdentifier,
     );
@@ -97,7 +97,7 @@ describe("Claim Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ClaimExampleOralContained fixture", () => {
+  it("should validate ClaimExampleOralContained fixture (Claim)", () => {
     const result = createClaimSchema().safeParse(ClaimExampleOralContained);
     if (!result.success) {
       console.error("Validation failed for ClaimExampleOralContained:");
@@ -109,7 +109,7 @@ describe("Claim Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ClaimExampleOralIdentifier fixture", () => {
+  it("should validate ClaimExampleOralIdentifier fixture (Claim)", () => {
     const result = createClaimSchema().safeParse(ClaimExampleOralIdentifier);
     if (!result.success) {
       console.error("Validation failed for ClaimExampleOralIdentifier:");
@@ -121,7 +121,7 @@ describe("Claim Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ClaimExampleOralOrthoplan fixture", () => {
+  it("should validate ClaimExampleOralOrthoplan fixture (Claim)", () => {
     const result = createClaimSchema().safeParse(ClaimExampleOralOrthoplan);
     if (!result.success) {
       console.error("Validation failed for ClaimExampleOralOrthoplan:");
@@ -133,7 +133,7 @@ describe("Claim Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ClaimExamplePharmacyCompound fixture", () => {
+  it("should validate ClaimExamplePharmacyCompound fixture (Claim)", () => {
     const result = createClaimSchema().safeParse(ClaimExamplePharmacyCompound);
     if (!result.success) {
       console.error("Validation failed for ClaimExamplePharmacyCompound:");
@@ -145,7 +145,7 @@ describe("Claim Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ClaimExamplePharmacyMedication fixture", () => {
+  it("should validate ClaimExamplePharmacyMedication fixture (Claim)", () => {
     const result = createClaimSchema().safeParse(
       ClaimExamplePharmacyMedication,
     );
@@ -159,7 +159,7 @@ describe("Claim Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ClaimExamplePharmacy fixture", () => {
+  it("should validate ClaimExamplePharmacy fixture (Claim)", () => {
     const result = createClaimSchema().safeParse(ClaimExamplePharmacy);
     if (!result.success) {
       console.error("Validation failed for ClaimExamplePharmacy:");
@@ -171,7 +171,7 @@ describe("Claim Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ClaimExampleProfessional fixture", () => {
+  it("should validate ClaimExampleProfessional fixture (Claim)", () => {
     const result = createClaimSchema().safeParse(ClaimExampleProfessional);
     if (!result.success) {
       console.error("Validation failed for ClaimExampleProfessional:");
@@ -183,7 +183,7 @@ describe("Claim Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ClaimExampleVisionGlasses3tier fixture", () => {
+  it("should validate ClaimExampleVisionGlasses3tier fixture (Claim)", () => {
     const result = createClaimSchema().safeParse(
       ClaimExampleVisionGlasses3tier,
     );
@@ -197,7 +197,7 @@ describe("Claim Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ClaimExampleVisionGlasses fixture", () => {
+  it("should validate ClaimExampleVisionGlasses fixture (Claim)", () => {
     const result = createClaimSchema().safeParse(ClaimExampleVisionGlasses);
     if (!result.success) {
       console.error("Validation failed for ClaimExampleVisionGlasses:");
@@ -209,7 +209,7 @@ describe("Claim Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ClaimExampleVision fixture", () => {
+  it("should validate ClaimExampleVision fixture (Claim)", () => {
     const result = createClaimSchema().safeParse(ClaimExampleVision);
     if (!result.success) {
       console.error("Validation failed for ClaimExampleVision:");
@@ -221,7 +221,7 @@ describe("Claim Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ClaimExample fixture", () => {
+  it("should validate ClaimExample fixture (Claim)", () => {
     const result = createClaimSchema().safeParse(ClaimExample);
     if (!result.success) {
       console.error("Validation failed for ClaimExample:");

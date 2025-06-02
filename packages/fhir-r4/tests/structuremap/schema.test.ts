@@ -5,8 +5,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("StructureMap Schema Validation", () => {
-  it("should validate StructuremapExample fixture", () => {
+describe("Structuremap Group Schema Validation", () => {
+  it("should validate StructuremapExample fixture (StructureMap)", () => {
     const result = createStructureMapSchema().safeParse(StructuremapExample);
     if (!result.success) {
       console.error("Validation failed for StructuremapExample:");
@@ -18,7 +18,7 @@ describe("StructureMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate StructuremapSupplyrequestTransform fixture", () => {
+  it("should validate StructuremapSupplyrequestTransform fixture (StructureMap)", () => {
     const result = createStructureMapSchema().safeParse(
       StructuremapSupplyrequestTransform,
     );

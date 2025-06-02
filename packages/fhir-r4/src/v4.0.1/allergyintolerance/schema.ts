@@ -16,7 +16,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createAllergyIntoleranceReactionSchema } from "../allergyintolerancereaction/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -65,6 +64,29 @@ export function createAllergyIntoleranceSchema() {
       note: z.array(createAnnotationSchema()).optional(),
       reaction: z.array(createAllergyIntoleranceReactionSchema()).optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createAllergyIntoleranceReactionSchema() {
+  return getCachedSchema("AllergyIntoleranceReaction", () => {
+    const baseSchema: z.ZodType<types.AllergyIntoleranceReaction> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        substance: createCodeableConceptSchema().optional(),
+        manifestation: z.array(createCodeableConceptSchema()),
+        description: primitives.getStringSchema().optional(),
+        _description: createElementSchema().optional(),
+        onset: primitives.getDateTimeSchema().optional(),
+        _onset: createElementSchema().optional(),
+        severity: z.enum(["mild", "moderate", "severe"]).optional(),
+        _severity: createElementSchema().optional(),
+        exposureRoute: createCodeableConceptSchema().optional(),
+        note: z.array(createAnnotationSchema()).optional(),
+      });
 
     return baseSchema;
   });

@@ -7,15 +7,15 @@ import type {
   Reference,
   Period,
   Attachment,
+  Coding,
+  Quantity,
+  Money,
+  Timing,
+  Annotation,
+  Signature,
 } from "../core/types";
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
-import type { ContractContentDefinition } from "../contractcontentdefinition/types";
-import type { ContractTerm } from "../contractterm/types";
-import type { ContractSigner } from "../contractsigner/types";
-import type { ContractFriendly } from "../contractfriendly/types";
-import type { ContractLegal } from "../contractlegal/types";
-import type { ContractRule } from "../contractrule/types";
 
 /** Generated from FHIR JSON Schema */
 
@@ -132,4 +132,461 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   legallyBindingAttachment?: Attachment;
 
   legallyBindingReference?: Reference;
+}
+
+/** Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement. */
+export interface ContractContentDefinition {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** Precusory content structure and use, i.e., a boilerplate, template, application for a contract such as an insurance policy or benefits under a program, e.g., workers compensation. */
+  type: CodeableConcept;
+  /** Detailed Precusory content type. */
+  subType?: CodeableConcept;
+  /** The  individual or organization that published the Contract precursor content. */
+  publisher?: Reference;
+  /** The date (and optionally time) when the contract was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the contract changes. */
+  publicationDate?: string;
+
+  _publicationDate?: Element;
+  /** amended | appended | cancelled | disputed | entered-in-error | executable | executed | negotiable | offered | policy | rejected | renewed | revoked | resolved | terminated. */
+  publicationStatus: string;
+
+  _publicationStatus?: Element;
+  /** A copyright statement relating to Contract precursor content. Copyright statements are generally legal restrictions on the use and publishing of the Contract precursor content. */
+  copyright?: string;
+
+  _copyright?: Element;
+}
+
+/** Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement. */
+export interface ContractTerm {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** Unique identifier for this particular Contract Provision. */
+  identifier?: Identifier;
+  /** When this Contract Provision was issued. */
+  issued?: string;
+
+  _issued?: Element;
+  /** Relevant time or time-period when this Contract Provision is applicable. */
+  applies?: Period;
+
+  topicCodeableConcept?: CodeableConcept;
+
+  topicReference?: Reference;
+  /** A legal clause or condition contained within a contract that requires one or both parties to perform a particular requirement by some specified time or prevents one or both parties from performing a particular requirement by some specified time. */
+  type?: CodeableConcept;
+  /** A specialized legal clause or condition based on overarching contract type. */
+  subType?: CodeableConcept;
+  /** Statement of a provision in a policy or a contract. */
+  text?: string;
+
+  _text?: Element;
+
+  securityLabel?: ContractSecurityLabel[];
+
+  offer: ContractOffer;
+
+  asset?: ContractAsset[];
+
+  action?: ContractAction[];
+
+  group?: ContractTerm[];
+}
+
+/** Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement. */
+export interface ContractSecurityLabel {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  number?: number[];
+
+  _number?: Element[];
+
+  classification: Coding;
+
+  category?: Coding[];
+
+  control?: Coding[];
+}
+
+/** Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement. */
+export interface ContractOffer {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  identifier?: Identifier[];
+
+  party?: ContractParty[];
+
+  topic?: Reference;
+
+  type?: CodeableConcept;
+
+  decision?: CodeableConcept;
+
+  decisionMode?: CodeableConcept[];
+
+  answer?: ContractAnswer[];
+
+  text?: string;
+
+  _text?: Element;
+
+  linkId?: string[];
+
+  _linkId?: Element[];
+
+  securityLabelNumber?: number[];
+
+  _securityLabelNumber?: Element[];
+}
+
+/** Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement. */
+export interface ContractParty {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  reference: Reference[];
+
+  role: CodeableConcept;
+}
+
+/** Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement. */
+export interface ContractAnswer {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  valueBoolean?: boolean;
+
+  _valueBoolean?: Element;
+
+  valueDecimal?: number;
+
+  _valueDecimal?: Element;
+
+  valueInteger?: number;
+
+  _valueInteger?: Element;
+
+  valueDate?: string;
+
+  _valueDate?: Element;
+
+  valueDateTime?: string;
+
+  _valueDateTime?: Element;
+
+  valueTime?: string;
+
+  _valueTime?: Element;
+
+  valueString?: string;
+
+  _valueString?: Element;
+
+  valueUri?: string;
+
+  _valueUri?: Element;
+
+  valueAttachment?: Attachment;
+
+  valueCoding?: Coding;
+
+  valueQuantity?: Quantity;
+
+  valueReference?: Reference;
+}
+
+/** Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement. */
+export interface ContractAsset {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  scope?: CodeableConcept;
+
+  type?: CodeableConcept[];
+
+  typeReference?: Reference[];
+
+  subtype?: CodeableConcept[];
+
+  relationship?: Coding;
+
+  context?: ContractContext[];
+
+  condition?: string;
+
+  _condition?: Element;
+
+  periodType?: CodeableConcept[];
+
+  period?: Period[];
+
+  usePeriod?: Period[];
+
+  text?: string;
+
+  _text?: Element;
+
+  linkId?: string[];
+
+  _linkId?: Element[];
+
+  answer?: ContractAnswer[];
+
+  securityLabelNumber?: number[];
+
+  _securityLabelNumber?: Element[];
+
+  valuedItem?: ContractValuedItem[];
+}
+
+/** Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement. */
+export interface ContractContext {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  reference?: Reference;
+
+  code?: CodeableConcept[];
+
+  text?: string;
+
+  _text?: Element;
+}
+
+/** Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement. */
+export interface ContractValuedItem {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  entityCodeableConcept?: CodeableConcept;
+
+  entityReference?: Reference;
+
+  identifier?: Identifier;
+
+  effectiveTime?: string;
+
+  _effectiveTime?: Element;
+
+  quantity?: Quantity;
+
+  unitPrice?: Money;
+
+  factor?: number;
+
+  _factor?: Element;
+
+  points?: number;
+
+  _points?: Element;
+
+  net?: Money;
+
+  payment?: string;
+
+  _payment?: Element;
+
+  paymentDate?: string;
+
+  _paymentDate?: Element;
+
+  responsible?: Reference;
+
+  recipient?: Reference;
+
+  linkId?: string[];
+
+  _linkId?: Element[];
+
+  securityLabelNumber?: number[];
+
+  _securityLabelNumber?: Element[];
+}
+
+/** Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement. */
+export interface ContractAction {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  doNotPerform?: boolean;
+
+  _doNotPerform?: Element;
+
+  type: CodeableConcept;
+
+  subject?: ContractSubject[];
+
+  intent: CodeableConcept;
+
+  linkId?: string[];
+
+  _linkId?: Element[];
+
+  status: CodeableConcept;
+
+  context?: Reference;
+
+  contextLinkId?: string[];
+
+  _contextLinkId?: Element[];
+
+  occurrenceDateTime?: string;
+
+  _occurrenceDateTime?: Element;
+
+  occurrencePeriod?: Period;
+
+  occurrenceTiming?: Timing;
+
+  requester?: Reference[];
+
+  requesterLinkId?: string[];
+
+  _requesterLinkId?: Element[];
+
+  performerType?: CodeableConcept[];
+
+  performerRole?: CodeableConcept;
+
+  performer?: Reference;
+
+  performerLinkId?: string[];
+
+  _performerLinkId?: Element[];
+
+  reasonCode?: CodeableConcept[];
+
+  reasonReference?: Reference[];
+
+  reason?: string[];
+
+  _reason?: Element[];
+
+  reasonLinkId?: string[];
+
+  _reasonLinkId?: Element[];
+
+  note?: Annotation[];
+
+  securityLabelNumber?: number[];
+
+  _securityLabelNumber?: Element[];
+}
+
+/** Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement. */
+export interface ContractSubject {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  reference: Reference[];
+
+  role?: CodeableConcept;
+}
+
+/** Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement. */
+export interface ContractSigner {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** Role of this Contract signer, e.g. notary, grantee. */
+  type: Coding;
+  /** Party which is a signator to this Contract. */
+  party: Reference;
+  /** Legally binding Contract DSIG signature contents in Base64. */
+  signature: Signature[];
+}
+
+/** Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement. */
+export interface ContractFriendly {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+
+  contentAttachment?: Attachment;
+
+  contentReference?: Reference;
+}
+
+/** Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement. */
+export interface ContractLegal {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+
+  contentAttachment?: Attachment;
+
+  contentReference?: Reference;
+}
+
+/** Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement. */
+export interface ContractRule {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+
+  contentAttachment?: Attachment;
+
+  contentReference?: Reference;
 }

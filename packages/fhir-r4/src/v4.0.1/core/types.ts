@@ -1,9 +1,3 @@
-import type { TimingRepeat } from "../timingrepeat/types";
-import type { DataRequirementCodeFilter } from "../datarequirementcodefilter/types";
-import type { DataRequirementDateFilter } from "../datarequirementdatefilter/types";
-import type { DataRequirementSort } from "../datarequirementsort/types";
-import type { DosageDoseAndRate } from "../dosagedoseandrate/types";
-
 /** Generated from FHIR JSON Schema */
 
 /** Base definition for all elements in a resource. */
@@ -688,6 +682,104 @@ export interface Timing {
   code?: CodeableConcept;
 }
 
+/** Specifies an event that may occur multiple times. Timing schedules are used to record when things are planned, expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds, and may be used for reporting the schedule to which past regular activities were carried out. */
+export interface TimingRepeat {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  boundsDuration?: Duration;
+
+  boundsRange?: Range;
+
+  boundsPeriod?: Period;
+  /** A total count of the desired number of repetitions across the duration of the entire timing specification. If countMax is present, this element indicates the lower bound of the allowed range of count values. */
+  count?: number;
+
+  _count?: Element;
+  /** If present, indicates that the count is a range - so to perform the action between [count] and [countMax] times. */
+  countMax?: number;
+
+  _countMax?: Element;
+  /** How long this thing happens for when it happens. If durationMax is present, this element indicates the lower bound of the allowed range of the duration. */
+  duration?: number;
+
+  _duration?: Element;
+  /** If present, indicates that the duration is a range - so to perform the action between [duration] and [durationMax] time length. */
+  durationMax?: number;
+
+  _durationMax?: Element;
+  /** The units of time for the duration, in UCUM units. */
+  durationUnit?: "s" | "min" | "h" | "d" | "wk" | "mo" | "a";
+
+  _durationUnit?: Element;
+  /** The number of times to repeat the action within the specified period. If frequencyMax is present, this element indicates the lower bound of the allowed range of the frequency. */
+  frequency?: number;
+
+  _frequency?: Element;
+  /** If present, indicates that the frequency is a range - so to repeat between [frequency] and [frequencyMax] times within the period or period range. */
+  frequencyMax?: number;
+
+  _frequencyMax?: Element;
+  /** Indicates the duration of time over which repetitions are to occur; e.g. to express "3 times per day", 3 would be the frequency and "1 day" would be the period. If periodMax is present, this element indicates the lower bound of the allowed range of the period length. */
+  period?: number;
+
+  _period?: Element;
+  /** If present, indicates that the period is a range from [period] to [periodMax], allowing expressing concepts such as "do this once every 3-5 days. */
+  periodMax?: number;
+
+  _periodMax?: Element;
+  /** The units of time for the period in UCUM units. */
+  periodUnit?: "s" | "min" | "h" | "d" | "wk" | "mo" | "a";
+
+  _periodUnit?: Element;
+  /** If one or more days of week is provided, then the action happens only on the specified day(s). */
+  dayOfWeek?: string[];
+
+  _dayOfWeek?: Element[];
+  /** Specified time of day for action to take place. */
+  timeOfDay?: string[];
+
+  _timeOfDay?: Element[];
+  /** An approximate time period during the day, potentially linked to an event of daily living that indicates when the action should occur. */
+  when?: (
+    | "MORN"
+    | "MORN.early"
+    | "MORN.late"
+    | "NOON"
+    | "AFT"
+    | "AFT.early"
+    | "AFT.late"
+    | "EVE"
+    | "EVE.early"
+    | "EVE.late"
+    | "NIGHT"
+    | "PHS"
+    | "HS"
+    | "WAKE"
+    | "C"
+    | "CM"
+    | "CD"
+    | "CV"
+    | "AC"
+    | "ACM"
+    | "ACD"
+    | "ACV"
+    | "PC"
+    | "PCM"
+    | "PCD"
+    | "PCV"
+  )[];
+
+  _when?: Element[];
+  /** The number of minutes from the event. If the event code does not indicate whether the minutes is before or after the event, then the offset is assumed to be after the event. */
+  offset?: number;
+
+  _offset?: Element;
+}
+
 /** The metadata about a resource. This is content in the resource that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource. */
 export interface Meta {
   id?: string;
@@ -774,6 +866,69 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
   _limit?: Element;
 
   sort?: DataRequirementSort[];
+}
+
+/** Describes a required data item for evaluation in terms of the type of data, and optional code or date-based filters of the data. */
+export interface DataRequirementCodeFilter {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+  /** The code-valued attribute of the filter. The specified path SHALL be a FHIRPath resolveable on the specified type of the DataRequirement, and SHALL consist only of identifiers, constant indexers, and .resolve(). The path is allowed to contain qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to traverse multiple-cardinality sub-elements (see the [Simple FHIRPath Profile](fhirpath.html#simple) for full details). Note that the index must be an integer constant. The path must resolve to an element of type code, Coding, or CodeableConcept. */
+  path?: string;
+
+  _path?: Element;
+  /** A token parameter that refers to a search parameter defined on the specified type of the DataRequirement, and which searches on elements of type code, Coding, or CodeableConcept. */
+  searchParam?: string;
+
+  _searchParam?: Element;
+  /** The valueset for the code filter. The valueSet and code elements are additive. If valueSet is specified, the filter will return only those data items for which the value of the code-valued element specified in the path is a member of the specified valueset. */
+  valueSet?: string;
+  /** The codes for the code filter. If values are given, the filter will return only those data items for which the code-valued attribute specified by the path has a value that is one of the specified codes. If codes are specified in addition to a value set, the filter returns items matching a code in the value set or one of the specified codes. */
+  code?: Coding[];
+}
+
+/** Describes a required data item for evaluation in terms of the type of data, and optional code or date-based filters of the data. */
+export interface DataRequirementDateFilter {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+  /** The date-valued attribute of the filter. The specified path SHALL be a FHIRPath resolveable on the specified type of the DataRequirement, and SHALL consist only of identifiers, constant indexers, and .resolve(). The path is allowed to contain qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to traverse multiple-cardinality sub-elements (see the [Simple FHIRPath Profile](fhirpath.html#simple) for full details). Note that the index must be an integer constant. The path must resolve to an element of type date, dateTime, Period, Schedule, or Timing. */
+  path?: string;
+
+  _path?: Element;
+  /** A date parameter that refers to a search parameter defined on the specified type of the DataRequirement, and which searches on elements of type date, dateTime, Period, Schedule, or Timing. */
+  searchParam?: string;
+
+  _searchParam?: Element;
+
+  valueDateTime?: string;
+
+  _valueDateTime?: Element;
+
+  valuePeriod?: Period;
+
+  valueDuration?: Duration;
+}
+
+/** Describes a required data item for evaluation in terms of the type of data, and optional code or date-based filters of the data. */
+export interface DataRequirementSort {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+  /** The attribute of the sort. The specified path must be resolvable from the type of the required data. The path is allowed to contain qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to traverse multiple-cardinality sub-elements. Note that the index must be an integer constant. */
+  path: string;
+
+  _path?: Element;
+  /** The direction of the sort, ascending or descending. */
+  direction: "ascending" | "descending";
+
+  _direction?: Element;
 }
 
 /** The parameters to the module. This collection specifies both the input and output parameters. Input parameters are provided by the caller as part of the $evaluate operation. Output parameters are included in the GuidanceResponse. */
@@ -947,6 +1102,27 @@ export interface Dosage {
   maxDosePerAdministration?: Quantity;
   /** Upper limit on medication per lifetime of the patient. */
   maxDosePerLifetime?: Quantity;
+}
+
+/** Indicates how the medication is/was taken or should be taken by the patient. */
+export interface DosageDoseAndRate {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+  /** The kind of dose or rate specified, for example, ordered or calculated. */
+  type?: CodeableConcept;
+
+  doseRange?: Range;
+
+  doseQuantity?: Quantity;
+
+  rateRatio?: Ratio;
+
+  rateRange?: Range;
+
+  rateQuantity?: Quantity;
 }
 
 /** A expression that is evaluated in a specified context and returns a value. The context of use of the expression must specify the context in which the expression is evaluated, and how the result of the expression is used. */

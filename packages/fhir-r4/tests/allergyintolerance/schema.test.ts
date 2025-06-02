@@ -9,8 +9,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("AllergyIntolerance Schema Validation", () => {
-  it("should validate AllergyintoleranceExample fixture", () => {
+describe("Allergyintolerance Group Schema Validation", () => {
+  it("should validate AllergyintoleranceExample fixture (AllergyIntolerance)", () => {
     const result = createAllergyIntoleranceSchema().safeParse(
       AllergyintoleranceExample,
     );
@@ -24,7 +24,7 @@ describe("AllergyIntolerance Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AllergyintoleranceFishallergy fixture", () => {
+  it("should validate AllergyintoleranceFishallergy fixture (AllergyIntolerance)", () => {
     const result = createAllergyIntoleranceSchema().safeParse(
       AllergyintoleranceFishallergy,
     );
@@ -38,7 +38,7 @@ describe("AllergyIntolerance Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AllergyintoleranceMedication fixture", () => {
+  it("should validate AllergyintoleranceMedication fixture (AllergyIntolerance)", () => {
     const result = createAllergyIntoleranceSchema().safeParse(
       AllergyintoleranceMedication,
     );
@@ -52,7 +52,7 @@ describe("AllergyIntolerance Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AllergyintoleranceNka fixture", () => {
+  it("should validate AllergyintoleranceNka fixture (AllergyIntolerance)", () => {
     const result = createAllergyIntoleranceSchema().safeParse(
       AllergyintoleranceNka,
     );
@@ -66,7 +66,7 @@ describe("AllergyIntolerance Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AllergyintoleranceNkda fixture", () => {
+  it("should validate AllergyintoleranceNkda fixture (AllergyIntolerance)", () => {
     const result = createAllergyIntoleranceSchema().safeParse(
       AllergyintoleranceNkda,
     );
@@ -80,7 +80,7 @@ describe("AllergyIntolerance Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AllergyintoleranceNkla fixture", () => {
+  it("should validate AllergyintoleranceNkla fixture (AllergyIntolerance)", () => {
     const result = createAllergyIntoleranceSchema().safeParse(
       AllergyintoleranceNkla,
     );

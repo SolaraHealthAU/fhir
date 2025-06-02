@@ -7,8 +7,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("DetectedIssue Schema Validation", () => {
-  it("should validate DetectedissueExampleAllergy fixture", () => {
+describe("Detectedissue Group Schema Validation", () => {
+  it("should validate DetectedissueExampleAllergy fixture (DetectedIssue)", () => {
     const result = createDetectedIssueSchema().safeParse(
       DetectedissueExampleAllergy,
     );
@@ -22,7 +22,7 @@ describe("DetectedIssue Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DetectedissueExampleDup fixture", () => {
+  it("should validate DetectedissueExampleDup fixture (DetectedIssue)", () => {
     const result = createDetectedIssueSchema().safeParse(
       DetectedissueExampleDup,
     );
@@ -36,7 +36,7 @@ describe("DetectedIssue Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DetectedissueExampleLab fixture", () => {
+  it("should validate DetectedissueExampleLab fixture (DetectedIssue)", () => {
     const result = createDetectedIssueSchema().safeParse(
       DetectedissueExampleLab,
     );
@@ -50,7 +50,7 @@ describe("DetectedIssue Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DetectedissueExample fixture", () => {
+  it("should validate DetectedissueExample fixture (DetectedIssue)", () => {
     const result = createDetectedIssueSchema().safeParse(DetectedissueExample);
     if (!result.success) {
       console.error("Validation failed for DetectedissueExample:");

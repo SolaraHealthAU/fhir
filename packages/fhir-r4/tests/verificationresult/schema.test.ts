@@ -2,8 +2,8 @@ import { createVerificationResultSchema } from "../../src";
 import { VerificationresultExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("VerificationResult Schema Validation", () => {
-  it("should validate VerificationresultExample fixture", () => {
+describe("Verificationresult Group Schema Validation", () => {
+  it("should validate VerificationresultExample fixture (VerificationResult)", () => {
     const result = createVerificationResultSchema().safeParse(
       VerificationresultExample,
     );

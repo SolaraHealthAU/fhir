@@ -6,12 +6,14 @@ import type {
   CodeableConcept,
   Period,
   Reference,
+  HumanName,
+  ContactPoint,
+  Address,
+  Quantity,
+  Money,
 } from "../core/types";
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
-import type { InsurancePlanContact } from "../insuranceplancontact/types";
-import type { InsurancePlanCoverage } from "../insuranceplancoverage/types";
-import type { InsurancePlanPlan } from "../insuranceplanplan/types";
 
 /** Generated from FHIR JSON Schema */
 
@@ -74,4 +76,160 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   coverage?: InsurancePlanCoverage[];
 
   plan?: InsurancePlanPlan[];
+}
+
+/** Details of a Health Insurance product/plan provided by an organization. */
+export interface InsurancePlanContact {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** Indicates a purpose for which the contact can be reached. */
+  purpose?: CodeableConcept;
+  /** A name associated with the contact. */
+  name?: HumanName;
+  /** A contact detail (e.g. a telephone number or an email address) by which the party may be contacted. */
+  telecom?: ContactPoint[];
+  /** Visiting or postal addresses for the contact. */
+  address?: Address;
+}
+
+/** Details of a Health Insurance product/plan provided by an organization. */
+export interface InsurancePlanCoverage {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** Type of coverage  (Medical; Dental; Mental Health; Substance Abuse; Vision; Drug; Short Term; Long Term Care; Hospice; Home Health). */
+  type: CodeableConcept;
+  /** Reference to the network that providing the type of coverage. */
+  network?: Reference[];
+
+  benefit: InsurancePlanBenefit[];
+}
+
+/** Details of a Health Insurance product/plan provided by an organization. */
+export interface InsurancePlanBenefit {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  type: CodeableConcept;
+
+  requirement?: string;
+
+  _requirement?: Element;
+
+  limit?: InsurancePlanLimit[];
+}
+
+/** Details of a Health Insurance product/plan provided by an organization. */
+export interface InsurancePlanLimit {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  value?: Quantity;
+
+  code?: CodeableConcept;
+}
+
+/** Details of a Health Insurance product/plan provided by an organization. */
+export interface InsurancePlanPlan {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** Business identifiers assigned to this health insurance plan which remain constant as the resource is updated and propagates from server to server. */
+  identifier?: Identifier[];
+  /** Type of plan. For example, "Platinum" or "High Deductable". */
+  type?: CodeableConcept;
+  /** The geographic region in which a health insurance plan's benefits apply. */
+  coverageArea?: Reference[];
+  /** Reference to the network that providing the type of coverage. */
+  network?: Reference[];
+
+  generalCost?: InsurancePlanGeneralCost[];
+
+  specificCost?: InsurancePlanSpecificCost[];
+}
+
+/** Details of a Health Insurance product/plan provided by an organization. */
+export interface InsurancePlanGeneralCost {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  type?: CodeableConcept;
+
+  groupSize?: number;
+
+  _groupSize?: Element;
+
+  cost?: Money;
+
+  comment?: string;
+
+  _comment?: Element;
+}
+
+/** Details of a Health Insurance product/plan provided by an organization. */
+export interface InsurancePlanSpecificCost {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  category: CodeableConcept;
+
+  benefit?: InsurancePlanBenefit1[];
+}
+
+/** Details of a Health Insurance product/plan provided by an organization. */
+export interface InsurancePlanBenefit1 {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  type: CodeableConcept;
+
+  cost?: InsurancePlanCost[];
+}
+
+/** Details of a Health Insurance product/plan provided by an organization. */
+export interface InsurancePlanCost {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  type: CodeableConcept;
+
+  applicability?: CodeableConcept;
+
+  qualifiers?: CodeableConcept[];
+
+  value?: Quantity;
 }

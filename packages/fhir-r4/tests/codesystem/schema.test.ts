@@ -494,8 +494,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("CodeSystem Schema Validation", () => {
-  it("should validate CodesystemFhirVersion fixture", () => {
+describe("Codesystem Group Schema Validation", () => {
+  it("should validate CodesystemFhirVersion fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemFhirVersion);
     if (!result.success) {
       console.error("Validation failed for CodesystemFhirVersion:");
@@ -507,7 +507,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAbstractTypes fixture", () => {
+  it("should validate CodesystemAbstractTypes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemAbstractTypes);
     if (!result.success) {
       console.error("Validation failed for CodesystemAbstractTypes:");
@@ -519,7 +519,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAccountStatus fixture", () => {
+  it("should validate CodesystemAccountStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemAccountStatus);
     if (!result.success) {
       console.error("Validation failed for CodesystemAccountStatus:");
@@ -531,7 +531,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemActionCardinalityBehavior fixture", () => {
+  it("should validate CodesystemActionCardinalityBehavior fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemActionCardinalityBehavior,
     );
@@ -547,7 +547,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemActionConditionKind fixture", () => {
+  it("should validate CodesystemActionConditionKind fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemActionConditionKind,
     );
@@ -561,7 +561,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemActionGroupingBehavior fixture", () => {
+  it("should validate CodesystemActionGroupingBehavior fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemActionGroupingBehavior,
     );
@@ -575,7 +575,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemActionParticipantType fixture", () => {
+  it("should validate CodesystemActionParticipantType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemActionParticipantType,
     );
@@ -589,7 +589,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemActionPrecheckBehavior fixture", () => {
+  it("should validate CodesystemActionPrecheckBehavior fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemActionPrecheckBehavior,
     );
@@ -603,7 +603,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemActionRelationshipType fixture", () => {
+  it("should validate CodesystemActionRelationshipType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemActionRelationshipType,
     );
@@ -617,7 +617,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemActionRequiredBehavior fixture", () => {
+  it("should validate CodesystemActionRequiredBehavior fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemActionRequiredBehavior,
     );
@@ -631,7 +631,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemActionSelectionBehavior fixture", () => {
+  it("should validate CodesystemActionSelectionBehavior fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemActionSelectionBehavior,
     );
@@ -645,7 +645,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemActionType fixture", () => {
+  it("should validate CodesystemActionType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemActionType);
     if (!result.success) {
       console.error("Validation failed for CodesystemActionType:");
@@ -657,7 +657,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemActivityDefinitionCategory fixture", () => {
+  it("should validate CodesystemActivityDefinitionCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemActivityDefinitionCategory,
     );
@@ -673,7 +673,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAdditionalmaterials fixture", () => {
+  it("should validate CodesystemAdditionalmaterials fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAdditionalmaterials,
     );
@@ -687,7 +687,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAddressType fixture", () => {
+  it("should validate CodesystemAddressType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemAddressType);
     if (!result.success) {
       console.error("Validation failed for CodesystemAddressType:");
@@ -699,7 +699,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAddressUse fixture", () => {
+  it("should validate CodesystemAddressUse fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemAddressUse);
     if (!result.success) {
       console.error("Validation failed for CodesystemAddressUse:");
@@ -711,7 +711,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAdjudicationError fixture", () => {
+  it("should validate CodesystemAdjudicationError fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAdjudicationError,
     );
@@ -725,7 +725,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAdjudicationReason fixture", () => {
+  it("should validate CodesystemAdjudicationReason fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAdjudicationReason,
     );
@@ -739,7 +739,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAdjudication fixture", () => {
+  it("should validate CodesystemAdjudication fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemAdjudication);
     if (!result.success) {
       console.error("Validation failed for CodesystemAdjudication:");
@@ -751,7 +751,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAdministrativeGender fixture", () => {
+  it("should validate CodesystemAdministrativeGender fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAdministrativeGender,
     );
@@ -765,7 +765,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAdverseEventActuality fixture", () => {
+  it("should validate CodesystemAdverseEventActuality fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAdverseEventActuality,
     );
@@ -779,7 +779,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAdverseEventCategory fixture", () => {
+  it("should validate CodesystemAdverseEventCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAdverseEventCategory,
     );
@@ -793,7 +793,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAdverseEventCausalityAssess fixture", () => {
+  it("should validate CodesystemAdverseEventCausalityAssess fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAdverseEventCausalityAssess,
     );
@@ -809,7 +809,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAdverseEventCausalityMethod fixture", () => {
+  it("should validate CodesystemAdverseEventCausalityMethod fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAdverseEventCausalityMethod,
     );
@@ -825,7 +825,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAdverseEventOutcome fixture", () => {
+  it("should validate CodesystemAdverseEventOutcome fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAdverseEventOutcome,
     );
@@ -839,7 +839,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAdverseEventSeriousness fixture", () => {
+  it("should validate CodesystemAdverseEventSeriousness fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAdverseEventSeriousness,
     );
@@ -853,7 +853,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAdverseEventSeverity fixture", () => {
+  it("should validate CodesystemAdverseEventSeverity fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAdverseEventSeverity,
     );
@@ -867,7 +867,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAllergIntolSubstanceExpRisk fixture", () => {
+  it("should validate CodesystemAllergIntolSubstanceExpRisk fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAllergIntolSubstanceExpRisk,
     );
@@ -883,7 +883,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAllergyIntoleranceCategory fixture", () => {
+  it("should validate CodesystemAllergyIntoleranceCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAllergyIntoleranceCategory,
     );
@@ -899,7 +899,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAllergyIntoleranceCriticality fixture", () => {
+  it("should validate CodesystemAllergyIntoleranceCriticality fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAllergyIntoleranceCriticality,
     );
@@ -915,7 +915,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAllergyIntoleranceType fixture", () => {
+  it("should validate CodesystemAllergyIntoleranceType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAllergyIntoleranceType,
     );
@@ -929,7 +929,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAllergyintoleranceClinical fixture", () => {
+  it("should validate CodesystemAllergyintoleranceClinical fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAllergyintoleranceClinical,
     );
@@ -945,7 +945,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAllergyintoleranceVerification fixture", () => {
+  it("should validate CodesystemAllergyintoleranceVerification fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAllergyintoleranceVerification,
     );
@@ -961,7 +961,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAnimalGenderstatus fixture", () => {
+  it("should validate CodesystemAnimalGenderstatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAnimalGenderstatus,
     );
@@ -975,7 +975,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAnimalSpecies fixture", () => {
+  it("should validate CodesystemAnimalSpecies fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemAnimalSpecies);
     if (!result.success) {
       console.error("Validation failed for CodesystemAnimalSpecies:");
@@ -987,7 +987,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAppointmentCancellationReason fixture", () => {
+  it("should validate CodesystemAppointmentCancellationReason fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAppointmentCancellationReason,
     );
@@ -1003,7 +1003,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAppointmentstatus fixture", () => {
+  it("should validate CodesystemAppointmentstatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAppointmentstatus,
     );
@@ -1017,7 +1017,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAssertDirectionCodes fixture", () => {
+  it("should validate CodesystemAssertDirectionCodes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAssertDirectionCodes,
     );
@@ -1031,7 +1031,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAssertOperatorCodes fixture", () => {
+  it("should validate CodesystemAssertOperatorCodes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAssertOperatorCodes,
     );
@@ -1045,7 +1045,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAssertResponseCodeTypes fixture", () => {
+  it("should validate CodesystemAssertResponseCodeTypes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAssertResponseCodeTypes,
     );
@@ -1059,7 +1059,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAssetAvailability fixture", () => {
+  it("should validate CodesystemAssetAvailability fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAssetAvailability,
     );
@@ -1073,7 +1073,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAuditEntityType fixture", () => {
+  it("should validate CodesystemAuditEntityType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAuditEntityType,
     );
@@ -1087,7 +1087,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAuditEventAction fixture", () => {
+  it("should validate CodesystemAuditEventAction fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAuditEventAction,
     );
@@ -1101,7 +1101,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAuditEventOutcome fixture", () => {
+  it("should validate CodesystemAuditEventOutcome fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAuditEventOutcome,
     );
@@ -1115,7 +1115,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAuditEventType fixture", () => {
+  it("should validate CodesystemAuditEventType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemAuditEventType);
     if (!result.success) {
       console.error("Validation failed for CodesystemAuditEventType:");
@@ -1127,7 +1127,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemAuditSourceType fixture", () => {
+  it("should validate CodesystemAuditSourceType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemAuditSourceType,
     );
@@ -1141,7 +1141,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemBasicResourceType fixture", () => {
+  it("should validate CodesystemBasicResourceType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemBasicResourceType,
     );
@@ -1155,7 +1155,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemBenefitNetwork fixture", () => {
+  it("should validate CodesystemBenefitNetwork fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemBenefitNetwork);
     if (!result.success) {
       console.error("Validation failed for CodesystemBenefitNetwork:");
@@ -1167,7 +1167,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemBenefitTerm fixture", () => {
+  it("should validate CodesystemBenefitTerm fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemBenefitTerm);
     if (!result.success) {
       console.error("Validation failed for CodesystemBenefitTerm:");
@@ -1179,7 +1179,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemBenefitType fixture", () => {
+  it("should validate CodesystemBenefitType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemBenefitType);
     if (!result.success) {
       console.error("Validation failed for CodesystemBenefitType:");
@@ -1191,7 +1191,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemBenefitUnit fixture", () => {
+  it("should validate CodesystemBenefitUnit fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemBenefitUnit);
     if (!result.success) {
       console.error("Validation failed for CodesystemBenefitUnit:");
@@ -1203,7 +1203,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemBindingStrength fixture", () => {
+  it("should validate CodesystemBindingStrength fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemBindingStrength,
     );
@@ -1217,7 +1217,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemBundleType fixture", () => {
+  it("should validate CodesystemBundleType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemBundleType);
     if (!result.success) {
       console.error("Validation failed for CodesystemBundleType:");
@@ -1229,7 +1229,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCapabilityStatementKind fixture", () => {
+  it("should validate CodesystemCapabilityStatementKind fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCapabilityStatementKind,
     );
@@ -1243,7 +1243,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCarePlanActivityStatus fixture", () => {
+  it("should validate CodesystemCarePlanActivityStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCarePlanActivityStatus,
     );
@@ -1257,7 +1257,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCareTeamStatus fixture", () => {
+  it("should validate CodesystemCareTeamStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemCareTeamStatus);
     if (!result.success) {
       console.error("Validation failed for CodesystemCareTeamStatus:");
@@ -1269,7 +1269,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCatalogtype fixture", () => {
+  it("should validate CodesystemCatalogtype fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemCatalogtype);
     if (!result.success) {
       console.error("Validation failed for CodesystemCatalogtype:");
@@ -1281,7 +1281,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCdshooksIndicator fixture", () => {
+  it("should validate CodesystemCdshooksIndicator fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCdshooksIndicator,
     );
@@ -1295,7 +1295,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCertaintySubcomponentRating fixture", () => {
+  it("should validate CodesystemCertaintySubcomponentRating fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCertaintySubcomponentRating,
     );
@@ -1311,7 +1311,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCertaintySubcomponentType fixture", () => {
+  it("should validate CodesystemCertaintySubcomponentType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCertaintySubcomponentType,
     );
@@ -1327,7 +1327,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemChargeitemBillingcodes fixture", () => {
+  it("should validate CodesystemChargeitemBillingcodes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemChargeitemBillingcodes,
     );
@@ -1341,7 +1341,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemChargeitemStatus fixture", () => {
+  it("should validate CodesystemChargeitemStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemChargeitemStatus,
     );
@@ -1355,7 +1355,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemChoiceListOrientation fixture", () => {
+  it("should validate CodesystemChoiceListOrientation fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemChoiceListOrientation,
     );
@@ -1369,7 +1369,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemChromosomeHuman fixture", () => {
+  it("should validate CodesystemChromosomeHuman fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemChromosomeHuman,
     );
@@ -1383,7 +1383,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemClaimCareteamrole fixture", () => {
+  it("should validate CodesystemClaimCareteamrole fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemClaimCareteamrole,
     );
@@ -1397,7 +1397,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemClaimException fixture", () => {
+  it("should validate CodesystemClaimException fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemClaimException);
     if (!result.success) {
       console.error("Validation failed for CodesystemClaimException:");
@@ -1409,7 +1409,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemClaimInformationcategory fixture", () => {
+  it("should validate CodesystemClaimInformationcategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemClaimInformationcategory,
     );
@@ -1425,7 +1425,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemClaimModifiers fixture", () => {
+  it("should validate CodesystemClaimModifiers fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemClaimModifiers);
     if (!result.success) {
       console.error("Validation failed for CodesystemClaimModifiers:");
@@ -1437,7 +1437,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemClaimSubtype fixture", () => {
+  it("should validate CodesystemClaimSubtype fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemClaimSubtype);
     if (!result.success) {
       console.error("Validation failed for CodesystemClaimSubtype:");
@@ -1449,7 +1449,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemClaimType fixture", () => {
+  it("should validate CodesystemClaimType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemClaimType);
     if (!result.success) {
       console.error("Validation failed for CodesystemClaimType:");
@@ -1461,7 +1461,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemClaimUse fixture", () => {
+  it("should validate CodesystemClaimUse fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemClaimUse);
     if (!result.success) {
       console.error("Validation failed for CodesystemClaimUse:");
@@ -1473,7 +1473,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCodeSearchSupport fixture", () => {
+  it("should validate CodesystemCodeSearchSupport fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCodeSearchSupport,
     );
@@ -1487,7 +1487,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCodesystemAltcodeKind fixture", () => {
+  it("should validate CodesystemCodesystemAltcodeKind fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCodesystemAltcodeKind,
     );
@@ -1501,7 +1501,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCodesystemContentMode fixture", () => {
+  it("should validate CodesystemCodesystemContentMode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCodesystemContentMode,
     );
@@ -1515,7 +1515,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCodesystemHierarchyMeaning fixture", () => {
+  it("should validate CodesystemCodesystemHierarchyMeaning fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCodesystemHierarchyMeaning,
     );
@@ -1531,7 +1531,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCommonTags fixture", () => {
+  it("should validate CodesystemCommonTags fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemCommonTags);
     if (!result.success) {
       console.error("Validation failed for CodesystemCommonTags:");
@@ -1543,7 +1543,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCommunicationCategory fixture", () => {
+  it("should validate CodesystemCommunicationCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCommunicationCategory,
     );
@@ -1557,7 +1557,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCommunicationNotDoneReason fixture", () => {
+  it("should validate CodesystemCommunicationNotDoneReason fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCommunicationNotDoneReason,
     );
@@ -1573,7 +1573,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCommunicationTopic fixture", () => {
+  it("should validate CodesystemCommunicationTopic fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCommunicationTopic,
     );
@@ -1587,7 +1587,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCompartmentType fixture", () => {
+  it("should validate CodesystemCompartmentType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCompartmentType,
     );
@@ -1601,7 +1601,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCompositeMeasureScoring fixture", () => {
+  it("should validate CodesystemCompositeMeasureScoring fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCompositeMeasureScoring,
     );
@@ -1615,7 +1615,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCompositionAltcodeKind fixture", () => {
+  it("should validate CodesystemCompositionAltcodeKind fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCompositionAltcodeKind,
     );
@@ -1629,7 +1629,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCompositionAttestationMode fixture", () => {
+  it("should validate CodesystemCompositionAttestationMode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCompositionAttestationMode,
     );
@@ -1645,7 +1645,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCompositionStatus fixture", () => {
+  it("should validate CodesystemCompositionStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCompositionStatus,
     );
@@ -1659,7 +1659,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemConceptMapEquivalence fixture", () => {
+  it("should validate CodesystemConceptMapEquivalence fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemConceptMapEquivalence,
     );
@@ -1673,7 +1673,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemConceptProperties fixture", () => {
+  it("should validate CodesystemConceptProperties fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemConceptProperties,
     );
@@ -1687,7 +1687,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemConceptPropertyType fixture", () => {
+  it("should validate CodesystemConceptPropertyType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemConceptPropertyType,
     );
@@ -1701,7 +1701,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemConceptSubsumptionOutcome fixture", () => {
+  it("should validate CodesystemConceptSubsumptionOutcome fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemConceptSubsumptionOutcome,
     );
@@ -1717,7 +1717,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemConceptmapUnmappedMode fixture", () => {
+  it("should validate CodesystemConceptmapUnmappedMode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemConceptmapUnmappedMode,
     );
@@ -1731,7 +1731,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemConditionCategory fixture", () => {
+  it("should validate CodesystemConditionCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemConditionCategory,
     );
@@ -1745,7 +1745,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemConditionClinical fixture", () => {
+  it("should validate CodesystemConditionClinical fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemConditionClinical,
     );
@@ -1759,7 +1759,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemConditionState fixture", () => {
+  it("should validate CodesystemConditionState fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemConditionState);
     if (!result.success) {
       console.error("Validation failed for CodesystemConditionState:");
@@ -1771,7 +1771,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemConditionVerStatus fixture", () => {
+  it("should validate CodesystemConditionVerStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemConditionVerStatus,
     );
@@ -1785,7 +1785,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemConditionalDeleteStatus fixture", () => {
+  it("should validate CodesystemConditionalDeleteStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemConditionalDeleteStatus,
     );
@@ -1799,7 +1799,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemConditionalReadStatus fixture", () => {
+  it("should validate CodesystemConditionalReadStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemConditionalReadStatus,
     );
@@ -1813,7 +1813,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemConformanceExpectation fixture", () => {
+  it("should validate CodesystemConformanceExpectation fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemConformanceExpectation,
     );
@@ -1827,7 +1827,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemConsentAction fixture", () => {
+  it("should validate CodesystemConsentAction fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemConsentAction);
     if (!result.success) {
       console.error("Validation failed for CodesystemConsentAction:");
@@ -1839,7 +1839,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemConsentCategory fixture", () => {
+  it("should validate CodesystemConsentCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemConsentCategory,
     );
@@ -1853,7 +1853,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemConsentDataMeaning fixture", () => {
+  it("should validate CodesystemConsentDataMeaning fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemConsentDataMeaning,
     );
@@ -1867,7 +1867,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemConsentPerformer fixture", () => {
+  it("should validate CodesystemConsentPerformer fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemConsentPerformer,
     );
@@ -1881,7 +1881,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemConsentPolicy fixture", () => {
+  it("should validate CodesystemConsentPolicy fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemConsentPolicy);
     if (!result.success) {
       console.error("Validation failed for CodesystemConsentPolicy:");
@@ -1893,7 +1893,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemConsentProvisionType fixture", () => {
+  it("should validate CodesystemConsentProvisionType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemConsentProvisionType,
     );
@@ -1907,7 +1907,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemConsentScope fixture", () => {
+  it("should validate CodesystemConsentScope fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemConsentScope);
     if (!result.success) {
       console.error("Validation failed for CodesystemConsentScope:");
@@ -1919,7 +1919,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemConsentStateCodes fixture", () => {
+  it("should validate CodesystemConsentStateCodes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemConsentStateCodes,
     );
@@ -1933,7 +1933,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemConstraintSeverity fixture", () => {
+  it("should validate CodesystemConstraintSeverity fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemConstraintSeverity,
     );
@@ -1947,7 +1947,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContactPointSystem fixture", () => {
+  it("should validate CodesystemContactPointSystem fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContactPointSystem,
     );
@@ -1961,7 +1961,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContactPointUse fixture", () => {
+  it("should validate CodesystemContactPointUse fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContactPointUse,
     );
@@ -1975,7 +1975,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContactentityType fixture", () => {
+  it("should validate CodesystemContactentityType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContactentityType,
     );
@@ -1989,7 +1989,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContainerCap fixture", () => {
+  it("should validate CodesystemContainerCap fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemContainerCap);
     if (!result.success) {
       console.error("Validation failed for CodesystemContainerCap:");
@@ -2001,7 +2001,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractAction fixture", () => {
+  it("should validate CodesystemContractAction fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemContractAction);
     if (!result.success) {
       console.error("Validation failed for CodesystemContractAction:");
@@ -2013,7 +2013,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractActionstatus fixture", () => {
+  it("should validate CodesystemContractActionstatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractActionstatus,
     );
@@ -2027,7 +2027,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractActorrole fixture", () => {
+  it("should validate CodesystemContractActorrole fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractActorrole,
     );
@@ -2041,7 +2041,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractAssetcontext fixture", () => {
+  it("should validate CodesystemContractAssetcontext fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractAssetcontext,
     );
@@ -2055,7 +2055,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractAssetscope fixture", () => {
+  it("should validate CodesystemContractAssetscope fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractAssetscope,
     );
@@ -2069,7 +2069,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractAssetsubtype fixture", () => {
+  it("should validate CodesystemContractAssetsubtype fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractAssetsubtype,
     );
@@ -2083,7 +2083,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractAssettype fixture", () => {
+  it("should validate CodesystemContractAssettype fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractAssettype,
     );
@@ -2097,7 +2097,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractContentDerivative fixture", () => {
+  it("should validate CodesystemContractContentDerivative fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractContentDerivative,
     );
@@ -2113,7 +2113,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractDataMeaning fixture", () => {
+  it("should validate CodesystemContractDataMeaning fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractDataMeaning,
     );
@@ -2127,7 +2127,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractDecisionMode fixture", () => {
+  it("should validate CodesystemContractDecisionMode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractDecisionMode,
     );
@@ -2141,7 +2141,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractDefinitionSubtype fixture", () => {
+  it("should validate CodesystemContractDefinitionSubtype fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractDefinitionSubtype,
     );
@@ -2157,7 +2157,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractDefinitionType fixture", () => {
+  it("should validate CodesystemContractDefinitionType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractDefinitionType,
     );
@@ -2171,7 +2171,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractExpirationType fixture", () => {
+  it("should validate CodesystemContractExpirationType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractExpirationType,
     );
@@ -2185,7 +2185,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractLegalstate fixture", () => {
+  it("should validate CodesystemContractLegalstate fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractLegalstate,
     );
@@ -2199,7 +2199,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractPartyRole fixture", () => {
+  it("should validate CodesystemContractPartyRole fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractPartyRole,
     );
@@ -2213,7 +2213,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractPublicationstatus fixture", () => {
+  it("should validate CodesystemContractPublicationstatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractPublicationstatus,
     );
@@ -2229,7 +2229,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractScope fixture", () => {
+  it("should validate CodesystemContractScope fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemContractScope);
     if (!result.success) {
       console.error("Validation failed for CodesystemContractScope:");
@@ -2241,7 +2241,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractSecurityCategory fixture", () => {
+  it("should validate CodesystemContractSecurityCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractSecurityCategory,
     );
@@ -2257,7 +2257,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractSecurityClassification fixture", () => {
+  it("should validate CodesystemContractSecurityClassification fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractSecurityClassification,
     );
@@ -2273,7 +2273,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractSecurityControl fixture", () => {
+  it("should validate CodesystemContractSecurityControl fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractSecurityControl,
     );
@@ -2287,7 +2287,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractSignerType fixture", () => {
+  it("should validate CodesystemContractSignerType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractSignerType,
     );
@@ -2301,7 +2301,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractStatus fixture", () => {
+  it("should validate CodesystemContractStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemContractStatus);
     if (!result.success) {
       console.error("Validation failed for CodesystemContractStatus:");
@@ -2313,7 +2313,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractSubtype fixture", () => {
+  it("should validate CodesystemContractSubtype fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractSubtype,
     );
@@ -2327,7 +2327,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractTermSubtype fixture", () => {
+  it("should validate CodesystemContractTermSubtype fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractTermSubtype,
     );
@@ -2341,7 +2341,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractTermType fixture", () => {
+  it("should validate CodesystemContractTermType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContractTermType,
     );
@@ -2355,7 +2355,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContractType fixture", () => {
+  it("should validate CodesystemContractType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemContractType);
     if (!result.success) {
       console.error("Validation failed for CodesystemContractType:");
@@ -2367,7 +2367,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemContributorType fixture", () => {
+  it("should validate CodesystemContributorType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemContributorType,
     );
@@ -2381,7 +2381,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCopyNumberEvent fixture", () => {
+  it("should validate CodesystemCopyNumberEvent fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCopyNumberEvent,
     );
@@ -2395,7 +2395,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCoverageClass fixture", () => {
+  it("should validate CodesystemCoverageClass fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemCoverageClass);
     if (!result.success) {
       console.error("Validation failed for CodesystemCoverageClass:");
@@ -2407,7 +2407,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCoverageCopayType fixture", () => {
+  it("should validate CodesystemCoverageCopayType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCoverageCopayType,
     );
@@ -2421,7 +2421,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCoverageFinancialException fixture", () => {
+  it("should validate CodesystemCoverageFinancialException fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCoverageFinancialException,
     );
@@ -2437,7 +2437,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCoverageSelfpay fixture", () => {
+  it("should validate CodesystemCoverageSelfpay fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCoverageSelfpay,
     );
@@ -2451,7 +2451,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemCoverageeligibilityresponseExAuthSupport fixture", () => {
+  it("should validate CodesystemCoverageeligibilityresponseExAuthSupport fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemCoverageeligibilityresponseExAuthSupport,
     );
@@ -2467,7 +2467,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDataAbsentReason fixture", () => {
+  it("should validate CodesystemDataAbsentReason fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemDataAbsentReason,
     );
@@ -2481,7 +2481,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDataTypes fixture", () => {
+  it("should validate CodesystemDataTypes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemDataTypes);
     if (!result.success) {
       console.error("Validation failed for CodesystemDataTypes:");
@@ -2493,7 +2493,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDaysOfWeek fixture", () => {
+  it("should validate CodesystemDaysOfWeek fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemDaysOfWeek);
     if (!result.success) {
       console.error("Validation failed for CodesystemDaysOfWeek:");
@@ -2505,7 +2505,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDefinitionResourceTypes fixture", () => {
+  it("should validate CodesystemDefinitionResourceTypes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemDefinitionResourceTypes,
     );
@@ -2519,7 +2519,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDefinitionStatus fixture", () => {
+  it("should validate CodesystemDefinitionStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemDefinitionStatus,
     );
@@ -2533,7 +2533,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDefinitionTopic fixture", () => {
+  it("should validate CodesystemDefinitionTopic fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemDefinitionTopic,
     );
@@ -2547,7 +2547,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDefinitionUse fixture", () => {
+  it("should validate CodesystemDefinitionUse fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemDefinitionUse);
     if (!result.success) {
       console.error("Validation failed for CodesystemDefinitionUse:");
@@ -2559,7 +2559,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDetectedissueSeverity fixture", () => {
+  it("should validate CodesystemDetectedissueSeverity fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemDetectedissueSeverity,
     );
@@ -2573,7 +2573,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDeviceAction fixture", () => {
+  it("should validate CodesystemDeviceAction fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemDeviceAction);
     if (!result.success) {
       console.error("Validation failed for CodesystemDeviceAction:");
@@ -2585,7 +2585,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDeviceDefinitionStatus fixture", () => {
+  it("should validate CodesystemDeviceDefinitionStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemDeviceDefinitionStatus,
     );
@@ -2599,7 +2599,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDeviceNametype fixture", () => {
+  it("should validate CodesystemDeviceNametype fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemDeviceNametype);
     if (!result.success) {
       console.error("Validation failed for CodesystemDeviceNametype:");
@@ -2611,7 +2611,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDeviceStatementStatus fixture", () => {
+  it("should validate CodesystemDeviceStatementStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemDeviceStatementStatus,
     );
@@ -2625,7 +2625,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDeviceStatusReason fixture", () => {
+  it("should validate CodesystemDeviceStatusReason fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemDeviceStatusReason,
     );
@@ -2639,7 +2639,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDeviceStatus fixture", () => {
+  it("should validate CodesystemDeviceStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemDeviceStatus);
     if (!result.success) {
       console.error("Validation failed for CodesystemDeviceStatus:");
@@ -2651,7 +2651,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDiagnosisRole fixture", () => {
+  it("should validate CodesystemDiagnosisRole fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemDiagnosisRole);
     if (!result.success) {
       console.error("Validation failed for CodesystemDiagnosisRole:");
@@ -2663,7 +2663,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDiagnosticReportStatus fixture", () => {
+  it("should validate CodesystemDiagnosticReportStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemDiagnosticReportStatus,
     );
@@ -2677,7 +2677,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDicomAuditLifecycle fixture", () => {
+  it("should validate CodesystemDicomAuditLifecycle fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemDicomAuditLifecycle,
     );
@@ -2691,7 +2691,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDiscriminatorType fixture", () => {
+  it("should validate CodesystemDiscriminatorType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemDiscriminatorType,
     );
@@ -2705,7 +2705,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDocumentMode fixture", () => {
+  it("should validate CodesystemDocumentMode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemDocumentMode);
     if (!result.success) {
       console.error("Validation failed for CodesystemDocumentMode:");
@@ -2717,7 +2717,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDocumentReferenceStatus fixture", () => {
+  it("should validate CodesystemDocumentReferenceStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemDocumentReferenceStatus,
     );
@@ -2731,7 +2731,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDocumentRelationshipType fixture", () => {
+  it("should validate CodesystemDocumentRelationshipType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemDocumentRelationshipType,
     );
@@ -2747,7 +2747,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemDoseRateType fixture", () => {
+  it("should validate CodesystemDoseRateType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemDoseRateType);
     if (!result.success) {
       console.error("Validation failed for CodesystemDoseRateType:");
@@ -2759,7 +2759,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEffectEstimateType fixture", () => {
+  it("should validate CodesystemEffectEstimateType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemEffectEstimateType,
     );
@@ -2773,7 +2773,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEligibilityrequestPurpose fixture", () => {
+  it("should validate CodesystemEligibilityrequestPurpose fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemEligibilityrequestPurpose,
     );
@@ -2789,7 +2789,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEligibilityresponsePurpose fixture", () => {
+  it("should validate CodesystemEligibilityresponsePurpose fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemEligibilityresponsePurpose,
     );
@@ -2805,7 +2805,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEncounterAdmitSource fixture", () => {
+  it("should validate CodesystemEncounterAdmitSource fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemEncounterAdmitSource,
     );
@@ -2819,7 +2819,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEncounterDiet fixture", () => {
+  it("should validate CodesystemEncounterDiet fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemEncounterDiet);
     if (!result.success) {
       console.error("Validation failed for CodesystemEncounterDiet:");
@@ -2831,7 +2831,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEncounterDischargeDisposition fixture", () => {
+  it("should validate CodesystemEncounterDischargeDisposition fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemEncounterDischargeDisposition,
     );
@@ -2847,7 +2847,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEncounterLocationStatus fixture", () => {
+  it("should validate CodesystemEncounterLocationStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemEncounterLocationStatus,
     );
@@ -2861,7 +2861,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEncounterParticipantType fixture", () => {
+  it("should validate CodesystemEncounterParticipantType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemEncounterParticipantType,
     );
@@ -2877,7 +2877,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEncounterSpecialArrangements fixture", () => {
+  it("should validate CodesystemEncounterSpecialArrangements fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemEncounterSpecialArrangements,
     );
@@ -2893,7 +2893,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEncounterStatus fixture", () => {
+  it("should validate CodesystemEncounterStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemEncounterStatus,
     );
@@ -2907,7 +2907,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEncounterType fixture", () => {
+  it("should validate CodesystemEncounterType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemEncounterType);
     if (!result.success) {
       console.error("Validation failed for CodesystemEncounterType:");
@@ -2919,7 +2919,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEndpointConnectionType fixture", () => {
+  it("should validate CodesystemEndpointConnectionType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemEndpointConnectionType,
     );
@@ -2933,7 +2933,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEndpointPayloadType fixture", () => {
+  it("should validate CodesystemEndpointPayloadType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemEndpointPayloadType,
     );
@@ -2947,7 +2947,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEndpointStatus fixture", () => {
+  it("should validate CodesystemEndpointStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemEndpointStatus);
     if (!result.success) {
       console.error("Validation failed for CodesystemEndpointStatus:");
@@ -2959,7 +2959,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEntformulaAdditive fixture", () => {
+  it("should validate CodesystemEntformulaAdditive fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemEntformulaAdditive,
     );
@@ -2973,7 +2973,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEpisodeOfCareStatus fixture", () => {
+  it("should validate CodesystemEpisodeOfCareStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemEpisodeOfCareStatus,
     );
@@ -2987,7 +2987,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEpisodeofcareType fixture", () => {
+  it("should validate CodesystemEpisodeofcareType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemEpisodeofcareType,
     );
@@ -3001,7 +3001,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEventCapabilityMode fixture", () => {
+  it("should validate CodesystemEventCapabilityMode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemEventCapabilityMode,
     );
@@ -3015,7 +3015,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEventResourceTypes fixture", () => {
+  it("should validate CodesystemEventResourceTypes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemEventResourceTypes,
     );
@@ -3029,7 +3029,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEventStatus fixture", () => {
+  it("should validate CodesystemEventStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemEventStatus);
     if (!result.success) {
       console.error("Validation failed for CodesystemEventStatus:");
@@ -3041,7 +3041,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEventTiming fixture", () => {
+  it("should validate CodesystemEventTiming fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemEventTiming);
     if (!result.success) {
       console.error("Validation failed for CodesystemEventTiming:");
@@ -3053,7 +3053,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEvidenceQuality fixture", () => {
+  it("should validate CodesystemEvidenceQuality fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemEvidenceQuality,
     );
@@ -3067,7 +3067,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemEvidenceVariantState fixture", () => {
+  it("should validate CodesystemEvidenceVariantState fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemEvidenceVariantState,
     );
@@ -3081,7 +3081,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExBenefitcategory fixture", () => {
+  it("should validate CodesystemExBenefitcategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemExBenefitcategory,
     );
@@ -3095,7 +3095,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExDiagnosisOnAdmission fixture", () => {
+  it("should validate CodesystemExDiagnosisOnAdmission fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemExDiagnosisOnAdmission,
     );
@@ -3109,7 +3109,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExDiagnosisrelatedgroup fixture", () => {
+  it("should validate CodesystemExDiagnosisrelatedgroup fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemExDiagnosisrelatedgroup,
     );
@@ -3123,7 +3123,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExDiagnosistype fixture", () => {
+  it("should validate CodesystemExDiagnosistype fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemExDiagnosistype,
     );
@@ -3137,7 +3137,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExOnsettype fixture", () => {
+  it("should validate CodesystemExOnsettype fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemExOnsettype);
     if (!result.success) {
       console.error("Validation failed for CodesystemExOnsettype:");
@@ -3149,7 +3149,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExPayeeResourceType fixture", () => {
+  it("should validate CodesystemExPayeeResourceType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemExPayeeResourceType,
     );
@@ -3163,7 +3163,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExPaymenttype fixture", () => {
+  it("should validate CodesystemExPaymenttype fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemExPaymenttype);
     if (!result.success) {
       console.error("Validation failed for CodesystemExPaymenttype:");
@@ -3175,7 +3175,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExProcedureType fixture", () => {
+  it("should validate CodesystemExProcedureType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemExProcedureType,
     );
@@ -3189,7 +3189,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExProgramCode fixture", () => {
+  it("should validate CodesystemExProgramCode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemExProgramCode);
     if (!result.success) {
       console.error("Validation failed for CodesystemExProgramCode:");
@@ -3201,7 +3201,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExRevenueCenter fixture", () => {
+  it("should validate CodesystemExRevenueCenter fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemExRevenueCenter,
     );
@@ -3215,7 +3215,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExampleSummary fixture", () => {
+  it("should validate CodesystemExampleSummary fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemExampleSummary);
     if (!result.success) {
       console.error("Validation failed for CodesystemExampleSummary:");
@@ -3227,7 +3227,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExampleSupplement fixture", () => {
+  it("should validate CodesystemExampleSupplement fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemExampleSupplement,
     );
@@ -3241,7 +3241,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExample fixture", () => {
+  it("should validate CodesystemExample fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemExample);
     if (!result.success) {
       console.error("Validation failed for CodesystemExample:");
@@ -3253,7 +3253,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExamplescenarioActorType fixture", () => {
+  it("should validate CodesystemExamplescenarioActorType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemExamplescenarioActorType,
     );
@@ -3269,7 +3269,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExpansionParameterSource fixture", () => {
+  it("should validate CodesystemExpansionParameterSource fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemExpansionParameterSource,
     );
@@ -3285,7 +3285,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExpansionProcessingRule fixture", () => {
+  it("should validate CodesystemExpansionProcessingRule fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemExpansionProcessingRule,
     );
@@ -3299,7 +3299,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExplanationofbenefitStatus fixture", () => {
+  it("should validate CodesystemExplanationofbenefitStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemExplanationofbenefitStatus,
     );
@@ -3315,7 +3315,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExposureState fixture", () => {
+  it("should validate CodesystemExposureState fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemExposureState);
     if (!result.success) {
       console.error("Validation failed for CodesystemExposureState:");
@@ -3327,7 +3327,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExpressionLanguage fixture", () => {
+  it("should validate CodesystemExpressionLanguage fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemExpressionLanguage,
     );
@@ -3341,7 +3341,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExtensionContextType fixture", () => {
+  it("should validate CodesystemExtensionContextType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemExtensionContextType,
     );
@@ -3355,7 +3355,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExtraActivityType fixture", () => {
+  it("should validate CodesystemExtraActivityType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemExtraActivityType,
     );
@@ -3369,7 +3369,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemExtraSecurityRoleType fixture", () => {
+  it("should validate CodesystemExtraSecurityRoleType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemExtraSecurityRoleType,
     );
@@ -3383,7 +3383,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemFeedingDevice fixture", () => {
+  it("should validate CodesystemFeedingDevice fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemFeedingDevice);
     if (!result.success) {
       console.error("Validation failed for CodesystemFeedingDevice:");
@@ -3395,7 +3395,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemFilterOperator fixture", () => {
+  it("should validate CodesystemFilterOperator fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemFilterOperator);
     if (!result.success) {
       console.error("Validation failed for CodesystemFilterOperator:");
@@ -3407,7 +3407,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemFinancialTaskcode fixture", () => {
+  it("should validate CodesystemFinancialTaskcode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemFinancialTaskcode,
     );
@@ -3421,7 +3421,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemFinancialTaskinputtype fixture", () => {
+  it("should validate CodesystemFinancialTaskinputtype fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemFinancialTaskinputtype,
     );
@@ -3435,7 +3435,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemFlagCategory fixture", () => {
+  it("should validate CodesystemFlagCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemFlagCategory);
     if (!result.success) {
       console.error("Validation failed for CodesystemFlagCategory:");
@@ -3447,7 +3447,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemFlagPriority fixture", () => {
+  it("should validate CodesystemFlagPriority fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemFlagPriority);
     if (!result.success) {
       console.error("Validation failed for CodesystemFlagPriority:");
@@ -3459,7 +3459,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemFlagStatus fixture", () => {
+  it("should validate CodesystemFlagStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemFlagStatus);
     if (!result.success) {
       console.error("Validation failed for CodesystemFlagStatus:");
@@ -3471,7 +3471,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemFmConditions fixture", () => {
+  it("should validate CodesystemFmConditions fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemFmConditions);
     if (!result.success) {
       console.error("Validation failed for CodesystemFmConditions:");
@@ -3483,7 +3483,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemFmItemtype fixture", () => {
+  it("should validate CodesystemFmItemtype fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemFmItemtype);
     if (!result.success) {
       console.error("Validation failed for CodesystemFmItemtype:");
@@ -3495,7 +3495,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemFmStatus fixture", () => {
+  it("should validate CodesystemFmStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemFmStatus);
     if (!result.success) {
       console.error("Validation failed for CodesystemFmStatus:");
@@ -3507,7 +3507,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemForms fixture", () => {
+  it("should validate CodesystemForms fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemForms);
     if (!result.success) {
       console.error("Validation failed for CodesystemForms:");
@@ -3519,7 +3519,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemFundsreserve fixture", () => {
+  it("should validate CodesystemFundsreserve fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemFundsreserve);
     if (!result.success) {
       console.error("Validation failed for CodesystemFundsreserve:");
@@ -3531,7 +3531,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemGenderIdentity fixture", () => {
+  it("should validate CodesystemGenderIdentity fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemGenderIdentity);
     if (!result.success) {
       console.error("Validation failed for CodesystemGenderIdentity:");
@@ -3543,7 +3543,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemGoalAcceptanceStatus fixture", () => {
+  it("should validate CodesystemGoalAcceptanceStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemGoalAcceptanceStatus,
     );
@@ -3557,7 +3557,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemGoalAchievement fixture", () => {
+  it("should validate CodesystemGoalAchievement fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemGoalAchievement,
     );
@@ -3571,7 +3571,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemGoalCategory fixture", () => {
+  it("should validate CodesystemGoalCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemGoalCategory);
     if (!result.success) {
       console.error("Validation failed for CodesystemGoalCategory:");
@@ -3583,7 +3583,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemGoalPriority fixture", () => {
+  it("should validate CodesystemGoalPriority fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemGoalPriority);
     if (!result.success) {
       console.error("Validation failed for CodesystemGoalPriority:");
@@ -3595,7 +3595,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemGoalRelationshipType fixture", () => {
+  it("should validate CodesystemGoalRelationshipType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemGoalRelationshipType,
     );
@@ -3609,7 +3609,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemGoalStatusReason fixture", () => {
+  it("should validate CodesystemGoalStatusReason fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemGoalStatusReason,
     );
@@ -3623,7 +3623,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemGoalStatus fixture", () => {
+  it("should validate CodesystemGoalStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemGoalStatus);
     if (!result.success) {
       console.error("Validation failed for CodesystemGoalStatus:");
@@ -3635,7 +3635,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemGraphCompartmentRule fixture", () => {
+  it("should validate CodesystemGraphCompartmentRule fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemGraphCompartmentRule,
     );
@@ -3649,7 +3649,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemGraphCompartmentUse fixture", () => {
+  it("should validate CodesystemGraphCompartmentUse fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemGraphCompartmentUse,
     );
@@ -3663,7 +3663,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemGroupMeasure fixture", () => {
+  it("should validate CodesystemGroupMeasure fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemGroupMeasure);
     if (!result.success) {
       console.error("Validation failed for CodesystemGroupMeasure:");
@@ -3675,7 +3675,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemGroupType fixture", () => {
+  it("should validate CodesystemGroupType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemGroupType);
     if (!result.success) {
       console.error("Validation failed for CodesystemGroupType:");
@@ -3687,7 +3687,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemGuidanceResponseStatus fixture", () => {
+  it("should validate CodesystemGuidanceResponseStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemGuidanceResponseStatus,
     );
@@ -3701,7 +3701,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemGuidePageGeneration fixture", () => {
+  it("should validate CodesystemGuidePageGeneration fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemGuidePageGeneration,
     );
@@ -3715,7 +3715,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemGuideParameterCode fixture", () => {
+  it("should validate CodesystemGuideParameterCode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemGuideParameterCode,
     );
@@ -3729,7 +3729,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemHandlingCondition fixture", () => {
+  it("should validate CodesystemHandlingCondition fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemHandlingCondition,
     );
@@ -3743,7 +3743,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemHistoryAbsentReason fixture", () => {
+  it("should validate CodesystemHistoryAbsentReason fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemHistoryAbsentReason,
     );
@@ -3757,7 +3757,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemHistoryStatus fixture", () => {
+  it("should validate CodesystemHistoryStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemHistoryStatus);
     if (!result.success) {
       console.error("Validation failed for CodesystemHistoryStatus:");
@@ -3769,7 +3769,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemHl7WorkGroup fixture", () => {
+  it("should validate CodesystemHl7WorkGroup fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemHl7WorkGroup);
     if (!result.success) {
       console.error("Validation failed for CodesystemHl7WorkGroup:");
@@ -3781,7 +3781,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemHttpOperations fixture", () => {
+  it("should validate CodesystemHttpOperations fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemHttpOperations);
     if (!result.success) {
       console.error("Validation failed for CodesystemHttpOperations:");
@@ -3793,7 +3793,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemHttpVerb fixture", () => {
+  it("should validate CodesystemHttpVerb fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemHttpVerb);
     if (!result.success) {
       console.error("Validation failed for CodesystemHttpVerb:");
@@ -3805,7 +3805,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemIcd10Procedures fixture", () => {
+  it("should validate CodesystemIcd10Procedures fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemIcd10Procedures,
     );
@@ -3819,7 +3819,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemIdentifierUse fixture", () => {
+  it("should validate CodesystemIdentifierUse fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemIdentifierUse);
     if (!result.success) {
       console.error("Validation failed for CodesystemIdentifierUse:");
@@ -3831,7 +3831,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemIdentityAssurancelevel fixture", () => {
+  it("should validate CodesystemIdentityAssurancelevel fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemIdentityAssurancelevel,
     );
@@ -3845,7 +3845,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemImagingstudyStatus fixture", () => {
+  it("should validate CodesystemImagingstudyStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemImagingstudyStatus,
     );
@@ -3859,7 +3859,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemImmunizationEvaluationDoseStatusReason fixture", () => {
+  it("should validate CodesystemImmunizationEvaluationDoseStatusReason fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemImmunizationEvaluationDoseStatusReason,
     );
@@ -3875,7 +3875,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemImmunizationEvaluationDoseStatus fixture", () => {
+  it("should validate CodesystemImmunizationEvaluationDoseStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemImmunizationEvaluationDoseStatus,
     );
@@ -3891,7 +3891,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemImmunizationFundingSource fixture", () => {
+  it("should validate CodesystemImmunizationFundingSource fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemImmunizationFundingSource,
     );
@@ -3907,7 +3907,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemImmunizationOrigin fixture", () => {
+  it("should validate CodesystemImmunizationOrigin fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemImmunizationOrigin,
     );
@@ -3921,7 +3921,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemImmunizationProgramEligibility fixture", () => {
+  it("should validate CodesystemImmunizationProgramEligibility fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemImmunizationProgramEligibility,
     );
@@ -3937,7 +3937,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemImmunizationRecommendationStatus fixture", () => {
+  it("should validate CodesystemImmunizationRecommendationStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemImmunizationRecommendationStatus,
     );
@@ -3953,7 +3953,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemImmunizationSubpotentReason fixture", () => {
+  it("should validate CodesystemImmunizationSubpotentReason fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemImmunizationSubpotentReason,
     );
@@ -3969,7 +3969,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemImplantstatus fixture", () => {
+  it("should validate CodesystemImplantstatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemImplantstatus);
     if (!result.success) {
       console.error("Validation failed for CodesystemImplantstatus:");
@@ -3981,7 +3981,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemInsuranceplanApplicability fixture", () => {
+  it("should validate CodesystemInsuranceplanApplicability fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemInsuranceplanApplicability,
     );
@@ -3997,7 +3997,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemInsuranceplanType fixture", () => {
+  it("should validate CodesystemInsuranceplanType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemInsuranceplanType,
     );
@@ -4011,7 +4011,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemIntervention fixture", () => {
+  it("should validate CodesystemIntervention fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemIntervention);
     if (!result.success) {
       console.error("Validation failed for CodesystemIntervention:");
@@ -4023,7 +4023,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemInvoicePricecomponenttype fixture", () => {
+  it("should validate CodesystemInvoicePricecomponenttype fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemInvoicePricecomponenttype,
     );
@@ -4039,7 +4039,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemInvoiceStatus fixture", () => {
+  it("should validate CodesystemInvoiceStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemInvoiceStatus);
     if (!result.success) {
       console.error("Validation failed for CodesystemInvoiceStatus:");
@@ -4051,7 +4051,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemIso21089Lifecycle fixture", () => {
+  it("should validate CodesystemIso21089Lifecycle fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemIso21089Lifecycle,
     );
@@ -4065,7 +4065,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemIssueSeverity fixture", () => {
+  it("should validate CodesystemIssueSeverity fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemIssueSeverity);
     if (!result.success) {
       console.error("Validation failed for CodesystemIssueSeverity:");
@@ -4077,7 +4077,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemIssueType fixture", () => {
+  it("should validate CodesystemIssueType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemIssueType);
     if (!result.success) {
       console.error("Validation failed for CodesystemIssueType:");
@@ -4089,7 +4089,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemItemType fixture", () => {
+  it("should validate CodesystemItemType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemItemType);
     if (!result.success) {
       console.error("Validation failed for CodesystemItemType:");
@@ -4101,7 +4101,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemKnowledgeResourceTypes fixture", () => {
+  it("should validate CodesystemKnowledgeResourceTypes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemKnowledgeResourceTypes,
     );
@@ -4115,7 +4115,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemLanguagePreferenceType fixture", () => {
+  it("should validate CodesystemLanguagePreferenceType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemLanguagePreferenceType,
     );
@@ -4129,7 +4129,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemLibraryType fixture", () => {
+  it("should validate CodesystemLibraryType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemLibraryType);
     if (!result.success) {
       console.error("Validation failed for CodesystemLibraryType:");
@@ -4141,7 +4141,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemLinkType fixture", () => {
+  it("should validate CodesystemLinkType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemLinkType);
     if (!result.success) {
       console.error("Validation failed for CodesystemLinkType:");
@@ -4153,7 +4153,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemLinkageType fixture", () => {
+  it("should validate CodesystemLinkageType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemLinkageType);
     if (!result.success) {
       console.error("Validation failed for CodesystemLinkageType:");
@@ -4165,7 +4165,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemListEmptyReason fixture", () => {
+  it("should validate CodesystemListEmptyReason fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemListEmptyReason,
     );
@@ -4179,7 +4179,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemListExampleCodes fixture", () => {
+  it("should validate CodesystemListExampleCodes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemListExampleCodes,
     );
@@ -4193,7 +4193,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemListItemFlag fixture", () => {
+  it("should validate CodesystemListItemFlag fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemListItemFlag);
     if (!result.success) {
       console.error("Validation failed for CodesystemListItemFlag:");
@@ -4205,7 +4205,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemListMode fixture", () => {
+  it("should validate CodesystemListMode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemListMode);
     if (!result.success) {
       console.error("Validation failed for CodesystemListMode:");
@@ -4217,7 +4217,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemListOrder fixture", () => {
+  it("should validate CodesystemListOrder fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemListOrder);
     if (!result.success) {
       console.error("Validation failed for CodesystemListOrder:");
@@ -4229,7 +4229,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemListStatus fixture", () => {
+  it("should validate CodesystemListStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemListStatus);
     if (!result.success) {
       console.error("Validation failed for CodesystemListStatus:");
@@ -4241,7 +4241,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemLocationMode fixture", () => {
+  it("should validate CodesystemLocationMode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemLocationMode);
     if (!result.success) {
       console.error("Validation failed for CodesystemLocationMode:");
@@ -4253,7 +4253,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemLocationPhysicalType fixture", () => {
+  it("should validate CodesystemLocationPhysicalType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemLocationPhysicalType,
     );
@@ -4267,7 +4267,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemLocationStatus fixture", () => {
+  it("should validate CodesystemLocationStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemLocationStatus);
     if (!result.success) {
       console.error("Validation failed for CodesystemLocationStatus:");
@@ -4279,7 +4279,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMapContextType fixture", () => {
+  it("should validate CodesystemMapContextType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemMapContextType);
     if (!result.success) {
       console.error("Validation failed for CodesystemMapContextType:");
@@ -4291,7 +4291,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMapGroupTypeMode fixture", () => {
+  it("should validate CodesystemMapGroupTypeMode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMapGroupTypeMode,
     );
@@ -4305,7 +4305,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMapInputMode fixture", () => {
+  it("should validate CodesystemMapInputMode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemMapInputMode);
     if (!result.success) {
       console.error("Validation failed for CodesystemMapInputMode:");
@@ -4317,7 +4317,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMapModelMode fixture", () => {
+  it("should validate CodesystemMapModelMode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemMapModelMode);
     if (!result.success) {
       console.error("Validation failed for CodesystemMapModelMode:");
@@ -4329,7 +4329,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMapSourceListMode fixture", () => {
+  it("should validate CodesystemMapSourceListMode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMapSourceListMode,
     );
@@ -4343,7 +4343,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMapTargetListMode fixture", () => {
+  it("should validate CodesystemMapTargetListMode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMapTargetListMode,
     );
@@ -4357,7 +4357,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMapTransform fixture", () => {
+  it("should validate CodesystemMapTransform fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemMapTransform);
     if (!result.success) {
       console.error("Validation failed for CodesystemMapTransform:");
@@ -4369,7 +4369,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMatchGrade fixture", () => {
+  it("should validate CodesystemMatchGrade fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemMatchGrade);
     if (!result.success) {
       console.error("Validation failed for CodesystemMatchGrade:");
@@ -4381,7 +4381,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMeasureDataUsage fixture", () => {
+  it("should validate CodesystemMeasureDataUsage fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMeasureDataUsage,
     );
@@ -4395,7 +4395,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMeasureImprovementNotation fixture", () => {
+  it("should validate CodesystemMeasureImprovementNotation fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMeasureImprovementNotation,
     );
@@ -4411,7 +4411,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMeasurePopulation fixture", () => {
+  it("should validate CodesystemMeasurePopulation fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMeasurePopulation,
     );
@@ -4425,7 +4425,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMeasureReportStatus fixture", () => {
+  it("should validate CodesystemMeasureReportStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMeasureReportStatus,
     );
@@ -4439,7 +4439,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMeasureReportType fixture", () => {
+  it("should validate CodesystemMeasureReportType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMeasureReportType,
     );
@@ -4453,7 +4453,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMeasureScoring fixture", () => {
+  it("should validate CodesystemMeasureScoring fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemMeasureScoring);
     if (!result.success) {
       console.error("Validation failed for CodesystemMeasureScoring:");
@@ -4465,7 +4465,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMeasureType fixture", () => {
+  it("should validate CodesystemMeasureType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemMeasureType);
     if (!result.success) {
       console.error("Validation failed for CodesystemMeasureType:");
@@ -4477,7 +4477,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMedAdminPerformFunction fixture", () => {
+  it("should validate CodesystemMedAdminPerformFunction fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMedAdminPerformFunction,
     );
@@ -4491,7 +4491,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMediaModality fixture", () => {
+  it("should validate CodesystemMediaModality fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemMediaModality);
     if (!result.success) {
       console.error("Validation failed for CodesystemMediaModality:");
@@ -4503,7 +4503,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMediaType fixture", () => {
+  it("should validate CodesystemMediaType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemMediaType);
     if (!result.success) {
       console.error("Validation failed for CodesystemMediaType:");
@@ -4515,7 +4515,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMedicationAdminCategory fixture", () => {
+  it("should validate CodesystemMedicationAdminCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMedicationAdminCategory,
     );
@@ -4529,7 +4529,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMedicationAdminStatus fixture", () => {
+  it("should validate CodesystemMedicationAdminStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMedicationAdminStatus,
     );
@@ -4543,7 +4543,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMedicationStatementCategory fixture", () => {
+  it("should validate CodesystemMedicationStatementCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMedicationStatementCategory,
     );
@@ -4559,7 +4559,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMedicationStatementStatus fixture", () => {
+  it("should validate CodesystemMedicationStatementStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMedicationStatementStatus,
     );
@@ -4575,7 +4575,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMedicationStatus fixture", () => {
+  it("should validate CodesystemMedicationStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMedicationStatus,
     );
@@ -4589,7 +4589,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMedicationdispenseCategory fixture", () => {
+  it("should validate CodesystemMedicationdispenseCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMedicationdispenseCategory,
     );
@@ -4605,7 +4605,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMedicationdispensePerformerFunction fixture", () => {
+  it("should validate CodesystemMedicationdispensePerformerFunction fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMedicationdispensePerformerFunction,
     );
@@ -4621,7 +4621,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMedicationdispenseStatusReason fixture", () => {
+  it("should validate CodesystemMedicationdispenseStatusReason fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMedicationdispenseStatusReason,
     );
@@ -4637,7 +4637,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMedicationdispenseStatus fixture", () => {
+  it("should validate CodesystemMedicationdispenseStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMedicationdispenseStatus,
     );
@@ -4653,7 +4653,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMedicationknowledgeCharacteristic fixture", () => {
+  it("should validate CodesystemMedicationknowledgeCharacteristic fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMedicationknowledgeCharacteristic,
     );
@@ -4669,7 +4669,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMedicationknowledgePackageType fixture", () => {
+  it("should validate CodesystemMedicationknowledgePackageType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMedicationknowledgePackageType,
     );
@@ -4685,7 +4685,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMedicationknowledgeStatus fixture", () => {
+  it("should validate CodesystemMedicationknowledgeStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMedicationknowledgeStatus,
     );
@@ -4701,7 +4701,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMedicationrequestCategory fixture", () => {
+  it("should validate CodesystemMedicationrequestCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMedicationrequestCategory,
     );
@@ -4717,7 +4717,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMedicationrequestCourseOfTherapy fixture", () => {
+  it("should validate CodesystemMedicationrequestCourseOfTherapy fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMedicationrequestCourseOfTherapy,
     );
@@ -4733,7 +4733,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMedicationrequestIntent fixture", () => {
+  it("should validate CodesystemMedicationrequestIntent fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMedicationrequestIntent,
     );
@@ -4747,7 +4747,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMedicationrequestStatusReason fixture", () => {
+  it("should validate CodesystemMedicationrequestStatusReason fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMedicationrequestStatusReason,
     );
@@ -4763,7 +4763,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMedicationrequestStatus fixture", () => {
+  it("should validate CodesystemMedicationrequestStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMedicationrequestStatus,
     );
@@ -4777,7 +4777,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMessageEvents fixture", () => {
+  it("should validate CodesystemMessageEvents fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemMessageEvents);
     if (!result.success) {
       console.error("Validation failed for CodesystemMessageEvents:");
@@ -4789,7 +4789,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMessageReasonEncounter fixture", () => {
+  it("should validate CodesystemMessageReasonEncounter fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMessageReasonEncounter,
     );
@@ -4803,7 +4803,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMessageSignificanceCategory fixture", () => {
+  it("should validate CodesystemMessageSignificanceCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMessageSignificanceCategory,
     );
@@ -4819,7 +4819,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMessageTransport fixture", () => {
+  it("should validate CodesystemMessageTransport fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMessageTransport,
     );
@@ -4833,7 +4833,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMessageheaderResponseRequest fixture", () => {
+  it("should validate CodesystemMessageheaderResponseRequest fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMessageheaderResponseRequest,
     );
@@ -4849,7 +4849,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMetricCalibrationState fixture", () => {
+  it("should validate CodesystemMetricCalibrationState fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMetricCalibrationState,
     );
@@ -4863,7 +4863,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMetricCalibrationType fixture", () => {
+  it("should validate CodesystemMetricCalibrationType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMetricCalibrationType,
     );
@@ -4877,7 +4877,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMetricCategory fixture", () => {
+  it("should validate CodesystemMetricCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemMetricCategory);
     if (!result.success) {
       console.error("Validation failed for CodesystemMetricCategory:");
@@ -4889,7 +4889,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMetricColor fixture", () => {
+  it("should validate CodesystemMetricColor fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemMetricColor);
     if (!result.success) {
       console.error("Validation failed for CodesystemMetricColor:");
@@ -4901,7 +4901,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMetricOperationalStatus fixture", () => {
+  it("should validate CodesystemMetricOperationalStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMetricOperationalStatus,
     );
@@ -4915,7 +4915,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemMissingToothReason fixture", () => {
+  it("should validate CodesystemMissingToothReason fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemMissingToothReason,
     );
@@ -4929,7 +4929,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemNameAssemblyOrder fixture", () => {
+  it("should validate CodesystemNameAssemblyOrder fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemNameAssemblyOrder,
     );
@@ -4943,7 +4943,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemNameUse fixture", () => {
+  it("should validate CodesystemNameUse fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemNameUse);
     if (!result.success) {
       console.error("Validation failed for CodesystemNameUse:");
@@ -4955,7 +4955,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemNamingsystemIdentifierType fixture", () => {
+  it("should validate CodesystemNamingsystemIdentifierType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemNamingsystemIdentifierType,
     );
@@ -4971,7 +4971,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemNamingsystemType fixture", () => {
+  it("should validate CodesystemNamingsystemType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemNamingsystemType,
     );
@@ -4985,7 +4985,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemNarrativeStatus fixture", () => {
+  it("should validate CodesystemNarrativeStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemNarrativeStatus,
     );
@@ -4999,7 +4999,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemNetworkType fixture", () => {
+  it("should validate CodesystemNetworkType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemNetworkType);
     if (!result.success) {
       console.error("Validation failed for CodesystemNetworkType:");
@@ -5011,7 +5011,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemNhinPurposeofuse fixture", () => {
+  it("should validate CodesystemNhinPurposeofuse fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemNhinPurposeofuse,
     );
@@ -5025,7 +5025,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemNoteType fixture", () => {
+  it("should validate CodesystemNoteType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemNoteType);
     if (!result.success) {
       console.error("Validation failed for CodesystemNoteType:");
@@ -5037,7 +5037,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemObjectRole fixture", () => {
+  it("should validate CodesystemObjectRole fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemObjectRole);
     if (!result.success) {
       console.error("Validation failed for CodesystemObjectRole:");
@@ -5049,7 +5049,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemObservationCategory fixture", () => {
+  it("should validate CodesystemObservationCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemObservationCategory,
     );
@@ -5063,7 +5063,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemObservationRangeCategory fixture", () => {
+  it("should validate CodesystemObservationRangeCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemObservationRangeCategory,
     );
@@ -5079,7 +5079,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemObservationStatistics fixture", () => {
+  it("should validate CodesystemObservationStatistics fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemObservationStatistics,
     );
@@ -5093,7 +5093,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemObservationStatus fixture", () => {
+  it("should validate CodesystemObservationStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemObservationStatus,
     );
@@ -5107,7 +5107,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemOperationKind fixture", () => {
+  it("should validate CodesystemOperationKind fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemOperationKind);
     if (!result.success) {
       console.error("Validation failed for CodesystemOperationKind:");
@@ -5119,7 +5119,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemOperationOutcome fixture", () => {
+  it("should validate CodesystemOperationOutcome fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemOperationOutcome,
     );
@@ -5133,7 +5133,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemOperationParameterUse fixture", () => {
+  it("should validate CodesystemOperationParameterUse fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemOperationParameterUse,
     );
@@ -5147,7 +5147,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemOralProsthodonticMaterial fixture", () => {
+  it("should validate CodesystemOralProsthodonticMaterial fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemOralProsthodonticMaterial,
     );
@@ -5163,7 +5163,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemOrganizationRole fixture", () => {
+  it("should validate CodesystemOrganizationRole fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemOrganizationRole,
     );
@@ -5177,7 +5177,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemOrganizationType fixture", () => {
+  it("should validate CodesystemOrganizationType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemOrganizationType,
     );
@@ -5191,7 +5191,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemOrientationType fixture", () => {
+  it("should validate CodesystemOrientationType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemOrientationType,
     );
@@ -5205,7 +5205,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemParameterGroup fixture", () => {
+  it("should validate CodesystemParameterGroup fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemParameterGroup);
     if (!result.success) {
       console.error("Validation failed for CodesystemParameterGroup:");
@@ -5217,7 +5217,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemParticipantrequired fixture", () => {
+  it("should validate CodesystemParticipantrequired fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemParticipantrequired,
     );
@@ -5231,7 +5231,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemParticipationstatus fixture", () => {
+  it("should validate CodesystemParticipationstatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemParticipationstatus,
     );
@@ -5245,7 +5245,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemPayeetype fixture", () => {
+  it("should validate CodesystemPayeetype fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemPayeetype);
     if (!result.success) {
       console.error("Validation failed for CodesystemPayeetype:");
@@ -5257,7 +5257,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemPaymentAdjustmentReason fixture", () => {
+  it("should validate CodesystemPaymentAdjustmentReason fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemPaymentAdjustmentReason,
     );
@@ -5271,7 +5271,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemPaymentStatus fixture", () => {
+  it("should validate CodesystemPaymentStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemPaymentStatus);
     if (!result.success) {
       console.error("Validation failed for CodesystemPaymentStatus:");
@@ -5283,7 +5283,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemPaymentType fixture", () => {
+  it("should validate CodesystemPaymentType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemPaymentType);
     if (!result.success) {
       console.error("Validation failed for CodesystemPaymentType:");
@@ -5295,7 +5295,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemPermittedDataType fixture", () => {
+  it("should validate CodesystemPermittedDataType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemPermittedDataType,
     );
@@ -5309,7 +5309,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemPlanDefinitionType fixture", () => {
+  it("should validate CodesystemPlanDefinitionType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemPlanDefinitionType,
     );
@@ -5323,7 +5323,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemPractitionerRole fixture", () => {
+  it("should validate CodesystemPractitionerRole fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemPractitionerRole,
     );
@@ -5337,7 +5337,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemPractitionerSpecialty fixture", () => {
+  it("should validate CodesystemPractitionerSpecialty fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemPractitionerSpecialty,
     );
@@ -5351,7 +5351,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemPrecisionEstimateType fixture", () => {
+  it("should validate CodesystemPrecisionEstimateType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemPrecisionEstimateType,
     );
@@ -5365,7 +5365,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemProcedureProgressStatusCodes fixture", () => {
+  it("should validate CodesystemProcedureProgressStatusCodes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemProcedureProgressStatusCodes,
     );
@@ -5381,7 +5381,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemProcessPriority fixture", () => {
+  it("should validate CodesystemProcessPriority fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemProcessPriority,
     );
@@ -5395,7 +5395,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemProductCategory fixture", () => {
+  it("should validate CodesystemProductCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemProductCategory,
     );
@@ -5409,7 +5409,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemProductStatus fixture", () => {
+  it("should validate CodesystemProductStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemProductStatus);
     if (!result.success) {
       console.error("Validation failed for CodesystemProductStatus:");
@@ -5421,7 +5421,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemProductStorageScale fixture", () => {
+  it("should validate CodesystemProductStorageScale fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemProductStorageScale,
     );
@@ -5435,7 +5435,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemProgram fixture", () => {
+  it("should validate CodesystemProgram fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemProgram);
     if (!result.success) {
       console.error("Validation failed for CodesystemProgram:");
@@ -5447,7 +5447,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemPropertyRepresentation fixture", () => {
+  it("should validate CodesystemPropertyRepresentation fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemPropertyRepresentation,
     );
@@ -5461,7 +5461,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemProvenanceAgentRole fixture", () => {
+  it("should validate CodesystemProvenanceAgentRole fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemProvenanceAgentRole,
     );
@@ -5475,7 +5475,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemProvenanceAgentType fixture", () => {
+  it("should validate CodesystemProvenanceAgentType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemProvenanceAgentType,
     );
@@ -5489,7 +5489,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemProvenanceEntityRole fixture", () => {
+  it("should validate CodesystemProvenanceEntityRole fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemProvenanceEntityRole,
     );
@@ -5503,7 +5503,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemProviderQualification fixture", () => {
+  it("should validate CodesystemProviderQualification fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemProviderQualification,
     );
@@ -5517,7 +5517,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemPublicationStatus fixture", () => {
+  it("should validate CodesystemPublicationStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemPublicationStatus,
     );
@@ -5531,7 +5531,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemQualityType fixture", () => {
+  it("should validate CodesystemQualityType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemQualityType);
     if (!result.success) {
       console.error("Validation failed for CodesystemQualityType:");
@@ -5543,7 +5543,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemQuantityComparator fixture", () => {
+  it("should validate CodesystemQuantityComparator fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemQuantityComparator,
     );
@@ -5557,7 +5557,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemQuestionMaxOccurs fixture", () => {
+  it("should validate CodesystemQuestionMaxOccurs fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemQuestionMaxOccurs,
     );
@@ -5571,7 +5571,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemQuestionnaireAnswersStatus fixture", () => {
+  it("should validate CodesystemQuestionnaireAnswersStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemQuestionnaireAnswersStatus,
     );
@@ -5587,7 +5587,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemQuestionnaireDisplayCategory fixture", () => {
+  it("should validate CodesystemQuestionnaireDisplayCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemQuestionnaireDisplayCategory,
     );
@@ -5603,7 +5603,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemQuestionnaireEnableBehavior fixture", () => {
+  it("should validate CodesystemQuestionnaireEnableBehavior fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemQuestionnaireEnableBehavior,
     );
@@ -5619,7 +5619,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemQuestionnaireEnableOperator fixture", () => {
+  it("should validate CodesystemQuestionnaireEnableOperator fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemQuestionnaireEnableOperator,
     );
@@ -5635,7 +5635,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemQuestionnaireItemControl fixture", () => {
+  it("should validate CodesystemQuestionnaireItemControl fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemQuestionnaireItemControl,
     );
@@ -5651,7 +5651,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemQuestionnaireUsageMode fixture", () => {
+  it("should validate CodesystemQuestionnaireUsageMode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemQuestionnaireUsageMode,
     );
@@ -5665,7 +5665,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemReactionEventCertainty fixture", () => {
+  it("should validate CodesystemReactionEventCertainty fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemReactionEventCertainty,
     );
@@ -5679,7 +5679,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemReactionEventSeverity fixture", () => {
+  it("should validate CodesystemReactionEventSeverity fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemReactionEventSeverity,
     );
@@ -5693,7 +5693,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemReasonMedicationGivenCodes fixture", () => {
+  it("should validate CodesystemReasonMedicationGivenCodes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemReasonMedicationGivenCodes,
     );
@@ -5709,7 +5709,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemReasonMedicationNotGivenCodes fixture", () => {
+  it("should validate CodesystemReasonMedicationNotGivenCodes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemReasonMedicationNotGivenCodes,
     );
@@ -5725,7 +5725,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemRecommendationStrength fixture", () => {
+  it("should validate CodesystemRecommendationStrength fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemRecommendationStrength,
     );
@@ -5739,7 +5739,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemReferenceHandlingPolicy fixture", () => {
+  it("should validate CodesystemReferenceHandlingPolicy fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemReferenceHandlingPolicy,
     );
@@ -5753,7 +5753,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemReferenceVersionRules fixture", () => {
+  it("should validate CodesystemReferenceVersionRules fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemReferenceVersionRules,
     );
@@ -5767,7 +5767,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemReferencerangeMeaning fixture", () => {
+  it("should validate CodesystemReferencerangeMeaning fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemReferencerangeMeaning,
     );
@@ -5781,7 +5781,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemRejectionCriteria fixture", () => {
+  it("should validate CodesystemRejectionCriteria fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemRejectionCriteria,
     );
@@ -5795,7 +5795,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemRelatedArtifactType fixture", () => {
+  it("should validate CodesystemRelatedArtifactType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemRelatedArtifactType,
     );
@@ -5809,7 +5809,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemRelatedClaimRelationship fixture", () => {
+  it("should validate CodesystemRelatedClaimRelationship fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemRelatedClaimRelationship,
     );
@@ -5825,7 +5825,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemRelationType fixture", () => {
+  it("should validate CodesystemRelationType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemRelationType);
     if (!result.success) {
       console.error("Validation failed for CodesystemRelationType:");
@@ -5837,7 +5837,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemRelationship fixture", () => {
+  it("should validate CodesystemRelationship fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemRelationship);
     if (!result.success) {
       console.error("Validation failed for CodesystemRelationship:");
@@ -5849,7 +5849,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemRemittanceOutcome fixture", () => {
+  it("should validate CodesystemRemittanceOutcome fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemRemittanceOutcome,
     );
@@ -5863,7 +5863,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemReportActionResultCodes fixture", () => {
+  it("should validate CodesystemReportActionResultCodes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemReportActionResultCodes,
     );
@@ -5877,7 +5877,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemReportParticipantType fixture", () => {
+  it("should validate CodesystemReportParticipantType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemReportParticipantType,
     );
@@ -5891,7 +5891,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemReportResultCodes fixture", () => {
+  it("should validate CodesystemReportResultCodes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemReportResultCodes,
     );
@@ -5905,7 +5905,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemReportStatusCodes fixture", () => {
+  it("should validate CodesystemReportStatusCodes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemReportStatusCodes,
     );
@@ -5919,7 +5919,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemRepositoryType fixture", () => {
+  it("should validate CodesystemRepositoryType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemRepositoryType);
     if (!result.success) {
       console.error("Validation failed for CodesystemRepositoryType:");
@@ -5931,7 +5931,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemRequestIntent fixture", () => {
+  it("should validate CodesystemRequestIntent fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemRequestIntent);
     if (!result.success) {
       console.error("Validation failed for CodesystemRequestIntent:");
@@ -5943,7 +5943,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemRequestPriority fixture", () => {
+  it("should validate CodesystemRequestPriority fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemRequestPriority,
     );
@@ -5957,7 +5957,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemRequestResourceTypes fixture", () => {
+  it("should validate CodesystemRequestResourceTypes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemRequestResourceTypes,
     );
@@ -5971,7 +5971,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemRequestStatus fixture", () => {
+  it("should validate CodesystemRequestStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemRequestStatus);
     if (!result.success) {
       console.error("Validation failed for CodesystemRequestStatus:");
@@ -5983,7 +5983,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemResearchElementType fixture", () => {
+  it("should validate CodesystemResearchElementType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemResearchElementType,
     );
@@ -5997,7 +5997,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemResearchStudyObjectiveType fixture", () => {
+  it("should validate CodesystemResearchStudyObjectiveType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemResearchStudyObjectiveType,
     );
@@ -6013,7 +6013,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemResearchStudyPhase fixture", () => {
+  it("should validate CodesystemResearchStudyPhase fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemResearchStudyPhase,
     );
@@ -6027,7 +6027,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemResearchStudyPrimPurpType fixture", () => {
+  it("should validate CodesystemResearchStudyPrimPurpType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemResearchStudyPrimPurpType,
     );
@@ -6043,7 +6043,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemResearchStudyReasonStopped fixture", () => {
+  it("should validate CodesystemResearchStudyReasonStopped fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemResearchStudyReasonStopped,
     );
@@ -6059,7 +6059,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemResearchStudyStatus fixture", () => {
+  it("should validate CodesystemResearchStudyStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemResearchStudyStatus,
     );
@@ -6073,7 +6073,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemResearchSubjectStatus fixture", () => {
+  it("should validate CodesystemResearchSubjectStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemResearchSubjectStatus,
     );
@@ -6087,7 +6087,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemResourceAggregationMode fixture", () => {
+  it("should validate CodesystemResourceAggregationMode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemResourceAggregationMode,
     );
@@ -6101,7 +6101,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemResourceSecurityCategory fixture", () => {
+  it("should validate CodesystemResourceSecurityCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemResourceSecurityCategory,
     );
@@ -6117,7 +6117,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemResourceSlicingRules fixture", () => {
+  it("should validate CodesystemResourceSlicingRules fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemResourceSlicingRules,
     );
@@ -6131,7 +6131,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemResourceStatus fixture", () => {
+  it("should validate CodesystemResourceStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemResourceStatus);
     if (!result.success) {
       console.error("Validation failed for CodesystemResourceStatus:");
@@ -6143,7 +6143,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemResourceTypeLink fixture", () => {
+  it("should validate CodesystemResourceTypeLink fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemResourceTypeLink,
     );
@@ -6157,7 +6157,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemResourceValidationMode fixture", () => {
+  it("should validate CodesystemResourceValidationMode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemResourceValidationMode,
     );
@@ -6171,7 +6171,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemResponseCode fixture", () => {
+  it("should validate CodesystemResponseCode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemResponseCode);
     if (!result.success) {
       console.error("Validation failed for CodesystemResponseCode:");
@@ -6183,7 +6183,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemRestfulCapabilityMode fixture", () => {
+  it("should validate CodesystemRestfulCapabilityMode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemRestfulCapabilityMode,
     );
@@ -6197,7 +6197,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemRestfulInteraction fixture", () => {
+  it("should validate CodesystemRestfulInteraction fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemRestfulInteraction,
     );
@@ -6211,7 +6211,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemRestfulSecurityService fixture", () => {
+  it("should validate CodesystemRestfulSecurityService fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemRestfulSecurityService,
     );
@@ -6225,7 +6225,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemRiskEstimateType fixture", () => {
+  it("should validate CodesystemRiskEstimateType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemRiskEstimateType,
     );
@@ -6239,7 +6239,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemRiskProbability fixture", () => {
+  it("should validate CodesystemRiskProbability fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemRiskProbability,
     );
@@ -6253,7 +6253,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSearchComparator fixture", () => {
+  it("should validate CodesystemSearchComparator fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemSearchComparator,
     );
@@ -6267,7 +6267,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSearchEntryMode fixture", () => {
+  it("should validate CodesystemSearchEntryMode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemSearchEntryMode,
     );
@@ -6281,7 +6281,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSearchModifierCode fixture", () => {
+  it("should validate CodesystemSearchModifierCode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemSearchModifierCode,
     );
@@ -6295,7 +6295,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSearchParamType fixture", () => {
+  it("should validate CodesystemSearchParamType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemSearchParamType,
     );
@@ -6309,7 +6309,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSearchXpathUsage fixture", () => {
+  it("should validate CodesystemSearchXpathUsage fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemSearchXpathUsage,
     );
@@ -6323,7 +6323,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSecondaryFinding fixture", () => {
+  it("should validate CodesystemSecondaryFinding fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemSecondaryFinding,
     );
@@ -6337,7 +6337,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSequenceType fixture", () => {
+  it("should validate CodesystemSequenceType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemSequenceType);
     if (!result.success) {
       console.error("Validation failed for CodesystemSequenceType:");
@@ -6349,7 +6349,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemServiceCategory fixture", () => {
+  it("should validate CodesystemServiceCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemServiceCategory,
     );
@@ -6363,7 +6363,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemServiceModifiers fixture", () => {
+  it("should validate CodesystemServiceModifiers fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemServiceModifiers,
     );
@@ -6377,7 +6377,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemServicePharmacy fixture", () => {
+  it("should validate CodesystemServicePharmacy fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemServicePharmacy,
     );
@@ -6391,7 +6391,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemServicePlace fixture", () => {
+  it("should validate CodesystemServicePlace fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemServicePlace);
     if (!result.success) {
       console.error("Validation failed for CodesystemServicePlace:");
@@ -6403,7 +6403,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemServiceProduct fixture", () => {
+  it("should validate CodesystemServiceProduct fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemServiceProduct);
     if (!result.success) {
       console.error("Validation failed for CodesystemServiceProduct:");
@@ -6415,7 +6415,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemServiceProvisionConditions fixture", () => {
+  it("should validate CodesystemServiceProvisionConditions fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemServiceProvisionConditions,
     );
@@ -6431,7 +6431,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemServiceReferralMethod fixture", () => {
+  it("should validate CodesystemServiceReferralMethod fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemServiceReferralMethod,
     );
@@ -6445,7 +6445,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemServiceUscls fixture", () => {
+  it("should validate CodesystemServiceUscls fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemServiceUscls);
     if (!result.success) {
       console.error("Validation failed for CodesystemServiceUscls:");
@@ -6457,7 +6457,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSignatureType fixture", () => {
+  it("should validate CodesystemSignatureType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemSignatureType);
     if (!result.success) {
       console.error("Validation failed for CodesystemSignatureType:");
@@ -6469,7 +6469,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSlotstatus fixture", () => {
+  it("should validate CodesystemSlotstatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemSlotstatus);
     if (!result.success) {
       console.error("Validation failed for CodesystemSlotstatus:");
@@ -6481,7 +6481,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSmartCapabilities fixture", () => {
+  it("should validate CodesystemSmartCapabilities fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemSmartCapabilities,
     );
@@ -6495,7 +6495,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSnomedct fixture", () => {
+  it("should validate CodesystemSnomedct fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemSnomedct);
     if (!result.success) {
       console.error("Validation failed for CodesystemSnomedct:");
@@ -6507,7 +6507,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSortDirection fixture", () => {
+  it("should validate CodesystemSortDirection fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemSortDirection);
     if (!result.success) {
       console.error("Validation failed for CodesystemSortDirection:");
@@ -6519,7 +6519,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSpecialValues fixture", () => {
+  it("should validate CodesystemSpecialValues fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemSpecialValues);
     if (!result.success) {
       console.error("Validation failed for CodesystemSpecialValues:");
@@ -6531,7 +6531,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSpecimenContainedPreference fixture", () => {
+  it("should validate CodesystemSpecimenContainedPreference fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemSpecimenContainedPreference,
     );
@@ -6547,7 +6547,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSpecimenStatus fixture", () => {
+  it("should validate CodesystemSpecimenStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemSpecimenStatus);
     if (!result.success) {
       console.error("Validation failed for CodesystemSpecimenStatus:");
@@ -6559,7 +6559,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemStandardsStatus fixture", () => {
+  it("should validate CodesystemStandardsStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemStandardsStatus,
     );
@@ -6573,7 +6573,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemStrandType fixture", () => {
+  it("should validate CodesystemStrandType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemStrandType);
     if (!result.success) {
       console.error("Validation failed for CodesystemStrandType:");
@@ -6585,7 +6585,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemStructureDefinitionKind fixture", () => {
+  it("should validate CodesystemStructureDefinitionKind fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemStructureDefinitionKind,
     );
@@ -6599,7 +6599,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemStudyType fixture", () => {
+  it("should validate CodesystemStudyType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemStudyType);
     if (!result.success) {
       console.error("Validation failed for CodesystemStudyType:");
@@ -6611,7 +6611,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSubscriberRelationship fixture", () => {
+  it("should validate CodesystemSubscriberRelationship fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemSubscriberRelationship,
     );
@@ -6625,7 +6625,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSubscriptionChannelType fixture", () => {
+  it("should validate CodesystemSubscriptionChannelType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemSubscriptionChannelType,
     );
@@ -6639,7 +6639,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSubscriptionStatus fixture", () => {
+  it("should validate CodesystemSubscriptionStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemSubscriptionStatus,
     );
@@ -6653,7 +6653,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSubscriptionTag fixture", () => {
+  it("should validate CodesystemSubscriptionTag fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemSubscriptionTag,
     );
@@ -6667,7 +6667,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSubstanceCategory fixture", () => {
+  it("should validate CodesystemSubstanceCategory fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemSubstanceCategory,
     );
@@ -6681,7 +6681,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSubstanceStatus fixture", () => {
+  it("should validate CodesystemSubstanceStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemSubstanceStatus,
     );
@@ -6695,7 +6695,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSupplydeliveryStatus fixture", () => {
+  it("should validate CodesystemSupplydeliveryStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemSupplydeliveryStatus,
     );
@@ -6709,7 +6709,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSupplydeliveryType fixture", () => {
+  it("should validate CodesystemSupplydeliveryType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemSupplydeliveryType,
     );
@@ -6723,7 +6723,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSupplyrequestKind fixture", () => {
+  it("should validate CodesystemSupplyrequestKind fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemSupplyrequestKind,
     );
@@ -6737,7 +6737,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSupplyrequestReason fixture", () => {
+  it("should validate CodesystemSupplyrequestReason fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemSupplyrequestReason,
     );
@@ -6751,7 +6751,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSupplyrequestStatus fixture", () => {
+  it("should validate CodesystemSupplyrequestStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemSupplyrequestStatus,
     );
@@ -6765,7 +6765,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSurface fixture", () => {
+  it("should validate CodesystemSurface fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemSurface);
     if (!result.success) {
       console.error("Validation failed for CodesystemSurface:");
@@ -6777,7 +6777,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemSynthesisType fixture", () => {
+  it("should validate CodesystemSynthesisType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemSynthesisType);
     if (!result.success) {
       console.error("Validation failed for CodesystemSynthesisType:");
@@ -6789,7 +6789,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemTaskCode fixture", () => {
+  it("should validate CodesystemTaskCode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemTaskCode);
     if (!result.success) {
       console.error("Validation failed for CodesystemTaskCode:");
@@ -6801,7 +6801,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemTaskIntent fixture", () => {
+  it("should validate CodesystemTaskIntent fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemTaskIntent);
     if (!result.success) {
       console.error("Validation failed for CodesystemTaskIntent:");
@@ -6813,7 +6813,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemTaskStatus fixture", () => {
+  it("should validate CodesystemTaskStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemTaskStatus);
     if (!result.success) {
       console.error("Validation failed for CodesystemTaskStatus:");
@@ -6825,7 +6825,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemTeeth fixture", () => {
+  it("should validate CodesystemTeeth fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemTeeth);
     if (!result.success) {
       console.error("Validation failed for CodesystemTeeth:");
@@ -6837,7 +6837,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemTestscriptOperationCodes fixture", () => {
+  it("should validate CodesystemTestscriptOperationCodes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemTestscriptOperationCodes,
     );
@@ -6853,7 +6853,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemTestscriptProfileDestinationTypes fixture", () => {
+  it("should validate CodesystemTestscriptProfileDestinationTypes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemTestscriptProfileDestinationTypes,
     );
@@ -6869,7 +6869,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemTestscriptProfileOriginTypes fixture", () => {
+  it("should validate CodesystemTestscriptProfileOriginTypes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemTestscriptProfileOriginTypes,
     );
@@ -6885,7 +6885,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemTldc fixture", () => {
+  it("should validate CodesystemTldc fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemTldc);
     if (!result.success) {
       console.error("Validation failed for CodesystemTldc:");
@@ -6897,7 +6897,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemTooth fixture", () => {
+  it("should validate CodesystemTooth fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemTooth);
     if (!result.success) {
       console.error("Validation failed for CodesystemTooth:");
@@ -6909,7 +6909,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemTransactionMode fixture", () => {
+  it("should validate CodesystemTransactionMode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemTransactionMode,
     );
@@ -6923,7 +6923,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemTriggerType fixture", () => {
+  it("should validate CodesystemTriggerType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemTriggerType);
     if (!result.success) {
       console.error("Validation failed for CodesystemTriggerType:");
@@ -6935,7 +6935,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemTypeDerivationRule fixture", () => {
+  it("should validate CodesystemTypeDerivationRule fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemTypeDerivationRule,
     );
@@ -6949,7 +6949,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemUdiEntryType fixture", () => {
+  it("should validate CodesystemUdiEntryType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemUdiEntryType);
     if (!result.success) {
       console.error("Validation failed for CodesystemUdiEntryType:");
@@ -6961,7 +6961,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemUdi fixture", () => {
+  it("should validate CodesystemUdi fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemUdi);
     if (!result.success) {
       console.error("Validation failed for CodesystemUdi:");
@@ -6973,7 +6973,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemUnknownContentCode fixture", () => {
+  it("should validate CodesystemUnknownContentCode fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemUnknownContentCode,
     );
@@ -6987,7 +6987,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemUsageContextType fixture", () => {
+  it("should validate CodesystemUsageContextType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemUsageContextType,
     );
@@ -7001,7 +7001,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemVariableType fixture", () => {
+  it("should validate CodesystemVariableType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemVariableType);
     if (!result.success) {
       console.error("Validation failed for CodesystemVariableType:");
@@ -7013,7 +7013,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemVariantState fixture", () => {
+  it("should validate CodesystemVariantState fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemVariantState);
     if (!result.success) {
       console.error("Validation failed for CodesystemVariantState:");
@@ -7025,7 +7025,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemVerificationresultCanPushUpdates fixture", () => {
+  it("should validate CodesystemVerificationresultCanPushUpdates fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemVerificationresultCanPushUpdates,
     );
@@ -7041,7 +7041,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemVerificationresultCommunicationMethod fixture", () => {
+  it("should validate CodesystemVerificationresultCommunicationMethod fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemVerificationresultCommunicationMethod,
     );
@@ -7057,7 +7057,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemVerificationresultFailureAction fixture", () => {
+  it("should validate CodesystemVerificationresultFailureAction fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemVerificationresultFailureAction,
     );
@@ -7073,7 +7073,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemVerificationresultNeed fixture", () => {
+  it("should validate CodesystemVerificationresultNeed fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemVerificationresultNeed,
     );
@@ -7087,7 +7087,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemVerificationresultPrimarySourceType fixture", () => {
+  it("should validate CodesystemVerificationresultPrimarySourceType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemVerificationresultPrimarySourceType,
     );
@@ -7103,7 +7103,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemVerificationresultPushTypeAvailable fixture", () => {
+  it("should validate CodesystemVerificationresultPushTypeAvailable fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemVerificationresultPushTypeAvailable,
     );
@@ -7119,7 +7119,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemVerificationresultStatus fixture", () => {
+  it("should validate CodesystemVerificationresultStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemVerificationresultStatus,
     );
@@ -7135,7 +7135,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemVerificationresultValidationProcess fixture", () => {
+  it("should validate CodesystemVerificationresultValidationProcess fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemVerificationresultValidationProcess,
     );
@@ -7151,7 +7151,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemVerificationresultValidationStatus fixture", () => {
+  it("should validate CodesystemVerificationresultValidationStatus fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemVerificationresultValidationStatus,
     );
@@ -7167,7 +7167,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemVerificationresultValidationType fixture", () => {
+  it("should validate CodesystemVerificationresultValidationType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemVerificationresultValidationType,
     );
@@ -7183,7 +7183,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemVersioningPolicy fixture", () => {
+  it("should validate CodesystemVersioningPolicy fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemVersioningPolicy,
     );
@@ -7197,7 +7197,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemVisionBaseCodes fixture", () => {
+  it("should validate CodesystemVisionBaseCodes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemVisionBaseCodes,
     );
@@ -7211,7 +7211,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemVisionEyeCodes fixture", () => {
+  it("should validate CodesystemVisionEyeCodes fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemVisionEyeCodes);
     if (!result.success) {
       console.error("Validation failed for CodesystemVisionEyeCodes:");
@@ -7223,7 +7223,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemVisionProduct fixture", () => {
+  it("should validate CodesystemVisionProduct fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(CodesystemVisionProduct);
     if (!result.success) {
       console.error("Validation failed for CodesystemVisionProduct:");
@@ -7235,7 +7235,7 @@ describe("CodeSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodesystemW3cProvenanceActivityType fixture", () => {
+  it("should validate CodesystemW3cProvenanceActivityType fixture (CodeSystem)", () => {
     const result = createCodeSystemSchema().safeParse(
       CodesystemW3cProvenanceActivityType,
     );

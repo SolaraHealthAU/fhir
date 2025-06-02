@@ -2,8 +2,8 @@ import { createBasicSchema } from "../../src";
 import { BasicExampleNarrative, BasicExample, BasicExample2 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Basic Schema Validation", () => {
-  it("should validate BasicExampleNarrative fixture", () => {
+describe("Basic Group Schema Validation", () => {
+  it("should validate BasicExampleNarrative fixture (Basic)", () => {
     const result = createBasicSchema().safeParse(BasicExampleNarrative);
     if (!result.success) {
       console.error("Validation failed for BasicExampleNarrative:");
@@ -15,7 +15,7 @@ describe("Basic Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BasicExample fixture", () => {
+  it("should validate BasicExample fixture (Basic)", () => {
     const result = createBasicSchema().safeParse(BasicExample);
     if (!result.success) {
       console.error("Validation failed for BasicExample:");
@@ -27,7 +27,7 @@ describe("Basic Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BasicExample2 fixture", () => {
+  it("should validate BasicExample2 fixture (Basic)", () => {
     const result = createBasicSchema().safeParse(BasicExample2);
     if (!result.success) {
       console.error("Validation failed for BasicExample2:");

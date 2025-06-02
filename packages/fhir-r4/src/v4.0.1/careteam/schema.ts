@@ -15,7 +15,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createCareTeamParticipantSchema } from "../careteamparticipant/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -56,6 +55,22 @@ export function createCareTeamSchema() {
       managingOrganization: z.array(createReferenceSchema()).optional(),
       telecom: z.array(createContactPointSchema()).optional(),
       note: z.array(createAnnotationSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createCareTeamParticipantSchema() {
+  return getCachedSchema("CareTeamParticipant", () => {
+    const baseSchema: z.ZodType<types.CareTeamParticipant> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      role: z.array(createCodeableConceptSchema()).optional(),
+      member: createReferenceSchema().optional(),
+      onBehalfOf: createReferenceSchema().optional(),
+      period: createPeriodSchema().optional(),
     });
 
     return baseSchema;

@@ -498,8 +498,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("StructureDefinition Schema Validation", () => {
-  it("should validate ActualgroupProfile fixture", () => {
+describe("Structuredefinition Group Schema Validation", () => {
+  it("should validate ActualgroupProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ActualgroupProfile);
     if (!result.success) {
@@ -512,7 +512,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AddressProfile fixture", () => {
+  it("should validate AddressProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(AddressProfile);
     if (!result.success) {
       console.error("Validation failed for AddressProfile:");
@@ -524,7 +524,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AgeProfile fixture", () => {
+  it("should validate AgeProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(AgeProfile);
     if (!result.success) {
       console.error("Validation failed for AgeProfile:");
@@ -536,7 +536,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AnnotationProfile fixture", () => {
+  it("should validate AnnotationProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(AnnotationProfile);
     if (!result.success) {
@@ -549,7 +549,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AppointmentresponseProfile fixture", () => {
+  it("should validate AppointmentresponseProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       AppointmentresponseProfile,
     );
@@ -563,7 +563,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AttachmentProfile fixture", () => {
+  it("should validate AttachmentProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(AttachmentProfile);
     if (!result.success) {
@@ -576,7 +576,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BackboneelementProfile fixture", () => {
+  it("should validate BackboneelementProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       BackboneelementProfile,
     );
@@ -590,7 +590,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Base64binaryProfile fixture", () => {
+  it("should validate Base64binaryProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(Base64binaryProfile);
     if (!result.success) {
@@ -603,7 +603,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BasicProfile fixture", () => {
+  it("should validate BasicProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(BasicProfile);
     if (!result.success) {
       console.error("Validation failed for BasicProfile:");
@@ -615,7 +615,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BinaryProfile fixture", () => {
+  it("should validate BinaryProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(BinaryProfile);
     if (!result.success) {
       console.error("Validation failed for BinaryProfile:");
@@ -627,7 +627,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BodystructureProfile fixture", () => {
+  it("should validate BodystructureProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(BodystructureProfile);
     if (!result.success) {
@@ -640,7 +640,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BooleanProfile fixture", () => {
+  it("should validate BooleanProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(BooleanProfile);
     if (!result.success) {
       console.error("Validation failed for BooleanProfile:");
@@ -652,7 +652,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CanonicalProfile fixture", () => {
+  it("should validate CanonicalProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(CanonicalProfile);
     if (!result.success) {
@@ -665,7 +665,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CdshooksguidanceresponseProfile fixture", () => {
+  it("should validate CdshooksguidanceresponseProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       CdshooksguidanceresponseProfile,
     );
@@ -679,7 +679,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CdshooksrequestgroupProfile fixture", () => {
+  it("should validate CdshooksrequestgroupProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       CdshooksrequestgroupProfile,
     );
@@ -693,7 +693,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodeProfile fixture", () => {
+  it("should validate CodeProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(CodeProfile);
     if (!result.success) {
       console.error("Validation failed for CodeProfile:");
@@ -705,7 +705,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodeableconceptProfile fixture", () => {
+  it("should validate CodeableconceptProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       CodeableconceptProfile,
     );
@@ -719,7 +719,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CodingProfile fixture", () => {
+  it("should validate CodingProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(CodingProfile);
     if (!result.success) {
       console.error("Validation failed for CodingProfile:");
@@ -731,7 +731,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ContactdetailProfile fixture", () => {
+  it("should validate ContactdetailProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ContactdetailProfile);
     if (!result.success) {
@@ -744,7 +744,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ContactpointProfile fixture", () => {
+  it("should validate ContactpointProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ContactpointProfile);
     if (!result.success) {
@@ -757,7 +757,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ContributorProfile fixture", () => {
+  it("should validate ContributorProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ContributorProfile);
     if (!result.success) {
@@ -770,7 +770,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CountProfile fixture", () => {
+  it("should validate CountProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(CountProfile);
     if (!result.success) {
       console.error("Validation failed for CountProfile:");
@@ -782,7 +782,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CqllibraryProfile fixture", () => {
+  it("should validate CqllibraryProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(CqllibraryProfile);
     if (!result.success) {
@@ -795,7 +795,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DateProfile fixture", () => {
+  it("should validate DateProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(DateProfile);
     if (!result.success) {
       console.error("Validation failed for DateProfile:");
@@ -807,7 +807,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DatetimeProfile fixture", () => {
+  it("should validate DatetimeProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(DatetimeProfile);
     if (!result.success) {
       console.error("Validation failed for DatetimeProfile:");
@@ -819,7 +819,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DecimalProfile fixture", () => {
+  it("should validate DecimalProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(DecimalProfile);
     if (!result.success) {
       console.error("Validation failed for DecimalProfile:");
@@ -831,7 +831,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Definition fixture", () => {
+  it("should validate Definition fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(Definition);
     if (!result.success) {
       console.error("Validation failed for Definition:");
@@ -843,7 +843,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DiagnosticreportGeneticsProfile fixture", () => {
+  it("should validate DiagnosticreportGeneticsProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       DiagnosticreportGeneticsProfile,
     );
@@ -857,7 +857,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DistanceProfile fixture", () => {
+  it("should validate DistanceProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(DistanceProfile);
     if (!result.success) {
       console.error("Validation failed for DistanceProfile:");
@@ -869,7 +869,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DomainresourceProfile fixture", () => {
+  it("should validate DomainresourceProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       DomainresourceProfile,
     );
@@ -883,7 +883,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DurationProfile fixture", () => {
+  it("should validate DurationProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(DurationProfile);
     if (!result.success) {
       console.error("Validation failed for DurationProfile:");
@@ -895,7 +895,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ElementProfile fixture", () => {
+  it("should validate ElementProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(ElementProfile);
     if (!result.success) {
       console.error("Validation failed for ElementProfile:");
@@ -907,7 +907,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EndpointProfile fixture", () => {
+  it("should validate EndpointProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(EndpointProfile);
     if (!result.success) {
       console.error("Validation failed for EndpointProfile:");
@@ -919,7 +919,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EnrollmentrequestProfile fixture", () => {
+  it("should validate EnrollmentrequestProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       EnrollmentrequestProfile,
     );
@@ -933,7 +933,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EnrollmentresponseProfile fixture", () => {
+  it("should validate EnrollmentresponseProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       EnrollmentresponseProfile,
     );
@@ -947,7 +947,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Event fixture", () => {
+  it("should validate Event fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(Event);
     if (!result.success) {
       console.error("Validation failed for Event:");
@@ -959,7 +959,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExpressionProfile fixture", () => {
+  it("should validate ExpressionProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExpressionProfile);
     if (!result.success) {
@@ -972,7 +972,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Extension11179Objectclass fixture", () => {
+  it("should validate Extension11179Objectclass fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       Extension11179Objectclass,
     );
@@ -986,7 +986,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Extension11179Objectclassproperty fixture", () => {
+  it("should validate Extension11179Objectclassproperty fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       Extension11179Objectclassproperty,
     );
@@ -1000,7 +1000,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Extension11179PermittedValueConceptmap fixture", () => {
+  it("should validate Extension11179PermittedValueConceptmap fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       Extension11179PermittedValueConceptmap,
     );
@@ -1016,7 +1016,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Extension11179PermittedValueValueset fixture", () => {
+  it("should validate Extension11179PermittedValueValueset fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       Extension11179PermittedValueValueset,
     );
@@ -1032,7 +1032,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionAllergyintoleranceAsserteddate fixture", () => {
+  it("should validate ExtensionAllergyintoleranceAsserteddate fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionAllergyintoleranceAsserteddate,
     );
@@ -1048,7 +1048,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionAllergyintoleranceCertainty fixture", () => {
+  it("should validate ExtensionAllergyintoleranceCertainty fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionAllergyintoleranceCertainty,
     );
@@ -1064,7 +1064,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionAllergyintoleranceDuration fixture", () => {
+  it("should validate ExtensionAllergyintoleranceDuration fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionAllergyintoleranceDuration,
     );
@@ -1080,7 +1080,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionAllergyintoleranceReasonrefuted fixture", () => {
+  it("should validate ExtensionAllergyintoleranceReasonrefuted fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionAllergyintoleranceReasonrefuted,
     );
@@ -1096,7 +1096,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionAllergyintoleranceResolutionage fixture", () => {
+  it("should validate ExtensionAllergyintoleranceResolutionage fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionAllergyintoleranceResolutionage,
     );
@@ -1112,7 +1112,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionAllergyintoleranceSubstanceexposurerisk fixture", () => {
+  it("should validate ExtensionAllergyintoleranceSubstanceexposurerisk fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionAllergyintoleranceSubstanceexposurerisk,
     );
@@ -1128,7 +1128,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionAuditeventAccession fixture", () => {
+  it("should validate ExtensionAuditeventAccession fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionAuditeventAccession,
     );
@@ -1142,7 +1142,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionAuditeventAnonymized fixture", () => {
+  it("should validate ExtensionAuditeventAnonymized fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionAuditeventAnonymized,
     );
@@ -1156,7 +1156,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionAuditeventEncrypted fixture", () => {
+  it("should validate ExtensionAuditeventEncrypted fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionAuditeventEncrypted,
     );
@@ -1170,7 +1170,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionAuditeventInstance fixture", () => {
+  it("should validate ExtensionAuditeventInstance fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionAuditeventInstance,
     );
@@ -1184,7 +1184,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionAuditeventMpps fixture", () => {
+  it("should validate ExtensionAuditeventMpps fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionAuditeventMpps,
     );
@@ -1198,7 +1198,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionAuditeventNumberofinstances fixture", () => {
+  it("should validate ExtensionAuditeventNumberofinstances fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionAuditeventNumberofinstances,
     );
@@ -1214,7 +1214,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionAuditeventParticipantobjectcontainsstudy fixture", () => {
+  it("should validate ExtensionAuditeventParticipantobjectcontainsstudy fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionAuditeventParticipantobjectcontainsstudy,
     );
@@ -1230,7 +1230,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionAuditeventSopclass fixture", () => {
+  it("should validate ExtensionAuditeventSopclass fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionAuditeventSopclass,
     );
@@ -1244,7 +1244,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionBodysite fixture", () => {
+  it("should validate ExtensionBodysite fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionBodysite);
     if (!result.success) {
@@ -1257,7 +1257,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCapabilities fixture", () => {
+  it("should validate ExtensionCapabilities fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCapabilities,
     );
@@ -1271,7 +1271,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCapabilitystatementExpectation fixture", () => {
+  it("should validate ExtensionCapabilitystatementExpectation fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCapabilitystatementExpectation,
     );
@@ -1287,7 +1287,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCapabilitystatementProhibited fixture", () => {
+  it("should validate ExtensionCapabilitystatementProhibited fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCapabilitystatementProhibited,
     );
@@ -1303,7 +1303,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCapabilitystatementSearchParameterCombination fixture", () => {
+  it("should validate ExtensionCapabilitystatementSearchParameterCombination fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCapabilitystatementSearchParameterCombination,
     );
@@ -1319,7 +1319,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCapabilitystatementSupportedSystem fixture", () => {
+  it("should validate ExtensionCapabilitystatementSupportedSystem fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCapabilitystatementSupportedSystem,
     );
@@ -1335,7 +1335,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCapabilitystatementWebsocket fixture", () => {
+  it("should validate ExtensionCapabilitystatementWebsocket fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCapabilitystatementWebsocket,
     );
@@ -1351,7 +1351,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCareplanActivityTitle fixture", () => {
+  it("should validate ExtensionCareplanActivityTitle fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCareplanActivityTitle,
     );
@@ -1365,7 +1365,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCodesystemAlternate fixture", () => {
+  it("should validate ExtensionCodesystemAlternate fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCodesystemAlternate,
     );
@@ -1379,7 +1379,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCodesystemAuthor fixture", () => {
+  it("should validate ExtensionCodesystemAuthor fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCodesystemAuthor,
     );
@@ -1393,7 +1393,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCodesystemConceptComments fixture", () => {
+  it("should validate ExtensionCodesystemConceptComments fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCodesystemConceptComments,
     );
@@ -1409,7 +1409,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCodesystemConceptorder fixture", () => {
+  it("should validate ExtensionCodesystemConceptorder fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCodesystemConceptorder,
     );
@@ -1423,7 +1423,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCodesystemEffectivedate fixture", () => {
+  it("should validate ExtensionCodesystemEffectivedate fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCodesystemEffectivedate,
     );
@@ -1437,7 +1437,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCodesystemExpirationdate fixture", () => {
+  it("should validate ExtensionCodesystemExpirationdate fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCodesystemExpirationdate,
     );
@@ -1451,7 +1451,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCodesystemHistory fixture", () => {
+  it("should validate ExtensionCodesystemHistory fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCodesystemHistory,
     );
@@ -1465,7 +1465,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCodesystemKeyword fixture", () => {
+  it("should validate ExtensionCodesystemKeyword fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCodesystemKeyword,
     );
@@ -1479,7 +1479,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCodesystemLabel fixture", () => {
+  it("should validate ExtensionCodesystemLabel fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCodesystemLabel,
     );
@@ -1493,7 +1493,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCodesystemMap fixture", () => {
+  it("should validate ExtensionCodesystemMap fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCodesystemMap,
     );
@@ -1507,7 +1507,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCodesystemOthername fixture", () => {
+  it("should validate ExtensionCodesystemOthername fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCodesystemOthername,
     );
@@ -1521,7 +1521,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCodesystemReplacedby fixture", () => {
+  it("should validate ExtensionCodesystemReplacedby fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCodesystemReplacedby,
     );
@@ -1535,7 +1535,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCodesystemSourcereference fixture", () => {
+  it("should validate ExtensionCodesystemSourcereference fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCodesystemSourcereference,
     );
@@ -1551,7 +1551,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCodesystemTrustedExpansion fixture", () => {
+  it("should validate ExtensionCodesystemTrustedExpansion fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCodesystemTrustedExpansion,
     );
@@ -1567,7 +1567,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCodesystemUsage fixture", () => {
+  it("should validate ExtensionCodesystemUsage fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCodesystemUsage,
     );
@@ -1581,7 +1581,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCodesystemWarning fixture", () => {
+  it("should validate ExtensionCodesystemWarning fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCodesystemWarning,
     );
@@ -1595,7 +1595,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCodesystemWorkflowstatus fixture", () => {
+  it("should validate ExtensionCodesystemWorkflowstatus fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCodesystemWorkflowstatus,
     );
@@ -1609,7 +1609,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCodingSctdescid fixture", () => {
+  it("should validate ExtensionCodingSctdescid fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCodingSctdescid,
     );
@@ -1623,7 +1623,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCommunicationMedia fixture", () => {
+  it("should validate ExtensionCommunicationMedia fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCommunicationMedia,
     );
@@ -1637,7 +1637,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCommunicationrequestInitiatinglocation fixture", () => {
+  it("should validate ExtensionCommunicationrequestInitiatinglocation fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCommunicationrequestInitiatinglocation,
     );
@@ -1653,7 +1653,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCompositionClinicaldocumentOtherconfidentiality fixture", () => {
+  it("should validate ExtensionCompositionClinicaldocumentOtherconfidentiality fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCompositionClinicaldocumentOtherconfidentiality,
     );
@@ -1669,7 +1669,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCompositionClinicaldocumentVersionnumber fixture", () => {
+  it("should validate ExtensionCompositionClinicaldocumentVersionnumber fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCompositionClinicaldocumentVersionnumber,
     );
@@ -1685,7 +1685,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCompositionSectionSubject fixture", () => {
+  it("should validate ExtensionCompositionSectionSubject fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCompositionSectionSubject,
     );
@@ -1701,7 +1701,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionConceptBidirectional fixture", () => {
+  it("should validate ExtensionConceptBidirectional fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionConceptBidirectional,
     );
@@ -1715,7 +1715,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionConditionAsserteddate fixture", () => {
+  it("should validate ExtensionConditionAsserteddate fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionConditionAsserteddate,
     );
@@ -1729,7 +1729,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionConditionDueto fixture", () => {
+  it("should validate ExtensionConditionDueto fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionConditionDueto,
     );
@@ -1743,7 +1743,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionConditionOccurredfollowing fixture", () => {
+  it("should validate ExtensionConditionOccurredfollowing fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionConditionOccurredfollowing,
     );
@@ -1759,7 +1759,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionConditionOutcome fixture", () => {
+  it("should validate ExtensionConditionOutcome fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionConditionOutcome,
     );
@@ -1773,7 +1773,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionConditionRelated fixture", () => {
+  it("should validate ExtensionConditionRelated fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionConditionRelated,
     );
@@ -1787,7 +1787,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionConditionRuledout fixture", () => {
+  it("should validate ExtensionConditionRuledout fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionConditionRuledout,
     );
@@ -1801,7 +1801,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionConsentLocation fixture", () => {
+  it("should validate ExtensionConsentLocation fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionConsentLocation,
     );
@@ -1815,7 +1815,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionConsentNotificationendpoint fixture", () => {
+  it("should validate ExtensionConsentNotificationendpoint fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionConsentNotificationendpoint,
     );
@@ -1831,7 +1831,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionConsentTranscriber fixture", () => {
+  it("should validate ExtensionConsentTranscriber fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionConsentTranscriber,
     );
@@ -1845,7 +1845,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionConsentWitness fixture", () => {
+  it("should validate ExtensionConsentWitness fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionConsentWitness,
     );
@@ -1859,7 +1859,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionContactpointArea fixture", () => {
+  it("should validate ExtensionContactpointArea fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionContactpointArea,
     );
@@ -1873,7 +1873,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionContactpointCountry fixture", () => {
+  it("should validate ExtensionContactpointCountry fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionContactpointCountry,
     );
@@ -1887,7 +1887,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionContactpointExtension fixture", () => {
+  it("should validate ExtensionContactpointExtension fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionContactpointExtension,
     );
@@ -1901,7 +1901,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionContactpointLocal fixture", () => {
+  it("should validate ExtensionContactpointLocal fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionContactpointLocal,
     );
@@ -1915,7 +1915,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqfCalculatedvalue fixture", () => {
+  it("should validate ExtensionCqfCalculatedvalue fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCqfCalculatedvalue,
     );
@@ -1929,7 +1929,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqfCdshooksendpoint fixture", () => {
+  it("should validate ExtensionCqfCdshooksendpoint fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCqfCdshooksendpoint,
     );
@@ -1943,7 +1943,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqfCitation fixture", () => {
+  it("should validate ExtensionCqfCitation fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionCqfCitation);
     if (!result.success) {
@@ -1956,7 +1956,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqfEncounterclass fixture", () => {
+  it("should validate ExtensionCqfEncounterclass fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCqfEncounterclass,
     );
@@ -1970,7 +1970,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqfEncountertype fixture", () => {
+  it("should validate ExtensionCqfEncountertype fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCqfEncountertype,
     );
@@ -1984,7 +1984,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqfExpression fixture", () => {
+  it("should validate ExtensionCqfExpression fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCqfExpression,
     );
@@ -1998,7 +1998,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqfInitialvalue fixture", () => {
+  it("should validate ExtensionCqfInitialvalue fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCqfInitialvalue,
     );
@@ -2012,7 +2012,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqfInitiatingorganization fixture", () => {
+  it("should validate ExtensionCqfInitiatingorganization fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCqfInitiatingorganization,
     );
@@ -2028,7 +2028,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqfInitiatingperson fixture", () => {
+  it("should validate ExtensionCqfInitiatingperson fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCqfInitiatingperson,
     );
@@ -2042,7 +2042,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqfLibrary fixture", () => {
+  it("should validate ExtensionCqfLibrary fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionCqfLibrary);
     if (!result.success) {
@@ -2055,7 +2055,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqfMeasureinfo fixture", () => {
+  it("should validate ExtensionCqfMeasureinfo fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCqfMeasureinfo,
     );
@@ -2069,7 +2069,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqfQualityofevidence fixture", () => {
+  it("should validate ExtensionCqfQualityofevidence fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCqfQualityofevidence,
     );
@@ -2083,7 +2083,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqfReceivingorganization fixture", () => {
+  it("should validate ExtensionCqfReceivingorganization fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCqfReceivingorganization,
     );
@@ -2097,7 +2097,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqfReceivingperson fixture", () => {
+  it("should validate ExtensionCqfReceivingperson fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCqfReceivingperson,
     );
@@ -2111,7 +2111,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqfRecipientlanguage fixture", () => {
+  it("should validate ExtensionCqfRecipientlanguage fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCqfRecipientlanguage,
     );
@@ -2125,7 +2125,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqfRecipienttype fixture", () => {
+  it("should validate ExtensionCqfRecipienttype fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCqfRecipienttype,
     );
@@ -2139,7 +2139,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqfRelativedatetime fixture", () => {
+  it("should validate ExtensionCqfRelativedatetime fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCqfRelativedatetime,
     );
@@ -2153,7 +2153,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqfStrengthofrecommendation fixture", () => {
+  it("should validate ExtensionCqfStrengthofrecommendation fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCqfStrengthofrecommendation,
     );
@@ -2169,7 +2169,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqfSystemuserlanguage fixture", () => {
+  it("should validate ExtensionCqfSystemuserlanguage fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCqfSystemuserlanguage,
     );
@@ -2183,7 +2183,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqfSystemusertaskcontext fixture", () => {
+  it("should validate ExtensionCqfSystemusertaskcontext fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCqfSystemusertaskcontext,
     );
@@ -2197,7 +2197,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqfSystemusertype fixture", () => {
+  it("should validate ExtensionCqfSystemusertype fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCqfSystemusertype,
     );
@@ -2211,7 +2211,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionCqmValidityperiod fixture", () => {
+  it("should validate ExtensionCqmValidityperiod fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionCqmValidityperiod,
     );
@@ -2225,7 +2225,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionDataAbsentReason fixture", () => {
+  it("should validate ExtensionDataAbsentReason fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionDataAbsentReason,
     );
@@ -2239,7 +2239,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionDesignnote fixture", () => {
+  it("should validate ExtensionDesignnote fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionDesignnote);
     if (!result.success) {
@@ -2252,7 +2252,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionDeviceImplantstatus fixture", () => {
+  it("should validate ExtensionDeviceImplantstatus fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionDeviceImplantstatus,
     );
@@ -2266,7 +2266,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionDevicerequestPatientinstruction fixture", () => {
+  it("should validate ExtensionDevicerequestPatientinstruction fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionDevicerequestPatientinstruction,
     );
@@ -2282,7 +2282,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionDiagnosticreportAddendumof fixture", () => {
+  it("should validate ExtensionDiagnosticreportAddendumof fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionDiagnosticreportAddendumof,
     );
@@ -2298,7 +2298,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionDiagnosticreportExtends fixture", () => {
+  it("should validate ExtensionDiagnosticreportExtends fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionDiagnosticreportExtends,
     );
@@ -2312,7 +2312,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionDiagnosticreportGeneticsanalysis fixture", () => {
+  it("should validate ExtensionDiagnosticreportGeneticsanalysis fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionDiagnosticreportGeneticsanalysis,
     );
@@ -2328,7 +2328,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionDiagnosticreportGeneticsassessedcondition fixture", () => {
+  it("should validate ExtensionDiagnosticreportGeneticsassessedcondition fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionDiagnosticreportGeneticsassessedcondition,
     );
@@ -2344,7 +2344,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionDiagnosticreportGeneticsfamilymemberhistory fixture", () => {
+  it("should validate ExtensionDiagnosticreportGeneticsfamilymemberhistory fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionDiagnosticreportGeneticsfamilymemberhistory,
     );
@@ -2360,7 +2360,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionDiagnosticreportGeneticsreferences fixture", () => {
+  it("should validate ExtensionDiagnosticreportGeneticsreferences fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionDiagnosticreportGeneticsreferences,
     );
@@ -2376,7 +2376,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionDiagnosticreportLocationperformed fixture", () => {
+  it("should validate ExtensionDiagnosticreportLocationperformed fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionDiagnosticreportLocationperformed,
     );
@@ -2392,7 +2392,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionDiagnosticreportReplaces fixture", () => {
+  it("should validate ExtensionDiagnosticreportReplaces fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionDiagnosticreportReplaces,
     );
@@ -2406,7 +2406,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionDiagnosticreportRisk fixture", () => {
+  it("should validate ExtensionDiagnosticreportRisk fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionDiagnosticreportRisk,
     );
@@ -2420,7 +2420,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionDiagnosticreportSummaryof fixture", () => {
+  it("should validate ExtensionDiagnosticreportSummaryof fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionDiagnosticreportSummaryof,
     );
@@ -2436,7 +2436,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionDisplay fixture", () => {
+  it("should validate ExtensionDisplay fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionDisplay);
     if (!result.success) {
@@ -2449,7 +2449,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionElementdefinitionAllowedunits fixture", () => {
+  it("should validate ExtensionElementdefinitionAllowedunits fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionElementdefinitionAllowedunits,
     );
@@ -2465,7 +2465,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionElementdefinitionBestpracticeExplanation fixture", () => {
+  it("should validate ExtensionElementdefinitionBestpracticeExplanation fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionElementdefinitionBestpracticeExplanation,
     );
@@ -2481,7 +2481,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionElementdefinitionBestpractice fixture", () => {
+  it("should validate ExtensionElementdefinitionBestpractice fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionElementdefinitionBestpractice,
     );
@@ -2497,7 +2497,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionElementdefinitionBindingname fixture", () => {
+  it("should validate ExtensionElementdefinitionBindingname fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionElementdefinitionBindingname,
     );
@@ -2513,7 +2513,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionElementdefinitionEquivalence fixture", () => {
+  it("should validate ExtensionElementdefinitionEquivalence fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionElementdefinitionEquivalence,
     );
@@ -2529,7 +2529,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionElementdefinitionIdentifier fixture", () => {
+  it("should validate ExtensionElementdefinitionIdentifier fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionElementdefinitionIdentifier,
     );
@@ -2545,7 +2545,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionElementdefinitionInheritedextensiblevalueset fixture", () => {
+  it("should validate ExtensionElementdefinitionInheritedextensiblevalueset fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionElementdefinitionInheritedextensiblevalueset,
     );
@@ -2561,7 +2561,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionElementdefinitionIscommonbinding fixture", () => {
+  it("should validate ExtensionElementdefinitionIscommonbinding fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionElementdefinitionIscommonbinding,
     );
@@ -2577,7 +2577,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionElementdefinitionMaxvalueset fixture", () => {
+  it("should validate ExtensionElementdefinitionMaxvalueset fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionElementdefinitionMaxvalueset,
     );
@@ -2593,7 +2593,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionElementdefinitionMinvalueset fixture", () => {
+  it("should validate ExtensionElementdefinitionMinvalueset fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionElementdefinitionMinvalueset,
     );
@@ -2609,7 +2609,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionElementdefinitionNamespace fixture", () => {
+  it("should validate ExtensionElementdefinitionNamespace fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionElementdefinitionNamespace,
     );
@@ -2625,7 +2625,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionElementdefinitionProfileElement fixture", () => {
+  it("should validate ExtensionElementdefinitionProfileElement fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionElementdefinitionProfileElement,
     );
@@ -2641,7 +2641,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionElementdefinitionQuestion fixture", () => {
+  it("should validate ExtensionElementdefinitionQuestion fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionElementdefinitionQuestion,
     );
@@ -2657,7 +2657,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionElementdefinitionSelector fixture", () => {
+  it("should validate ExtensionElementdefinitionSelector fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionElementdefinitionSelector,
     );
@@ -2673,7 +2673,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionElementdefinitionTranslatable fixture", () => {
+  it("should validate ExtensionElementdefinitionTranslatable fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionElementdefinitionTranslatable,
     );
@@ -2689,7 +2689,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionEncounterAssociatedencounter fixture", () => {
+  it("should validate ExtensionEncounterAssociatedencounter fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionEncounterAssociatedencounter,
     );
@@ -2705,7 +2705,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionEncounterModeofarrival fixture", () => {
+  it("should validate ExtensionEncounterModeofarrival fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionEncounterModeofarrival,
     );
@@ -2719,7 +2719,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionEncounterReasoncancelled fixture", () => {
+  it("should validate ExtensionEncounterReasoncancelled fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionEncounterReasoncancelled,
     );
@@ -2733,7 +2733,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionEntryformat fixture", () => {
+  it("should validate ExtensionEntryformat fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionEntryformat);
     if (!result.success) {
@@ -2746,7 +2746,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionEventBasedon fixture", () => {
+  it("should validate ExtensionEventBasedon fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionEventBasedon,
     );
@@ -2760,7 +2760,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionEventEventhistory fixture", () => {
+  it("should validate ExtensionEventEventhistory fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionEventEventhistory,
     );
@@ -2774,7 +2774,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionEventLocation fixture", () => {
+  it("should validate ExtensionEventLocation fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionEventLocation,
     );
@@ -2788,7 +2788,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionEventPartof fixture", () => {
+  it("should validate ExtensionEventPartof fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionEventPartof);
     if (!result.success) {
@@ -2801,7 +2801,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionEventPerformerfunction fixture", () => {
+  it("should validate ExtensionEventPerformerfunction fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionEventPerformerfunction,
     );
@@ -2815,7 +2815,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionEventStatusreason fixture", () => {
+  it("should validate ExtensionEventStatusreason fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionEventStatusreason,
     );
@@ -2829,7 +2829,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionFamilyMemberHistoryGeneticsObservation fixture", () => {
+  it("should validate ExtensionFamilyMemberHistoryGeneticsObservation fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionFamilyMemberHistoryGeneticsObservation,
     );
@@ -2845,7 +2845,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionFamilyMemberHistoryGeneticsParent fixture", () => {
+  it("should validate ExtensionFamilyMemberHistoryGeneticsParent fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionFamilyMemberHistoryGeneticsParent,
     );
@@ -2861,7 +2861,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionFamilyMemberHistoryGeneticsSibling fixture", () => {
+  it("should validate ExtensionFamilyMemberHistoryGeneticsSibling fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionFamilyMemberHistoryGeneticsSibling,
     );
@@ -2877,7 +2877,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionFamilymemberhistoryAbatement fixture", () => {
+  it("should validate ExtensionFamilymemberhistoryAbatement fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionFamilymemberhistoryAbatement,
     );
@@ -2893,7 +2893,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionFamilymemberhistoryPatientRecord fixture", () => {
+  it("should validate ExtensionFamilymemberhistoryPatientRecord fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionFamilymemberhistoryPatientRecord,
     );
@@ -2909,7 +2909,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionFamilymemberhistorySeverity fixture", () => {
+  it("should validate ExtensionFamilymemberhistorySeverity fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionFamilymemberhistorySeverity,
     );
@@ -2925,7 +2925,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionFamilymemberhistoryType fixture", () => {
+  it("should validate ExtensionFamilymemberhistoryType fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionFamilymemberhistoryType,
     );
@@ -2939,7 +2939,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionFlagDetail fixture", () => {
+  it("should validate ExtensionFlagDetail fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionFlagDetail);
     if (!result.success) {
@@ -2952,7 +2952,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionFlagPriority fixture", () => {
+  it("should validate ExtensionFlagPriority fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionFlagPriority,
     );
@@ -2966,7 +2966,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionGeolocation fixture", () => {
+  it("should validate ExtensionGeolocation fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionGeolocation);
     if (!result.success) {
@@ -2979,7 +2979,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionGoalAcceptance fixture", () => {
+  it("should validate ExtensionGoalAcceptance fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionGoalAcceptance,
     );
@@ -2993,7 +2993,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionGoalReasonrejected fixture", () => {
+  it("should validate ExtensionGoalReasonrejected fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionGoalReasonrejected,
     );
@@ -3007,7 +3007,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionGoalRelationship fixture", () => {
+  it("should validate ExtensionGoalRelationship fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionGoalRelationship,
     );
@@ -3021,7 +3021,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionHlaGenotypingResultsAlleleDatabase fixture", () => {
+  it("should validate ExtensionHlaGenotypingResultsAlleleDatabase fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionHlaGenotypingResultsAlleleDatabase,
     );
@@ -3037,7 +3037,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionHlaGenotypingResultsGlstring fixture", () => {
+  it("should validate ExtensionHlaGenotypingResultsGlstring fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionHlaGenotypingResultsGlstring,
     );
@@ -3053,7 +3053,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionHlaGenotypingResultsHaploid fixture", () => {
+  it("should validate ExtensionHlaGenotypingResultsHaploid fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionHlaGenotypingResultsHaploid,
     );
@@ -3069,7 +3069,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionHlaGenotypingResultsMethod fixture", () => {
+  it("should validate ExtensionHlaGenotypingResultsMethod fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionHlaGenotypingResultsMethod,
     );
@@ -3085,7 +3085,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionHttpResponseHeader fixture", () => {
+  it("should validate ExtensionHttpResponseHeader fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionHttpResponseHeader,
     );
@@ -3099,7 +3099,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionHumannameAssemblyOrder fixture", () => {
+  it("should validate ExtensionHumannameAssemblyOrder fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionHumannameAssemblyOrder,
     );
@@ -3113,7 +3113,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionHumannameFathersFamily fixture", () => {
+  it("should validate ExtensionHumannameFathersFamily fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionHumannameFathersFamily,
     );
@@ -3127,7 +3127,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionHumannameMothersFamily fixture", () => {
+  it("should validate ExtensionHumannameMothersFamily fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionHumannameMothersFamily,
     );
@@ -3141,7 +3141,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionHumannameOwnName fixture", () => {
+  it("should validate ExtensionHumannameOwnName fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionHumannameOwnName,
     );
@@ -3155,7 +3155,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionHumannameOwnPrefix fixture", () => {
+  it("should validate ExtensionHumannameOwnPrefix fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionHumannameOwnPrefix,
     );
@@ -3169,7 +3169,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionHumannamePartnerName fixture", () => {
+  it("should validate ExtensionHumannamePartnerName fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionHumannamePartnerName,
     );
@@ -3183,7 +3183,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionHumannamePartnerPrefix fixture", () => {
+  it("should validate ExtensionHumannamePartnerPrefix fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionHumannamePartnerPrefix,
     );
@@ -3197,7 +3197,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIdentifierValiddate fixture", () => {
+  it("should validate ExtensionIdentifierValiddate fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIdentifierValiddate,
     );
@@ -3211,7 +3211,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdUse fixture", () => {
+  it("should validate ExtensionIso21090AdUse fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdUse,
     );
@@ -3225,7 +3225,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpAdditionallocator fixture", () => {
+  it("should validate ExtensionIso21090AdxpAdditionallocator fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpAdditionallocator,
     );
@@ -3241,7 +3241,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpBuildingnumbersuffix fixture", () => {
+  it("should validate ExtensionIso21090AdxpBuildingnumbersuffix fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpBuildingnumbersuffix,
     );
@@ -3257,7 +3257,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpCareof fixture", () => {
+  it("should validate ExtensionIso21090AdxpCareof fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpCareof,
     );
@@ -3271,7 +3271,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpCensustract fixture", () => {
+  it("should validate ExtensionIso21090AdxpCensustract fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpCensustract,
     );
@@ -3285,7 +3285,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpDelimiter fixture", () => {
+  it("should validate ExtensionIso21090AdxpDelimiter fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpDelimiter,
     );
@@ -3299,7 +3299,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpDeliveryaddressline fixture", () => {
+  it("should validate ExtensionIso21090AdxpDeliveryaddressline fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpDeliveryaddressline,
     );
@@ -3315,7 +3315,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpDeliveryinstallationarea fixture", () => {
+  it("should validate ExtensionIso21090AdxpDeliveryinstallationarea fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpDeliveryinstallationarea,
     );
@@ -3331,7 +3331,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpDeliveryinstallationqualifier fixture", () => {
+  it("should validate ExtensionIso21090AdxpDeliveryinstallationqualifier fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpDeliveryinstallationqualifier,
     );
@@ -3347,7 +3347,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpDeliveryinstallationtype fixture", () => {
+  it("should validate ExtensionIso21090AdxpDeliveryinstallationtype fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpDeliveryinstallationtype,
     );
@@ -3363,7 +3363,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpDeliverymode fixture", () => {
+  it("should validate ExtensionIso21090AdxpDeliverymode fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpDeliverymode,
     );
@@ -3377,7 +3377,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpDeliverymodeidentifier fixture", () => {
+  it("should validate ExtensionIso21090AdxpDeliverymodeidentifier fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpDeliverymodeidentifier,
     );
@@ -3393,7 +3393,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpDirection fixture", () => {
+  it("should validate ExtensionIso21090AdxpDirection fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpDirection,
     );
@@ -3407,7 +3407,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpHousenumber fixture", () => {
+  it("should validate ExtensionIso21090AdxpHousenumber fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpHousenumber,
     );
@@ -3421,7 +3421,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpHousenumbernumeric fixture", () => {
+  it("should validate ExtensionIso21090AdxpHousenumbernumeric fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpHousenumbernumeric,
     );
@@ -3437,7 +3437,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpPostbox fixture", () => {
+  it("should validate ExtensionIso21090AdxpPostbox fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpPostbox,
     );
@@ -3451,7 +3451,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpPrecinct fixture", () => {
+  it("should validate ExtensionIso21090AdxpPrecinct fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpPrecinct,
     );
@@ -3465,7 +3465,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpStreetaddressline fixture", () => {
+  it("should validate ExtensionIso21090AdxpStreetaddressline fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpStreetaddressline,
     );
@@ -3481,7 +3481,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpStreetname fixture", () => {
+  it("should validate ExtensionIso21090AdxpStreetname fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpStreetname,
     );
@@ -3495,7 +3495,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpStreetnamebase fixture", () => {
+  it("should validate ExtensionIso21090AdxpStreetnamebase fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpStreetnamebase,
     );
@@ -3511,7 +3511,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpStreetnametype fixture", () => {
+  it("should validate ExtensionIso21090AdxpStreetnametype fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpStreetnametype,
     );
@@ -3527,7 +3527,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpUnitid fixture", () => {
+  it("should validate ExtensionIso21090AdxpUnitid fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpUnitid,
     );
@@ -3541,7 +3541,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090AdxpUnittype fixture", () => {
+  it("should validate ExtensionIso21090AdxpUnittype fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090AdxpUnittype,
     );
@@ -3555,7 +3555,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090EnQualifier fixture", () => {
+  it("should validate ExtensionIso21090EnQualifier fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090EnQualifier,
     );
@@ -3569,7 +3569,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090EnRepresentation fixture", () => {
+  it("should validate ExtensionIso21090EnRepresentation fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090EnRepresentation,
     );
@@ -3583,7 +3583,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090EnUse fixture", () => {
+  it("should validate ExtensionIso21090EnUse fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090EnUse,
     );
@@ -3597,7 +3597,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090Nullflavor fixture", () => {
+  it("should validate ExtensionIso21090Nullflavor fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090Nullflavor,
     );
@@ -3611,7 +3611,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090PqTranslation fixture", () => {
+  it("should validate ExtensionIso21090PqTranslation fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090PqTranslation,
     );
@@ -3625,7 +3625,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090Preferred fixture", () => {
+  it("should validate ExtensionIso21090Preferred fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090Preferred,
     );
@@ -3639,7 +3639,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090ScCoding fixture", () => {
+  it("should validate ExtensionIso21090ScCoding fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090ScCoding,
     );
@@ -3653,7 +3653,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090TelAddress fixture", () => {
+  it("should validate ExtensionIso21090TelAddress fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090TelAddress,
     );
@@ -3667,7 +3667,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090Uncertainty fixture", () => {
+  it("should validate ExtensionIso21090Uncertainty fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090Uncertainty,
     );
@@ -3681,7 +3681,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionIso21090Uncertaintytype fixture", () => {
+  it("should validate ExtensionIso21090Uncertaintytype fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionIso21090Uncertaintytype,
     );
@@ -3695,7 +3695,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionLanguage fixture", () => {
+  it("should validate ExtensionLanguage fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionLanguage);
     if (!result.success) {
@@ -3708,7 +3708,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionListChangebase fixture", () => {
+  it("should validate ExtensionListChangebase fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionListChangebase,
     );
@@ -3722,7 +3722,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionLocationBoundaryGeojson fixture", () => {
+  it("should validate ExtensionLocationBoundaryGeojson fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionLocationBoundaryGeojson,
     );
@@ -3736,7 +3736,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionLocationDistance fixture", () => {
+  it("should validate ExtensionLocationDistance fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionLocationDistance,
     );
@@ -3750,7 +3750,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionMatchGrade fixture", () => {
+  it("should validate ExtensionMatchGrade fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionMatchGrade);
     if (!result.success) {
@@ -3763,7 +3763,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionMaxdecimalplaces fixture", () => {
+  it("should validate ExtensionMaxdecimalplaces fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionMaxdecimalplaces,
     );
@@ -3777,7 +3777,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionMaxsize fixture", () => {
+  it("should validate ExtensionMaxsize fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionMaxsize);
     if (!result.success) {
@@ -3790,7 +3790,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionMaxvalue fixture", () => {
+  it("should validate ExtensionMaxvalue fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionMaxvalue);
     if (!result.success) {
@@ -3803,7 +3803,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionMessageheaderResponseRequest fixture", () => {
+  it("should validate ExtensionMessageheaderResponseRequest fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionMessageheaderResponseRequest,
     );
@@ -3819,7 +3819,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionMimetype fixture", () => {
+  it("should validate ExtensionMimetype fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionMimetype);
     if (!result.success) {
@@ -3832,7 +3832,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionMinlength fixture", () => {
+  it("should validate ExtensionMinlength fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionMinlength);
     if (!result.success) {
@@ -3845,7 +3845,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionMinvalue fixture", () => {
+  it("should validate ExtensionMinvalue fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionMinvalue);
     if (!result.success) {
@@ -3858,7 +3858,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionNarrativelink fixture", () => {
+  it("should validate ExtensionNarrativelink fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionNarrativelink,
     );
@@ -3872,7 +3872,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionNutritionorderAdaptivefeedingdevice fixture", () => {
+  it("should validate ExtensionNutritionorderAdaptivefeedingdevice fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionNutritionorderAdaptivefeedingdevice,
     );
@@ -3888,7 +3888,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionOauthUris fixture", () => {
+  it("should validate ExtensionOauthUris fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionOauthUris);
     if (!result.success) {
@@ -3901,7 +3901,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationBodyposition fixture", () => {
+  it("should validate ExtensionObservationBodyposition fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationBodyposition,
     );
@@ -3915,7 +3915,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationDelta fixture", () => {
+  it("should validate ExtensionObservationDelta fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationDelta,
     );
@@ -3929,7 +3929,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationDevicecode fixture", () => {
+  it("should validate ExtensionObservationDevicecode fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationDevicecode,
     );
@@ -3943,7 +3943,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationFocuscode fixture", () => {
+  it("should validate ExtensionObservationFocuscode fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationFocuscode,
     );
@@ -3957,7 +3957,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationGatewaydevice fixture", () => {
+  it("should validate ExtensionObservationGatewaydevice fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationGatewaydevice,
     );
@@ -3971,7 +3971,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationGeneticsallele fixture", () => {
+  it("should validate ExtensionObservationGeneticsallele fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationGeneticsallele,
     );
@@ -3987,7 +3987,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationGeneticsaminoacidchange fixture", () => {
+  it("should validate ExtensionObservationGeneticsaminoacidchange fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationGeneticsaminoacidchange,
     );
@@ -4003,7 +4003,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationGeneticsancestry fixture", () => {
+  it("should validate ExtensionObservationGeneticsancestry fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationGeneticsancestry,
     );
@@ -4019,7 +4019,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationGeneticscopynumberevent fixture", () => {
+  it("should validate ExtensionObservationGeneticscopynumberevent fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationGeneticscopynumberevent,
     );
@@ -4035,7 +4035,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationGeneticsdnaregionname fixture", () => {
+  it("should validate ExtensionObservationGeneticsdnaregionname fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationGeneticsdnaregionname,
     );
@@ -4051,7 +4051,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationGeneticsgene fixture", () => {
+  it("should validate ExtensionObservationGeneticsgene fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationGeneticsgene,
     );
@@ -4065,7 +4065,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationGeneticsgenomicsourceclass fixture", () => {
+  it("should validate ExtensionObservationGeneticsgenomicsourceclass fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationGeneticsgenomicsourceclass,
     );
@@ -4081,7 +4081,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationGeneticsinterpretation fixture", () => {
+  it("should validate ExtensionObservationGeneticsinterpretation fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationGeneticsinterpretation,
     );
@@ -4097,7 +4097,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationGeneticsphaseset fixture", () => {
+  it("should validate ExtensionObservationGeneticsphaseset fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationGeneticsphaseset,
     );
@@ -4113,7 +4113,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationGeneticsvariant fixture", () => {
+  it("should validate ExtensionObservationGeneticsvariant fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationGeneticsvariant,
     );
@@ -4129,7 +4129,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationPrecondition fixture", () => {
+  it("should validate ExtensionObservationPrecondition fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationPrecondition,
     );
@@ -4143,7 +4143,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationReagent fixture", () => {
+  it("should validate ExtensionObservationReagent fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationReagent,
     );
@@ -4157,7 +4157,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationReplaces fixture", () => {
+  it("should validate ExtensionObservationReplaces fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationReplaces,
     );
@@ -4171,7 +4171,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationSecondaryfinding fixture", () => {
+  it("should validate ExtensionObservationSecondaryfinding fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationSecondaryfinding,
     );
@@ -4187,7 +4187,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationSequelto fixture", () => {
+  it("should validate ExtensionObservationSequelto fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationSequelto,
     );
@@ -4201,7 +4201,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationSpecimencode fixture", () => {
+  it("should validate ExtensionObservationSpecimencode fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationSpecimencode,
     );
@@ -4215,7 +4215,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionObservationTimeoffset fixture", () => {
+  it("should validate ExtensionObservationTimeoffset fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionObservationTimeoffset,
     );
@@ -4229,7 +4229,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionOpenehrAdministration fixture", () => {
+  it("should validate ExtensionOpenehrAdministration fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionOpenehrAdministration,
     );
@@ -4243,7 +4243,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionOpenehrCareplan fixture", () => {
+  it("should validate ExtensionOpenehrCareplan fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionOpenehrCareplan,
     );
@@ -4257,7 +4257,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionOpenehrExposuredate fixture", () => {
+  it("should validate ExtensionOpenehrExposuredate fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionOpenehrExposuredate,
     );
@@ -4271,7 +4271,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionOpenehrExposuredescription fixture", () => {
+  it("should validate ExtensionOpenehrExposuredescription fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionOpenehrExposuredescription,
     );
@@ -4287,7 +4287,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionOpenehrExposureduration fixture", () => {
+  it("should validate ExtensionOpenehrExposureduration fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionOpenehrExposureduration,
     );
@@ -4301,7 +4301,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionOpenehrLocation fixture", () => {
+  it("should validate ExtensionOpenehrLocation fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionOpenehrLocation,
     );
@@ -4315,7 +4315,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionOpenehrManagement fixture", () => {
+  it("should validate ExtensionOpenehrManagement fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionOpenehrManagement,
     );
@@ -4329,7 +4329,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionOpenehrTest fixture", () => {
+  it("should validate ExtensionOpenehrTest fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionOpenehrTest);
     if (!result.success) {
@@ -4342,7 +4342,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionOperationdefinitionAllowedType fixture", () => {
+  it("should validate ExtensionOperationdefinitionAllowedType fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionOperationdefinitionAllowedType,
     );
@@ -4358,7 +4358,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionOperationdefinitionProfile fixture", () => {
+  it("should validate ExtensionOperationdefinitionProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionOperationdefinitionProfile,
     );
@@ -4374,7 +4374,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionOperationoutcomeAuthority fixture", () => {
+  it("should validate ExtensionOperationoutcomeAuthority fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionOperationoutcomeAuthority,
     );
@@ -4390,7 +4390,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionOperationoutcomeDetectedissue fixture", () => {
+  it("should validate ExtensionOperationoutcomeDetectedissue fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionOperationoutcomeDetectedissue,
     );
@@ -4406,7 +4406,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionOperationoutcomeIssueSource fixture", () => {
+  it("should validate ExtensionOperationoutcomeIssueSource fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionOperationoutcomeIssueSource,
     );
@@ -4422,7 +4422,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionOrdinalvalue fixture", () => {
+  it("should validate ExtensionOrdinalvalue fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionOrdinalvalue,
     );
@@ -4436,7 +4436,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionOrganizationPeriod fixture", () => {
+  it("should validate ExtensionOrganizationPeriod fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionOrganizationPeriod,
     );
@@ -4450,7 +4450,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionOrganizationPreferredcontact fixture", () => {
+  it("should validate ExtensionOrganizationPreferredcontact fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionOrganizationPreferredcontact,
     );
@@ -4466,7 +4466,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionOrganizationaffiliationPrimaryind fixture", () => {
+  it("should validate ExtensionOrganizationaffiliationPrimaryind fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionOrganizationaffiliationPrimaryind,
     );
@@ -4482,7 +4482,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionOriginaltext fixture", () => {
+  it("should validate ExtensionOriginaltext fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionOriginaltext,
     );
@@ -4496,7 +4496,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionParametersFullurl fixture", () => {
+  it("should validate ExtensionParametersFullurl fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionParametersFullurl,
     );
@@ -4510,7 +4510,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionPatientAdoptioninfo fixture", () => {
+  it("should validate ExtensionPatientAdoptioninfo fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionPatientAdoptioninfo,
     );
@@ -4524,7 +4524,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionPatientAnimal fixture", () => {
+  it("should validate ExtensionPatientAnimal fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionPatientAnimal,
     );
@@ -4538,7 +4538,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionPatientBirthplace fixture", () => {
+  it("should validate ExtensionPatientBirthplace fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionPatientBirthplace,
     );
@@ -4552,7 +4552,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionPatientBirthtime fixture", () => {
+  it("should validate ExtensionPatientBirthtime fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionPatientBirthtime,
     );
@@ -4566,7 +4566,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionPatientCadavericdonor fixture", () => {
+  it("should validate ExtensionPatientCadavericdonor fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionPatientCadavericdonor,
     );
@@ -4580,7 +4580,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionPatientCitizenship fixture", () => {
+  it("should validate ExtensionPatientCitizenship fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionPatientCitizenship,
     );
@@ -4594,7 +4594,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionPatientCongregation fixture", () => {
+  it("should validate ExtensionPatientCongregation fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionPatientCongregation,
     );
@@ -4608,7 +4608,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionPatientDisability fixture", () => {
+  it("should validate ExtensionPatientDisability fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionPatientDisability,
     );
@@ -4622,7 +4622,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionPatientGenderidentity fixture", () => {
+  it("should validate ExtensionPatientGenderidentity fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionPatientGenderidentity,
     );
@@ -4636,7 +4636,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionPatientImportance fixture", () => {
+  it("should validate ExtensionPatientImportance fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionPatientImportance,
     );
@@ -4650,7 +4650,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionPatientInterpreterrequired fixture", () => {
+  it("should validate ExtensionPatientInterpreterrequired fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionPatientInterpreterrequired,
     );
@@ -4666,7 +4666,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionPatientMothersmaidenname fixture", () => {
+  it("should validate ExtensionPatientMothersmaidenname fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionPatientMothersmaidenname,
     );
@@ -4680,7 +4680,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionPatientNationality fixture", () => {
+  it("should validate ExtensionPatientNationality fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionPatientNationality,
     );
@@ -4694,7 +4694,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionPatientPreferencetype fixture", () => {
+  it("should validate ExtensionPatientPreferencetype fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionPatientPreferencetype,
     );
@@ -4708,7 +4708,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionPatientProficiency fixture", () => {
+  it("should validate ExtensionPatientProficiency fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionPatientProficiency,
     );
@@ -4722,7 +4722,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionPatientRelatedperson fixture", () => {
+  it("should validate ExtensionPatientRelatedperson fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionPatientRelatedperson,
     );
@@ -4736,7 +4736,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionPatientReligion fixture", () => {
+  it("should validate ExtensionPatientReligion fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionPatientReligion,
     );
@@ -4750,7 +4750,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionPractitionerAnimalspecies fixture", () => {
+  it("should validate ExtensionPractitionerAnimalspecies fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionPractitionerAnimalspecies,
     );
@@ -4766,7 +4766,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionPractitionerrolePrimaryind fixture", () => {
+  it("should validate ExtensionPractitionerrolePrimaryind fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionPractitionerrolePrimaryind,
     );
@@ -4782,7 +4782,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionProcedureApproachbodystructure fixture", () => {
+  it("should validate ExtensionProcedureApproachbodystructure fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionProcedureApproachbodystructure,
     );
@@ -4798,7 +4798,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionProcedureCausedby fixture", () => {
+  it("should validate ExtensionProcedureCausedby fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionProcedureCausedby,
     );
@@ -4812,7 +4812,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionProcedureDirectedby fixture", () => {
+  it("should validate ExtensionProcedureDirectedby fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionProcedureDirectedby,
     );
@@ -4826,7 +4826,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionProcedureIncisiondatetime fixture", () => {
+  it("should validate ExtensionProcedureIncisiondatetime fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionProcedureIncisiondatetime,
     );
@@ -4842,7 +4842,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionProcedureMethod fixture", () => {
+  it("should validate ExtensionProcedureMethod fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionProcedureMethod,
     );
@@ -4856,7 +4856,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionProcedureProgressstatus fixture", () => {
+  it("should validate ExtensionProcedureProgressstatus fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionProcedureProgressstatus,
     );
@@ -4870,7 +4870,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionProcedureSchedule fixture", () => {
+  it("should validate ExtensionProcedureSchedule fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionProcedureSchedule,
     );
@@ -4884,7 +4884,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionProcedureTargetbodystructure fixture", () => {
+  it("should validate ExtensionProcedureTargetbodystructure fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionProcedureTargetbodystructure,
     );
@@ -4900,7 +4900,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuantityPrecision fixture", () => {
+  it("should validate ExtensionQuantityPrecision fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuantityPrecision,
     );
@@ -4914,7 +4914,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireBasetype fixture", () => {
+  it("should validate ExtensionQuestionnaireBasetype fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireBasetype,
     );
@@ -4928,7 +4928,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireChoiceorientation fixture", () => {
+  it("should validate ExtensionQuestionnaireChoiceorientation fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireChoiceorientation,
     );
@@ -4944,7 +4944,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireConstraint fixture", () => {
+  it("should validate ExtensionQuestionnaireConstraint fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireConstraint,
     );
@@ -4958,7 +4958,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireDisplaycategory fixture", () => {
+  it("should validate ExtensionQuestionnaireDisplaycategory fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireDisplaycategory,
     );
@@ -4974,7 +4974,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireFhirtype fixture", () => {
+  it("should validate ExtensionQuestionnaireFhirtype fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireFhirtype,
     );
@@ -4988,7 +4988,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireHidden fixture", () => {
+  it("should validate ExtensionQuestionnaireHidden fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireHidden,
     );
@@ -5002,7 +5002,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireItemcontrol fixture", () => {
+  it("should validate ExtensionQuestionnaireItemcontrol fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireItemcontrol,
     );
@@ -5016,7 +5016,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireMaxoccurs fixture", () => {
+  it("should validate ExtensionQuestionnaireMaxoccurs fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireMaxoccurs,
     );
@@ -5030,7 +5030,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireMinoccurs fixture", () => {
+  it("should validate ExtensionQuestionnaireMinoccurs fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireMinoccurs,
     );
@@ -5044,7 +5044,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireOptionexclusive fixture", () => {
+  it("should validate ExtensionQuestionnaireOptionexclusive fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireOptionexclusive,
     );
@@ -5060,7 +5060,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireOptionprefix fixture", () => {
+  it("should validate ExtensionQuestionnaireOptionprefix fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireOptionprefix,
     );
@@ -5076,7 +5076,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireReferencefilter fixture", () => {
+  it("should validate ExtensionQuestionnaireReferencefilter fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireReferencefilter,
     );
@@ -5092,7 +5092,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireReferenceprofile fixture", () => {
+  it("should validate ExtensionQuestionnaireReferenceprofile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireReferenceprofile,
     );
@@ -5108,7 +5108,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireReferenceresource fixture", () => {
+  it("should validate ExtensionQuestionnaireReferenceresource fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireReferenceresource,
     );
@@ -5124,7 +5124,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireSignaturerequired fixture", () => {
+  it("should validate ExtensionQuestionnaireSignaturerequired fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireSignaturerequired,
     );
@@ -5140,7 +5140,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireSliderstepvalue fixture", () => {
+  it("should validate ExtensionQuestionnaireSliderstepvalue fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireSliderstepvalue,
     );
@@ -5156,7 +5156,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireSupportlink fixture", () => {
+  it("should validate ExtensionQuestionnaireSupportlink fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireSupportlink,
     );
@@ -5170,7 +5170,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireUnit fixture", () => {
+  it("should validate ExtensionQuestionnaireUnit fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireUnit,
     );
@@ -5184,7 +5184,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireUnitoption fixture", () => {
+  it("should validate ExtensionQuestionnaireUnitoption fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireUnitoption,
     );
@@ -5198,7 +5198,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireUnitvalueset fixture", () => {
+  it("should validate ExtensionQuestionnaireUnitvalueset fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireUnitvalueset,
     );
@@ -5214,7 +5214,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireUsagemode fixture", () => {
+  it("should validate ExtensionQuestionnaireUsagemode fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireUsagemode,
     );
@@ -5228,7 +5228,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireresponseAuthor fixture", () => {
+  it("should validate ExtensionQuestionnaireresponseAuthor fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireresponseAuthor,
     );
@@ -5244,7 +5244,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireresponseCompletionmode fixture", () => {
+  it("should validate ExtensionQuestionnaireresponseCompletionmode fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireresponseCompletionmode,
     );
@@ -5260,7 +5260,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireresponseReason fixture", () => {
+  it("should validate ExtensionQuestionnaireresponseReason fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireresponseReason,
     );
@@ -5276,7 +5276,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireresponseReviewer fixture", () => {
+  it("should validate ExtensionQuestionnaireresponseReviewer fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireresponseReviewer,
     );
@@ -5292,7 +5292,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionQuestionnaireresponseSignature fixture", () => {
+  it("should validate ExtensionQuestionnaireresponseSignature fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionQuestionnaireresponseSignature,
     );
@@ -5308,7 +5308,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionRegex fixture", () => {
+  it("should validate ExtensionRegex fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(ExtensionRegex);
     if (!result.success) {
       console.error("Validation failed for ExtensionRegex:");
@@ -5320,7 +5320,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionRelativeDate fixture", () => {
+  it("should validate ExtensionRelativeDate fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionRelativeDate,
     );
@@ -5334,7 +5334,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionRenderedValue fixture", () => {
+  it("should validate ExtensionRenderedValue fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionRenderedValue,
     );
@@ -5348,7 +5348,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionRenderingMarkdown fixture", () => {
+  it("should validate ExtensionRenderingMarkdown fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionRenderingMarkdown,
     );
@@ -5362,7 +5362,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionRenderingStyle fixture", () => {
+  it("should validate ExtensionRenderingStyle fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionRenderingStyle,
     );
@@ -5376,7 +5376,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionRenderingStylesensitive fixture", () => {
+  it("should validate ExtensionRenderingStylesensitive fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionRenderingStylesensitive,
     );
@@ -5390,7 +5390,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionRenderingXhtml fixture", () => {
+  it("should validate ExtensionRenderingXhtml fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionRenderingXhtml,
     );
@@ -5404,7 +5404,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionReplaces fixture", () => {
+  it("should validate ExtensionReplaces fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionReplaces);
     if (!result.success) {
@@ -5417,7 +5417,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionRequestDonotperform fixture", () => {
+  it("should validate ExtensionRequestDonotperform fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionRequestDonotperform,
     );
@@ -5431,7 +5431,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionRequestInsurance fixture", () => {
+  it("should validate ExtensionRequestInsurance fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionRequestInsurance,
     );
@@ -5445,7 +5445,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionRequestPerformerorder fixture", () => {
+  it("should validate ExtensionRequestPerformerorder fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionRequestPerformerorder,
     );
@@ -5459,7 +5459,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionRequestRelevanthistory fixture", () => {
+  it("should validate ExtensionRequestRelevanthistory fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionRequestRelevanthistory,
     );
@@ -5473,7 +5473,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionRequestReplaces fixture", () => {
+  it("should validate ExtensionRequestReplaces fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionRequestReplaces,
     );
@@ -5487,7 +5487,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionRequestStatusreason fixture", () => {
+  it("should validate ExtensionRequestStatusreason fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionRequestStatusreason,
     );
@@ -5501,7 +5501,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionResourceApprovaldate fixture", () => {
+  it("should validate ExtensionResourceApprovaldate fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionResourceApprovaldate,
     );
@@ -5515,7 +5515,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionResourceEffectiveperiod fixture", () => {
+  it("should validate ExtensionResourceEffectiveperiod fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionResourceEffectiveperiod,
     );
@@ -5529,7 +5529,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionResourceLastreviewdate fixture", () => {
+  it("should validate ExtensionResourceLastreviewdate fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionResourceLastreviewdate,
     );
@@ -5543,7 +5543,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionResourcePertainstogoal fixture", () => {
+  it("should validate ExtensionResourcePertainstogoal fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionResourcePertainstogoal,
     );
@@ -5557,7 +5557,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionServicerequestGeneticsitem fixture", () => {
+  it("should validate ExtensionServicerequestGeneticsitem fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionServicerequestGeneticsitem,
     );
@@ -5573,7 +5573,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionServicerequestPrecondition fixture", () => {
+  it("should validate ExtensionServicerequestPrecondition fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionServicerequestPrecondition,
     );
@@ -5589,7 +5589,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionServicerequestQuestionnairerequest fixture", () => {
+  it("should validate ExtensionServicerequestQuestionnairerequest fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionServicerequestQuestionnairerequest,
     );
@@ -5605,7 +5605,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionSpecimenCollectionpriority fixture", () => {
+  it("should validate ExtensionSpecimenCollectionpriority fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionSpecimenCollectionpriority,
     );
@@ -5621,7 +5621,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionSpecimenIsdryweight fixture", () => {
+  it("should validate ExtensionSpecimenIsdryweight fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionSpecimenIsdryweight,
     );
@@ -5635,7 +5635,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionSpecimenProcessingtime fixture", () => {
+  it("should validate ExtensionSpecimenProcessingtime fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionSpecimenProcessingtime,
     );
@@ -5649,7 +5649,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionSpecimenSequencenumber fixture", () => {
+  it("should validate ExtensionSpecimenSequencenumber fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionSpecimenSequencenumber,
     );
@@ -5663,7 +5663,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionSpecimenSpecialhandling fixture", () => {
+  it("should validate ExtensionSpecimenSpecialhandling fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionSpecimenSpecialhandling,
     );
@@ -5677,7 +5677,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionStructuredefinitionAncestor fixture", () => {
+  it("should validate ExtensionStructuredefinitionAncestor fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionStructuredefinitionAncestor,
     );
@@ -5693,7 +5693,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionStructuredefinitionApplicableVersion fixture", () => {
+  it("should validate ExtensionStructuredefinitionApplicableVersion fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionStructuredefinitionApplicableVersion,
     );
@@ -5709,7 +5709,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionStructuredefinitionCategory fixture", () => {
+  it("should validate ExtensionStructuredefinitionCategory fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionStructuredefinitionCategory,
     );
@@ -5725,7 +5725,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionStructuredefinitionCodegenSuper fixture", () => {
+  it("should validate ExtensionStructuredefinitionCodegenSuper fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionStructuredefinitionCodegenSuper,
     );
@@ -5741,7 +5741,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionStructuredefinitionDependencies fixture", () => {
+  it("should validate ExtensionStructuredefinitionDependencies fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionStructuredefinitionDependencies,
     );
@@ -5757,7 +5757,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionStructuredefinitionDisplayHint fixture", () => {
+  it("should validate ExtensionStructuredefinitionDisplayHint fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionStructuredefinitionDisplayHint,
     );
@@ -5773,7 +5773,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionStructuredefinitionExplicitTypeName fixture", () => {
+  it("should validate ExtensionStructuredefinitionExplicitTypeName fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionStructuredefinitionExplicitTypeName,
     );
@@ -5789,7 +5789,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionStructuredefinitionFhirType fixture", () => {
+  it("should validate ExtensionStructuredefinitionFhirType fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionStructuredefinitionFhirType,
     );
@@ -5805,7 +5805,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionStructuredefinitionFmmNoWarnings fixture", () => {
+  it("should validate ExtensionStructuredefinitionFmmNoWarnings fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionStructuredefinitionFmmNoWarnings,
     );
@@ -5821,7 +5821,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionStructuredefinitionFmm fixture", () => {
+  it("should validate ExtensionStructuredefinitionFmm fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionStructuredefinitionFmm,
     );
@@ -5835,7 +5835,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionStructuredefinitionHierarchy fixture", () => {
+  it("should validate ExtensionStructuredefinitionHierarchy fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionStructuredefinitionHierarchy,
     );
@@ -5851,7 +5851,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionStructuredefinitionNormativeVersion fixture", () => {
+  it("should validate ExtensionStructuredefinitionNormativeVersion fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionStructuredefinitionNormativeVersion,
     );
@@ -5867,7 +5867,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionStructuredefinitionSecurityCategory fixture", () => {
+  it("should validate ExtensionStructuredefinitionSecurityCategory fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionStructuredefinitionSecurityCategory,
     );
@@ -5883,7 +5883,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionStructuredefinitionStandardsStatus fixture", () => {
+  it("should validate ExtensionStructuredefinitionStandardsStatus fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionStructuredefinitionStandardsStatus,
     );
@@ -5899,7 +5899,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionStructuredefinitionSummary fixture", () => {
+  it("should validate ExtensionStructuredefinitionSummary fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionStructuredefinitionSummary,
     );
@@ -5915,7 +5915,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionStructuredefinitionTableName fixture", () => {
+  it("should validate ExtensionStructuredefinitionTableName fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionStructuredefinitionTableName,
     );
@@ -5931,7 +5931,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionStructuredefinitionTemplateStatus fixture", () => {
+  it("should validate ExtensionStructuredefinitionTemplateStatus fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionStructuredefinitionTemplateStatus,
     );
@@ -5947,7 +5947,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionStructuredefinitionWg fixture", () => {
+  it("should validate ExtensionStructuredefinitionWg fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionStructuredefinitionWg,
     );
@@ -5961,7 +5961,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionStructuredefinitionXmlNoOrder fixture", () => {
+  it("should validate ExtensionStructuredefinitionXmlNoOrder fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionStructuredefinitionXmlNoOrder,
     );
@@ -5977,7 +5977,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionTaskCandidatelist fixture", () => {
+  it("should validate ExtensionTaskCandidatelist fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionTaskCandidatelist,
     );
@@ -5991,7 +5991,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionTaskReplaces fixture", () => {
+  it("should validate ExtensionTaskReplaces fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionTaskReplaces,
     );
@@ -6005,7 +6005,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionTimingDayofmonth fixture", () => {
+  it("should validate ExtensionTimingDayofmonth fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionTimingDayofmonth,
     );
@@ -6019,7 +6019,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionTimingDaysofcycle fixture", () => {
+  it("should validate ExtensionTimingDaysofcycle fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionTimingDaysofcycle,
     );
@@ -6033,7 +6033,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionTimingExact fixture", () => {
+  it("should validate ExtensionTimingExact fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionTimingExact);
     if (!result.success) {
@@ -6046,7 +6046,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionTranslation fixture", () => {
+  it("should validate ExtensionTranslation fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionTranslation);
     if (!result.success) {
@@ -6059,7 +6059,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionTzCode fixture", () => {
+  it("should validate ExtensionTzCode fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(ExtensionTzCode);
     if (!result.success) {
       console.error("Validation failed for ExtensionTzCode:");
@@ -6071,7 +6071,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionTzOffset fixture", () => {
+  it("should validate ExtensionTzOffset fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionTzOffset);
     if (!result.success) {
@@ -6084,7 +6084,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionUsagecontextGroup fixture", () => {
+  it("should validate ExtensionUsagecontextGroup fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionUsagecontextGroup,
     );
@@ -6098,7 +6098,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetActivitystatusdate fixture", () => {
+  it("should validate ExtensionValuesetActivitystatusdate fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetActivitystatusdate,
     );
@@ -6114,7 +6114,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetAuthor fixture", () => {
+  it("should validate ExtensionValuesetAuthor fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetAuthor,
     );
@@ -6128,7 +6128,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetAuthoritativesource fixture", () => {
+  it("should validate ExtensionValuesetAuthoritativesource fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetAuthoritativesource,
     );
@@ -6144,7 +6144,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetCasesensitive fixture", () => {
+  it("should validate ExtensionValuesetCasesensitive fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetCasesensitive,
     );
@@ -6158,7 +6158,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetConceptComments fixture", () => {
+  it("should validate ExtensionValuesetConceptComments fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetConceptComments,
     );
@@ -6172,7 +6172,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetConceptDefinition fixture", () => {
+  it("should validate ExtensionValuesetConceptDefinition fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetConceptDefinition,
     );
@@ -6188,7 +6188,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetConceptorder fixture", () => {
+  it("should validate ExtensionValuesetConceptorder fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetConceptorder,
     );
@@ -6202,7 +6202,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetDeprecated fixture", () => {
+  it("should validate ExtensionValuesetDeprecated fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetDeprecated,
     );
@@ -6216,7 +6216,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetEffectivedate fixture", () => {
+  it("should validate ExtensionValuesetEffectivedate fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetEffectivedate,
     );
@@ -6230,7 +6230,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetExpandGroup fixture", () => {
+  it("should validate ExtensionValuesetExpandGroup fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetExpandGroup,
     );
@@ -6244,7 +6244,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetExpandRules fixture", () => {
+  it("should validate ExtensionValuesetExpandRules fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetExpandRules,
     );
@@ -6258,7 +6258,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetExpansionsource fixture", () => {
+  it("should validate ExtensionValuesetExpansionsource fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetExpansionsource,
     );
@@ -6272,7 +6272,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetExpirationdate fixture", () => {
+  it("should validate ExtensionValuesetExpirationdate fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetExpirationdate,
     );
@@ -6286,7 +6286,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetExpression fixture", () => {
+  it("should validate ExtensionValuesetExpression fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetExpression,
     );
@@ -6300,7 +6300,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetExtensible fixture", () => {
+  it("should validate ExtensionValuesetExtensible fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetExtensible,
     );
@@ -6314,7 +6314,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetKeyword fixture", () => {
+  it("should validate ExtensionValuesetKeyword fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetKeyword,
     );
@@ -6328,7 +6328,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetLabel fixture", () => {
+  it("should validate ExtensionValuesetLabel fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetLabel,
     );
@@ -6342,7 +6342,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetMap fixture", () => {
+  it("should validate ExtensionValuesetMap fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionValuesetMap);
     if (!result.success) {
@@ -6355,7 +6355,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetOthername fixture", () => {
+  it("should validate ExtensionValuesetOthername fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetOthername,
     );
@@ -6369,7 +6369,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetParametersource fixture", () => {
+  it("should validate ExtensionValuesetParametersource fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetParametersource,
     );
@@ -6383,7 +6383,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetReference fixture", () => {
+  it("should validate ExtensionValuesetReference fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetReference,
     );
@@ -6397,7 +6397,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetRulesText fixture", () => {
+  it("should validate ExtensionValuesetRulesText fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetRulesText,
     );
@@ -6411,7 +6411,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetSourcereference fixture", () => {
+  it("should validate ExtensionValuesetSourcereference fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetSourcereference,
     );
@@ -6425,7 +6425,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetSpecialStatus fixture", () => {
+  it("should validate ExtensionValuesetSpecialStatus fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetSpecialStatus,
     );
@@ -6439,7 +6439,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetSteward fixture", () => {
+  it("should validate ExtensionValuesetSteward fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetSteward,
     );
@@ -6453,7 +6453,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetSupplement fixture", () => {
+  it("should validate ExtensionValuesetSupplement fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetSupplement,
     );
@@ -6467,7 +6467,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetSystem fixture", () => {
+  it("should validate ExtensionValuesetSystem fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetSystem,
     );
@@ -6481,7 +6481,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetSystemname fixture", () => {
+  it("should validate ExtensionValuesetSystemname fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetSystemname,
     );
@@ -6495,7 +6495,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetSystemref fixture", () => {
+  it("should validate ExtensionValuesetSystemref fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetSystemref,
     );
@@ -6509,7 +6509,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetToocostly fixture", () => {
+  it("should validate ExtensionValuesetToocostly fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetToocostly,
     );
@@ -6523,7 +6523,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetTrustedExpansion fixture", () => {
+  it("should validate ExtensionValuesetTrustedExpansion fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetTrustedExpansion,
     );
@@ -6537,7 +6537,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetUnclosed fixture", () => {
+  it("should validate ExtensionValuesetUnclosed fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetUnclosed,
     );
@@ -6551,7 +6551,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetUsage fixture", () => {
+  it("should validate ExtensionValuesetUsage fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetUsage,
     );
@@ -6565,7 +6565,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetWarning fixture", () => {
+  it("should validate ExtensionValuesetWarning fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetWarning,
     );
@@ -6579,7 +6579,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionValuesetWorkflowstatus fixture", () => {
+  it("should validate ExtensionValuesetWorkflowstatus fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionValuesetWorkflowstatus,
     );
@@ -6593,7 +6593,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionVariable fixture", () => {
+  it("should validate ExtensionVariable fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionVariable);
     if (!result.success) {
@@ -6606,7 +6606,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionWorkflowEpisodeofcare fixture", () => {
+  it("should validate ExtensionWorkflowEpisodeofcare fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionWorkflowEpisodeofcare,
     );
@@ -6620,7 +6620,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionWorkflowInstantiatescanonical fixture", () => {
+  it("should validate ExtensionWorkflowInstantiatescanonical fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionWorkflowInstantiatescanonical,
     );
@@ -6636,7 +6636,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionWorkflowInstantiatesuri fixture", () => {
+  it("should validate ExtensionWorkflowInstantiatesuri fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionWorkflowInstantiatesuri,
     );
@@ -6650,7 +6650,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionWorkflowReasoncode fixture", () => {
+  it("should validate ExtensionWorkflowReasoncode fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionWorkflowReasoncode,
     );
@@ -6664,7 +6664,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionWorkflowReasonreference fixture", () => {
+  it("should validate ExtensionWorkflowReasonreference fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionWorkflowReasonreference,
     );
@@ -6678,7 +6678,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionWorkflowRelatedartifact fixture", () => {
+  it("should validate ExtensionWorkflowRelatedartifact fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionWorkflowRelatedartifact,
     );
@@ -6692,7 +6692,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionWorkflowResearchstudy fixture", () => {
+  it("should validate ExtensionWorkflowResearchstudy fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionWorkflowResearchstudy,
     );
@@ -6706,7 +6706,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionWorkflowSupportinginfo fixture", () => {
+  it("should validate ExtensionWorkflowSupportinginfo fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ExtensionWorkflowSupportinginfo,
     );
@@ -6720,7 +6720,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExtensionProfile fixture", () => {
+  it("should validate ExtensionProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ExtensionProfile);
     if (!result.success) {
@@ -6733,7 +6733,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate FamilymemberhistoryGeneticProfile fixture", () => {
+  it("should validate FamilymemberhistoryGeneticProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       FamilymemberhistoryGeneticProfile,
     );
@@ -6747,7 +6747,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Fivews fixture", () => {
+  it("should validate Fivews fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(Fivews);
     if (!result.success) {
       console.error("Validation failed for Fivews:");
@@ -6759,7 +6759,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate FlagProfile fixture", () => {
+  it("should validate FlagProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(FlagProfile);
     if (!result.success) {
       console.error("Validation failed for FlagProfile:");
@@ -6771,7 +6771,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate GroupdefinitionProfile fixture", () => {
+  it("should validate GroupdefinitionProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       GroupdefinitionProfile,
     );
@@ -6785,7 +6785,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate HlaresultProfile fixture", () => {
+  it("should validate HlaresultProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(HlaresultProfile);
     if (!result.success) {
@@ -6798,7 +6798,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate HumannameProfile fixture", () => {
+  it("should validate HumannameProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(HumannameProfile);
     if (!result.success) {
@@ -6811,7 +6811,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate IdProfile fixture", () => {
+  it("should validate IdProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(IdProfile);
     if (!result.success) {
       console.error("Validation failed for IdProfile:");
@@ -6823,7 +6823,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate IdentifierProfile fixture", () => {
+  it("should validate IdentifierProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(IdentifierProfile);
     if (!result.success) {
@@ -6836,7 +6836,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate InstantProfile fixture", () => {
+  it("should validate InstantProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(InstantProfile);
     if (!result.success) {
       console.error("Validation failed for InstantProfile:");
@@ -6848,7 +6848,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate IntegerProfile fixture", () => {
+  it("should validate IntegerProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(IntegerProfile);
     if (!result.success) {
       console.error("Validation failed for IntegerProfile:");
@@ -6860,7 +6860,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LinkageProfile fixture", () => {
+  it("should validate LinkageProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(LinkageProfile);
     if (!result.success) {
       console.error("Validation failed for LinkageProfile:");
@@ -6872,7 +6872,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LipidprofileProfile fixture", () => {
+  it("should validate LipidprofileProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(LipidprofileProfile);
     if (!result.success) {
@@ -6885,7 +6885,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MarkdownProfile fixture", () => {
+  it("should validate MarkdownProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(MarkdownProfile);
     if (!result.success) {
       console.error("Validation failed for MarkdownProfile:");
@@ -6897,7 +6897,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MarketingstatusProfile fixture", () => {
+  it("should validate MarketingstatusProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       MarketingstatusProfile,
     );
@@ -6911,7 +6911,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MedicinalproductcontraindicationProfile fixture", () => {
+  it("should validate MedicinalproductcontraindicationProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       MedicinalproductcontraindicationProfile,
     );
@@ -6927,7 +6927,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MedicinalproductinteractionProfile fixture", () => {
+  it("should validate MedicinalproductinteractionProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       MedicinalproductinteractionProfile,
     );
@@ -6943,7 +6943,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MedicinalproductmanufacturedProfile fixture", () => {
+  it("should validate MedicinalproductmanufacturedProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       MedicinalproductmanufacturedProfile,
     );
@@ -6959,7 +6959,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MedicinalproductundesirableeffectProfile fixture", () => {
+  it("should validate MedicinalproductundesirableeffectProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       MedicinalproductundesirableeffectProfile,
     );
@@ -6975,7 +6975,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MetaProfile fixture", () => {
+  it("should validate MetaProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(MetaProfile);
     if (!result.success) {
       console.error("Validation failed for MetaProfile:");
@@ -6987,7 +6987,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MoneyProfile fixture", () => {
+  it("should validate MoneyProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(MoneyProfile);
     if (!result.success) {
       console.error("Validation failed for MoneyProfile:");
@@ -6999,7 +6999,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MoneyquantityProfile fixture", () => {
+  it("should validate MoneyquantityProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(MoneyquantityProfile);
     if (!result.success) {
@@ -7012,7 +7012,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate NarrativeProfile fixture", () => {
+  it("should validate NarrativeProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(NarrativeProfile);
     if (!result.success) {
@@ -7025,7 +7025,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OidProfile fixture", () => {
+  it("should validate OidProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(OidProfile);
     if (!result.success) {
       console.error("Validation failed for OidProfile:");
@@ -7037,7 +7037,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationoutcomeProfile fixture", () => {
+  it("should validate OperationoutcomeProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       OperationoutcomeProfile,
     );
@@ -7051,7 +7051,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OrganizationaffiliationProfile fixture", () => {
+  it("should validate OrganizationaffiliationProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       OrganizationaffiliationProfile,
     );
@@ -7065,7 +7065,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ParameterdefinitionProfile fixture", () => {
+  it("should validate ParameterdefinitionProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ParameterdefinitionProfile,
     );
@@ -7079,7 +7079,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ParametersProfile fixture", () => {
+  it("should validate ParametersProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ParametersProfile);
     if (!result.success) {
@@ -7092,7 +7092,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PaymentnoticeProfile fixture", () => {
+  it("should validate PaymentnoticeProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(PaymentnoticeProfile);
     if (!result.success) {
@@ -7105,7 +7105,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PeriodProfile fixture", () => {
+  it("should validate PeriodProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(PeriodProfile);
     if (!result.success) {
       console.error("Validation failed for PeriodProfile:");
@@ -7117,7 +7117,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PicoelementProfile fixture", () => {
+  it("should validate PicoelementProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(PicoelementProfile);
     if (!result.success) {
@@ -7130,7 +7130,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PopulationProfile fixture", () => {
+  it("should validate PopulationProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(PopulationProfile);
     if (!result.success) {
@@ -7143,7 +7143,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PositiveintProfile fixture", () => {
+  it("should validate PositiveintProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(PositiveintProfile);
     if (!result.success) {
@@ -7156,7 +7156,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProdcharacteristicProfile fixture", () => {
+  it("should validate ProdcharacteristicProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ProdcharacteristicProfile,
     );
@@ -7170,7 +7170,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProductshelflifeProfile fixture", () => {
+  it("should validate ProductshelflifeProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ProductshelflifeProfile,
     );
@@ -7184,7 +7184,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProvenanceRelevantHistoryProfile fixture", () => {
+  it("should validate ProvenanceRelevantHistoryProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ProvenanceRelevantHistoryProfile,
     );
@@ -7198,7 +7198,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate QuantityProfile fixture", () => {
+  it("should validate QuantityProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(QuantityProfile);
     if (!result.success) {
       console.error("Validation failed for QuantityProfile:");
@@ -7210,7 +7210,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate RangeProfile fixture", () => {
+  it("should validate RangeProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(RangeProfile);
     if (!result.success) {
       console.error("Validation failed for RangeProfile:");
@@ -7222,7 +7222,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate RatioProfile fixture", () => {
+  it("should validate RatioProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(RatioProfile);
     if (!result.success) {
       console.error("Validation failed for RatioProfile:");
@@ -7234,7 +7234,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ReferenceProfile fixture", () => {
+  it("should validate ReferenceProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(ReferenceProfile);
     if (!result.success) {
@@ -7247,7 +7247,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate RelatedartifactProfile fixture", () => {
+  it("should validate RelatedartifactProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       RelatedartifactProfile,
     );
@@ -7261,7 +7261,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Request fixture", () => {
+  it("should validate Request fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(Request);
     if (!result.success) {
       console.error("Validation failed for Request:");
@@ -7273,7 +7273,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ResearchsubjectProfile fixture", () => {
+  it("should validate ResearchsubjectProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ResearchsubjectProfile,
     );
@@ -7287,7 +7287,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ResourceProfile fixture", () => {
+  it("should validate ResourceProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(ResourceProfile);
     if (!result.success) {
       console.error("Validation failed for ResourceProfile:");
@@ -7299,7 +7299,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SampleddataProfile fixture", () => {
+  it("should validate SampleddataProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(SampleddataProfile);
     if (!result.success) {
@@ -7312,7 +7312,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScheduleProfile fixture", () => {
+  it("should validate ScheduleProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(ScheduleProfile);
     if (!result.success) {
       console.error("Validation failed for ScheduleProfile:");
@@ -7324,7 +7324,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestGeneticsProfile fixture", () => {
+  it("should validate ServicerequestGeneticsProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ServicerequestGeneticsProfile,
     );
@@ -7338,7 +7338,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ShareablelibraryProfile fixture", () => {
+  it("should validate ShareablelibraryProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       ShareablelibraryProfile,
     );
@@ -7352,7 +7352,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SignatureProfile fixture", () => {
+  it("should validate SignatureProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(SignatureProfile);
     if (!result.success) {
@@ -7365,7 +7365,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SimplequantityProfile fixture", () => {
+  it("should validate SimplequantityProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       SimplequantityProfile,
     );
@@ -7379,7 +7379,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SlotProfile fixture", () => {
+  it("should validate SlotProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(SlotProfile);
     if (!result.success) {
       console.error("Validation failed for SlotProfile:");
@@ -7391,7 +7391,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate StringProfile fixture", () => {
+  it("should validate StringProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(StringProfile);
     if (!result.success) {
       console.error("Validation failed for StringProfile:");
@@ -7403,7 +7403,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate StructuredefinitionExampleComposition fixture", () => {
+  it("should validate StructuredefinitionExampleComposition fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       StructuredefinitionExampleComposition,
     );
@@ -7419,7 +7419,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate StructuredefinitionExampleSectionLibrary fixture", () => {
+  it("should validate StructuredefinitionExampleSectionLibrary fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       StructuredefinitionExampleSectionLibrary,
     );
@@ -7435,7 +7435,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SubscriptionProfile fixture", () => {
+  it("should validate SubscriptionProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(SubscriptionProfile);
     if (!result.success) {
@@ -7448,7 +7448,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SubstanceamountProfile fixture", () => {
+  it("should validate SubstanceamountProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       SubstanceamountProfile,
     );
@@ -7462,7 +7462,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SynthesisProfile fixture", () => {
+  it("should validate SynthesisProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(SynthesisProfile);
     if (!result.success) {
@@ -7475,7 +7475,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate TimeProfile fixture", () => {
+  it("should validate TimeProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(TimeProfile);
     if (!result.success) {
       console.error("Validation failed for TimeProfile:");
@@ -7487,7 +7487,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate TriggerdefinitionProfile fixture", () => {
+  it("should validate TriggerdefinitionProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(
       TriggerdefinitionProfile,
     );
@@ -7501,7 +7501,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate UnsignedintProfile fixture", () => {
+  it("should validate UnsignedintProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(UnsignedintProfile);
     if (!result.success) {
@@ -7514,7 +7514,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate UriProfile fixture", () => {
+  it("should validate UriProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(UriProfile);
     if (!result.success) {
       console.error("Validation failed for UriProfile:");
@@ -7526,7 +7526,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate UrlProfile fixture", () => {
+  it("should validate UrlProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(UrlProfile);
     if (!result.success) {
       console.error("Validation failed for UrlProfile:");
@@ -7538,7 +7538,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate UsagecontextProfile fixture", () => {
+  it("should validate UsagecontextProfile fixture (StructureDefinition)", () => {
     const result =
       createStructureDefinitionSchema().safeParse(UsagecontextProfile);
     if (!result.success) {
@@ -7551,7 +7551,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate UuidProfile fixture", () => {
+  it("should validate UuidProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(UuidProfile);
     if (!result.success) {
       console.error("Validation failed for UuidProfile:");
@@ -7563,7 +7563,7 @@ describe("StructureDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate XhtmlProfile fixture", () => {
+  it("should validate XhtmlProfile fixture (StructureDefinition)", () => {
     const result = createStructureDefinitionSchema().safeParse(XhtmlProfile);
     if (!result.success) {
       console.error("Validation failed for XhtmlProfile:");

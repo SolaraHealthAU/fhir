@@ -11,10 +11,11 @@ import {
   createContactPointSchema,
   createAddressSchema,
   createReferenceSchema,
+  createHumanNameSchema,
+  createPeriodSchema,
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createOrganizationContactSchema } from "../organizationcontact/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -46,6 +47,57 @@ export function createOrganizationSchema() {
       contact: z.array(createOrganizationContactSchema()).optional(),
       endpoint: z.array(createReferenceSchema()).optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createOrganizationContactSchema() {
+  return getCachedSchema("OrganizationContact", () => {
+    const baseSchema: z.ZodType<types.OrganizationContact> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      purpose: createCodeableConceptSchema().optional(),
+      name: createHumanNameSchema().optional(),
+      telecom: z.array(createContactPointSchema()).optional(),
+      address: createAddressSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createOrganizationAffiliationSchema() {
+  return getCachedSchema("OrganizationAffiliation", () => {
+    const baseSchema: z.ZodType<types.OrganizationAffiliation> = z.strictObject(
+      {
+        resourceType: z.literal("OrganizationAffiliation"),
+        id: primitives.getIdSchema().optional(),
+        meta: createMetaSchema().optional(),
+        implicitRules: primitives.getUriSchema().optional(),
+        _implicitRules: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        text: createNarrativeSchema().optional(),
+        contained: z.array(createResourceListSchema()).optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identifier: z.array(createIdentifierSchema()).optional(),
+        active: primitives.getBooleanSchema().optional(),
+        _active: createElementSchema().optional(),
+        period: createPeriodSchema().optional(),
+        organization: createReferenceSchema().optional(),
+        participatingOrganization: createReferenceSchema().optional(),
+        network: z.array(createReferenceSchema()).optional(),
+        code: z.array(createCodeableConceptSchema()).optional(),
+        specialty: z.array(createCodeableConceptSchema()).optional(),
+        location: z.array(createReferenceSchema()).optional(),
+        healthcareService: z.array(createReferenceSchema()).optional(),
+        telecom: z.array(createContactPointSchema()).optional(),
+        endpoint: z.array(createReferenceSchema()).optional(),
+      },
+    );
 
     return baseSchema;
   });

@@ -14,10 +14,7 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createStructureDefinitionMappingSchema } from "../structuredefinitionmapping/schema";
-import { createStructureDefinitionContextSchema } from "../structuredefinitioncontext/schema";
-import { createStructureDefinitionSnapshotSchema } from "../structuredefinitionsnapshot/schema";
-import { createStructureDefinitionDifferentialSchema } from "../structuredefinitiondifferential/schema";
+import { createElementDefinitionSchema } from "../elementdefinition/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -105,6 +102,72 @@ export function createStructureDefinitionSchema() {
       snapshot: createStructureDefinitionSnapshotSchema().optional(),
       differential: createStructureDefinitionDifferentialSchema().optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createStructureDefinitionMappingSchema() {
+  return getCachedSchema("StructureDefinitionMapping", () => {
+    const baseSchema: z.ZodType<types.StructureDefinitionMapping> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identity: primitives.getIdSchema(),
+        _identity: createElementSchema().optional(),
+        uri: primitives.getUriSchema().optional(),
+        _uri: createElementSchema().optional(),
+        name: primitives.getStringSchema().optional(),
+        _name: createElementSchema().optional(),
+        comment: primitives.getStringSchema().optional(),
+        _comment: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createStructureDefinitionContextSchema() {
+  return getCachedSchema("StructureDefinitionContext", () => {
+    const baseSchema: z.ZodType<types.StructureDefinitionContext> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        type: z.enum(["fhirpath", "element", "extension"]),
+        _type: createElementSchema().optional(),
+        expression: primitives.getStringSchema(),
+        _expression: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createStructureDefinitionSnapshotSchema() {
+  return getCachedSchema("StructureDefinitionSnapshot", () => {
+    const baseSchema: z.ZodType<types.StructureDefinitionSnapshot> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        element: z.array(createElementDefinitionSchema()),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createStructureDefinitionDifferentialSchema() {
+  return getCachedSchema("StructureDefinitionDifferential", () => {
+    const baseSchema: z.ZodType<types.StructureDefinitionDifferential> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        element: z.array(createElementDefinitionSchema()),
+      });
 
     return baseSchema;
   });

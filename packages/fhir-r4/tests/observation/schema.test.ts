@@ -67,8 +67,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Observation Schema Validation", () => {
-  it("should validate ObservationDecimal fixture", () => {
+describe("Observation Group Schema Validation", () => {
+  it("should validate ObservationDecimal fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(ObservationDecimal);
     if (!result.success) {
       console.error("Validation failed for ObservationDecimal:");
@@ -80,7 +80,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExample10minuteApgarScore fixture", () => {
+  it("should validate ObservationExample10minuteApgarScore fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExample10minuteApgarScore,
     );
@@ -96,7 +96,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExample1minuteApgarScore fixture", () => {
+  it("should validate ObservationExample1minuteApgarScore fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExample1minuteApgarScore,
     );
@@ -112,7 +112,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExample20minuteApgarScore fixture", () => {
+  it("should validate ObservationExample20minuteApgarScore fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExample20minuteApgarScore,
     );
@@ -128,7 +128,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExample2minuteApgarScore fixture", () => {
+  it("should validate ObservationExample2minuteApgarScore fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExample2minuteApgarScore,
     );
@@ -144,7 +144,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExample5minuteApgarScore fixture", () => {
+  it("should validate ObservationExample5minuteApgarScore fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExample5minuteApgarScore,
     );
@@ -160,7 +160,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleTpmtDiplotype fixture", () => {
+  it("should validate ObservationExampleTpmtDiplotype fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleTpmtDiplotype,
     );
@@ -174,7 +174,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleTpmtHaplotypeOne fixture", () => {
+  it("should validate ObservationExampleTpmtHaplotypeOne fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleTpmtHaplotypeOne,
     );
@@ -190,7 +190,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleTpmtHaplotypeTwo fixture", () => {
+  it("should validate ObservationExampleTpmtHaplotypeTwo fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleTpmtHaplotypeTwo,
     );
@@ -206,7 +206,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleAbdoTender fixture", () => {
+  it("should validate ObservationExampleAbdoTender fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleAbdoTender,
     );
@@ -220,7 +220,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleAlcoholType fixture", () => {
+  it("should validate ObservationExampleAlcoholType fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleAlcoholType,
     );
@@ -234,7 +234,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleBgpanel fixture", () => {
+  it("should validate ObservationExampleBgpanel fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleBgpanel,
     );
@@ -248,7 +248,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleBloodgroup fixture", () => {
+  it("should validate ObservationExampleBloodgroup fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleBloodgroup,
     );
@@ -262,7 +262,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleBloodpressureCancel fixture", () => {
+  it("should validate ObservationExampleBloodpressureCancel fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleBloodpressureCancel,
     );
@@ -278,7 +278,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleBloodpressureDar fixture", () => {
+  it("should validate ObservationExampleBloodpressureDar fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleBloodpressureDar,
     );
@@ -294,7 +294,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleBloodpressure fixture", () => {
+  it("should validate ObservationExampleBloodpressure fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleBloodpressure,
     );
@@ -308,7 +308,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleBmd fixture", () => {
+  it("should validate ObservationExampleBmd fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(ObservationExampleBmd);
     if (!result.success) {
       console.error("Validation failed for ObservationExampleBmd:");
@@ -320,7 +320,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleBmiUsingRelated fixture", () => {
+  it("should validate ObservationExampleBmiUsingRelated fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleBmiUsingRelated,
     );
@@ -334,7 +334,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleBmi fixture", () => {
+  it("should validate ObservationExampleBmi fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(ObservationExampleBmi);
     if (!result.success) {
       console.error("Validation failed for ObservationExampleBmi:");
@@ -346,7 +346,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleBodyHeight fixture", () => {
+  it("should validate ObservationExampleBodyHeight fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleBodyHeight,
     );
@@ -360,7 +360,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleBodyLength fixture", () => {
+  it("should validate ObservationExampleBodyLength fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleBodyLength,
     );
@@ -374,7 +374,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleBodyTemperature fixture", () => {
+  it("should validate ObservationExampleBodyTemperature fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleBodyTemperature,
     );
@@ -388,7 +388,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleClinicalGender fixture", () => {
+  it("should validate ObservationExampleClinicalGender fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleClinicalGender,
     );
@@ -402,7 +402,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleDateLastmp fixture", () => {
+  it("should validate ObservationExampleDateLastmp fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleDateLastmp,
     );
@@ -416,7 +416,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleDiplotype1 fixture", () => {
+  it("should validate ObservationExampleDiplotype1 fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleDiplotype1,
     );
@@ -430,7 +430,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleEyeColor fixture", () => {
+  it("should validate ObservationExampleEyeColor fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleEyeColor,
     );
@@ -444,7 +444,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleF001Glucose fixture", () => {
+  it("should validate ObservationExampleF001Glucose fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleF001Glucose,
     );
@@ -458,7 +458,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleF002Excess fixture", () => {
+  it("should validate ObservationExampleF002Excess fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleF002Excess,
     );
@@ -472,7 +472,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleF003Co2 fixture", () => {
+  it("should validate ObservationExampleF003Co2 fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleF003Co2,
     );
@@ -486,7 +486,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleF004Erythrocyte fixture", () => {
+  it("should validate ObservationExampleF004Erythrocyte fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleF004Erythrocyte,
     );
@@ -500,7 +500,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleF005Hemoglobin fixture", () => {
+  it("should validate ObservationExampleF005Hemoglobin fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleF005Hemoglobin,
     );
@@ -514,7 +514,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleF202Temperature fixture", () => {
+  it("should validate ObservationExampleF202Temperature fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleF202Temperature,
     );
@@ -528,7 +528,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleF203Bicarbonate fixture", () => {
+  it("should validate ObservationExampleF203Bicarbonate fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleF203Bicarbonate,
     );
@@ -542,7 +542,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleF204Creatinine fixture", () => {
+  it("should validate ObservationExampleF204Creatinine fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleF204Creatinine,
     );
@@ -556,7 +556,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleF205Egfr fixture", () => {
+  it("should validate ObservationExampleF205Egfr fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleF205Egfr,
     );
@@ -570,7 +570,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleF206Staphylococcus fixture", () => {
+  it("should validate ObservationExampleF206Staphylococcus fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleF206Staphylococcus,
     );
@@ -586,7 +586,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleGenetics1 fixture", () => {
+  it("should validate ObservationExampleGenetics1 fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleGenetics1,
     );
@@ -600,7 +600,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleGenetics2 fixture", () => {
+  it("should validate ObservationExampleGenetics2 fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleGenetics2,
     );
@@ -614,7 +614,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleGenetics3 fixture", () => {
+  it("should validate ObservationExampleGenetics3 fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleGenetics3,
     );
@@ -628,7 +628,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleGenetics4 fixture", () => {
+  it("should validate ObservationExampleGenetics4 fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleGenetics4,
     );
@@ -642,7 +642,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleGenetics5 fixture", () => {
+  it("should validate ObservationExampleGenetics5 fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleGenetics5,
     );
@@ -656,7 +656,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleGeneticsBrcapat fixture", () => {
+  it("should validate ObservationExampleGeneticsBrcapat fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleGeneticsBrcapat,
     );
@@ -670,7 +670,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleGlasgowQa fixture", () => {
+  it("should validate ObservationExampleGlasgowQa fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleGlasgowQa,
     );
@@ -684,7 +684,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleGlasgow fixture", () => {
+  it("should validate ObservationExampleGlasgow fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleGlasgow,
     );
@@ -698,7 +698,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleHaplotype1 fixture", () => {
+  it("should validate ObservationExampleHaplotype1 fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleHaplotype1,
     );
@@ -712,7 +712,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleHaplotype2 fixture", () => {
+  it("should validate ObservationExampleHaplotype2 fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleHaplotype2,
     );
@@ -726,7 +726,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleHeadCircumference fixture", () => {
+  it("should validate ObservationExampleHeadCircumference fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleHeadCircumference,
     );
@@ -742,7 +742,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleHeartRate fixture", () => {
+  it("should validate ObservationExampleHeartRate fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleHeartRate,
     );
@@ -756,7 +756,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleHerd1 fixture", () => {
+  it("should validate ObservationExampleHerd1 fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(ObservationExampleHerd1);
     if (!result.success) {
       console.error("Validation failed for ObservationExampleHerd1:");
@@ -768,7 +768,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleMapSitting fixture", () => {
+  it("should validate ObservationExampleMapSitting fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleMapSitting,
     );
@@ -782,7 +782,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleMbp fixture", () => {
+  it("should validate ObservationExampleMbp fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(ObservationExampleMbp);
     if (!result.success) {
       console.error("Validation failed for ObservationExampleMbp:");
@@ -794,7 +794,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExamplePhenotype fixture", () => {
+  it("should validate ObservationExamplePhenotype fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExamplePhenotype,
     );
@@ -808,7 +808,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleRespiratoryRate fixture", () => {
+  it("should validate ObservationExampleRespiratoryRate fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleRespiratoryRate,
     );
@@ -822,7 +822,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleRhstatus fixture", () => {
+  it("should validate ObservationExampleRhstatus fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleRhstatus,
     );
@@ -836,7 +836,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleSampleData fixture", () => {
+  it("should validate ObservationExampleSampleData fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleSampleData,
     );
@@ -850,7 +850,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleSato2 fixture", () => {
+  it("should validate ObservationExampleSato2 fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(ObservationExampleSato2);
     if (!result.success) {
       console.error("Validation failed for ObservationExampleSato2:");
@@ -862,7 +862,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleSecondsmoke fixture", () => {
+  it("should validate ObservationExampleSecondsmoke fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleSecondsmoke,
     );
@@ -876,7 +876,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleSpirometry fixture", () => {
+  it("should validate ObservationExampleSpirometry fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleSpirometry,
     );
@@ -890,7 +890,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleTrachcare fixture", () => {
+  it("should validate ObservationExampleTrachcare fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleTrachcare,
     );
@@ -904,7 +904,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleUnsat fixture", () => {
+  it("should validate ObservationExampleUnsat fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(ObservationExampleUnsat);
     if (!result.success) {
       console.error("Validation failed for ObservationExampleUnsat:");
@@ -916,7 +916,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleVitalsPanel fixture", () => {
+  it("should validate ObservationExampleVitalsPanel fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleVitalsPanel,
     );
@@ -930,7 +930,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleVomiting fixture", () => {
+  it("should validate ObservationExampleVomiting fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleVomiting,
     );
@@ -944,7 +944,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExampleVpOyster fixture", () => {
+  it("should validate ObservationExampleVpOyster fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(
       ObservationExampleVpOyster,
     );
@@ -958,7 +958,7 @@ describe("Observation Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationExample fixture", () => {
+  it("should validate ObservationExample fixture (Observation)", () => {
     const result = createObservationSchema().safeParse(ObservationExample);
     if (!result.success) {
       console.error("Validation failed for ObservationExample:");

@@ -6,11 +6,10 @@ import type {
   ContactDetail,
   UsageContext,
   CodeableConcept,
+  Coding,
 } from "../core/types";
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
-import type { ValueSetCompose } from "../valuesetcompose/types";
-import type { ValueSetExpansion } from "../valuesetexpansion/types";
 
 /** Generated from FHIR JSON Schema */
 
@@ -99,4 +98,229 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   compose?: ValueSetCompose;
 
   expansion?: ValueSetExpansion;
+}
+
+/** A ValueSet resource instance specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between [[[CodeSystem]]] definitions and their use in [coded elements](terminologies.html). */
+export interface ValueSetCompose {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** The Locked Date is  the effective date that is used to determine the version of all referenced Code Systems and Value Set Definitions included in the compose that are not already tied to a specific version. */
+  lockedDate?: string;
+
+  _lockedDate?: Element;
+  /** Whether inactive codes - codes that are not approved for current use - are in the value set. If inactive = true, inactive codes are to be included in the expansion, if inactive = false, the inactive codes will not be included in the expansion. If absent, the behavior is determined by the implementation, or by the applicable $expand parameters (but generally, inactive codes would be expected to be included). */
+  inactive?: boolean;
+
+  _inactive?: Element;
+
+  include: ValueSetInclude[];
+
+  exclude?: ValueSetInclude[];
+}
+
+/** A ValueSet resource instance specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between [[[CodeSystem]]] definitions and their use in [coded elements](terminologies.html). */
+export interface ValueSetInclude {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  system?: string;
+
+  _system?: Element;
+
+  version?: string;
+
+  _version?: Element;
+
+  concept?: ValueSetConcept[];
+
+  filter?: ValueSetFilter[];
+
+  valueSet?: string[];
+}
+
+/** A ValueSet resource instance specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between [[[CodeSystem]]] definitions and their use in [coded elements](terminologies.html). */
+export interface ValueSetConcept {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  code?: string;
+
+  _code?: Element;
+
+  display?: string;
+
+  _display?: Element;
+
+  designation?: ValueSetDesignation[];
+}
+
+/** A ValueSet resource instance specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between [[[CodeSystem]]] definitions and their use in [coded elements](terminologies.html). */
+export interface ValueSetDesignation {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  language?: string;
+
+  _language?: Element;
+
+  use?: Coding;
+
+  value?: string;
+
+  _value?: Element;
+}
+
+/** A ValueSet resource instance specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between [[[CodeSystem]]] definitions and their use in [coded elements](terminologies.html). */
+export interface ValueSetFilter {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  property?: string;
+
+  _property?: Element;
+
+  op?:
+    | "="
+    | "is-a"
+    | "descendent-of"
+    | "is-not-a"
+    | "regex"
+    | "in"
+    | "not-in"
+    | "generalizes"
+    | "exists";
+
+  _op?: Element;
+
+  value?: string;
+
+  _value?: Element;
+}
+
+/** A ValueSet resource instance specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between [[[CodeSystem]]] definitions and their use in [coded elements](terminologies.html). */
+export interface ValueSetExpansion {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** An identifier that uniquely identifies this expansion of the valueset, based on a unique combination of the provided parameters, the system default parameters, and the underlying system code system versions etc. Systems may re-use the same identifier as long as those factors remain the same, and the expansion is the same, but are not required to do so. This is a business identifier. */
+  identifier?: string;
+
+  _identifier?: Element;
+  /** The time at which the expansion was produced by the expanding system. */
+  timestamp: string;
+
+  _timestamp?: Element;
+  /** The total number of concepts in the expansion. If the number of concept nodes in this resource is less than the stated number, then the server can return more using the offset parameter. */
+  total?: number;
+
+  _total?: Element;
+  /** If paging is being used, the offset at which this resource starts.  I.e. this resource is a partial view into the expansion. If paging is not being used, this element SHALL NOT be present. */
+  offset?: number;
+
+  _offset?: Element;
+
+  parameter?: ValueSetParameter[];
+
+  contains?: ValueSetContains[];
+}
+
+/** A ValueSet resource instance specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between [[[CodeSystem]]] definitions and their use in [coded elements](terminologies.html). */
+export interface ValueSetParameter {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  name?: string;
+
+  _name?: Element;
+
+  valueString?: string;
+
+  _valueString?: Element;
+
+  valueBoolean?: boolean;
+
+  _valueBoolean?: Element;
+
+  valueInteger?: number;
+
+  _valueInteger?: Element;
+
+  valueDecimal?: number;
+
+  _valueDecimal?: Element;
+
+  valueUri?: string;
+
+  _valueUri?: Element;
+
+  valueCode?: string;
+
+  _valueCode?: Element;
+
+  valueDateTime?: string;
+
+  _valueDateTime?: Element;
+}
+
+/** A ValueSet resource instance specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between [[[CodeSystem]]] definitions and their use in [coded elements](terminologies.html). */
+export interface ValueSetContains {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  system?: string;
+
+  _system?: Element;
+
+  abstract?: boolean;
+
+  _abstract?: Element;
+
+  inactive?: boolean;
+
+  _inactive?: Element;
+
+  version?: string;
+
+  _version?: Element;
+
+  code?: string;
+
+  _code?: Element;
+
+  display?: string;
+
+  _display?: Element;
+
+  designation?: ValueSetDesignation[];
+
+  contains?: ValueSetContains[];
 }

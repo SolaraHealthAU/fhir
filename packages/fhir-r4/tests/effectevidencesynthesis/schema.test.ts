@@ -2,8 +2,8 @@ import { createEffectEvidenceSynthesisSchema } from "../../src";
 import { EffectevidencesynthesisExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("EffectEvidenceSynthesis Schema Validation", () => {
-  it("should validate EffectevidencesynthesisExample fixture", () => {
+describe("Effectevidencesynthesis Group Schema Validation", () => {
+  it("should validate EffectevidencesynthesisExample fixture (EffectEvidenceSynthesis)", () => {
     const result = createEffectEvidenceSynthesisSchema().safeParse(
       EffectevidencesynthesisExample,
     );

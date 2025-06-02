@@ -16,8 +16,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createProcedurePerformerSchema } from "../procedureperformer/schema";
-import { createProcedureFocalDeviceSchema } from "../procedurefocaldevice/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -73,6 +71,35 @@ export function createProcedureSchema() {
       focalDevice: z.array(createProcedureFocalDeviceSchema()).optional(),
       usedReference: z.array(createReferenceSchema()).optional(),
       usedCode: z.array(createCodeableConceptSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createProcedurePerformerSchema() {
+  return getCachedSchema("ProcedurePerformer", () => {
+    const baseSchema: z.ZodType<types.ProcedurePerformer> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      function: createCodeableConceptSchema().optional(),
+      actor: createReferenceSchema(),
+      onBehalfOf: createReferenceSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createProcedureFocalDeviceSchema() {
+  return getCachedSchema("ProcedureFocalDevice", () => {
+    const baseSchema: z.ZodType<types.ProcedureFocalDevice> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      action: createCodeableConceptSchema().optional(),
+      manipulated: createReferenceSchema(),
     });
 
     return baseSchema;

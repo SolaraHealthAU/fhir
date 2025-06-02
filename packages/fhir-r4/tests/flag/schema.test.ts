@@ -2,8 +2,8 @@ import { createFlagSchema } from "../../src";
 import { FlagExampleEncounter, FlagExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Flag Schema Validation", () => {
-  it("should validate FlagExampleEncounter fixture", () => {
+describe("Flag Group Schema Validation", () => {
+  it("should validate FlagExampleEncounter fixture (Flag)", () => {
     const result = createFlagSchema().safeParse(FlagExampleEncounter);
     if (!result.success) {
       console.error("Validation failed for FlagExampleEncounter:");
@@ -15,7 +15,7 @@ describe("Flag Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate FlagExample fixture", () => {
+  it("should validate FlagExample fixture (Flag)", () => {
     const result = createFlagSchema().safeParse(FlagExample);
     if (!result.success) {
       console.error("Validation failed for FlagExample:");

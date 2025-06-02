@@ -9,13 +9,10 @@ import {
   createIdentifierSchema,
   createCodeableConceptSchema,
   createReferenceSchema,
+  createPeriodSchema,
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createCompositionAttesterSchema } from "../compositionattester/schema";
-import { createCompositionRelatesToSchema } from "../compositionrelatesto/schema";
-import { createCompositionEventSchema } from "../compositionevent/schema";
-import { createCompositionSectionSchema } from "../compositionsection/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -51,6 +48,78 @@ export function createCompositionSchema() {
       custodian: createReferenceSchema().optional(),
       relatesTo: z.array(createCompositionRelatesToSchema()).optional(),
       event: z.array(createCompositionEventSchema()).optional(),
+      section: z.array(createCompositionSectionSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createCompositionAttesterSchema() {
+  return getCachedSchema("CompositionAttester", () => {
+    const baseSchema: z.ZodType<types.CompositionAttester> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      mode: z.enum(["personal", "professional", "legal", "official"]),
+      _mode: createElementSchema().optional(),
+      time: primitives.getDateTimeSchema().optional(),
+      _time: createElementSchema().optional(),
+      party: createReferenceSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createCompositionRelatesToSchema() {
+  return getCachedSchema("CompositionRelatesTo", () => {
+    const baseSchema: z.ZodType<types.CompositionRelatesTo> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      code: primitives.getCodeSchema(),
+      _code: createElementSchema().optional(),
+      targetIdentifier: createIdentifierSchema().optional(),
+      targetReference: createReferenceSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createCompositionEventSchema() {
+  return getCachedSchema("CompositionEvent", () => {
+    const baseSchema: z.ZodType<types.CompositionEvent> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      code: z.array(createCodeableConceptSchema()).optional(),
+      period: createPeriodSchema().optional(),
+      detail: z.array(createReferenceSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createCompositionSectionSchema() {
+  return getCachedSchema("CompositionSection", () => {
+    const baseSchema: z.ZodType<types.CompositionSection> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      title: primitives.getStringSchema().optional(),
+      _title: createElementSchema().optional(),
+      code: createCodeableConceptSchema().optional(),
+      author: z.array(createReferenceSchema()).optional(),
+      focus: createReferenceSchema().optional(),
+      text: createNarrativeSchema().optional(),
+      mode: primitives.getCodeSchema().optional(),
+      _mode: createElementSchema().optional(),
+      orderedBy: createCodeableConceptSchema().optional(),
+      entry: z.array(createReferenceSchema()).optional(),
+      emptyReason: createCodeableConceptSchema().optional(),
       section: z.array(createCompositionSectionSchema()).optional(),
     });
 

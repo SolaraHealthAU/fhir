@@ -9,13 +9,10 @@ import {
   createContactDetailSchema,
   createUsageContextSchema,
   createCodeableConceptSchema,
+  createReferenceSchema,
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createImplementationGuideDependsOnSchema } from "../implementationguidedependson/schema";
-import { createImplementationGuideGlobalSchema } from "../implementationguideglobal/schema";
-import { createImplementationGuideDefinitionSchema } from "../implementationguidedefinition/schema";
-import { createImplementationGuideManifestSchema } from "../implementationguidemanifest/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -441,6 +438,260 @@ export function createImplementationGuideSchema() {
       definition: createImplementationGuideDefinitionSchema().optional(),
       manifest: createImplementationGuideManifestSchema().optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createImplementationGuideDependsOnSchema() {
+  return getCachedSchema("ImplementationGuideDependsOn", () => {
+    const baseSchema: z.ZodType<types.ImplementationGuideDependsOn> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        uri: primitives.getCanonicalSchema(),
+        packageId: primitives.getIdSchema().optional(),
+        _packageId: createElementSchema().optional(),
+        version: primitives.getStringSchema().optional(),
+        _version: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createImplementationGuideGlobalSchema() {
+  return getCachedSchema("ImplementationGuideGlobal", () => {
+    const baseSchema: z.ZodType<types.ImplementationGuideGlobal> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        type: primitives.getCodeSchema(),
+        _type: createElementSchema().optional(),
+        profile: primitives.getCanonicalSchema(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createImplementationGuideDefinitionSchema() {
+  return getCachedSchema("ImplementationGuideDefinition", () => {
+    const baseSchema: z.ZodType<types.ImplementationGuideDefinition> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        grouping: z.array(createImplementationGuideGroupingSchema()).optional(),
+        resource: z.array(createImplementationGuideResourceSchema()),
+        page: createImplementationGuidePageSchema().optional(),
+        parameter: z
+          .array(createImplementationGuideParameterSchema())
+          .optional(),
+        template: z.array(createImplementationGuideTemplateSchema()).optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createImplementationGuideGroupingSchema() {
+  return getCachedSchema("ImplementationGuideGrouping", () => {
+    const baseSchema: z.ZodType<types.ImplementationGuideGrouping> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        name: primitives.getStringSchema().optional(),
+        _name: createElementSchema().optional(),
+        description: primitives.getStringSchema().optional(),
+        _description: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createImplementationGuideResourceSchema() {
+  return getCachedSchema("ImplementationGuideResource", () => {
+    const baseSchema: z.ZodType<types.ImplementationGuideResource> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        reference: createReferenceSchema(),
+        fhirVersion: z
+          .enum([
+            "0.01",
+            "0.05",
+            "0.06",
+            "0.11",
+            "0.0.80",
+            "0.0.81",
+            "0.0.82",
+            "0.4.0",
+            "0.5.0",
+            "1.0.0",
+            "1.0.1",
+            "1.0.2",
+            "1.1.0",
+            "1.4.0",
+            "1.6.0",
+            "1.8.0",
+            "3.0.0",
+            "3.0.1",
+            "3.3.0",
+            "3.5.0",
+            "4.0.0",
+            "4.0.1",
+          ])
+          .array()
+          .optional(),
+        _fhirVersion: z.array(createElementSchema()).optional(),
+        name: primitives.getStringSchema().optional(),
+        _name: createElementSchema().optional(),
+        description: primitives.getStringSchema().optional(),
+        _description: createElementSchema().optional(),
+        exampleBoolean: z.boolean().optional(),
+        _exampleBoolean: createElementSchema().optional(),
+        exampleCanonical: z.string().optional(),
+        _exampleCanonical: createElementSchema().optional(),
+        groupingId: primitives.getIdSchema().optional(),
+        _groupingId: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createImplementationGuidePageSchema() {
+  return getCachedSchema("ImplementationGuidePage", () => {
+    const baseSchema: z.ZodType<types.ImplementationGuidePage> = z.strictObject(
+      {
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        nameUrl: z.string().optional(),
+        _nameUrl: createElementSchema().optional(),
+        nameReference: createReferenceSchema().optional(),
+        title: primitives.getStringSchema().optional(),
+        _title: createElementSchema().optional(),
+        generation: z.enum(["html", "markdown", "xml", "generated"]).optional(),
+        _generation: createElementSchema().optional(),
+        page: z.array(createImplementationGuidePageSchema()).optional(),
+      },
+    );
+
+    return baseSchema;
+  });
+}
+
+export function createImplementationGuideParameterSchema() {
+  return getCachedSchema("ImplementationGuideParameter", () => {
+    const baseSchema: z.ZodType<types.ImplementationGuideParameter> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        code: z
+          .enum([
+            "apply",
+            "path-resource",
+            "path-pages",
+            "path-tx-cache",
+            "expansion-parameter",
+            "rule-broken-links",
+            "generate-xml",
+            "generate-json",
+            "generate-turtle",
+            "html-template",
+          ])
+          .optional(),
+        _code: createElementSchema().optional(),
+        value: primitives.getStringSchema().optional(),
+        _value: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createImplementationGuideTemplateSchema() {
+  return getCachedSchema("ImplementationGuideTemplate", () => {
+    const baseSchema: z.ZodType<types.ImplementationGuideTemplate> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        code: primitives.getCodeSchema().optional(),
+        _code: createElementSchema().optional(),
+        source: primitives.getStringSchema().optional(),
+        _source: createElementSchema().optional(),
+        scope: primitives.getStringSchema().optional(),
+        _scope: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createImplementationGuideManifestSchema() {
+  return getCachedSchema("ImplementationGuideManifest", () => {
+    const baseSchema: z.ZodType<types.ImplementationGuideManifest> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        rendering: primitives.getUrlSchema().optional(),
+        _rendering: createElementSchema().optional(),
+        resource: z.array(createImplementationGuideResource1Schema()),
+        page: z.array(createImplementationGuidePage1Schema()).optional(),
+        image: z.array(primitives.getStringSchema()).optional(),
+        _image: z.array(createElementSchema()).optional(),
+        other: z.array(primitives.getStringSchema()).optional(),
+        _other: z.array(createElementSchema()).optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createImplementationGuideResource1Schema() {
+  return getCachedSchema("ImplementationGuideResource1", () => {
+    const baseSchema: z.ZodType<types.ImplementationGuideResource1> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        reference: createReferenceSchema(),
+        exampleBoolean: z.boolean().optional(),
+        _exampleBoolean: createElementSchema().optional(),
+        exampleCanonical: z.string().optional(),
+        _exampleCanonical: createElementSchema().optional(),
+        relativePath: primitives.getUrlSchema().optional(),
+        _relativePath: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createImplementationGuidePage1Schema() {
+  return getCachedSchema("ImplementationGuidePage1", () => {
+    const baseSchema: z.ZodType<types.ImplementationGuidePage1> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        name: primitives.getStringSchema().optional(),
+        _name: createElementSchema().optional(),
+        title: primitives.getStringSchema().optional(),
+        _title: createElementSchema().optional(),
+        anchor: z.array(primitives.getStringSchema()).optional(),
+        _anchor: z.array(createElementSchema()).optional(),
+      });
 
     return baseSchema;
   });

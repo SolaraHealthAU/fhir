@@ -50,8 +50,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("OperationDefinition Schema Validation", () => {
-  it("should validate OperationActivitydefinitionApply fixture", () => {
+describe("Operationdefinition Group Schema Validation", () => {
+  it("should validate OperationActivitydefinitionApply fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationActivitydefinitionApply,
     );
@@ -65,7 +65,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationActivitydefinitionDataRequirements fixture", () => {
+  it("should validate OperationActivitydefinitionDataRequirements fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationActivitydefinitionDataRequirements,
     );
@@ -81,7 +81,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationCapabilitystatementConforms fixture", () => {
+  it("should validate OperationCapabilitystatementConforms fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationCapabilitystatementConforms,
     );
@@ -97,7 +97,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationCapabilitystatementImplements fixture", () => {
+  it("should validate OperationCapabilitystatementImplements fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationCapabilitystatementImplements,
     );
@@ -113,7 +113,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationCapabilitystatementSubset fixture", () => {
+  it("should validate OperationCapabilitystatementSubset fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationCapabilitystatementSubset,
     );
@@ -129,7 +129,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationCapabilitystatementVersions fixture", () => {
+  it("should validate OperationCapabilitystatementVersions fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationCapabilitystatementVersions,
     );
@@ -145,7 +145,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationChargeitemdefinitionApply fixture", () => {
+  it("should validate OperationChargeitemdefinitionApply fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationChargeitemdefinitionApply,
     );
@@ -161,7 +161,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationClaimSubmit fixture", () => {
+  it("should validate OperationClaimSubmit fixture (OperationDefinition)", () => {
     const result =
       createOperationDefinitionSchema().safeParse(OperationClaimSubmit);
     if (!result.success) {
@@ -174,7 +174,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationCodesystemFindMatches fixture", () => {
+  it("should validate OperationCodesystemFindMatches fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationCodesystemFindMatches,
     );
@@ -188,7 +188,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationCodesystemLookup fixture", () => {
+  it("should validate OperationCodesystemLookup fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationCodesystemLookup,
     );
@@ -202,7 +202,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationCodesystemSubsumes fixture", () => {
+  it("should validate OperationCodesystemSubsumes fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationCodesystemSubsumes,
     );
@@ -216,7 +216,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationCodesystemValidateCode fixture", () => {
+  it("should validate OperationCodesystemValidateCode fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationCodesystemValidateCode,
     );
@@ -230,7 +230,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationCompositionDocument fixture", () => {
+  it("should validate OperationCompositionDocument fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationCompositionDocument,
     );
@@ -244,7 +244,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationConceptmapClosure fixture", () => {
+  it("should validate OperationConceptmapClosure fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationConceptmapClosure,
     );
@@ -258,7 +258,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationConceptmapTranslate fixture", () => {
+  it("should validate OperationConceptmapTranslate fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationConceptmapTranslate,
     );
@@ -272,7 +272,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationCoverageeligibilityrequestSubmit fixture", () => {
+  it("should validate OperationCoverageeligibilityrequestSubmit fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationCoverageeligibilityrequestSubmit,
     );
@@ -288,7 +288,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationEncounterEverything fixture", () => {
+  it("should validate OperationEncounterEverything fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationEncounterEverything,
     );
@@ -302,7 +302,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationGroupEverything fixture", () => {
+  it("should validate OperationGroupEverything fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationGroupEverything,
     );
@@ -316,7 +316,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationLibraryDataRequirements fixture", () => {
+  it("should validate OperationLibraryDataRequirements fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationLibraryDataRequirements,
     );
@@ -330,7 +330,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationListFind fixture", () => {
+  it("should validate OperationListFind fixture (OperationDefinition)", () => {
     const result =
       createOperationDefinitionSchema().safeParse(OperationListFind);
     if (!result.success) {
@@ -343,7 +343,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationMeasureCareGaps fixture", () => {
+  it("should validate OperationMeasureCareGaps fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationMeasureCareGaps,
     );
@@ -357,7 +357,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationMeasureCollectData fixture", () => {
+  it("should validate OperationMeasureCollectData fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationMeasureCollectData,
     );
@@ -371,7 +371,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationMeasureDataRequirements fixture", () => {
+  it("should validate OperationMeasureDataRequirements fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationMeasureDataRequirements,
     );
@@ -385,7 +385,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationMeasureEvaluateMeasure fixture", () => {
+  it("should validate OperationMeasureEvaluateMeasure fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationMeasureEvaluateMeasure,
     );
@@ -399,7 +399,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationMeasureSubmitData fixture", () => {
+  it("should validate OperationMeasureSubmitData fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationMeasureSubmitData,
     );
@@ -413,7 +413,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationMedicinalproductEverything fixture", () => {
+  it("should validate OperationMedicinalproductEverything fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationMedicinalproductEverything,
     );
@@ -429,7 +429,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationMessageheaderProcessMessage fixture", () => {
+  it("should validate OperationMessageheaderProcessMessage fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationMessageheaderProcessMessage,
     );
@@ -445,7 +445,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationNamingsystemPreferredId fixture", () => {
+  it("should validate OperationNamingsystemPreferredId fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationNamingsystemPreferredId,
     );
@@ -459,7 +459,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationObservationLastn fixture", () => {
+  it("should validate OperationObservationLastn fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationObservationLastn,
     );
@@ -473,7 +473,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationObservationStats fixture", () => {
+  it("should validate OperationObservationStats fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationObservationStats,
     );
@@ -487,7 +487,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationPatientEverything fixture", () => {
+  it("should validate OperationPatientEverything fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationPatientEverything,
     );
@@ -501,7 +501,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationPatientMatch fixture", () => {
+  it("should validate OperationPatientMatch fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationPatientMatch,
     );
@@ -515,7 +515,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationPlandefinitionApply fixture", () => {
+  it("should validate OperationPlandefinitionApply fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationPlandefinitionApply,
     );
@@ -529,7 +529,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationPlandefinitionDataRequirements fixture", () => {
+  it("should validate OperationPlandefinitionDataRequirements fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationPlandefinitionDataRequirements,
     );
@@ -545,7 +545,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationResourceConvert fixture", () => {
+  it("should validate OperationResourceConvert fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationResourceConvert,
     );
@@ -559,7 +559,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationResourceGraph fixture", () => {
+  it("should validate OperationResourceGraph fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationResourceGraph,
     );
@@ -573,7 +573,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationResourceGraphql fixture", () => {
+  it("should validate OperationResourceGraphql fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationResourceGraphql,
     );
@@ -587,7 +587,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationResourceMetaAdd fixture", () => {
+  it("should validate OperationResourceMetaAdd fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationResourceMetaAdd,
     );
@@ -601,7 +601,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationResourceMetaDelete fixture", () => {
+  it("should validate OperationResourceMetaDelete fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationResourceMetaDelete,
     );
@@ -615,7 +615,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationResourceMeta fixture", () => {
+  it("should validate OperationResourceMeta fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationResourceMeta,
     );
@@ -629,7 +629,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationResourceValidate fixture", () => {
+  it("should validate OperationResourceValidate fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationResourceValidate,
     );
@@ -643,7 +643,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationStructuredefinitionQuestionnaire fixture", () => {
+  it("should validate OperationStructuredefinitionQuestionnaire fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationStructuredefinitionQuestionnaire,
     );
@@ -659,7 +659,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationStructuredefinitionSnapshot fixture", () => {
+  it("should validate OperationStructuredefinitionSnapshot fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationStructuredefinitionSnapshot,
     );
@@ -675,7 +675,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationStructuremapTransform fixture", () => {
+  it("should validate OperationStructuremapTransform fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationStructuremapTransform,
     );
@@ -689,7 +689,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationValuesetExpand fixture", () => {
+  it("should validate OperationValuesetExpand fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationValuesetExpand,
     );
@@ -703,7 +703,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationValuesetValidateCode fixture", () => {
+  it("should validate OperationValuesetValidateCode fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationValuesetValidateCode,
     );
@@ -717,7 +717,7 @@ describe("OperationDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationdefinitionExample fixture", () => {
+  it("should validate OperationdefinitionExample fixture (OperationDefinition)", () => {
     const result = createOperationDefinitionSchema().safeParse(
       OperationdefinitionExample,
     );

@@ -13,8 +13,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Encounter Schema Validation", () => {
-  it("should validate EncounterExampleEmerg fixture", () => {
+describe("Encounter Group Schema Validation", () => {
+  it("should validate EncounterExampleEmerg fixture (Encounter)", () => {
     const result = createEncounterSchema().safeParse(EncounterExampleEmerg);
     if (!result.success) {
       console.error("Validation failed for EncounterExampleEmerg:");
@@ -26,7 +26,7 @@ describe("Encounter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EncounterExampleF001Heart fixture", () => {
+  it("should validate EncounterExampleF001Heart fixture (Encounter)", () => {
     const result = createEncounterSchema().safeParse(EncounterExampleF001Heart);
     if (!result.success) {
       console.error("Validation failed for EncounterExampleF001Heart:");
@@ -38,7 +38,7 @@ describe("Encounter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EncounterExampleF002Lung fixture", () => {
+  it("should validate EncounterExampleF002Lung fixture (Encounter)", () => {
     const result = createEncounterSchema().safeParse(EncounterExampleF002Lung);
     if (!result.success) {
       console.error("Validation failed for EncounterExampleF002Lung:");
@@ -50,7 +50,7 @@ describe("Encounter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EncounterExampleF003Abscess fixture", () => {
+  it("should validate EncounterExampleF003Abscess fixture (Encounter)", () => {
     const result = createEncounterSchema().safeParse(
       EncounterExampleF003Abscess,
     );
@@ -64,7 +64,7 @@ describe("Encounter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EncounterExampleF20120130404 fixture", () => {
+  it("should validate EncounterExampleF20120130404 fixture (Encounter)", () => {
     const result = createEncounterSchema().safeParse(
       EncounterExampleF20120130404,
     );
@@ -78,7 +78,7 @@ describe("Encounter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EncounterExampleF20220130128 fixture", () => {
+  it("should validate EncounterExampleF20220130128 fixture (Encounter)", () => {
     const result = createEncounterSchema().safeParse(
       EncounterExampleF20220130128,
     );
@@ -92,7 +92,7 @@ describe("Encounter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EncounterExampleF20320130311 fixture", () => {
+  it("should validate EncounterExampleF20320130311 fixture (Encounter)", () => {
     const result = createEncounterSchema().safeParse(
       EncounterExampleF20320130311,
     );
@@ -106,7 +106,7 @@ describe("Encounter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EncounterExampleHome fixture", () => {
+  it("should validate EncounterExampleHome fixture (Encounter)", () => {
     const result = createEncounterSchema().safeParse(EncounterExampleHome);
     if (!result.success) {
       console.error("Validation failed for EncounterExampleHome:");
@@ -118,7 +118,7 @@ describe("Encounter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EncounterExampleXcda fixture", () => {
+  it("should validate EncounterExampleXcda fixture (Encounter)", () => {
     const result = createEncounterSchema().safeParse(EncounterExampleXcda);
     if (!result.success) {
       console.error("Validation failed for EncounterExampleXcda:");
@@ -130,7 +130,7 @@ describe("Encounter Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EncounterExample fixture", () => {
+  it("should validate EncounterExample fixture (Encounter)", () => {
     const result = createEncounterSchema().safeParse(EncounterExample);
     if (!result.success) {
       console.error("Validation failed for EncounterExample:");

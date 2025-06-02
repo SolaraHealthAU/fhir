@@ -10,12 +10,10 @@ import {
   createContactDetailSchema,
   createUsageContextSchema,
   createCodeableConceptSchema,
+  createCodingSchema,
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createCodeSystemFilterSchema } from "../codesystemfilter/schema";
-import { createCodeSystemPropertySchema } from "../codesystemproperty/schema";
-import { createCodeSystemConceptSchema } from "../codesystemconcept/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -84,6 +82,119 @@ export function createCodeSystemSchema() {
       filter: z.array(createCodeSystemFilterSchema()).optional(),
       property: z.array(createCodeSystemPropertySchema()).optional(),
       concept: z.array(createCodeSystemConceptSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createCodeSystemFilterSchema() {
+  return getCachedSchema("CodeSystemFilter", () => {
+    const baseSchema: z.ZodType<types.CodeSystemFilter> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      code: primitives.getCodeSchema(),
+      _code: createElementSchema().optional(),
+      description: primitives.getStringSchema().optional(),
+      _description: createElementSchema().optional(),
+      operator: z.array(primitives.getCodeSchema()),
+      _operator: z.array(createElementSchema()).optional(),
+      value: primitives.getStringSchema(),
+      _value: createElementSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createCodeSystemPropertySchema() {
+  return getCachedSchema("CodeSystemProperty", () => {
+    const baseSchema: z.ZodType<types.CodeSystemProperty> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      code: primitives.getCodeSchema(),
+      _code: createElementSchema().optional(),
+      uri: primitives.getUriSchema().optional(),
+      _uri: createElementSchema().optional(),
+      description: primitives.getStringSchema().optional(),
+      _description: createElementSchema().optional(),
+      type: z.enum([
+        "code",
+        "Coding",
+        "string",
+        "integer",
+        "boolean",
+        "dateTime",
+        "decimal",
+      ]),
+      _type: createElementSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createCodeSystemConceptSchema() {
+  return getCachedSchema("CodeSystemConcept", () => {
+    const baseSchema: z.ZodType<types.CodeSystemConcept> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      code: primitives.getCodeSchema(),
+      _code: createElementSchema().optional(),
+      display: primitives.getStringSchema().optional(),
+      _display: createElementSchema().optional(),
+      definition: primitives.getStringSchema().optional(),
+      _definition: createElementSchema().optional(),
+      designation: z.array(createCodeSystemDesignationSchema()).optional(),
+      property: z.array(createCodeSystemProperty1Schema()).optional(),
+      concept: z.array(createCodeSystemConceptSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createCodeSystemDesignationSchema() {
+  return getCachedSchema("CodeSystemDesignation", () => {
+    const baseSchema: z.ZodType<types.CodeSystemDesignation> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: createElementSchema().optional(),
+      use: createCodingSchema().optional(),
+      value: primitives.getStringSchema().optional(),
+      _value: createElementSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createCodeSystemProperty1Schema() {
+  return getCachedSchema("CodeSystemProperty1", () => {
+    const baseSchema: z.ZodType<types.CodeSystemProperty1> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      code: primitives.getCodeSchema().optional(),
+      _code: createElementSchema().optional(),
+      valueCode: z.string().optional(),
+      _valueCode: createElementSchema().optional(),
+      valueCoding: createCodingSchema().optional(),
+      valueString: z.string().optional(),
+      _valueString: createElementSchema().optional(),
+      valueInteger: z.number().optional(),
+      _valueInteger: createElementSchema().optional(),
+      valueBoolean: z.boolean().optional(),
+      _valueBoolean: createElementSchema().optional(),
+      valueDateTime: z.string().optional(),
+      _valueDateTime: createElementSchema().optional(),
+      valueDecimal: z.number().optional(),
+      _valueDecimal: createElementSchema().optional(),
     });
 
     return baseSchema;

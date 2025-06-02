@@ -12,7 +12,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createAdverseEventSuspectEntitySchema } from "../adverseeventsuspectentity/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -56,6 +55,38 @@ export function createAdverseEventSchema() {
       subjectMedicalHistory: z.array(createReferenceSchema()).optional(),
       referenceDocument: z.array(createReferenceSchema()).optional(),
       study: z.array(createReferenceSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createAdverseEventSuspectEntitySchema() {
+  return getCachedSchema("AdverseEventSuspectEntity", () => {
+    const baseSchema: z.ZodType<types.AdverseEventSuspectEntity> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        instance: createReferenceSchema(),
+        causality: z.array(createAdverseEventCausalitySchema()).optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createAdverseEventCausalitySchema() {
+  return getCachedSchema("AdverseEventCausality", () => {
+    const baseSchema: z.ZodType<types.AdverseEventCausality> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      assessment: createCodeableConceptSchema().optional(),
+      productRelatedness: primitives.getStringSchema().optional(),
+      _productRelatedness: createElementSchema().optional(),
+      author: createReferenceSchema().optional(),
+      method: createCodeableConceptSchema().optional(),
     });
 
     return baseSchema;

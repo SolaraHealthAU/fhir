@@ -13,7 +13,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createListEntrySchema } from "../listentry/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -48,6 +47,24 @@ export function createListSchema() {
       note: z.array(createAnnotationSchema()).optional(),
       entry: z.array(createListEntrySchema()).optional(),
       emptyReason: createCodeableConceptSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createListEntrySchema() {
+  return getCachedSchema("ListEntry", () => {
+    const baseSchema: z.ZodType<types.ListEntry> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      flag: createCodeableConceptSchema().optional(),
+      deleted: primitives.getBooleanSchema().optional(),
+      _deleted: createElementSchema().optional(),
+      date: primitives.getDateTimeSchema().optional(),
+      _date: createElementSchema().optional(),
+      item: createReferenceSchema(),
     });
 
     return baseSchema;

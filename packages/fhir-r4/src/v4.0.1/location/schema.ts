@@ -15,8 +15,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createLocationPositionSchema } from "../locationposition/schema";
-import { createLocationHoursOfOperationSchema } from "../locationhoursofoperation/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -60,6 +58,45 @@ export function createLocationSchema() {
       _availabilityExceptions: createElementSchema().optional(),
       endpoint: z.array(createReferenceSchema()).optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createLocationPositionSchema() {
+  return getCachedSchema("LocationPosition", () => {
+    const baseSchema: z.ZodType<types.LocationPosition> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      longitude: primitives.getDecimalSchema(),
+      _longitude: createElementSchema().optional(),
+      latitude: primitives.getDecimalSchema(),
+      _latitude: createElementSchema().optional(),
+      altitude: primitives.getDecimalSchema().optional(),
+      _altitude: createElementSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createLocationHoursOfOperationSchema() {
+  return getCachedSchema("LocationHoursOfOperation", () => {
+    const baseSchema: z.ZodType<types.LocationHoursOfOperation> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        daysOfWeek: z.array(primitives.getCodeSchema()).optional(),
+        _daysOfWeek: z.array(createElementSchema()).optional(),
+        allDay: primitives.getBooleanSchema().optional(),
+        _allDay: createElementSchema().optional(),
+        openingTime: primitives.getTimeSchema().optional(),
+        _openingTime: createElementSchema().optional(),
+        closingTime: primitives.getTimeSchema().optional(),
+        _closingTime: createElementSchema().optional(),
+      });
 
     return baseSchema;
   });

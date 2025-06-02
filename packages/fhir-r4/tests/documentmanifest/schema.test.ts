@@ -5,8 +5,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("DocumentManifest Schema Validation", () => {
-  it("should validate DocumentmanifestExample fixture", () => {
+describe("Documentmanifest Group Schema Validation", () => {
+  it("should validate DocumentmanifestExample fixture (DocumentManifest)", () => {
     const result = createDocumentManifestSchema().safeParse(
       DocumentmanifestExample,
     );
@@ -20,7 +20,7 @@ describe("DocumentManifest Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DocumentmanifestFmAttachment fixture", () => {
+  it("should validate DocumentmanifestFmAttachment fixture (DocumentManifest)", () => {
     const result = createDocumentManifestSchema().safeParse(
       DocumentmanifestFmAttachment,
     );

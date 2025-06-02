@@ -19,8 +19,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Procedure Schema Validation", () => {
-  it("should validate ProcedureExampleHcbs fixture", () => {
+describe("Procedure Group Schema Validation", () => {
+  it("should validate ProcedureExampleHcbs fixture (Procedure)", () => {
     const result = createProcedureSchema().safeParse(ProcedureExampleHcbs);
     if (!result.success) {
       console.error("Validation failed for ProcedureExampleHcbs:");
@@ -32,7 +32,7 @@ describe("Procedure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProcedureExampleAmbulation fixture", () => {
+  it("should validate ProcedureExampleAmbulation fixture (Procedure)", () => {
     const result = createProcedureSchema().safeParse(
       ProcedureExampleAmbulation,
     );
@@ -46,7 +46,7 @@ describe("Procedure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProcedureExampleAppendectomyNarrative fixture", () => {
+  it("should validate ProcedureExampleAppendectomyNarrative fixture (Procedure)", () => {
     const result = createProcedureSchema().safeParse(
       ProcedureExampleAppendectomyNarrative,
     );
@@ -62,7 +62,7 @@ describe("Procedure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProcedureExampleBiopsy fixture", () => {
+  it("should validate ProcedureExampleBiopsy fixture (Procedure)", () => {
     const result = createProcedureSchema().safeParse(ProcedureExampleBiopsy);
     if (!result.success) {
       console.error("Validation failed for ProcedureExampleBiopsy:");
@@ -74,7 +74,7 @@ describe("Procedure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProcedureExampleColonBiopsy fixture", () => {
+  it("should validate ProcedureExampleColonBiopsy fixture (Procedure)", () => {
     const result = createProcedureSchema().safeParse(
       ProcedureExampleColonBiopsy,
     );
@@ -88,7 +88,7 @@ describe("Procedure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProcedureExampleColonoscopy fixture", () => {
+  it("should validate ProcedureExampleColonoscopy fixture (Procedure)", () => {
     const result = createProcedureSchema().safeParse(
       ProcedureExampleColonoscopy,
     );
@@ -102,7 +102,7 @@ describe("Procedure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProcedureExampleEducation fixture", () => {
+  it("should validate ProcedureExampleEducation fixture (Procedure)", () => {
     const result = createProcedureSchema().safeParse(ProcedureExampleEducation);
     if (!result.success) {
       console.error("Validation failed for ProcedureExampleEducation:");
@@ -114,7 +114,7 @@ describe("Procedure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProcedureExampleF001Heart fixture", () => {
+  it("should validate ProcedureExampleF001Heart fixture (Procedure)", () => {
     const result = createProcedureSchema().safeParse(ProcedureExampleF001Heart);
     if (!result.success) {
       console.error("Validation failed for ProcedureExampleF001Heart:");
@@ -126,7 +126,7 @@ describe("Procedure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProcedureExampleF002Lung fixture", () => {
+  it("should validate ProcedureExampleF002Lung fixture (Procedure)", () => {
     const result = createProcedureSchema().safeParse(ProcedureExampleF002Lung);
     if (!result.success) {
       console.error("Validation failed for ProcedureExampleF002Lung:");
@@ -138,7 +138,7 @@ describe("Procedure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProcedureExampleF003Abscess fixture", () => {
+  it("should validate ProcedureExampleF003Abscess fixture (Procedure)", () => {
     const result = createProcedureSchema().safeParse(
       ProcedureExampleF003Abscess,
     );
@@ -152,7 +152,7 @@ describe("Procedure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProcedureExampleF004Tracheotomy fixture", () => {
+  it("should validate ProcedureExampleF004Tracheotomy fixture (Procedure)", () => {
     const result = createProcedureSchema().safeParse(
       ProcedureExampleF004Tracheotomy,
     );
@@ -166,7 +166,7 @@ describe("Procedure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProcedureExampleF201Tpf fixture", () => {
+  it("should validate ProcedureExampleF201Tpf fixture (Procedure)", () => {
     const result = createProcedureSchema().safeParse(ProcedureExampleF201Tpf);
     if (!result.success) {
       console.error("Validation failed for ProcedureExampleF201Tpf:");
@@ -178,7 +178,7 @@ describe("Procedure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProcedureExampleImplant fixture", () => {
+  it("should validate ProcedureExampleImplant fixture (Procedure)", () => {
     const result = createProcedureSchema().safeParse(ProcedureExampleImplant);
     if (!result.success) {
       console.error("Validation failed for ProcedureExampleImplant:");
@@ -190,7 +190,7 @@ describe("Procedure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProcedureExampleOb fixture", () => {
+  it("should validate ProcedureExampleOb fixture (Procedure)", () => {
     const result = createProcedureSchema().safeParse(ProcedureExampleOb);
     if (!result.success) {
       console.error("Validation failed for ProcedureExampleOb:");
@@ -202,7 +202,7 @@ describe("Procedure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProcedureExamplePhysicalTherapy fixture", () => {
+  it("should validate ProcedureExamplePhysicalTherapy fixture (Procedure)", () => {
     const result = createProcedureSchema().safeParse(
       ProcedureExamplePhysicalTherapy,
     );
@@ -216,7 +216,7 @@ describe("Procedure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProcedureExample fixture", () => {
+  it("should validate ProcedureExample fixture (Procedure)", () => {
     const result = createProcedureSchema().safeParse(ProcedureExample);
     if (!result.success) {
       console.error("Validation failed for ProcedureExample:");

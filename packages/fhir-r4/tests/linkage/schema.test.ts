@@ -2,8 +2,8 @@ import { createLinkageSchema } from "../../src";
 import { LinkageExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Linkage Schema Validation", () => {
-  it("should validate LinkageExample fixture", () => {
+describe("Linkage Group Schema Validation", () => {
+  it("should validate LinkageExample fixture (Linkage)", () => {
     const result = createLinkageSchema().safeParse(LinkageExample);
     if (!result.success) {
       console.error("Validation failed for LinkageExample:");

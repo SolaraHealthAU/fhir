@@ -6,11 +6,35 @@ import type {
   ContactDetail,
   UsageContext,
   CodeableConcept,
+  Address,
+  Age,
+  Annotation,
+  Attachment,
+  Coding,
+  ContactPoint,
+  Count,
+  Distance,
+  Duration,
+  HumanName,
+  Money,
+  Period,
+  Quantity,
+  Range,
+  Ratio,
+  Reference,
+  SampledData,
+  Signature,
+  Timing,
+  Contributor,
+  DataRequirement,
+  Expression,
+  ParameterDefinition,
+  RelatedArtifact,
+  TriggerDefinition,
+  Dosage,
 } from "../core/types";
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
-import type { StructureMapStructure } from "../structuremapstructure/types";
-import type { StructureMapGroup } from "../structuremapgroup/types";
 
 /** Generated from FHIR JSON Schema */
 
@@ -97,4 +121,401 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   import?: string[];
 
   group: StructureMapGroup[];
+}
+
+/** A Map of relationships between 2 structures that can be used to transform data. */
+export interface StructureMapStructure {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** The canonical reference to the structure. */
+  url: string;
+  /** How the referenced structure is used in this mapping. */
+  mode: "source" | "queried" | "target" | "produced";
+
+  _mode?: Element;
+  /** The name used for this type in the map. */
+  alias?: string;
+
+  _alias?: Element;
+  /** Documentation that describes how the structure is used in the mapping. */
+  documentation?: string;
+
+  _documentation?: Element;
+}
+
+/** A Map of relationships between 2 structures that can be used to transform data. */
+export interface StructureMapGroup {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** A unique name for the group for the convenience of human readers. */
+  name: string;
+
+  _name?: Element;
+  /** Another group that this group adds rules to. */
+  extends?: string;
+
+  _extends?: Element;
+  /** If this is the default rule set to apply for the source type or this combination of types. */
+  typeMode: "none" | "types" | "type-and-types";
+
+  _typeMode?: Element;
+  /** Additional supporting documentation that explains the purpose of the group and the types of mappings within it. */
+  documentation?: string;
+
+  _documentation?: Element;
+
+  input: StructureMapInput[];
+
+  rule: StructureMapRule[];
+}
+
+/** A Map of relationships between 2 structures that can be used to transform data. */
+export interface StructureMapInput {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  name?: string;
+
+  _name?: Element;
+
+  type?: string;
+
+  _type?: Element;
+
+  mode?: "source" | "target";
+
+  _mode?: Element;
+
+  documentation?: string;
+
+  _documentation?: Element;
+}
+
+/** A Map of relationships between 2 structures that can be used to transform data. */
+export interface StructureMapRule {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  name?: string;
+
+  _name?: Element;
+
+  source: StructureMapSource[];
+
+  target?: StructureMapTarget[];
+
+  rule?: StructureMapRule[];
+
+  dependent?: StructureMapDependent[];
+
+  documentation?: string;
+
+  _documentation?: Element;
+}
+
+/** A Map of relationships between 2 structures that can be used to transform data. */
+export interface StructureMapSource {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  context?: string;
+
+  _context?: Element;
+
+  min?: number;
+
+  _min?: Element;
+
+  max?: string;
+
+  _max?: Element;
+
+  type?: string;
+
+  _type?: Element;
+
+  defaultValueBase64Binary?: string;
+
+  _defaultValueBase64Binary?: Element;
+
+  defaultValueBoolean?: boolean;
+
+  _defaultValueBoolean?: Element;
+
+  defaultValueCanonical?: string;
+
+  _defaultValueCanonical?: Element;
+
+  defaultValueCode?: string;
+
+  _defaultValueCode?: Element;
+
+  defaultValueDate?: string;
+
+  _defaultValueDate?: Element;
+
+  defaultValueDateTime?: string;
+
+  _defaultValueDateTime?: Element;
+
+  defaultValueDecimal?: number;
+
+  _defaultValueDecimal?: Element;
+
+  defaultValueId?: string;
+
+  _defaultValueId?: Element;
+
+  defaultValueInstant?: string;
+
+  _defaultValueInstant?: Element;
+
+  defaultValueInteger?: number;
+
+  _defaultValueInteger?: Element;
+
+  defaultValueMarkdown?: string;
+
+  _defaultValueMarkdown?: Element;
+
+  defaultValueOid?: string;
+
+  _defaultValueOid?: Element;
+
+  defaultValuePositiveInt?: number;
+
+  _defaultValuePositiveInt?: Element;
+
+  defaultValueString?: string;
+
+  _defaultValueString?: Element;
+
+  defaultValueTime?: string;
+
+  _defaultValueTime?: Element;
+
+  defaultValueUnsignedInt?: number;
+
+  _defaultValueUnsignedInt?: Element;
+
+  defaultValueUri?: string;
+
+  _defaultValueUri?: Element;
+
+  defaultValueUrl?: string;
+
+  _defaultValueUrl?: Element;
+
+  defaultValueUuid?: string;
+
+  _defaultValueUuid?: Element;
+
+  defaultValueAddress?: Address;
+
+  defaultValueAge?: Age;
+
+  defaultValueAnnotation?: Annotation;
+
+  defaultValueAttachment?: Attachment;
+
+  defaultValueCodeableConcept?: CodeableConcept;
+
+  defaultValueCoding?: Coding;
+
+  defaultValueContactPoint?: ContactPoint;
+
+  defaultValueCount?: Count;
+
+  defaultValueDistance?: Distance;
+
+  defaultValueDuration?: Duration;
+
+  defaultValueHumanName?: HumanName;
+
+  defaultValueIdentifier?: Identifier;
+
+  defaultValueMoney?: Money;
+
+  defaultValuePeriod?: Period;
+
+  defaultValueQuantity?: Quantity;
+
+  defaultValueRange?: Range;
+
+  defaultValueRatio?: Ratio;
+
+  defaultValueReference?: Reference;
+
+  defaultValueSampledData?: SampledData;
+
+  defaultValueSignature?: Signature;
+
+  defaultValueTiming?: Timing;
+
+  defaultValueContactDetail?: ContactDetail;
+
+  defaultValueContributor?: Contributor;
+
+  defaultValueDataRequirement?: DataRequirement;
+
+  defaultValueExpression?: Expression;
+
+  defaultValueParameterDefinition?: ParameterDefinition;
+
+  defaultValueRelatedArtifact?: RelatedArtifact;
+
+  defaultValueTriggerDefinition?: TriggerDefinition;
+
+  defaultValueUsageContext?: UsageContext;
+
+  defaultValueDosage?: Dosage;
+
+  defaultValueMeta?: Meta;
+
+  element?: string;
+
+  _element?: Element;
+
+  listMode?: "first" | "not_first" | "last" | "not_last" | "only_one";
+
+  _listMode?: Element;
+
+  variable?: string;
+
+  _variable?: Element;
+
+  condition?: string;
+
+  _condition?: Element;
+
+  check?: string;
+
+  _check?: Element;
+
+  logMessage?: string;
+
+  _logMessage?: Element;
+}
+
+/** A Map of relationships between 2 structures that can be used to transform data. */
+export interface StructureMapTarget {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  context?: string;
+
+  _context?: Element;
+
+  contextType?: "type" | "variable";
+
+  _contextType?: Element;
+
+  element?: string;
+
+  _element?: Element;
+
+  variable?: string;
+
+  _variable?: Element;
+
+  listMode?: ("first" | "share" | "last" | "collate")[];
+
+  _listMode?: Element[];
+
+  listRuleId?: string;
+
+  _listRuleId?: Element;
+
+  transform?:
+    | "create"
+    | "copy"
+    | "truncate"
+    | "escape"
+    | "cast"
+    | "append"
+    | "translate"
+    | "reference"
+    | "dateOp"
+    | "uuid"
+    | "pointer"
+    | "evaluate"
+    | "cc"
+    | "c"
+    | "qty"
+    | "id"
+    | "cp";
+
+  _transform?: Element;
+
+  parameter?: StructureMapParameter[];
+}
+
+/** A Map of relationships between 2 structures that can be used to transform data. */
+export interface StructureMapParameter {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  valueId?: string;
+
+  _valueId?: Element;
+
+  valueString?: string;
+
+  _valueString?: Element;
+
+  valueBoolean?: boolean;
+
+  _valueBoolean?: Element;
+
+  valueInteger?: number;
+
+  _valueInteger?: Element;
+
+  valueDecimal?: number;
+
+  _valueDecimal?: Element;
+}
+
+/** A Map of relationships between 2 structures that can be used to transform data. */
+export interface StructureMapDependent {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  name?: string;
+
+  _name?: Element;
+
+  variable?: string[];
+
+  _variable?: Element[];
 }

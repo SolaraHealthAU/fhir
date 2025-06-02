@@ -13,8 +13,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createEpisodeOfCareStatusHistorySchema } from "../episodeofcarestatushistory/schema";
-import { createEpisodeOfCareDiagnosisSchema } from "../episodeofcarediagnosis/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -55,6 +53,46 @@ export function createEpisodeOfCareSchema() {
       careManager: createReferenceSchema().optional(),
       team: z.array(createReferenceSchema()).optional(),
       account: z.array(createReferenceSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createEpisodeOfCareStatusHistorySchema() {
+  return getCachedSchema("EpisodeOfCareStatusHistory", () => {
+    const baseSchema: z.ZodType<types.EpisodeOfCareStatusHistory> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        status: z.enum([
+          "planned",
+          "waitlist",
+          "active",
+          "onhold",
+          "finished",
+          "cancelled",
+          "entered-in-error",
+        ]),
+        _status: createElementSchema().optional(),
+        period: createPeriodSchema(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createEpisodeOfCareDiagnosisSchema() {
+  return getCachedSchema("EpisodeOfCareDiagnosis", () => {
+    const baseSchema: z.ZodType<types.EpisodeOfCareDiagnosis> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      condition: createReferenceSchema(),
+      role: createCodeableConceptSchema().optional(),
+      rank: primitives.getPositiveIntSchema().optional(),
+      _rank: createElementSchema().optional(),
     });
 
     return baseSchema;

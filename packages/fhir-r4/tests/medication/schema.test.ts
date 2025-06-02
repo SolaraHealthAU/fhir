@@ -26,8 +26,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Medication Schema Validation", () => {
-  it("should validate Medicationexample0301 fixture", () => {
+describe("Medication Group Schema Validation", () => {
+  it("should validate Medicationexample0301 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample0301);
     if (!result.success) {
       console.error("Validation failed for Medicationexample0301:");
@@ -39,7 +39,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample0302 fixture", () => {
+  it("should validate Medicationexample0302 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample0302);
     if (!result.success) {
       console.error("Validation failed for Medicationexample0302:");
@@ -51,7 +51,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample0303 fixture", () => {
+  it("should validate Medicationexample0303 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample0303);
     if (!result.success) {
       console.error("Validation failed for Medicationexample0303:");
@@ -63,7 +63,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample0304 fixture", () => {
+  it("should validate Medicationexample0304 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample0304);
     if (!result.success) {
       console.error("Validation failed for Medicationexample0304:");
@@ -75,7 +75,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample0305 fixture", () => {
+  it("should validate Medicationexample0305 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample0305);
     if (!result.success) {
       console.error("Validation failed for Medicationexample0305:");
@@ -87,7 +87,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample0306 fixture", () => {
+  it("should validate Medicationexample0306 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample0306);
     if (!result.success) {
       console.error("Validation failed for Medicationexample0306:");
@@ -99,7 +99,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample0307 fixture", () => {
+  it("should validate Medicationexample0307 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample0307);
     if (!result.success) {
       console.error("Validation failed for Medicationexample0307:");
@@ -111,7 +111,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample0308 fixture", () => {
+  it("should validate Medicationexample0308 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample0308);
     if (!result.success) {
       console.error("Validation failed for Medicationexample0308:");
@@ -123,7 +123,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample0309 fixture", () => {
+  it("should validate Medicationexample0309 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample0309);
     if (!result.success) {
       console.error("Validation failed for Medicationexample0309:");
@@ -135,7 +135,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample0310 fixture", () => {
+  it("should validate Medicationexample0310 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample0310);
     if (!result.success) {
       console.error("Validation failed for Medicationexample0310:");
@@ -147,7 +147,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample0311 fixture", () => {
+  it("should validate Medicationexample0311 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample0311);
     if (!result.success) {
       console.error("Validation failed for Medicationexample0311:");
@@ -159,7 +159,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample0312 fixture", () => {
+  it("should validate Medicationexample0312 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample0312);
     if (!result.success) {
       console.error("Validation failed for Medicationexample0312:");
@@ -171,7 +171,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample0313 fixture", () => {
+  it("should validate Medicationexample0313 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample0313);
     if (!result.success) {
       console.error("Validation failed for Medicationexample0313:");
@@ -183,7 +183,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample0314 fixture", () => {
+  it("should validate Medicationexample0314 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample0314);
     if (!result.success) {
       console.error("Validation failed for Medicationexample0314:");
@@ -195,7 +195,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample0315 fixture", () => {
+  it("should validate Medicationexample0315 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample0315);
     if (!result.success) {
       console.error("Validation failed for Medicationexample0315:");
@@ -207,7 +207,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample0316 fixture", () => {
+  it("should validate Medicationexample0316 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample0316);
     if (!result.success) {
       console.error("Validation failed for Medicationexample0316:");
@@ -219,7 +219,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample0317 fixture", () => {
+  it("should validate Medicationexample0317 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample0317);
     if (!result.success) {
       console.error("Validation failed for Medicationexample0317:");
@@ -231,7 +231,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample0318 fixture", () => {
+  it("should validate Medicationexample0318 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample0318);
     if (!result.success) {
       console.error("Validation failed for Medicationexample0318:");
@@ -243,7 +243,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample0319 fixture", () => {
+  it("should validate Medicationexample0319 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample0319);
     if (!result.success) {
       console.error("Validation failed for Medicationexample0319:");
@@ -255,7 +255,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample0320 fixture", () => {
+  it("should validate Medicationexample0320 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample0320);
     if (!result.success) {
       console.error("Validation failed for Medicationexample0320:");
@@ -267,7 +267,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample0321 fixture", () => {
+  it("should validate Medicationexample0321 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample0321);
     if (!result.success) {
       console.error("Validation failed for Medicationexample0321:");
@@ -279,7 +279,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample1 fixture", () => {
+  it("should validate Medicationexample1 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample1);
     if (!result.success) {
       console.error("Validation failed for Medicationexample1:");
@@ -291,7 +291,7 @@ describe("Medication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Medicationexample15 fixture", () => {
+  it("should validate Medicationexample15 fixture (Medication)", () => {
     const result = createMedicationSchema().safeParse(Medicationexample15);
     if (!result.success) {
       console.error("Validation failed for Medicationexample15:");

@@ -12,8 +12,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("AuditEvent Schema Validation", () => {
-  it("should validate AuditEventExampleLogin fixture", () => {
+describe("Auditevent Group Schema Validation", () => {
+  it("should validate AuditEventExampleLogin fixture (AuditEvent)", () => {
     const result = createAuditEventSchema().safeParse(AuditEventExampleLogin);
     if (!result.success) {
       console.error("Validation failed for AuditEventExampleLogin:");
@@ -25,7 +25,7 @@ describe("AuditEvent Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AuditEventExampleLogout fixture", () => {
+  it("should validate AuditEventExampleLogout fixture (AuditEvent)", () => {
     const result = createAuditEventSchema().safeParse(AuditEventExampleLogout);
     if (!result.success) {
       console.error("Validation failed for AuditEventExampleLogout:");
@@ -37,7 +37,7 @@ describe("AuditEvent Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AuditEventExampleMedia fixture", () => {
+  it("should validate AuditEventExampleMedia fixture (AuditEvent)", () => {
     const result = createAuditEventSchema().safeParse(AuditEventExampleMedia);
     if (!result.success) {
       console.error("Validation failed for AuditEventExampleMedia:");
@@ -49,7 +49,7 @@ describe("AuditEvent Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AuditEventExamplePixquery fixture", () => {
+  it("should validate AuditEventExamplePixquery fixture (AuditEvent)", () => {
     const result = createAuditEventSchema().safeParse(
       AuditEventExamplePixquery,
     );
@@ -63,7 +63,7 @@ describe("AuditEvent Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AuditEventExampleSearch fixture", () => {
+  it("should validate AuditEventExampleSearch fixture (AuditEvent)", () => {
     const result = createAuditEventSchema().safeParse(AuditEventExampleSearch);
     if (!result.success) {
       console.error("Validation failed for AuditEventExampleSearch:");
@@ -75,7 +75,7 @@ describe("AuditEvent Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AuditEventExampleVread fixture", () => {
+  it("should validate AuditEventExampleVread fixture (AuditEvent)", () => {
     const result = createAuditEventSchema().safeParse(AuditEventExampleVread);
     if (!result.success) {
       console.error("Validation failed for AuditEventExampleVread:");
@@ -87,7 +87,7 @@ describe("AuditEvent Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AuditeventExampleDisclosure fixture", () => {
+  it("should validate AuditeventExampleDisclosure fixture (AuditEvent)", () => {
     const result = createAuditEventSchema().safeParse(
       AuditeventExampleDisclosure,
     );
@@ -101,7 +101,7 @@ describe("AuditEvent Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AuditeventExampleError fixture", () => {
+  it("should validate AuditeventExampleError fixture (AuditEvent)", () => {
     const result = createAuditEventSchema().safeParse(AuditeventExampleError);
     if (!result.success) {
       console.error("Validation failed for AuditeventExampleError:");
@@ -113,7 +113,7 @@ describe("AuditEvent Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AuditeventExample fixture", () => {
+  it("should validate AuditeventExample fixture (AuditEvent)", () => {
     const result = createAuditEventSchema().safeParse(AuditeventExample);
     if (!result.success) {
       console.error("Validation failed for AuditeventExample:");

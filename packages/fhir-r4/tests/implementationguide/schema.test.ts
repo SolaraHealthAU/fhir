@@ -2,8 +2,8 @@ import { createImplementationGuideSchema } from "../../src";
 import { ImplementationguideExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("ImplementationGuide Schema Validation", () => {
-  it("should validate ImplementationguideExample fixture", () => {
+describe("Implementationguide Group Schema Validation", () => {
+  it("should validate ImplementationguideExample fixture (ImplementationGuide)", () => {
     const result = createImplementationGuideSchema().safeParse(
       ImplementationguideExample,
     );

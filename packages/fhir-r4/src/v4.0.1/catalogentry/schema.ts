@@ -13,7 +13,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createCatalogEntryRelatedEntrySchema } from "../catalogentryrelatedentry/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -53,6 +52,22 @@ export function createCatalogEntrySchema() {
         .optional(),
       relatedEntry: z.array(createCatalogEntryRelatedEntrySchema()).optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createCatalogEntryRelatedEntrySchema() {
+  return getCachedSchema("CatalogEntryRelatedEntry", () => {
+    const baseSchema: z.ZodType<types.CatalogEntryRelatedEntry> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        relationtype: z.enum(["triggers", "is-replaced-by"]),
+        _relationtype: createElementSchema().optional(),
+        item: createReferenceSchema(),
+      });
 
     return baseSchema;
   });

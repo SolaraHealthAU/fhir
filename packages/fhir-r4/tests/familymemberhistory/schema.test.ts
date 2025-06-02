@@ -5,8 +5,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("FamilyMemberHistory Schema Validation", () => {
-  it("should validate FamilymemberhistoryExampleMother fixture", () => {
+describe("Familymemberhistory Group Schema Validation", () => {
+  it("should validate FamilymemberhistoryExampleMother fixture (FamilyMemberHistory)", () => {
     const result = createFamilyMemberHistorySchema().safeParse(
       FamilymemberhistoryExampleMother,
     );
@@ -20,7 +20,7 @@ describe("FamilyMemberHistory Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate FamilymemberhistoryExample fixture", () => {
+  it("should validate FamilymemberhistoryExample fixture (FamilyMemberHistory)", () => {
     const result = createFamilyMemberHistorySchema().safeParse(
       FamilymemberhistoryExample,
     );

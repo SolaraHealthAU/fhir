@@ -17,8 +17,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Practitioner Schema Validation", () => {
-  it("should validate PractitionerExampleF001Evdb fixture", () => {
+describe("Practitioner Group Schema Validation", () => {
+  it("should validate PractitionerExampleF001Evdb fixture (Practitioner)", () => {
     const result = createPractitionerSchema().safeParse(
       PractitionerExampleF001Evdb,
     );
@@ -32,7 +32,7 @@ describe("Practitioner Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PractitionerExampleF002Pv fixture", () => {
+  it("should validate PractitionerExampleF002Pv fixture (Practitioner)", () => {
     const result = createPractitionerSchema().safeParse(
       PractitionerExampleF002Pv,
     );
@@ -46,7 +46,7 @@ describe("Practitioner Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PractitionerExampleF003Mv fixture", () => {
+  it("should validate PractitionerExampleF003Mv fixture (Practitioner)", () => {
     const result = createPractitionerSchema().safeParse(
       PractitionerExampleF003Mv,
     );
@@ -60,7 +60,7 @@ describe("Practitioner Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PractitionerExampleF004Rb fixture", () => {
+  it("should validate PractitionerExampleF004Rb fixture (Practitioner)", () => {
     const result = createPractitionerSchema().safeParse(
       PractitionerExampleF004Rb,
     );
@@ -74,7 +74,7 @@ describe("Practitioner Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PractitionerExampleF005Al fixture", () => {
+  it("should validate PractitionerExampleF005Al fixture (Practitioner)", () => {
     const result = createPractitionerSchema().safeParse(
       PractitionerExampleF005Al,
     );
@@ -88,7 +88,7 @@ describe("Practitioner Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PractitionerExampleF006Rvdb fixture", () => {
+  it("should validate PractitionerExampleF006Rvdb fixture (Practitioner)", () => {
     const result = createPractitionerSchema().safeParse(
       PractitionerExampleF006Rvdb,
     );
@@ -102,7 +102,7 @@ describe("Practitioner Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PractitionerExampleF007Sh fixture", () => {
+  it("should validate PractitionerExampleF007Sh fixture (Practitioner)", () => {
     const result = createPractitionerSchema().safeParse(
       PractitionerExampleF007Sh,
     );
@@ -116,7 +116,7 @@ describe("Practitioner Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PractitionerExampleF201Ab fixture", () => {
+  it("should validate PractitionerExampleF201Ab fixture (Practitioner)", () => {
     const result = createPractitionerSchema().safeParse(
       PractitionerExampleF201Ab,
     );
@@ -130,7 +130,7 @@ describe("Practitioner Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PractitionerExampleF202Lm fixture", () => {
+  it("should validate PractitionerExampleF202Lm fixture (Practitioner)", () => {
     const result = createPractitionerSchema().safeParse(
       PractitionerExampleF202Lm,
     );
@@ -144,7 +144,7 @@ describe("Practitioner Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PractitionerExampleF203Jvg fixture", () => {
+  it("should validate PractitionerExampleF203Jvg fixture (Practitioner)", () => {
     const result = createPractitionerSchema().safeParse(
       PractitionerExampleF203Jvg,
     );
@@ -158,7 +158,7 @@ describe("Practitioner Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PractitionerExampleF204Ce fixture", () => {
+  it("should validate PractitionerExampleF204Ce fixture (Practitioner)", () => {
     const result = createPractitionerSchema().safeParse(
       PractitionerExampleF204Ce,
     );
@@ -172,7 +172,7 @@ describe("Practitioner Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PractitionerExampleXcdaAuthor fixture", () => {
+  it("should validate PractitionerExampleXcdaAuthor fixture (Practitioner)", () => {
     const result = createPractitionerSchema().safeParse(
       PractitionerExampleXcdaAuthor,
     );
@@ -186,7 +186,7 @@ describe("Practitioner Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PractitionerExampleXcda1 fixture", () => {
+  it("should validate PractitionerExampleXcda1 fixture (Practitioner)", () => {
     const result = createPractitionerSchema().safeParse(
       PractitionerExampleXcda1,
     );
@@ -200,7 +200,7 @@ describe("Practitioner Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PractitionerExample fixture", () => {
+  it("should validate PractitionerExample fixture (Practitioner)", () => {
     const result = createPractitionerSchema().safeParse(PractitionerExample);
     if (!result.success) {
       console.error("Validation failed for PractitionerExample:");

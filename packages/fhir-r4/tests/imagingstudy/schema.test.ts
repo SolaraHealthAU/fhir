@@ -2,8 +2,8 @@ import { createImagingStudySchema } from "../../src";
 import { ImagingstudyExampleXr, ImagingstudyExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("ImagingStudy Schema Validation", () => {
-  it("should validate ImagingstudyExampleXr fixture", () => {
+describe("Imagingstudy Group Schema Validation", () => {
+  it("should validate ImagingstudyExampleXr fixture (ImagingStudy)", () => {
     const result = createImagingStudySchema().safeParse(ImagingstudyExampleXr);
     if (!result.success) {
       console.error("Validation failed for ImagingstudyExampleXr:");
@@ -15,7 +15,7 @@ describe("ImagingStudy Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ImagingstudyExample fixture", () => {
+  it("should validate ImagingstudyExample fixture (ImagingStudy)", () => {
     const result = createImagingStudySchema().safeParse(ImagingstudyExample);
     if (!result.success) {
       console.error("Validation failed for ImagingstudyExample:");

@@ -15,8 +15,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Condition Schema Validation", () => {
-  it("should validate ConditionExampleF001Heart fixture", () => {
+describe("Condition Group Schema Validation", () => {
+  it("should validate ConditionExampleF001Heart fixture (Condition)", () => {
     const result = createConditionSchema().safeParse(ConditionExampleF001Heart);
     if (!result.success) {
       console.error("Validation failed for ConditionExampleF001Heart:");
@@ -28,7 +28,7 @@ describe("Condition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConditionExampleF002Lung fixture", () => {
+  it("should validate ConditionExampleF002Lung fixture (Condition)", () => {
     const result = createConditionSchema().safeParse(ConditionExampleF002Lung);
     if (!result.success) {
       console.error("Validation failed for ConditionExampleF002Lung:");
@@ -40,7 +40,7 @@ describe("Condition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConditionExampleF003Abscess fixture", () => {
+  it("should validate ConditionExampleF003Abscess fixture (Condition)", () => {
     const result = createConditionSchema().safeParse(
       ConditionExampleF003Abscess,
     );
@@ -54,7 +54,7 @@ describe("Condition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConditionExampleF201Fever fixture", () => {
+  it("should validate ConditionExampleF201Fever fixture (Condition)", () => {
     const result = createConditionSchema().safeParse(ConditionExampleF201Fever);
     if (!result.success) {
       console.error("Validation failed for ConditionExampleF201Fever:");
@@ -66,7 +66,7 @@ describe("Condition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConditionExampleF202Malignancy fixture", () => {
+  it("should validate ConditionExampleF202Malignancy fixture (Condition)", () => {
     const result = createConditionSchema().safeParse(
       ConditionExampleF202Malignancy,
     );
@@ -80,7 +80,7 @@ describe("Condition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConditionExampleF203Sepsis fixture", () => {
+  it("should validate ConditionExampleF203Sepsis fixture (Condition)", () => {
     const result = createConditionSchema().safeParse(
       ConditionExampleF203Sepsis,
     );
@@ -94,7 +94,7 @@ describe("Condition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConditionExampleF204Renal fixture", () => {
+  it("should validate ConditionExampleF204Renal fixture (Condition)", () => {
     const result = createConditionSchema().safeParse(ConditionExampleF204Renal);
     if (!result.success) {
       console.error("Validation failed for ConditionExampleF204Renal:");
@@ -106,7 +106,7 @@ describe("Condition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConditionExampleF205Infection fixture", () => {
+  it("should validate ConditionExampleF205Infection fixture (Condition)", () => {
     const result = createConditionSchema().safeParse(
       ConditionExampleF205Infection,
     );
@@ -120,7 +120,7 @@ describe("Condition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConditionExampleFamilyHistory fixture", () => {
+  it("should validate ConditionExampleFamilyHistory fixture (Condition)", () => {
     const result = createConditionSchema().safeParse(
       ConditionExampleFamilyHistory,
     );
@@ -134,7 +134,7 @@ describe("Condition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConditionExampleStroke fixture", () => {
+  it("should validate ConditionExampleStroke fixture (Condition)", () => {
     const result = createConditionSchema().safeParse(ConditionExampleStroke);
     if (!result.success) {
       console.error("Validation failed for ConditionExampleStroke:");
@@ -146,7 +146,7 @@ describe("Condition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConditionExample fixture", () => {
+  it("should validate ConditionExample fixture (Condition)", () => {
     const result = createConditionSchema().safeParse(ConditionExample);
     if (!result.success) {
       console.error("Validation failed for ConditionExample:");
@@ -158,7 +158,7 @@ describe("Condition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConditionExample2 fixture", () => {
+  it("should validate ConditionExample2 fixture (Condition)", () => {
     const result = createConditionSchema().safeParse(ConditionExample2);
     if (!result.success) {
       console.error("Validation failed for ConditionExample2:");

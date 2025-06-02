@@ -10,7 +10,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createSubscriptionChannelSchema } from "../subscriptionchannel/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -40,6 +39,26 @@ export function createSubscriptionSchema() {
       error: primitives.getStringSchema().optional(),
       _error: createElementSchema().optional(),
       channel: createSubscriptionChannelSchema(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createSubscriptionChannelSchema() {
+  return getCachedSchema("SubscriptionChannel", () => {
+    const baseSchema: z.ZodType<types.SubscriptionChannel> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      type: z.enum(["rest-hook", "websocket", "email", "sms", "message"]),
+      _type: createElementSchema().optional(),
+      endpoint: primitives.getUrlSchema().optional(),
+      _endpoint: createElementSchema().optional(),
+      payload: primitives.getCodeSchema().optional(),
+      _payload: createElementSchema().optional(),
+      header: z.array(primitives.getStringSchema()).optional(),
+      _header: z.array(createElementSchema()).optional(),
     });
 
     return baseSchema;

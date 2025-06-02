@@ -12,8 +12,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("ActivityDefinition Schema Validation", () => {
-  it("should validate ActivitydefinitionAdministerZikaVirusExposureAssessment fixture", () => {
+describe("Activitydefinition Group Schema Validation", () => {
+  it("should validate ActivitydefinitionAdministerZikaVirusExposureAssessment fixture (ActivityDefinition)", () => {
     const result = createActivityDefinitionSchema().safeParse(
       ActivitydefinitionAdministerZikaVirusExposureAssessment,
     );
@@ -29,7 +29,7 @@ describe("ActivityDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ActivitydefinitionExample fixture", () => {
+  it("should validate ActivitydefinitionExample fixture (ActivityDefinition)", () => {
     const result = createActivityDefinitionSchema().safeParse(
       ActivitydefinitionExample,
     );
@@ -43,7 +43,7 @@ describe("ActivityDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ActivitydefinitionMedicationorderExample fixture", () => {
+  it("should validate ActivitydefinitionMedicationorderExample fixture (ActivityDefinition)", () => {
     const result = createActivityDefinitionSchema().safeParse(
       ActivitydefinitionMedicationorderExample,
     );
@@ -59,7 +59,7 @@ describe("ActivityDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ActivitydefinitionOrderSerumDengueVirusIgm fixture", () => {
+  it("should validate ActivitydefinitionOrderSerumDengueVirusIgm fixture (ActivityDefinition)", () => {
     const result = createActivityDefinitionSchema().safeParse(
       ActivitydefinitionOrderSerumDengueVirusIgm,
     );
@@ -75,7 +75,7 @@ describe("ActivityDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ActivitydefinitionOrderSerumZikaDengueVirusIgm fixture", () => {
+  it("should validate ActivitydefinitionOrderSerumZikaDengueVirusIgm fixture (ActivityDefinition)", () => {
     const result = createActivityDefinitionSchema().safeParse(
       ActivitydefinitionOrderSerumZikaDengueVirusIgm,
     );
@@ -91,7 +91,7 @@ describe("ActivityDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ActivitydefinitionPredecessorExample fixture", () => {
+  it("should validate ActivitydefinitionPredecessorExample fixture (ActivityDefinition)", () => {
     const result = createActivityDefinitionSchema().safeParse(
       ActivitydefinitionPredecessorExample,
     );
@@ -107,7 +107,7 @@ describe("ActivityDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ActivitydefinitionProvideMosquitoPreventionAdvice fixture", () => {
+  it("should validate ActivitydefinitionProvideMosquitoPreventionAdvice fixture (ActivityDefinition)", () => {
     const result = createActivityDefinitionSchema().safeParse(
       ActivitydefinitionProvideMosquitoPreventionAdvice,
     );
@@ -123,7 +123,7 @@ describe("ActivityDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ActivitydefinitionServicerequestExample fixture", () => {
+  it("should validate ActivitydefinitionServicerequestExample fixture (ActivityDefinition)", () => {
     const result = createActivityDefinitionSchema().safeParse(
       ActivitydefinitionServicerequestExample,
     );
@@ -139,7 +139,7 @@ describe("ActivityDefinition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ActivitydefinitionSupplyrequestExample fixture", () => {
+  it("should validate ActivitydefinitionSupplyrequestExample fixture (ActivityDefinition)", () => {
     const result = createActivityDefinitionSchema().safeParse(
       ActivitydefinitionSupplyrequestExample,
     );

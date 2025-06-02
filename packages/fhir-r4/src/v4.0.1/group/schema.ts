@@ -9,11 +9,12 @@ import {
   createIdentifierSchema,
   createCodeableConceptSchema,
   createReferenceSchema,
+  createQuantitySchema,
+  createRangeSchema,
+  createPeriodSchema,
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createGroupCharacteristicSchema } from "../groupcharacteristic/schema";
-import { createGroupMemberSchema } from "../groupmember/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -53,6 +54,44 @@ export function createGroupSchema() {
       managingEntity: createReferenceSchema().optional(),
       characteristic: z.array(createGroupCharacteristicSchema()).optional(),
       member: z.array(createGroupMemberSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createGroupCharacteristicSchema() {
+  return getCachedSchema("GroupCharacteristic", () => {
+    const baseSchema: z.ZodType<types.GroupCharacteristic> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      code: createCodeableConceptSchema(),
+      valueCodeableConcept: createCodeableConceptSchema().optional(),
+      valueBoolean: z.boolean().optional(),
+      _valueBoolean: createElementSchema().optional(),
+      valueQuantity: createQuantitySchema().optional(),
+      valueRange: createRangeSchema().optional(),
+      valueReference: createReferenceSchema().optional(),
+      exclude: primitives.getBooleanSchema(),
+      _exclude: createElementSchema().optional(),
+      period: createPeriodSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createGroupMemberSchema() {
+  return getCachedSchema("GroupMember", () => {
+    const baseSchema: z.ZodType<types.GroupMember> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      entity: createReferenceSchema(),
+      period: createPeriodSchema().optional(),
+      inactive: primitives.getBooleanSchema().optional(),
+      _inactive: createElementSchema().optional(),
     });
 
     return baseSchema;

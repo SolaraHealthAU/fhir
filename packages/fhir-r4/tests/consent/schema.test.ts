@@ -15,8 +15,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Consent Schema Validation", () => {
-  it("should validate ConsentExampleEmergency fixture", () => {
+describe("Consent Group Schema Validation", () => {
+  it("should validate ConsentExampleEmergency fixture (Consent)", () => {
     const result = createConsentSchema().safeParse(ConsentExampleEmergency);
     if (!result.success) {
       console.error("Validation failed for ConsentExampleEmergency:");
@@ -28,7 +28,7 @@ describe("Consent Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConsentExampleOut fixture", () => {
+  it("should validate ConsentExampleOut fixture (Consent)", () => {
     const result = createConsentSchema().safeParse(ConsentExampleOut);
     if (!result.success) {
       console.error("Validation failed for ConsentExampleOut:");
@@ -40,7 +40,7 @@ describe("Consent Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConsentExampleGrantor fixture", () => {
+  it("should validate ConsentExampleGrantor fixture (Consent)", () => {
     const result = createConsentSchema().safeParse(ConsentExampleGrantor);
     if (!result.success) {
       console.error("Validation failed for ConsentExampleGrantor:");
@@ -52,7 +52,7 @@ describe("Consent Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConsentExampleNotauthor fixture", () => {
+  it("should validate ConsentExampleNotauthor fixture (Consent)", () => {
     const result = createConsentSchema().safeParse(ConsentExampleNotauthor);
     if (!result.success) {
       console.error("Validation failed for ConsentExampleNotauthor:");
@@ -64,7 +64,7 @@ describe("Consent Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConsentExampleNotorg fixture", () => {
+  it("should validate ConsentExampleNotorg fixture (Consent)", () => {
     const result = createConsentSchema().safeParse(ConsentExampleNotorg);
     if (!result.success) {
       console.error("Validation failed for ConsentExampleNotorg:");
@@ -76,7 +76,7 @@ describe("Consent Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConsentExampleNotthem fixture", () => {
+  it("should validate ConsentExampleNotthem fixture (Consent)", () => {
     const result = createConsentSchema().safeParse(ConsentExampleNotthem);
     if (!result.success) {
       console.error("Validation failed for ConsentExampleNotthem:");
@@ -88,7 +88,7 @@ describe("Consent Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConsentExampleNotthis fixture", () => {
+  it("should validate ConsentExampleNotthis fixture (Consent)", () => {
     const result = createConsentSchema().safeParse(ConsentExampleNotthis);
     if (!result.success) {
       console.error("Validation failed for ConsentExampleNotthis:");
@@ -100,7 +100,7 @@ describe("Consent Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConsentExampleNottime fixture", () => {
+  it("should validate ConsentExampleNottime fixture (Consent)", () => {
     const result = createConsentSchema().safeParse(ConsentExampleNottime);
     if (!result.success) {
       console.error("Validation failed for ConsentExampleNottime:");
@@ -112,7 +112,7 @@ describe("Consent Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConsentExamplePkb fixture", () => {
+  it("should validate ConsentExamplePkb fixture (Consent)", () => {
     const result = createConsentSchema().safeParse(ConsentExamplePkb);
     if (!result.success) {
       console.error("Validation failed for ConsentExamplePkb:");
@@ -124,7 +124,7 @@ describe("Consent Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConsentExampleSignature fixture", () => {
+  it("should validate ConsentExampleSignature fixture (Consent)", () => {
     const result = createConsentSchema().safeParse(ConsentExampleSignature);
     if (!result.success) {
       console.error("Validation failed for ConsentExampleSignature:");
@@ -136,7 +136,7 @@ describe("Consent Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConsentExampleSmartonfhir fixture", () => {
+  it("should validate ConsentExampleSmartonfhir fixture (Consent)", () => {
     const result = createConsentSchema().safeParse(ConsentExampleSmartonfhir);
     if (!result.success) {
       console.error("Validation failed for ConsentExampleSmartonfhir:");
@@ -148,7 +148,7 @@ describe("Consent Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConsentExample fixture", () => {
+  it("should validate ConsentExample fixture (Consent)", () => {
     const result = createConsentSchema().safeParse(ConsentExample);
     if (!result.success) {
       console.error("Validation failed for ConsentExample:");

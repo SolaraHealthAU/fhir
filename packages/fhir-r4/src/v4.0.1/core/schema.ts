@@ -2,11 +2,6 @@ import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
 import { getCachedSchema } from "../schema-cache";
-import { createTimingRepeatSchema } from "../timingrepeat/schema";
-import { createDataRequirementCodeFilterSchema } from "../datarequirementcodefilter/schema";
-import { createDataRequirementDateFilterSchema } from "../datarequirementdatefilter/schema";
-import { createDataRequirementSortSchema } from "../datarequirementsort/schema";
-import { createDosageDoseAndRateSchema } from "../dosagedoseandrate/schema";
 
 /* Generated from FHIR JSON Schema */
 // Resources schema header file
@@ -531,6 +526,79 @@ export function createTimingSchema() {
   });
 }
 
+export function createTimingRepeatSchema() {
+  return getCachedSchema("TimingRepeat", () => {
+    const baseSchema: z.ZodType<types.TimingRepeat> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      boundsDuration: createDurationSchema().optional(),
+      boundsRange: createRangeSchema().optional(),
+      boundsPeriod: createPeriodSchema().optional(),
+      count: primitives.getPositiveIntSchema().optional(),
+      _count: createElementSchema().optional(),
+      countMax: primitives.getPositiveIntSchema().optional(),
+      _countMax: createElementSchema().optional(),
+      duration: primitives.getDecimalSchema().optional(),
+      _duration: createElementSchema().optional(),
+      durationMax: primitives.getDecimalSchema().optional(),
+      _durationMax: createElementSchema().optional(),
+      durationUnit: z.enum(["s", "min", "h", "d", "wk", "mo", "a"]).optional(),
+      _durationUnit: createElementSchema().optional(),
+      frequency: primitives.getPositiveIntSchema().optional(),
+      _frequency: createElementSchema().optional(),
+      frequencyMax: primitives.getPositiveIntSchema().optional(),
+      _frequencyMax: createElementSchema().optional(),
+      period: primitives.getDecimalSchema().optional(),
+      _period: createElementSchema().optional(),
+      periodMax: primitives.getDecimalSchema().optional(),
+      _periodMax: createElementSchema().optional(),
+      periodUnit: z.enum(["s", "min", "h", "d", "wk", "mo", "a"]).optional(),
+      _periodUnit: createElementSchema().optional(),
+      dayOfWeek: z.array(primitives.getCodeSchema()).optional(),
+      _dayOfWeek: z.array(createElementSchema()).optional(),
+      timeOfDay: z.array(primitives.getTimeSchema()).optional(),
+      _timeOfDay: z.array(createElementSchema()).optional(),
+      when: z
+        .enum([
+          "MORN",
+          "MORN.early",
+          "MORN.late",
+          "NOON",
+          "AFT",
+          "AFT.early",
+          "AFT.late",
+          "EVE",
+          "EVE.early",
+          "EVE.late",
+          "NIGHT",
+          "PHS",
+          "HS",
+          "WAKE",
+          "C",
+          "CM",
+          "CD",
+          "CV",
+          "AC",
+          "ACM",
+          "ACD",
+          "ACV",
+          "PC",
+          "PCM",
+          "PCD",
+          "PCV",
+        ])
+        .array()
+        .optional(),
+      _when: z.array(createElementSchema()).optional(),
+      offset: primitives.getUnsignedIntSchema().optional(),
+      _offset: createElementSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
 export function createMetaSchema() {
   return getCachedSchema("Meta", () => {
     const baseSchema: z.ZodType<types.Meta> = z.strictObject({
@@ -598,6 +666,62 @@ export function createDataRequirementSchema() {
       limit: primitives.getPositiveIntSchema().optional(),
       _limit: createElementSchema().optional(),
       sort: z.array(createDataRequirementSortSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createDataRequirementCodeFilterSchema() {
+  return getCachedSchema("DataRequirementCodeFilter", () => {
+    const baseSchema: z.ZodType<types.DataRequirementCodeFilter> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        path: primitives.getStringSchema().optional(),
+        _path: createElementSchema().optional(),
+        searchParam: primitives.getStringSchema().optional(),
+        _searchParam: createElementSchema().optional(),
+        valueSet: primitives.getCanonicalSchema().optional(),
+        code: z.array(createCodingSchema()).optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createDataRequirementDateFilterSchema() {
+  return getCachedSchema("DataRequirementDateFilter", () => {
+    const baseSchema: z.ZodType<types.DataRequirementDateFilter> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        path: primitives.getStringSchema().optional(),
+        _path: createElementSchema().optional(),
+        searchParam: primitives.getStringSchema().optional(),
+        _searchParam: createElementSchema().optional(),
+        valueDateTime: z.string().optional(),
+        _valueDateTime: createElementSchema().optional(),
+        valuePeriod: createPeriodSchema().optional(),
+        valueDuration: createDurationSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createDataRequirementSortSchema() {
+  return getCachedSchema("DataRequirementSort", () => {
+    const baseSchema: z.ZodType<types.DataRequirementSort> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      path: primitives.getStringSchema(),
+      _path: createElementSchema().optional(),
+      direction: z.enum(["ascending", "descending"]),
+      _direction: createElementSchema().optional(),
     });
 
     return baseSchema;
@@ -732,6 +856,24 @@ export function createDosageSchema() {
       maxDosePerPeriod: createRatioSchema().optional(),
       maxDosePerAdministration: createQuantitySchema().optional(),
       maxDosePerLifetime: createQuantitySchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createDosageDoseAndRateSchema() {
+  return getCachedSchema("DosageDoseAndRate", () => {
+    const baseSchema: z.ZodType<types.DosageDoseAndRate> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      type: createCodeableConceptSchema().optional(),
+      doseRange: createRangeSchema().optional(),
+      doseQuantity: createQuantitySchema().optional(),
+      rateRatio: createRatioSchema().optional(),
+      rateRange: createRangeSchema().optional(),
+      rateQuantity: createQuantitySchema().optional(),
     });
 
     return baseSchema;

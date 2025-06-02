@@ -10,8 +10,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("CapabilityStatement Schema Validation", () => {
-  it("should validate CapabilitystatementBase2 fixture", () => {
+describe("Capabilitystatement Group Schema Validation", () => {
+  it("should validate CapabilitystatementBase2 fixture (CapabilityStatement)", () => {
     const result = createCapabilityStatementSchema().safeParse(
       CapabilitystatementBase2,
     );
@@ -25,7 +25,7 @@ describe("CapabilityStatement Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CapabilitystatementExample fixture", () => {
+  it("should validate CapabilitystatementExample fixture (CapabilityStatement)", () => {
     const result = createCapabilityStatementSchema().safeParse(
       CapabilitystatementExample,
     );
@@ -39,7 +39,7 @@ describe("CapabilityStatement Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CapabilitystatementKnowledgeRepository fixture", () => {
+  it("should validate CapabilitystatementKnowledgeRepository fixture (CapabilityStatement)", () => {
     const result = createCapabilityStatementSchema().safeParse(
       CapabilitystatementKnowledgeRepository,
     );
@@ -55,7 +55,7 @@ describe("CapabilityStatement Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CapabilitystatementMeasureProcessor fixture", () => {
+  it("should validate CapabilitystatementMeasureProcessor fixture (CapabilityStatement)", () => {
     const result = createCapabilityStatementSchema().safeParse(
       CapabilitystatementMeasureProcessor,
     );
@@ -71,7 +71,7 @@ describe("CapabilityStatement Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CapabilitystatementMessagedefinition fixture", () => {
+  it("should validate CapabilitystatementMessagedefinition fixture (CapabilityStatement)", () => {
     const result = createCapabilityStatementSchema().safeParse(
       CapabilitystatementMessagedefinition,
     );
@@ -87,7 +87,7 @@ describe("CapabilityStatement Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CapabilitystatementPhrExample fixture", () => {
+  it("should validate CapabilitystatementPhrExample fixture (CapabilityStatement)", () => {
     const result = createCapabilityStatementSchema().safeParse(
       CapabilitystatementPhrExample,
     );
@@ -101,7 +101,7 @@ describe("CapabilityStatement Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CapabilitystatementTerminologyServer fixture", () => {
+  it("should validate CapabilitystatementTerminologyServer fixture (CapabilityStatement)", () => {
     const result = createCapabilityStatementSchema().safeParse(
       CapabilitystatementTerminologyServer,
     );

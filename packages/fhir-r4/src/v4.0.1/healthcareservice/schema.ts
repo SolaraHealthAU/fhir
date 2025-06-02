@@ -11,12 +11,10 @@ import {
   createCodeableConceptSchema,
   createAttachmentSchema,
   createContactPointSchema,
+  createPeriodSchema,
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createHealthcareServiceEligibilitySchema } from "../healthcareserviceeligibility/schema";
-import { createHealthcareServiceAvailableTimeSchema } from "../healthcareserviceavailabletime/schema";
-import { createHealthcareServiceNotAvailableSchema } from "../healthcareservicenotavailable/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -71,6 +69,62 @@ export function createHealthcareServiceSchema() {
       _availabilityExceptions: createElementSchema().optional(),
       endpoint: z.array(createReferenceSchema()).optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createHealthcareServiceEligibilitySchema() {
+  return getCachedSchema("HealthcareServiceEligibility", () => {
+    const baseSchema: z.ZodType<types.HealthcareServiceEligibility> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        code: createCodeableConceptSchema().optional(),
+        comment: primitives.getMarkdownSchema().optional(),
+        _comment: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createHealthcareServiceAvailableTimeSchema() {
+  return getCachedSchema("HealthcareServiceAvailableTime", () => {
+    const baseSchema: z.ZodType<types.HealthcareServiceAvailableTime> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        daysOfWeek: z
+          .enum(["mon", "tue", "wed", "thu", "fri", "sat", "sun"])
+          .array()
+          .optional(),
+        _daysOfWeek: z.array(createElementSchema()).optional(),
+        allDay: primitives.getBooleanSchema().optional(),
+        _allDay: createElementSchema().optional(),
+        availableStartTime: primitives.getTimeSchema().optional(),
+        _availableStartTime: createElementSchema().optional(),
+        availableEndTime: primitives.getTimeSchema().optional(),
+        _availableEndTime: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createHealthcareServiceNotAvailableSchema() {
+  return getCachedSchema("HealthcareServiceNotAvailable", () => {
+    const baseSchema: z.ZodType<types.HealthcareServiceNotAvailable> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        description: primitives.getStringSchema(),
+        _description: createElementSchema().optional(),
+        during: createPeriodSchema().optional(),
+      });
 
     return baseSchema;
   });

@@ -9,12 +9,10 @@ import {
   createReferenceSchema,
   createCodeableConceptSchema,
   createTimingSchema,
+  createSignatureSchema,
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createVerificationResultPrimarySourceSchema } from "../verificationresultprimarysource/schema";
-import { createVerificationResultAttestationSchema } from "../verificationresultattestation/schema";
-import { createVerificationResultValidatorSchema } from "../verificationresultvalidator/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -54,6 +52,68 @@ export function createVerificationResultSchema() {
       attestation: createVerificationResultAttestationSchema().optional(),
       validator: z.array(createVerificationResultValidatorSchema()).optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createVerificationResultPrimarySourceSchema() {
+  return getCachedSchema("VerificationResultPrimarySource", () => {
+    const baseSchema: z.ZodType<types.VerificationResultPrimarySource> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        who: createReferenceSchema().optional(),
+        type: z.array(createCodeableConceptSchema()).optional(),
+        communicationMethod: z.array(createCodeableConceptSchema()).optional(),
+        validationStatus: createCodeableConceptSchema().optional(),
+        validationDate: primitives.getDateTimeSchema().optional(),
+        _validationDate: createElementSchema().optional(),
+        canPushUpdates: createCodeableConceptSchema().optional(),
+        pushTypeAvailable: z.array(createCodeableConceptSchema()).optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createVerificationResultAttestationSchema() {
+  return getCachedSchema("VerificationResultAttestation", () => {
+    const baseSchema: z.ZodType<types.VerificationResultAttestation> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        who: createReferenceSchema().optional(),
+        onBehalfOf: createReferenceSchema().optional(),
+        communicationMethod: createCodeableConceptSchema().optional(),
+        date: primitives.getDateSchema().optional(),
+        _date: createElementSchema().optional(),
+        sourceIdentityCertificate: primitives.getStringSchema().optional(),
+        _sourceIdentityCertificate: createElementSchema().optional(),
+        proxyIdentityCertificate: primitives.getStringSchema().optional(),
+        _proxyIdentityCertificate: createElementSchema().optional(),
+        proxySignature: createSignatureSchema().optional(),
+        sourceSignature: createSignatureSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createVerificationResultValidatorSchema() {
+  return getCachedSchema("VerificationResultValidator", () => {
+    const baseSchema: z.ZodType<types.VerificationResultValidator> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        organization: createReferenceSchema(),
+        identityCertificate: primitives.getStringSchema().optional(),
+        _identityCertificate: createElementSchema().optional(),
+        attestationSignature: createSignatureSchema().optional(),
+      });
 
     return baseSchema;
   });

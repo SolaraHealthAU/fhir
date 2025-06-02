@@ -2,8 +2,8 @@ import { createSupplyRequestSchema } from "../../src";
 import { SupplyrequestExampleSimpleorder } from "./fixture";
 import { z } from "zod/v4";
 
-describe("SupplyRequest Schema Validation", () => {
-  it("should validate SupplyrequestExampleSimpleorder fixture", () => {
+describe("Supplyrequest Group Schema Validation", () => {
+  it("should validate SupplyrequestExampleSimpleorder fixture (SupplyRequest)", () => {
     const result = createSupplyRequestSchema().safeParse(
       SupplyrequestExampleSimpleorder,
     );

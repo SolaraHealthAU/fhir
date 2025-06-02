@@ -2,8 +2,8 @@ import { createRequestGroupSchema } from "../../src";
 import { RequestgroupExample, RequestgroupKdn5Example } from "./fixture";
 import { z } from "zod/v4";
 
-describe("RequestGroup Schema Validation", () => {
-  it("should validate RequestgroupExample fixture", () => {
+describe("Requestgroup Group Schema Validation", () => {
+  it("should validate RequestgroupExample fixture (RequestGroup)", () => {
     const result = createRequestGroupSchema().safeParse(RequestgroupExample);
     if (!result.success) {
       console.error("Validation failed for RequestgroupExample:");
@@ -15,7 +15,7 @@ describe("RequestGroup Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate RequestgroupKdn5Example fixture", () => {
+  it("should validate RequestgroupKdn5Example fixture (RequestGroup)", () => {
     const result = createRequestGroupSchema().safeParse(
       RequestgroupKdn5Example,
     );

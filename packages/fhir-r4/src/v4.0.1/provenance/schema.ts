@@ -13,8 +13,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createProvenanceAgentSchema } from "../provenanceagent/schema";
-import { createProvenanceEntitySchema } from "../provenanceentity/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -46,6 +44,44 @@ export function createProvenanceSchema() {
       agent: z.array(createProvenanceAgentSchema()),
       entity: z.array(createProvenanceEntitySchema()).optional(),
       signature: z.array(createSignatureSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createProvenanceAgentSchema() {
+  return getCachedSchema("ProvenanceAgent", () => {
+    const baseSchema: z.ZodType<types.ProvenanceAgent> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      type: createCodeableConceptSchema().optional(),
+      role: z.array(createCodeableConceptSchema()).optional(),
+      who: createReferenceSchema(),
+      onBehalfOf: createReferenceSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createProvenanceEntitySchema() {
+  return getCachedSchema("ProvenanceEntity", () => {
+    const baseSchema: z.ZodType<types.ProvenanceEntity> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      role: z.enum([
+        "derivation",
+        "revision",
+        "quotation",
+        "source",
+        "removal",
+      ]),
+      _role: createElementSchema().optional(),
+      what: createReferenceSchema(),
+      agent: z.array(createProvenanceAgentSchema()).optional(),
     });
 
     return baseSchema;

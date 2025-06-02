@@ -8,8 +8,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Immunization Schema Validation", () => {
-  it("should validate ImmunizationExampleHistorical fixture", () => {
+describe("Immunization Group Schema Validation", () => {
+  it("should validate ImmunizationExampleHistorical fixture (Immunization)", () => {
     const result = createImmunizationSchema().safeParse(
       ImmunizationExampleHistorical,
     );
@@ -23,7 +23,7 @@ describe("Immunization Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ImmunizationExampleProtocol fixture", () => {
+  it("should validate ImmunizationExampleProtocol fixture (Immunization)", () => {
     const result = createImmunizationSchema().safeParse(
       ImmunizationExampleProtocol,
     );
@@ -37,7 +37,7 @@ describe("Immunization Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ImmunizationExampleRefused fixture", () => {
+  it("should validate ImmunizationExampleRefused fixture (Immunization)", () => {
     const result = createImmunizationSchema().safeParse(
       ImmunizationExampleRefused,
     );
@@ -51,7 +51,7 @@ describe("Immunization Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ImmunizationExampleSubpotent fixture", () => {
+  it("should validate ImmunizationExampleSubpotent fixture (Immunization)", () => {
     const result = createImmunizationSchema().safeParse(
       ImmunizationExampleSubpotent,
     );
@@ -65,7 +65,7 @@ describe("Immunization Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ImmunizationExample fixture", () => {
+  it("should validate ImmunizationExample fixture (Immunization)", () => {
     const result = createImmunizationSchema().safeParse(ImmunizationExample);
     if (!result.success) {
       console.error("Validation failed for ImmunizationExample:");

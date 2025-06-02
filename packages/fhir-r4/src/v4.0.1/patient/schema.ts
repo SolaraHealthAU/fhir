@@ -13,12 +13,10 @@ import {
   createCodeableConceptSchema,
   createAttachmentSchema,
   createReferenceSchema,
+  createPeriodSchema,
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createPatientContactSchema } from "../patientcontact/schema";
-import { createPatientCommunicationSchema } from "../patientcommunication/schema";
-import { createPatientLinkSchema } from "../patientlink/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -61,6 +59,56 @@ export function createPatientSchema() {
       generalPractitioner: z.array(createReferenceSchema()).optional(),
       managingOrganization: createReferenceSchema().optional(),
       link: z.array(createPatientLinkSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createPatientContactSchema() {
+  return getCachedSchema("PatientContact", () => {
+    const baseSchema: z.ZodType<types.PatientContact> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      relationship: z.array(createCodeableConceptSchema()).optional(),
+      name: createHumanNameSchema().optional(),
+      telecom: z.array(createContactPointSchema()).optional(),
+      address: createAddressSchema().optional(),
+      gender: z.enum(["male", "female", "other", "unknown"]).optional(),
+      _gender: createElementSchema().optional(),
+      organization: createReferenceSchema().optional(),
+      period: createPeriodSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createPatientCommunicationSchema() {
+  return getCachedSchema("PatientCommunication", () => {
+    const baseSchema: z.ZodType<types.PatientCommunication> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      language: createCodeableConceptSchema(),
+      preferred: primitives.getBooleanSchema().optional(),
+      _preferred: createElementSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createPatientLinkSchema() {
+  return getCachedSchema("PatientLink", () => {
+    const baseSchema: z.ZodType<types.PatientLink> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      other: createReferenceSchema(),
+      type: z.enum(["replaced-by", "replaces", "refer", "seealso"]),
+      _type: createElementSchema().optional(),
     });
 
     return baseSchema;

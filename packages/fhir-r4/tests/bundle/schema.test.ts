@@ -30,8 +30,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Bundle Schema Validation", () => {
-  it("should validate BundleExample fixture", () => {
+describe("Bundle Group Schema Validation", () => {
+  it("should validate BundleExample fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(BundleExample);
     if (!result.success) {
       console.error("Validation failed for BundleExample:");
@@ -43,7 +43,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BundleReferences fixture", () => {
+  it("should validate BundleReferences fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(BundleReferences);
     if (!result.success) {
       console.error("Validation failed for BundleReferences:");
@@ -55,7 +55,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BundleRequestMedsallergies fixture", () => {
+  it("should validate BundleRequestMedsallergies fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(BundleRequestMedsallergies);
     if (!result.success) {
       console.error("Validation failed for BundleRequestMedsallergies:");
@@ -67,7 +67,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BundleRequestSimplesummary fixture", () => {
+  it("should validate BundleRequestSimplesummary fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(BundleRequestSimplesummary);
     if (!result.success) {
       console.error("Validation failed for BundleRequestSimplesummary:");
@@ -79,7 +79,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BundleResponseMedsallergies fixture", () => {
+  it("should validate BundleResponseMedsallergies fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(BundleResponseMedsallergies);
     if (!result.success) {
       console.error("Validation failed for BundleResponseMedsallergies:");
@@ -91,7 +91,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BundleResponseSimplesummary fixture", () => {
+  it("should validate BundleResponseSimplesummary fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(BundleResponseSimplesummary);
     if (!result.success) {
       console.error("Validation failed for BundleResponseSimplesummary:");
@@ -103,7 +103,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BundleResponse fixture", () => {
+  it("should validate BundleResponse fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(BundleResponse);
     if (!result.success) {
       console.error("Validation failed for BundleResponse:");
@@ -115,7 +115,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BundleSearchWarning fixture", () => {
+  it("should validate BundleSearchWarning fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(BundleSearchWarning);
     if (!result.success) {
       console.error("Validation failed for BundleSearchWarning:");
@@ -127,7 +127,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BundleTransaction fixture", () => {
+  it("should validate BundleTransaction fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(BundleTransaction);
     if (!result.success) {
       console.error("Validation failed for BundleTransaction:");
@@ -139,7 +139,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DiagnosticreportExampleF001Bloodexam fixture", () => {
+  it("should validate DiagnosticreportExampleF001Bloodexam fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(
       DiagnosticreportExampleF001Bloodexam,
     );
@@ -155,7 +155,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DiagnosticreportExampleF202Bloodculture fixture", () => {
+  it("should validate DiagnosticreportExampleF202Bloodculture fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(
       DiagnosticreportExampleF202Bloodculture,
     );
@@ -171,7 +171,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DiagnosticreportExampleLipids fixture", () => {
+  it("should validate DiagnosticreportExampleLipids fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(
       DiagnosticreportExampleLipids,
     );
@@ -185,7 +185,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DiagnosticreportExampleLri fixture", () => {
+  it("should validate DiagnosticreportExampleLri fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(DiagnosticreportExampleLri);
     if (!result.success) {
       console.error("Validation failed for DiagnosticreportExampleLri:");
@@ -197,7 +197,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DiagnosticreportGeneticsComprehensiveBoneMarrowReport fixture", () => {
+  it("should validate DiagnosticreportGeneticsComprehensiveBoneMarrowReport fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(
       DiagnosticreportGeneticsComprehensiveBoneMarrowReport,
     );
@@ -213,7 +213,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DiagnosticreportGeneticsExample2Familyhistory fixture", () => {
+  it("should validate DiagnosticreportGeneticsExample2Familyhistory fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(
       DiagnosticreportGeneticsExample2Familyhistory,
     );
@@ -229,7 +229,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DiagnosticreportHlaGeneticsResultsExample fixture", () => {
+  it("should validate DiagnosticreportHlaGeneticsResultsExample fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(
       DiagnosticreportHlaGeneticsResultsExample,
     );
@@ -245,7 +245,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DiagnosticreportMicro1 fixture", () => {
+  it("should validate DiagnosticreportMicro1 fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(DiagnosticreportMicro1);
     if (!result.success) {
       console.error("Validation failed for DiagnosticreportMicro1:");
@@ -257,7 +257,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DocumentExampleDischargesummary fixture", () => {
+  it("should validate DocumentExampleDischargesummary fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(
       DocumentExampleDischargesummary,
     );
@@ -271,7 +271,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EndpointExamplesGeneralTemplate fixture", () => {
+  it("should validate EndpointExamplesGeneralTemplate fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(
       EndpointExamplesGeneralTemplate,
     );
@@ -285,7 +285,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExternalResources fixture", () => {
+  it("should validate ExternalResources fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(ExternalResources);
     if (!result.success) {
       console.error("Validation failed for ExternalResources:");
@@ -297,7 +297,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LocationExamplesGeneral fixture", () => {
+  it("should validate LocationExamplesGeneral fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(LocationExamplesGeneral);
     if (!result.success) {
       console.error("Validation failed for LocationExamplesGeneral:");
@@ -309,7 +309,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MessageRequestLink fixture", () => {
+  it("should validate MessageRequestLink fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(MessageRequestLink);
     if (!result.success) {
       console.error("Validation failed for MessageRequestLink:");
@@ -321,7 +321,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MessageResponseLink fixture", () => {
+  it("should validate MessageResponseLink fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(MessageResponseLink);
     if (!result.success) {
       console.error("Validation failed for MessageResponseLink:");
@@ -333,7 +333,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientExamplesGeneral fixture", () => {
+  it("should validate PatientExamplesGeneral fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(PatientExamplesGeneral);
     if (!result.success) {
       console.error("Validation failed for PatientExamplesGeneral:");
@@ -345,7 +345,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PractitionerExamplesGeneral fixture", () => {
+  it("should validate PractitionerExamplesGeneral fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(PractitionerExamplesGeneral);
     if (!result.success) {
       console.error("Validation failed for PractitionerExamplesGeneral:");
@@ -357,7 +357,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PractitionerroleExamplesGeneral fixture", () => {
+  it("should validate PractitionerroleExamplesGeneral fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(
       PractitionerroleExamplesGeneral,
     );
@@ -371,7 +371,7 @@ describe("Bundle Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate XdsExample fixture", () => {
+  it("should validate XdsExample fixture (Bundle)", () => {
     const result = createBundleSchema().safeParse(XdsExample);
     if (!result.success) {
       console.error("Validation failed for XdsExample:");

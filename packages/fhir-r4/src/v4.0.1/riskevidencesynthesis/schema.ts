@@ -17,9 +17,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createRiskEvidenceSynthesisSampleSizeSchema } from "../riskevidencesynthesissamplesize/schema";
-import { createRiskEvidenceSynthesisRiskEstimateSchema } from "../riskevidencesynthesisriskestimate/schema";
-import { createRiskEvidenceSynthesisCertaintySchema } from "../riskevidencesynthesiscertainty/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -82,6 +79,105 @@ export function createRiskEvidenceSynthesisSchema() {
         .array(createRiskEvidenceSynthesisCertaintySchema())
         .optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createRiskEvidenceSynthesisSampleSizeSchema() {
+  return getCachedSchema("RiskEvidenceSynthesisSampleSize", () => {
+    const baseSchema: z.ZodType<types.RiskEvidenceSynthesisSampleSize> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        description: primitives.getStringSchema().optional(),
+        _description: createElementSchema().optional(),
+        numberOfStudies: primitives.getIntegerSchema().optional(),
+        _numberOfStudies: createElementSchema().optional(),
+        numberOfParticipants: primitives.getIntegerSchema().optional(),
+        _numberOfParticipants: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createRiskEvidenceSynthesisRiskEstimateSchema() {
+  return getCachedSchema("RiskEvidenceSynthesisRiskEstimate", () => {
+    const baseSchema: z.ZodType<types.RiskEvidenceSynthesisRiskEstimate> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        description: primitives.getStringSchema().optional(),
+        _description: createElementSchema().optional(),
+        type: createCodeableConceptSchema().optional(),
+        value: primitives.getDecimalSchema().optional(),
+        _value: createElementSchema().optional(),
+        unitOfMeasure: createCodeableConceptSchema().optional(),
+        denominatorCount: primitives.getIntegerSchema().optional(),
+        _denominatorCount: createElementSchema().optional(),
+        numeratorCount: primitives.getIntegerSchema().optional(),
+        _numeratorCount: createElementSchema().optional(),
+        precisionEstimate: z
+          .array(createRiskEvidenceSynthesisPrecisionEstimateSchema())
+          .optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createRiskEvidenceSynthesisPrecisionEstimateSchema() {
+  return getCachedSchema("RiskEvidenceSynthesisPrecisionEstimate", () => {
+    const baseSchema: z.ZodType<types.RiskEvidenceSynthesisPrecisionEstimate> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        type: createCodeableConceptSchema().optional(),
+        level: primitives.getDecimalSchema().optional(),
+        _level: createElementSchema().optional(),
+        from: primitives.getDecimalSchema().optional(),
+        _from: createElementSchema().optional(),
+        to: primitives.getDecimalSchema().optional(),
+        _to: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createRiskEvidenceSynthesisCertaintySchema() {
+  return getCachedSchema("RiskEvidenceSynthesisCertainty", () => {
+    const baseSchema: z.ZodType<types.RiskEvidenceSynthesisCertainty> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        rating: z.array(createCodeableConceptSchema()).optional(),
+        note: z.array(createAnnotationSchema()).optional(),
+        certaintySubcomponent: z
+          .array(createRiskEvidenceSynthesisCertaintySubcomponentSchema())
+          .optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createRiskEvidenceSynthesisCertaintySubcomponentSchema() {
+  return getCachedSchema("RiskEvidenceSynthesisCertaintySubcomponent", () => {
+    const baseSchema: z.ZodType<types.RiskEvidenceSynthesisCertaintySubcomponent> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        type: createCodeableConceptSchema().optional(),
+        rating: z.array(createCodeableConceptSchema()).optional(),
+        note: z.array(createAnnotationSchema()).optional(),
+      });
 
     return baseSchema;
   });

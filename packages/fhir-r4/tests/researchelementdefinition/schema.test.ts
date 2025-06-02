@@ -2,8 +2,8 @@ import { createResearchElementDefinitionSchema } from "../../src";
 import { ResearchelementdefinitionExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("ResearchElementDefinition Schema Validation", () => {
-  it("should validate ResearchelementdefinitionExample fixture", () => {
+describe("Researchelementdefinition Group Schema Validation", () => {
+  it("should validate ResearchelementdefinitionExample fixture (ResearchElementDefinition)", () => {
     const result = createResearchElementDefinitionSchema().safeParse(
       ResearchelementdefinitionExample,
     );

@@ -6,8 +6,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Communication Schema Validation", () => {
-  it("should validate CommunicationExampleFmAttachment fixture", () => {
+describe("Communication Group Schema Validation", () => {
+  it("should validate CommunicationExampleFmAttachment fixture (Communication)", () => {
     const result = createCommunicationSchema().safeParse(
       CommunicationExampleFmAttachment,
     );
@@ -21,7 +21,7 @@ describe("Communication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CommunicationExampleFmSolicitedAttachment fixture", () => {
+  it("should validate CommunicationExampleFmSolicitedAttachment fixture (Communication)", () => {
     const result = createCommunicationSchema().safeParse(
       CommunicationExampleFmSolicitedAttachment,
     );
@@ -37,7 +37,7 @@ describe("Communication Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CommunicationExample fixture", () => {
+  it("should validate CommunicationExample fixture (Communication)", () => {
     const result = createCommunicationSchema().safeParse(CommunicationExample);
     if (!result.success) {
       console.error("Validation failed for CommunicationExample:");

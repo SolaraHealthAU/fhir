@@ -11,8 +11,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Contract Schema Validation", () => {
-  it("should validate ContractExample42cfrPart2 fixture", () => {
+describe("Contract Group Schema Validation", () => {
+  it("should validate ContractExample42cfrPart2 fixture (Contract)", () => {
     const result = createContractSchema().safeParse(ContractExample42cfrPart2);
     if (!result.success) {
       console.error("Validation failed for ContractExample42cfrPart2:");
@@ -24,7 +24,7 @@ describe("Contract Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ContractExampleInsPolicy fixture", () => {
+  it("should validate ContractExampleInsPolicy fixture (Contract)", () => {
     const result = createContractSchema().safeParse(ContractExampleInsPolicy);
     if (!result.success) {
       console.error("Validation failed for ContractExampleInsPolicy:");
@@ -36,7 +36,7 @@ describe("Contract Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ContractExample fixture", () => {
+  it("should validate ContractExample fixture (Contract)", () => {
     const result = createContractSchema().safeParse(ContractExample);
     if (!result.success) {
       console.error("Validation failed for ContractExample:");
@@ -48,7 +48,7 @@ describe("Contract Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PcdExampleNotauthor fixture", () => {
+  it("should validate PcdExampleNotauthor fixture (Contract)", () => {
     const result = createContractSchema().safeParse(PcdExampleNotauthor);
     if (!result.success) {
       console.error("Validation failed for PcdExampleNotauthor:");
@@ -60,7 +60,7 @@ describe("Contract Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PcdExampleNotlabs fixture", () => {
+  it("should validate PcdExampleNotlabs fixture (Contract)", () => {
     const result = createContractSchema().safeParse(PcdExampleNotlabs);
     if (!result.success) {
       console.error("Validation failed for PcdExampleNotlabs:");
@@ -72,7 +72,7 @@ describe("Contract Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PcdExampleNotorg fixture", () => {
+  it("should validate PcdExampleNotorg fixture (Contract)", () => {
     const result = createContractSchema().safeParse(PcdExampleNotorg);
     if (!result.success) {
       console.error("Validation failed for PcdExampleNotorg:");
@@ -84,7 +84,7 @@ describe("Contract Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PcdExampleNotthem fixture", () => {
+  it("should validate PcdExampleNotthem fixture (Contract)", () => {
     const result = createContractSchema().safeParse(PcdExampleNotthem);
     if (!result.success) {
       console.error("Validation failed for PcdExampleNotthem:");
@@ -96,7 +96,7 @@ describe("Contract Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PcdExampleNotthis fixture", () => {
+  it("should validate PcdExampleNotthis fixture (Contract)", () => {
     const result = createContractSchema().safeParse(PcdExampleNotthis);
     if (!result.success) {
       console.error("Validation failed for PcdExampleNotthis:");

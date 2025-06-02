@@ -6,8 +6,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Appointment Schema Validation", () => {
-  it("should validate AppointmentExampleRequest fixture", () => {
+describe("Appointment Group Schema Validation", () => {
+  it("should validate AppointmentExampleRequest fixture (Appointment)", () => {
     const result = createAppointmentSchema().safeParse(
       AppointmentExampleRequest,
     );
@@ -21,7 +21,7 @@ describe("Appointment Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AppointmentExample fixture", () => {
+  it("should validate AppointmentExample fixture (Appointment)", () => {
     const result = createAppointmentSchema().safeParse(AppointmentExample);
     if (!result.success) {
       console.error("Validation failed for AppointmentExample:");
@@ -33,7 +33,7 @@ describe("Appointment Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AppointmentExample2doctors fixture", () => {
+  it("should validate AppointmentExample2doctors fixture (Appointment)", () => {
     const result = createAppointmentSchema().safeParse(
       AppointmentExample2doctors,
     );

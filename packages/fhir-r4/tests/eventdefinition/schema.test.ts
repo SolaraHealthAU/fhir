@@ -2,8 +2,8 @@ import { createEventDefinitionSchema } from "../../src";
 import { EventdefinitionExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("EventDefinition Schema Validation", () => {
-  it("should validate EventdefinitionExample fixture", () => {
+describe("Eventdefinition Group Schema Validation", () => {
+  it("should validate EventdefinitionExample fixture (EventDefinition)", () => {
     const result = createEventDefinitionSchema().safeParse(
       EventdefinitionExample,
     );

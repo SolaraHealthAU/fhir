@@ -9,8 +9,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("OperationOutcome Schema Validation", () => {
-  it("should validate OperationoutcomeExampleAllok fixture", () => {
+describe("Operationoutcome Group Schema Validation", () => {
+  it("should validate OperationoutcomeExampleAllok fixture (OperationOutcome)", () => {
     const result = createOperationOutcomeSchema().safeParse(
       OperationoutcomeExampleAllok,
     );
@@ -24,7 +24,7 @@ describe("OperationOutcome Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationoutcomeExampleBreakTheGlass fixture", () => {
+  it("should validate OperationoutcomeExampleBreakTheGlass fixture (OperationOutcome)", () => {
     const result = createOperationOutcomeSchema().safeParse(
       OperationoutcomeExampleBreakTheGlass,
     );
@@ -40,7 +40,7 @@ describe("OperationOutcome Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationoutcomeExampleException fixture", () => {
+  it("should validate OperationoutcomeExampleException fixture (OperationOutcome)", () => {
     const result = createOperationOutcomeSchema().safeParse(
       OperationoutcomeExampleException,
     );
@@ -54,7 +54,7 @@ describe("OperationOutcome Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationoutcomeExampleSearchfail fixture", () => {
+  it("should validate OperationoutcomeExampleSearchfail fixture (OperationOutcome)", () => {
     const result = createOperationOutcomeSchema().safeParse(
       OperationoutcomeExampleSearchfail,
     );
@@ -68,7 +68,7 @@ describe("OperationOutcome Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationoutcomeExampleValidationfail fixture", () => {
+  it("should validate OperationoutcomeExampleValidationfail fixture (OperationOutcome)", () => {
     const result = createOperationOutcomeSchema().safeParse(
       OperationoutcomeExampleValidationfail,
     );
@@ -84,7 +84,7 @@ describe("OperationOutcome Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationoutcomeExample fixture", () => {
+  it("should validate OperationoutcomeExample fixture (OperationOutcome)", () => {
     const result = createOperationOutcomeSchema().safeParse(
       OperationoutcomeExample,
     );

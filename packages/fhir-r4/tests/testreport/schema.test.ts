@@ -2,8 +2,8 @@ import { createTestReportSchema } from "../../src";
 import { TestreportExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("TestReport Schema Validation", () => {
-  it("should validate TestreportExample fixture", () => {
+describe("Testreport Group Schema Validation", () => {
+  it("should validate TestreportExample fixture (TestReport)", () => {
     const result = createTestReportSchema().safeParse(TestreportExample);
     if (!result.success) {
       console.error("Validation failed for TestreportExample:");

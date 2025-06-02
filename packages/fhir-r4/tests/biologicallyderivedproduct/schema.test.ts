@@ -2,8 +2,8 @@ import { createBiologicallyDerivedProductSchema } from "../../src";
 import { BiologicallyderivedproductExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("BiologicallyDerivedProduct Schema Validation", () => {
-  it("should validate BiologicallyderivedproductExample fixture", () => {
+describe("Biologicallyderivedproduct Group Schema Validation", () => {
+  it("should validate BiologicallyderivedproductExample fixture (BiologicallyDerivedProduct)", () => {
     const result = createBiologicallyDerivedProductSchema().safeParse(
       BiologicallyderivedproductExample,
     );

@@ -82,8 +82,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("ConceptMap Schema Validation", () => {
-  it("should validate CmAddressTypeV3 fixture", () => {
+describe("Conceptmap Group Schema Validation", () => {
+  it("should validate CmAddressTypeV3 fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(CmAddressTypeV3);
     if (!result.success) {
       console.error("Validation failed for CmAddressTypeV3:");
@@ -95,7 +95,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CmAddressUseV2 fixture", () => {
+  it("should validate CmAddressUseV2 fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(CmAddressUseV2);
     if (!result.success) {
       console.error("Validation failed for CmAddressUseV2:");
@@ -107,7 +107,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CmAddressUseV3 fixture", () => {
+  it("should validate CmAddressUseV3 fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(CmAddressUseV3);
     if (!result.success) {
       console.error("Validation failed for CmAddressUseV3:");
@@ -119,7 +119,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CmAdministrativeGenderV2 fixture", () => {
+  it("should validate CmAdministrativeGenderV2 fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(CmAdministrativeGenderV2);
     if (!result.success) {
       console.error("Validation failed for CmAdministrativeGenderV2:");
@@ -131,7 +131,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CmAdministrativeGenderV3 fixture", () => {
+  it("should validate CmAdministrativeGenderV3 fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(CmAdministrativeGenderV3);
     if (!result.success) {
       console.error("Validation failed for CmAdministrativeGenderV3:");
@@ -143,7 +143,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CmCompositionStatusV3 fixture", () => {
+  it("should validate CmCompositionStatusV3 fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(CmCompositionStatusV3);
     if (!result.success) {
       console.error("Validation failed for CmCompositionStatusV3:");
@@ -155,7 +155,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CmContactPointSystemV2 fixture", () => {
+  it("should validate CmContactPointSystemV2 fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(CmContactPointSystemV2);
     if (!result.success) {
       console.error("Validation failed for CmContactPointSystemV2:");
@@ -167,7 +167,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CmContactPointUseV2 fixture", () => {
+  it("should validate CmContactPointUseV2 fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(CmContactPointUseV2);
     if (!result.success) {
       console.error("Validation failed for CmContactPointUseV2:");
@@ -179,7 +179,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CmContactPointUseV3 fixture", () => {
+  it("should validate CmContactPointUseV3 fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(CmContactPointUseV3);
     if (!result.success) {
       console.error("Validation failed for CmContactPointUseV3:");
@@ -191,7 +191,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CmDataAbsentReasonV3 fixture", () => {
+  it("should validate CmDataAbsentReasonV3 fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(CmDataAbsentReasonV3);
     if (!result.success) {
       console.error("Validation failed for CmDataAbsentReasonV3:");
@@ -203,7 +203,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CmDetectedissueSeverityV3 fixture", () => {
+  it("should validate CmDetectedissueSeverityV3 fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       CmDetectedissueSeverityV3,
     );
@@ -217,7 +217,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CmDocumentReferenceStatusV3 fixture", () => {
+  it("should validate CmDocumentReferenceStatusV3 fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       CmDocumentReferenceStatusV3,
     );
@@ -231,7 +231,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CmNameUseV2 fixture", () => {
+  it("should validate CmNameUseV2 fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(CmNameUseV2);
     if (!result.success) {
       console.error("Validation failed for CmNameUseV2:");
@@ -243,7 +243,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CmNameUseV3 fixture", () => {
+  it("should validate CmNameUseV3 fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(CmNameUseV3);
     if (!result.success) {
       console.error("Validation failed for CmNameUseV3:");
@@ -255,7 +255,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Conceptmap103 fixture", () => {
+  it("should validate Conceptmap103 fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(Conceptmap103);
     if (!result.success) {
       console.error("Validation failed for Conceptmap103:");
@@ -267,7 +267,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConceptmapCdshooksIndicator fixture", () => {
+  it("should validate ConceptmapCdshooksIndicator fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ConceptmapCdshooksIndicator,
     );
@@ -281,7 +281,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConceptmapExample2 fixture", () => {
+  it("should validate ConceptmapExample2 fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(ConceptmapExample2);
     if (!result.success) {
       console.error("Validation failed for ConceptmapExample2:");
@@ -293,7 +293,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConceptmapExample fixture", () => {
+  it("should validate ConceptmapExample fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(ConceptmapExample);
     if (!result.success) {
       console.error("Validation failed for ConceptmapExample:");
@@ -305,7 +305,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetAccountStatus fixture", () => {
+  it("should validate ScValuesetAccountStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(ScValuesetAccountStatus);
     if (!result.success) {
       console.error("Validation failed for ScValuesetAccountStatus:");
@@ -317,7 +317,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetAllergyintoleranceClinical fixture", () => {
+  it("should validate ScValuesetAllergyintoleranceClinical fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetAllergyintoleranceClinical,
     );
@@ -333,7 +333,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetAllergyintoleranceVerification fixture", () => {
+  it("should validate ScValuesetAllergyintoleranceVerification fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetAllergyintoleranceVerification,
     );
@@ -349,7 +349,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetAppointmentstatus fixture", () => {
+  it("should validate ScValuesetAppointmentstatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetAppointmentstatus,
     );
@@ -363,7 +363,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetCarePlanActivityStatus fixture", () => {
+  it("should validate ScValuesetCarePlanActivityStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetCarePlanActivityStatus,
     );
@@ -377,7 +377,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetCareTeamStatus fixture", () => {
+  it("should validate ScValuesetCareTeamStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(ScValuesetCareTeamStatus);
     if (!result.success) {
       console.error("Validation failed for ScValuesetCareTeamStatus:");
@@ -389,7 +389,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetChargeitemStatus fixture", () => {
+  it("should validate ScValuesetChargeitemStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetChargeitemStatus,
     );
@@ -403,7 +403,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetClinicalimpressionStatus fixture", () => {
+  it("should validate ScValuesetClinicalimpressionStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetClinicalimpressionStatus,
     );
@@ -419,7 +419,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetCompositionStatus fixture", () => {
+  it("should validate ScValuesetCompositionStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetCompositionStatus,
     );
@@ -433,7 +433,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetConditionVerStatus fixture", () => {
+  it("should validate ScValuesetConditionVerStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetConditionVerStatus,
     );
@@ -447,7 +447,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetConsentStateCodes fixture", () => {
+  it("should validate ScValuesetConsentStateCodes fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetConsentStateCodes,
     );
@@ -461,7 +461,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetContractPublicationstatus fixture", () => {
+  it("should validate ScValuesetContractPublicationstatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetContractPublicationstatus,
     );
@@ -477,7 +477,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetContractStatus fixture", () => {
+  it("should validate ScValuesetContractStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(ScValuesetContractStatus);
     if (!result.success) {
       console.error("Validation failed for ScValuesetContractStatus:");
@@ -489,7 +489,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetDeviceStatementStatus fixture", () => {
+  it("should validate ScValuesetDeviceStatementStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetDeviceStatementStatus,
     );
@@ -503,7 +503,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetDeviceStatus fixture", () => {
+  it("should validate ScValuesetDeviceStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(ScValuesetDeviceStatus);
     if (!result.success) {
       console.error("Validation failed for ScValuesetDeviceStatus:");
@@ -515,7 +515,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetDiagnosticReportStatus fixture", () => {
+  it("should validate ScValuesetDiagnosticReportStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetDiagnosticReportStatus,
     );
@@ -529,7 +529,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetDocumentReferenceStatus fixture", () => {
+  it("should validate ScValuesetDocumentReferenceStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetDocumentReferenceStatus,
     );
@@ -543,7 +543,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetEncounterLocationStatus fixture", () => {
+  it("should validate ScValuesetEncounterLocationStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetEncounterLocationStatus,
     );
@@ -557,7 +557,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetEncounterStatus fixture", () => {
+  it("should validate ScValuesetEncounterStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetEncounterStatus,
     );
@@ -571,7 +571,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetEndpointStatus fixture", () => {
+  it("should validate ScValuesetEndpointStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(ScValuesetEndpointStatus);
     if (!result.success) {
       console.error("Validation failed for ScValuesetEndpointStatus:");
@@ -583,7 +583,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetEpisodeOfCareStatus fixture", () => {
+  it("should validate ScValuesetEpisodeOfCareStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetEpisodeOfCareStatus,
     );
@@ -597,7 +597,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetEventStatus fixture", () => {
+  it("should validate ScValuesetEventStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(ScValuesetEventStatus);
     if (!result.success) {
       console.error("Validation failed for ScValuesetEventStatus:");
@@ -609,7 +609,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetExplanationofbenefitStatus fixture", () => {
+  it("should validate ScValuesetExplanationofbenefitStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetExplanationofbenefitStatus,
     );
@@ -625,7 +625,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetFlagStatus fixture", () => {
+  it("should validate ScValuesetFlagStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(ScValuesetFlagStatus);
     if (!result.success) {
       console.error("Validation failed for ScValuesetFlagStatus:");
@@ -637,7 +637,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetFmStatus fixture", () => {
+  it("should validate ScValuesetFmStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(ScValuesetFmStatus);
     if (!result.success) {
       console.error("Validation failed for ScValuesetFmStatus:");
@@ -649,7 +649,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetGoalAchievement fixture", () => {
+  it("should validate ScValuesetGoalAchievement fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetGoalAchievement,
     );
@@ -663,7 +663,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetGoalStatus fixture", () => {
+  it("should validate ScValuesetGoalStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(ScValuesetGoalStatus);
     if (!result.success) {
       console.error("Validation failed for ScValuesetGoalStatus:");
@@ -675,7 +675,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetGuidanceResponseStatus fixture", () => {
+  it("should validate ScValuesetGuidanceResponseStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetGuidanceResponseStatus,
     );
@@ -689,7 +689,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetHistoryStatus fixture", () => {
+  it("should validate ScValuesetHistoryStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(ScValuesetHistoryStatus);
     if (!result.success) {
       console.error("Validation failed for ScValuesetHistoryStatus:");
@@ -701,7 +701,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetImagingstudyStatus fixture", () => {
+  it("should validate ScValuesetImagingstudyStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetImagingstudyStatus,
     );
@@ -715,7 +715,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetImmunizationEvaluationStatus fixture", () => {
+  it("should validate ScValuesetImmunizationEvaluationStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetImmunizationEvaluationStatus,
     );
@@ -731,7 +731,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetImmunizationStatus fixture", () => {
+  it("should validate ScValuesetImmunizationStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetImmunizationStatus,
     );
@@ -745,7 +745,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetInvoiceStatus fixture", () => {
+  it("should validate ScValuesetInvoiceStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(ScValuesetInvoiceStatus);
     if (!result.success) {
       console.error("Validation failed for ScValuesetInvoiceStatus:");
@@ -757,7 +757,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetListStatus fixture", () => {
+  it("should validate ScValuesetListStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(ScValuesetListStatus);
     if (!result.success) {
       console.error("Validation failed for ScValuesetListStatus:");
@@ -769,7 +769,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetLocationStatus fixture", () => {
+  it("should validate ScValuesetLocationStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(ScValuesetLocationStatus);
     if (!result.success) {
       console.error("Validation failed for ScValuesetLocationStatus:");
@@ -781,7 +781,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetMeasureReportStatus fixture", () => {
+  it("should validate ScValuesetMeasureReportStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetMeasureReportStatus,
     );
@@ -795,7 +795,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetMedicationAdminStatus fixture", () => {
+  it("should validate ScValuesetMedicationAdminStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetMedicationAdminStatus,
     );
@@ -809,7 +809,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetMedicationStatementStatus fixture", () => {
+  it("should validate ScValuesetMedicationStatementStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetMedicationStatementStatus,
     );
@@ -825,7 +825,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetMedicationStatus fixture", () => {
+  it("should validate ScValuesetMedicationStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetMedicationStatus,
     );
@@ -839,7 +839,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetMedicationdispenseStatus fixture", () => {
+  it("should validate ScValuesetMedicationdispenseStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetMedicationdispenseStatus,
     );
@@ -855,7 +855,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetMedicationknowledgeStatus fixture", () => {
+  it("should validate ScValuesetMedicationknowledgeStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetMedicationknowledgeStatus,
     );
@@ -871,7 +871,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetMedicationrequestStatus fixture", () => {
+  it("should validate ScValuesetMedicationrequestStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetMedicationrequestStatus,
     );
@@ -885,7 +885,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetMetricOperationalStatus fixture", () => {
+  it("should validate ScValuesetMetricOperationalStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetMetricOperationalStatus,
     );
@@ -899,7 +899,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetObservationStatus fixture", () => {
+  it("should validate ScValuesetObservationStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetObservationStatus,
     );
@@ -913,7 +913,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetParticipationstatus fixture", () => {
+  it("should validate ScValuesetParticipationstatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetParticipationstatus,
     );
@@ -927,7 +927,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetProductStatus fixture", () => {
+  it("should validate ScValuesetProductStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(ScValuesetProductStatus);
     if (!result.success) {
       console.error("Validation failed for ScValuesetProductStatus:");
@@ -939,7 +939,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetPublicationStatus fixture", () => {
+  it("should validate ScValuesetPublicationStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetPublicationStatus,
     );
@@ -953,7 +953,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetQuestionnaireAnswersStatus fixture", () => {
+  it("should validate ScValuesetQuestionnaireAnswersStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetQuestionnaireAnswersStatus,
     );
@@ -969,7 +969,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetReportStatusCodes fixture", () => {
+  it("should validate ScValuesetReportStatusCodes fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetReportStatusCodes,
     );
@@ -983,7 +983,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetRequestStatus fixture", () => {
+  it("should validate ScValuesetRequestStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(ScValuesetRequestStatus);
     if (!result.success) {
       console.error("Validation failed for ScValuesetRequestStatus:");
@@ -995,7 +995,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetResearchStudyStatus fixture", () => {
+  it("should validate ScValuesetResearchStudyStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetResearchStudyStatus,
     );
@@ -1009,7 +1009,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetResearchSubjectStatus fixture", () => {
+  it("should validate ScValuesetResearchSubjectStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetResearchSubjectStatus,
     );
@@ -1023,7 +1023,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetSlotstatus fixture", () => {
+  it("should validate ScValuesetSlotstatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(ScValuesetSlotstatus);
     if (!result.success) {
       console.error("Validation failed for ScValuesetSlotstatus:");
@@ -1035,7 +1035,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetSpecimenStatus fixture", () => {
+  it("should validate ScValuesetSpecimenStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(ScValuesetSpecimenStatus);
     if (!result.success) {
       console.error("Validation failed for ScValuesetSpecimenStatus:");
@@ -1047,7 +1047,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetSubscriptionStatus fixture", () => {
+  it("should validate ScValuesetSubscriptionStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetSubscriptionStatus,
     );
@@ -1061,7 +1061,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetSubstanceStatus fixture", () => {
+  it("should validate ScValuesetSubstanceStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetSubstanceStatus,
     );
@@ -1075,7 +1075,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetSupplydeliveryStatus fixture", () => {
+  it("should validate ScValuesetSupplydeliveryStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetSupplydeliveryStatus,
     );
@@ -1089,7 +1089,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetSupplyrequestStatus fixture", () => {
+  it("should validate ScValuesetSupplyrequestStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetSupplyrequestStatus,
     );
@@ -1103,7 +1103,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetTaskStatus fixture", () => {
+  it("should validate ScValuesetTaskStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(ScValuesetTaskStatus);
     if (!result.success) {
       console.error("Validation failed for ScValuesetTaskStatus:");
@@ -1115,7 +1115,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetVerificationresultStatus fixture", () => {
+  it("should validate ScValuesetVerificationresultStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetVerificationresultStatus,
     );
@@ -1131,7 +1131,7 @@ describe("ConceptMap Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScValuesetVerificationresultValidationStatus fixture", () => {
+  it("should validate ScValuesetVerificationresultValidationStatus fixture (ConceptMap)", () => {
     const result = createConceptMapSchema().safeParse(
       ScValuesetVerificationresultValidationStatus,
     );

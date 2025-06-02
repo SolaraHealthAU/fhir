@@ -9,10 +9,10 @@ import {
   createContactDetailSchema,
   createCodeableConceptSchema,
   createUsageContextSchema,
+  createPeriodSchema,
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createNamingSystemUniqueIdSchema } from "../namingsystemuniqueid/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -51,6 +51,27 @@ export function createNamingSystemSchema() {
       usage: primitives.getStringSchema().optional(),
       _usage: createElementSchema().optional(),
       uniqueId: z.array(createNamingSystemUniqueIdSchema()),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createNamingSystemUniqueIdSchema() {
+  return getCachedSchema("NamingSystemUniqueId", () => {
+    const baseSchema: z.ZodType<types.NamingSystemUniqueId> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      type: z.enum(["oid", "uuid", "uri", "other"]),
+      _type: createElementSchema().optional(),
+      value: primitives.getStringSchema(),
+      _value: createElementSchema().optional(),
+      preferred: primitives.getBooleanSchema().optional(),
+      _preferred: createElementSchema().optional(),
+      comment: primitives.getStringSchema().optional(),
+      _comment: createElementSchema().optional(),
+      period: createPeriodSchema().optional(),
     });
 
     return baseSchema;

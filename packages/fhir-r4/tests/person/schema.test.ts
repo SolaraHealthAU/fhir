@@ -8,8 +8,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Person Schema Validation", () => {
-  it("should validate PersonExampleF002Ariadne fixture", () => {
+describe("Person Group Schema Validation", () => {
+  it("should validate PersonExampleF002Ariadne fixture (Person)", () => {
     const result = createPersonSchema().safeParse(PersonExampleF002Ariadne);
     if (!result.success) {
       console.error("Validation failed for PersonExampleF002Ariadne:");
@@ -21,7 +21,7 @@ describe("Person Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PersonExample fixture", () => {
+  it("should validate PersonExample fixture (Person)", () => {
     const result = createPersonSchema().safeParse(PersonExample);
     if (!result.success) {
       console.error("Validation failed for PersonExample:");
@@ -33,7 +33,7 @@ describe("Person Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PersonGrahame fixture", () => {
+  it("should validate PersonGrahame fixture (Person)", () => {
     const result = createPersonSchema().safeParse(PersonGrahame);
     if (!result.success) {
       console.error("Validation failed for PersonGrahame:");
@@ -45,7 +45,7 @@ describe("Person Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PersonPatientPortal fixture", () => {
+  it("should validate PersonPatientPortal fixture (Person)", () => {
     const result = createPersonSchema().safeParse(PersonPatientPortal);
     if (!result.success) {
       console.error("Validation failed for PersonPatientPortal:");
@@ -57,7 +57,7 @@ describe("Person Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PersonProviderDirectory fixture", () => {
+  it("should validate PersonProviderDirectory fixture (Person)", () => {
     const result = createPersonSchema().safeParse(PersonProviderDirectory);
     if (!result.success) {
       console.error("Validation failed for PersonProviderDirectory:");

@@ -2,8 +2,8 @@ import { createAccountSchema } from "../../src";
 import { AccountExampleWithGuarantor, AccountExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Account Schema Validation", () => {
-  it("should validate AccountExampleWithGuarantor fixture", () => {
+describe("Account Group Schema Validation", () => {
+  it("should validate AccountExampleWithGuarantor fixture (Account)", () => {
     const result = createAccountSchema().safeParse(AccountExampleWithGuarantor);
     if (!result.success) {
       console.error("Validation failed for AccountExampleWithGuarantor:");
@@ -15,7 +15,7 @@ describe("Account Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AccountExample fixture", () => {
+  it("should validate AccountExample fixture (Account)", () => {
     const result = createAccountSchema().safeParse(AccountExample);
     if (!result.success) {
       console.error("Validation failed for AccountExample:");

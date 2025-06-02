@@ -14,9 +14,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createInvoiceParticipantSchema } from "../invoiceparticipant/schema";
-import { createInvoiceLineItemSchema } from "../invoicelineitem/schema";
-import { createInvoicePriceComponentSchema } from "../invoicepricecomponent/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -62,6 +59,64 @@ export function createInvoiceSchema() {
       paymentTerms: primitives.getMarkdownSchema().optional(),
       _paymentTerms: createElementSchema().optional(),
       note: z.array(createAnnotationSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createInvoiceParticipantSchema() {
+  return getCachedSchema("InvoiceParticipant", () => {
+    const baseSchema: z.ZodType<types.InvoiceParticipant> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      role: createCodeableConceptSchema().optional(),
+      actor: createReferenceSchema(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createInvoiceLineItemSchema() {
+  return getCachedSchema("InvoiceLineItem", () => {
+    const baseSchema: z.ZodType<types.InvoiceLineItem> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      sequence: primitives.getPositiveIntSchema().optional(),
+      _sequence: createElementSchema().optional(),
+      chargeItemReference: createReferenceSchema().optional(),
+      chargeItemCodeableConcept: createCodeableConceptSchema().optional(),
+      priceComponent: z.array(createInvoicePriceComponentSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createInvoicePriceComponentSchema() {
+  return getCachedSchema("InvoicePriceComponent", () => {
+    const baseSchema: z.ZodType<types.InvoicePriceComponent> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      type: z
+        .enum([
+          "base",
+          "surcharge",
+          "deduction",
+          "discount",
+          "tax",
+          "informational",
+        ])
+        .optional(),
+      _type: createElementSchema().optional(),
+      code: createCodeableConceptSchema().optional(),
+      factor: primitives.getDecimalSchema().optional(),
+      _factor: createElementSchema().optional(),
+      amount: createMoneySchema().optional(),
     });
 
     return baseSchema;

@@ -671,8 +671,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("ValueSet Schema Validation", () => {
-  it("should validate ValuesetFhirVersion fixture", () => {
+describe("Valueset Group Schema Validation", () => {
+  it("should validate ValuesetFhirVersion fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetFhirVersion);
     if (!result.success) {
       console.error("Validation failed for ValuesetFhirVersion:");
@@ -684,7 +684,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAbstractTypes fixture", () => {
+  it("should validate ValuesetAbstractTypes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAbstractTypes);
     if (!result.success) {
       console.error("Validation failed for ValuesetAbstractTypes:");
@@ -696,7 +696,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAccountStatus fixture", () => {
+  it("should validate ValuesetAccountStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAccountStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetAccountStatus:");
@@ -708,7 +708,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAccountType fixture", () => {
+  it("should validate ValuesetAccountType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAccountType);
     if (!result.success) {
       console.error("Validation failed for ValuesetAccountType:");
@@ -720,7 +720,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetActionCardinalityBehavior fixture", () => {
+  it("should validate ValuesetActionCardinalityBehavior fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetActionCardinalityBehavior,
     );
@@ -734,7 +734,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetActionConditionKind fixture", () => {
+  it("should validate ValuesetActionConditionKind fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetActionConditionKind,
     );
@@ -748,7 +748,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetActionGroupingBehavior fixture", () => {
+  it("should validate ValuesetActionGroupingBehavior fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetActionGroupingBehavior,
     );
@@ -762,7 +762,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetActionParticipantRole fixture", () => {
+  it("should validate ValuesetActionParticipantRole fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetActionParticipantRole,
     );
@@ -776,7 +776,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetActionParticipantType fixture", () => {
+  it("should validate ValuesetActionParticipantType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetActionParticipantType,
     );
@@ -790,7 +790,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetActionPrecheckBehavior fixture", () => {
+  it("should validate ValuesetActionPrecheckBehavior fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetActionPrecheckBehavior,
     );
@@ -804,7 +804,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetActionRelationshipType fixture", () => {
+  it("should validate ValuesetActionRelationshipType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetActionRelationshipType,
     );
@@ -818,7 +818,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetActionRequiredBehavior fixture", () => {
+  it("should validate ValuesetActionRequiredBehavior fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetActionRequiredBehavior,
     );
@@ -832,7 +832,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetActionSelectionBehavior fixture", () => {
+  it("should validate ValuesetActionSelectionBehavior fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetActionSelectionBehavior,
     );
@@ -846,7 +846,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetActionType fixture", () => {
+  it("should validate ValuesetActionType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetActionType);
     if (!result.success) {
       console.error("Validation failed for ValuesetActionType:");
@@ -858,7 +858,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetActivityDefinitionCategory fixture", () => {
+  it("should validate ValuesetActivityDefinitionCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetActivityDefinitionCategory,
     );
@@ -874,7 +874,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAdditionalInstructionCodes fixture", () => {
+  it("should validate ValuesetAdditionalInstructionCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAdditionalInstructionCodes,
     );
@@ -890,7 +890,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAdditionalmaterials fixture", () => {
+  it("should validate ValuesetAdditionalmaterials fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAdditionalmaterials,
     );
@@ -904,7 +904,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAddressType fixture", () => {
+  it("should validate ValuesetAddressType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAddressType);
     if (!result.success) {
       console.error("Validation failed for ValuesetAddressType:");
@@ -916,7 +916,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAddressUse fixture", () => {
+  it("should validate ValuesetAddressUse fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAddressUse);
     if (!result.success) {
       console.error("Validation failed for ValuesetAddressUse:");
@@ -928,7 +928,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAdjudicationError fixture", () => {
+  it("should validate ValuesetAdjudicationError fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAdjudicationError);
     if (!result.success) {
       console.error("Validation failed for ValuesetAdjudicationError:");
@@ -940,7 +940,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAdjudicationReason fixture", () => {
+  it("should validate ValuesetAdjudicationReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAdjudicationReason);
     if (!result.success) {
       console.error("Validation failed for ValuesetAdjudicationReason:");
@@ -952,7 +952,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAdjudication fixture", () => {
+  it("should validate ValuesetAdjudication fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAdjudication);
     if (!result.success) {
       console.error("Validation failed for ValuesetAdjudication:");
@@ -964,7 +964,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAdministrationMethodCodes fixture", () => {
+  it("should validate ValuesetAdministrationMethodCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAdministrationMethodCodes,
     );
@@ -978,7 +978,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAdministrativeGender fixture", () => {
+  it("should validate ValuesetAdministrativeGender fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAdministrativeGender,
     );
@@ -992,7 +992,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAdverseEventActuality fixture", () => {
+  it("should validate ValuesetAdverseEventActuality fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAdverseEventActuality,
     );
@@ -1006,7 +1006,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAdverseEventCategory fixture", () => {
+  it("should validate ValuesetAdverseEventCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAdverseEventCategory,
     );
@@ -1020,7 +1020,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAdverseEventCausalityAssess fixture", () => {
+  it("should validate ValuesetAdverseEventCausalityAssess fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAdverseEventCausalityAssess,
     );
@@ -1036,7 +1036,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAdverseEventCausalityMethod fixture", () => {
+  it("should validate ValuesetAdverseEventCausalityMethod fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAdverseEventCausalityMethod,
     );
@@ -1052,7 +1052,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAdverseEventOutcome fixture", () => {
+  it("should validate ValuesetAdverseEventOutcome fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAdverseEventOutcome,
     );
@@ -1066,7 +1066,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAdverseEventSeriousness fixture", () => {
+  it("should validate ValuesetAdverseEventSeriousness fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAdverseEventSeriousness,
     );
@@ -1080,7 +1080,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAdverseEventSeverity fixture", () => {
+  it("should validate ValuesetAdverseEventSeverity fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAdverseEventSeverity,
     );
@@ -1094,7 +1094,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAdverseEventType fixture", () => {
+  it("should validate ValuesetAdverseEventType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAdverseEventType);
     if (!result.success) {
       console.error("Validation failed for ValuesetAdverseEventType:");
@@ -1106,7 +1106,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAgeUnits fixture", () => {
+  it("should validate ValuesetAgeUnits fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAgeUnits);
     if (!result.success) {
       console.error("Validation failed for ValuesetAgeUnits:");
@@ -1118,7 +1118,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAllDistanceUnits fixture", () => {
+  it("should validate ValuesetAllDistanceUnits fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAllDistanceUnits);
     if (!result.success) {
       console.error("Validation failed for ValuesetAllDistanceUnits:");
@@ -1130,7 +1130,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAllLanguages fixture", () => {
+  it("should validate ValuesetAllLanguages fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAllLanguages);
     if (!result.success) {
       console.error("Validation failed for ValuesetAllLanguages:");
@@ -1142,7 +1142,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAllTimeUnits fixture", () => {
+  it("should validate ValuesetAllTimeUnits fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAllTimeUnits);
     if (!result.success) {
       console.error("Validation failed for ValuesetAllTimeUnits:");
@@ -1154,7 +1154,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAllTypes fixture", () => {
+  it("should validate ValuesetAllTypes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAllTypes);
     if (!result.success) {
       console.error("Validation failed for ValuesetAllTypes:");
@@ -1166,7 +1166,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAllelename fixture", () => {
+  it("should validate ValuesetAllelename fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAllelename);
     if (!result.success) {
       console.error("Validation failed for ValuesetAllelename:");
@@ -1178,7 +1178,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAllergIntolSubstanceExpRisk fixture", () => {
+  it("should validate ValuesetAllergIntolSubstanceExpRisk fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAllergIntolSubstanceExpRisk,
     );
@@ -1194,7 +1194,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAllergyIntoleranceCategory fixture", () => {
+  it("should validate ValuesetAllergyIntoleranceCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAllergyIntoleranceCategory,
     );
@@ -1210,7 +1210,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAllergyIntoleranceCriticality fixture", () => {
+  it("should validate ValuesetAllergyIntoleranceCriticality fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAllergyIntoleranceCriticality,
     );
@@ -1226,7 +1226,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAllergyIntoleranceType fixture", () => {
+  it("should validate ValuesetAllergyIntoleranceType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAllergyIntoleranceType,
     );
@@ -1240,7 +1240,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAllergyintoleranceClinical fixture", () => {
+  it("should validate ValuesetAllergyintoleranceClinical fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAllergyintoleranceClinical,
     );
@@ -1256,7 +1256,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAllergyintoleranceCode fixture", () => {
+  it("should validate ValuesetAllergyintoleranceCode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAllergyintoleranceCode,
     );
@@ -1270,7 +1270,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAllergyintoleranceVerification fixture", () => {
+  it("should validate ValuesetAllergyintoleranceVerification fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAllergyintoleranceVerification,
     );
@@ -1286,7 +1286,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAnimalGenderstatus fixture", () => {
+  it("should validate ValuesetAnimalGenderstatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAnimalGenderstatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetAnimalGenderstatus:");
@@ -1298,7 +1298,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAnimalSpecies fixture", () => {
+  it("should validate ValuesetAnimalSpecies fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAnimalSpecies);
     if (!result.success) {
       console.error("Validation failed for ValuesetAnimalSpecies:");
@@ -1310,7 +1310,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAppointmentCancellationReason fixture", () => {
+  it("should validate ValuesetAppointmentCancellationReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAppointmentCancellationReason,
     );
@@ -1326,7 +1326,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAppointmentstatus fixture", () => {
+  it("should validate ValuesetAppointmentstatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAppointmentstatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetAppointmentstatus:");
@@ -1338,7 +1338,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetApproachSiteCodes fixture", () => {
+  it("should validate ValuesetApproachSiteCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetApproachSiteCodes);
     if (!result.success) {
       console.error("Validation failed for ValuesetApproachSiteCodes:");
@@ -1350,7 +1350,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAssertDirectionCodes fixture", () => {
+  it("should validate ValuesetAssertDirectionCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAssertDirectionCodes,
     );
@@ -1364,7 +1364,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAssertOperatorCodes fixture", () => {
+  it("should validate ValuesetAssertOperatorCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAssertOperatorCodes,
     );
@@ -1378,7 +1378,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAssertResponseCodeTypes fixture", () => {
+  it("should validate ValuesetAssertResponseCodeTypes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetAssertResponseCodeTypes,
     );
@@ -1392,7 +1392,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAssetAvailability fixture", () => {
+  it("should validate ValuesetAssetAvailability fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAssetAvailability);
     if (!result.success) {
       console.error("Validation failed for ValuesetAssetAvailability:");
@@ -1404,7 +1404,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAuditEntityType fixture", () => {
+  it("should validate ValuesetAuditEntityType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAuditEntityType);
     if (!result.success) {
       console.error("Validation failed for ValuesetAuditEntityType:");
@@ -1416,7 +1416,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAuditEventAction fixture", () => {
+  it("should validate ValuesetAuditEventAction fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAuditEventAction);
     if (!result.success) {
       console.error("Validation failed for ValuesetAuditEventAction:");
@@ -1428,7 +1428,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAuditEventOutcome fixture", () => {
+  it("should validate ValuesetAuditEventOutcome fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAuditEventOutcome);
     if (!result.success) {
       console.error("Validation failed for ValuesetAuditEventOutcome:");
@@ -1440,7 +1440,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAuditEventSubType fixture", () => {
+  it("should validate ValuesetAuditEventSubType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAuditEventSubType);
     if (!result.success) {
       console.error("Validation failed for ValuesetAuditEventSubType:");
@@ -1452,7 +1452,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAuditEventType fixture", () => {
+  it("should validate ValuesetAuditEventType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAuditEventType);
     if (!result.success) {
       console.error("Validation failed for ValuesetAuditEventType:");
@@ -1464,7 +1464,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetAuditSourceType fixture", () => {
+  it("should validate ValuesetAuditSourceType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetAuditSourceType);
     if (!result.success) {
       console.error("Validation failed for ValuesetAuditSourceType:");
@@ -1476,7 +1476,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetBasicResourceType fixture", () => {
+  it("should validate ValuesetBasicResourceType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetBasicResourceType);
     if (!result.success) {
       console.error("Validation failed for ValuesetBasicResourceType:");
@@ -1488,7 +1488,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetBenefitNetwork fixture", () => {
+  it("should validate ValuesetBenefitNetwork fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetBenefitNetwork);
     if (!result.success) {
       console.error("Validation failed for ValuesetBenefitNetwork:");
@@ -1500,7 +1500,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetBenefitTerm fixture", () => {
+  it("should validate ValuesetBenefitTerm fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetBenefitTerm);
     if (!result.success) {
       console.error("Validation failed for ValuesetBenefitTerm:");
@@ -1512,7 +1512,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetBenefitType fixture", () => {
+  it("should validate ValuesetBenefitType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetBenefitType);
     if (!result.success) {
       console.error("Validation failed for ValuesetBenefitType:");
@@ -1524,7 +1524,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetBenefitUnit fixture", () => {
+  it("should validate ValuesetBenefitUnit fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetBenefitUnit);
     if (!result.success) {
       console.error("Validation failed for ValuesetBenefitUnit:");
@@ -1536,7 +1536,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetBindingStrength fixture", () => {
+  it("should validate ValuesetBindingStrength fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetBindingStrength);
     if (!result.success) {
       console.error("Validation failed for ValuesetBindingStrength:");
@@ -1548,7 +1548,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetBodySite fixture", () => {
+  it("should validate ValuesetBodySite fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetBodySite);
     if (!result.success) {
       console.error("Validation failed for ValuesetBodySite:");
@@ -1560,7 +1560,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetBodysiteLaterality fixture", () => {
+  it("should validate ValuesetBodysiteLaterality fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetBodysiteLaterality);
     if (!result.success) {
       console.error("Validation failed for ValuesetBodysiteLaterality:");
@@ -1572,7 +1572,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetBodystructureCode fixture", () => {
+  it("should validate ValuesetBodystructureCode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetBodystructureCode);
     if (!result.success) {
       console.error("Validation failed for ValuesetBodystructureCode:");
@@ -1584,7 +1584,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetBodystructureRelativeLocation fixture", () => {
+  it("should validate ValuesetBodystructureRelativeLocation fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetBodystructureRelativeLocation,
     );
@@ -1600,7 +1600,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetBundleType fixture", () => {
+  it("should validate ValuesetBundleType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetBundleType);
     if (!result.success) {
       console.error("Validation failed for ValuesetBundleType:");
@@ -1612,7 +1612,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetC80Facilitycodes fixture", () => {
+  it("should validate ValuesetC80Facilitycodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetC80Facilitycodes);
     if (!result.success) {
       console.error("Validation failed for ValuesetC80Facilitycodes:");
@@ -1624,7 +1624,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetC80PracticeCodes fixture", () => {
+  it("should validate ValuesetC80PracticeCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetC80PracticeCodes);
     if (!result.success) {
       console.error("Validation failed for ValuesetC80PracticeCodes:");
@@ -1636,7 +1636,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCapabilityStatementKind fixture", () => {
+  it("should validate ValuesetCapabilityStatementKind fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetCapabilityStatementKind,
     );
@@ -1650,7 +1650,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCarePlanActivityKind fixture", () => {
+  it("should validate ValuesetCarePlanActivityKind fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetCarePlanActivityKind,
     );
@@ -1664,7 +1664,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCarePlanActivityOutcome fixture", () => {
+  it("should validate ValuesetCarePlanActivityOutcome fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetCarePlanActivityOutcome,
     );
@@ -1678,7 +1678,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCarePlanActivityStatus fixture", () => {
+  it("should validate ValuesetCarePlanActivityStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetCarePlanActivityStatus,
     );
@@ -1692,7 +1692,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCarePlanCategory fixture", () => {
+  it("should validate ValuesetCarePlanCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetCarePlanCategory);
     if (!result.success) {
       console.error("Validation failed for ValuesetCarePlanCategory:");
@@ -1704,7 +1704,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCarePlanIntent fixture", () => {
+  it("should validate ValuesetCarePlanIntent fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetCarePlanIntent);
     if (!result.success) {
       console.error("Validation failed for ValuesetCarePlanIntent:");
@@ -1716,7 +1716,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCareTeamCategory fixture", () => {
+  it("should validate ValuesetCareTeamCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetCareTeamCategory);
     if (!result.success) {
       console.error("Validation failed for ValuesetCareTeamCategory:");
@@ -1728,7 +1728,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCareTeamStatus fixture", () => {
+  it("should validate ValuesetCareTeamStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetCareTeamStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetCareTeamStatus:");
@@ -1740,7 +1740,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCatalogtype fixture", () => {
+  it("should validate ValuesetCatalogtype fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetCatalogtype);
     if (!result.success) {
       console.error("Validation failed for ValuesetCatalogtype:");
@@ -1752,7 +1752,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCdshooksIndicator fixture", () => {
+  it("should validate ValuesetCdshooksIndicator fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetCdshooksIndicator);
     if (!result.success) {
       console.error("Validation failed for ValuesetCdshooksIndicator:");
@@ -1764,7 +1764,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCertaintySubcomponentRating fixture", () => {
+  it("should validate ValuesetCertaintySubcomponentRating fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetCertaintySubcomponentRating,
     );
@@ -1780,7 +1780,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCertaintySubcomponentType fixture", () => {
+  it("should validate ValuesetCertaintySubcomponentType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetCertaintySubcomponentType,
     );
@@ -1794,7 +1794,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetChargeitemBillingcodes fixture", () => {
+  it("should validate ValuesetChargeitemBillingcodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetChargeitemBillingcodes,
     );
@@ -1808,7 +1808,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetChargeitemStatus fixture", () => {
+  it("should validate ValuesetChargeitemStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetChargeitemStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetChargeitemStatus:");
@@ -1820,7 +1820,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetChoiceListOrientation fixture", () => {
+  it("should validate ValuesetChoiceListOrientation fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetChoiceListOrientation,
     );
@@ -1834,7 +1834,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetChromosomeHuman fixture", () => {
+  it("should validate ValuesetChromosomeHuman fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetChromosomeHuman);
     if (!result.success) {
       console.error("Validation failed for ValuesetChromosomeHuman:");
@@ -1846,7 +1846,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetClaimCareteamrole fixture", () => {
+  it("should validate ValuesetClaimCareteamrole fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetClaimCareteamrole);
     if (!result.success) {
       console.error("Validation failed for ValuesetClaimCareteamrole:");
@@ -1858,7 +1858,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetClaimException fixture", () => {
+  it("should validate ValuesetClaimException fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetClaimException);
     if (!result.success) {
       console.error("Validation failed for ValuesetClaimException:");
@@ -1870,7 +1870,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetClaimInformationcategory fixture", () => {
+  it("should validate ValuesetClaimInformationcategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetClaimInformationcategory,
     );
@@ -1884,7 +1884,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetClaimModifiers fixture", () => {
+  it("should validate ValuesetClaimModifiers fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetClaimModifiers);
     if (!result.success) {
       console.error("Validation failed for ValuesetClaimModifiers:");
@@ -1896,7 +1896,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetClaimSubtype fixture", () => {
+  it("should validate ValuesetClaimSubtype fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetClaimSubtype);
     if (!result.success) {
       console.error("Validation failed for ValuesetClaimSubtype:");
@@ -1908,7 +1908,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetClaimType fixture", () => {
+  it("should validate ValuesetClaimType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetClaimType);
     if (!result.success) {
       console.error("Validation failed for ValuesetClaimType:");
@@ -1920,7 +1920,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetClaimUse fixture", () => {
+  it("should validate ValuesetClaimUse fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetClaimUse);
     if (!result.success) {
       console.error("Validation failed for ValuesetClaimUse:");
@@ -1932,7 +1932,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetClinicalFindings fixture", () => {
+  it("should validate ValuesetClinicalFindings fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetClinicalFindings);
     if (!result.success) {
       console.error("Validation failed for ValuesetClinicalFindings:");
@@ -1944,7 +1944,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetClinicalimpressionPrognosis fixture", () => {
+  it("should validate ValuesetClinicalimpressionPrognosis fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetClinicalimpressionPrognosis,
     );
@@ -1960,7 +1960,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetClinicalimpressionStatus fixture", () => {
+  it("should validate ValuesetClinicalimpressionStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetClinicalimpressionStatus,
     );
@@ -1974,7 +1974,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetClinvar fixture", () => {
+  it("should validate ValuesetClinvar fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetClinvar);
     if (!result.success) {
       console.error("Validation failed for ValuesetClinvar:");
@@ -1986,7 +1986,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCodeSearchSupport fixture", () => {
+  it("should validate ValuesetCodeSearchSupport fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetCodeSearchSupport);
     if (!result.success) {
       console.error("Validation failed for ValuesetCodeSearchSupport:");
@@ -1998,7 +1998,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCodesystemAltcodeKind fixture", () => {
+  it("should validate ValuesetCodesystemAltcodeKind fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetCodesystemAltcodeKind,
     );
@@ -2012,7 +2012,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCodesystemContentMode fixture", () => {
+  it("should validate ValuesetCodesystemContentMode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetCodesystemContentMode,
     );
@@ -2026,7 +2026,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCodesystemHierarchyMeaning fixture", () => {
+  it("should validate ValuesetCodesystemHierarchyMeaning fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetCodesystemHierarchyMeaning,
     );
@@ -2042,7 +2042,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCommonTags fixture", () => {
+  it("should validate ValuesetCommonTags fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetCommonTags);
     if (!result.success) {
       console.error("Validation failed for ValuesetCommonTags:");
@@ -2054,7 +2054,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCommunicationCategory fixture", () => {
+  it("should validate ValuesetCommunicationCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetCommunicationCategory,
     );
@@ -2068,7 +2068,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCommunicationNotDoneReason fixture", () => {
+  it("should validate ValuesetCommunicationNotDoneReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetCommunicationNotDoneReason,
     );
@@ -2084,7 +2084,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCommunicationTopic fixture", () => {
+  it("should validate ValuesetCommunicationTopic fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetCommunicationTopic);
     if (!result.success) {
       console.error("Validation failed for ValuesetCommunicationTopic:");
@@ -2096,7 +2096,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCompartmentType fixture", () => {
+  it("should validate ValuesetCompartmentType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetCompartmentType);
     if (!result.success) {
       console.error("Validation failed for ValuesetCompartmentType:");
@@ -2108,7 +2108,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCompositeMeasureScoring fixture", () => {
+  it("should validate ValuesetCompositeMeasureScoring fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetCompositeMeasureScoring,
     );
@@ -2122,7 +2122,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCompositionAltcodeKind fixture", () => {
+  it("should validate ValuesetCompositionAltcodeKind fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetCompositionAltcodeKind,
     );
@@ -2136,7 +2136,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCompositionAttestationMode fixture", () => {
+  it("should validate ValuesetCompositionAttestationMode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetCompositionAttestationMode,
     );
@@ -2152,7 +2152,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCompositionStatus fixture", () => {
+  it("should validate ValuesetCompositionStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetCompositionStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetCompositionStatus:");
@@ -2164,7 +2164,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConceptMapEquivalence fixture", () => {
+  it("should validate ValuesetConceptMapEquivalence fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetConceptMapEquivalence,
     );
@@ -2178,7 +2178,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConceptPropertyType fixture", () => {
+  it("should validate ValuesetConceptPropertyType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetConceptPropertyType,
     );
@@ -2192,7 +2192,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConceptSubsumptionOutcome fixture", () => {
+  it("should validate ValuesetConceptSubsumptionOutcome fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetConceptSubsumptionOutcome,
     );
@@ -2206,7 +2206,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConceptmapUnmappedMode fixture", () => {
+  it("should validate ValuesetConceptmapUnmappedMode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetConceptmapUnmappedMode,
     );
@@ -2220,7 +2220,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConditionCategory fixture", () => {
+  it("should validate ValuesetConditionCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetConditionCategory);
     if (!result.success) {
       console.error("Validation failed for ValuesetConditionCategory:");
@@ -2232,7 +2232,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConditionCause fixture", () => {
+  it("should validate ValuesetConditionCause fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetConditionCause);
     if (!result.success) {
       console.error("Validation failed for ValuesetConditionCause:");
@@ -2244,7 +2244,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConditionClinical fixture", () => {
+  it("should validate ValuesetConditionClinical fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetConditionClinical);
     if (!result.success) {
       console.error("Validation failed for ValuesetConditionClinical:");
@@ -2256,7 +2256,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConditionCode fixture", () => {
+  it("should validate ValuesetConditionCode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetConditionCode);
     if (!result.success) {
       console.error("Validation failed for ValuesetConditionCode:");
@@ -2268,7 +2268,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConditionOutcome fixture", () => {
+  it("should validate ValuesetConditionOutcome fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetConditionOutcome);
     if (!result.success) {
       console.error("Validation failed for ValuesetConditionOutcome:");
@@ -2280,7 +2280,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConditionPredecessor fixture", () => {
+  it("should validate ValuesetConditionPredecessor fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetConditionPredecessor,
     );
@@ -2294,7 +2294,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConditionSeverity fixture", () => {
+  it("should validate ValuesetConditionSeverity fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetConditionSeverity);
     if (!result.success) {
       console.error("Validation failed for ValuesetConditionSeverity:");
@@ -2306,7 +2306,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConditionStageType fixture", () => {
+  it("should validate ValuesetConditionStageType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetConditionStageType);
     if (!result.success) {
       console.error("Validation failed for ValuesetConditionStageType:");
@@ -2318,7 +2318,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConditionStage fixture", () => {
+  it("should validate ValuesetConditionStage fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetConditionStage);
     if (!result.success) {
       console.error("Validation failed for ValuesetConditionStage:");
@@ -2330,7 +2330,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConditionState fixture", () => {
+  it("should validate ValuesetConditionState fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetConditionState);
     if (!result.success) {
       console.error("Validation failed for ValuesetConditionState:");
@@ -2342,7 +2342,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConditionVerStatus fixture", () => {
+  it("should validate ValuesetConditionVerStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetConditionVerStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetConditionVerStatus:");
@@ -2354,7 +2354,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConditionalDeleteStatus fixture", () => {
+  it("should validate ValuesetConditionalDeleteStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetConditionalDeleteStatus,
     );
@@ -2368,7 +2368,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConditionalReadStatus fixture", () => {
+  it("should validate ValuesetConditionalReadStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetConditionalReadStatus,
     );
@@ -2382,7 +2382,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConformanceExpectation fixture", () => {
+  it("should validate ValuesetConformanceExpectation fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetConformanceExpectation,
     );
@@ -2396,7 +2396,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConsentAction fixture", () => {
+  it("should validate ValuesetConsentAction fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetConsentAction);
     if (!result.success) {
       console.error("Validation failed for ValuesetConsentAction:");
@@ -2408,7 +2408,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConsentCategory fixture", () => {
+  it("should validate ValuesetConsentCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetConsentCategory);
     if (!result.success) {
       console.error("Validation failed for ValuesetConsentCategory:");
@@ -2420,7 +2420,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConsentContentClass fixture", () => {
+  it("should validate ValuesetConsentContentClass fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetConsentContentClass,
     );
@@ -2434,7 +2434,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConsentContentCode fixture", () => {
+  it("should validate ValuesetConsentContentCode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetConsentContentCode);
     if (!result.success) {
       console.error("Validation failed for ValuesetConsentContentCode:");
@@ -2446,7 +2446,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConsentDataMeaning fixture", () => {
+  it("should validate ValuesetConsentDataMeaning fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetConsentDataMeaning);
     if (!result.success) {
       console.error("Validation failed for ValuesetConsentDataMeaning:");
@@ -2458,7 +2458,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConsentPerformer fixture", () => {
+  it("should validate ValuesetConsentPerformer fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetConsentPerformer);
     if (!result.success) {
       console.error("Validation failed for ValuesetConsentPerformer:");
@@ -2470,7 +2470,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConsentPolicy fixture", () => {
+  it("should validate ValuesetConsentPolicy fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetConsentPolicy);
     if (!result.success) {
       console.error("Validation failed for ValuesetConsentPolicy:");
@@ -2482,7 +2482,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConsentProvisionType fixture", () => {
+  it("should validate ValuesetConsentProvisionType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetConsentProvisionType,
     );
@@ -2496,7 +2496,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConsentScope fixture", () => {
+  it("should validate ValuesetConsentScope fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetConsentScope);
     if (!result.success) {
       console.error("Validation failed for ValuesetConsentScope:");
@@ -2508,7 +2508,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConsentStateCodes fixture", () => {
+  it("should validate ValuesetConsentStateCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetConsentStateCodes);
     if (!result.success) {
       console.error("Validation failed for ValuesetConsentStateCodes:");
@@ -2520,7 +2520,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConsistencyType fixture", () => {
+  it("should validate ValuesetConsistencyType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetConsistencyType);
     if (!result.success) {
       console.error("Validation failed for ValuesetConsistencyType:");
@@ -2532,7 +2532,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetConstraintSeverity fixture", () => {
+  it("should validate ValuesetConstraintSeverity fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetConstraintSeverity);
     if (!result.success) {
       console.error("Validation failed for ValuesetConstraintSeverity:");
@@ -2544,7 +2544,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContactPointSystem fixture", () => {
+  it("should validate ValuesetContactPointSystem fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetContactPointSystem);
     if (!result.success) {
       console.error("Validation failed for ValuesetContactPointSystem:");
@@ -2556,7 +2556,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContactPointUse fixture", () => {
+  it("should validate ValuesetContactPointUse fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetContactPointUse);
     if (!result.success) {
       console.error("Validation failed for ValuesetContactPointUse:");
@@ -2568,7 +2568,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContactentityType fixture", () => {
+  it("should validate ValuesetContactentityType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetContactentityType);
     if (!result.success) {
       console.error("Validation failed for ValuesetContactentityType:");
@@ -2580,7 +2580,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContainerCap fixture", () => {
+  it("should validate ValuesetContainerCap fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetContainerCap);
     if (!result.success) {
       console.error("Validation failed for ValuesetContainerCap:");
@@ -2592,7 +2592,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContainerMaterial fixture", () => {
+  it("should validate ValuesetContainerMaterial fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetContainerMaterial);
     if (!result.success) {
       console.error("Validation failed for ValuesetContainerMaterial:");
@@ -2604,7 +2604,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractAction fixture", () => {
+  it("should validate ValuesetContractAction fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetContractAction);
     if (!result.success) {
       console.error("Validation failed for ValuesetContractAction:");
@@ -2616,7 +2616,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractActionstatus fixture", () => {
+  it("should validate ValuesetContractActionstatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetContractActionstatus,
     );
@@ -2630,7 +2630,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractActorrole fixture", () => {
+  it("should validate ValuesetContractActorrole fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetContractActorrole);
     if (!result.success) {
       console.error("Validation failed for ValuesetContractActorrole:");
@@ -2642,7 +2642,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractAssetcontext fixture", () => {
+  it("should validate ValuesetContractAssetcontext fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetContractAssetcontext,
     );
@@ -2656,7 +2656,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractAssetscope fixture", () => {
+  it("should validate ValuesetContractAssetscope fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetContractAssetscope);
     if (!result.success) {
       console.error("Validation failed for ValuesetContractAssetscope:");
@@ -2668,7 +2668,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractAssetsubtype fixture", () => {
+  it("should validate ValuesetContractAssetsubtype fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetContractAssetsubtype,
     );
@@ -2682,7 +2682,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractAssettype fixture", () => {
+  it("should validate ValuesetContractAssettype fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetContractAssettype);
     if (!result.success) {
       console.error("Validation failed for ValuesetContractAssettype:");
@@ -2694,7 +2694,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractContentDerivative fixture", () => {
+  it("should validate ValuesetContractContentDerivative fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetContractContentDerivative,
     );
@@ -2708,7 +2708,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractDataMeaning fixture", () => {
+  it("should validate ValuesetContractDataMeaning fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetContractDataMeaning,
     );
@@ -2722,7 +2722,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractDecisionMode fixture", () => {
+  it("should validate ValuesetContractDecisionMode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetContractDecisionMode,
     );
@@ -2736,7 +2736,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractDefinitionSubtype fixture", () => {
+  it("should validate ValuesetContractDefinitionSubtype fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetContractDefinitionSubtype,
     );
@@ -2750,7 +2750,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractDefinitionType fixture", () => {
+  it("should validate ValuesetContractDefinitionType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetContractDefinitionType,
     );
@@ -2764,7 +2764,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractExpirationType fixture", () => {
+  it("should validate ValuesetContractExpirationType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetContractExpirationType,
     );
@@ -2778,7 +2778,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractLegalstate fixture", () => {
+  it("should validate ValuesetContractLegalstate fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetContractLegalstate);
     if (!result.success) {
       console.error("Validation failed for ValuesetContractLegalstate:");
@@ -2790,7 +2790,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractPartyRole fixture", () => {
+  it("should validate ValuesetContractPartyRole fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetContractPartyRole);
     if (!result.success) {
       console.error("Validation failed for ValuesetContractPartyRole:");
@@ -2802,7 +2802,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractPublicationstatus fixture", () => {
+  it("should validate ValuesetContractPublicationstatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetContractPublicationstatus,
     );
@@ -2816,7 +2816,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractScope fixture", () => {
+  it("should validate ValuesetContractScope fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetContractScope);
     if (!result.success) {
       console.error("Validation failed for ValuesetContractScope:");
@@ -2828,7 +2828,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractSecurityCategory fixture", () => {
+  it("should validate ValuesetContractSecurityCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetContractSecurityCategory,
     );
@@ -2842,7 +2842,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractSecurityClassification fixture", () => {
+  it("should validate ValuesetContractSecurityClassification fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetContractSecurityClassification,
     );
@@ -2858,7 +2858,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractSecurityControl fixture", () => {
+  it("should validate ValuesetContractSecurityControl fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetContractSecurityControl,
     );
@@ -2872,7 +2872,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractSignerType fixture", () => {
+  it("should validate ValuesetContractSignerType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetContractSignerType);
     if (!result.success) {
       console.error("Validation failed for ValuesetContractSignerType:");
@@ -2884,7 +2884,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractStatus fixture", () => {
+  it("should validate ValuesetContractStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetContractStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetContractStatus:");
@@ -2896,7 +2896,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractSubtype fixture", () => {
+  it("should validate ValuesetContractSubtype fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetContractSubtype);
     if (!result.success) {
       console.error("Validation failed for ValuesetContractSubtype:");
@@ -2908,7 +2908,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractTermSubtype fixture", () => {
+  it("should validate ValuesetContractTermSubtype fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetContractTermSubtype,
     );
@@ -2922,7 +2922,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractTermType fixture", () => {
+  it("should validate ValuesetContractTermType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetContractTermType);
     if (!result.success) {
       console.error("Validation failed for ValuesetContractTermType:");
@@ -2934,7 +2934,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContractType fixture", () => {
+  it("should validate ValuesetContractType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetContractType);
     if (!result.success) {
       console.error("Validation failed for ValuesetContractType:");
@@ -2946,7 +2946,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetContributorType fixture", () => {
+  it("should validate ValuesetContributorType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetContributorType);
     if (!result.success) {
       console.error("Validation failed for ValuesetContributorType:");
@@ -2958,7 +2958,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCopyNumberEvent fixture", () => {
+  it("should validate ValuesetCopyNumberEvent fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetCopyNumberEvent);
     if (!result.success) {
       console.error("Validation failed for ValuesetCopyNumberEvent:");
@@ -2970,7 +2970,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCosmic fixture", () => {
+  it("should validate ValuesetCosmic fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetCosmic);
     if (!result.success) {
       console.error("Validation failed for ValuesetCosmic:");
@@ -2982,7 +2982,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCoverageClass fixture", () => {
+  it("should validate ValuesetCoverageClass fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetCoverageClass);
     if (!result.success) {
       console.error("Validation failed for ValuesetCoverageClass:");
@@ -2994,7 +2994,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCoverageCopayType fixture", () => {
+  it("should validate ValuesetCoverageCopayType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetCoverageCopayType);
     if (!result.success) {
       console.error("Validation failed for ValuesetCoverageCopayType:");
@@ -3006,7 +3006,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCoverageFinancialException fixture", () => {
+  it("should validate ValuesetCoverageFinancialException fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetCoverageFinancialException,
     );
@@ -3022,7 +3022,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCoverageSelfpay fixture", () => {
+  it("should validate ValuesetCoverageSelfpay fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetCoverageSelfpay);
     if (!result.success) {
       console.error("Validation failed for ValuesetCoverageSelfpay:");
@@ -3034,7 +3034,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCoverageType fixture", () => {
+  it("should validate ValuesetCoverageType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetCoverageType);
     if (!result.success) {
       console.error("Validation failed for ValuesetCoverageType:");
@@ -3046,7 +3046,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCoverageeligibilityresponseExAuthSupport fixture", () => {
+  it("should validate ValuesetCoverageeligibilityresponseExAuthSupport fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetCoverageeligibilityresponseExAuthSupport,
     );
@@ -3062,7 +3062,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCptAll fixture", () => {
+  it("should validate ValuesetCptAll fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetCptAll);
     if (!result.success) {
       console.error("Validation failed for ValuesetCptAll:");
@@ -3074,7 +3074,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetCurrencies fixture", () => {
+  it("should validate ValuesetCurrencies fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetCurrencies);
     if (!result.success) {
       console.error("Validation failed for ValuesetCurrencies:");
@@ -3086,7 +3086,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDataAbsentReason fixture", () => {
+  it("should validate ValuesetDataAbsentReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDataAbsentReason);
     if (!result.success) {
       console.error("Validation failed for ValuesetDataAbsentReason:");
@@ -3098,7 +3098,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDataTypes fixture", () => {
+  it("should validate ValuesetDataTypes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDataTypes);
     if (!result.success) {
       console.error("Validation failed for ValuesetDataTypes:");
@@ -3110,7 +3110,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDataelementSdcobjectclass fixture", () => {
+  it("should validate ValuesetDataelementSdcobjectclass fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetDataelementSdcobjectclass,
     );
@@ -3124,7 +3124,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDataelementSdcobjectclassproperty fixture", () => {
+  it("should validate ValuesetDataelementSdcobjectclassproperty fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetDataelementSdcobjectclassproperty,
     );
@@ -3140,7 +3140,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDaysOfWeek fixture", () => {
+  it("should validate ValuesetDaysOfWeek fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDaysOfWeek);
     if (!result.success) {
       console.error("Validation failed for ValuesetDaysOfWeek:");
@@ -3152,7 +3152,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDbsnp fixture", () => {
+  it("should validate ValuesetDbsnp fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDbsnp);
     if (!result.success) {
       console.error("Validation failed for ValuesetDbsnp:");
@@ -3164,7 +3164,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDefinedTypes fixture", () => {
+  it("should validate ValuesetDefinedTypes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDefinedTypes);
     if (!result.success) {
       console.error("Validation failed for ValuesetDefinedTypes:");
@@ -3176,7 +3176,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDefinitionResourceTypes fixture", () => {
+  it("should validate ValuesetDefinitionResourceTypes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetDefinitionResourceTypes,
     );
@@ -3190,7 +3190,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDefinitionStatus fixture", () => {
+  it("should validate ValuesetDefinitionStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDefinitionStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetDefinitionStatus:");
@@ -3202,7 +3202,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDefinitionTopic fixture", () => {
+  it("should validate ValuesetDefinitionTopic fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDefinitionTopic);
     if (!result.success) {
       console.error("Validation failed for ValuesetDefinitionTopic:");
@@ -3214,7 +3214,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDefinitionUse fixture", () => {
+  it("should validate ValuesetDefinitionUse fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDefinitionUse);
     if (!result.success) {
       console.error("Validation failed for ValuesetDefinitionUse:");
@@ -3226,7 +3226,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDesignationUse fixture", () => {
+  it("should validate ValuesetDesignationUse fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDesignationUse);
     if (!result.success) {
       console.error("Validation failed for ValuesetDesignationUse:");
@@ -3238,7 +3238,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDetectedissueCategory fixture", () => {
+  it("should validate ValuesetDetectedissueCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetDetectedissueCategory,
     );
@@ -3252,7 +3252,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDetectedissueMitigationAction fixture", () => {
+  it("should validate ValuesetDetectedissueMitigationAction fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetDetectedissueMitigationAction,
     );
@@ -3268,7 +3268,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDetectedissueSeverity fixture", () => {
+  it("should validate ValuesetDetectedissueSeverity fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetDetectedissueSeverity,
     );
@@ -3282,7 +3282,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDeviceAction fixture", () => {
+  it("should validate ValuesetDeviceAction fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDeviceAction);
     if (!result.success) {
       console.error("Validation failed for ValuesetDeviceAction:");
@@ -3294,7 +3294,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDeviceComponentProperty fixture", () => {
+  it("should validate ValuesetDeviceComponentProperty fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetDeviceComponentProperty,
     );
@@ -3308,7 +3308,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDeviceDefinitionStatus fixture", () => {
+  it("should validate ValuesetDeviceDefinitionStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetDeviceDefinitionStatus,
     );
@@ -3322,7 +3322,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDeviceKind fixture", () => {
+  it("should validate ValuesetDeviceKind fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDeviceKind);
     if (!result.success) {
       console.error("Validation failed for ValuesetDeviceKind:");
@@ -3334,7 +3334,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDeviceNametype fixture", () => {
+  it("should validate ValuesetDeviceNametype fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDeviceNametype);
     if (!result.success) {
       console.error("Validation failed for ValuesetDeviceNametype:");
@@ -3346,7 +3346,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDeviceSafety fixture", () => {
+  it("should validate ValuesetDeviceSafety fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDeviceSafety);
     if (!result.success) {
       console.error("Validation failed for ValuesetDeviceSafety:");
@@ -3358,7 +3358,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDeviceStatementStatus fixture", () => {
+  it("should validate ValuesetDeviceStatementStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetDeviceStatementStatus,
     );
@@ -3372,7 +3372,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDeviceStatusReason fixture", () => {
+  it("should validate ValuesetDeviceStatusReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDeviceStatusReason);
     if (!result.success) {
       console.error("Validation failed for ValuesetDeviceStatusReason:");
@@ -3384,7 +3384,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDeviceStatus fixture", () => {
+  it("should validate ValuesetDeviceStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDeviceStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetDeviceStatus:");
@@ -3396,7 +3396,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDeviceType fixture", () => {
+  it("should validate ValuesetDeviceType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDeviceType);
     if (!result.success) {
       console.error("Validation failed for ValuesetDeviceType:");
@@ -3408,7 +3408,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDevicemetricType fixture", () => {
+  it("should validate ValuesetDevicemetricType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDevicemetricType);
     if (!result.success) {
       console.error("Validation failed for ValuesetDevicemetricType:");
@@ -3420,7 +3420,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDiagnosisRole fixture", () => {
+  it("should validate ValuesetDiagnosisRole fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDiagnosisRole);
     if (!result.success) {
       console.error("Validation failed for ValuesetDiagnosisRole:");
@@ -3432,7 +3432,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDiagnosticBasedOnSnomed fixture", () => {
+  it("should validate ValuesetDiagnosticBasedOnSnomed fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetDiagnosticBasedOnSnomed,
     );
@@ -3446,7 +3446,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDiagnosticReportStatus fixture", () => {
+  it("should validate ValuesetDiagnosticReportStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetDiagnosticReportStatus,
     );
@@ -3460,7 +3460,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDiagnosticServiceSections fixture", () => {
+  it("should validate ValuesetDiagnosticServiceSections fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetDiagnosticServiceSections,
     );
@@ -3474,7 +3474,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDicm405Mediatype fixture", () => {
+  it("should validate ValuesetDicm405Mediatype fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDicm405Mediatype);
     if (!result.success) {
       console.error("Validation failed for ValuesetDicm405Mediatype:");
@@ -3486,7 +3486,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDietType fixture", () => {
+  it("should validate ValuesetDietType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDietType);
     if (!result.success) {
       console.error("Validation failed for ValuesetDietType:");
@@ -3498,7 +3498,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDiscriminatorType fixture", () => {
+  it("should validate ValuesetDiscriminatorType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDiscriminatorType);
     if (!result.success) {
       console.error("Validation failed for ValuesetDiscriminatorType:");
@@ -3510,7 +3510,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDistanceUnits fixture", () => {
+  it("should validate ValuesetDistanceUnits fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDistanceUnits);
     if (!result.success) {
       console.error("Validation failed for ValuesetDistanceUnits:");
@@ -3522,7 +3522,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDocSectionCodes fixture", () => {
+  it("should validate ValuesetDocSectionCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDocSectionCodes);
     if (!result.success) {
       console.error("Validation failed for ValuesetDocSectionCodes:");
@@ -3534,7 +3534,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDocTypecodes fixture", () => {
+  it("should validate ValuesetDocTypecodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDocTypecodes);
     if (!result.success) {
       console.error("Validation failed for ValuesetDocTypecodes:");
@@ -3546,7 +3546,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDocumentClasscodes fixture", () => {
+  it("should validate ValuesetDocumentClasscodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDocumentClasscodes);
     if (!result.success) {
       console.error("Validation failed for ValuesetDocumentClasscodes:");
@@ -3558,7 +3558,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDocumentMode fixture", () => {
+  it("should validate ValuesetDocumentMode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDocumentMode);
     if (!result.success) {
       console.error("Validation failed for ValuesetDocumentMode:");
@@ -3570,7 +3570,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDocumentReferenceStatus fixture", () => {
+  it("should validate ValuesetDocumentReferenceStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetDocumentReferenceStatus,
     );
@@ -3584,7 +3584,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDocumentRelationshipType fixture", () => {
+  it("should validate ValuesetDocumentRelationshipType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetDocumentRelationshipType,
     );
@@ -3598,7 +3598,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDoseRateType fixture", () => {
+  it("should validate ValuesetDoseRateType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDoseRateType);
     if (!result.success) {
       console.error("Validation failed for ValuesetDoseRateType:");
@@ -3610,7 +3610,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetDurationUnits fixture", () => {
+  it("should validate ValuesetDurationUnits fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetDurationUnits);
     if (!result.success) {
       console.error("Validation failed for ValuesetDurationUnits:");
@@ -3622,7 +3622,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEffectEstimateType fixture", () => {
+  it("should validate ValuesetEffectEstimateType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetEffectEstimateType);
     if (!result.success) {
       console.error("Validation failed for ValuesetEffectEstimateType:");
@@ -3634,7 +3634,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEligibilityrequestPurpose fixture", () => {
+  it("should validate ValuesetEligibilityrequestPurpose fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetEligibilityrequestPurpose,
     );
@@ -3648,7 +3648,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEligibilityresponsePurpose fixture", () => {
+  it("should validate ValuesetEligibilityresponsePurpose fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetEligibilityresponsePurpose,
     );
@@ -3664,7 +3664,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEncounterAdmitSource fixture", () => {
+  it("should validate ValuesetEncounterAdmitSource fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetEncounterAdmitSource,
     );
@@ -3678,7 +3678,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEncounterDiet fixture", () => {
+  it("should validate ValuesetEncounterDiet fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetEncounterDiet);
     if (!result.success) {
       console.error("Validation failed for ValuesetEncounterDiet:");
@@ -3690,7 +3690,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEncounterDischargeDisposition fixture", () => {
+  it("should validate ValuesetEncounterDischargeDisposition fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetEncounterDischargeDisposition,
     );
@@ -3706,7 +3706,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEncounterLocationStatus fixture", () => {
+  it("should validate ValuesetEncounterLocationStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetEncounterLocationStatus,
     );
@@ -3720,7 +3720,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEncounterParticipantType fixture", () => {
+  it("should validate ValuesetEncounterParticipantType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetEncounterParticipantType,
     );
@@ -3734,7 +3734,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEncounterReason fixture", () => {
+  it("should validate ValuesetEncounterReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetEncounterReason);
     if (!result.success) {
       console.error("Validation failed for ValuesetEncounterReason:");
@@ -3746,7 +3746,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEncounterSpecialArrangements fixture", () => {
+  it("should validate ValuesetEncounterSpecialArrangements fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetEncounterSpecialArrangements,
     );
@@ -3762,7 +3762,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEncounterSpecialCourtesy fixture", () => {
+  it("should validate ValuesetEncounterSpecialCourtesy fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetEncounterSpecialCourtesy,
     );
@@ -3776,7 +3776,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEncounterStatus fixture", () => {
+  it("should validate ValuesetEncounterStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetEncounterStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetEncounterStatus:");
@@ -3788,7 +3788,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEncounterType fixture", () => {
+  it("should validate ValuesetEncounterType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetEncounterType);
     if (!result.success) {
       console.error("Validation failed for ValuesetEncounterType:");
@@ -3800,7 +3800,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEndpointConnectionType fixture", () => {
+  it("should validate ValuesetEndpointConnectionType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetEndpointConnectionType,
     );
@@ -3814,7 +3814,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEndpointPayloadType fixture", () => {
+  it("should validate ValuesetEndpointPayloadType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetEndpointPayloadType,
     );
@@ -3828,7 +3828,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEndpointStatus fixture", () => {
+  it("should validate ValuesetEndpointStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetEndpointStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetEndpointStatus:");
@@ -3840,7 +3840,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEnsembl fixture", () => {
+  it("should validate ValuesetEnsembl fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetEnsembl);
     if (!result.success) {
       console.error("Validation failed for ValuesetEnsembl:");
@@ -3852,7 +3852,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEnteralRoute fixture", () => {
+  it("should validate ValuesetEnteralRoute fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetEnteralRoute);
     if (!result.success) {
       console.error("Validation failed for ValuesetEnteralRoute:");
@@ -3864,7 +3864,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEntformulaAdditive fixture", () => {
+  it("should validate ValuesetEntformulaAdditive fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetEntformulaAdditive);
     if (!result.success) {
       console.error("Validation failed for ValuesetEntformulaAdditive:");
@@ -3876,7 +3876,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEntformulaType fixture", () => {
+  it("should validate ValuesetEntformulaType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetEntformulaType);
     if (!result.success) {
       console.error("Validation failed for ValuesetEntformulaType:");
@@ -3888,7 +3888,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEpisodeOfCareStatus fixture", () => {
+  it("should validate ValuesetEpisodeOfCareStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetEpisodeOfCareStatus,
     );
@@ -3902,7 +3902,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEpisodeofcareType fixture", () => {
+  it("should validate ValuesetEpisodeofcareType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetEpisodeofcareType);
     if (!result.success) {
       console.error("Validation failed for ValuesetEpisodeofcareType:");
@@ -3914,7 +3914,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEventCapabilityMode fixture", () => {
+  it("should validate ValuesetEventCapabilityMode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetEventCapabilityMode,
     );
@@ -3928,7 +3928,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEventOrRequestResourceTypes fixture", () => {
+  it("should validate ValuesetEventOrRequestResourceTypes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetEventOrRequestResourceTypes,
     );
@@ -3944,7 +3944,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEventResourceTypes fixture", () => {
+  it("should validate ValuesetEventResourceTypes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetEventResourceTypes);
     if (!result.success) {
       console.error("Validation failed for ValuesetEventResourceTypes:");
@@ -3956,7 +3956,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEventStatus fixture", () => {
+  it("should validate ValuesetEventStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetEventStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetEventStatus:");
@@ -3968,7 +3968,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEventTiming fixture", () => {
+  it("should validate ValuesetEventTiming fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetEventTiming);
     if (!result.success) {
       console.error("Validation failed for ValuesetEventTiming:");
@@ -3980,7 +3980,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEvidenceQuality fixture", () => {
+  it("should validate ValuesetEvidenceQuality fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetEvidenceQuality);
     if (!result.success) {
       console.error("Validation failed for ValuesetEvidenceQuality:");
@@ -3992,7 +3992,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetEvidenceVariantState fixture", () => {
+  it("should validate ValuesetEvidenceVariantState fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetEvidenceVariantState,
     );
@@ -4006,7 +4006,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExBenefitcategory fixture", () => {
+  it("should validate ValuesetExBenefitcategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetExBenefitcategory);
     if (!result.success) {
       console.error("Validation failed for ValuesetExBenefitcategory:");
@@ -4018,7 +4018,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExDiagnosisOnAdmission fixture", () => {
+  it("should validate ValuesetExDiagnosisOnAdmission fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetExDiagnosisOnAdmission,
     );
@@ -4032,7 +4032,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExDiagnosisrelatedgroup fixture", () => {
+  it("should validate ValuesetExDiagnosisrelatedgroup fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetExDiagnosisrelatedgroup,
     );
@@ -4046,7 +4046,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExDiagnosistype fixture", () => {
+  it("should validate ValuesetExDiagnosistype fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetExDiagnosistype);
     if (!result.success) {
       console.error("Validation failed for ValuesetExDiagnosistype:");
@@ -4058,7 +4058,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExOnsettype fixture", () => {
+  it("should validate ValuesetExOnsettype fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetExOnsettype);
     if (!result.success) {
       console.error("Validation failed for ValuesetExOnsettype:");
@@ -4070,7 +4070,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExPayeeResourceType fixture", () => {
+  it("should validate ValuesetExPayeeResourceType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetExPayeeResourceType,
     );
@@ -4084,7 +4084,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExPaymenttype fixture", () => {
+  it("should validate ValuesetExPaymenttype fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetExPaymenttype);
     if (!result.success) {
       console.error("Validation failed for ValuesetExPaymenttype:");
@@ -4096,7 +4096,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExProcedureType fixture", () => {
+  it("should validate ValuesetExProcedureType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetExProcedureType);
     if (!result.success) {
       console.error("Validation failed for ValuesetExProcedureType:");
@@ -4108,7 +4108,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExProgramCode fixture", () => {
+  it("should validate ValuesetExProgramCode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetExProgramCode);
     if (!result.success) {
       console.error("Validation failed for ValuesetExProgramCode:");
@@ -4120,7 +4120,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExRevenueCenter fixture", () => {
+  it("should validate ValuesetExRevenueCenter fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetExRevenueCenter);
     if (!result.success) {
       console.error("Validation failed for ValuesetExRevenueCenter:");
@@ -4132,7 +4132,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExampleExpansion fixture", () => {
+  it("should validate ValuesetExampleExpansion fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetExampleExpansion);
     if (!result.success) {
       console.error("Validation failed for ValuesetExampleExpansion:");
@@ -4144,7 +4144,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExampleFilter fixture", () => {
+  it("should validate ValuesetExampleFilter fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetExampleFilter);
     if (!result.success) {
       console.error("Validation failed for ValuesetExampleFilter:");
@@ -4156,7 +4156,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExampleHierarchical fixture", () => {
+  it("should validate ValuesetExampleHierarchical fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetExampleHierarchical,
     );
@@ -4170,7 +4170,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExampleInactive fixture", () => {
+  it("should validate ValuesetExampleInactive fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetExampleInactive);
     if (!result.success) {
       console.error("Validation failed for ValuesetExampleInactive:");
@@ -4182,7 +4182,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExampleIntensional fixture", () => {
+  it("should validate ValuesetExampleIntensional fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetExampleIntensional);
     if (!result.success) {
       console.error("Validation failed for ValuesetExampleIntensional:");
@@ -4194,7 +4194,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExampleYesnodontknow fixture", () => {
+  it("should validate ValuesetExampleYesnodontknow fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetExampleYesnodontknow,
     );
@@ -4208,7 +4208,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExample fixture", () => {
+  it("should validate ValuesetExample fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetExample);
     if (!result.success) {
       console.error("Validation failed for ValuesetExample:");
@@ -4220,7 +4220,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExamplescenarioActorType fixture", () => {
+  it("should validate ValuesetExamplescenarioActorType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetExamplescenarioActorType,
     );
@@ -4234,7 +4234,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExpansionParameterSource fixture", () => {
+  it("should validate ValuesetExpansionParameterSource fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetExpansionParameterSource,
     );
@@ -4248,7 +4248,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExpansionProcessingRule fixture", () => {
+  it("should validate ValuesetExpansionProcessingRule fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetExpansionProcessingRule,
     );
@@ -4262,7 +4262,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExplanationofbenefitStatus fixture", () => {
+  it("should validate ValuesetExplanationofbenefitStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetExplanationofbenefitStatus,
     );
@@ -4278,7 +4278,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExposureState fixture", () => {
+  it("should validate ValuesetExposureState fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetExposureState);
     if (!result.success) {
       console.error("Validation failed for ValuesetExposureState:");
@@ -4290,7 +4290,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExpressionLanguage fixture", () => {
+  it("should validate ValuesetExpressionLanguage fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetExpressionLanguage);
     if (!result.success) {
       console.error("Validation failed for ValuesetExpressionLanguage:");
@@ -4302,7 +4302,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetExtensionContextType fixture", () => {
+  it("should validate ValuesetExtensionContextType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetExtensionContextType,
     );
@@ -4316,7 +4316,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetFeedingDevice fixture", () => {
+  it("should validate ValuesetFeedingDevice fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetFeedingDevice);
     if (!result.success) {
       console.error("Validation failed for ValuesetFeedingDevice:");
@@ -4328,7 +4328,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetFilterOperator fixture", () => {
+  it("should validate ValuesetFilterOperator fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetFilterOperator);
     if (!result.success) {
       console.error("Validation failed for ValuesetFilterOperator:");
@@ -4340,7 +4340,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetFinancialTaskcode fixture", () => {
+  it("should validate ValuesetFinancialTaskcode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetFinancialTaskcode);
     if (!result.success) {
       console.error("Validation failed for ValuesetFinancialTaskcode:");
@@ -4352,7 +4352,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetFinancialTaskinputtype fixture", () => {
+  it("should validate ValuesetFinancialTaskinputtype fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetFinancialTaskinputtype,
     );
@@ -4366,7 +4366,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetFlagCategory fixture", () => {
+  it("should validate ValuesetFlagCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetFlagCategory);
     if (!result.success) {
       console.error("Validation failed for ValuesetFlagCategory:");
@@ -4378,7 +4378,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetFlagCode fixture", () => {
+  it("should validate ValuesetFlagCode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetFlagCode);
     if (!result.success) {
       console.error("Validation failed for ValuesetFlagCode:");
@@ -4390,7 +4390,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetFlagPriority fixture", () => {
+  it("should validate ValuesetFlagPriority fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetFlagPriority);
     if (!result.success) {
       console.error("Validation failed for ValuesetFlagPriority:");
@@ -4402,7 +4402,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetFlagStatus fixture", () => {
+  it("should validate ValuesetFlagStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetFlagStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetFlagStatus:");
@@ -4414,7 +4414,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetFmConditions fixture", () => {
+  it("should validate ValuesetFmConditions fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetFmConditions);
     if (!result.success) {
       console.error("Validation failed for ValuesetFmConditions:");
@@ -4426,7 +4426,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetFmItemtype fixture", () => {
+  it("should validate ValuesetFmItemtype fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetFmItemtype);
     if (!result.success) {
       console.error("Validation failed for ValuesetFmItemtype:");
@@ -4438,7 +4438,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetFmStatus fixture", () => {
+  it("should validate ValuesetFmStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetFmStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetFmStatus:");
@@ -4450,7 +4450,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetFocalSubject fixture", () => {
+  it("should validate ValuesetFocalSubject fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetFocalSubject);
     if (!result.success) {
       console.error("Validation failed for ValuesetFocalSubject:");
@@ -4462,7 +4462,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetFoodType fixture", () => {
+  it("should validate ValuesetFoodType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetFoodType);
     if (!result.success) {
       console.error("Validation failed for ValuesetFoodType:");
@@ -4474,7 +4474,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetFormatcodes fixture", () => {
+  it("should validate ValuesetFormatcodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetFormatcodes);
     if (!result.success) {
       console.error("Validation failed for ValuesetFormatcodes:");
@@ -4486,7 +4486,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetForms fixture", () => {
+  it("should validate ValuesetForms fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetForms);
     if (!result.success) {
       console.error("Validation failed for ValuesetForms:");
@@ -4498,7 +4498,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetFundsreserve fixture", () => {
+  it("should validate ValuesetFundsreserve fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetFundsreserve);
     if (!result.success) {
       console.error("Validation failed for ValuesetFundsreserve:");
@@ -4510,7 +4510,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetGenderIdentity fixture", () => {
+  it("should validate ValuesetGenderIdentity fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetGenderIdentity);
     if (!result.success) {
       console.error("Validation failed for ValuesetGenderIdentity:");
@@ -4522,7 +4522,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetGenenames fixture", () => {
+  it("should validate ValuesetGenenames fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetGenenames);
     if (!result.success) {
       console.error("Validation failed for ValuesetGenenames:");
@@ -4534,7 +4534,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetGoalAcceptanceStatus fixture", () => {
+  it("should validate ValuesetGoalAcceptanceStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetGoalAcceptanceStatus,
     );
@@ -4548,7 +4548,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetGoalAchievement fixture", () => {
+  it("should validate ValuesetGoalAchievement fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetGoalAchievement);
     if (!result.success) {
       console.error("Validation failed for ValuesetGoalAchievement:");
@@ -4560,7 +4560,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetGoalCategory fixture", () => {
+  it("should validate ValuesetGoalCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetGoalCategory);
     if (!result.success) {
       console.error("Validation failed for ValuesetGoalCategory:");
@@ -4572,7 +4572,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetGoalPriority fixture", () => {
+  it("should validate ValuesetGoalPriority fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetGoalPriority);
     if (!result.success) {
       console.error("Validation failed for ValuesetGoalPriority:");
@@ -4584,7 +4584,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetGoalRelationshipType fixture", () => {
+  it("should validate ValuesetGoalRelationshipType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetGoalRelationshipType,
     );
@@ -4598,7 +4598,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetGoalStartEvent fixture", () => {
+  it("should validate ValuesetGoalStartEvent fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetGoalStartEvent);
     if (!result.success) {
       console.error("Validation failed for ValuesetGoalStartEvent:");
@@ -4610,7 +4610,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetGoalStatusReason fixture", () => {
+  it("should validate ValuesetGoalStatusReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetGoalStatusReason);
     if (!result.success) {
       console.error("Validation failed for ValuesetGoalStatusReason:");
@@ -4622,7 +4622,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetGoalStatus fixture", () => {
+  it("should validate ValuesetGoalStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetGoalStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetGoalStatus:");
@@ -4634,7 +4634,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetGraphCompartmentRule fixture", () => {
+  it("should validate ValuesetGraphCompartmentRule fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetGraphCompartmentRule,
     );
@@ -4648,7 +4648,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetGraphCompartmentUse fixture", () => {
+  it("should validate ValuesetGraphCompartmentUse fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetGraphCompartmentUse,
     );
@@ -4662,7 +4662,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetGroupMeasure fixture", () => {
+  it("should validate ValuesetGroupMeasure fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetGroupMeasure);
     if (!result.success) {
       console.error("Validation failed for ValuesetGroupMeasure:");
@@ -4674,7 +4674,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetGroupType fixture", () => {
+  it("should validate ValuesetGroupType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetGroupType);
     if (!result.success) {
       console.error("Validation failed for ValuesetGroupType:");
@@ -4686,7 +4686,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetGuidanceResponseStatus fixture", () => {
+  it("should validate ValuesetGuidanceResponseStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetGuidanceResponseStatus,
     );
@@ -4700,7 +4700,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetGuidePageGeneration fixture", () => {
+  it("should validate ValuesetGuidePageGeneration fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetGuidePageGeneration,
     );
@@ -4714,7 +4714,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetGuideParameterCode fixture", () => {
+  it("should validate ValuesetGuideParameterCode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetGuideParameterCode);
     if (!result.success) {
       console.error("Validation failed for ValuesetGuideParameterCode:");
@@ -4726,7 +4726,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetHandlingCondition fixture", () => {
+  it("should validate ValuesetHandlingCondition fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetHandlingCondition);
     if (!result.success) {
       console.error("Validation failed for ValuesetHandlingCondition:");
@@ -4738,7 +4738,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetHistoryAbsentReason fixture", () => {
+  it("should validate ValuesetHistoryAbsentReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetHistoryAbsentReason,
     );
@@ -4752,7 +4752,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetHistoryStatus fixture", () => {
+  it("should validate ValuesetHistoryStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetHistoryStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetHistoryStatus:");
@@ -4764,7 +4764,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetHl7WorkGroup fixture", () => {
+  it("should validate ValuesetHl7WorkGroup fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetHl7WorkGroup);
     if (!result.success) {
       console.error("Validation failed for ValuesetHl7WorkGroup:");
@@ -4776,7 +4776,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetHttpOperations fixture", () => {
+  it("should validate ValuesetHttpOperations fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetHttpOperations);
     if (!result.success) {
       console.error("Validation failed for ValuesetHttpOperations:");
@@ -4788,7 +4788,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetHttpVerb fixture", () => {
+  it("should validate ValuesetHttpVerb fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetHttpVerb);
     if (!result.success) {
       console.error("Validation failed for ValuesetHttpVerb:");
@@ -4800,7 +4800,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetIcd10Procedures fixture", () => {
+  it("should validate ValuesetIcd10Procedures fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetIcd10Procedures);
     if (!result.success) {
       console.error("Validation failed for ValuesetIcd10Procedures:");
@@ -4812,7 +4812,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetIcd10 fixture", () => {
+  it("should validate ValuesetIcd10 fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetIcd10);
     if (!result.success) {
       console.error("Validation failed for ValuesetIcd10:");
@@ -4824,7 +4824,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetIdentifierType fixture", () => {
+  it("should validate ValuesetIdentifierType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetIdentifierType);
     if (!result.success) {
       console.error("Validation failed for ValuesetIdentifierType:");
@@ -4836,7 +4836,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetIdentifierUse fixture", () => {
+  it("should validate ValuesetIdentifierUse fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetIdentifierUse);
     if (!result.success) {
       console.error("Validation failed for ValuesetIdentifierUse:");
@@ -4848,7 +4848,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetIdentityAssurancelevel fixture", () => {
+  it("should validate ValuesetIdentityAssurancelevel fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetIdentityAssurancelevel,
     );
@@ -4862,7 +4862,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetImagingstudyStatus fixture", () => {
+  it("should validate ValuesetImagingstudyStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetImagingstudyStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetImagingstudyStatus:");
@@ -4874,7 +4874,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetImmunizationEvaluationDoseStatusReason fixture", () => {
+  it("should validate ValuesetImmunizationEvaluationDoseStatusReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetImmunizationEvaluationDoseStatusReason,
     );
@@ -4890,7 +4890,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetImmunizationEvaluationDoseStatus fixture", () => {
+  it("should validate ValuesetImmunizationEvaluationDoseStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetImmunizationEvaluationDoseStatus,
     );
@@ -4906,7 +4906,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetImmunizationEvaluationStatus fixture", () => {
+  it("should validate ValuesetImmunizationEvaluationStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetImmunizationEvaluationStatus,
     );
@@ -4922,7 +4922,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetImmunizationEvaluationTargetDisease fixture", () => {
+  it("should validate ValuesetImmunizationEvaluationTargetDisease fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetImmunizationEvaluationTargetDisease,
     );
@@ -4938,7 +4938,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetImmunizationFunction fixture", () => {
+  it("should validate ValuesetImmunizationFunction fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetImmunizationFunction,
     );
@@ -4952,7 +4952,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetImmunizationFundingSource fixture", () => {
+  it("should validate ValuesetImmunizationFundingSource fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetImmunizationFundingSource,
     );
@@ -4966,7 +4966,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetImmunizationOrigin fixture", () => {
+  it("should validate ValuesetImmunizationOrigin fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetImmunizationOrigin);
     if (!result.success) {
       console.error("Validation failed for ValuesetImmunizationOrigin:");
@@ -4978,7 +4978,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetImmunizationProgramEligibility fixture", () => {
+  it("should validate ValuesetImmunizationProgramEligibility fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetImmunizationProgramEligibility,
     );
@@ -4994,7 +4994,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetImmunizationReason fixture", () => {
+  it("should validate ValuesetImmunizationReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetImmunizationReason);
     if (!result.success) {
       console.error("Validation failed for ValuesetImmunizationReason:");
@@ -5006,7 +5006,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetImmunizationRecommendationDateCriterion fixture", () => {
+  it("should validate ValuesetImmunizationRecommendationDateCriterion fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetImmunizationRecommendationDateCriterion,
     );
@@ -5022,7 +5022,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetImmunizationRecommendationReason fixture", () => {
+  it("should validate ValuesetImmunizationRecommendationReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetImmunizationRecommendationReason,
     );
@@ -5038,7 +5038,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetImmunizationRecommendationStatus fixture", () => {
+  it("should validate ValuesetImmunizationRecommendationStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetImmunizationRecommendationStatus,
     );
@@ -5054,7 +5054,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetImmunizationRecommendationTargetDisease fixture", () => {
+  it("should validate ValuesetImmunizationRecommendationTargetDisease fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetImmunizationRecommendationTargetDisease,
     );
@@ -5070,7 +5070,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetImmunizationRoute fixture", () => {
+  it("should validate ValuesetImmunizationRoute fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetImmunizationRoute);
     if (!result.success) {
       console.error("Validation failed for ValuesetImmunizationRoute:");
@@ -5082,7 +5082,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetImmunizationSite fixture", () => {
+  it("should validate ValuesetImmunizationSite fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetImmunizationSite);
     if (!result.success) {
       console.error("Validation failed for ValuesetImmunizationSite:");
@@ -5094,7 +5094,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetImmunizationStatusReason fixture", () => {
+  it("should validate ValuesetImmunizationStatusReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetImmunizationStatusReason,
     );
@@ -5108,7 +5108,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetImmunizationStatus fixture", () => {
+  it("should validate ValuesetImmunizationStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetImmunizationStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetImmunizationStatus:");
@@ -5120,7 +5120,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetImmunizationSubpotentReason fixture", () => {
+  it("should validate ValuesetImmunizationSubpotentReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetImmunizationSubpotentReason,
     );
@@ -5136,7 +5136,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetImmunizationTargetDisease fixture", () => {
+  it("should validate ValuesetImmunizationTargetDisease fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetImmunizationTargetDisease,
     );
@@ -5150,7 +5150,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetImplantstatus fixture", () => {
+  it("should validate ValuesetImplantstatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetImplantstatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetImplantstatus:");
@@ -5162,7 +5162,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetInstanceAvailability fixture", () => {
+  it("should validate ValuesetInstanceAvailability fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetInstanceAvailability,
     );
@@ -5176,7 +5176,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetInsuranceplanApplicability fixture", () => {
+  it("should validate ValuesetInsuranceplanApplicability fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetInsuranceplanApplicability,
     );
@@ -5192,7 +5192,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetInsuranceplanType fixture", () => {
+  it("should validate ValuesetInsuranceplanType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetInsuranceplanType);
     if (!result.success) {
       console.error("Validation failed for ValuesetInsuranceplanType:");
@@ -5204,7 +5204,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetIntervention fixture", () => {
+  it("should validate ValuesetIntervention fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetIntervention);
     if (!result.success) {
       console.error("Validation failed for ValuesetIntervention:");
@@ -5216,7 +5216,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetInvestigationSets fixture", () => {
+  it("should validate ValuesetInvestigationSets fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetInvestigationSets);
     if (!result.success) {
       console.error("Validation failed for ValuesetInvestigationSets:");
@@ -5228,7 +5228,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetInvoicePricecomponenttype fixture", () => {
+  it("should validate ValuesetInvoicePricecomponenttype fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetInvoicePricecomponenttype,
     );
@@ -5242,7 +5242,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetInvoiceStatus fixture", () => {
+  it("should validate ValuesetInvoiceStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetInvoiceStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetInvoiceStatus:");
@@ -5254,7 +5254,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetIso316612 fixture", () => {
+  it("should validate ValuesetIso316612 fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetIso316612);
     if (!result.success) {
       console.error("Validation failed for ValuesetIso316612:");
@@ -5266,7 +5266,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetIso316613 fixture", () => {
+  it("should validate ValuesetIso316613 fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetIso316613);
     if (!result.success) {
       console.error("Validation failed for ValuesetIso316613:");
@@ -5278,7 +5278,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetIso31661N fixture", () => {
+  it("should validate ValuesetIso31661N fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetIso31661N);
     if (!result.success) {
       console.error("Validation failed for ValuesetIso31661N:");
@@ -5290,7 +5290,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetIssueSeverity fixture", () => {
+  it("should validate ValuesetIssueSeverity fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetIssueSeverity);
     if (!result.success) {
       console.error("Validation failed for ValuesetIssueSeverity:");
@@ -5302,7 +5302,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetIssueType fixture", () => {
+  it("should validate ValuesetIssueType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetIssueType);
     if (!result.success) {
       console.error("Validation failed for ValuesetIssueType:");
@@ -5314,7 +5314,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetItemType fixture", () => {
+  it("should validate ValuesetItemType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetItemType);
     if (!result.success) {
       console.error("Validation failed for ValuesetItemType:");
@@ -5326,7 +5326,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetJurisdiction fixture", () => {
+  it("should validate ValuesetJurisdiction fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetJurisdiction);
     if (!result.success) {
       console.error("Validation failed for ValuesetJurisdiction:");
@@ -5338,7 +5338,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetKnowledgeResourceTypes fixture", () => {
+  it("should validate ValuesetKnowledgeResourceTypes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetKnowledgeResourceTypes,
     );
@@ -5352,7 +5352,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetLanguagePreferenceType fixture", () => {
+  it("should validate ValuesetLanguagePreferenceType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetLanguagePreferenceType,
     );
@@ -5366,7 +5366,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetLdlcholesterolCodes fixture", () => {
+  it("should validate ValuesetLdlcholesterolCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetLdlcholesterolCodes,
     );
@@ -5380,7 +5380,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetLibraryType fixture", () => {
+  it("should validate ValuesetLibraryType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetLibraryType);
     if (!result.success) {
       console.error("Validation failed for ValuesetLibraryType:");
@@ -5392,7 +5392,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetLinkType fixture", () => {
+  it("should validate ValuesetLinkType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetLinkType);
     if (!result.success) {
       console.error("Validation failed for ValuesetLinkType:");
@@ -5404,7 +5404,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetLinkageType fixture", () => {
+  it("should validate ValuesetLinkageType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetLinkageType);
     if (!result.success) {
       console.error("Validation failed for ValuesetLinkageType:");
@@ -5416,7 +5416,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetListEmptyReason fixture", () => {
+  it("should validate ValuesetListEmptyReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetListEmptyReason);
     if (!result.success) {
       console.error("Validation failed for ValuesetListEmptyReason:");
@@ -5428,7 +5428,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetListExampleCodes fixture", () => {
+  it("should validate ValuesetListExampleCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetListExampleCodes);
     if (!result.success) {
       console.error("Validation failed for ValuesetListExampleCodes:");
@@ -5440,7 +5440,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetListItemFlag fixture", () => {
+  it("should validate ValuesetListItemFlag fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetListItemFlag);
     if (!result.success) {
       console.error("Validation failed for ValuesetListItemFlag:");
@@ -5452,7 +5452,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetListMode fixture", () => {
+  it("should validate ValuesetListMode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetListMode);
     if (!result.success) {
       console.error("Validation failed for ValuesetListMode:");
@@ -5464,7 +5464,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetListOrder fixture", () => {
+  it("should validate ValuesetListOrder fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetListOrder);
     if (!result.success) {
       console.error("Validation failed for ValuesetListOrder:");
@@ -5476,7 +5476,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetListStatus fixture", () => {
+  it("should validate ValuesetListStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetListStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetListStatus:");
@@ -5488,7 +5488,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetLocationMode fixture", () => {
+  it("should validate ValuesetLocationMode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetLocationMode);
     if (!result.success) {
       console.error("Validation failed for ValuesetLocationMode:");
@@ -5500,7 +5500,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetLocationPhysicalType fixture", () => {
+  it("should validate ValuesetLocationPhysicalType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetLocationPhysicalType,
     );
@@ -5514,7 +5514,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetLocationStatus fixture", () => {
+  it("should validate ValuesetLocationStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetLocationStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetLocationStatus:");
@@ -5526,7 +5526,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetManifestationOrSymptom fixture", () => {
+  it("should validate ValuesetManifestationOrSymptom fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetManifestationOrSymptom,
     );
@@ -5540,7 +5540,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMapContextType fixture", () => {
+  it("should validate ValuesetMapContextType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMapContextType);
     if (!result.success) {
       console.error("Validation failed for ValuesetMapContextType:");
@@ -5552,7 +5552,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMapGroupTypeMode fixture", () => {
+  it("should validate ValuesetMapGroupTypeMode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMapGroupTypeMode);
     if (!result.success) {
       console.error("Validation failed for ValuesetMapGroupTypeMode:");
@@ -5564,7 +5564,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMapInputMode fixture", () => {
+  it("should validate ValuesetMapInputMode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMapInputMode);
     if (!result.success) {
       console.error("Validation failed for ValuesetMapInputMode:");
@@ -5576,7 +5576,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMapModelMode fixture", () => {
+  it("should validate ValuesetMapModelMode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMapModelMode);
     if (!result.success) {
       console.error("Validation failed for ValuesetMapModelMode:");
@@ -5588,7 +5588,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMapSourceListMode fixture", () => {
+  it("should validate ValuesetMapSourceListMode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMapSourceListMode);
     if (!result.success) {
       console.error("Validation failed for ValuesetMapSourceListMode:");
@@ -5600,7 +5600,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMapTargetListMode fixture", () => {
+  it("should validate ValuesetMapTargetListMode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMapTargetListMode);
     if (!result.success) {
       console.error("Validation failed for ValuesetMapTargetListMode:");
@@ -5612,7 +5612,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMapTransform fixture", () => {
+  it("should validate ValuesetMapTransform fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMapTransform);
     if (!result.success) {
       console.error("Validation failed for ValuesetMapTransform:");
@@ -5624,7 +5624,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMaritalStatus fixture", () => {
+  it("should validate ValuesetMaritalStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMaritalStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetMaritalStatus:");
@@ -5636,7 +5636,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMatchGrade fixture", () => {
+  it("should validate ValuesetMatchGrade fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMatchGrade);
     if (!result.success) {
       console.error("Validation failed for ValuesetMatchGrade:");
@@ -5648,7 +5648,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMeasureDataUsage fixture", () => {
+  it("should validate ValuesetMeasureDataUsage fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMeasureDataUsage);
     if (!result.success) {
       console.error("Validation failed for ValuesetMeasureDataUsage:");
@@ -5660,7 +5660,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMeasureImprovementNotation fixture", () => {
+  it("should validate ValuesetMeasureImprovementNotation fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMeasureImprovementNotation,
     );
@@ -5676,7 +5676,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMeasurePopulation fixture", () => {
+  it("should validate ValuesetMeasurePopulation fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMeasurePopulation);
     if (!result.success) {
       console.error("Validation failed for ValuesetMeasurePopulation:");
@@ -5688,7 +5688,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMeasureReportStatus fixture", () => {
+  it("should validate ValuesetMeasureReportStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMeasureReportStatus,
     );
@@ -5702,7 +5702,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMeasureReportType fixture", () => {
+  it("should validate ValuesetMeasureReportType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMeasureReportType);
     if (!result.success) {
       console.error("Validation failed for ValuesetMeasureReportType:");
@@ -5714,7 +5714,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMeasureScoring fixture", () => {
+  it("should validate ValuesetMeasureScoring fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMeasureScoring);
     if (!result.success) {
       console.error("Validation failed for ValuesetMeasureScoring:");
@@ -5726,7 +5726,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMeasureType fixture", () => {
+  it("should validate ValuesetMeasureType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMeasureType);
     if (!result.success) {
       console.error("Validation failed for ValuesetMeasureType:");
@@ -5738,7 +5738,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMedAdminPerformFunction fixture", () => {
+  it("should validate ValuesetMedAdminPerformFunction fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMedAdminPerformFunction,
     );
@@ -5752,7 +5752,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMediaModality fixture", () => {
+  it("should validate ValuesetMediaModality fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMediaModality);
     if (!result.success) {
       console.error("Validation failed for ValuesetMediaModality:");
@@ -5764,7 +5764,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMediaType fixture", () => {
+  it("should validate ValuesetMediaType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMediaType);
     if (!result.success) {
       console.error("Validation failed for ValuesetMediaType:");
@@ -5776,7 +5776,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMediaView fixture", () => {
+  it("should validate ValuesetMediaView fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMediaView);
     if (!result.success) {
       console.error("Validation failed for ValuesetMediaView:");
@@ -5788,7 +5788,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMedicationAdminCategory fixture", () => {
+  it("should validate ValuesetMedicationAdminCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMedicationAdminCategory,
     );
@@ -5802,7 +5802,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMedicationAdminStatus fixture", () => {
+  it("should validate ValuesetMedicationAdminStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMedicationAdminStatus,
     );
@@ -5816,7 +5816,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMedicationAsNeededReason fixture", () => {
+  it("should validate ValuesetMedicationAsNeededReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMedicationAsNeededReason,
     );
@@ -5830,7 +5830,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMedicationCodes fixture", () => {
+  it("should validate ValuesetMedicationCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMedicationCodes);
     if (!result.success) {
       console.error("Validation failed for ValuesetMedicationCodes:");
@@ -5842,7 +5842,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMedicationFormCodes fixture", () => {
+  it("should validate ValuesetMedicationFormCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMedicationFormCodes,
     );
@@ -5856,7 +5856,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMedicationStatementCategory fixture", () => {
+  it("should validate ValuesetMedicationStatementCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMedicationStatementCategory,
     );
@@ -5872,7 +5872,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMedicationStatementStatus fixture", () => {
+  it("should validate ValuesetMedicationStatementStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMedicationStatementStatus,
     );
@@ -5886,7 +5886,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMedicationStatus fixture", () => {
+  it("should validate ValuesetMedicationStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMedicationStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetMedicationStatus:");
@@ -5898,7 +5898,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMedicationdispenseCategory fixture", () => {
+  it("should validate ValuesetMedicationdispenseCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMedicationdispenseCategory,
     );
@@ -5914,7 +5914,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMedicationdispensePerformerFunction fixture", () => {
+  it("should validate ValuesetMedicationdispensePerformerFunction fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMedicationdispensePerformerFunction,
     );
@@ -5930,7 +5930,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMedicationdispenseStatusReason fixture", () => {
+  it("should validate ValuesetMedicationdispenseStatusReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMedicationdispenseStatusReason,
     );
@@ -5946,7 +5946,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMedicationdispenseStatus fixture", () => {
+  it("should validate ValuesetMedicationdispenseStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMedicationdispenseStatus,
     );
@@ -5960,7 +5960,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMedicationknowledgeCharacteristic fixture", () => {
+  it("should validate ValuesetMedicationknowledgeCharacteristic fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMedicationknowledgeCharacteristic,
     );
@@ -5976,7 +5976,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMedicationknowledgePackageType fixture", () => {
+  it("should validate ValuesetMedicationknowledgePackageType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMedicationknowledgePackageType,
     );
@@ -5992,7 +5992,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMedicationknowledgeStatus fixture", () => {
+  it("should validate ValuesetMedicationknowledgeStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMedicationknowledgeStatus,
     );
@@ -6006,7 +6006,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMedicationrequestCategory fixture", () => {
+  it("should validate ValuesetMedicationrequestCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMedicationrequestCategory,
     );
@@ -6020,7 +6020,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMedicationrequestCourseOfTherapy fixture", () => {
+  it("should validate ValuesetMedicationrequestCourseOfTherapy fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMedicationrequestCourseOfTherapy,
     );
@@ -6036,7 +6036,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMedicationrequestIntent fixture", () => {
+  it("should validate ValuesetMedicationrequestIntent fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMedicationrequestIntent,
     );
@@ -6050,7 +6050,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMedicationrequestStatusReason fixture", () => {
+  it("should validate ValuesetMedicationrequestStatusReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMedicationrequestStatusReason,
     );
@@ -6066,7 +6066,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMedicationrequestStatus fixture", () => {
+  it("should validate ValuesetMedicationrequestStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMedicationrequestStatus,
     );
@@ -6080,7 +6080,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMessageEvents fixture", () => {
+  it("should validate ValuesetMessageEvents fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMessageEvents);
     if (!result.success) {
       console.error("Validation failed for ValuesetMessageEvents:");
@@ -6092,7 +6092,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMessageReasonEncounter fixture", () => {
+  it("should validate ValuesetMessageReasonEncounter fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMessageReasonEncounter,
     );
@@ -6106,7 +6106,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMessageSignificanceCategory fixture", () => {
+  it("should validate ValuesetMessageSignificanceCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMessageSignificanceCategory,
     );
@@ -6122,7 +6122,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMessageTransport fixture", () => {
+  it("should validate ValuesetMessageTransport fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMessageTransport);
     if (!result.success) {
       console.error("Validation failed for ValuesetMessageTransport:");
@@ -6134,7 +6134,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMessageheaderResponseRequest fixture", () => {
+  it("should validate ValuesetMessageheaderResponseRequest fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMessageheaderResponseRequest,
     );
@@ -6150,7 +6150,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMetricCalibrationState fixture", () => {
+  it("should validate ValuesetMetricCalibrationState fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMetricCalibrationState,
     );
@@ -6164,7 +6164,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMetricCalibrationType fixture", () => {
+  it("should validate ValuesetMetricCalibrationType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMetricCalibrationType,
     );
@@ -6178,7 +6178,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMetricCategory fixture", () => {
+  it("should validate ValuesetMetricCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMetricCategory);
     if (!result.success) {
       console.error("Validation failed for ValuesetMetricCategory:");
@@ -6190,7 +6190,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMetricColor fixture", () => {
+  it("should validate ValuesetMetricColor fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMetricColor);
     if (!result.success) {
       console.error("Validation failed for ValuesetMetricColor:");
@@ -6202,7 +6202,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMetricOperationalStatus fixture", () => {
+  it("should validate ValuesetMetricOperationalStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetMetricOperationalStatus,
     );
@@ -6216,7 +6216,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMimetypes fixture", () => {
+  it("should validate ValuesetMimetypes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMimetypes);
     if (!result.success) {
       console.error("Validation failed for ValuesetMimetypes:");
@@ -6228,7 +6228,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetMissingToothReason fixture", () => {
+  it("should validate ValuesetMissingToothReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetMissingToothReason);
     if (!result.success) {
       console.error("Validation failed for ValuesetMissingToothReason:");
@@ -6240,7 +6240,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetModifiedFoodtype fixture", () => {
+  it("should validate ValuesetModifiedFoodtype fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetModifiedFoodtype);
     if (!result.success) {
       console.error("Validation failed for ValuesetModifiedFoodtype:");
@@ -6252,7 +6252,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetNameAssemblyOrder fixture", () => {
+  it("should validate ValuesetNameAssemblyOrder fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetNameAssemblyOrder);
     if (!result.success) {
       console.error("Validation failed for ValuesetNameAssemblyOrder:");
@@ -6264,7 +6264,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetNamePartQualifier fixture", () => {
+  it("should validate ValuesetNamePartQualifier fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetNamePartQualifier);
     if (!result.success) {
       console.error("Validation failed for ValuesetNamePartQualifier:");
@@ -6276,7 +6276,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetNameUse fixture", () => {
+  it("should validate ValuesetNameUse fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetNameUse);
     if (!result.success) {
       console.error("Validation failed for ValuesetNameUse:");
@@ -6288,7 +6288,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetNameV3Representation fixture", () => {
+  it("should validate ValuesetNameV3Representation fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetNameV3Representation,
     );
@@ -6302,7 +6302,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetNamingsystemIdentifierType fixture", () => {
+  it("should validate ValuesetNamingsystemIdentifierType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetNamingsystemIdentifierType,
     );
@@ -6318,7 +6318,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetNamingsystemType fixture", () => {
+  it("should validate ValuesetNamingsystemType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetNamingsystemType);
     if (!result.success) {
       console.error("Validation failed for ValuesetNamingsystemType:");
@@ -6330,7 +6330,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetNarrativeStatus fixture", () => {
+  it("should validate ValuesetNarrativeStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetNarrativeStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetNarrativeStatus:");
@@ -6342,7 +6342,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetNetworkType fixture", () => {
+  it("should validate ValuesetNetworkType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetNetworkType);
     if (!result.success) {
       console.error("Validation failed for ValuesetNetworkType:");
@@ -6354,7 +6354,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetNhinPurposeofuse fixture", () => {
+  it("should validate ValuesetNhinPurposeofuse fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetNhinPurposeofuse);
     if (!result.success) {
       console.error("Validation failed for ValuesetNhinPurposeofuse:");
@@ -6366,7 +6366,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetNoteType fixture", () => {
+  it("should validate ValuesetNoteType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetNoteType);
     if (!result.success) {
       console.error("Validation failed for ValuesetNoteType:");
@@ -6378,7 +6378,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetNutrientCode fixture", () => {
+  it("should validate ValuesetNutrientCode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetNutrientCode);
     if (!result.success) {
       console.error("Validation failed for ValuesetNutrientCode:");
@@ -6390,7 +6390,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetObjectLifecycleEvents fixture", () => {
+  it("should validate ValuesetObjectLifecycleEvents fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetObjectLifecycleEvents,
     );
@@ -6404,7 +6404,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetObjectRole fixture", () => {
+  it("should validate ValuesetObjectRole fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetObjectRole);
     if (!result.success) {
       console.error("Validation failed for ValuesetObjectRole:");
@@ -6416,7 +6416,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetObservationCategory fixture", () => {
+  it("should validate ValuesetObservationCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetObservationCategory,
     );
@@ -6430,7 +6430,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetObservationCodes fixture", () => {
+  it("should validate ValuesetObservationCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetObservationCodes);
     if (!result.success) {
       console.error("Validation failed for ValuesetObservationCodes:");
@@ -6442,7 +6442,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetObservationInterpretation fixture", () => {
+  it("should validate ValuesetObservationInterpretation fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetObservationInterpretation,
     );
@@ -6456,7 +6456,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetObservationMethods fixture", () => {
+  it("should validate ValuesetObservationMethods fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetObservationMethods);
     if (!result.success) {
       console.error("Validation failed for ValuesetObservationMethods:");
@@ -6468,7 +6468,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetObservationRangeCategory fixture", () => {
+  it("should validate ValuesetObservationRangeCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetObservationRangeCategory,
     );
@@ -6482,7 +6482,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetObservationStatistics fixture", () => {
+  it("should validate ValuesetObservationStatistics fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetObservationStatistics,
     );
@@ -6496,7 +6496,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetObservationStatus fixture", () => {
+  it("should validate ValuesetObservationStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetObservationStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetObservationStatus:");
@@ -6508,7 +6508,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetObservationVitalsignresult fixture", () => {
+  it("should validate ValuesetObservationVitalsignresult fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetObservationVitalsignresult,
     );
@@ -6524,7 +6524,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetOperationKind fixture", () => {
+  it("should validate ValuesetOperationKind fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetOperationKind);
     if (!result.success) {
       console.error("Validation failed for ValuesetOperationKind:");
@@ -6536,7 +6536,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetOperationOutcome fixture", () => {
+  it("should validate ValuesetOperationOutcome fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetOperationOutcome);
     if (!result.success) {
       console.error("Validation failed for ValuesetOperationOutcome:");
@@ -6548,7 +6548,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetOperationParameterUse fixture", () => {
+  it("should validate ValuesetOperationParameterUse fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetOperationParameterUse,
     );
@@ -6562,7 +6562,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetOralProsthodonticMaterial fixture", () => {
+  it("should validate ValuesetOralProsthodonticMaterial fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetOralProsthodonticMaterial,
     );
@@ -6576,7 +6576,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetOrganizationRole fixture", () => {
+  it("should validate ValuesetOrganizationRole fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetOrganizationRole);
     if (!result.success) {
       console.error("Validation failed for ValuesetOrganizationRole:");
@@ -6588,7 +6588,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetOrganizationType fixture", () => {
+  it("should validate ValuesetOrganizationType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetOrganizationType);
     if (!result.success) {
       console.error("Validation failed for ValuesetOrganizationType:");
@@ -6600,7 +6600,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetOrientationType fixture", () => {
+  it("should validate ValuesetOrientationType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetOrientationType);
     if (!result.success) {
       console.error("Validation failed for ValuesetOrientationType:");
@@ -6612,7 +6612,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetParameterGroup fixture", () => {
+  it("should validate ValuesetParameterGroup fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetParameterGroup);
     if (!result.success) {
       console.error("Validation failed for ValuesetParameterGroup:");
@@ -6624,7 +6624,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetParentRelationshipCodes fixture", () => {
+  it("should validate ValuesetParentRelationshipCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetParentRelationshipCodes,
     );
@@ -6638,7 +6638,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetParticipantRole fixture", () => {
+  it("should validate ValuesetParticipantRole fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetParticipantRole);
     if (!result.success) {
       console.error("Validation failed for ValuesetParticipantRole:");
@@ -6650,7 +6650,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetParticipantrequired fixture", () => {
+  it("should validate ValuesetParticipantrequired fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetParticipantrequired,
     );
@@ -6664,7 +6664,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetParticipationRoleType fixture", () => {
+  it("should validate ValuesetParticipationRoleType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetParticipationRoleType,
     );
@@ -6678,7 +6678,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetParticipationstatus fixture", () => {
+  it("should validate ValuesetParticipationstatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetParticipationstatus,
     );
@@ -6692,7 +6692,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetPatientContactrelationship fixture", () => {
+  it("should validate ValuesetPatientContactrelationship fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetPatientContactrelationship,
     );
@@ -6708,7 +6708,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetPayeetype fixture", () => {
+  it("should validate ValuesetPayeetype fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetPayeetype);
     if (!result.success) {
       console.error("Validation failed for ValuesetPayeetype:");
@@ -6720,7 +6720,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetPaymentAdjustmentReason fixture", () => {
+  it("should validate ValuesetPaymentAdjustmentReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetPaymentAdjustmentReason,
     );
@@ -6734,7 +6734,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetPaymentStatus fixture", () => {
+  it("should validate ValuesetPaymentStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetPaymentStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetPaymentStatus:");
@@ -6746,7 +6746,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetPaymentType fixture", () => {
+  it("should validate ValuesetPaymentType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetPaymentType);
     if (!result.success) {
       console.error("Validation failed for ValuesetPaymentType:");
@@ -6758,7 +6758,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetPerformerFunction fixture", () => {
+  it("should validate ValuesetPerformerFunction fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetPerformerFunction);
     if (!result.success) {
       console.error("Validation failed for ValuesetPerformerFunction:");
@@ -6770,7 +6770,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetPerformerRole fixture", () => {
+  it("should validate ValuesetPerformerRole fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetPerformerRole);
     if (!result.success) {
       console.error("Validation failed for ValuesetPerformerRole:");
@@ -6782,7 +6782,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetPermittedDataType fixture", () => {
+  it("should validate ValuesetPermittedDataType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetPermittedDataType);
     if (!result.success) {
       console.error("Validation failed for ValuesetPermittedDataType:");
@@ -6794,7 +6794,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetPlanDefinitionType fixture", () => {
+  it("should validate ValuesetPlanDefinitionType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetPlanDefinitionType);
     if (!result.success) {
       console.error("Validation failed for ValuesetPlanDefinitionType:");
@@ -6806,7 +6806,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetPostalAddressUse fixture", () => {
+  it("should validate ValuesetPostalAddressUse fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetPostalAddressUse);
     if (!result.success) {
       console.error("Validation failed for ValuesetPostalAddressUse:");
@@ -6818,7 +6818,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetPractitionerRole fixture", () => {
+  it("should validate ValuesetPractitionerRole fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetPractitionerRole);
     if (!result.success) {
       console.error("Validation failed for ValuesetPractitionerRole:");
@@ -6830,7 +6830,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetPractitionerSpecialty fixture", () => {
+  it("should validate ValuesetPractitionerSpecialty fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetPractitionerSpecialty,
     );
@@ -6844,7 +6844,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetPrecisionEstimateType fixture", () => {
+  it("should validate ValuesetPrecisionEstimateType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetPrecisionEstimateType,
     );
@@ -6858,7 +6858,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetPreparePatientPriorSpecimenCollection fixture", () => {
+  it("should validate ValuesetPreparePatientPriorSpecimenCollection fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetPreparePatientPriorSpecimenCollection,
     );
@@ -6874,7 +6874,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetProbabilityDistributionType fixture", () => {
+  it("should validate ValuesetProbabilityDistributionType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetProbabilityDistributionType,
     );
@@ -6890,7 +6890,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetProcedureCategory fixture", () => {
+  it("should validate ValuesetProcedureCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetProcedureCategory);
     if (!result.success) {
       console.error("Validation failed for ValuesetProcedureCategory:");
@@ -6902,7 +6902,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetProcedureCode fixture", () => {
+  it("should validate ValuesetProcedureCode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetProcedureCode);
     if (!result.success) {
       console.error("Validation failed for ValuesetProcedureCode:");
@@ -6914,7 +6914,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetProcedureFollowup fixture", () => {
+  it("should validate ValuesetProcedureFollowup fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetProcedureFollowup);
     if (!result.success) {
       console.error("Validation failed for ValuesetProcedureFollowup:");
@@ -6926,7 +6926,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetProcedureNotPerformedReason fixture", () => {
+  it("should validate ValuesetProcedureNotPerformedReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetProcedureNotPerformedReason,
     );
@@ -6942,7 +6942,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetProcedureOutcome fixture", () => {
+  it("should validate ValuesetProcedureOutcome fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetProcedureOutcome);
     if (!result.success) {
       console.error("Validation failed for ValuesetProcedureOutcome:");
@@ -6954,7 +6954,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetProcedureProgressStatusCodes fixture", () => {
+  it("should validate ValuesetProcedureProgressStatusCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetProcedureProgressStatusCodes,
     );
@@ -6970,7 +6970,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetProcedureReason fixture", () => {
+  it("should validate ValuesetProcedureReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetProcedureReason);
     if (!result.success) {
       console.error("Validation failed for ValuesetProcedureReason:");
@@ -6982,7 +6982,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetProcessPriority fixture", () => {
+  it("should validate ValuesetProcessPriority fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetProcessPriority);
     if (!result.success) {
       console.error("Validation failed for ValuesetProcessPriority:");
@@ -6994,7 +6994,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetProductCategory fixture", () => {
+  it("should validate ValuesetProductCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetProductCategory);
     if (!result.success) {
       console.error("Validation failed for ValuesetProductCategory:");
@@ -7006,7 +7006,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetProductStatus fixture", () => {
+  it("should validate ValuesetProductStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetProductStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetProductStatus:");
@@ -7018,7 +7018,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetProductStorageScale fixture", () => {
+  it("should validate ValuesetProductStorageScale fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetProductStorageScale,
     );
@@ -7032,7 +7032,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetProgram fixture", () => {
+  it("should validate ValuesetProgram fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetProgram);
     if (!result.success) {
       console.error("Validation failed for ValuesetProgram:");
@@ -7044,7 +7044,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetPropertyRepresentation fixture", () => {
+  it("should validate ValuesetPropertyRepresentation fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetPropertyRepresentation,
     );
@@ -7058,7 +7058,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetProvenanceActivityType fixture", () => {
+  it("should validate ValuesetProvenanceActivityType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetProvenanceActivityType,
     );
@@ -7072,7 +7072,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetProvenanceAgentRole fixture", () => {
+  it("should validate ValuesetProvenanceAgentRole fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetProvenanceAgentRole,
     );
@@ -7086,7 +7086,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetProvenanceAgentType fixture", () => {
+  it("should validate ValuesetProvenanceAgentType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetProvenanceAgentType,
     );
@@ -7100,7 +7100,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetProvenanceEntityRole fixture", () => {
+  it("should validate ValuesetProvenanceEntityRole fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetProvenanceEntityRole,
     );
@@ -7114,7 +7114,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetProvenanceHistoryAgentType fixture", () => {
+  it("should validate ValuesetProvenanceHistoryAgentType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetProvenanceHistoryAgentType,
     );
@@ -7130,7 +7130,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetProvenanceHistoryRecordActivity fixture", () => {
+  it("should validate ValuesetProvenanceHistoryRecordActivity fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetProvenanceHistoryRecordActivity,
     );
@@ -7146,7 +7146,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetProviderQualification fixture", () => {
+  it("should validate ValuesetProviderQualification fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetProviderQualification,
     );
@@ -7160,7 +7160,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetProviderTaxonomy fixture", () => {
+  it("should validate ValuesetProviderTaxonomy fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetProviderTaxonomy);
     if (!result.success) {
       console.error("Validation failed for ValuesetProviderTaxonomy:");
@@ -7172,7 +7172,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetPublicationStatus fixture", () => {
+  it("should validate ValuesetPublicationStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetPublicationStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetPublicationStatus:");
@@ -7184,7 +7184,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetQualityType fixture", () => {
+  it("should validate ValuesetQualityType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetQualityType);
     if (!result.success) {
       console.error("Validation failed for ValuesetQualityType:");
@@ -7196,7 +7196,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetQuantityComparator fixture", () => {
+  it("should validate ValuesetQuantityComparator fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetQuantityComparator);
     if (!result.success) {
       console.error("Validation failed for ValuesetQuantityComparator:");
@@ -7208,7 +7208,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetQuestionMaxOccurs fixture", () => {
+  it("should validate ValuesetQuestionMaxOccurs fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetQuestionMaxOccurs);
     if (!result.success) {
       console.error("Validation failed for ValuesetQuestionMaxOccurs:");
@@ -7220,7 +7220,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetQuestionnaireAnswersStatus fixture", () => {
+  it("should validate ValuesetQuestionnaireAnswersStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetQuestionnaireAnswersStatus,
     );
@@ -7236,7 +7236,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetQuestionnaireAnswers fixture", () => {
+  it("should validate ValuesetQuestionnaireAnswers fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetQuestionnaireAnswers,
     );
@@ -7250,7 +7250,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetQuestionnaireCategory fixture", () => {
+  it("should validate ValuesetQuestionnaireCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetQuestionnaireCategory,
     );
@@ -7264,7 +7264,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetQuestionnaireDisplayCategory fixture", () => {
+  it("should validate ValuesetQuestionnaireDisplayCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetQuestionnaireDisplayCategory,
     );
@@ -7280,7 +7280,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetQuestionnaireEnableBehavior fixture", () => {
+  it("should validate ValuesetQuestionnaireEnableBehavior fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetQuestionnaireEnableBehavior,
     );
@@ -7296,7 +7296,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetQuestionnaireEnableOperator fixture", () => {
+  it("should validate ValuesetQuestionnaireEnableOperator fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetQuestionnaireEnableOperator,
     );
@@ -7312,7 +7312,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetQuestionnaireItemControl fixture", () => {
+  it("should validate ValuesetQuestionnaireItemControl fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetQuestionnaireItemControl,
     );
@@ -7326,7 +7326,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetQuestionnaireQuestions fixture", () => {
+  it("should validate ValuesetQuestionnaireQuestions fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetQuestionnaireQuestions,
     );
@@ -7340,7 +7340,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetQuestionnaireUsageMode fixture", () => {
+  it("should validate ValuesetQuestionnaireUsageMode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetQuestionnaireUsageMode,
     );
@@ -7354,7 +7354,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetQuestionnaireresponseMode fixture", () => {
+  it("should validate ValuesetQuestionnaireresponseMode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetQuestionnaireresponseMode,
     );
@@ -7368,7 +7368,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetReactionEventCertainty fixture", () => {
+  it("should validate ValuesetReactionEventCertainty fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetReactionEventCertainty,
     );
@@ -7382,7 +7382,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetReactionEventSeverity fixture", () => {
+  it("should validate ValuesetReactionEventSeverity fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetReactionEventSeverity,
     );
@@ -7396,7 +7396,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetReasonMedicationGivenCodes fixture", () => {
+  it("should validate ValuesetReasonMedicationGivenCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetReasonMedicationGivenCodes,
     );
@@ -7412,7 +7412,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetReasonMedicationNotGivenCodes fixture", () => {
+  it("should validate ValuesetReasonMedicationNotGivenCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetReasonMedicationNotGivenCodes,
     );
@@ -7428,7 +7428,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetReasonMedicationStatusCodes fixture", () => {
+  it("should validate ValuesetReasonMedicationStatusCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetReasonMedicationStatusCodes,
     );
@@ -7444,7 +7444,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetRecommendationStrength fixture", () => {
+  it("should validate ValuesetRecommendationStrength fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetRecommendationStrength,
     );
@@ -7458,7 +7458,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetRefSequences fixture", () => {
+  it("should validate ValuesetRefSequences fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetRefSequences);
     if (!result.success) {
       console.error("Validation failed for ValuesetRefSequences:");
@@ -7470,7 +7470,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetReferenceHandlingPolicy fixture", () => {
+  it("should validate ValuesetReferenceHandlingPolicy fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetReferenceHandlingPolicy,
     );
@@ -7484,7 +7484,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetReferenceVersionRules fixture", () => {
+  it("should validate ValuesetReferenceVersionRules fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetReferenceVersionRules,
     );
@@ -7498,7 +7498,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetReferencerangeAppliesto fixture", () => {
+  it("should validate ValuesetReferencerangeAppliesto fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetReferencerangeAppliesto,
     );
@@ -7512,7 +7512,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetReferencerangeMeaning fixture", () => {
+  it("should validate ValuesetReferencerangeMeaning fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetReferencerangeMeaning,
     );
@@ -7526,7 +7526,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetRejectionCriteria fixture", () => {
+  it("should validate ValuesetRejectionCriteria fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetRejectionCriteria);
     if (!result.success) {
       console.error("Validation failed for ValuesetRejectionCriteria:");
@@ -7538,7 +7538,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetRelatedArtifactType fixture", () => {
+  it("should validate ValuesetRelatedArtifactType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetRelatedArtifactType,
     );
@@ -7552,7 +7552,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetRelatedClaimRelationship fixture", () => {
+  it("should validate ValuesetRelatedClaimRelationship fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetRelatedClaimRelationship,
     );
@@ -7566,7 +7566,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetRelatedpersonRelationshiptype fixture", () => {
+  it("should validate ValuesetRelatedpersonRelationshiptype fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetRelatedpersonRelationshiptype,
     );
@@ -7582,7 +7582,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetRelationType fixture", () => {
+  it("should validate ValuesetRelationType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetRelationType);
     if (!result.success) {
       console.error("Validation failed for ValuesetRelationType:");
@@ -7594,7 +7594,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetRelationship fixture", () => {
+  it("should validate ValuesetRelationship fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetRelationship);
     if (!result.success) {
       console.error("Validation failed for ValuesetRelationship:");
@@ -7606,7 +7606,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetRemittanceOutcome fixture", () => {
+  it("should validate ValuesetRemittanceOutcome fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetRemittanceOutcome);
     if (!result.success) {
       console.error("Validation failed for ValuesetRemittanceOutcome:");
@@ -7618,7 +7618,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetReportActionResultCodes fixture", () => {
+  it("should validate ValuesetReportActionResultCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetReportActionResultCodes,
     );
@@ -7632,7 +7632,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetReportCodes fixture", () => {
+  it("should validate ValuesetReportCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetReportCodes);
     if (!result.success) {
       console.error("Validation failed for ValuesetReportCodes:");
@@ -7644,7 +7644,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetReportParticipantType fixture", () => {
+  it("should validate ValuesetReportParticipantType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetReportParticipantType,
     );
@@ -7658,7 +7658,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetReportResultCodes fixture", () => {
+  it("should validate ValuesetReportResultCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetReportResultCodes);
     if (!result.success) {
       console.error("Validation failed for ValuesetReportResultCodes:");
@@ -7670,7 +7670,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetReportStatusCodes fixture", () => {
+  it("should validate ValuesetReportStatusCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetReportStatusCodes);
     if (!result.success) {
       console.error("Validation failed for ValuesetReportStatusCodes:");
@@ -7682,7 +7682,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetRepositoryType fixture", () => {
+  it("should validate ValuesetRepositoryType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetRepositoryType);
     if (!result.success) {
       console.error("Validation failed for ValuesetRepositoryType:");
@@ -7694,7 +7694,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetRequestIntent fixture", () => {
+  it("should validate ValuesetRequestIntent fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetRequestIntent);
     if (!result.success) {
       console.error("Validation failed for ValuesetRequestIntent:");
@@ -7706,7 +7706,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetRequestPriority fixture", () => {
+  it("should validate ValuesetRequestPriority fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetRequestPriority);
     if (!result.success) {
       console.error("Validation failed for ValuesetRequestPriority:");
@@ -7718,7 +7718,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetRequestResourceTypes fixture", () => {
+  it("should validate ValuesetRequestResourceTypes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetRequestResourceTypes,
     );
@@ -7732,7 +7732,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetRequestStatus fixture", () => {
+  it("should validate ValuesetRequestStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetRequestStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetRequestStatus:");
@@ -7744,7 +7744,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetResearchElementType fixture", () => {
+  it("should validate ValuesetResearchElementType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetResearchElementType,
     );
@@ -7758,7 +7758,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetResearchStudyObjectiveType fixture", () => {
+  it("should validate ValuesetResearchStudyObjectiveType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetResearchStudyObjectiveType,
     );
@@ -7774,7 +7774,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetResearchStudyPhase fixture", () => {
+  it("should validate ValuesetResearchStudyPhase fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetResearchStudyPhase);
     if (!result.success) {
       console.error("Validation failed for ValuesetResearchStudyPhase:");
@@ -7786,7 +7786,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetResearchStudyPrimPurpType fixture", () => {
+  it("should validate ValuesetResearchStudyPrimPurpType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetResearchStudyPrimPurpType,
     );
@@ -7800,7 +7800,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetResearchStudyReasonStopped fixture", () => {
+  it("should validate ValuesetResearchStudyReasonStopped fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetResearchStudyReasonStopped,
     );
@@ -7816,7 +7816,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetResearchStudyStatus fixture", () => {
+  it("should validate ValuesetResearchStudyStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetResearchStudyStatus,
     );
@@ -7830,7 +7830,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetResearchSubjectStatus fixture", () => {
+  it("should validate ValuesetResearchSubjectStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetResearchSubjectStatus,
     );
@@ -7844,7 +7844,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetResourceAggregationMode fixture", () => {
+  it("should validate ValuesetResourceAggregationMode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetResourceAggregationMode,
     );
@@ -7858,7 +7858,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetResourceSecurityCategory fixture", () => {
+  it("should validate ValuesetResourceSecurityCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetResourceSecurityCategory,
     );
@@ -7872,7 +7872,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetResourceSlicingRules fixture", () => {
+  it("should validate ValuesetResourceSlicingRules fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetResourceSlicingRules,
     );
@@ -7886,7 +7886,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetResourceStatus fixture", () => {
+  it("should validate ValuesetResourceStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetResourceStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetResourceStatus:");
@@ -7898,7 +7898,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetResourceTypeLink fixture", () => {
+  it("should validate ValuesetResourceTypeLink fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetResourceTypeLink);
     if (!result.success) {
       console.error("Validation failed for ValuesetResourceTypeLink:");
@@ -7910,7 +7910,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetResourceTypes fixture", () => {
+  it("should validate ValuesetResourceTypes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetResourceTypes);
     if (!result.success) {
       console.error("Validation failed for ValuesetResourceTypes:");
@@ -7922,7 +7922,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetResourceValidationMode fixture", () => {
+  it("should validate ValuesetResourceValidationMode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetResourceValidationMode,
     );
@@ -7936,7 +7936,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetResponseCode fixture", () => {
+  it("should validate ValuesetResponseCode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetResponseCode);
     if (!result.success) {
       console.error("Validation failed for ValuesetResponseCode:");
@@ -7948,7 +7948,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetRestfulCapabilityMode fixture", () => {
+  it("should validate ValuesetRestfulCapabilityMode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetRestfulCapabilityMode,
     );
@@ -7962,7 +7962,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetRestfulSecurityService fixture", () => {
+  it("should validate ValuesetRestfulSecurityService fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetRestfulSecurityService,
     );
@@ -7976,7 +7976,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetRiskEstimateType fixture", () => {
+  it("should validate ValuesetRiskEstimateType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetRiskEstimateType);
     if (!result.success) {
       console.error("Validation failed for ValuesetRiskEstimateType:");
@@ -7988,7 +7988,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetRiskProbability fixture", () => {
+  it("should validate ValuesetRiskProbability fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetRiskProbability);
     if (!result.success) {
       console.error("Validation failed for ValuesetRiskProbability:");
@@ -8000,7 +8000,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetRouteCodes fixture", () => {
+  it("should validate ValuesetRouteCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetRouteCodes);
     if (!result.success) {
       console.error("Validation failed for ValuesetRouteCodes:");
@@ -8012,7 +8012,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSearchComparator fixture", () => {
+  it("should validate ValuesetSearchComparator fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSearchComparator);
     if (!result.success) {
       console.error("Validation failed for ValuesetSearchComparator:");
@@ -8024,7 +8024,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSearchEntryMode fixture", () => {
+  it("should validate ValuesetSearchEntryMode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSearchEntryMode);
     if (!result.success) {
       console.error("Validation failed for ValuesetSearchEntryMode:");
@@ -8036,7 +8036,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSearchModifierCode fixture", () => {
+  it("should validate ValuesetSearchModifierCode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSearchModifierCode);
     if (!result.success) {
       console.error("Validation failed for ValuesetSearchModifierCode:");
@@ -8048,7 +8048,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSearchParamType fixture", () => {
+  it("should validate ValuesetSearchParamType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSearchParamType);
     if (!result.success) {
       console.error("Validation failed for ValuesetSearchParamType:");
@@ -8060,7 +8060,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSearchXpathUsage fixture", () => {
+  it("should validate ValuesetSearchXpathUsage fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSearchXpathUsage);
     if (!result.success) {
       console.error("Validation failed for ValuesetSearchXpathUsage:");
@@ -8072,7 +8072,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSecondaryFinding fixture", () => {
+  it("should validate ValuesetSecondaryFinding fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSecondaryFinding);
     if (!result.success) {
       console.error("Validation failed for ValuesetSecondaryFinding:");
@@ -8084,7 +8084,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSecurityLabels fixture", () => {
+  it("should validate ValuesetSecurityLabels fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSecurityLabels);
     if (!result.success) {
       console.error("Validation failed for ValuesetSecurityLabels:");
@@ -8096,7 +8096,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSecurityRoleType fixture", () => {
+  it("should validate ValuesetSecurityRoleType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSecurityRoleType);
     if (!result.success) {
       console.error("Validation failed for ValuesetSecurityRoleType:");
@@ -8108,7 +8108,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSequenceQualityMethod fixture", () => {
+  it("should validate ValuesetSequenceQualityMethod fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetSequenceQualityMethod,
     );
@@ -8122,7 +8122,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSequenceQualityStandardsequence fixture", () => {
+  it("should validate ValuesetSequenceQualityStandardsequence fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetSequenceQualityStandardsequence,
     );
@@ -8138,7 +8138,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSequenceReferenceseq fixture", () => {
+  it("should validate ValuesetSequenceReferenceseq fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetSequenceReferenceseq,
     );
@@ -8152,7 +8152,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSequenceSpecies fixture", () => {
+  it("should validate ValuesetSequenceSpecies fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSequenceSpecies);
     if (!result.success) {
       console.error("Validation failed for ValuesetSequenceSpecies:");
@@ -8164,7 +8164,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSequenceType fixture", () => {
+  it("should validate ValuesetSequenceType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSequenceType);
     if (!result.success) {
       console.error("Validation failed for ValuesetSequenceType:");
@@ -8176,7 +8176,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSequenceontology fixture", () => {
+  it("should validate ValuesetSequenceontology fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSequenceontology);
     if (!result.success) {
       console.error("Validation failed for ValuesetSequenceontology:");
@@ -8188,7 +8188,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSeriesPerformerFunction fixture", () => {
+  it("should validate ValuesetSeriesPerformerFunction fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetSeriesPerformerFunction,
     );
@@ -8202,7 +8202,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetServiceCategory fixture", () => {
+  it("should validate ValuesetServiceCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetServiceCategory);
     if (!result.success) {
       console.error("Validation failed for ValuesetServiceCategory:");
@@ -8214,7 +8214,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetServiceModifiers fixture", () => {
+  it("should validate ValuesetServiceModifiers fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetServiceModifiers);
     if (!result.success) {
       console.error("Validation failed for ValuesetServiceModifiers:");
@@ -8226,7 +8226,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetServicePharmacy fixture", () => {
+  it("should validate ValuesetServicePharmacy fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetServicePharmacy);
     if (!result.success) {
       console.error("Validation failed for ValuesetServicePharmacy:");
@@ -8238,7 +8238,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetServicePlace fixture", () => {
+  it("should validate ValuesetServicePlace fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetServicePlace);
     if (!result.success) {
       console.error("Validation failed for ValuesetServicePlace:");
@@ -8250,7 +8250,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetServiceProduct fixture", () => {
+  it("should validate ValuesetServiceProduct fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetServiceProduct);
     if (!result.success) {
       console.error("Validation failed for ValuesetServiceProduct:");
@@ -8262,7 +8262,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetServiceProvisionConditions fixture", () => {
+  it("should validate ValuesetServiceProvisionConditions fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetServiceProvisionConditions,
     );
@@ -8278,7 +8278,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetServiceReferralMethod fixture", () => {
+  it("should validate ValuesetServiceReferralMethod fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetServiceReferralMethod,
     );
@@ -8292,7 +8292,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetServiceType fixture", () => {
+  it("should validate ValuesetServiceType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetServiceType);
     if (!result.success) {
       console.error("Validation failed for ValuesetServiceType:");
@@ -8304,7 +8304,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetServiceUscls fixture", () => {
+  it("should validate ValuesetServiceUscls fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetServiceUscls);
     if (!result.success) {
       console.error("Validation failed for ValuesetServiceUscls:");
@@ -8316,7 +8316,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetServicerequestCategory fixture", () => {
+  it("should validate ValuesetServicerequestCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetServicerequestCategory,
     );
@@ -8330,7 +8330,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetServicerequestOrderdetail fixture", () => {
+  it("should validate ValuesetServicerequestOrderdetail fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetServicerequestOrderdetail,
     );
@@ -8344,7 +8344,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSiblingRelationshipCodes fixture", () => {
+  it("should validate ValuesetSiblingRelationshipCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetSiblingRelationshipCodes,
     );
@@ -8358,7 +8358,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSignatureType fixture", () => {
+  it("should validate ValuesetSignatureType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSignatureType);
     if (!result.success) {
       console.error("Validation failed for ValuesetSignatureType:");
@@ -8370,7 +8370,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSlotstatus fixture", () => {
+  it("should validate ValuesetSlotstatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSlotstatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetSlotstatus:");
@@ -8382,7 +8382,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSmartCapabilities fixture", () => {
+  it("should validate ValuesetSmartCapabilities fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSmartCapabilities);
     if (!result.success) {
       console.error("Validation failed for ValuesetSmartCapabilities:");
@@ -8394,7 +8394,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSortDirection fixture", () => {
+  it("should validate ValuesetSortDirection fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSortDirection);
     if (!result.success) {
       console.error("Validation failed for ValuesetSortDirection:");
@@ -8406,7 +8406,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSpdxLicense fixture", () => {
+  it("should validate ValuesetSpdxLicense fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSpdxLicense);
     if (!result.success) {
       console.error("Validation failed for ValuesetSpdxLicense:");
@@ -8418,7 +8418,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSpecialValues fixture", () => {
+  it("should validate ValuesetSpecialValues fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSpecialValues);
     if (!result.success) {
       console.error("Validation failed for ValuesetSpecialValues:");
@@ -8430,7 +8430,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSpecimenCollectionMethod fixture", () => {
+  it("should validate ValuesetSpecimenCollectionMethod fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetSpecimenCollectionMethod,
     );
@@ -8444,7 +8444,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSpecimenCollectionPriority fixture", () => {
+  it("should validate ValuesetSpecimenCollectionPriority fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetSpecimenCollectionPriority,
     );
@@ -8460,7 +8460,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSpecimenCollection fixture", () => {
+  it("should validate ValuesetSpecimenCollection fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSpecimenCollection);
     if (!result.success) {
       console.error("Validation failed for ValuesetSpecimenCollection:");
@@ -8472,7 +8472,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSpecimenContainedPreference fixture", () => {
+  it("should validate ValuesetSpecimenContainedPreference fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetSpecimenContainedPreference,
     );
@@ -8488,7 +8488,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSpecimenContainerType fixture", () => {
+  it("should validate ValuesetSpecimenContainerType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetSpecimenContainerType,
     );
@@ -8502,7 +8502,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSpecimenProcessingProcedure fixture", () => {
+  it("should validate ValuesetSpecimenProcessingProcedure fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetSpecimenProcessingProcedure,
     );
@@ -8518,7 +8518,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSpecimenStatus fixture", () => {
+  it("should validate ValuesetSpecimenStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSpecimenStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetSpecimenStatus:");
@@ -8530,7 +8530,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetStandardsStatus fixture", () => {
+  it("should validate ValuesetStandardsStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetStandardsStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetStandardsStatus:");
@@ -8542,7 +8542,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetStrandType fixture", () => {
+  it("should validate ValuesetStrandType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetStrandType);
     if (!result.success) {
       console.error("Validation failed for ValuesetStrandType:");
@@ -8554,7 +8554,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetStructureDefinitionKind fixture", () => {
+  it("should validate ValuesetStructureDefinitionKind fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetStructureDefinitionKind,
     );
@@ -8568,7 +8568,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetStudyType fixture", () => {
+  it("should validate ValuesetStudyType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetStudyType);
     if (!result.success) {
       console.error("Validation failed for ValuesetStudyType:");
@@ -8580,7 +8580,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSubjectType fixture", () => {
+  it("should validate ValuesetSubjectType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSubjectType);
     if (!result.success) {
       console.error("Validation failed for ValuesetSubjectType:");
@@ -8592,7 +8592,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSubscriberRelationship fixture", () => {
+  it("should validate ValuesetSubscriberRelationship fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetSubscriberRelationship,
     );
@@ -8606,7 +8606,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSubscriptionChannelType fixture", () => {
+  it("should validate ValuesetSubscriptionChannelType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetSubscriptionChannelType,
     );
@@ -8620,7 +8620,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSubscriptionStatus fixture", () => {
+  it("should validate ValuesetSubscriptionStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSubscriptionStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetSubscriptionStatus:");
@@ -8632,7 +8632,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSubscriptionTag fixture", () => {
+  it("should validate ValuesetSubscriptionTag fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSubscriptionTag);
     if (!result.success) {
       console.error("Validation failed for ValuesetSubscriptionTag:");
@@ -8644,7 +8644,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSubstanceCategory fixture", () => {
+  it("should validate ValuesetSubstanceCategory fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSubstanceCategory);
     if (!result.success) {
       console.error("Validation failed for ValuesetSubstanceCategory:");
@@ -8656,7 +8656,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSubstanceCode fixture", () => {
+  it("should validate ValuesetSubstanceCode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSubstanceCode);
     if (!result.success) {
       console.error("Validation failed for ValuesetSubstanceCode:");
@@ -8668,7 +8668,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSubstanceStatus fixture", () => {
+  it("should validate ValuesetSubstanceStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSubstanceStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetSubstanceStatus:");
@@ -8680,7 +8680,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSupplementType fixture", () => {
+  it("should validate ValuesetSupplementType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSupplementType);
     if (!result.success) {
       console.error("Validation failed for ValuesetSupplementType:");
@@ -8692,7 +8692,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSupplyItem fixture", () => {
+  it("should validate ValuesetSupplyItem fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSupplyItem);
     if (!result.success) {
       console.error("Validation failed for ValuesetSupplyItem:");
@@ -8704,7 +8704,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSupplydeliveryStatus fixture", () => {
+  it("should validate ValuesetSupplydeliveryStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetSupplydeliveryStatus,
     );
@@ -8718,7 +8718,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSupplydeliveryType fixture", () => {
+  it("should validate ValuesetSupplydeliveryType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSupplydeliveryType);
     if (!result.success) {
       console.error("Validation failed for ValuesetSupplydeliveryType:");
@@ -8730,7 +8730,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSupplyrequestKind fixture", () => {
+  it("should validate ValuesetSupplyrequestKind fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSupplyrequestKind);
     if (!result.success) {
       console.error("Validation failed for ValuesetSupplyrequestKind:");
@@ -8742,7 +8742,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSupplyrequestReason fixture", () => {
+  it("should validate ValuesetSupplyrequestReason fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetSupplyrequestReason,
     );
@@ -8756,7 +8756,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSupplyrequestStatus fixture", () => {
+  it("should validate ValuesetSupplyrequestStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetSupplyrequestStatus,
     );
@@ -8770,7 +8770,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSurface fixture", () => {
+  it("should validate ValuesetSurface fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSurface);
     if (!result.success) {
       console.error("Validation failed for ValuesetSurface:");
@@ -8782,7 +8782,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSynthesisType fixture", () => {
+  it("should validate ValuesetSynthesisType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetSynthesisType);
     if (!result.success) {
       console.error("Validation failed for ValuesetSynthesisType:");
@@ -8794,7 +8794,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetSystemRestfulInteraction fixture", () => {
+  it("should validate ValuesetSystemRestfulInteraction fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetSystemRestfulInteraction,
     );
@@ -8808,7 +8808,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetTaskCode fixture", () => {
+  it("should validate ValuesetTaskCode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetTaskCode);
     if (!result.success) {
       console.error("Validation failed for ValuesetTaskCode:");
@@ -8820,7 +8820,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetTaskIntent fixture", () => {
+  it("should validate ValuesetTaskIntent fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetTaskIntent);
     if (!result.success) {
       console.error("Validation failed for ValuesetTaskIntent:");
@@ -8832,7 +8832,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetTaskStatus fixture", () => {
+  it("should validate ValuesetTaskStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetTaskStatus);
     if (!result.success) {
       console.error("Validation failed for ValuesetTaskStatus:");
@@ -8844,7 +8844,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetTeeth fixture", () => {
+  it("should validate ValuesetTeeth fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetTeeth);
     if (!result.success) {
       console.error("Validation failed for ValuesetTeeth:");
@@ -8856,7 +8856,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetTemplateStatusCode fixture", () => {
+  it("should validate ValuesetTemplateStatusCode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetTemplateStatusCode);
     if (!result.success) {
       console.error("Validation failed for ValuesetTemplateStatusCode:");
@@ -8868,7 +8868,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetTestscriptOperationCodes fixture", () => {
+  it("should validate ValuesetTestscriptOperationCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetTestscriptOperationCodes,
     );
@@ -8882,7 +8882,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetTestscriptProfileDestinationTypes fixture", () => {
+  it("should validate ValuesetTestscriptProfileDestinationTypes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetTestscriptProfileDestinationTypes,
     );
@@ -8898,7 +8898,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetTestscriptProfileOriginTypes fixture", () => {
+  it("should validate ValuesetTestscriptProfileOriginTypes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetTestscriptProfileOriginTypes,
     );
@@ -8914,7 +8914,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetTextureCode fixture", () => {
+  it("should validate ValuesetTextureCode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetTextureCode);
     if (!result.success) {
       console.error("Validation failed for ValuesetTextureCode:");
@@ -8926,7 +8926,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetTimezones fixture", () => {
+  it("should validate ValuesetTimezones fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetTimezones);
     if (!result.success) {
       console.error("Validation failed for ValuesetTimezones:");
@@ -8938,7 +8938,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetTimingAbbreviation fixture", () => {
+  it("should validate ValuesetTimingAbbreviation fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetTimingAbbreviation);
     if (!result.success) {
       console.error("Validation failed for ValuesetTimingAbbreviation:");
@@ -8950,7 +8950,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetTooth fixture", () => {
+  it("should validate ValuesetTooth fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetTooth);
     if (!result.success) {
       console.error("Validation failed for ValuesetTooth:");
@@ -8962,7 +8962,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetTransactionMode fixture", () => {
+  it("should validate ValuesetTransactionMode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetTransactionMode);
     if (!result.success) {
       console.error("Validation failed for ValuesetTransactionMode:");
@@ -8974,7 +8974,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetTriggerType fixture", () => {
+  it("should validate ValuesetTriggerType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetTriggerType);
     if (!result.success) {
       console.error("Validation failed for ValuesetTriggerType:");
@@ -8986,7 +8986,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetTypeDerivationRule fixture", () => {
+  it("should validate ValuesetTypeDerivationRule fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetTypeDerivationRule);
     if (!result.success) {
       console.error("Validation failed for ValuesetTypeDerivationRule:");
@@ -8998,7 +8998,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetTypeRestfulInteraction fixture", () => {
+  it("should validate ValuesetTypeRestfulInteraction fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetTypeRestfulInteraction,
     );
@@ -9012,7 +9012,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetUcumBodylength fixture", () => {
+  it("should validate ValuesetUcumBodylength fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetUcumBodylength);
     if (!result.success) {
       console.error("Validation failed for ValuesetUcumBodylength:");
@@ -9024,7 +9024,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetUcumBodytemp fixture", () => {
+  it("should validate ValuesetUcumBodytemp fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetUcumBodytemp);
     if (!result.success) {
       console.error("Validation failed for ValuesetUcumBodytemp:");
@@ -9036,7 +9036,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetUcumBodyweight fixture", () => {
+  it("should validate ValuesetUcumBodyweight fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetUcumBodyweight);
     if (!result.success) {
       console.error("Validation failed for ValuesetUcumBodyweight:");
@@ -9048,7 +9048,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetUcumUnits fixture", () => {
+  it("should validate ValuesetUcumUnits fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetUcumUnits);
     if (!result.success) {
       console.error("Validation failed for ValuesetUcumUnits:");
@@ -9060,7 +9060,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetUcumVitalsCommon fixture", () => {
+  it("should validate ValuesetUcumVitalsCommon fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetUcumVitalsCommon);
     if (!result.success) {
       console.error("Validation failed for ValuesetUcumVitalsCommon:");
@@ -9072,7 +9072,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetUdiEntryType fixture", () => {
+  it("should validate ValuesetUdiEntryType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetUdiEntryType);
     if (!result.success) {
       console.error("Validation failed for ValuesetUdiEntryType:");
@@ -9084,7 +9084,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetUdi fixture", () => {
+  it("should validate ValuesetUdi fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetUdi);
     if (!result.success) {
       console.error("Validation failed for ValuesetUdi:");
@@ -9096,7 +9096,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetUnitsOfTime fixture", () => {
+  it("should validate ValuesetUnitsOfTime fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetUnitsOfTime);
     if (!result.success) {
       console.error("Validation failed for ValuesetUnitsOfTime:");
@@ -9108,7 +9108,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetUnknownContentCode fixture", () => {
+  it("should validate ValuesetUnknownContentCode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetUnknownContentCode);
     if (!result.success) {
       console.error("Validation failed for ValuesetUnknownContentCode:");
@@ -9120,7 +9120,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetUsageContextType fixture", () => {
+  it("should validate ValuesetUsageContextType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetUsageContextType);
     if (!result.success) {
       console.error("Validation failed for ValuesetUsageContextType:");
@@ -9132,7 +9132,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetUseContext fixture", () => {
+  it("should validate ValuesetUseContext fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetUseContext);
     if (!result.success) {
       console.error("Validation failed for ValuesetUseContext:");
@@ -9144,7 +9144,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetVaccineCode fixture", () => {
+  it("should validate ValuesetVaccineCode fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetVaccineCode);
     if (!result.success) {
       console.error("Validation failed for ValuesetVaccineCode:");
@@ -9156,7 +9156,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetVariableType fixture", () => {
+  it("should validate ValuesetVariableType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetVariableType);
     if (!result.success) {
       console.error("Validation failed for ValuesetVariableType:");
@@ -9168,7 +9168,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetVariantState fixture", () => {
+  it("should validate ValuesetVariantState fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetVariantState);
     if (!result.success) {
       console.error("Validation failed for ValuesetVariantState:");
@@ -9180,7 +9180,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetVariants fixture", () => {
+  it("should validate ValuesetVariants fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetVariants);
     if (!result.success) {
       console.error("Validation failed for ValuesetVariants:");
@@ -9192,7 +9192,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetVerificationresultCanPushUpdates fixture", () => {
+  it("should validate ValuesetVerificationresultCanPushUpdates fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetVerificationresultCanPushUpdates,
     );
@@ -9208,7 +9208,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetVerificationresultCommunicationMethod fixture", () => {
+  it("should validate ValuesetVerificationresultCommunicationMethod fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetVerificationresultCommunicationMethod,
     );
@@ -9224,7 +9224,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetVerificationresultFailureAction fixture", () => {
+  it("should validate ValuesetVerificationresultFailureAction fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetVerificationresultFailureAction,
     );
@@ -9240,7 +9240,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetVerificationresultNeed fixture", () => {
+  it("should validate ValuesetVerificationresultNeed fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetVerificationresultNeed,
     );
@@ -9254,7 +9254,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetVerificationresultPrimarySourceType fixture", () => {
+  it("should validate ValuesetVerificationresultPrimarySourceType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetVerificationresultPrimarySourceType,
     );
@@ -9270,7 +9270,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetVerificationresultPushTypeAvailable fixture", () => {
+  it("should validate ValuesetVerificationresultPushTypeAvailable fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetVerificationresultPushTypeAvailable,
     );
@@ -9286,7 +9286,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetVerificationresultStatus fixture", () => {
+  it("should validate ValuesetVerificationresultStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetVerificationresultStatus,
     );
@@ -9300,7 +9300,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetVerificationresultValidationProcess fixture", () => {
+  it("should validate ValuesetVerificationresultValidationProcess fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetVerificationresultValidationProcess,
     );
@@ -9316,7 +9316,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetVerificationresultValidationStatus fixture", () => {
+  it("should validate ValuesetVerificationresultValidationStatus fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetVerificationresultValidationStatus,
     );
@@ -9332,7 +9332,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetVerificationresultValidationType fixture", () => {
+  it("should validate ValuesetVerificationresultValidationType fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(
       ValuesetVerificationresultValidationType,
     );
@@ -9348,7 +9348,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetVersioningPolicy fixture", () => {
+  it("should validate ValuesetVersioningPolicy fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetVersioningPolicy);
     if (!result.success) {
       console.error("Validation failed for ValuesetVersioningPolicy:");
@@ -9360,7 +9360,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetVisionBaseCodes fixture", () => {
+  it("should validate ValuesetVisionBaseCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetVisionBaseCodes);
     if (!result.success) {
       console.error("Validation failed for ValuesetVisionBaseCodes:");
@@ -9372,7 +9372,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetVisionEyeCodes fixture", () => {
+  it("should validate ValuesetVisionEyeCodes fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetVisionEyeCodes);
     if (!result.success) {
       console.error("Validation failed for ValuesetVisionEyeCodes:");
@@ -9384,7 +9384,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetVisionProduct fixture", () => {
+  it("should validate ValuesetVisionProduct fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetVisionProduct);
     if (!result.success) {
       console.error("Validation failed for ValuesetVisionProduct:");
@@ -9396,7 +9396,7 @@ describe("ValueSet Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ValuesetWrittenLanguage fixture", () => {
+  it("should validate ValuesetWrittenLanguage fixture (ValueSet)", () => {
     const result = createValueSetSchema().safeParse(ValuesetWrittenLanguage);
     if (!result.success) {
       console.error("Validation failed for ValuesetWrittenLanguage:");

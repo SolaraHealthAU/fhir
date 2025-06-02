@@ -9,9 +9,6 @@ import type {
 } from "../core/types";
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
-import type { ExampleScenarioActor } from "../examplescenarioactor/types";
-import type { ExampleScenarioInstance } from "../examplescenarioinstance/types";
-import type { ExampleScenarioProcess } from "../examplescenarioprocess/types";
 
 /** Generated from FHIR JSON Schema */
 
@@ -92,4 +89,210 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   process?: ExampleScenarioProcess[];
   /** Another nested workflow. */
   workflow?: string[];
+}
+
+/** Example of workflow instance. */
+export interface ExampleScenarioActor {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** ID or acronym of actor. */
+  actorId: string;
+
+  _actorId?: Element;
+  /** The type of actor - person or system. */
+  type: "person" | "entity";
+
+  _type?: Element;
+  /** The name of the actor as shown in the page. */
+  name?: string;
+
+  _name?: Element;
+  /** The description of the actor. */
+  description?: string;
+
+  _description?: Element;
+}
+
+/** Example of workflow instance. */
+export interface ExampleScenarioInstance {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** The id of the resource for referencing. */
+  resourceId: string;
+
+  _resourceId?: Element;
+  resourceType: string;
+
+  _resourceType?: Element;
+  /** A short name for the resource instance. */
+  name?: string;
+
+  _name?: Element;
+  /** Human-friendly description of the resource instance. */
+  description?: string;
+
+  _description?: Element;
+
+  version?: ExampleScenarioVersion[];
+
+  containedInstance?: ExampleScenarioContainedInstance[];
+}
+
+/** Example of workflow instance. */
+export interface ExampleScenarioVersion {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  versionId?: string;
+
+  _versionId?: Element;
+
+  description?: string;
+
+  _description?: Element;
+}
+
+/** Example of workflow instance. */
+export interface ExampleScenarioContainedInstance {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  resourceId?: string;
+
+  _resourceId?: Element;
+
+  versionId?: string;
+
+  _versionId?: Element;
+}
+
+/** Example of workflow instance. */
+export interface ExampleScenarioProcess {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** The diagram title of the group of operations. */
+  title: string;
+
+  _title?: Element;
+  /** A longer description of the group of operations. */
+  description?: string;
+
+  _description?: Element;
+  /** Description of initial status before the process starts. */
+  preConditions?: string;
+
+  _preConditions?: Element;
+  /** Description of final status after the process ends. */
+  postConditions?: string;
+
+  _postConditions?: Element;
+
+  step?: ExampleScenarioStep[];
+}
+
+/** Example of workflow instance. */
+export interface ExampleScenarioStep {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  process?: ExampleScenarioProcess[];
+
+  pause?: boolean;
+
+  _pause?: Element;
+
+  operation?: ExampleScenarioOperation;
+
+  alternative?: ExampleScenarioAlternative[];
+}
+
+/** Example of workflow instance. */
+export interface ExampleScenarioOperation {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  number?: string;
+
+  _number?: Element;
+
+  type?: string;
+
+  _type?: Element;
+
+  name?: string;
+
+  _name?: Element;
+
+  initiator?: string;
+
+  _initiator?: Element;
+
+  receiver?: string;
+
+  _receiver?: Element;
+
+  description?: string;
+
+  _description?: Element;
+
+  initiatorActive?: boolean;
+
+  _initiatorActive?: Element;
+
+  receiverActive?: boolean;
+
+  _receiverActive?: Element;
+
+  request?: ExampleScenarioContainedInstance;
+
+  response?: ExampleScenarioContainedInstance;
+}
+
+/** Example of workflow instance. */
+export interface ExampleScenarioAlternative {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  title?: string;
+
+  _title?: Element;
+
+  description?: string;
+
+  _description?: Element;
+
+  step?: ExampleScenarioStep[];
 }

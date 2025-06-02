@@ -2,8 +2,8 @@ import { createCompositionSchema } from "../../src";
 import { CompositionExampleMixed, CompositionExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Composition Schema Validation", () => {
-  it("should validate CompositionExampleMixed fixture", () => {
+describe("Composition Group Schema Validation", () => {
+  it("should validate CompositionExampleMixed fixture (Composition)", () => {
     const result = createCompositionSchema().safeParse(CompositionExampleMixed);
     if (!result.success) {
       console.error("Validation failed for CompositionExampleMixed:");
@@ -15,7 +15,7 @@ describe("Composition Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CompositionExample fixture", () => {
+  it("should validate CompositionExample fixture (Composition)", () => {
     const result = createCompositionSchema().safeParse(CompositionExample);
     if (!result.success) {
       console.error("Validation failed for CompositionExample:");

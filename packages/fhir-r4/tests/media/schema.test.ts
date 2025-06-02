@@ -7,8 +7,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Media Schema Validation", () => {
-  it("should validate MediaExampleDicom fixture", () => {
+describe("Media Group Schema Validation", () => {
+  it("should validate MediaExampleDicom fixture (Media)", () => {
     const result = createMediaSchema().safeParse(MediaExampleDicom);
     if (!result.success) {
       console.error("Validation failed for MediaExampleDicom:");
@@ -20,7 +20,7 @@ describe("Media Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MediaExampleSound fixture", () => {
+  it("should validate MediaExampleSound fixture (Media)", () => {
     const result = createMediaSchema().safeParse(MediaExampleSound);
     if (!result.success) {
       console.error("Validation failed for MediaExampleSound:");
@@ -32,7 +32,7 @@ describe("Media Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MediaExampleXray fixture", () => {
+  it("should validate MediaExampleXray fixture (Media)", () => {
     const result = createMediaSchema().safeParse(MediaExampleXray);
     if (!result.success) {
       console.error("Validation failed for MediaExampleXray:");
@@ -44,7 +44,7 @@ describe("Media Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MediaExample fixture", () => {
+  it("should validate MediaExample fixture (Media)", () => {
     const result = createMediaSchema().safeParse(MediaExample);
     if (!result.success) {
       console.error("Validation failed for MediaExample:");

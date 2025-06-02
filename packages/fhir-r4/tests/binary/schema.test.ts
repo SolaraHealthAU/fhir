@@ -2,8 +2,8 @@ import { createBinarySchema } from "../../src";
 import { BinaryF006 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Binary Schema Validation", () => {
-  it("should validate BinaryF006 fixture", () => {
+describe("Binary Group Schema Validation", () => {
+  it("should validate BinaryF006 fixture (Binary)", () => {
     const result = createBinarySchema().safeParse(BinaryF006);
     if (!result.success) {
       console.error("Validation failed for BinaryF006:");

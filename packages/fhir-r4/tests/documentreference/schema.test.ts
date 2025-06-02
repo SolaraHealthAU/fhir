@@ -2,8 +2,8 @@ import { createDocumentReferenceSchema } from "../../src";
 import { DocumentreferenceExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("DocumentReference Schema Validation", () => {
-  it("should validate DocumentreferenceExample fixture", () => {
+describe("Documentreference Group Schema Validation", () => {
+  it("should validate DocumentreferenceExample fixture (DocumentReference)", () => {
     const result = createDocumentReferenceSchema().safeParse(
       DocumentreferenceExample,
     );

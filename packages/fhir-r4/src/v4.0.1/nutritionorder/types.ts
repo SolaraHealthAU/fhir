@@ -6,12 +6,12 @@ import type {
   Reference,
   CodeableConcept,
   Annotation,
+  Timing,
+  Quantity,
+  Ratio,
 } from "../core/types";
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
-import type { NutritionOrderOralDiet } from "../nutritionorderoraldiet/types";
-import type { NutritionOrderSupplement } from "../nutritionordersupplement/types";
-import type { NutritionOrderEnteralFormula } from "../nutritionorderenteralformula/types";
 
 /** Generated from FHIR JSON Schema */
 
@@ -84,4 +84,135 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   enteralFormula?: NutritionOrderEnteralFormula;
   /** Comments made about the {{title}} by the requester, performer, subject or other participants. */
   note?: Annotation[];
+}
+
+/** A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident. */
+export interface NutritionOrderOralDiet {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** The kind of diet or dietary restriction such as fiber restricted diet or diabetic diet. */
+  type?: CodeableConcept[];
+  /** The time period and frequency at which the diet should be given.  The diet should be given for the combination of all schedules if more than one schedule is present. */
+  schedule?: Timing[];
+
+  nutrient?: NutritionOrderNutrient[];
+
+  texture?: NutritionOrderTexture[];
+  /** The required consistency (e.g. honey-thick, nectar-thick, thin, thickened.) of liquids or fluids served to the patient. */
+  fluidConsistencyType?: CodeableConcept[];
+  /** Free text or additional instructions or information pertaining to the oral diet. */
+  instruction?: string;
+
+  _instruction?: Element;
+}
+
+/** A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident. */
+export interface NutritionOrderNutrient {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  modifier?: CodeableConcept;
+
+  amount?: Quantity;
+}
+
+/** A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident. */
+export interface NutritionOrderTexture {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  modifier?: CodeableConcept;
+
+  foodType?: CodeableConcept;
+}
+
+/** A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident. */
+export interface NutritionOrderSupplement {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** The kind of nutritional supplement product required such as a high protein or pediatric clear liquid supplement. */
+  type?: CodeableConcept;
+  /** The product or brand name of the nutritional supplement such as "Acme Protein Shake". */
+  productName?: string;
+
+  _productName?: Element;
+  /** The time period and frequency at which the supplement(s) should be given.  The supplement should be given for the combination of all schedules if more than one schedule is present. */
+  schedule?: Timing[];
+  /** The amount of the nutritional supplement to be given. */
+  quantity?: Quantity;
+  /** Free text or additional instructions or information pertaining to the oral supplement. */
+  instruction?: string;
+
+  _instruction?: Element;
+}
+
+/** A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident. */
+export interface NutritionOrderEnteralFormula {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** The type of enteral or infant formula such as an adult standard formula with fiber or a soy-based infant formula. */
+  baseFormulaType?: CodeableConcept;
+  /** The product or brand name of the enteral or infant formula product such as "ACME Adult Standard Formula". */
+  baseFormulaProductName?: string;
+
+  _baseFormulaProductName?: Element;
+  /** Indicates the type of modular component such as protein, carbohydrate, fat or fiber to be provided in addition to or mixed with the base formula. */
+  additiveType?: CodeableConcept;
+  /** The product or brand name of the type of modular component to be added to the formula. */
+  additiveProductName?: string;
+
+  _additiveProductName?: Element;
+  /** The amount of energy (calories) that the formula should provide per specified volume, typically per mL or fluid oz.  For example, an infant may require a formula that provides 24 calories per fluid ounce or an adult may require an enteral formula that provides 1.5 calorie/mL. */
+  caloricDensity?: Quantity;
+  /** The route or physiological path of administration into the patient's gastrointestinal  tract for purposes of providing the formula feeding, e.g. nasogastric tube. */
+  routeofAdministration?: CodeableConcept;
+
+  administration?: NutritionOrderAdministration[];
+  /** The maximum total quantity of formula that may be administered to a subject over the period of time, e.g. 1440 mL over 24 hours. */
+  maxVolumeToDeliver?: Quantity;
+  /** Free text formula administration, feeding instructions or additional instructions or information. */
+  administrationInstruction?: string;
+
+  _administrationInstruction?: Element;
+}
+
+/** A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident. */
+export interface NutritionOrderAdministration {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  schedule?: Timing;
+
+  quantity?: Quantity;
+
+  rateQuantity?: Quantity;
+
+  rateRatio?: Ratio;
 }

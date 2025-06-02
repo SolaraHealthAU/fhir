@@ -15,8 +15,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Task Schema Validation", () => {
-  it("should validate TaskExampleFmCancel fixture", () => {
+describe("Task Group Schema Validation", () => {
+  it("should validate TaskExampleFmCancel fixture (Task)", () => {
     const result = createTaskSchema().safeParse(TaskExampleFmCancel);
     if (!result.success) {
       console.error("Validation failed for TaskExampleFmCancel:");
@@ -28,7 +28,7 @@ describe("Task Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate TaskExampleFmPoll fixture", () => {
+  it("should validate TaskExampleFmPoll fixture (Task)", () => {
     const result = createTaskSchema().safeParse(TaskExampleFmPoll);
     if (!result.success) {
       console.error("Validation failed for TaskExampleFmPoll:");
@@ -40,7 +40,7 @@ describe("Task Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate TaskExampleFmRelease fixture", () => {
+  it("should validate TaskExampleFmRelease fixture (Task)", () => {
     const result = createTaskSchema().safeParse(TaskExampleFmRelease);
     if (!result.success) {
       console.error("Validation failed for TaskExampleFmRelease:");
@@ -52,7 +52,7 @@ describe("Task Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate TaskExampleFmReprocess fixture", () => {
+  it("should validate TaskExampleFmReprocess fixture (Task)", () => {
     const result = createTaskSchema().safeParse(TaskExampleFmReprocess);
     if (!result.success) {
       console.error("Validation failed for TaskExampleFmReprocess:");
@@ -64,7 +64,7 @@ describe("Task Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate TaskExampleFmStatusResp fixture", () => {
+  it("should validate TaskExampleFmStatusResp fixture (Task)", () => {
     const result = createTaskSchema().safeParse(TaskExampleFmStatusResp);
     if (!result.success) {
       console.error("Validation failed for TaskExampleFmStatusResp:");
@@ -76,7 +76,7 @@ describe("Task Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate TaskExampleFmStatus fixture", () => {
+  it("should validate TaskExampleFmStatus fixture (Task)", () => {
     const result = createTaskSchema().safeParse(TaskExampleFmStatus);
     if (!result.success) {
       console.error("Validation failed for TaskExampleFmStatus:");
@@ -88,7 +88,7 @@ describe("Task Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate TaskExample1 fixture", () => {
+  it("should validate TaskExample1 fixture (Task)", () => {
     const result = createTaskSchema().safeParse(TaskExample1);
     if (!result.success) {
       console.error("Validation failed for TaskExample1:");
@@ -100,7 +100,7 @@ describe("Task Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate TaskExample2 fixture", () => {
+  it("should validate TaskExample2 fixture (Task)", () => {
     const result = createTaskSchema().safeParse(TaskExample2);
     if (!result.success) {
       console.error("Validation failed for TaskExample2:");
@@ -112,7 +112,7 @@ describe("Task Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate TaskExample3 fixture", () => {
+  it("should validate TaskExample3 fixture (Task)", () => {
     const result = createTaskSchema().safeParse(TaskExample3);
     if (!result.success) {
       console.error("Validation failed for TaskExample3:");
@@ -124,7 +124,7 @@ describe("Task Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate TaskExample4 fixture", () => {
+  it("should validate TaskExample4 fixture (Task)", () => {
     const result = createTaskSchema().safeParse(TaskExample4);
     if (!result.success) {
       console.error("Validation failed for TaskExample4:");
@@ -136,7 +136,7 @@ describe("Task Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate TaskExample5 fixture", () => {
+  it("should validate TaskExample5 fixture (Task)", () => {
     const result = createTaskSchema().safeParse(TaskExample5);
     if (!result.success) {
       console.error("Validation failed for TaskExample5:");
@@ -148,7 +148,7 @@ describe("Task Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate TaskExample6 fixture", () => {
+  it("should validate TaskExample6 fixture (Task)", () => {
     const result = createTaskSchema().safeParse(TaskExample6);
     if (!result.success) {
       console.error("Validation failed for TaskExample6:");

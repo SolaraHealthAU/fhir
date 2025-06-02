@@ -33,13 +33,6 @@ import type {
   Dosage,
   Meta,
 } from "../core/types";
-import type { ElementDefinitionSlicing } from "../elementdefinitionslicing/types";
-import type { ElementDefinitionBase } from "../elementdefinitionbase/types";
-import type { ElementDefinitionType } from "../elementdefinitiontype/types";
-import type { ElementDefinitionExample } from "../elementdefinitionexample/types";
-import type { ElementDefinitionConstraint } from "../elementdefinitionconstraint/types";
-import type { ElementDefinitionBinding } from "../elementdefinitionbinding/types";
-import type { ElementDefinitionMapping } from "../elementdefinitionmapping/types";
 
 /** Generated from FHIR JSON Schema */
 
@@ -632,4 +625,322 @@ export interface ElementDefinition {
   binding?: ElementDefinitionBinding;
 
   mapping?: ElementDefinitionMapping[];
+}
+
+/** Captures constraints on each element within the resource, profile, or extension. */
+export interface ElementDefinitionSlicing {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  discriminator?: ElementDefinitionDiscriminator[];
+  /** A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated. */
+  description?: string;
+
+  _description?: Element;
+  /** If the matching elements have to occur in the same order as defined in the profile. */
+  ordered?: boolean;
+
+  _ordered?: Element;
+  /** Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end. */
+  rules: "closed" | "open" | "openAtEnd";
+
+  _rules?: Element;
+}
+
+/** Captures constraints on each element within the resource, profile, or extension. */
+export interface ElementDefinitionDiscriminator {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+
+  type?: "value" | "exists" | "pattern" | "type" | "profile";
+
+  _type?: Element;
+
+  path?: string;
+
+  _path?: Element;
+}
+
+/** Captures constraints on each element within the resource, profile, or extension. */
+export interface ElementDefinitionBase {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+  /** The Path that identifies the base element - this matches the ElementDefinition.path for that element. Across FHIR, there is only one base definition of any element - that is, an element definition on a [StructureDefinition](structuredefinition.html#) without a StructureDefinition.base. */
+  path: string;
+
+  _path?: Element;
+  /** Minimum cardinality of the base element identified by the path. */
+  min: number;
+
+  _min?: Element;
+  /** Maximum cardinality of the base element identified by the path. */
+  max: string;
+
+  _max?: Element;
+}
+
+/** Captures constraints on each element within the resource, profile, or extension. */
+export interface ElementDefinitionType {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+  /** URL of Data type or Resource that is a(or the) type used for this element. References are URLs that are relative to http://hl7.org/fhir/StructureDefinition e.g. "string" is a reference to http://hl7.org/fhir/StructureDefinition/string. Absolute URLs are only allowed in logical models. */
+  code: string;
+
+  _code?: Element;
+  /** Identifies a profile structure or implementation Guide that applies to the datatype this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the type SHALL conform to at least one profile defined in the implementation guide. */
+  profile?: string[];
+  _profile?: Element[];
+  /** Used when the type is "Reference" or "canonical", and identifies a profile structure or implementation Guide that applies to the target of the reference this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the target resource SHALL conform to at least one profile defined in the implementation guide. */
+  targetProfile?: string[];
+  _targetProfile?: Element[];
+  /** If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle. */
+  aggregation?: ("contained" | "referenced" | "bundled")[];
+
+  _aggregation?: Element[];
+  /** Whether this reference needs to be version specific or version independent, or whether either can be used. */
+  versioning?: "either" | "independent" | "specific";
+
+  _versioning?: Element;
+}
+
+/** Captures constraints on each element within the resource, profile, or extension. */
+export interface ElementDefinitionExample {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+  /** Describes the purpose of this example amoung the set of examples. */
+  label: string;
+
+  _label?: Element;
+
+  valueBase64Binary?: string;
+
+  _valueBase64Binary?: Element;
+
+  valueBoolean?: boolean;
+
+  _valueBoolean?: Element;
+
+  valueCanonical?: string;
+
+  _valueCanonical?: Element;
+
+  valueCode?: string;
+
+  _valueCode?: Element;
+
+  valueDate?: string;
+
+  _valueDate?: Element;
+
+  valueDateTime?: string;
+
+  _valueDateTime?: Element;
+
+  valueDecimal?: number;
+
+  _valueDecimal?: Element;
+
+  valueId?: string;
+
+  _valueId?: Element;
+
+  valueInstant?: string;
+
+  _valueInstant?: Element;
+
+  valueInteger?: number;
+
+  _valueInteger?: Element;
+
+  valueMarkdown?: string;
+
+  _valueMarkdown?: Element;
+
+  valueOid?: string;
+
+  _valueOid?: Element;
+
+  valuePositiveInt?: number;
+
+  _valuePositiveInt?: Element;
+
+  valueString?: string;
+
+  _valueString?: Element;
+
+  valueTime?: string;
+
+  _valueTime?: Element;
+
+  valueUnsignedInt?: number;
+
+  _valueUnsignedInt?: Element;
+
+  valueUri?: string;
+
+  _valueUri?: Element;
+
+  valueUrl?: string;
+
+  _valueUrl?: Element;
+
+  valueUuid?: string;
+
+  _valueUuid?: Element;
+
+  valueAddress?: Address;
+
+  valueAge?: Age;
+
+  valueAnnotation?: Annotation;
+
+  valueAttachment?: Attachment;
+
+  valueCodeableConcept?: CodeableConcept;
+
+  valueCoding?: Coding;
+
+  valueContactPoint?: ContactPoint;
+
+  valueCount?: Count;
+
+  valueDistance?: Distance;
+
+  valueDuration?: Duration;
+
+  valueHumanName?: HumanName;
+
+  valueIdentifier?: Identifier;
+
+  valueMoney?: Money;
+
+  valuePeriod?: Period;
+
+  valueQuantity?: Quantity;
+
+  valueRange?: Range;
+
+  valueRatio?: Ratio;
+
+  valueReference?: Reference;
+
+  valueSampledData?: SampledData;
+
+  valueSignature?: Signature;
+
+  valueTiming?: Timing;
+
+  valueContactDetail?: ContactDetail;
+
+  valueContributor?: Contributor;
+
+  valueDataRequirement?: DataRequirement;
+
+  valueExpression?: Expression;
+
+  valueParameterDefinition?: ParameterDefinition;
+
+  valueRelatedArtifact?: RelatedArtifact;
+
+  valueTriggerDefinition?: TriggerDefinition;
+
+  valueUsageContext?: UsageContext;
+
+  valueDosage?: Dosage;
+
+  valueMeta?: Meta;
+}
+
+/** Captures constraints on each element within the resource, profile, or extension. */
+export interface ElementDefinitionConstraint {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+  /** Allows identification of which elements have their cardinalities impacted by the constraint.  Will not be referenced for constraints that do not affect cardinality. */
+  key: string;
+
+  _key?: Element;
+  /** Description of why this constraint is necessary or appropriate. */
+  requirements?: string;
+
+  _requirements?: Element;
+  /** Identifies the impact constraint violation has on the conformance of the instance. */
+  severity: "error" | "warning";
+
+  _severity?: Element;
+  /** Text that can be used to describe the constraint in messages identifying that the constraint has been violated. */
+  human: string;
+
+  _human?: Element;
+  /** A [FHIRPath](fhirpath.html) expression of constraint that can be executed to see if this constraint is met. */
+  expression?: string;
+
+  _expression?: Element;
+  /** An XPath expression of constraint that can be executed to see if this constraint is met. */
+  xpath?: string;
+
+  _xpath?: Element;
+  /** A reference to the original source of the constraint, for traceability purposes. */
+  source?: string;
+}
+
+/** Captures constraints on each element within the resource, profile, or extension. */
+export interface ElementDefinitionBinding {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+  /** Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances. */
+  strength: "required" | "extensible" | "preferred" | "example";
+
+  _strength?: Element;
+  /** Describes the intended use of this particular set of codes. */
+  description?: string;
+
+  _description?: Element;
+  /** Refers to the value set that identifies the set of codes the binding refers to. */
+  valueSet?: string;
+}
+
+/** Captures constraints on each element within the resource, profile, or extension. */
+export interface ElementDefinitionMapping {
+  id?: string;
+
+  extension?: Extension[];
+
+  modifierExtension?: Extension[];
+  /** An internal reference to the definition of a mapping. */
+  identity: string;
+
+  _identity?: Element;
+  /** Identifies the computable language in which mapping.map is expressed. */
+  language?: string;
+
+  _language?: Element;
+  /** Expresses what part of the target specification corresponds to this element. */
+  map: string;
+
+  _map?: Element;
+  /** Comments that provide information about the mapping or its use. */
+  comment?: string;
+
+  _comment?: Element;
 }

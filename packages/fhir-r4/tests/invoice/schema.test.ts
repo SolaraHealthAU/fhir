@@ -2,8 +2,8 @@ import { createInvoiceSchema } from "../../src";
 import { InvoiceExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Invoice Schema Validation", () => {
-  it("should validate InvoiceExample fixture", () => {
+describe("Invoice Group Schema Validation", () => {
+  it("should validate InvoiceExample fixture (Invoice)", () => {
     const result = createInvoiceSchema().safeParse(InvoiceExample);
     if (!result.success) {
       console.error("Validation failed for InvoiceExample:");

@@ -2,8 +2,8 @@ import { createEpisodeOfCareSchema } from "../../src";
 import { EpisodeofcareExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("EpisodeOfCare Schema Validation", () => {
-  it("should validate EpisodeofcareExample fixture", () => {
+describe("Episodeofcare Group Schema Validation", () => {
+  it("should validate EpisodeofcareExample fixture (EpisodeOfCare)", () => {
     const result = createEpisodeOfCareSchema().safeParse(EpisodeofcareExample);
     if (!result.success) {
       console.error("Validation failed for EpisodeofcareExample:");

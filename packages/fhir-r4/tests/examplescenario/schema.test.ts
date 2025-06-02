@@ -2,8 +2,8 @@ import { createExampleScenarioSchema } from "../../src";
 import { ExamplescenarioExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("ExampleScenario Schema Validation", () => {
-  it("should validate ExamplescenarioExample fixture", () => {
+describe("Examplescenario Group Schema Validation", () => {
+  it("should validate ExamplescenarioExample fixture (ExampleScenario)", () => {
     const result = createExampleScenarioSchema().safeParse(
       ExamplescenarioExample,
     );

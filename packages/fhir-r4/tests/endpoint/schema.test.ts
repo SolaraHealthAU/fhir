@@ -7,8 +7,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Endpoint Schema Validation", () => {
-  it("should validate EndpointExampleDirect fixture", () => {
+describe("Endpoint Group Schema Validation", () => {
+  it("should validate EndpointExampleDirect fixture (Endpoint)", () => {
     const result = createEndpointSchema().safeParse(EndpointExampleDirect);
     if (!result.success) {
       console.error("Validation failed for EndpointExampleDirect:");
@@ -20,7 +20,7 @@ describe("Endpoint Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EndpointExampleIid fixture", () => {
+  it("should validate EndpointExampleIid fixture (Endpoint)", () => {
     const result = createEndpointSchema().safeParse(EndpointExampleIid);
     if (!result.success) {
       console.error("Validation failed for EndpointExampleIid:");
@@ -32,7 +32,7 @@ describe("Endpoint Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EndpointExampleWadors fixture", () => {
+  it("should validate EndpointExampleWadors fixture (Endpoint)", () => {
     const result = createEndpointSchema().safeParse(EndpointExampleWadors);
     if (!result.success) {
       console.error("Validation failed for EndpointExampleWadors:");
@@ -44,7 +44,7 @@ describe("Endpoint Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EndpointExample fixture", () => {
+  it("should validate EndpointExample fixture (Endpoint)", () => {
     const result = createEndpointSchema().safeParse(EndpointExample);
     if (!result.success) {
       console.error("Validation failed for EndpointExample:");

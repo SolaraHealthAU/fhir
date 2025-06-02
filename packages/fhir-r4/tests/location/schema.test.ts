@@ -9,8 +9,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Location Schema Validation", () => {
-  it("should validate LocationExampleAmbulance fixture", () => {
+describe("Location Group Schema Validation", () => {
+  it("should validate LocationExampleAmbulance fixture (Location)", () => {
     const result = createLocationSchema().safeParse(LocationExampleAmbulance);
     if (!result.success) {
       console.error("Validation failed for LocationExampleAmbulance:");
@@ -22,7 +22,7 @@ describe("Location Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LocationExampleHl7hq fixture", () => {
+  it("should validate LocationExampleHl7hq fixture (Location)", () => {
     const result = createLocationSchema().safeParse(LocationExampleHl7hq);
     if (!result.success) {
       console.error("Validation failed for LocationExampleHl7hq:");
@@ -34,7 +34,7 @@ describe("Location Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LocationExamplePatientsHome fixture", () => {
+  it("should validate LocationExamplePatientsHome fixture (Location)", () => {
     const result = createLocationSchema().safeParse(
       LocationExamplePatientsHome,
     );
@@ -48,7 +48,7 @@ describe("Location Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LocationExampleRoom fixture", () => {
+  it("should validate LocationExampleRoom fixture (Location)", () => {
     const result = createLocationSchema().safeParse(LocationExampleRoom);
     if (!result.success) {
       console.error("Validation failed for LocationExampleRoom:");
@@ -60,7 +60,7 @@ describe("Location Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LocationExampleUkpharmacy fixture", () => {
+  it("should validate LocationExampleUkpharmacy fixture (Location)", () => {
     const result = createLocationSchema().safeParse(LocationExampleUkpharmacy);
     if (!result.success) {
       console.error("Validation failed for LocationExampleUkpharmacy:");
@@ -72,7 +72,7 @@ describe("Location Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LocationExample fixture", () => {
+  it("should validate LocationExample fixture (Location)", () => {
     const result = createLocationSchema().safeParse(LocationExample);
     if (!result.success) {
       console.error("Validation failed for LocationExample:");

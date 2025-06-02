@@ -16,8 +16,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createResearchStudyArmSchema } from "../researchstudyarm/schema";
-import { createResearchStudyObjectiveSchema } from "../researchstudyobjective/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -74,6 +72,38 @@ export function createResearchStudySchema() {
       note: z.array(createAnnotationSchema()).optional(),
       arm: z.array(createResearchStudyArmSchema()).optional(),
       objective: z.array(createResearchStudyObjectiveSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createResearchStudyArmSchema() {
+  return getCachedSchema("ResearchStudyArm", () => {
+    const baseSchema: z.ZodType<types.ResearchStudyArm> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      name: primitives.getStringSchema(),
+      _name: createElementSchema().optional(),
+      type: createCodeableConceptSchema().optional(),
+      description: primitives.getStringSchema().optional(),
+      _description: createElementSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createResearchStudyObjectiveSchema() {
+  return getCachedSchema("ResearchStudyObjective", () => {
+    const baseSchema: z.ZodType<types.ResearchStudyObjective> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      name: primitives.getStringSchema().optional(),
+      _name: createElementSchema().optional(),
+      type: createCodeableConceptSchema().optional(),
     });
 
     return baseSchema;

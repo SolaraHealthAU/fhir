@@ -22,8 +22,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Library Schema Validation", () => {
-  it("should validate LibraryCms146Example fixture", () => {
+describe("Library Group Schema Validation", () => {
+  it("should validate LibraryCms146Example fixture (Library)", () => {
     const result = createLibrarySchema().safeParse(LibraryCms146Example);
     if (!result.success) {
       console.error("Validation failed for LibraryCms146Example:");
@@ -35,7 +35,7 @@ describe("Library Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LibraryCompositionExample fixture", () => {
+  it("should validate LibraryCompositionExample fixture (Library)", () => {
     const result = createLibrarySchema().safeParse(LibraryCompositionExample);
     if (!result.success) {
       console.error("Validation failed for LibraryCompositionExample:");
@@ -47,7 +47,7 @@ describe("Library Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LibraryExample fixture", () => {
+  it("should validate LibraryExample fixture (Library)", () => {
     const result = createLibrarySchema().safeParse(LibraryExample);
     if (!result.success) {
       console.error("Validation failed for LibraryExample:");
@@ -59,7 +59,7 @@ describe("Library Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LibraryExclusiveBreastfeedingCdsLogic fixture", () => {
+  it("should validate LibraryExclusiveBreastfeedingCdsLogic fixture (Library)", () => {
     const result = createLibrarySchema().safeParse(
       LibraryExclusiveBreastfeedingCdsLogic,
     );
@@ -75,7 +75,7 @@ describe("Library Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LibraryExclusiveBreastfeedingCqmLogic fixture", () => {
+  it("should validate LibraryExclusiveBreastfeedingCqmLogic fixture (Library)", () => {
     const result = createLibrarySchema().safeParse(
       LibraryExclusiveBreastfeedingCqmLogic,
     );
@@ -91,7 +91,7 @@ describe("Library Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LibraryFhirHelpers fixture", () => {
+  it("should validate LibraryFhirHelpers fixture (Library)", () => {
     const result = createLibrarySchema().safeParse(LibraryFhirHelpers);
     if (!result.success) {
       console.error("Validation failed for LibraryFhirHelpers:");
@@ -103,7 +103,7 @@ describe("Library Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LibraryHivIndicators fixture", () => {
+  it("should validate LibraryHivIndicators fixture (Library)", () => {
     const result = createLibrarySchema().safeParse(LibraryHivIndicators);
     if (!result.success) {
       console.error("Validation failed for LibraryHivIndicators:");
@@ -115,7 +115,7 @@ describe("Library Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LibraryMmiSuicideriskOrdersetLogic fixture", () => {
+  it("should validate LibraryMmiSuicideriskOrdersetLogic fixture (Library)", () => {
     const result = createLibrarySchema().safeParse(
       LibraryMmiSuicideriskOrdersetLogic,
     );
@@ -131,7 +131,7 @@ describe("Library Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LibraryOmtkModelinfo fixture", () => {
+  it("should validate LibraryOmtkModelinfo fixture (Library)", () => {
     const result = createLibrarySchema().safeParse(LibraryOmtkModelinfo);
     if (!result.success) {
       console.error("Validation failed for LibraryOmtkModelinfo:");
@@ -143,7 +143,7 @@ describe("Library Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LibraryOpioidcdsCommon fixture", () => {
+  it("should validate LibraryOpioidcdsCommon fixture (Library)", () => {
     const result = createLibrarySchema().safeParse(LibraryOpioidcdsCommon);
     if (!result.success) {
       console.error("Validation failed for LibraryOpioidcdsCommon:");
@@ -155,7 +155,7 @@ describe("Library Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LibraryOpioidcdsRecommendation04 fixture", () => {
+  it("should validate LibraryOpioidcdsRecommendation04 fixture (Library)", () => {
     const result = createLibrarySchema().safeParse(
       LibraryOpioidcdsRecommendation04,
     );
@@ -169,7 +169,7 @@ describe("Library Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LibraryOpioidcdsRecommendation05 fixture", () => {
+  it("should validate LibraryOpioidcdsRecommendation05 fixture (Library)", () => {
     const result = createLibrarySchema().safeParse(
       LibraryOpioidcdsRecommendation05,
     );
@@ -183,7 +183,7 @@ describe("Library Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LibraryOpioidcdsRecommendation07 fixture", () => {
+  it("should validate LibraryOpioidcdsRecommendation07 fixture (Library)", () => {
     const result = createLibrarySchema().safeParse(
       LibraryOpioidcdsRecommendation07,
     );
@@ -197,7 +197,7 @@ describe("Library Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LibraryOpioidcdsRecommendation08 fixture", () => {
+  it("should validate LibraryOpioidcdsRecommendation08 fixture (Library)", () => {
     const result = createLibrarySchema().safeParse(
       LibraryOpioidcdsRecommendation08,
     );
@@ -211,7 +211,7 @@ describe("Library Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LibraryOpioidcdsRecommendation10 fixture", () => {
+  it("should validate LibraryOpioidcdsRecommendation10 fixture (Library)", () => {
     const result = createLibrarySchema().safeParse(
       LibraryOpioidcdsRecommendation10,
     );
@@ -225,7 +225,7 @@ describe("Library Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LibraryOpioidcdsRecommendation11 fixture", () => {
+  it("should validate LibraryOpioidcdsRecommendation11 fixture (Library)", () => {
     const result = createLibrarySchema().safeParse(
       LibraryOpioidcdsRecommendation11,
     );
@@ -239,7 +239,7 @@ describe("Library Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LibraryPredecessorExample fixture", () => {
+  it("should validate LibraryPredecessorExample fixture (Library)", () => {
     const result = createLibrarySchema().safeParse(LibraryPredecessorExample);
     if (!result.success) {
       console.error("Validation failed for LibraryPredecessorExample:");
@@ -251,7 +251,7 @@ describe("Library Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LibraryQuickModelDefinition fixture", () => {
+  it("should validate LibraryQuickModelDefinition fixture (Library)", () => {
     const result = createLibrarySchema().safeParse(LibraryQuickModelDefinition);
     if (!result.success) {
       console.error("Validation failed for LibraryQuickModelDefinition:");
@@ -263,7 +263,7 @@ describe("Library Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LibraryZikaVirusInterventionLogic fixture", () => {
+  it("should validate LibraryZikaVirusInterventionLogic fixture (Library)", () => {
     const result = createLibrarySchema().safeParse(
       LibraryZikaVirusInterventionLogic,
     );

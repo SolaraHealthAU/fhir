@@ -2,8 +2,8 @@ import { createGuidanceResponseSchema } from "../../src";
 import { GuidanceresponseExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("GuidanceResponse Schema Validation", () => {
-  it("should validate GuidanceresponseExample fixture", () => {
+describe("Guidanceresponse Group Schema Validation", () => {
+  it("should validate GuidanceresponseExample fixture (GuidanceResponse)", () => {
     const result = createGuidanceResponseSchema().safeParse(
       GuidanceresponseExample,
     );

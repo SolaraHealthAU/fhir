@@ -13,8 +13,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createDetectedIssueEvidenceSchema } from "../detectedissueevidence/schema";
-import { createDetectedIssueMitigationSchema } from "../detectedissuemitigation/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -51,6 +49,38 @@ export function createDetectedIssueSchema() {
       _reference: createElementSchema().optional(),
       mitigation: z.array(createDetectedIssueMitigationSchema()).optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createDetectedIssueEvidenceSchema() {
+  return getCachedSchema("DetectedIssueEvidence", () => {
+    const baseSchema: z.ZodType<types.DetectedIssueEvidence> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      code: z.array(createCodeableConceptSchema()).optional(),
+      detail: z.array(createReferenceSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createDetectedIssueMitigationSchema() {
+  return getCachedSchema("DetectedIssueMitigation", () => {
+    const baseSchema: z.ZodType<types.DetectedIssueMitigation> = z.strictObject(
+      {
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        action: createCodeableConceptSchema(),
+        date: primitives.getDateTimeSchema().optional(),
+        _date: createElementSchema().optional(),
+        author: createReferenceSchema().optional(),
+      },
+    );
 
     return baseSchema;
   });

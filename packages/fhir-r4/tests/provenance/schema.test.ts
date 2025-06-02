@@ -8,8 +8,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Provenance Schema Validation", () => {
-  it("should validate ProvenanceConsentSignature fixture", () => {
+describe("Provenance Group Schema Validation", () => {
+  it("should validate ProvenanceConsentSignature fixture (Provenance)", () => {
     const result = createProvenanceSchema().safeParse(
       ProvenanceConsentSignature,
     );
@@ -23,7 +23,7 @@ describe("Provenance Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProvenanceExampleBiocomputeObject fixture", () => {
+  it("should validate ProvenanceExampleBiocomputeObject fixture (Provenance)", () => {
     const result = createProvenanceSchema().safeParse(
       ProvenanceExampleBiocomputeObject,
     );
@@ -37,7 +37,7 @@ describe("Provenance Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProvenanceExampleCwl fixture", () => {
+  it("should validate ProvenanceExampleCwl fixture (Provenance)", () => {
     const result = createProvenanceSchema().safeParse(ProvenanceExampleCwl);
     if (!result.success) {
       console.error("Validation failed for ProvenanceExampleCwl:");
@@ -49,7 +49,7 @@ describe("Provenance Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProvenanceExampleSig fixture", () => {
+  it("should validate ProvenanceExampleSig fixture (Provenance)", () => {
     const result = createProvenanceSchema().safeParse(ProvenanceExampleSig);
     if (!result.success) {
       console.error("Validation failed for ProvenanceExampleSig:");
@@ -61,7 +61,7 @@ describe("Provenance Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProvenanceExample fixture", () => {
+  it("should validate ProvenanceExample fixture (Provenance)", () => {
     const result = createProvenanceSchema().safeParse(ProvenanceExample);
     if (!result.success) {
       console.error("Validation failed for ProvenanceExample:");

@@ -2,8 +2,8 @@ import { createAdverseEventSchema } from "../../src";
 import { AdverseeventExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("AdverseEvent Schema Validation", () => {
-  it("should validate AdverseeventExample fixture", () => {
+describe("Adverseevent Group Schema Validation", () => {
+  it("should validate AdverseeventExample fixture (AdverseEvent)", () => {
     const result = createAdverseEventSchema().safeParse(AdverseeventExample);
     if (!result.success) {
       console.error("Validation failed for AdverseeventExample:");

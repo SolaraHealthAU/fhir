@@ -8,10 +8,12 @@ import {
   createExtensionSchema,
   createIdentifierSchema,
   createReferenceSchema,
+  createCodeableConceptSchema,
+  createQuantitySchema,
+  createAnnotationSchema,
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createVisionPrescriptionLensSpecificationSchema } from "../visionprescriptionlensspecification/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -43,6 +45,61 @@ export function createVisionPrescriptionSchema() {
         createVisionPrescriptionLensSpecificationSchema(),
       ),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createVisionPrescriptionLensSpecificationSchema() {
+  return getCachedSchema("VisionPrescriptionLensSpecification", () => {
+    const baseSchema: z.ZodType<types.VisionPrescriptionLensSpecification> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        product: createCodeableConceptSchema(),
+        eye: z.enum(["right", "left"]),
+        _eye: createElementSchema().optional(),
+        sphere: primitives.getDecimalSchema().optional(),
+        _sphere: createElementSchema().optional(),
+        cylinder: primitives.getDecimalSchema().optional(),
+        _cylinder: createElementSchema().optional(),
+        axis: primitives.getIntegerSchema().optional(),
+        _axis: createElementSchema().optional(),
+        prism: z.array(createVisionPrescriptionPrismSchema()).optional(),
+        add: primitives.getDecimalSchema().optional(),
+        _add: createElementSchema().optional(),
+        power: primitives.getDecimalSchema().optional(),
+        _power: createElementSchema().optional(),
+        backCurve: primitives.getDecimalSchema().optional(),
+        _backCurve: createElementSchema().optional(),
+        diameter: primitives.getDecimalSchema().optional(),
+        _diameter: createElementSchema().optional(),
+        duration: createQuantitySchema().optional(),
+        color: primitives.getStringSchema().optional(),
+        _color: createElementSchema().optional(),
+        brand: primitives.getStringSchema().optional(),
+        _brand: createElementSchema().optional(),
+        note: z.array(createAnnotationSchema()).optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createVisionPrescriptionPrismSchema() {
+  return getCachedSchema("VisionPrescriptionPrism", () => {
+    const baseSchema: z.ZodType<types.VisionPrescriptionPrism> = z.strictObject(
+      {
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        amount: primitives.getDecimalSchema().optional(),
+        _amount: createElementSchema().optional(),
+        base: z.enum(["up", "down", "in", "out"]).optional(),
+        _base: createElementSchema().optional(),
+      },
+    );
 
     return baseSchema;
   });

@@ -9,12 +9,12 @@ import {
   createIdentifierSchema,
   createCodeableConceptSchema,
   createReferenceSchema,
+  createAttachmentSchema,
+  createCodingSchema,
+  createPeriodSchema,
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createDocumentReferenceRelatesToSchema } from "../documentreferencerelatesto/schema";
-import { createDocumentReferenceContentSchema } from "../documentreferencecontent/schema";
-import { createDocumentReferenceContextSchema } from "../documentreferencecontext/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -53,6 +53,57 @@ export function createDocumentReferenceSchema() {
       content: z.array(createDocumentReferenceContentSchema()),
       context: createDocumentReferenceContextSchema().optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createDocumentReferenceRelatesToSchema() {
+  return getCachedSchema("DocumentReferenceRelatesTo", () => {
+    const baseSchema: z.ZodType<types.DocumentReferenceRelatesTo> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        code: z.enum(["replaces", "transforms", "signs", "appends"]),
+        _code: createElementSchema().optional(),
+        target: createReferenceSchema(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createDocumentReferenceContentSchema() {
+  return getCachedSchema("DocumentReferenceContent", () => {
+    const baseSchema: z.ZodType<types.DocumentReferenceContent> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        attachment: createAttachmentSchema(),
+        format: createCodingSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createDocumentReferenceContextSchema() {
+  return getCachedSchema("DocumentReferenceContext", () => {
+    const baseSchema: z.ZodType<types.DocumentReferenceContext> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        encounter: z.array(createReferenceSchema()).optional(),
+        event: z.array(createCodeableConceptSchema()).optional(),
+        period: createPeriodSchema().optional(),
+        facilityType: createCodeableConceptSchema().optional(),
+        practiceSetting: createCodeableConceptSchema().optional(),
+        sourcePatientInfo: createReferenceSchema().optional(),
+        related: z.array(createReferenceSchema()).optional(),
+      });
 
     return baseSchema;
   });

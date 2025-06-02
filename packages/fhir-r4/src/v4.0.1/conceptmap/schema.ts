@@ -13,7 +13,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createConceptMapGroupSchema } from "../conceptmapgroup/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -66,6 +65,118 @@ export function createConceptMapSchema() {
       targetCanonical: z.string().optional(),
       _targetCanonical: createElementSchema().optional(),
       group: z.array(createConceptMapGroupSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createConceptMapGroupSchema() {
+  return getCachedSchema("ConceptMapGroup", () => {
+    const baseSchema: z.ZodType<types.ConceptMapGroup> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      source: primitives.getUriSchema().optional(),
+      _source: createElementSchema().optional(),
+      sourceVersion: primitives.getStringSchema().optional(),
+      _sourceVersion: createElementSchema().optional(),
+      target: primitives.getUriSchema().optional(),
+      _target: createElementSchema().optional(),
+      targetVersion: primitives.getStringSchema().optional(),
+      _targetVersion: createElementSchema().optional(),
+      element: z.array(createConceptMapElementSchema()),
+      unmapped: createConceptMapUnmappedSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createConceptMapElementSchema() {
+  return getCachedSchema("ConceptMapElement", () => {
+    const baseSchema: z.ZodType<types.ConceptMapElement> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      code: primitives.getCodeSchema().optional(),
+      _code: createElementSchema().optional(),
+      display: primitives.getStringSchema().optional(),
+      _display: createElementSchema().optional(),
+      target: z.array(createConceptMapTargetSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createConceptMapTargetSchema() {
+  return getCachedSchema("ConceptMapTarget", () => {
+    const baseSchema: z.ZodType<types.ConceptMapTarget> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      code: primitives.getCodeSchema().optional(),
+      _code: createElementSchema().optional(),
+      display: primitives.getStringSchema().optional(),
+      _display: createElementSchema().optional(),
+      equivalence: z
+        .enum([
+          "relatedto",
+          "equivalent",
+          "equal",
+          "wider",
+          "subsumes",
+          "narrower",
+          "specializes",
+          "inexact",
+          "unmatched",
+          "disjoint",
+        ])
+        .optional(),
+      _equivalence: createElementSchema().optional(),
+      comment: primitives.getStringSchema().optional(),
+      _comment: createElementSchema().optional(),
+      dependsOn: z.array(createConceptMapDependsOnSchema()).optional(),
+      product: z.array(createConceptMapDependsOnSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createConceptMapDependsOnSchema() {
+  return getCachedSchema("ConceptMapDependsOn", () => {
+    const baseSchema: z.ZodType<types.ConceptMapDependsOn> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      property: primitives.getUriSchema().optional(),
+      _property: createElementSchema().optional(),
+      system: primitives.getCanonicalSchema().optional(),
+      value: primitives.getStringSchema().optional(),
+      _value: createElementSchema().optional(),
+      display: primitives.getStringSchema().optional(),
+      _display: createElementSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createConceptMapUnmappedSchema() {
+  return getCachedSchema("ConceptMapUnmapped", () => {
+    const baseSchema: z.ZodType<types.ConceptMapUnmapped> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      mode: z.enum(["provided", "fixed", "other-map"]).optional(),
+      _mode: createElementSchema().optional(),
+      code: primitives.getCodeSchema().optional(),
+      _code: createElementSchema().optional(),
+      display: primitives.getStringSchema().optional(),
+      _display: createElementSchema().optional(),
+      url: primitives.getCanonicalSchema().optional(),
     });
 
     return baseSchema;

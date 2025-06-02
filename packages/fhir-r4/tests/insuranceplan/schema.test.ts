@@ -2,8 +2,8 @@ import { createInsurancePlanSchema } from "../../src";
 import { InsuranceplanExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("InsurancePlan Schema Validation", () => {
-  it("should validate InsuranceplanExample fixture", () => {
+describe("Insuranceplan Group Schema Validation", () => {
+  it("should validate InsuranceplanExample fixture (InsurancePlan)", () => {
     const result = createInsurancePlanSchema().safeParse(InsuranceplanExample);
     if (!result.success) {
       console.error("Validation failed for InsuranceplanExample:");

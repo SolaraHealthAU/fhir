@@ -8,8 +8,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("DiagnosticReport Schema Validation", () => {
-  it("should validate DiagnosticreportExampleDxa fixture", () => {
+describe("Diagnosticreport Group Schema Validation", () => {
+  it("should validate DiagnosticreportExampleDxa fixture (DiagnosticReport)", () => {
     const result = createDiagnosticReportSchema().safeParse(
       DiagnosticreportExampleDxa,
     );
@@ -23,7 +23,7 @@ describe("DiagnosticReport Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DiagnosticreportExampleF201Brainct fixture", () => {
+  it("should validate DiagnosticreportExampleF201Brainct fixture (DiagnosticReport)", () => {
     const result = createDiagnosticReportSchema().safeParse(
       DiagnosticreportExampleF201Brainct,
     );
@@ -39,7 +39,7 @@ describe("DiagnosticReport Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DiagnosticreportExamplePapsmear fixture", () => {
+  it("should validate DiagnosticreportExamplePapsmear fixture (DiagnosticReport)", () => {
     const result = createDiagnosticReportSchema().safeParse(
       DiagnosticreportExamplePapsmear,
     );
@@ -53,7 +53,7 @@ describe("DiagnosticReport Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DiagnosticreportExamplePgx fixture", () => {
+  it("should validate DiagnosticreportExamplePgx fixture (DiagnosticReport)", () => {
     const result = createDiagnosticReportSchema().safeParse(
       DiagnosticreportExamplePgx,
     );
@@ -67,7 +67,7 @@ describe("DiagnosticReport Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DiagnosticreportExampleUltrasound fixture", () => {
+  it("should validate DiagnosticreportExampleUltrasound fixture (DiagnosticReport)", () => {
     const result = createDiagnosticReportSchema().safeParse(
       DiagnosticreportExampleUltrasound,
     );

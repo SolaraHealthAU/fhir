@@ -15,12 +15,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createEncounterStatusHistorySchema } from "../encounterstatushistory/schema";
-import { createEncounterClassHistorySchema } from "../encounterclasshistory/schema";
-import { createEncounterParticipantSchema } from "../encounterparticipant/schema";
-import { createEncounterDiagnosisSchema } from "../encounterdiagnosis/schema";
-import { createEncounterHospitalizationSchema } from "../encounterhospitalization/schema";
-import { createEncounterLocationSchema } from "../encounterlocation/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -72,6 +66,115 @@ export function createEncounterSchema() {
       location: z.array(createEncounterLocationSchema()).optional(),
       serviceProvider: createReferenceSchema().optional(),
       partOf: createReferenceSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createEncounterStatusHistorySchema() {
+  return getCachedSchema("EncounterStatusHistory", () => {
+    const baseSchema: z.ZodType<types.EncounterStatusHistory> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      status: z.enum([
+        "planned",
+        "arrived",
+        "triaged",
+        "in-progress",
+        "onleave",
+        "finished",
+        "cancelled",
+        "entered-in-error",
+        "unknown",
+      ]),
+      _status: createElementSchema().optional(),
+      period: createPeriodSchema(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createEncounterClassHistorySchema() {
+  return getCachedSchema("EncounterClassHistory", () => {
+    const baseSchema: z.ZodType<types.EncounterClassHistory> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      class: createCodingSchema(),
+      period: createPeriodSchema(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createEncounterParticipantSchema() {
+  return getCachedSchema("EncounterParticipant", () => {
+    const baseSchema: z.ZodType<types.EncounterParticipant> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      type: z.array(createCodeableConceptSchema()).optional(),
+      period: createPeriodSchema().optional(),
+      individual: createReferenceSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createEncounterDiagnosisSchema() {
+  return getCachedSchema("EncounterDiagnosis", () => {
+    const baseSchema: z.ZodType<types.EncounterDiagnosis> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      condition: createReferenceSchema(),
+      use: createCodeableConceptSchema().optional(),
+      rank: primitives.getPositiveIntSchema().optional(),
+      _rank: createElementSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createEncounterHospitalizationSchema() {
+  return getCachedSchema("EncounterHospitalization", () => {
+    const baseSchema: z.ZodType<types.EncounterHospitalization> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        preAdmissionIdentifier: createIdentifierSchema().optional(),
+        origin: createReferenceSchema().optional(),
+        admitSource: createCodeableConceptSchema().optional(),
+        reAdmission: createCodeableConceptSchema().optional(),
+        dietPreference: z.array(createCodeableConceptSchema()).optional(),
+        specialCourtesy: z.array(createCodeableConceptSchema()).optional(),
+        specialArrangement: z.array(createCodeableConceptSchema()).optional(),
+        destination: createReferenceSchema().optional(),
+        dischargeDisposition: createCodeableConceptSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createEncounterLocationSchema() {
+  return getCachedSchema("EncounterLocation", () => {
+    const baseSchema: z.ZodType<types.EncounterLocation> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      location: createReferenceSchema(),
+      status: z.enum(["planned", "active", "reserved", "completed"]).optional(),
+      _status: createElementSchema().optional(),
+      physicalType: createCodeableConceptSchema().optional(),
+      period: createPeriodSchema().optional(),
     });
 
     return baseSchema;

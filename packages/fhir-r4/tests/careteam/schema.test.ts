@@ -2,8 +2,8 @@ import { createCareTeamSchema } from "../../src";
 import { CareteamExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("CareTeam Schema Validation", () => {
-  it("should validate CareteamExample fixture", () => {
+describe("Careteam Group Schema Validation", () => {
+  it("should validate CareteamExample fixture (CareTeam)", () => {
     const result = createCareTeamSchema().safeParse(CareteamExample);
     if (!result.success) {
       console.error("Validation failed for CareteamExample:");

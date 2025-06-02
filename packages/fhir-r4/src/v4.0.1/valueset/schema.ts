@@ -10,11 +10,10 @@ import {
   createContactDetailSchema,
   createUsageContextSchema,
   createCodeableConceptSchema,
+  createCodingSchema,
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createValueSetComposeSchema } from "../valuesetcompose/schema";
-import { createValueSetExpansionSchema } from "../valuesetexpansion/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -62,6 +61,183 @@ export function createValueSetSchema() {
       _copyright: createElementSchema().optional(),
       compose: createValueSetComposeSchema().optional(),
       expansion: createValueSetExpansionSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createValueSetComposeSchema() {
+  return getCachedSchema("ValueSetCompose", () => {
+    const baseSchema: z.ZodType<types.ValueSetCompose> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      lockedDate: primitives.getDateSchema().optional(),
+      _lockedDate: createElementSchema().optional(),
+      inactive: primitives.getBooleanSchema().optional(),
+      _inactive: createElementSchema().optional(),
+      include: z.array(createValueSetIncludeSchema()),
+      exclude: z.array(createValueSetIncludeSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createValueSetIncludeSchema() {
+  return getCachedSchema("ValueSetInclude", () => {
+    const baseSchema: z.ZodType<types.ValueSetInclude> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      system: primitives.getUriSchema().optional(),
+      _system: createElementSchema().optional(),
+      version: primitives.getStringSchema().optional(),
+      _version: createElementSchema().optional(),
+      concept: z.array(createValueSetConceptSchema()).optional(),
+      filter: z.array(createValueSetFilterSchema()).optional(),
+      valueSet: z.array(primitives.getCanonicalSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createValueSetConceptSchema() {
+  return getCachedSchema("ValueSetConcept", () => {
+    const baseSchema: z.ZodType<types.ValueSetConcept> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      code: primitives.getCodeSchema().optional(),
+      _code: createElementSchema().optional(),
+      display: primitives.getStringSchema().optional(),
+      _display: createElementSchema().optional(),
+      designation: z.array(createValueSetDesignationSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createValueSetDesignationSchema() {
+  return getCachedSchema("ValueSetDesignation", () => {
+    const baseSchema: z.ZodType<types.ValueSetDesignation> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: createElementSchema().optional(),
+      use: createCodingSchema().optional(),
+      value: primitives.getStringSchema().optional(),
+      _value: createElementSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createValueSetFilterSchema() {
+  return getCachedSchema("ValueSetFilter", () => {
+    const baseSchema: z.ZodType<types.ValueSetFilter> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      property: primitives.getCodeSchema().optional(),
+      _property: createElementSchema().optional(),
+      op: z
+        .enum([
+          "=",
+          "is-a",
+          "descendent-of",
+          "is-not-a",
+          "regex",
+          "in",
+          "not-in",
+          "generalizes",
+          "exists",
+        ])
+        .optional(),
+      _op: createElementSchema().optional(),
+      value: primitives.getStringSchema().optional(),
+      _value: createElementSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createValueSetExpansionSchema() {
+  return getCachedSchema("ValueSetExpansion", () => {
+    const baseSchema: z.ZodType<types.ValueSetExpansion> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      identifier: primitives.getUriSchema().optional(),
+      _identifier: createElementSchema().optional(),
+      timestamp: primitives.getDateTimeSchema(),
+      _timestamp: createElementSchema().optional(),
+      total: primitives.getIntegerSchema().optional(),
+      _total: createElementSchema().optional(),
+      offset: primitives.getIntegerSchema().optional(),
+      _offset: createElementSchema().optional(),
+      parameter: z.array(createValueSetParameterSchema()).optional(),
+      contains: z.array(createValueSetContainsSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createValueSetParameterSchema() {
+  return getCachedSchema("ValueSetParameter", () => {
+    const baseSchema: z.ZodType<types.ValueSetParameter> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      name: primitives.getStringSchema().optional(),
+      _name: createElementSchema().optional(),
+      valueString: z.string().optional(),
+      _valueString: createElementSchema().optional(),
+      valueBoolean: z.boolean().optional(),
+      _valueBoolean: createElementSchema().optional(),
+      valueInteger: z.number().optional(),
+      _valueInteger: createElementSchema().optional(),
+      valueDecimal: z.number().optional(),
+      _valueDecimal: createElementSchema().optional(),
+      valueUri: z.string().optional(),
+      _valueUri: createElementSchema().optional(),
+      valueCode: z.string().optional(),
+      _valueCode: createElementSchema().optional(),
+      valueDateTime: z.string().optional(),
+      _valueDateTime: createElementSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createValueSetContainsSchema() {
+  return getCachedSchema("ValueSetContains", () => {
+    const baseSchema: z.ZodType<types.ValueSetContains> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      system: primitives.getUriSchema().optional(),
+      _system: createElementSchema().optional(),
+      abstract: primitives.getBooleanSchema().optional(),
+      _abstract: createElementSchema().optional(),
+      inactive: primitives.getBooleanSchema().optional(),
+      _inactive: createElementSchema().optional(),
+      version: primitives.getStringSchema().optional(),
+      _version: createElementSchema().optional(),
+      code: primitives.getCodeSchema().optional(),
+      _code: createElementSchema().optional(),
+      display: primitives.getStringSchema().optional(),
+      _display: createElementSchema().optional(),
+      designation: z.array(createValueSetDesignationSchema()).optional(),
+      contains: z.array(createValueSetContainsSchema()).optional(),
     });
 
     return baseSchema;

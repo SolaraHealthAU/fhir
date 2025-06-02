@@ -14,7 +14,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createDiagnosticReportMediaSchema } from "../diagnosticreportmedia/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -66,6 +65,21 @@ export function createDiagnosticReportSchema() {
       _conclusion: createElementSchema().optional(),
       conclusionCode: z.array(createCodeableConceptSchema()).optional(),
       presentedForm: z.array(createAttachmentSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createDiagnosticReportMediaSchema() {
+  return getCachedSchema("DiagnosticReportMedia", () => {
+    const baseSchema: z.ZodType<types.DiagnosticReportMedia> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      comment: primitives.getStringSchema().optional(),
+      _comment: createElementSchema().optional(),
+      link: createReferenceSchema(),
     });
 
     return baseSchema;

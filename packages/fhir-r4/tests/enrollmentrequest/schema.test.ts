@@ -2,8 +2,8 @@ import { createEnrollmentRequestSchema } from "../../src";
 import { EnrollmentrequestExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("EnrollmentRequest Schema Validation", () => {
-  it("should validate EnrollmentrequestExample fixture", () => {
+describe("Enrollmentrequest Group Schema Validation", () => {
+  it("should validate EnrollmentrequestExample fixture (EnrollmentRequest)", () => {
     const result = createEnrollmentRequestSchema().safeParse(
       EnrollmentrequestExample,
     );

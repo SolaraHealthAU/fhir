@@ -8,8 +8,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("RelatedPerson Schema Validation", () => {
-  it("should validate RelatedpersonExampleF001Sarah fixture", () => {
+describe("Relatedperson Group Schema Validation", () => {
+  it("should validate RelatedpersonExampleF001Sarah fixture (RelatedPerson)", () => {
     const result = createRelatedPersonSchema().safeParse(
       RelatedpersonExampleF001Sarah,
     );
@@ -23,7 +23,7 @@ describe("RelatedPerson Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate RelatedpersonExampleF002Ariadne fixture", () => {
+  it("should validate RelatedpersonExampleF002Ariadne fixture (RelatedPerson)", () => {
     const result = createRelatedPersonSchema().safeParse(
       RelatedpersonExampleF002Ariadne,
     );
@@ -37,7 +37,7 @@ describe("RelatedPerson Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate RelatedpersonExampleNewbornMom fixture", () => {
+  it("should validate RelatedpersonExampleNewbornMom fixture (RelatedPerson)", () => {
     const result = createRelatedPersonSchema().safeParse(
       RelatedpersonExampleNewbornMom,
     );
@@ -51,7 +51,7 @@ describe("RelatedPerson Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate RelatedpersonExamplePeter fixture", () => {
+  it("should validate RelatedpersonExamplePeter fixture (RelatedPerson)", () => {
     const result = createRelatedPersonSchema().safeParse(
       RelatedpersonExamplePeter,
     );
@@ -65,7 +65,7 @@ describe("RelatedPerson Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate RelatedpersonExample fixture", () => {
+  it("should validate RelatedpersonExample fixture (RelatedPerson)", () => {
     const result = createRelatedPersonSchema().safeParse(RelatedpersonExample);
     if (!result.success) {
       console.error("Validation failed for RelatedpersonExample:");

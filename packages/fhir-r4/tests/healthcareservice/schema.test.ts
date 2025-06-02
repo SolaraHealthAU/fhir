@@ -2,8 +2,8 @@ import { createHealthcareServiceSchema } from "../../src";
 import { HealthcareserviceExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("HealthcareService Schema Validation", () => {
-  it("should validate HealthcareserviceExample fixture", () => {
+describe("Healthcareservice Group Schema Validation", () => {
+  it("should validate HealthcareserviceExample fixture (HealthcareService)", () => {
     const result = createHealthcareServiceSchema().safeParse(
       HealthcareserviceExample,
     );

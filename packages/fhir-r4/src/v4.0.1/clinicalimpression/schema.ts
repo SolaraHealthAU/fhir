@@ -14,8 +14,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createClinicalImpressionInvestigationSchema } from "../clinicalimpressioninvestigation/schema";
-import { createClinicalImpressionFindingSchema } from "../clinicalimpressionfinding/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -65,6 +63,38 @@ export function createClinicalImpressionSchema() {
       supportingInfo: z.array(createReferenceSchema()).optional(),
       note: z.array(createAnnotationSchema()).optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createClinicalImpressionInvestigationSchema() {
+  return getCachedSchema("ClinicalImpressionInvestigation", () => {
+    const baseSchema: z.ZodType<types.ClinicalImpressionInvestigation> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        code: createCodeableConceptSchema(),
+        item: z.array(createReferenceSchema()).optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createClinicalImpressionFindingSchema() {
+  return getCachedSchema("ClinicalImpressionFinding", () => {
+    const baseSchema: z.ZodType<types.ClinicalImpressionFinding> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        itemCodeableConcept: createCodeableConceptSchema().optional(),
+        itemReference: createReferenceSchema().optional(),
+        basis: primitives.getStringSchema().optional(),
+        _basis: createElementSchema().optional(),
+      });
 
     return baseSchema;
   });

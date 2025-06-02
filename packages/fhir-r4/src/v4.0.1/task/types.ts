@@ -7,12 +7,34 @@ import type {
   CodeableConcept,
   Period,
   Annotation,
+  Address,
+  Age,
+  Attachment,
+  Coding,
+  ContactPoint,
+  Count,
+  Distance,
+  Duration,
+  HumanName,
+  Money,
+  Quantity,
+  Range,
+  Ratio,
+  SampledData,
+  Signature,
+  Timing,
+  ContactDetail,
+  Contributor,
+  DataRequirement,
+  Expression,
+  ParameterDefinition,
+  RelatedArtifact,
+  TriggerDefinition,
+  UsageContext,
+  Dosage,
 } from "../core/types";
 import type { Narrative } from "../narrative/types";
 import type { ResourceList } from "../resourcelist/types";
-import type { TaskRestriction } from "../taskrestriction/types";
-import type { TaskInput } from "../taskinput/types";
-import type { TaskOutput } from "../taskoutput/types";
 
 /** Generated from FHIR JSON Schema */
 
@@ -138,4 +160,328 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   input?: TaskInput[];
 
   output?: TaskOutput[];
+}
+
+/** A task to be performed. */
+export interface TaskRestriction {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** Indicates the number of times the requested action should occur. */
+  repetitions?: number;
+
+  _repetitions?: Element;
+  /** Over what time-period is fulfillment sought. */
+  period?: Period;
+  /** For requests that are targeted to more than on potential recipient/target, for whom is fulfillment sought? */
+  recipient?: Reference[];
+}
+
+/** A task to be performed. */
+export interface TaskInput {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** A code or description indicating how the input is intended to be used as part of the task execution. */
+  type: CodeableConcept;
+
+  valueBase64Binary?: string;
+
+  _valueBase64Binary?: Element;
+
+  valueBoolean?: boolean;
+
+  _valueBoolean?: Element;
+
+  valueCanonical?: string;
+
+  _valueCanonical?: Element;
+
+  valueCode?: string;
+
+  _valueCode?: Element;
+
+  valueDate?: string;
+
+  _valueDate?: Element;
+
+  valueDateTime?: string;
+
+  _valueDateTime?: Element;
+
+  valueDecimal?: number;
+
+  _valueDecimal?: Element;
+
+  valueId?: string;
+
+  _valueId?: Element;
+
+  valueInstant?: string;
+
+  _valueInstant?: Element;
+
+  valueInteger?: number;
+
+  _valueInteger?: Element;
+
+  valueMarkdown?: string;
+
+  _valueMarkdown?: Element;
+
+  valueOid?: string;
+
+  _valueOid?: Element;
+
+  valuePositiveInt?: number;
+
+  _valuePositiveInt?: Element;
+
+  valueString?: string;
+
+  _valueString?: Element;
+
+  valueTime?: string;
+
+  _valueTime?: Element;
+
+  valueUnsignedInt?: number;
+
+  _valueUnsignedInt?: Element;
+
+  valueUri?: string;
+
+  _valueUri?: Element;
+
+  valueUrl?: string;
+
+  _valueUrl?: Element;
+
+  valueUuid?: string;
+
+  _valueUuid?: Element;
+
+  valueAddress?: Address;
+
+  valueAge?: Age;
+
+  valueAnnotation?: Annotation;
+
+  valueAttachment?: Attachment;
+
+  valueCodeableConcept?: CodeableConcept;
+
+  valueCoding?: Coding;
+
+  valueContactPoint?: ContactPoint;
+
+  valueCount?: Count;
+
+  valueDistance?: Distance;
+
+  valueDuration?: Duration;
+
+  valueHumanName?: HumanName;
+
+  valueIdentifier?: Identifier;
+
+  valueMoney?: Money;
+
+  valuePeriod?: Period;
+
+  valueQuantity?: Quantity;
+
+  valueRange?: Range;
+
+  valueRatio?: Ratio;
+
+  valueReference?: Reference;
+
+  valueSampledData?: SampledData;
+
+  valueSignature?: Signature;
+
+  valueTiming?: Timing;
+
+  valueContactDetail?: ContactDetail;
+
+  valueContributor?: Contributor;
+
+  valueDataRequirement?: DataRequirement;
+
+  valueExpression?: Expression;
+
+  valueParameterDefinition?: ParameterDefinition;
+
+  valueRelatedArtifact?: RelatedArtifact;
+
+  valueTriggerDefinition?: TriggerDefinition;
+
+  valueUsageContext?: UsageContext;
+
+  valueDosage?: Dosage;
+
+  valueMeta?: Meta;
+}
+
+/** A task to be performed. */
+export interface TaskOutput {
+  /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
+  id?: string;
+  /** May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
+  extension?: Extension[];
+  /** May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). */
+  modifierExtension?: Extension[];
+  /** The name of the Output parameter. */
+  type: CodeableConcept;
+
+  valueBase64Binary?: string;
+
+  _valueBase64Binary?: Element;
+
+  valueBoolean?: boolean;
+
+  _valueBoolean?: Element;
+
+  valueCanonical?: string;
+
+  _valueCanonical?: Element;
+
+  valueCode?: string;
+
+  _valueCode?: Element;
+
+  valueDate?: string;
+
+  _valueDate?: Element;
+
+  valueDateTime?: string;
+
+  _valueDateTime?: Element;
+
+  valueDecimal?: number;
+
+  _valueDecimal?: Element;
+
+  valueId?: string;
+
+  _valueId?: Element;
+
+  valueInstant?: string;
+
+  _valueInstant?: Element;
+
+  valueInteger?: number;
+
+  _valueInteger?: Element;
+
+  valueMarkdown?: string;
+
+  _valueMarkdown?: Element;
+
+  valueOid?: string;
+
+  _valueOid?: Element;
+
+  valuePositiveInt?: number;
+
+  _valuePositiveInt?: Element;
+
+  valueString?: string;
+
+  _valueString?: Element;
+
+  valueTime?: string;
+
+  _valueTime?: Element;
+
+  valueUnsignedInt?: number;
+
+  _valueUnsignedInt?: Element;
+
+  valueUri?: string;
+
+  _valueUri?: Element;
+
+  valueUrl?: string;
+
+  _valueUrl?: Element;
+
+  valueUuid?: string;
+
+  _valueUuid?: Element;
+
+  valueAddress?: Address;
+
+  valueAge?: Age;
+
+  valueAnnotation?: Annotation;
+
+  valueAttachment?: Attachment;
+
+  valueCodeableConcept?: CodeableConcept;
+
+  valueCoding?: Coding;
+
+  valueContactPoint?: ContactPoint;
+
+  valueCount?: Count;
+
+  valueDistance?: Distance;
+
+  valueDuration?: Duration;
+
+  valueHumanName?: HumanName;
+
+  valueIdentifier?: Identifier;
+
+  valueMoney?: Money;
+
+  valuePeriod?: Period;
+
+  valueQuantity?: Quantity;
+
+  valueRange?: Range;
+
+  valueRatio?: Ratio;
+
+  valueReference?: Reference;
+
+  valueSampledData?: SampledData;
+
+  valueSignature?: Signature;
+
+  valueTiming?: Timing;
+
+  valueContactDetail?: ContactDetail;
+
+  valueContributor?: Contributor;
+
+  valueDataRequirement?: DataRequirement;
+
+  valueExpression?: Expression;
+
+  valueParameterDefinition?: ParameterDefinition;
+
+  valueRelatedArtifact?: RelatedArtifact;
+
+  valueTriggerDefinition?: TriggerDefinition;
+
+  valueUsageContext?: UsageContext;
+
+  valueDosage?: Dosage;
+
+  valueMeta?: Meta;
 }

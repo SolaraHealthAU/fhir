@@ -9,12 +9,10 @@ import {
   createCodingSchema,
   createPeriodSchema,
   createCodeableConceptSchema,
+  createReferenceSchema,
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createAuditEventAgentSchema } from "../auditeventagent/schema";
-import { createAuditEventSourceSchema } from "../auditeventsource/schema";
-import { createAuditEventEntitySchema } from "../auditevententity/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -47,6 +45,107 @@ export function createAuditEventSchema() {
       agent: z.array(createAuditEventAgentSchema()),
       source: createAuditEventSourceSchema(),
       entity: z.array(createAuditEventEntitySchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createAuditEventAgentSchema() {
+  return getCachedSchema("AuditEventAgent", () => {
+    const baseSchema: z.ZodType<types.AuditEventAgent> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      type: createCodeableConceptSchema().optional(),
+      role: z.array(createCodeableConceptSchema()).optional(),
+      who: createReferenceSchema().optional(),
+      altId: primitives.getStringSchema().optional(),
+      _altId: createElementSchema().optional(),
+      name: primitives.getStringSchema().optional(),
+      _name: createElementSchema().optional(),
+      requestor: primitives.getBooleanSchema(),
+      _requestor: createElementSchema().optional(),
+      location: createReferenceSchema().optional(),
+      policy: z.array(primitives.getUriSchema()).optional(),
+      _policy: z.array(createElementSchema()).optional(),
+      media: createCodingSchema().optional(),
+      network: createAuditEventNetworkSchema().optional(),
+      purposeOfUse: z.array(createCodeableConceptSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createAuditEventNetworkSchema() {
+  return getCachedSchema("AuditEventNetwork", () => {
+    const baseSchema: z.ZodType<types.AuditEventNetwork> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      address: primitives.getStringSchema().optional(),
+      _address: createElementSchema().optional(),
+      type: z.enum(["1", "2", "3", "4", "5"]).optional(),
+      _type: createElementSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createAuditEventSourceSchema() {
+  return getCachedSchema("AuditEventSource", () => {
+    const baseSchema: z.ZodType<types.AuditEventSource> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      site: primitives.getStringSchema().optional(),
+      _site: createElementSchema().optional(),
+      observer: createReferenceSchema(),
+      type: z.array(createCodingSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createAuditEventEntitySchema() {
+  return getCachedSchema("AuditEventEntity", () => {
+    const baseSchema: z.ZodType<types.AuditEventEntity> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      what: createReferenceSchema().optional(),
+      type: createCodingSchema().optional(),
+      role: createCodingSchema().optional(),
+      lifecycle: createCodingSchema().optional(),
+      securityLabel: z.array(createCodingSchema()).optional(),
+      name: primitives.getStringSchema().optional(),
+      _name: createElementSchema().optional(),
+      description: primitives.getStringSchema().optional(),
+      _description: createElementSchema().optional(),
+      query: primitives.getBase64BinarySchema().optional(),
+      _query: createElementSchema().optional(),
+      detail: z.array(createAuditEventDetailSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createAuditEventDetailSchema() {
+  return getCachedSchema("AuditEventDetail", () => {
+    const baseSchema: z.ZodType<types.AuditEventDetail> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      type: primitives.getStringSchema().optional(),
+      _type: createElementSchema().optional(),
+      valueString: z.string().optional(),
+      _valueString: createElementSchema().optional(),
+      valueBase64Binary: z.string().optional(),
+      _valueBase64Binary: createElementSchema().optional(),
     });
 
     return baseSchema;

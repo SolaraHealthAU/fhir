@@ -19,11 +19,10 @@ import {
   createDurationSchema,
   createQuantitySchema,
   createDosageSchema,
+  createExpressionSchema,
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createActivityDefinitionParticipantSchema } from "../activitydefinitionparticipant/schema";
-import { createActivityDefinitionDynamicValueSchema } from "../activitydefinitiondynamicvalue/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -119,6 +118,38 @@ export function createActivityDefinitionSchema() {
         .array(createActivityDefinitionDynamicValueSchema())
         .optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createActivityDefinitionParticipantSchema() {
+  return getCachedSchema("ActivityDefinitionParticipant", () => {
+    const baseSchema: z.ZodType<types.ActivityDefinitionParticipant> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        type: primitives.getCodeSchema(),
+        _type: createElementSchema().optional(),
+        role: createCodeableConceptSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createActivityDefinitionDynamicValueSchema() {
+  return getCachedSchema("ActivityDefinitionDynamicValue", () => {
+    const baseSchema: z.ZodType<types.ActivityDefinitionDynamicValue> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        path: primitives.getStringSchema(),
+        _path: createElementSchema().optional(),
+        expression: createExpressionSchema(),
+      });
 
     return baseSchema;
   });

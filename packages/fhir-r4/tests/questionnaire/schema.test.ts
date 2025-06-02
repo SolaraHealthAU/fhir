@@ -122,8 +122,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Questionnaire Schema Validation", () => {
-  it("should validate AccountQuestionnaire fixture", () => {
+describe("Questionnaire Group Schema Validation", () => {
+  it("should validate AccountQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(AccountQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for AccountQuestionnaire:");
@@ -135,7 +135,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ActualgroupQuestionnaire fixture", () => {
+  it("should validate ActualgroupQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       ActualgroupQuestionnaire,
     );
@@ -149,7 +149,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AdverseeventQuestionnaire fixture", () => {
+  it("should validate AdverseeventQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       AdverseeventQuestionnaire,
     );
@@ -163,7 +163,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AllergyintoleranceQuestionnaire fixture", () => {
+  it("should validate AllergyintoleranceQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       AllergyintoleranceQuestionnaire,
     );
@@ -177,7 +177,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AppointmentQuestionnaire fixture", () => {
+  it("should validate AppointmentQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       AppointmentQuestionnaire,
     );
@@ -191,7 +191,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate AppointmentresponseQuestionnaire fixture", () => {
+  it("should validate AppointmentresponseQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       AppointmentresponseQuestionnaire,
     );
@@ -205,7 +205,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BasicQuestionnaire fixture", () => {
+  it("should validate BasicQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(BasicQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for BasicQuestionnaire:");
@@ -217,7 +217,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BinaryQuestionnaire fixture", () => {
+  it("should validate BinaryQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(BinaryQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for BinaryQuestionnaire:");
@@ -229,7 +229,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BiologicallyderivedproductQuestionnaire fixture", () => {
+  it("should validate BiologicallyderivedproductQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       BiologicallyderivedproductQuestionnaire,
     );
@@ -245,7 +245,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BodystructureQuestionnaire fixture", () => {
+  it("should validate BodystructureQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       BodystructureQuestionnaire,
     );
@@ -259,7 +259,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BundleQuestionnaire fixture", () => {
+  it("should validate BundleQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(BundleQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for BundleQuestionnaire:");
@@ -271,7 +271,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CareteamQuestionnaire fixture", () => {
+  it("should validate CareteamQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(CareteamQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for CareteamQuestionnaire:");
@@ -283,7 +283,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CatalogentryQuestionnaire fixture", () => {
+  it("should validate CatalogentryQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       CatalogentryQuestionnaire,
     );
@@ -297,7 +297,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CdshooksguidanceresponseQuestionnaire fixture", () => {
+  it("should validate CdshooksguidanceresponseQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       CdshooksguidanceresponseQuestionnaire,
     );
@@ -313,7 +313,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ChargeitemQuestionnaire fixture", () => {
+  it("should validate ChargeitemQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       ChargeitemQuestionnaire,
     );
@@ -327,7 +327,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ChargeitemdefinitionQuestionnaire fixture", () => {
+  it("should validate ChargeitemdefinitionQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       ChargeitemdefinitionQuestionnaire,
     );
@@ -341,7 +341,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ClinicalimpressionQuestionnaire fixture", () => {
+  it("should validate ClinicalimpressionQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       ClinicalimpressionQuestionnaire,
     );
@@ -355,7 +355,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CommunicationQuestionnaire fixture", () => {
+  it("should validate CommunicationQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       CommunicationQuestionnaire,
     );
@@ -369,7 +369,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CommunicationrequestQuestionnaire fixture", () => {
+  it("should validate CommunicationrequestQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       CommunicationrequestQuestionnaire,
     );
@@ -383,7 +383,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CompartmentdefinitionQuestionnaire fixture", () => {
+  it("should validate CompartmentdefinitionQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       CompartmentdefinitionQuestionnaire,
     );
@@ -399,7 +399,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ConditionQuestionnaire fixture", () => {
+  it("should validate ConditionQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       ConditionQuestionnaire,
     );
@@ -413,7 +413,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CoverageQuestionnaire fixture", () => {
+  it("should validate CoverageQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(CoverageQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for CoverageQuestionnaire:");
@@ -425,7 +425,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CoverageeligibilityrequestQuestionnaire fixture", () => {
+  it("should validate CoverageeligibilityrequestQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       CoverageeligibilityrequestQuestionnaire,
     );
@@ -441,7 +441,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate CqllibraryQuestionnaire fixture", () => {
+  it("should validate CqllibraryQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       CqllibraryQuestionnaire,
     );
@@ -455,7 +455,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DetectedissueQuestionnaire fixture", () => {
+  it("should validate DetectedissueQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       DetectedissueQuestionnaire,
     );
@@ -469,7 +469,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DevicemetricQuestionnaire fixture", () => {
+  it("should validate DevicemetricQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       DevicemetricQuestionnaire,
     );
@@ -483,7 +483,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DevicerequestQuestionnaire fixture", () => {
+  it("should validate DevicerequestQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       DevicerequestQuestionnaire,
     );
@@ -497,7 +497,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DeviceusestatementQuestionnaire fixture", () => {
+  it("should validate DeviceusestatementQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       DeviceusestatementQuestionnaire,
     );
@@ -511,7 +511,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DiagnosticreportGeneticsQuestionnaire fixture", () => {
+  it("should validate DiagnosticreportGeneticsQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       DiagnosticreportGeneticsQuestionnaire,
     );
@@ -527,7 +527,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DiagnosticreportQuestionnaire fixture", () => {
+  it("should validate DiagnosticreportQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       DiagnosticreportQuestionnaire,
     );
@@ -541,7 +541,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DocumentmanifestQuestionnaire fixture", () => {
+  it("should validate DocumentmanifestQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       DocumentmanifestQuestionnaire,
     );
@@ -555,7 +555,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate DocumentreferenceQuestionnaire fixture", () => {
+  it("should validate DocumentreferenceQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       DocumentreferenceQuestionnaire,
     );
@@ -569,7 +569,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EndpointQuestionnaire fixture", () => {
+  it("should validate EndpointQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(EndpointQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for EndpointQuestionnaire:");
@@ -581,7 +581,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EnrollmentrequestQuestionnaire fixture", () => {
+  it("should validate EnrollmentrequestQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       EnrollmentrequestQuestionnaire,
     );
@@ -595,7 +595,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EnrollmentresponseQuestionnaire fixture", () => {
+  it("should validate EnrollmentresponseQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       EnrollmentresponseQuestionnaire,
     );
@@ -609,7 +609,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EpisodeofcareQuestionnaire fixture", () => {
+  it("should validate EpisodeofcareQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       EpisodeofcareQuestionnaire,
     );
@@ -623,7 +623,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EventdefinitionQuestionnaire fixture", () => {
+  it("should validate EventdefinitionQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       EventdefinitionQuestionnaire,
     );
@@ -637,7 +637,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate EvidenceQuestionnaire fixture", () => {
+  it("should validate EvidenceQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(EvidenceQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for EvidenceQuestionnaire:");
@@ -649,7 +649,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate FamilymemberhistoryGeneticQuestionnaire fixture", () => {
+  it("should validate FamilymemberhistoryGeneticQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       FamilymemberhistoryGeneticQuestionnaire,
     );
@@ -665,7 +665,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate FamilymemberhistoryQuestionnaire fixture", () => {
+  it("should validate FamilymemberhistoryQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       FamilymemberhistoryQuestionnaire,
     );
@@ -679,7 +679,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate FlagQuestionnaire fixture", () => {
+  it("should validate FlagQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(FlagQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for FlagQuestionnaire:");
@@ -691,7 +691,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate GoalQuestionnaire fixture", () => {
+  it("should validate GoalQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(GoalQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for GoalQuestionnaire:");
@@ -703,7 +703,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate GraphdefinitionQuestionnaire fixture", () => {
+  it("should validate GraphdefinitionQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       GraphdefinitionQuestionnaire,
     );
@@ -717,7 +717,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate GroupQuestionnaire fixture", () => {
+  it("should validate GroupQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(GroupQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for GroupQuestionnaire:");
@@ -729,7 +729,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate GroupdefinitionQuestionnaire fixture", () => {
+  it("should validate GroupdefinitionQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       GroupdefinitionQuestionnaire,
     );
@@ -743,7 +743,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate GuidanceresponseQuestionnaire fixture", () => {
+  it("should validate GuidanceresponseQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       GuidanceresponseQuestionnaire,
     );
@@ -757,7 +757,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate HealthcareserviceQuestionnaire fixture", () => {
+  it("should validate HealthcareserviceQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       HealthcareserviceQuestionnaire,
     );
@@ -771,7 +771,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate HlaresultQuestionnaire fixture", () => {
+  it("should validate HlaresultQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       HlaresultQuestionnaire,
     );
@@ -785,7 +785,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ImagingstudyQuestionnaire fixture", () => {
+  it("should validate ImagingstudyQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       ImagingstudyQuestionnaire,
     );
@@ -799,7 +799,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ImmunizationevaluationQuestionnaire fixture", () => {
+  it("should validate ImmunizationevaluationQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       ImmunizationevaluationQuestionnaire,
     );
@@ -815,7 +815,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ImmunizationrecommendationQuestionnaire fixture", () => {
+  it("should validate ImmunizationrecommendationQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       ImmunizationrecommendationQuestionnaire,
     );
@@ -831,7 +831,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate InvoiceQuestionnaire fixture", () => {
+  it("should validate InvoiceQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(InvoiceQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for InvoiceQuestionnaire:");
@@ -843,7 +843,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LibraryQuestionnaire fixture", () => {
+  it("should validate LibraryQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(LibraryQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for LibraryQuestionnaire:");
@@ -855,7 +855,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LinkageQuestionnaire fixture", () => {
+  it("should validate LinkageQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(LinkageQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for LinkageQuestionnaire:");
@@ -867,7 +867,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LipidprofileQuestionnaire fixture", () => {
+  it("should validate LipidprofileQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       LipidprofileQuestionnaire,
     );
@@ -881,7 +881,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ListQuestionnaire fixture", () => {
+  it("should validate ListQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(ListQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for ListQuestionnaire:");
@@ -893,7 +893,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LocationQuestionnaire fixture", () => {
+  it("should validate LocationQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(LocationQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for LocationQuestionnaire:");
@@ -905,7 +905,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MediaQuestionnaire fixture", () => {
+  it("should validate MediaQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(MediaQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for MediaQuestionnaire:");
@@ -917,7 +917,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MedicationQuestionnaire fixture", () => {
+  it("should validate MedicationQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       MedicationQuestionnaire,
     );
@@ -931,7 +931,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MedicationadministrationQuestionnaire fixture", () => {
+  it("should validate MedicationadministrationQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       MedicationadministrationQuestionnaire,
     );
@@ -947,7 +947,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MedicationdispenseQuestionnaire fixture", () => {
+  it("should validate MedicationdispenseQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       MedicationdispenseQuestionnaire,
     );
@@ -961,7 +961,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MedicationstatementQuestionnaire fixture", () => {
+  it("should validate MedicationstatementQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       MedicationstatementQuestionnaire,
     );
@@ -975,7 +975,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MedicinalproductauthorizationQuestionnaire fixture", () => {
+  it("should validate MedicinalproductauthorizationQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       MedicinalproductauthorizationQuestionnaire,
     );
@@ -991,7 +991,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MedicinalproductcontraindicationQuestionnaire fixture", () => {
+  it("should validate MedicinalproductcontraindicationQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       MedicinalproductcontraindicationQuestionnaire,
     );
@@ -1007,7 +1007,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MedicinalproductindicationQuestionnaire fixture", () => {
+  it("should validate MedicinalproductindicationQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       MedicinalproductindicationQuestionnaire,
     );
@@ -1023,7 +1023,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MedicinalproductingredientQuestionnaire fixture", () => {
+  it("should validate MedicinalproductingredientQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       MedicinalproductingredientQuestionnaire,
     );
@@ -1039,7 +1039,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MedicinalproductinteractionQuestionnaire fixture", () => {
+  it("should validate MedicinalproductinteractionQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       MedicinalproductinteractionQuestionnaire,
     );
@@ -1055,7 +1055,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MedicinalproductmanufacturedQuestionnaire fixture", () => {
+  it("should validate MedicinalproductmanufacturedQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       MedicinalproductmanufacturedQuestionnaire,
     );
@@ -1071,7 +1071,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MedicinalproductpackagedQuestionnaire fixture", () => {
+  it("should validate MedicinalproductpackagedQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       MedicinalproductpackagedQuestionnaire,
     );
@@ -1087,7 +1087,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MedicinalproductpharmaceuticalQuestionnaire fixture", () => {
+  it("should validate MedicinalproductpharmaceuticalQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       MedicinalproductpharmaceuticalQuestionnaire,
     );
@@ -1103,7 +1103,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MedicinalproductundesirableeffectQuestionnaire fixture", () => {
+  it("should validate MedicinalproductundesirableeffectQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       MedicinalproductundesirableeffectQuestionnaire,
     );
@@ -1119,7 +1119,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MessagedefinitionQuestionnaire fixture", () => {
+  it("should validate MessagedefinitionQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       MessagedefinitionQuestionnaire,
     );
@@ -1133,7 +1133,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MessageheaderQuestionnaire fixture", () => {
+  it("should validate MessageheaderQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       MessageheaderQuestionnaire,
     );
@@ -1147,7 +1147,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate NamingsystemQuestionnaire fixture", () => {
+  it("should validate NamingsystemQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       NamingsystemQuestionnaire,
     );
@@ -1161,7 +1161,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ObservationdefinitionQuestionnaire fixture", () => {
+  it("should validate ObservationdefinitionQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       ObservationdefinitionQuestionnaire,
     );
@@ -1177,7 +1177,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OperationoutcomeQuestionnaire fixture", () => {
+  it("should validate OperationoutcomeQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       OperationoutcomeQuestionnaire,
     );
@@ -1191,7 +1191,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OrganizationQuestionnaire fixture", () => {
+  it("should validate OrganizationQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       OrganizationQuestionnaire,
     );
@@ -1205,7 +1205,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate OrganizationaffiliationQuestionnaire fixture", () => {
+  it("should validate OrganizationaffiliationQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       OrganizationaffiliationQuestionnaire,
     );
@@ -1221,7 +1221,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PatientQuestionnaire fixture", () => {
+  it("should validate PatientQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(PatientQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for PatientQuestionnaire:");
@@ -1233,7 +1233,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PaymentnoticeQuestionnaire fixture", () => {
+  it("should validate PaymentnoticeQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       PaymentnoticeQuestionnaire,
     );
@@ -1247,7 +1247,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PaymentreconciliationQuestionnaire fixture", () => {
+  it("should validate PaymentreconciliationQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       PaymentreconciliationQuestionnaire,
     );
@@ -1263,7 +1263,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PersonQuestionnaire fixture", () => {
+  it("should validate PersonQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(PersonQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for PersonQuestionnaire:");
@@ -1275,7 +1275,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PractitionerQuestionnaire fixture", () => {
+  it("should validate PractitionerQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       PractitionerQuestionnaire,
     );
@@ -1289,7 +1289,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate PractitionerroleQuestionnaire fixture", () => {
+  it("should validate PractitionerroleQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       PractitionerroleQuestionnaire,
     );
@@ -1303,7 +1303,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProcedureQuestionnaire fixture", () => {
+  it("should validate ProcedureQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       ProcedureQuestionnaire,
     );
@@ -1317,7 +1317,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProvenanceQuestionnaire fixture", () => {
+  it("should validate ProvenanceQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       ProvenanceQuestionnaire,
     );
@@ -1331,7 +1331,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ProvenanceRelevantHistoryQuestionnaire fixture", () => {
+  it("should validate ProvenanceRelevantHistoryQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       ProvenanceRelevantHistoryQuestionnaire,
     );
@@ -1347,7 +1347,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate QuestionnaireCqfExample fixture", () => {
+  it("should validate QuestionnaireCqfExample fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       QuestionnaireCqfExample,
     );
@@ -1361,7 +1361,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate QuestionnaireExampleBluebook fixture", () => {
+  it("should validate QuestionnaireExampleBluebook fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       QuestionnaireExampleBluebook,
     );
@@ -1375,7 +1375,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate QuestionnaireExampleF201Lifelines fixture", () => {
+  it("should validate QuestionnaireExampleF201Lifelines fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       QuestionnaireExampleF201Lifelines,
     );
@@ -1389,7 +1389,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate QuestionnaireExampleGcs fixture", () => {
+  it("should validate QuestionnaireExampleGcs fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       QuestionnaireExampleGcs,
     );
@@ -1403,7 +1403,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate QuestionnaireExample fixture", () => {
+  it("should validate QuestionnaireExample fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(QuestionnaireExample);
     if (!result.success) {
       console.error("Validation failed for QuestionnaireExample:");
@@ -1415,7 +1415,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate QuestionnaireZikaVirusExposureAssessment fixture", () => {
+  it("should validate QuestionnaireZikaVirusExposureAssessment fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       QuestionnaireZikaVirusExposureAssessment,
     );
@@ -1431,7 +1431,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate QuestionnaireresponseQuestionnaire fixture", () => {
+  it("should validate QuestionnaireresponseQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       QuestionnaireresponseQuestionnaire,
     );
@@ -1447,7 +1447,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate RelatedpersonQuestionnaire fixture", () => {
+  it("should validate RelatedpersonQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       RelatedpersonQuestionnaire,
     );
@@ -1461,7 +1461,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ResearchdefinitionQuestionnaire fixture", () => {
+  it("should validate ResearchdefinitionQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       ResearchdefinitionQuestionnaire,
     );
@@ -1475,7 +1475,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ResearchstudyQuestionnaire fixture", () => {
+  it("should validate ResearchstudyQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       ResearchstudyQuestionnaire,
     );
@@ -1489,7 +1489,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ResearchsubjectQuestionnaire fixture", () => {
+  it("should validate ResearchsubjectQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       ResearchsubjectQuestionnaire,
     );
@@ -1503,7 +1503,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate RiskassessmentQuestionnaire fixture", () => {
+  it("should validate RiskassessmentQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       RiskassessmentQuestionnaire,
     );
@@ -1517,7 +1517,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ScheduleQuestionnaire fixture", () => {
+  it("should validate ScheduleQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(ScheduleQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for ScheduleQuestionnaire:");
@@ -1529,7 +1529,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SearchparameterQuestionnaire fixture", () => {
+  it("should validate SearchparameterQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       SearchparameterQuestionnaire,
     );
@@ -1543,7 +1543,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestGeneticsQuestionnaire fixture", () => {
+  it("should validate ServicerequestGeneticsQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       ServicerequestGeneticsQuestionnaire,
     );
@@ -1559,7 +1559,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ServicerequestQuestionnaire fixture", () => {
+  it("should validate ServicerequestQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       ServicerequestQuestionnaire,
     );
@@ -1573,7 +1573,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ShareablelibraryQuestionnaire fixture", () => {
+  it("should validate ShareablelibraryQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       ShareablelibraryQuestionnaire,
     );
@@ -1587,7 +1587,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SlotQuestionnaire fixture", () => {
+  it("should validate SlotQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(SlotQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for SlotQuestionnaire:");
@@ -1599,7 +1599,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SpecimenQuestionnaire fixture", () => {
+  it("should validate SpecimenQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(SpecimenQuestionnaire);
     if (!result.success) {
       console.error("Validation failed for SpecimenQuestionnaire:");
@@ -1611,7 +1611,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SpecimendefinitionQuestionnaire fixture", () => {
+  it("should validate SpecimendefinitionQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       SpecimendefinitionQuestionnaire,
     );
@@ -1625,7 +1625,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate StructuredefinitionQuestionnaire fixture", () => {
+  it("should validate StructuredefinitionQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       StructuredefinitionQuestionnaire,
     );
@@ -1639,7 +1639,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SubscriptionQuestionnaire fixture", () => {
+  it("should validate SubscriptionQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       SubscriptionQuestionnaire,
     );
@@ -1653,7 +1653,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SubstanceQuestionnaire fixture", () => {
+  it("should validate SubstanceQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       SubstanceQuestionnaire,
     );
@@ -1667,7 +1667,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SubstancenucleicacidQuestionnaire fixture", () => {
+  it("should validate SubstancenucleicacidQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       SubstancenucleicacidQuestionnaire,
     );
@@ -1681,7 +1681,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SubstancepolymerQuestionnaire fixture", () => {
+  it("should validate SubstancepolymerQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       SubstancepolymerQuestionnaire,
     );
@@ -1695,7 +1695,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SubstanceproteinQuestionnaire fixture", () => {
+  it("should validate SubstanceproteinQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       SubstanceproteinQuestionnaire,
     );
@@ -1709,7 +1709,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SubstancereferenceinformationQuestionnaire fixture", () => {
+  it("should validate SubstancereferenceinformationQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       SubstancereferenceinformationQuestionnaire,
     );
@@ -1725,7 +1725,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SupplydeliveryQuestionnaire fixture", () => {
+  it("should validate SupplydeliveryQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       SupplydeliveryQuestionnaire,
     );
@@ -1739,7 +1739,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SupplyrequestQuestionnaire fixture", () => {
+  it("should validate SupplyrequestQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       SupplyrequestQuestionnaire,
     );
@@ -1753,7 +1753,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SynthesisQuestionnaire fixture", () => {
+  it("should validate SynthesisQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       SynthesisQuestionnaire,
     );
@@ -1767,7 +1767,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate VerificationresultQuestionnaire fixture", () => {
+  it("should validate VerificationresultQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       VerificationresultQuestionnaire,
     );
@@ -1781,7 +1781,7 @@ describe("Questionnaire Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate VisionprescriptionQuestionnaire fixture", () => {
+  it("should validate VisionprescriptionQuestionnaire fixture (Questionnaire)", () => {
     const result = createQuestionnaireSchema().safeParse(
       VisionprescriptionQuestionnaire,
     );

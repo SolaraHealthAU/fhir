@@ -10,10 +10,13 @@ import {
   createCodeableConceptSchema,
   createReferenceSchema,
   createAnnotationSchema,
+  createQuantitySchema,
+  createRangeSchema,
+  createRatioSchema,
+  createDurationSchema,
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createGoalTargetSchema } from "../goaltarget/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -62,6 +65,32 @@ export function createGoalSchema() {
       note: z.array(createAnnotationSchema()).optional(),
       outcomeCode: z.array(createCodeableConceptSchema()).optional(),
       outcomeReference: z.array(createReferenceSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createGoalTargetSchema() {
+  return getCachedSchema("GoalTarget", () => {
+    const baseSchema: z.ZodType<types.GoalTarget> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      measure: createCodeableConceptSchema().optional(),
+      detailQuantity: createQuantitySchema().optional(),
+      detailRange: createRangeSchema().optional(),
+      detailCodeableConcept: createCodeableConceptSchema().optional(),
+      detailString: z.string().optional(),
+      _detailString: createElementSchema().optional(),
+      detailBoolean: z.boolean().optional(),
+      _detailBoolean: createElementSchema().optional(),
+      detailInteger: z.number().optional(),
+      _detailInteger: createElementSchema().optional(),
+      detailRatio: createRatioSchema().optional(),
+      dueDate: z.string().optional(),
+      _dueDate: createElementSchema().optional(),
+      dueDuration: createDurationSchema().optional(),
     });
 
     return baseSchema;

@@ -16,8 +16,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("NutritionOrder Schema Validation", () => {
-  it("should validate NutritionorderExampleCardiacdiet fixture", () => {
+describe("Nutritionorder Group Schema Validation", () => {
+  it("should validate NutritionorderExampleCardiacdiet fixture (NutritionOrder)", () => {
     const result = createNutritionOrderSchema().safeParse(
       NutritionorderExampleCardiacdiet,
     );
@@ -31,7 +31,7 @@ describe("NutritionOrder Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate NutritionorderExampleDiabeticdiet fixture", () => {
+  it("should validate NutritionorderExampleDiabeticdiet fixture (NutritionOrder)", () => {
     const result = createNutritionOrderSchema().safeParse(
       NutritionorderExampleDiabeticdiet,
     );
@@ -45,7 +45,7 @@ describe("NutritionOrder Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate NutritionorderExampleDiabeticsupplement fixture", () => {
+  it("should validate NutritionorderExampleDiabeticsupplement fixture (NutritionOrder)", () => {
     const result = createNutritionOrderSchema().safeParse(
       NutritionorderExampleDiabeticsupplement,
     );
@@ -61,7 +61,7 @@ describe("NutritionOrder Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate NutritionorderExampleEnergysupplement fixture", () => {
+  it("should validate NutritionorderExampleEnergysupplement fixture (NutritionOrder)", () => {
     const result = createNutritionOrderSchema().safeParse(
       NutritionorderExampleEnergysupplement,
     );
@@ -77,7 +77,7 @@ describe("NutritionOrder Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate NutritionorderExampleEnteralbolus fixture", () => {
+  it("should validate NutritionorderExampleEnteralbolus fixture (NutritionOrder)", () => {
     const result = createNutritionOrderSchema().safeParse(
       NutritionorderExampleEnteralbolus,
     );
@@ -91,7 +91,7 @@ describe("NutritionOrder Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate NutritionorderExampleEnteralcontinuous fixture", () => {
+  it("should validate NutritionorderExampleEnteralcontinuous fixture (NutritionOrder)", () => {
     const result = createNutritionOrderSchema().safeParse(
       NutritionorderExampleEnteralcontinuous,
     );
@@ -107,7 +107,7 @@ describe("NutritionOrder Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate NutritionorderExampleFiberrestricteddiet fixture", () => {
+  it("should validate NutritionorderExampleFiberrestricteddiet fixture (NutritionOrder)", () => {
     const result = createNutritionOrderSchema().safeParse(
       NutritionorderExampleFiberrestricteddiet,
     );
@@ -123,7 +123,7 @@ describe("NutritionOrder Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate NutritionorderExampleInfantenteral fixture", () => {
+  it("should validate NutritionorderExampleInfantenteral fixture (NutritionOrder)", () => {
     const result = createNutritionOrderSchema().safeParse(
       NutritionorderExampleInfantenteral,
     );
@@ -139,7 +139,7 @@ describe("NutritionOrder Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate NutritionorderExampleProteinsupplement fixture", () => {
+  it("should validate NutritionorderExampleProteinsupplement fixture (NutritionOrder)", () => {
     const result = createNutritionOrderSchema().safeParse(
       NutritionorderExampleProteinsupplement,
     );
@@ -155,7 +155,7 @@ describe("NutritionOrder Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate NutritionorderExamplePureeddietSimple fixture", () => {
+  it("should validate NutritionorderExamplePureeddietSimple fixture (NutritionOrder)", () => {
     const result = createNutritionOrderSchema().safeParse(
       NutritionorderExamplePureeddietSimple,
     );
@@ -171,7 +171,7 @@ describe("NutritionOrder Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate NutritionorderExamplePureeddiet fixture", () => {
+  it("should validate NutritionorderExamplePureeddiet fixture (NutritionOrder)", () => {
     const result = createNutritionOrderSchema().safeParse(
       NutritionorderExamplePureeddiet,
     );
@@ -185,7 +185,7 @@ describe("NutritionOrder Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate NutritionorderExampleRenaldiet fixture", () => {
+  it("should validate NutritionorderExampleRenaldiet fixture (NutritionOrder)", () => {
     const result = createNutritionOrderSchema().safeParse(
       NutritionorderExampleRenaldiet,
     );
@@ -199,7 +199,7 @@ describe("NutritionOrder Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate NutritionorderExampleTextureModified fixture", () => {
+  it("should validate NutritionorderExampleTextureModified fixture (NutritionOrder)", () => {
     const result = createNutritionOrderSchema().safeParse(
       NutritionorderExampleTextureModified,
     );

@@ -13,8 +13,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createAccountCoverageSchema } from "../accountcoverage/schema";
-import { createAccountGuarantorSchema } from "../accountguarantor/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -52,6 +50,37 @@ export function createAccountSchema() {
       _description: createElementSchema().optional(),
       guarantor: z.array(createAccountGuarantorSchema()).optional(),
       partOf: createReferenceSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createAccountCoverageSchema() {
+  return getCachedSchema("AccountCoverage", () => {
+    const baseSchema: z.ZodType<types.AccountCoverage> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      coverage: createReferenceSchema(),
+      priority: primitives.getPositiveIntSchema().optional(),
+      _priority: createElementSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createAccountGuarantorSchema() {
+  return getCachedSchema("AccountGuarantor", () => {
+    const baseSchema: z.ZodType<types.AccountGuarantor> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      party: createReferenceSchema(),
+      onHold: primitives.getBooleanSchema().optional(),
+      _onHold: createElementSchema().optional(),
+      period: createPeriodSchema().optional(),
     });
 
     return baseSchema;

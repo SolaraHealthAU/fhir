@@ -5,8 +5,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("ExplanationOfBenefit Schema Validation", () => {
-  it("should validate ExplanationofbenefitExample2 fixture", () => {
+describe("Explanationofbenefit Group Schema Validation", () => {
+  it("should validate ExplanationofbenefitExample2 fixture (ExplanationOfBenefit)", () => {
     const result = createExplanationOfBenefitSchema().safeParse(
       ExplanationofbenefitExample2,
     );
@@ -20,7 +20,7 @@ describe("ExplanationOfBenefit Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate ExplanationofbenefitExample fixture", () => {
+  it("should validate ExplanationofbenefitExample fixture (ExplanationOfBenefit)", () => {
     const result = createExplanationOfBenefitSchema().safeParse(
       ExplanationofbenefitExample,
     );

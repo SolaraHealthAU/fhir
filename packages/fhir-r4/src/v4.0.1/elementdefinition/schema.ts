@@ -37,13 +37,6 @@ import {
   createDosageSchema,
   createMetaSchema,
 } from "../core/schema";
-import { createElementDefinitionSlicingSchema } from "../elementdefinitionslicing/schema";
-import { createElementDefinitionBaseSchema } from "../elementdefinitionbase/schema";
-import { createElementDefinitionTypeSchema } from "../elementdefinitiontype/schema";
-import { createElementDefinitionExampleSchema } from "../elementdefinitionexample/schema";
-import { createElementDefinitionConstraintSchema } from "../elementdefinitionconstraint/schema";
-import { createElementDefinitionBindingSchema } from "../elementdefinitionbinding/schema";
-import { createElementDefinitionMappingSchema } from "../elementdefinitionmapping/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -349,6 +342,239 @@ export function createElementDefinitionSchema() {
       binding: createElementDefinitionBindingSchema().optional(),
       mapping: z.array(createElementDefinitionMappingSchema()).optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createElementDefinitionSlicingSchema() {
+  return getCachedSchema("ElementDefinitionSlicing", () => {
+    const baseSchema: z.ZodType<types.ElementDefinitionSlicing> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        discriminator: z
+          .array(createElementDefinitionDiscriminatorSchema())
+          .optional(),
+        description: primitives.getStringSchema().optional(),
+        _description: createElementSchema().optional(),
+        ordered: primitives.getBooleanSchema().optional(),
+        _ordered: createElementSchema().optional(),
+        rules: z.enum(["closed", "open", "openAtEnd"]),
+        _rules: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createElementDefinitionDiscriminatorSchema() {
+  return getCachedSchema("ElementDefinitionDiscriminator", () => {
+    const baseSchema: z.ZodType<types.ElementDefinitionDiscriminator> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        type: z
+          .enum(["value", "exists", "pattern", "type", "profile"])
+          .optional(),
+        _type: createElementSchema().optional(),
+        path: primitives.getStringSchema().optional(),
+        _path: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createElementDefinitionBaseSchema() {
+  return getCachedSchema("ElementDefinitionBase", () => {
+    const baseSchema: z.ZodType<types.ElementDefinitionBase> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      path: primitives.getStringSchema(),
+      _path: createElementSchema().optional(),
+      min: primitives.getUnsignedIntSchema(),
+      _min: createElementSchema().optional(),
+      max: primitives.getStringSchema(),
+      _max: createElementSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createElementDefinitionTypeSchema() {
+  return getCachedSchema("ElementDefinitionType", () => {
+    const baseSchema: z.ZodType<types.ElementDefinitionType> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      code: primitives.getUriSchema(),
+      _code: createElementSchema().optional(),
+      profile: z.array(primitives.getCanonicalSchema()).optional(),
+      _profile: z.array(createElementSchema()).optional(),
+      targetProfile: z.array(primitives.getCanonicalSchema()).optional(),
+      _targetProfile: z.array(createElementSchema()).optional(),
+      aggregation: z
+        .enum(["contained", "referenced", "bundled"])
+        .array()
+        .optional(),
+      _aggregation: z.array(createElementSchema()).optional(),
+      versioning: z.enum(["either", "independent", "specific"]).optional(),
+      _versioning: createElementSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createElementDefinitionExampleSchema() {
+  return getCachedSchema("ElementDefinitionExample", () => {
+    const baseSchema: z.ZodType<types.ElementDefinitionExample> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        label: primitives.getStringSchema(),
+        _label: createElementSchema().optional(),
+        valueBase64Binary: z.string().optional(),
+        _valueBase64Binary: createElementSchema().optional(),
+        valueBoolean: z.boolean().optional(),
+        _valueBoolean: createElementSchema().optional(),
+        valueCanonical: z.string().optional(),
+        _valueCanonical: createElementSchema().optional(),
+        valueCode: z.string().optional(),
+        _valueCode: createElementSchema().optional(),
+        valueDate: z.string().optional(),
+        _valueDate: createElementSchema().optional(),
+        valueDateTime: z.string().optional(),
+        _valueDateTime: createElementSchema().optional(),
+        valueDecimal: z.number().optional(),
+        _valueDecimal: createElementSchema().optional(),
+        valueId: z.string().optional(),
+        _valueId: createElementSchema().optional(),
+        valueInstant: z.string().optional(),
+        _valueInstant: createElementSchema().optional(),
+        valueInteger: z.number().optional(),
+        _valueInteger: createElementSchema().optional(),
+        valueMarkdown: z.string().optional(),
+        _valueMarkdown: createElementSchema().optional(),
+        valueOid: z.string().optional(),
+        _valueOid: createElementSchema().optional(),
+        valuePositiveInt: z.number().optional(),
+        _valuePositiveInt: createElementSchema().optional(),
+        valueString: z.string().optional(),
+        _valueString: createElementSchema().optional(),
+        valueTime: z.string().optional(),
+        _valueTime: createElementSchema().optional(),
+        valueUnsignedInt: z.number().optional(),
+        _valueUnsignedInt: createElementSchema().optional(),
+        valueUri: z.string().optional(),
+        _valueUri: createElementSchema().optional(),
+        valueUrl: z.string().optional(),
+        _valueUrl: createElementSchema().optional(),
+        valueUuid: z.string().optional(),
+        _valueUuid: createElementSchema().optional(),
+        valueAddress: createAddressSchema().optional(),
+        valueAge: createAgeSchema().optional(),
+        valueAnnotation: createAnnotationSchema().optional(),
+        valueAttachment: createAttachmentSchema().optional(),
+        valueCodeableConcept: createCodeableConceptSchema().optional(),
+        valueCoding: createCodingSchema().optional(),
+        valueContactPoint: createContactPointSchema().optional(),
+        valueCount: createCountSchema().optional(),
+        valueDistance: createDistanceSchema().optional(),
+        valueDuration: createDurationSchema().optional(),
+        valueHumanName: createHumanNameSchema().optional(),
+        valueIdentifier: createIdentifierSchema().optional(),
+        valueMoney: createMoneySchema().optional(),
+        valuePeriod: createPeriodSchema().optional(),
+        valueQuantity: createQuantitySchema().optional(),
+        valueRange: createRangeSchema().optional(),
+        valueRatio: createRatioSchema().optional(),
+        valueReference: createReferenceSchema().optional(),
+        valueSampledData: createSampledDataSchema().optional(),
+        valueSignature: createSignatureSchema().optional(),
+        valueTiming: createTimingSchema().optional(),
+        valueContactDetail: createContactDetailSchema().optional(),
+        valueContributor: createContributorSchema().optional(),
+        valueDataRequirement: createDataRequirementSchema().optional(),
+        valueExpression: createExpressionSchema().optional(),
+        valueParameterDefinition: createParameterDefinitionSchema().optional(),
+        valueRelatedArtifact: createRelatedArtifactSchema().optional(),
+        valueTriggerDefinition: createTriggerDefinitionSchema().optional(),
+        valueUsageContext: createUsageContextSchema().optional(),
+        valueDosage: createDosageSchema().optional(),
+        valueMeta: createMetaSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createElementDefinitionConstraintSchema() {
+  return getCachedSchema("ElementDefinitionConstraint", () => {
+    const baseSchema: z.ZodType<types.ElementDefinitionConstraint> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        key: primitives.getIdSchema(),
+        _key: createElementSchema().optional(),
+        requirements: primitives.getStringSchema().optional(),
+        _requirements: createElementSchema().optional(),
+        severity: z.enum(["error", "warning"]),
+        _severity: createElementSchema().optional(),
+        human: primitives.getStringSchema(),
+        _human: createElementSchema().optional(),
+        expression: primitives.getStringSchema().optional(),
+        _expression: createElementSchema().optional(),
+        xpath: primitives.getStringSchema().optional(),
+        _xpath: createElementSchema().optional(),
+        source: primitives.getCanonicalSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createElementDefinitionBindingSchema() {
+  return getCachedSchema("ElementDefinitionBinding", () => {
+    const baseSchema: z.ZodType<types.ElementDefinitionBinding> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        strength: z.enum(["required", "extensible", "preferred", "example"]),
+        _strength: createElementSchema().optional(),
+        description: primitives.getStringSchema().optional(),
+        _description: createElementSchema().optional(),
+        valueSet: primitives.getCanonicalSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createElementDefinitionMappingSchema() {
+  return getCachedSchema("ElementDefinitionMapping", () => {
+    const baseSchema: z.ZodType<types.ElementDefinitionMapping> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        identity: primitives.getIdSchema(),
+        _identity: createElementSchema().optional(),
+        language: primitives.getCodeSchema().optional(),
+        _language: createElementSchema().optional(),
+        map: primitives.getStringSchema(),
+        _map: createElementSchema().optional(),
+        comment: primitives.getStringSchema().optional(),
+        _comment: createElementSchema().optional(),
+      });
 
     return baseSchema;
   });

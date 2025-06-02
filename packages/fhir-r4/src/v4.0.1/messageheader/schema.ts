@@ -9,12 +9,10 @@ import {
   createCodingSchema,
   createReferenceSchema,
   createCodeableConceptSchema,
+  createContactPointSchema,
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createMessageHeaderDestinationSchema } from "../messageheaderdestination/schema";
-import { createMessageHeaderSourceSchema } from "../messageheadersource/schema";
-import { createMessageHeaderResponseSchema } from "../messageheaderresponse/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -45,6 +43,63 @@ export function createMessageHeaderSchema() {
       response: createMessageHeaderResponseSchema().optional(),
       focus: z.array(createReferenceSchema()).optional(),
       definition: primitives.getCanonicalSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createMessageHeaderDestinationSchema() {
+  return getCachedSchema("MessageHeaderDestination", () => {
+    const baseSchema: z.ZodType<types.MessageHeaderDestination> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        name: primitives.getStringSchema().optional(),
+        _name: createElementSchema().optional(),
+        target: createReferenceSchema().optional(),
+        endpoint: primitives.getUrlSchema(),
+        _endpoint: createElementSchema().optional(),
+        receiver: createReferenceSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createMessageHeaderSourceSchema() {
+  return getCachedSchema("MessageHeaderSource", () => {
+    const baseSchema: z.ZodType<types.MessageHeaderSource> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      name: primitives.getStringSchema().optional(),
+      _name: createElementSchema().optional(),
+      software: primitives.getStringSchema().optional(),
+      _software: createElementSchema().optional(),
+      version: primitives.getStringSchema().optional(),
+      _version: createElementSchema().optional(),
+      contact: createContactPointSchema().optional(),
+      endpoint: primitives.getUrlSchema(),
+      _endpoint: createElementSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createMessageHeaderResponseSchema() {
+  return getCachedSchema("MessageHeaderResponse", () => {
+    const baseSchema: z.ZodType<types.MessageHeaderResponse> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      identifier: primitives.getIdSchema(),
+      _identifier: createElementSchema().optional(),
+      code: z.enum(["ok", "transient-error", "fatal-error"]),
+      _code: createElementSchema().optional(),
+      details: createReferenceSchema().optional(),
     });
 
     return baseSchema;

@@ -687,6 +687,215 @@ function getSchemaFunctionName(type: string): string {
   return `create${type}Schema`;
 }
 
+// Helper functions for parent-child relationships
+function getParentTypeName(typeName: string): string | null {
+  // Handle normalized camelCase names like AccountGuarantor -> Account
+  // Look for patterns where a longer type name starts with a shorter one
+  // e.g., AccountGuarantor starts with Account, QuestionnaireResponseItem starts with QuestionnaireResponse
+
+  // For compound words like MedicinalProductName, we need to be smarter about finding the parent
+  // Try different potential parent lengths, starting from longer possibilities
+
+  // Try patterns like "MedicinalProductName" -> "MedicinalProduct"
+  // Look for the longest possible parent that makes sense
+  const possibleParents: string[] = [];
+
+  // Extract all capital letter positions to identify word boundaries
+  const capitalPositions: number[] = [];
+  for (let i = 0; i < typeName.length; i++) {
+    if (typeName[i] >= 'A' && typeName[i] <= 'Z') {
+      capitalPositions.push(i);
+    }
+  }
+
+  // Try different combinations of words as potential parents
+  // Start from the second-to-last capital letter and work backwards
+  for (let i = capitalPositions.length - 2; i >= 1; i--) {
+    const potentialParent = typeName.substring(0, capitalPositions[i]);
+    if (potentialParent.length > 0 && potentialParent.length < typeName.length) {
+      possibleParents.push(potentialParent);
+    }
+  }
+
+  // Return the longest potential parent (most specific)
+  return possibleParents.length > 0 ? possibleParents[0] : null;
+}
+
+function isValidParentChildRelationship(
+  childType: string,
+  parentType: string,
+  allTypes: Set<string>,
+): boolean {
+  // Check if this is a valid parent-child relationship
+  if (!childType.startsWith(parentType) || childType.length <= parentType.length) {
+    return false;
+  }
+
+  // Make sure the next character after the parent name is uppercase
+  // This ensures "Account" matches "AccountGuarantor" but not "AccountantData"
+  const nextCharIndex = parentType.length;
+  if (nextCharIndex < childType.length) {
+    const nextChar = childType[nextCharIndex];
+    if (nextChar < 'A' || nextChar > 'Z') {
+      return false;
+    }
+  }
+
+  // Only exclude truly independent types that happen to start with another type name
+  // but are not actually children of that type
+  const falsePositiveTypes = new Set([
+    'SubstanceAmount', // Independent type, not a child of Substance
+    'TimingRepeat', // Should be in core, not child of Timing
+    'DataRequirementCodeFilter', // Should be in core, not child of DataRequirement
+    'DataRequirementDateFilter', // Should be in core, not child of DataRequirement
+    'DataRequirementSort', // Should be in core, not child of DataRequirement
+    'DosageDoseAndRate', // Should be in core, not child of Dosage
+  ]);
+
+  // Check if this child type is a known false positive
+  if (falsePositiveTypes.has(childType)) {
+    return false;
+  }
+
+  // For remaining cases, check if the supposed parent actually exists
+  // If the parent doesn't exist in our type definitions, it's probably not a real relationship
+  if (!allTypes.has(parentType)) {
+    return false;
+  }
+
+  return true;
+}
+
+function getRootParentTypeName(typeName: string, allTypes: Set<string>): string {
+  // Find the ultimate root parent by walking up the hierarchy
+  // e.g., PrimarySecondaryTertiary -> PrimarySecondary -> Primary
+
+  let currentType = typeName;
+  let rootParent = typeName;
+  let maxDepth = 10; // Prevent infinite loops
+
+  // Keep looking for parents until we can't find any more
+  while (maxDepth > 0) {
+    const parent = getParentTypeName(currentType);
+    if (!parent) {
+      break;
+    }
+
+    // Check if this parent actually exists in our type definitions AND is a valid relationship
+    if (allTypes.has(parent) && isValidParentChildRelationship(currentType, parent, allTypes)) {
+      rootParent = parent;
+      currentType = parent;
+      maxDepth--;
+    } else {
+      // If the parent doesn't exist or isn't valid, stop here
+      break;
+    }
+  }
+
+  return rootParent;
+}
+
+function isDescendantType(
+  descendantType: string,
+  ancestorType: string,
+  allTypes: Set<string>,
+): boolean {
+  // Check if descendantType is a descendant of ancestorType (including direct children)
+  return isValidParentChildRelationship(descendantType, ancestorType, allTypes);
+}
+
+// Group types by parent-child relationships with multi-depth hierarchy support
+function groupTypesByParentChild(definitions: Definition[]): TypeGroup[] {
+  const groups: TypeGroup[] = [];
+  const processedTypes = new Set<string>();
+  const allTypeNames = new Set(definitions.map((d) => d.type));
+
+  // Special handling: Force all Substance* types (except SubstanceAmount) into the substance group
+  const substanceTypes: Definition[] = [];
+  const substanceAmountTypes: Definition[] = [];
+  const nonSubstanceTypes: Definition[] = [];
+
+  definitions.forEach((def) => {
+    if (def.type === 'SubstanceAmount' || def.type === 'SubstanceAmountReferenceRange') {
+      substanceAmountTypes.push(def);
+    } else if (def.type.startsWith('Substance')) {
+      substanceTypes.push(def);
+    } else {
+      nonSubstanceTypes.push(def);
+    }
+  });
+
+  // Create the substance group with all substance-related types
+  if (substanceTypes.length > 0) {
+    groups.push({
+      name: 'substance',
+      types: substanceTypes,
+      isCore: false,
+      dependencies: new Set<string>(),
+      schemaFunctions: new Set<string>(),
+    });
+    substanceTypes.forEach((type) => processedTypes.add(type.type));
+  }
+
+  // Create the substanceamount group with SubstanceAmount and SubstanceAmountReferenceRange
+  if (substanceAmountTypes.length > 0) {
+    groups.push({
+      name: 'substanceamount',
+      types: substanceAmountTypes,
+      isCore: false,
+      dependencies: new Set<string>(),
+      schemaFunctions: new Set<string>(),
+    });
+    substanceAmountTypes.forEach((type) => processedTypes.add(type.type));
+  }
+
+  // Handle all other types with normal parent-child detection
+  nonSubstanceTypes.forEach((def) => {
+    if (processedTypes.has(def.type)) return;
+
+    const rootParent = getRootParentTypeName(def.type, allTypeNames);
+
+    // If this type is its own root parent, it's a potential group leader
+    if (rootParent === def.type) {
+      const relatedTypes = [def];
+
+      // Find ALL descendants for this root parent (not just direct children)
+      nonSubstanceTypes.forEach((otherDef) => {
+        if (otherDef.type !== def.type && isDescendantType(otherDef.type, def.type, allTypeNames)) {
+          relatedTypes.push(otherDef);
+          processedTypes.add(otherDef.type);
+        }
+      });
+
+      groups.push({
+        name: def.type.toLowerCase(),
+        types: relatedTypes,
+        isCore: false,
+        dependencies: new Set<string>(),
+        schemaFunctions: new Set<string>(),
+      });
+
+      processedTypes.add(def.type);
+    }
+  });
+
+  // Handle any remaining orphaned types
+  nonSubstanceTypes.forEach((def) => {
+    if (!processedTypes.has(def.type)) {
+      groups.push({
+        name: def.type.toLowerCase(),
+        types: [def],
+        isCore: false,
+        dependencies: new Set<string>(),
+        schemaFunctions: new Set<string>(),
+      });
+      processedTypes.add(def.type);
+    }
+  });
+
+  return groups;
+}
+
 // Collect all schema function names needed for a property
 function collectSchemaFunctions(prop: Property): Set<string> {
   const funcs = new Set<string>();
@@ -751,49 +960,38 @@ function collectDependencies(prop: Property): string[] {
   return deps;
 }
 
-// Organize definitions into groups
+// Use the new parent-child grouping approach, but also handle core types
+const coreTypes = multiTypeSccs[0] || [];
+
+// Add additional types that should be in core but might not be in the largest SCC
+const additionalCoreTypes = [
+  'TimingRepeat',
+  'DataRequirementCodeFilter',
+  'DataRequirementDateFilter',
+  'DataRequirementSort',
+  'DosageDoseAndRate',
+];
+
+// Combine core types
+const allCoreTypes = [...coreTypes, ...additionalCoreTypes];
+
 const groups: TypeGroup[] = [];
 
-// First, handle the core types (the largest SCC)
-const coreTypes = multiTypeSccs[0] || [];
+// First, handle the core types (the largest SCC plus additional core types)
 groups.push({
   name: 'core',
-  types: definitions.filter((d) => coreTypes.includes(d.type)),
+  types: definitions.filter((d) => allCoreTypes.includes(d.type)),
   isCore: true,
   dependencies: new Set<string>(),
   schemaFunctions: new Set<string>(),
 });
 
-// Then group the remaining types by their SCC or as standalone
-definitions
-  .filter((d) => !coreTypes.includes(d.type))
-  .forEach((def) => {
-    const scc = findSccForType(def.type);
-    if (!scc || scc.length === 1) {
-      // Standalone type
-      groups.push({
-        name: def.type.toLowerCase(),
-        types: [def],
-        isCore: false,
-        dependencies: new Set<string>(),
-        schemaFunctions: new Set<string>(),
-      });
-    } else {
-      // Part of a multi-type SCC
-      const existingGroup = groups.find((g) => g.types.some((t) => scc.includes(t.type)));
-      if (existingGroup) {
-        existingGroup.types.push(def);
-      } else {
-        groups.push({
-          name: def.type.toLowerCase().split('_')[0], // Use the base name before underscore
-          types: [def],
-          isCore: false,
-          dependencies: new Set<string>(),
-          schemaFunctions: new Set<string>(),
-        });
-      }
-    }
-  });
+// Then use parent-child grouping for the remaining types
+const nonCoreDefinitions = definitions.filter((d) => !allCoreTypes.includes(d.type));
+const parentChildGroups = groupTypesByParentChild(nonCoreDefinitions);
+
+// Add the parent-child groups to our main groups array
+groups.push(...parentChildGroups);
 
 // Collect dependencies and schema functions for each group
 groups.forEach((group) => {
@@ -846,33 +1044,6 @@ async function writeFile(filePath: string, content: string) {
     fs.mkdirSync(baseOutputDir, { recursive: true });
   }
 
-  // Pre-process groups to collect all dependencies
-  for (const group of groups) {
-    const typeDeps = new Set<string>();
-    const schemaFuncs = new Set<string>();
-
-    group.types.forEach((def) => {
-      def.properties.forEach((prop) => {
-        // Collect type dependencies
-        getPropertyDependencies(prop).forEach((dep) => typeDeps.add(dep));
-        // Collect schema function dependencies
-        getPropertySchemaFunctions(prop).forEach((func) => schemaFuncs.add(func));
-      });
-    });
-
-    // Find which groups contain our dependencies
-    const depGroups = new Set<string>();
-    typeDeps.forEach((dep) => {
-      const depGroup = groups.find((g) => g.types.some((t) => t.type === dep));
-      if (depGroup && depGroup !== group) {
-        depGroups.add(depGroup.name);
-      }
-    });
-
-    group.dependencies = depGroups;
-    group.schemaFunctions = schemaFuncs;
-  }
-
   // Write each group's schema and types
   for (const group of groups) {
     const groupDir = path.join(baseOutputDir, group.name);
@@ -901,6 +1072,7 @@ async function writeFile(filePath: string, content: string) {
           const depGroup = groups.find((g) =>
             g.types.some((t) => normalizeTypeName(t.type) === typeName),
           );
+          // Only add imports for schema functions from OTHER groups
           if (depGroup && depGroup !== group) {
             if (!importsByGroup.has(depGroup.name)) {
               importsByGroup.set(depGroup.name, new Set());
@@ -949,28 +1121,9 @@ async function writeFile(filePath: string, content: string) {
       }
     });
 
-    // Add imports for types within the same group to handle circular dependencies
-    const intraGroupDeps = new Set<string>();
-    group.types.forEach((def) => {
-      def.properties.forEach((prop) => {
-        getPropertyDependencies(prop).forEach((dep) => {
-          // Only add if it's a different type in the same group
-          if (group.types.some((t) => normalizeTypeName(t.type) === dep) && dep !== def.type) {
-            // Skip intra-group imports for core types since they're all defined in the same file
-            if (!group.isCore) {
-              intraGroupDeps.add(normalizeTypeName(dep));
-            }
-          }
-        });
-      });
-    });
+    // Don't add intra-group type imports since all types will be in the same file
 
-    if (intraGroupDeps.size > 0) {
-      // Add type imports for dependencies within the same group
-      typesImports.add(`import type { ${Array.from(intraGroupDeps).join(', ')} } from './types';`);
-    }
-
-    // Generate schema file content
+    // Generate schema file content - include ALL types in the group
     const schemaOutput = `      ${Array.from(schemaImports).join('\n')}
 
       /* Generated from FHIR JSON Schema */
@@ -990,7 +1143,7 @@ async function writeFile(filePath: string, content: string) {
         .join('\n\n')}
     `;
 
-    // Generate types file content
+    // Generate types file content - include ALL types in the group
     const typesOutput = `
       ${Array.from(typesImports).join('\n')}
 

@@ -7,8 +7,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Group Schema Validation", () => {
-  it("should validate GroupExampleHerd1 fixture", () => {
+describe("Group Group Schema Validation", () => {
+  it("should validate GroupExampleHerd1 fixture (Group)", () => {
     const result = createGroupSchema().safeParse(GroupExampleHerd1);
     if (!result.success) {
       console.error("Validation failed for GroupExampleHerd1:");
@@ -20,7 +20,7 @@ describe("Group Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate GroupExampleMember fixture", () => {
+  it("should validate GroupExampleMember fixture (Group)", () => {
     const result = createGroupSchema().safeParse(GroupExampleMember);
     if (!result.success) {
       console.error("Validation failed for GroupExampleMember:");
@@ -32,7 +32,7 @@ describe("Group Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate GroupExamplePatientlist fixture", () => {
+  it("should validate GroupExamplePatientlist fixture (Group)", () => {
     const result = createGroupSchema().safeParse(GroupExamplePatientlist);
     if (!result.success) {
       console.error("Validation failed for GroupExamplePatientlist:");
@@ -44,7 +44,7 @@ describe("Group Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate GroupExample fixture", () => {
+  it("should validate GroupExample fixture (Group)", () => {
     const result = createGroupSchema().safeParse(GroupExample);
     if (!result.success) {
       console.error("Validation failed for GroupExample:");

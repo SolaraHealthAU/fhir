@@ -6,8 +6,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("BodyStructure Schema Validation", () => {
-  it("should validate BodystructureExampleFetus fixture", () => {
+describe("Bodystructure Group Schema Validation", () => {
+  it("should validate BodystructureExampleFetus fixture (BodyStructure)", () => {
     const result = createBodyStructureSchema().safeParse(
       BodystructureExampleFetus,
     );
@@ -21,7 +21,7 @@ describe("BodyStructure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BodystructureExampleSkinPatch fixture", () => {
+  it("should validate BodystructureExampleSkinPatch fixture (BodyStructure)", () => {
     const result = createBodyStructureSchema().safeParse(
       BodystructureExampleSkinPatch,
     );
@@ -35,7 +35,7 @@ describe("BodyStructure Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate BodystructureExampleTumor fixture", () => {
+  it("should validate BodystructureExampleTumor fixture (BodyStructure)", () => {
     const result = createBodyStructureSchema().safeParse(
       BodystructureExampleTumor,
     );

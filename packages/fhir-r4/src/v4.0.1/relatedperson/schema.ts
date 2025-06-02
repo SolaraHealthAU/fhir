@@ -17,7 +17,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createRelatedPersonCommunicationSchema } from "../relatedpersoncommunication/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -53,6 +52,22 @@ export function createRelatedPersonSchema() {
         .array(createRelatedPersonCommunicationSchema())
         .optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createRelatedPersonCommunicationSchema() {
+  return getCachedSchema("RelatedPersonCommunication", () => {
+    const baseSchema: z.ZodType<types.RelatedPersonCommunication> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        language: createCodeableConceptSchema(),
+        preferred: primitives.getBooleanSchema().optional(),
+        _preferred: createElementSchema().optional(),
+      });
 
     return baseSchema;
   });

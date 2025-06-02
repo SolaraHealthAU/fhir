@@ -2,8 +2,8 @@ import { createPaymentNoticeSchema } from "../../src";
 import { PaymentnoticeExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("PaymentNotice Schema Validation", () => {
-  it("should validate PaymentnoticeExample fixture", () => {
+describe("Paymentnotice Group Schema Validation", () => {
+  it("should validate PaymentnoticeExample fixture (PaymentNotice)", () => {
     const result = createPaymentNoticeSchema().safeParse(PaymentnoticeExample);
     if (!result.success) {
       console.error("Validation failed for PaymentnoticeExample:");

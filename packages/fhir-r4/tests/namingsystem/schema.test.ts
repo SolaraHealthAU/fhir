@@ -2,8 +2,8 @@ import { createNamingSystemSchema } from "../../src";
 import { NamingsystemExampleId, NamingsystemExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("NamingSystem Schema Validation", () => {
-  it("should validate NamingsystemExampleId fixture", () => {
+describe("Namingsystem Group Schema Validation", () => {
+  it("should validate NamingsystemExampleId fixture (NamingSystem)", () => {
     const result = createNamingSystemSchema().safeParse(NamingsystemExampleId);
     if (!result.success) {
       console.error("Validation failed for NamingsystemExampleId:");
@@ -15,7 +15,7 @@ describe("NamingSystem Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate NamingsystemExample fixture", () => {
+  it("should validate NamingsystemExample fixture (NamingSystem)", () => {
     const result = createNamingSystemSchema().safeParse(NamingsystemExample);
     if (!result.success) {
       console.error("Validation failed for NamingsystemExample:");

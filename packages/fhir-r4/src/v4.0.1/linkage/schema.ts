@@ -10,7 +10,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createLinkageItemSchema } from "../linkageitem/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -32,6 +31,21 @@ export function createLinkageSchema() {
       _active: createElementSchema().optional(),
       author: createReferenceSchema().optional(),
       item: z.array(createLinkageItemSchema()),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createLinkageItemSchema() {
+  return getCachedSchema("LinkageItem", () => {
+    const baseSchema: z.ZodType<types.LinkageItem> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      type: z.enum(["source", "alternate", "historical"]),
+      _type: createElementSchema().optional(),
+      resource: createReferenceSchema(),
     });
 
     return baseSchema;

@@ -2,8 +2,8 @@ import { createSubscriptionSchema } from "../../src";
 import { SubscriptionExampleError, SubscriptionExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Subscription Schema Validation", () => {
-  it("should validate SubscriptionExampleError fixture", () => {
+describe("Subscription Group Schema Validation", () => {
+  it("should validate SubscriptionExampleError fixture (Subscription)", () => {
     const result = createSubscriptionSchema().safeParse(
       SubscriptionExampleError,
     );
@@ -17,7 +17,7 @@ describe("Subscription Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SubscriptionExample fixture", () => {
+  it("should validate SubscriptionExample fixture (Subscription)", () => {
     const result = createSubscriptionSchema().safeParse(SubscriptionExample);
     if (!result.success) {
       console.error("Validation failed for SubscriptionExample:");

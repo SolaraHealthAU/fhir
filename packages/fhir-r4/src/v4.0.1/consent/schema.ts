@@ -10,12 +10,11 @@ import {
   createCodeableConceptSchema,
   createReferenceSchema,
   createAttachmentSchema,
+  createPeriodSchema,
+  createCodingSchema,
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createConsentPolicySchema } from "../consentpolicy/schema";
-import { createConsentVerificationSchema } from "../consentverification/schema";
-import { createConsentProvisionSchema } from "../consentprovision/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -56,6 +55,94 @@ export function createConsentSchema() {
       policyRule: createCodeableConceptSchema().optional(),
       verification: z.array(createConsentVerificationSchema()).optional(),
       provision: createConsentProvisionSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createConsentPolicySchema() {
+  return getCachedSchema("ConsentPolicy", () => {
+    const baseSchema: z.ZodType<types.ConsentPolicy> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      authority: primitives.getUriSchema().optional(),
+      _authority: createElementSchema().optional(),
+      uri: primitives.getUriSchema().optional(),
+      _uri: createElementSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createConsentVerificationSchema() {
+  return getCachedSchema("ConsentVerification", () => {
+    const baseSchema: z.ZodType<types.ConsentVerification> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      verified: primitives.getBooleanSchema(),
+      _verified: createElementSchema().optional(),
+      verifiedWith: createReferenceSchema().optional(),
+      verificationDate: primitives.getDateTimeSchema().optional(),
+      _verificationDate: createElementSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createConsentProvisionSchema() {
+  return getCachedSchema("ConsentProvision", () => {
+    const baseSchema: z.ZodType<types.ConsentProvision> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      type: z.enum(["deny", "permit"]).optional(),
+      _type: createElementSchema().optional(),
+      period: createPeriodSchema().optional(),
+      actor: z.array(createConsentActorSchema()).optional(),
+      action: z.array(createCodeableConceptSchema()).optional(),
+      securityLabel: z.array(createCodingSchema()).optional(),
+      purpose: z.array(createCodingSchema()).optional(),
+      class: z.array(createCodingSchema()).optional(),
+      code: z.array(createCodeableConceptSchema()).optional(),
+      dataPeriod: createPeriodSchema().optional(),
+      data: z.array(createConsentDataSchema()).optional(),
+      provision: z.array(createConsentProvisionSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createConsentActorSchema() {
+  return getCachedSchema("ConsentActor", () => {
+    const baseSchema: z.ZodType<types.ConsentActor> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      role: createCodeableConceptSchema(),
+      reference: createReferenceSchema(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createConsentDataSchema() {
+  return getCachedSchema("ConsentData", () => {
+    const baseSchema: z.ZodType<types.ConsentData> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      meaning: z
+        .enum(["instance", "related", "dependents", "authoredby"])
+        .optional(),
+      _meaning: createElementSchema().optional(),
+      reference: createReferenceSchema(),
     });
 
     return baseSchema;

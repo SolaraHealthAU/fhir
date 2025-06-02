@@ -2,8 +2,8 @@ import { createGoalSchema } from "../../src";
 import { GoalExampleStopSmoking, GoalExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Goal Schema Validation", () => {
-  it("should validate GoalExampleStopSmoking fixture", () => {
+describe("Goal Group Schema Validation", () => {
+  it("should validate GoalExampleStopSmoking fixture (Goal)", () => {
     const result = createGoalSchema().safeParse(GoalExampleStopSmoking);
     if (!result.success) {
       console.error("Validation failed for GoalExampleStopSmoking:");
@@ -15,7 +15,7 @@ describe("Goal Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate GoalExample fixture", () => {
+  it("should validate GoalExample fixture (Goal)", () => {
     const result = createGoalSchema().safeParse(GoalExample);
     if (!result.success) {
       console.error("Validation failed for GoalExample:");

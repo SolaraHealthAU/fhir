@@ -2,8 +2,8 @@ import { createResearchSubjectSchema } from "../../src";
 import { ResearchsubjectExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("ResearchSubject Schema Validation", () => {
-  it("should validate ResearchsubjectExample fixture", () => {
+describe("Researchsubject Group Schema Validation", () => {
+  it("should validate ResearchsubjectExample fixture (ResearchSubject)", () => {
     const result = createResearchSubjectSchema().safeParse(
       ResearchsubjectExample,
     );

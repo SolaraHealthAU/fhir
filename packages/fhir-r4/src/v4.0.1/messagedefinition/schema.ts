@@ -14,8 +14,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createMessageDefinitionFocusSchema } from "../messagedefinitionfocus/schema";
-import { createMessageDefinitionAllowedResponseSchema } from "../messagedefinitionallowedresponse/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -77,6 +75,41 @@ export function createMessageDefinitionSchema() {
         .optional(),
       graph: z.array(primitives.getCanonicalSchema()).optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createMessageDefinitionFocusSchema() {
+  return getCachedSchema("MessageDefinitionFocus", () => {
+    const baseSchema: z.ZodType<types.MessageDefinitionFocus> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      code: primitives.getCodeSchema(),
+      _code: createElementSchema().optional(),
+      profile: primitives.getCanonicalSchema().optional(),
+      min: primitives.getUnsignedIntSchema(),
+      _min: createElementSchema().optional(),
+      max: primitives.getStringSchema().optional(),
+      _max: createElementSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createMessageDefinitionAllowedResponseSchema() {
+  return getCachedSchema("MessageDefinitionAllowedResponse", () => {
+    const baseSchema: z.ZodType<types.MessageDefinitionAllowedResponse> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        message: primitives.getCanonicalSchema(),
+        situation: primitives.getMarkdownSchema().optional(),
+        _situation: createElementSchema().optional(),
+      });
 
     return baseSchema;
   });

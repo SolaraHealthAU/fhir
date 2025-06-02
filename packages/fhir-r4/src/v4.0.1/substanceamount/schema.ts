@@ -9,7 +9,6 @@ import {
   createElementSchema,
   createCodeableConceptSchema,
 } from "../core/schema";
-import { createSubstanceAmountReferenceRangeSchema } from "../substanceamountreferencerange/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -28,6 +27,21 @@ export function createSubstanceAmountSchema() {
       _amountText: createElementSchema().optional(),
       referenceRange: createSubstanceAmountReferenceRangeSchema().optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createSubstanceAmountReferenceRangeSchema() {
+  return getCachedSchema("SubstanceAmountReferenceRange", () => {
+    const baseSchema: z.ZodType<types.SubstanceAmountReferenceRange> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        lowLimit: createQuantitySchema().optional(),
+        highLimit: createQuantitySchema().optional(),
+      });
 
     return baseSchema;
   });

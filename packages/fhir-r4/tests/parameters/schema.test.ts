@@ -2,8 +2,8 @@ import { createParametersSchema } from "../../src";
 import { ParametersExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Parameters Schema Validation", () => {
-  it("should validate ParametersExample fixture", () => {
+describe("Parameters Group Schema Validation", () => {
+  it("should validate ParametersExample fixture (Parameters)", () => {
     const result = createParametersSchema().safeParse(ParametersExample);
     if (!result.success) {
       console.error("Validation failed for ParametersExample:");

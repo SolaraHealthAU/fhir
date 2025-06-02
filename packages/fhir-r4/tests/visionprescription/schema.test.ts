@@ -5,8 +5,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("VisionPrescription Schema Validation", () => {
-  it("should validate VisionprescriptionExample1 fixture", () => {
+describe("Visionprescription Group Schema Validation", () => {
+  it("should validate VisionprescriptionExample1 fixture (VisionPrescription)", () => {
     const result = createVisionPrescriptionSchema().safeParse(
       VisionprescriptionExample1,
     );
@@ -20,7 +20,7 @@ describe("VisionPrescription Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate VisionprescriptionExample fixture", () => {
+  it("should validate VisionprescriptionExample fixture (VisionPrescription)", () => {
     const result = createVisionPrescriptionSchema().safeParse(
       VisionprescriptionExample,
     );

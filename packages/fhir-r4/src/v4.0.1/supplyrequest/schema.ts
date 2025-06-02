@@ -12,10 +12,10 @@ import {
   createQuantitySchema,
   createPeriodSchema,
   createTimingSchema,
+  createRangeSchema,
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createSupplyRequestParameterSchema } from "../supplyrequestparameter/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -65,6 +65,24 @@ export function createSupplyRequestSchema() {
       reasonReference: z.array(createReferenceSchema()).optional(),
       deliverFrom: createReferenceSchema().optional(),
       deliverTo: createReferenceSchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createSupplyRequestParameterSchema() {
+  return getCachedSchema("SupplyRequestParameter", () => {
+    const baseSchema: z.ZodType<types.SupplyRequestParameter> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      code: createCodeableConceptSchema().optional(),
+      valueCodeableConcept: createCodeableConceptSchema().optional(),
+      valueQuantity: createQuantitySchema().optional(),
+      valueRange: createRangeSchema().optional(),
+      valueBoolean: z.boolean().optional(),
+      _valueBoolean: createElementSchema().optional(),
     });
 
     return baseSchema;

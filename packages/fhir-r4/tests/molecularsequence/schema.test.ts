@@ -20,8 +20,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("MolecularSequence Schema Validation", () => {
-  it("should validate Coord0baseExample fixture", () => {
+describe("Molecularsequence Group Schema Validation", () => {
+  it("should validate Coord0baseExample fixture (MolecularSequence)", () => {
     const result = createMolecularSequenceSchema().safeParse(Coord0baseExample);
     if (!result.success) {
       console.error("Validation failed for Coord0baseExample:");
@@ -33,7 +33,7 @@ describe("MolecularSequence Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate Coord1baseExample fixture", () => {
+  it("should validate Coord1baseExample fixture (MolecularSequence)", () => {
     const result = createMolecularSequenceSchema().safeParse(Coord1baseExample);
     if (!result.success) {
       console.error("Validation failed for Coord1baseExample:");
@@ -45,7 +45,7 @@ describe("MolecularSequence Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate MolecularsequenceExample fixture", () => {
+  it("should validate MolecularsequenceExample fixture (MolecularSequence)", () => {
     const result = createMolecularSequenceSchema().safeParse(
       MolecularsequenceExample,
     );
@@ -59,7 +59,7 @@ describe("MolecularSequence Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SequenceComplexVariant fixture", () => {
+  it("should validate SequenceComplexVariant fixture (MolecularSequence)", () => {
     const result = createMolecularSequenceSchema().safeParse(
       SequenceComplexVariant,
     );
@@ -73,7 +73,7 @@ describe("MolecularSequence Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SequenceExampleTpmtOne fixture", () => {
+  it("should validate SequenceExampleTpmtOne fixture (MolecularSequence)", () => {
     const result = createMolecularSequenceSchema().safeParse(
       SequenceExampleTpmtOne,
     );
@@ -87,7 +87,7 @@ describe("MolecularSequence Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SequenceExampleTpmtTwo fixture", () => {
+  it("should validate SequenceExampleTpmtTwo fixture (MolecularSequence)", () => {
     const result = createMolecularSequenceSchema().safeParse(
       SequenceExampleTpmtTwo,
     );
@@ -101,7 +101,7 @@ describe("MolecularSequence Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SequenceExampleFdaComparisons fixture", () => {
+  it("should validate SequenceExampleFdaComparisons fixture (MolecularSequence)", () => {
     const result = createMolecularSequenceSchema().safeParse(
       SequenceExampleFdaComparisons,
     );
@@ -115,7 +115,7 @@ describe("MolecularSequence Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SequenceExampleFdaVcfeval fixture", () => {
+  it("should validate SequenceExampleFdaVcfeval fixture (MolecularSequence)", () => {
     const result = createMolecularSequenceSchema().safeParse(
       SequenceExampleFdaVcfeval,
     );
@@ -129,7 +129,7 @@ describe("MolecularSequence Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SequenceExampleFda fixture", () => {
+  it("should validate SequenceExampleFda fixture (MolecularSequence)", () => {
     const result =
       createMolecularSequenceSchema().safeParse(SequenceExampleFda);
     if (!result.success) {
@@ -142,7 +142,7 @@ describe("MolecularSequence Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SequenceExamplePgx1 fixture", () => {
+  it("should validate SequenceExamplePgx1 fixture (MolecularSequence)", () => {
     const result =
       createMolecularSequenceSchema().safeParse(SequenceExamplePgx1);
     if (!result.success) {
@@ -155,7 +155,7 @@ describe("MolecularSequence Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SequenceExamplePgx2 fixture", () => {
+  it("should validate SequenceExamplePgx2 fixture (MolecularSequence)", () => {
     const result =
       createMolecularSequenceSchema().safeParse(SequenceExamplePgx2);
     if (!result.success) {
@@ -168,7 +168,7 @@ describe("MolecularSequence Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SequenceGeneticsExampleBreastcancer fixture", () => {
+  it("should validate SequenceGeneticsExampleBreastcancer fixture (MolecularSequence)", () => {
     const result = createMolecularSequenceSchema().safeParse(
       SequenceGeneticsExampleBreastcancer,
     );
@@ -184,7 +184,7 @@ describe("MolecularSequence Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SequenceGraphicExample1 fixture", () => {
+  it("should validate SequenceGraphicExample1 fixture (MolecularSequence)", () => {
     const result = createMolecularSequenceSchema().safeParse(
       SequenceGraphicExample1,
     );
@@ -198,7 +198,7 @@ describe("MolecularSequence Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SequenceGraphicExample2 fixture", () => {
+  it("should validate SequenceGraphicExample2 fixture (MolecularSequence)", () => {
     const result = createMolecularSequenceSchema().safeParse(
       SequenceGraphicExample2,
     );
@@ -212,7 +212,7 @@ describe("MolecularSequence Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SequenceGraphicExample3 fixture", () => {
+  it("should validate SequenceGraphicExample3 fixture (MolecularSequence)", () => {
     const result = createMolecularSequenceSchema().safeParse(
       SequenceGraphicExample3,
     );
@@ -226,7 +226,7 @@ describe("MolecularSequence Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SequenceGraphicExample4 fixture", () => {
+  it("should validate SequenceGraphicExample4 fixture (MolecularSequence)", () => {
     const result = createMolecularSequenceSchema().safeParse(
       SequenceGraphicExample4,
     );
@@ -240,7 +240,7 @@ describe("MolecularSequence Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SequenceGraphicExample5 fixture", () => {
+  it("should validate SequenceGraphicExample5 fixture (MolecularSequence)", () => {
     const result = createMolecularSequenceSchema().safeParse(
       SequenceGraphicExample5,
     );

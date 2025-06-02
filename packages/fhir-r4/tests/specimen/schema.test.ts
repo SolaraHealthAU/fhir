@@ -8,8 +8,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("Specimen Schema Validation", () => {
-  it("should validate SpecimenExampleIsolate fixture", () => {
+describe("Specimen Group Schema Validation", () => {
+  it("should validate SpecimenExampleIsolate fixture (Specimen)", () => {
     const result = createSpecimenSchema().safeParse(SpecimenExampleIsolate);
     if (!result.success) {
       console.error("Validation failed for SpecimenExampleIsolate:");
@@ -21,7 +21,7 @@ describe("Specimen Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SpecimenExamplePooledSerum fixture", () => {
+  it("should validate SpecimenExamplePooledSerum fixture (Specimen)", () => {
     const result = createSpecimenSchema().safeParse(SpecimenExamplePooledSerum);
     if (!result.success) {
       console.error("Validation failed for SpecimenExamplePooledSerum:");
@@ -33,7 +33,7 @@ describe("Specimen Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SpecimenExampleSerum fixture", () => {
+  it("should validate SpecimenExampleSerum fixture (Specimen)", () => {
     const result = createSpecimenSchema().safeParse(SpecimenExampleSerum);
     if (!result.success) {
       console.error("Validation failed for SpecimenExampleSerum:");
@@ -45,7 +45,7 @@ describe("Specimen Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SpecimenExampleUrine fixture", () => {
+  it("should validate SpecimenExampleUrine fixture (Specimen)", () => {
     const result = createSpecimenSchema().safeParse(SpecimenExampleUrine);
     if (!result.success) {
       console.error("Validation failed for SpecimenExampleUrine:");
@@ -57,7 +57,7 @@ describe("Specimen Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate SpecimenExample fixture", () => {
+  it("should validate SpecimenExample fixture (Specimen)", () => {
     const result = createSpecimenSchema().safeParse(SpecimenExample);
     if (!result.success) {
       console.error("Validation failed for SpecimenExample:");

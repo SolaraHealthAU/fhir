@@ -13,11 +13,11 @@ import {
   createUsageContextSchema,
   createPeriodSchema,
   createRelatedArtifactSchema,
+  createExpressionSchema,
+  createQuantitySchema,
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createMeasureGroupSchema } from "../measuregroup/schema";
-import { createMeasureSupplementalDataSchema } from "../measuresupplementaldata/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -104,6 +104,227 @@ export function createMeasureSchema() {
         .array(createMeasureSupplementalDataSchema())
         .optional(),
     });
+
+    return baseSchema;
+  });
+}
+
+export function createMeasureGroupSchema() {
+  return getCachedSchema("MeasureGroup", () => {
+    const baseSchema: z.ZodType<types.MeasureGroup> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      code: createCodeableConceptSchema().optional(),
+      description: primitives.getStringSchema().optional(),
+      _description: createElementSchema().optional(),
+      population: z.array(createMeasurePopulationSchema()).optional(),
+      stratifier: z.array(createMeasureStratifierSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createMeasurePopulationSchema() {
+  return getCachedSchema("MeasurePopulation", () => {
+    const baseSchema: z.ZodType<types.MeasurePopulation> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      code: createCodeableConceptSchema().optional(),
+      description: primitives.getStringSchema().optional(),
+      _description: createElementSchema().optional(),
+      criteria: createExpressionSchema(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createMeasureStratifierSchema() {
+  return getCachedSchema("MeasureStratifier", () => {
+    const baseSchema: z.ZodType<types.MeasureStratifier> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      code: createCodeableConceptSchema().optional(),
+      description: primitives.getStringSchema().optional(),
+      _description: createElementSchema().optional(),
+      criteria: createExpressionSchema().optional(),
+      component: z.array(createMeasureComponentSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createMeasureComponentSchema() {
+  return getCachedSchema("MeasureComponent", () => {
+    const baseSchema: z.ZodType<types.MeasureComponent> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      code: createCodeableConceptSchema().optional(),
+      description: primitives.getStringSchema().optional(),
+      _description: createElementSchema().optional(),
+      criteria: createExpressionSchema(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createMeasureSupplementalDataSchema() {
+  return getCachedSchema("MeasureSupplementalData", () => {
+    const baseSchema: z.ZodType<types.MeasureSupplementalData> = z.strictObject(
+      {
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        code: createCodeableConceptSchema().optional(),
+        usage: z.array(createCodeableConceptSchema()).optional(),
+        description: primitives.getStringSchema().optional(),
+        _description: createElementSchema().optional(),
+        criteria: createExpressionSchema(),
+      },
+    );
+
+    return baseSchema;
+  });
+}
+
+export function createMeasureReportSchema() {
+  return getCachedSchema("MeasureReport", () => {
+    const baseSchema: z.ZodType<types.MeasureReport> = z.strictObject({
+      resourceType: z.literal("MeasureReport"),
+      id: primitives.getIdSchema().optional(),
+      meta: createMetaSchema().optional(),
+      implicitRules: primitives.getUriSchema().optional(),
+      _implicitRules: createElementSchema().optional(),
+      language: primitives.getCodeSchema().optional(),
+      _language: createElementSchema().optional(),
+      text: createNarrativeSchema().optional(),
+      contained: z.array(createResourceListSchema()).optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      identifier: z.array(createIdentifierSchema()).optional(),
+      status: z.enum(["complete", "pending", "error"]),
+      _status: createElementSchema().optional(),
+      type: z.enum([
+        "individual",
+        "subject-list",
+        "summary",
+        "data-collection",
+      ]),
+      _type: createElementSchema().optional(),
+      measure: primitives.getCanonicalSchema(),
+      subject: createReferenceSchema().optional(),
+      date: primitives.getDateTimeSchema().optional(),
+      _date: createElementSchema().optional(),
+      reporter: createReferenceSchema().optional(),
+      period: createPeriodSchema(),
+      improvementNotation: createCodeableConceptSchema().optional(),
+      group: z.array(createMeasureReportGroupSchema()).optional(),
+      evaluatedResource: z.array(createReferenceSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createMeasureReportGroupSchema() {
+  return getCachedSchema("MeasureReportGroup", () => {
+    const baseSchema: z.ZodType<types.MeasureReportGroup> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      code: createCodeableConceptSchema().optional(),
+      population: z.array(createMeasureReportPopulationSchema()).optional(),
+      measureScore: createQuantitySchema().optional(),
+      stratifier: z.array(createMeasureReportStratifierSchema()).optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createMeasureReportPopulationSchema() {
+  return getCachedSchema("MeasureReportPopulation", () => {
+    const baseSchema: z.ZodType<types.MeasureReportPopulation> = z.strictObject(
+      {
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        code: createCodeableConceptSchema().optional(),
+        count: primitives.getIntegerSchema().optional(),
+        _count: createElementSchema().optional(),
+        subjectResults: createReferenceSchema().optional(),
+      },
+    );
+
+    return baseSchema;
+  });
+}
+
+export function createMeasureReportStratifierSchema() {
+  return getCachedSchema("MeasureReportStratifier", () => {
+    const baseSchema: z.ZodType<types.MeasureReportStratifier> = z.strictObject(
+      {
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        code: z.array(createCodeableConceptSchema()).optional(),
+        stratum: z.array(createMeasureReportStratumSchema()).optional(),
+      },
+    );
+
+    return baseSchema;
+  });
+}
+
+export function createMeasureReportStratumSchema() {
+  return getCachedSchema("MeasureReportStratum", () => {
+    const baseSchema: z.ZodType<types.MeasureReportStratum> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      value: createCodeableConceptSchema().optional(),
+      component: z.array(createMeasureReportComponentSchema()).optional(),
+      population: z.array(createMeasureReportPopulation1Schema()).optional(),
+      measureScore: createQuantitySchema().optional(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createMeasureReportComponentSchema() {
+  return getCachedSchema("MeasureReportComponent", () => {
+    const baseSchema: z.ZodType<types.MeasureReportComponent> = z.strictObject({
+      id: primitives.getStringSchema().optional(),
+      extension: z.array(createExtensionSchema()).optional(),
+      modifierExtension: z.array(createExtensionSchema()).optional(),
+      code: createCodeableConceptSchema(),
+      value: createCodeableConceptSchema(),
+    });
+
+    return baseSchema;
+  });
+}
+
+export function createMeasureReportPopulation1Schema() {
+  return getCachedSchema("MeasureReportPopulation1", () => {
+    const baseSchema: z.ZodType<types.MeasureReportPopulation1> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        code: createCodeableConceptSchema().optional(),
+        count: primitives.getIntegerSchema().optional(),
+        _count: createElementSchema().optional(),
+        subjectResults: createReferenceSchema().optional(),
+      });
 
     return baseSchema;
   });

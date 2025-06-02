@@ -2,8 +2,8 @@ import { createPaymentReconciliationSchema } from "../../src";
 import { PaymentreconciliationExample } from "./fixture";
 import { z } from "zod/v4";
 
-describe("PaymentReconciliation Schema Validation", () => {
-  it("should validate PaymentreconciliationExample fixture", () => {
+describe("Paymentreconciliation Group Schema Validation", () => {
+  it("should validate PaymentreconciliationExample fixture (PaymentReconciliation)", () => {
     const result = createPaymentReconciliationSchema().safeParse(
       PaymentreconciliationExample,
     );

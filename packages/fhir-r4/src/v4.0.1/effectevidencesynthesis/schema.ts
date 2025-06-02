@@ -17,10 +17,6 @@ import {
 } from "../core/schema";
 import { createNarrativeSchema } from "../narrative/schema";
 import { createResourceListSchema } from "../resourcelist/schema";
-import { createEffectEvidenceSynthesisSampleSizeSchema } from "../effectevidencesynthesissamplesize/schema";
-import { createEffectEvidenceSynthesisResultsByExposureSchema } from "../effectevidencesynthesisresultsbyexposure/schema";
-import { createEffectEvidenceSynthesisEffectEstimateSchema } from "../effectevidencesynthesiseffectestimate/schema";
-import { createEffectEvidenceSynthesisCertaintySchema } from "../effectevidencesynthesiscertainty/schema";
 
 /* Generated from FHIR JSON Schema */
 
@@ -91,6 +87,121 @@ export function createEffectEvidenceSynthesisSchema() {
           .optional(),
       },
     );
+
+    return baseSchema;
+  });
+}
+
+export function createEffectEvidenceSynthesisSampleSizeSchema() {
+  return getCachedSchema("EffectEvidenceSynthesisSampleSize", () => {
+    const baseSchema: z.ZodType<types.EffectEvidenceSynthesisSampleSize> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        description: primitives.getStringSchema().optional(),
+        _description: createElementSchema().optional(),
+        numberOfStudies: primitives.getIntegerSchema().optional(),
+        _numberOfStudies: createElementSchema().optional(),
+        numberOfParticipants: primitives.getIntegerSchema().optional(),
+        _numberOfParticipants: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createEffectEvidenceSynthesisResultsByExposureSchema() {
+  return getCachedSchema("EffectEvidenceSynthesisResultsByExposure", () => {
+    const baseSchema: z.ZodType<types.EffectEvidenceSynthesisResultsByExposure> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        description: primitives.getStringSchema().optional(),
+        _description: createElementSchema().optional(),
+        exposureState: z.enum(["exposure", "exposure-alternative"]).optional(),
+        _exposureState: createElementSchema().optional(),
+        variantState: createCodeableConceptSchema().optional(),
+        riskEvidenceSynthesis: createReferenceSchema(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createEffectEvidenceSynthesisEffectEstimateSchema() {
+  return getCachedSchema("EffectEvidenceSynthesisEffectEstimate", () => {
+    const baseSchema: z.ZodType<types.EffectEvidenceSynthesisEffectEstimate> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        description: primitives.getStringSchema().optional(),
+        _description: createElementSchema().optional(),
+        type: createCodeableConceptSchema().optional(),
+        variantState: createCodeableConceptSchema().optional(),
+        value: primitives.getDecimalSchema().optional(),
+        _value: createElementSchema().optional(),
+        unitOfMeasure: createCodeableConceptSchema().optional(),
+        precisionEstimate: z
+          .array(createEffectEvidenceSynthesisPrecisionEstimateSchema())
+          .optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createEffectEvidenceSynthesisPrecisionEstimateSchema() {
+  return getCachedSchema("EffectEvidenceSynthesisPrecisionEstimate", () => {
+    const baseSchema: z.ZodType<types.EffectEvidenceSynthesisPrecisionEstimate> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        type: createCodeableConceptSchema().optional(),
+        level: primitives.getDecimalSchema().optional(),
+        _level: createElementSchema().optional(),
+        from: primitives.getDecimalSchema().optional(),
+        _from: createElementSchema().optional(),
+        to: primitives.getDecimalSchema().optional(),
+        _to: createElementSchema().optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createEffectEvidenceSynthesisCertaintySchema() {
+  return getCachedSchema("EffectEvidenceSynthesisCertainty", () => {
+    const baseSchema: z.ZodType<types.EffectEvidenceSynthesisCertainty> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        rating: z.array(createCodeableConceptSchema()).optional(),
+        note: z.array(createAnnotationSchema()).optional(),
+        certaintySubcomponent: z
+          .array(createEffectEvidenceSynthesisCertaintySubcomponentSchema())
+          .optional(),
+      });
+
+    return baseSchema;
+  });
+}
+
+export function createEffectEvidenceSynthesisCertaintySubcomponentSchema() {
+  return getCachedSchema("EffectEvidenceSynthesisCertaintySubcomponent", () => {
+    const baseSchema: z.ZodType<types.EffectEvidenceSynthesisCertaintySubcomponent> =
+      z.strictObject({
+        id: primitives.getStringSchema().optional(),
+        extension: z.array(createExtensionSchema()).optional(),
+        modifierExtension: z.array(createExtensionSchema()).optional(),
+        type: createCodeableConceptSchema().optional(),
+        rating: z.array(createCodeableConceptSchema()).optional(),
+        note: z.array(createAnnotationSchema()).optional(),
+      });
 
     return baseSchema;
   });

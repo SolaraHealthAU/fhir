@@ -9,8 +9,8 @@ import {
 } from "./fixture";
 import { z } from "zod/v4";
 
-describe("RiskAssessment Schema Validation", () => {
-  it("should validate RiskassessmentExampleBreastcancer fixture", () => {
+describe("Riskassessment Group Schema Validation", () => {
+  it("should validate RiskassessmentExampleBreastcancer fixture (RiskAssessment)", () => {
     const result = createRiskAssessmentSchema().safeParse(
       RiskassessmentExampleBreastcancer,
     );
@@ -24,7 +24,7 @@ describe("RiskAssessment Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate RiskassessmentExampleCardiac fixture", () => {
+  it("should validate RiskassessmentExampleCardiac fixture (RiskAssessment)", () => {
     const result = createRiskAssessmentSchema().safeParse(
       RiskassessmentExampleCardiac,
     );
@@ -38,7 +38,7 @@ describe("RiskAssessment Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate RiskassessmentExamplePopulation fixture", () => {
+  it("should validate RiskassessmentExamplePopulation fixture (RiskAssessment)", () => {
     const result = createRiskAssessmentSchema().safeParse(
       RiskassessmentExamplePopulation,
     );
@@ -52,7 +52,7 @@ describe("RiskAssessment Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate RiskassessmentExamplePrognosis fixture", () => {
+  it("should validate RiskassessmentExamplePrognosis fixture (RiskAssessment)", () => {
     const result = createRiskAssessmentSchema().safeParse(
       RiskassessmentExamplePrognosis,
     );
@@ -66,7 +66,7 @@ describe("RiskAssessment Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate RiskassessmentExample fixture", () => {
+  it("should validate RiskassessmentExample fixture (RiskAssessment)", () => {
     const result = createRiskAssessmentSchema().safeParse(
       RiskassessmentExample,
     );
@@ -80,7 +80,7 @@ describe("RiskAssessment Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate RiskassessmentRiskexample fixture", () => {
+  it("should validate RiskassessmentRiskexample fixture (RiskAssessment)", () => {
     const result = createRiskAssessmentSchema().safeParse(
       RiskassessmentRiskexample,
     );
