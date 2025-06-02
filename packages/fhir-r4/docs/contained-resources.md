@@ -78,7 +78,7 @@ const union = makeContainedUnion(createPatientSchema(), createObservationSchema(
 ```ts
 import { createPatientSchema } from '@solarahealth/fhir-r4';
 
-const Patient = createPatientSchema({ allowNested: false });
+const Patient = createPatientSchema({ allowContained: false });
 // contained field is disabled entirely
 ```
 
@@ -279,12 +279,12 @@ if (!result.success) {
 
 ## API Reference
 
-| Function                                 | Purpose                                         | Tree-shaking                      |
-| ---------------------------------------- | ----------------------------------------------- | --------------------------------- |
-| `makeContainedUnion(...schemas)`         | Build discriminated union of specific resources | ✅ Only imports specified schemas |
-| `createXSchema({ contained })`           | Override default `unknown[]` contained type     | ✅ Only imports what you specify  |
-| `createResourceListSchema` (from `/all`) | Build a union of every FHIR resource            | ❌ Imports all resource schemas   |
-| `createXSchema({ allowNested: false })`  | Disable contained resources entirely            | ✅ Minimal bundle size            |
+| Function                                   | Purpose                                         | Tree-shaking                      |
+| ------------------------------------------ | ----------------------------------------------- | --------------------------------- |
+| `makeContainedUnion(...schemas)`           | Build discriminated union of specific resources | ✅ Only imports specified schemas |
+| `createXSchema({ contained })`             | Override default `unknown[]` contained type     | ✅ Only imports what you specify  |
+| `createResourceListSchema` (from `/all`)   | Build a union of every FHIR resource            | ❌ Imports all resource schemas   |
+| `createXSchema({ allowContained: false })` | Disable contained resources entirely            | ✅ Minimal bundle size            |
 
 ---
 
@@ -292,7 +292,7 @@ if (!result.success) {
 
 1. **Do you use contained resources at all?**
 
-   - No → Use `{ allowNested: false }`
+   - No → Use `{ allowContained: false }`
    - Sometimes → Continue to #2
 
 2. **Do you know which resource types appear in contained?**

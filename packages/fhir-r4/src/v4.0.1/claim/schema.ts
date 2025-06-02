@@ -22,9 +22,9 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 export function createClaimSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 
@@ -329,9 +329,9 @@ export function createClaimSubDetailSchema() {
 
 export function createClaimResponseSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 

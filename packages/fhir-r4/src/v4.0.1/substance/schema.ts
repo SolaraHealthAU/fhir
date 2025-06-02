@@ -22,9 +22,9 @@ import { createSubstanceAmountSchema } from "../substanceamount/schema";
 
 export function createSubstanceSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 
@@ -89,9 +89,9 @@ export function createSubstanceIngredientSchema() {
 
 export function createSubstanceNucleicAcidSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 
@@ -186,9 +186,9 @@ export function createSubstanceNucleicAcidSugarSchema() {
 
 export function createSubstancePolymerSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 
@@ -333,9 +333,9 @@ export function createSubstancePolymerStructuralRepresentationSchema() {
 
 export function createSubstanceProteinSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 
@@ -394,9 +394,9 @@ export function createSubstanceProteinSubunitSchema() {
 
 export function createSubstanceReferenceInformationSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 
@@ -512,9 +512,9 @@ export function createSubstanceReferenceInformationTargetSchema() {
 
 export function createSubstanceSourceMaterialSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 
@@ -673,9 +673,9 @@ export function createSubstanceSourceMaterialPartDescriptionSchema() {
 
 export function createSubstanceSpecificationSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 

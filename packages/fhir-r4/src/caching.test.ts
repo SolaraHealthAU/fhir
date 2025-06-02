@@ -59,7 +59,7 @@ describe('Schema Caching', () => {
 
   describe('Parameter-based caching', () => {
     it('should return same schema for identical parameters', () => {
-      const options = { allowNested: false };
+      const options = { allowContained: false };
       const schema1 = createAccountSchema(options);
       const schema2 = createAccountSchema(options);
 
@@ -81,16 +81,16 @@ describe('Schema Caching', () => {
       // cache implementation, these would be different
     });
 
-    it('should demonstrate allowNested parameter behavior', () => {
-      // The allowNested parameter changes what gets passed as the contained dependency
-      const schemaDefault = createAccountSchema(); // allowNested defaults to true
-      const schemaWithNesting = createAccountSchema({ allowNested: true });
-      const schemaWithoutNesting = createAccountSchema({ allowNested: false });
+    it('should demonstrate allowContained parameter behavior', () => {
+      // The allowContained parameter changes what gets passed as the contained dependency
+      const schemaDefault = createAccountSchema(); // allowContained defaults to true
+      const schemaWithNesting = createAccountSchema({ allowContained: true });
+      const schemaWithoutNesting = createAccountSchema({ allowContained: false });
 
       // Default and explicit true should be the same
       expect(schemaDefault).toBe(schemaWithNesting);
 
-      // The allowNested: false changes the contained from ResourceList to ZodNever
+      // The allowContained: false changes the contained from ResourceList to ZodNever
       // However, due to cache key limitations with arrays, this might not differentiate
       // Let's test what actually happens
       if (schemaWithNesting === schemaWithoutNesting) {

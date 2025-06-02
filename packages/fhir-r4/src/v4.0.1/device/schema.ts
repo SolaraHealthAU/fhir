@@ -25,9 +25,9 @@ import { createProdCharacteristicSchema } from "../prodcharacteristic/schema";
 
 export function createDeviceSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 
@@ -185,9 +185,9 @@ export function createDevicePropertySchema() {
 
 export function createDeviceDefinitionSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 
@@ -358,9 +358,9 @@ export function createDeviceDefinitionMaterialSchema() {
 
 export function createDeviceMetricSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 
@@ -444,9 +444,9 @@ export function createDeviceMetricCalibrationSchema() {
 
 export function createDeviceRequestSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 
@@ -525,9 +525,9 @@ export function createDeviceRequestParameterSchema() {
 
 export function createDeviceUseStatementSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 

@@ -27,9 +27,9 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 export function createEvidenceSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 
@@ -95,9 +95,9 @@ export function createEvidenceSchema<
 
 export function createEvidenceVariableSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 

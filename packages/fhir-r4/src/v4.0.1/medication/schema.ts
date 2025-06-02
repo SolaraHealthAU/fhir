@@ -24,9 +24,9 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 export function createMedicationSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 
@@ -93,9 +93,9 @@ export function createMedicationBatchSchema() {
 
 export function createMedicationAdministrationSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 
@@ -183,9 +183,9 @@ export function createMedicationAdministrationDosageSchema() {
 
 export function createMedicationDispenseSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 
@@ -275,9 +275,9 @@ export function createMedicationDispenseSubstitutionSchema() {
 
 export function createMedicationKnowledgeSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 
@@ -624,9 +624,9 @@ export function createMedicationKnowledgeKineticsSchema() {
 
 export function createMedicationRequestSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 
@@ -750,9 +750,9 @@ export function createMedicationRequestSubstitutionSchema() {
 
 export function createMedicationStatementSchema<
   C extends z.ZodTypeAny = z.ZodUnknown,
->(options?: { contained?: C; allowNested?: boolean }) {
+>(options?: { contained?: C; allowContained?: boolean }) {
   const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : (options?.contained ?? createResourceListSchema());
 

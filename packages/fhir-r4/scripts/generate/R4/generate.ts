@@ -615,9 +615,9 @@ function outputZodType(type: Definition): string {
   if (hasContained) {
     generics.push('C extends z.ZodTypeAny = z.ZodUnknown');
     parameters.push('contained?: C');
-    parameters.push('allowNested?: boolean');
+    parameters.push('allowContained?: boolean');
     statements.push(`const contained =
-    options?.allowNested === false
+    options?.allowContained === false
       ? ZodNever
       : options?.contained ?? createResourceListSchema()`);
     dependencies.push('contained');
