@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -20,8 +20,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createEventDefinitionSchema() {
-  return getCachedSchema("EventDefinition", () => {
+export function createEventDefinitionSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("EventDefinition", [contained], () => {
     const baseSchema: z.ZodType<types.EventDefinition> = z.strictObject({
       resourceType: z.literal("EventDefinition"),
       id: primitives.getIdSchema().optional(),
@@ -31,7 +38,7 @@ export function createEventDefinitionSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       url: primitives.getUriSchema().optional(),

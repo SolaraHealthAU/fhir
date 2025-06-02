@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -25,8 +25,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createEvidenceSchema() {
-  return getCachedSchema("Evidence", () => {
+export function createEvidenceSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Evidence", [contained], () => {
     const baseSchema: z.ZodType<types.Evidence> = z.strictObject({
       resourceType: z.literal("Evidence"),
       id: primitives.getIdSchema().optional(),
@@ -36,7 +43,7 @@ export function createEvidenceSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       url: primitives.getUriSchema().optional(),
@@ -86,8 +93,15 @@ export function createEvidenceSchema() {
   });
 }
 
-export function createEvidenceVariableSchema() {
-  return getCachedSchema("EvidenceVariable", () => {
+export function createEvidenceVariableSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("EvidenceVariable", [contained], () => {
     const baseSchema: z.ZodType<types.EvidenceVariable> = z.strictObject({
       resourceType: z.literal("EvidenceVariable"),
       id: primitives.getIdSchema().optional(),
@@ -97,7 +111,7 @@ export function createEvidenceVariableSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       url: primitives.getUriSchema().optional(),
@@ -148,7 +162,7 @@ export function createEvidenceVariableSchema() {
 }
 
 export function createEvidenceVariableCharacteristicSchema() {
-  return getCachedSchema("EvidenceVariableCharacteristic", () => {
+  return getCachedSchema("EvidenceVariableCharacteristic", [], () => {
     const baseSchema: z.ZodType<types.EvidenceVariableCharacteristic> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

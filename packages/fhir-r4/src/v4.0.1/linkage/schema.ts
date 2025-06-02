@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -13,8 +13,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createLinkageSchema() {
-  return getCachedSchema("Linkage", () => {
+export function createLinkageSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Linkage", [contained], () => {
     const baseSchema: z.ZodType<types.Linkage> = z.strictObject({
       resourceType: z.literal("Linkage"),
       id: primitives.getIdSchema().optional(),
@@ -24,7 +31,7 @@ export function createLinkageSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       active: primitives.getBooleanSchema().optional(),
@@ -38,7 +45,7 @@ export function createLinkageSchema() {
 }
 
 export function createLinkageItemSchema() {
-  return getCachedSchema("LinkageItem", () => {
+  return getCachedSchema("LinkageItem", [], () => {
     const baseSchema: z.ZodType<types.LinkageItem> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

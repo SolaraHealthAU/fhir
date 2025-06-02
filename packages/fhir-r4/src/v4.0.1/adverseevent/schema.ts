@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -15,8 +15,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createAdverseEventSchema() {
-  return getCachedSchema("AdverseEvent", () => {
+export function createAdverseEventSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("AdverseEvent", [contained], () => {
     const baseSchema: z.ZodType<types.AdverseEvent> = z.strictObject({
       resourceType: z.literal("AdverseEvent"),
       id: primitives.getIdSchema().optional(),
@@ -26,7 +33,7 @@ export function createAdverseEventSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: createIdentifierSchema().optional(),
@@ -62,7 +69,7 @@ export function createAdverseEventSchema() {
 }
 
 export function createAdverseEventSuspectEntitySchema() {
-  return getCachedSchema("AdverseEventSuspectEntity", () => {
+  return getCachedSchema("AdverseEventSuspectEntity", [], () => {
     const baseSchema: z.ZodType<types.AdverseEventSuspectEntity> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -77,7 +84,7 @@ export function createAdverseEventSuspectEntitySchema() {
 }
 
 export function createAdverseEventCausalitySchema() {
-  return getCachedSchema("AdverseEventCausality", () => {
+  return getCachedSchema("AdverseEventCausality", [], () => {
     const baseSchema: z.ZodType<types.AdverseEventCausality> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

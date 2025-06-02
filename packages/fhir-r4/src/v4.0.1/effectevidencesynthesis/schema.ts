@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -20,8 +20,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createEffectEvidenceSynthesisSchema() {
-  return getCachedSchema("EffectEvidenceSynthesis", () => {
+export function createEffectEvidenceSynthesisSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("EffectEvidenceSynthesis", [contained], () => {
     const baseSchema: z.ZodType<types.EffectEvidenceSynthesis> = z.strictObject(
       {
         resourceType: z.literal("EffectEvidenceSynthesis"),
@@ -32,7 +39,7 @@ export function createEffectEvidenceSynthesisSchema() {
         language: primitives.getCodeSchema().optional(),
         _language: createElementSchema().optional(),
         text: createNarrativeSchema().optional(),
-        contained: z.array(createResourceListSchema()).optional(),
+        contained: z.array(contained).optional(),
         extension: z.array(createExtensionSchema()).optional(),
         modifierExtension: z.array(createExtensionSchema()).optional(),
         url: primitives.getUriSchema().optional(),
@@ -93,7 +100,7 @@ export function createEffectEvidenceSynthesisSchema() {
 }
 
 export function createEffectEvidenceSynthesisSampleSizeSchema() {
-  return getCachedSchema("EffectEvidenceSynthesisSampleSize", () => {
+  return getCachedSchema("EffectEvidenceSynthesisSampleSize", [], () => {
     const baseSchema: z.ZodType<types.EffectEvidenceSynthesisSampleSize> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -112,7 +119,7 @@ export function createEffectEvidenceSynthesisSampleSizeSchema() {
 }
 
 export function createEffectEvidenceSynthesisResultsByExposureSchema() {
-  return getCachedSchema("EffectEvidenceSynthesisResultsByExposure", () => {
+  return getCachedSchema("EffectEvidenceSynthesisResultsByExposure", [], () => {
     const baseSchema: z.ZodType<types.EffectEvidenceSynthesisResultsByExposure> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -131,7 +138,7 @@ export function createEffectEvidenceSynthesisResultsByExposureSchema() {
 }
 
 export function createEffectEvidenceSynthesisEffectEstimateSchema() {
-  return getCachedSchema("EffectEvidenceSynthesisEffectEstimate", () => {
+  return getCachedSchema("EffectEvidenceSynthesisEffectEstimate", [], () => {
     const baseSchema: z.ZodType<types.EffectEvidenceSynthesisEffectEstimate> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -154,7 +161,7 @@ export function createEffectEvidenceSynthesisEffectEstimateSchema() {
 }
 
 export function createEffectEvidenceSynthesisPrecisionEstimateSchema() {
-  return getCachedSchema("EffectEvidenceSynthesisPrecisionEstimate", () => {
+  return getCachedSchema("EffectEvidenceSynthesisPrecisionEstimate", [], () => {
     const baseSchema: z.ZodType<types.EffectEvidenceSynthesisPrecisionEstimate> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -174,7 +181,7 @@ export function createEffectEvidenceSynthesisPrecisionEstimateSchema() {
 }
 
 export function createEffectEvidenceSynthesisCertaintySchema() {
-  return getCachedSchema("EffectEvidenceSynthesisCertainty", () => {
+  return getCachedSchema("EffectEvidenceSynthesisCertainty", [], () => {
     const baseSchema: z.ZodType<types.EffectEvidenceSynthesisCertainty> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -192,17 +199,21 @@ export function createEffectEvidenceSynthesisCertaintySchema() {
 }
 
 export function createEffectEvidenceSynthesisCertaintySubcomponentSchema() {
-  return getCachedSchema("EffectEvidenceSynthesisCertaintySubcomponent", () => {
-    const baseSchema: z.ZodType<types.EffectEvidenceSynthesisCertaintySubcomponent> =
-      z.strictObject({
-        id: primitives.getStringSchema().optional(),
-        extension: z.array(createExtensionSchema()).optional(),
-        modifierExtension: z.array(createExtensionSchema()).optional(),
-        type: createCodeableConceptSchema().optional(),
-        rating: z.array(createCodeableConceptSchema()).optional(),
-        note: z.array(createAnnotationSchema()).optional(),
-      });
+  return getCachedSchema(
+    "EffectEvidenceSynthesisCertaintySubcomponent",
+    [],
+    () => {
+      const baseSchema: z.ZodType<types.EffectEvidenceSynthesisCertaintySubcomponent> =
+        z.strictObject({
+          id: primitives.getStringSchema().optional(),
+          extension: z.array(createExtensionSchema()).optional(),
+          modifierExtension: z.array(createExtensionSchema()).optional(),
+          type: createCodeableConceptSchema().optional(),
+          rating: z.array(createCodeableConceptSchema()).optional(),
+          note: z.array(createAnnotationSchema()).optional(),
+        });
 
-    return baseSchema;
-  });
+      return baseSchema;
+    },
+  );
 }

@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -19,8 +19,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createAllergyIntoleranceSchema() {
-  return getCachedSchema("AllergyIntolerance", () => {
+export function createAllergyIntoleranceSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("AllergyIntolerance", [contained], () => {
     const baseSchema: z.ZodType<types.AllergyIntolerance> = z.strictObject({
       resourceType: z.literal("AllergyIntolerance"),
       id: primitives.getIdSchema().optional(),
@@ -30,7 +37,7 @@ export function createAllergyIntoleranceSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -70,7 +77,7 @@ export function createAllergyIntoleranceSchema() {
 }
 
 export function createAllergyIntoleranceReactionSchema() {
-  return getCachedSchema("AllergyIntoleranceReaction", () => {
+  return getCachedSchema("AllergyIntoleranceReaction", [], () => {
     const baseSchema: z.ZodType<types.AllergyIntoleranceReaction> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

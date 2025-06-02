@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -16,8 +16,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createAuditEventSchema() {
-  return getCachedSchema("AuditEvent", () => {
+export function createAuditEventSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("AuditEvent", [contained], () => {
     const baseSchema: z.ZodType<types.AuditEvent> = z.strictObject({
       resourceType: z.literal("AuditEvent"),
       id: primitives.getIdSchema().optional(),
@@ -27,7 +34,7 @@ export function createAuditEventSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       type: createCodingSchema(),
@@ -52,7 +59,7 @@ export function createAuditEventSchema() {
 }
 
 export function createAuditEventAgentSchema() {
-  return getCachedSchema("AuditEventAgent", () => {
+  return getCachedSchema("AuditEventAgent", [], () => {
     const baseSchema: z.ZodType<types.AuditEventAgent> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -79,7 +86,7 @@ export function createAuditEventAgentSchema() {
 }
 
 export function createAuditEventNetworkSchema() {
-  return getCachedSchema("AuditEventNetwork", () => {
+  return getCachedSchema("AuditEventNetwork", [], () => {
     const baseSchema: z.ZodType<types.AuditEventNetwork> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -95,7 +102,7 @@ export function createAuditEventNetworkSchema() {
 }
 
 export function createAuditEventSourceSchema() {
-  return getCachedSchema("AuditEventSource", () => {
+  return getCachedSchema("AuditEventSource", [], () => {
     const baseSchema: z.ZodType<types.AuditEventSource> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -111,7 +118,7 @@ export function createAuditEventSourceSchema() {
 }
 
 export function createAuditEventEntitySchema() {
-  return getCachedSchema("AuditEventEntity", () => {
+  return getCachedSchema("AuditEventEntity", [], () => {
     const baseSchema: z.ZodType<types.AuditEventEntity> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -135,7 +142,7 @@ export function createAuditEventEntitySchema() {
 }
 
 export function createAuditEventDetailSchema() {
-  return getCachedSchema("AuditEventDetail", () => {
+  return getCachedSchema("AuditEventDetail", [], () => {
     const baseSchema: z.ZodType<types.AuditEventDetail> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

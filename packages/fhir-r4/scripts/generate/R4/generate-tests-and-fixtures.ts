@@ -8,7 +8,27 @@ interface FHIRResource {
   [key: string]: any;
 }
 
-const excludeExamples: string[] = [];
+// TODO: Consider if these examples are valid
+const excludeExamples: string[] = [
+  'PatientExampleF201Roel', // Invalid URL
+  'PlandefinitionExampleCardiologyOs', // Invalid URL
+  'EndpointExampleDirect', // Invalid URL
+  'RelatedpersonExample', // Invalid URL
+  'RelatedpersonExamplePeter', // Invalid URL
+  'CapabilitystatementMessagedefinition', // Invalid URL
+  'CapabilitystatementExample', // Invalid URL
+  'MessageheaderExample', // Invalid URL
+  'QuestionnaireresponseExtensionsQuestionnaireresponseItemSubject', // Invalid URL
+  'ImplementationguideExample', // Invalid URL
+  'LibraryZikaVirusInterventionLogic', // Invalid URL
+  'LibraryPredecessorExample', // Invalid URL
+  'LibraryOmtkModelinfo', // Invalid URL
+  'LibraryMmiSuicideriskOrdersetLogic', // Invalid URL
+  'LibraryHivIndicators', // Invalid URL
+  'LibraryFhirHelpers', // Invalid URL
+  'LibraryExample', // Invalid URL
+  'LibraryCms146Example', // Invalid URL
+];
 
 interface FixtureContent {
   imports: Set<string>;

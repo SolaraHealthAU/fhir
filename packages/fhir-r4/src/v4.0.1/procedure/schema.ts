@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -19,8 +19,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createProcedureSchema() {
-  return getCachedSchema("Procedure", () => {
+export function createProcedureSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Procedure", [contained], () => {
     const baseSchema: z.ZodType<types.Procedure> = z.strictObject({
       resourceType: z.literal("Procedure"),
       id: primitives.getIdSchema().optional(),
@@ -30,7 +37,7 @@ export function createProcedureSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -78,7 +85,7 @@ export function createProcedureSchema() {
 }
 
 export function createProcedurePerformerSchema() {
-  return getCachedSchema("ProcedurePerformer", () => {
+  return getCachedSchema("ProcedurePerformer", [], () => {
     const baseSchema: z.ZodType<types.ProcedurePerformer> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -93,7 +100,7 @@ export function createProcedurePerformerSchema() {
 }
 
 export function createProcedureFocalDeviceSchema() {
-  return getCachedSchema("ProcedureFocalDevice", () => {
+  return getCachedSchema("ProcedureFocalDevice", [], () => {
     const baseSchema: z.ZodType<types.ProcedureFocalDevice> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

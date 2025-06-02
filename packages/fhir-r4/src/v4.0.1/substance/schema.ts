@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -20,8 +20,15 @@ import { createSubstanceAmountSchema } from "../substanceamount/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createSubstanceSchema() {
-  return getCachedSchema("Substance", () => {
+export function createSubstanceSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Substance", [contained], () => {
     const baseSchema: z.ZodType<types.Substance> = z.strictObject({
       resourceType: z.literal("Substance"),
       id: primitives.getIdSchema().optional(),
@@ -31,7 +38,7 @@ export function createSubstanceSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -50,7 +57,7 @@ export function createSubstanceSchema() {
 }
 
 export function createSubstanceInstanceSchema() {
-  return getCachedSchema("SubstanceInstance", () => {
+  return getCachedSchema("SubstanceInstance", [], () => {
     const baseSchema: z.ZodType<types.SubstanceInstance> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -66,7 +73,7 @@ export function createSubstanceInstanceSchema() {
 }
 
 export function createSubstanceIngredientSchema() {
-  return getCachedSchema("SubstanceIngredient", () => {
+  return getCachedSchema("SubstanceIngredient", [], () => {
     const baseSchema: z.ZodType<types.SubstanceIngredient> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -80,8 +87,15 @@ export function createSubstanceIngredientSchema() {
   });
 }
 
-export function createSubstanceNucleicAcidSchema() {
-  return getCachedSchema("SubstanceNucleicAcid", () => {
+export function createSubstanceNucleicAcidSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("SubstanceNucleicAcid", [contained], () => {
     const baseSchema: z.ZodType<types.SubstanceNucleicAcid> = z.strictObject({
       resourceType: z.literal("SubstanceNucleicAcid"),
       id: primitives.getIdSchema().optional(),
@@ -91,7 +105,7 @@ export function createSubstanceNucleicAcidSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       sequenceType: createCodeableConceptSchema().optional(),
@@ -108,7 +122,7 @@ export function createSubstanceNucleicAcidSchema() {
 }
 
 export function createSubstanceNucleicAcidSubunitSchema() {
-  return getCachedSchema("SubstanceNucleicAcidSubunit", () => {
+  return getCachedSchema("SubstanceNucleicAcidSubunit", [], () => {
     const baseSchema: z.ZodType<types.SubstanceNucleicAcidSubunit> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -132,7 +146,7 @@ export function createSubstanceNucleicAcidSubunitSchema() {
 }
 
 export function createSubstanceNucleicAcidLinkageSchema() {
-  return getCachedSchema("SubstanceNucleicAcidLinkage", () => {
+  return getCachedSchema("SubstanceNucleicAcidLinkage", [], () => {
     const baseSchema: z.ZodType<types.SubstanceNucleicAcidLinkage> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -152,7 +166,7 @@ export function createSubstanceNucleicAcidLinkageSchema() {
 }
 
 export function createSubstanceNucleicAcidSugarSchema() {
-  return getCachedSchema("SubstanceNucleicAcidSugar", () => {
+  return getCachedSchema("SubstanceNucleicAcidSugar", [], () => {
     const baseSchema: z.ZodType<types.SubstanceNucleicAcidSugar> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -169,8 +183,15 @@ export function createSubstanceNucleicAcidSugarSchema() {
   });
 }
 
-export function createSubstancePolymerSchema() {
-  return getCachedSchema("SubstancePolymer", () => {
+export function createSubstancePolymerSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("SubstancePolymer", [contained], () => {
     const baseSchema: z.ZodType<types.SubstancePolymer> = z.strictObject({
       resourceType: z.literal("SubstancePolymer"),
       id: primitives.getIdSchema().optional(),
@@ -180,7 +201,7 @@ export function createSubstancePolymerSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       class: createCodeableConceptSchema().optional(),
@@ -197,7 +218,7 @@ export function createSubstancePolymerSchema() {
 }
 
 export function createSubstancePolymerMonomerSetSchema() {
-  return getCachedSchema("SubstancePolymerMonomerSet", () => {
+  return getCachedSchema("SubstancePolymerMonomerSet", [], () => {
     const baseSchema: z.ZodType<types.SubstancePolymerMonomerSet> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -214,7 +235,7 @@ export function createSubstancePolymerMonomerSetSchema() {
 }
 
 export function createSubstancePolymerStartingMaterialSchema() {
-  return getCachedSchema("SubstancePolymerStartingMaterial", () => {
+  return getCachedSchema("SubstancePolymerStartingMaterial", [], () => {
     const baseSchema: z.ZodType<types.SubstancePolymerStartingMaterial> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -232,7 +253,7 @@ export function createSubstancePolymerStartingMaterialSchema() {
 }
 
 export function createSubstancePolymerRepeatSchema() {
-  return getCachedSchema("SubstancePolymerRepeat", () => {
+  return getCachedSchema("SubstancePolymerRepeat", [], () => {
     const baseSchema: z.ZodType<types.SubstancePolymerRepeat> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -250,7 +271,7 @@ export function createSubstancePolymerRepeatSchema() {
 }
 
 export function createSubstancePolymerRepeatUnitSchema() {
-  return getCachedSchema("SubstancePolymerRepeatUnit", () => {
+  return getCachedSchema("SubstancePolymerRepeatUnit", [], () => {
     const baseSchema: z.ZodType<types.SubstancePolymerRepeatUnit> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -273,7 +294,7 @@ export function createSubstancePolymerRepeatUnitSchema() {
 }
 
 export function createSubstancePolymerDegreeOfPolymerisationSchema() {
-  return getCachedSchema("SubstancePolymerDegreeOfPolymerisation", () => {
+  return getCachedSchema("SubstancePolymerDegreeOfPolymerisation", [], () => {
     const baseSchema: z.ZodType<types.SubstancePolymerDegreeOfPolymerisation> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -288,7 +309,7 @@ export function createSubstancePolymerDegreeOfPolymerisationSchema() {
 }
 
 export function createSubstancePolymerStructuralRepresentationSchema() {
-  return getCachedSchema("SubstancePolymerStructuralRepresentation", () => {
+  return getCachedSchema("SubstancePolymerStructuralRepresentation", [], () => {
     const baseSchema: z.ZodType<types.SubstancePolymerStructuralRepresentation> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -304,8 +325,15 @@ export function createSubstancePolymerStructuralRepresentationSchema() {
   });
 }
 
-export function createSubstanceProteinSchema() {
-  return getCachedSchema("SubstanceProtein", () => {
+export function createSubstanceProteinSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("SubstanceProtein", [contained], () => {
     const baseSchema: z.ZodType<types.SubstanceProtein> = z.strictObject({
       resourceType: z.literal("SubstanceProtein"),
       id: primitives.getIdSchema().optional(),
@@ -315,7 +343,7 @@ export function createSubstanceProteinSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       sequenceType: createCodeableConceptSchema().optional(),
@@ -331,7 +359,7 @@ export function createSubstanceProteinSchema() {
 }
 
 export function createSubstanceProteinSubunitSchema() {
-  return getCachedSchema("SubstanceProteinSubunit", () => {
+  return getCachedSchema("SubstanceProteinSubunit", [], () => {
     const baseSchema: z.ZodType<types.SubstanceProteinSubunit> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),
@@ -357,8 +385,15 @@ export function createSubstanceProteinSubunitSchema() {
   });
 }
 
-export function createSubstanceReferenceInformationSchema() {
-  return getCachedSchema("SubstanceReferenceInformation", () => {
+export function createSubstanceReferenceInformationSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("SubstanceReferenceInformation", [contained], () => {
     const baseSchema: z.ZodType<types.SubstanceReferenceInformation> =
       z.strictObject({
         resourceType: z.literal("SubstanceReferenceInformation"),
@@ -369,7 +404,7 @@ export function createSubstanceReferenceInformationSchema() {
         language: primitives.getCodeSchema().optional(),
         _language: createElementSchema().optional(),
         text: createNarrativeSchema().optional(),
-        contained: z.array(createResourceListSchema()).optional(),
+        contained: z.array(contained).optional(),
         extension: z.array(createExtensionSchema()).optional(),
         modifierExtension: z.array(createExtensionSchema()).optional(),
         comment: primitives.getStringSchema().optional(),
@@ -393,7 +428,7 @@ export function createSubstanceReferenceInformationSchema() {
 }
 
 export function createSubstanceReferenceInformationGeneSchema() {
-  return getCachedSchema("SubstanceReferenceInformationGene", () => {
+  return getCachedSchema("SubstanceReferenceInformationGene", [], () => {
     const baseSchema: z.ZodType<types.SubstanceReferenceInformationGene> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -409,7 +444,7 @@ export function createSubstanceReferenceInformationGeneSchema() {
 }
 
 export function createSubstanceReferenceInformationGeneElementSchema() {
-  return getCachedSchema("SubstanceReferenceInformationGeneElement", () => {
+  return getCachedSchema("SubstanceReferenceInformationGeneElement", [], () => {
     const baseSchema: z.ZodType<types.SubstanceReferenceInformationGeneElement> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -425,24 +460,28 @@ export function createSubstanceReferenceInformationGeneElementSchema() {
 }
 
 export function createSubstanceReferenceInformationClassificationSchema() {
-  return getCachedSchema("SubstanceReferenceInformationClassification", () => {
-    const baseSchema: z.ZodType<types.SubstanceReferenceInformationClassification> =
-      z.strictObject({
-        id: primitives.getStringSchema().optional(),
-        extension: z.array(createExtensionSchema()).optional(),
-        modifierExtension: z.array(createExtensionSchema()).optional(),
-        domain: createCodeableConceptSchema().optional(),
-        classification: createCodeableConceptSchema().optional(),
-        subtype: z.array(createCodeableConceptSchema()).optional(),
-        source: z.array(createReferenceSchema()).optional(),
-      });
+  return getCachedSchema(
+    "SubstanceReferenceInformationClassification",
+    [],
+    () => {
+      const baseSchema: z.ZodType<types.SubstanceReferenceInformationClassification> =
+        z.strictObject({
+          id: primitives.getStringSchema().optional(),
+          extension: z.array(createExtensionSchema()).optional(),
+          modifierExtension: z.array(createExtensionSchema()).optional(),
+          domain: createCodeableConceptSchema().optional(),
+          classification: createCodeableConceptSchema().optional(),
+          subtype: z.array(createCodeableConceptSchema()).optional(),
+          source: z.array(createReferenceSchema()).optional(),
+        });
 
-    return baseSchema;
-  });
+      return baseSchema;
+    },
+  );
 }
 
 export function createSubstanceReferenceInformationTargetSchema() {
-  return getCachedSchema("SubstanceReferenceInformationTarget", () => {
+  return getCachedSchema("SubstanceReferenceInformationTarget", [], () => {
     const baseSchema: z.ZodType<types.SubstanceReferenceInformationTarget> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -465,8 +504,15 @@ export function createSubstanceReferenceInformationTargetSchema() {
   });
 }
 
-export function createSubstanceSourceMaterialSchema() {
-  return getCachedSchema("SubstanceSourceMaterial", () => {
+export function createSubstanceSourceMaterialSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("SubstanceSourceMaterial", [contained], () => {
     const baseSchema: z.ZodType<types.SubstanceSourceMaterial> = z.strictObject(
       {
         resourceType: z.literal("SubstanceSourceMaterial"),
@@ -477,7 +523,7 @@ export function createSubstanceSourceMaterialSchema() {
         language: primitives.getCodeSchema().optional(),
         _language: createElementSchema().optional(),
         text: createNarrativeSchema().optional(),
-        contained: z.array(createResourceListSchema()).optional(),
+        contained: z.array(contained).optional(),
         extension: z.array(createExtensionSchema()).optional(),
         modifierExtension: z.array(createExtensionSchema()).optional(),
         sourceMaterialClass: createCodeableConceptSchema().optional(),
@@ -508,23 +554,27 @@ export function createSubstanceSourceMaterialSchema() {
 }
 
 export function createSubstanceSourceMaterialFractionDescriptionSchema() {
-  return getCachedSchema("SubstanceSourceMaterialFractionDescription", () => {
-    const baseSchema: z.ZodType<types.SubstanceSourceMaterialFractionDescription> =
-      z.strictObject({
-        id: primitives.getStringSchema().optional(),
-        extension: z.array(createExtensionSchema()).optional(),
-        modifierExtension: z.array(createExtensionSchema()).optional(),
-        fraction: primitives.getStringSchema().optional(),
-        _fraction: createElementSchema().optional(),
-        materialType: createCodeableConceptSchema().optional(),
-      });
+  return getCachedSchema(
+    "SubstanceSourceMaterialFractionDescription",
+    [],
+    () => {
+      const baseSchema: z.ZodType<types.SubstanceSourceMaterialFractionDescription> =
+        z.strictObject({
+          id: primitives.getStringSchema().optional(),
+          extension: z.array(createExtensionSchema()).optional(),
+          modifierExtension: z.array(createExtensionSchema()).optional(),
+          fraction: primitives.getStringSchema().optional(),
+          _fraction: createElementSchema().optional(),
+          materialType: createCodeableConceptSchema().optional(),
+        });
 
-    return baseSchema;
-  });
+      return baseSchema;
+    },
+  );
 }
 
 export function createSubstanceSourceMaterialOrganismSchema() {
-  return getCachedSchema("SubstanceSourceMaterialOrganism", () => {
+  return getCachedSchema("SubstanceSourceMaterialOrganism", [], () => {
     const baseSchema: z.ZodType<types.SubstanceSourceMaterialOrganism> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -547,7 +597,7 @@ export function createSubstanceSourceMaterialOrganismSchema() {
 }
 
 export function createSubstanceSourceMaterialAuthorSchema() {
-  return getCachedSchema("SubstanceSourceMaterialAuthor", () => {
+  return getCachedSchema("SubstanceSourceMaterialAuthor", [], () => {
     const baseSchema: z.ZodType<types.SubstanceSourceMaterialAuthor> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -563,7 +613,7 @@ export function createSubstanceSourceMaterialAuthorSchema() {
 }
 
 export function createSubstanceSourceMaterialHybridSchema() {
-  return getCachedSchema("SubstanceSourceMaterialHybrid", () => {
+  return getCachedSchema("SubstanceSourceMaterialHybrid", [], () => {
     const baseSchema: z.ZodType<types.SubstanceSourceMaterialHybrid> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -585,7 +635,7 @@ export function createSubstanceSourceMaterialHybridSchema() {
 }
 
 export function createSubstanceSourceMaterialOrganismGeneralSchema() {
-  return getCachedSchema("SubstanceSourceMaterialOrganismGeneral", () => {
+  return getCachedSchema("SubstanceSourceMaterialOrganismGeneral", [], () => {
     const baseSchema: z.ZodType<types.SubstanceSourceMaterialOrganismGeneral> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -602,7 +652,7 @@ export function createSubstanceSourceMaterialOrganismGeneralSchema() {
 }
 
 export function createSubstanceSourceMaterialPartDescriptionSchema() {
-  return getCachedSchema("SubstanceSourceMaterialPartDescription", () => {
+  return getCachedSchema("SubstanceSourceMaterialPartDescription", [], () => {
     const baseSchema: z.ZodType<types.SubstanceSourceMaterialPartDescription> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -616,8 +666,15 @@ export function createSubstanceSourceMaterialPartDescriptionSchema() {
   });
 }
 
-export function createSubstanceSpecificationSchema() {
-  return getCachedSchema("SubstanceSpecification", () => {
+export function createSubstanceSpecificationSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("SubstanceSpecification", [contained], () => {
     const baseSchema: z.ZodType<types.SubstanceSpecification> = z.strictObject({
       resourceType: z.literal("SubstanceSpecification"),
       id: primitives.getIdSchema().optional(),
@@ -627,7 +684,7 @@ export function createSubstanceSpecificationSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: createIdentifierSchema().optional(),
@@ -664,7 +721,7 @@ export function createSubstanceSpecificationSchema() {
 }
 
 export function createSubstanceSpecificationMoietySchema() {
-  return getCachedSchema("SubstanceSpecificationMoiety", () => {
+  return getCachedSchema("SubstanceSpecificationMoiety", [], () => {
     const baseSchema: z.ZodType<types.SubstanceSpecificationMoiety> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -688,7 +745,7 @@ export function createSubstanceSpecificationMoietySchema() {
 }
 
 export function createSubstanceSpecificationPropertySchema() {
-  return getCachedSchema("SubstanceSpecificationProperty", () => {
+  return getCachedSchema("SubstanceSpecificationProperty", [], () => {
     const baseSchema: z.ZodType<types.SubstanceSpecificationProperty> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -711,7 +768,7 @@ export function createSubstanceSpecificationPropertySchema() {
 }
 
 export function createSubstanceSpecificationStructureSchema() {
-  return getCachedSchema("SubstanceSpecificationStructure", () => {
+  return getCachedSchema("SubstanceSpecificationStructure", [], () => {
     const baseSchema: z.ZodType<types.SubstanceSpecificationStructure> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -739,7 +796,7 @@ export function createSubstanceSpecificationStructureSchema() {
 }
 
 export function createSubstanceSpecificationIsotopeSchema() {
-  return getCachedSchema("SubstanceSpecificationIsotope", () => {
+  return getCachedSchema("SubstanceSpecificationIsotope", [], () => {
     const baseSchema: z.ZodType<types.SubstanceSpecificationIsotope> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -758,7 +815,7 @@ export function createSubstanceSpecificationIsotopeSchema() {
 }
 
 export function createSubstanceSpecificationMolecularWeightSchema() {
-  return getCachedSchema("SubstanceSpecificationMolecularWeight", () => {
+  return getCachedSchema("SubstanceSpecificationMolecularWeight", [], () => {
     const baseSchema: z.ZodType<types.SubstanceSpecificationMolecularWeight> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -774,7 +831,7 @@ export function createSubstanceSpecificationMolecularWeightSchema() {
 }
 
 export function createSubstanceSpecificationRepresentationSchema() {
-  return getCachedSchema("SubstanceSpecificationRepresentation", () => {
+  return getCachedSchema("SubstanceSpecificationRepresentation", [], () => {
     const baseSchema: z.ZodType<types.SubstanceSpecificationRepresentation> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -791,7 +848,7 @@ export function createSubstanceSpecificationRepresentationSchema() {
 }
 
 export function createSubstanceSpecificationCodeSchema() {
-  return getCachedSchema("SubstanceSpecificationCode", () => {
+  return getCachedSchema("SubstanceSpecificationCode", [], () => {
     const baseSchema: z.ZodType<types.SubstanceSpecificationCode> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -811,7 +868,7 @@ export function createSubstanceSpecificationCodeSchema() {
 }
 
 export function createSubstanceSpecificationNameSchema() {
-  return getCachedSchema("SubstanceSpecificationName", () => {
+  return getCachedSchema("SubstanceSpecificationName", [], () => {
     const baseSchema: z.ZodType<types.SubstanceSpecificationName> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -841,7 +898,7 @@ export function createSubstanceSpecificationNameSchema() {
 }
 
 export function createSubstanceSpecificationOfficialSchema() {
-  return getCachedSchema("SubstanceSpecificationOfficial", () => {
+  return getCachedSchema("SubstanceSpecificationOfficial", [], () => {
     const baseSchema: z.ZodType<types.SubstanceSpecificationOfficial> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -858,7 +915,7 @@ export function createSubstanceSpecificationOfficialSchema() {
 }
 
 export function createSubstanceSpecificationRelationshipSchema() {
-  return getCachedSchema("SubstanceSpecificationRelationship", () => {
+  return getCachedSchema("SubstanceSpecificationRelationship", [], () => {
     const baseSchema: z.ZodType<types.SubstanceSpecificationRelationship> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -21,8 +21,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createExplanationOfBenefitSchema() {
-  return getCachedSchema("ExplanationOfBenefit", () => {
+export function createExplanationOfBenefitSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("ExplanationOfBenefit", [contained], () => {
     const baseSchema: z.ZodType<types.ExplanationOfBenefit> = z.strictObject({
       resourceType: z.literal("ExplanationOfBenefit"),
       id: primitives.getIdSchema().optional(),
@@ -32,7 +39,7 @@ export function createExplanationOfBenefitSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -104,7 +111,7 @@ export function createExplanationOfBenefitSchema() {
 }
 
 export function createExplanationOfBenefitRelatedSchema() {
-  return getCachedSchema("ExplanationOfBenefitRelated", () => {
+  return getCachedSchema("ExplanationOfBenefitRelated", [], () => {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitRelated> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -120,7 +127,7 @@ export function createExplanationOfBenefitRelatedSchema() {
 }
 
 export function createExplanationOfBenefitPayeeSchema() {
-  return getCachedSchema("ExplanationOfBenefitPayee", () => {
+  return getCachedSchema("ExplanationOfBenefitPayee", [], () => {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitPayee> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -135,7 +142,7 @@ export function createExplanationOfBenefitPayeeSchema() {
 }
 
 export function createExplanationOfBenefitCareTeamSchema() {
-  return getCachedSchema("ExplanationOfBenefitCareTeam", () => {
+  return getCachedSchema("ExplanationOfBenefitCareTeam", [], () => {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitCareTeam> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -155,7 +162,7 @@ export function createExplanationOfBenefitCareTeamSchema() {
 }
 
 export function createExplanationOfBenefitSupportingInfoSchema() {
-  return getCachedSchema("ExplanationOfBenefitSupportingInfo", () => {
+  return getCachedSchema("ExplanationOfBenefitSupportingInfo", [], () => {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitSupportingInfo> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -183,7 +190,7 @@ export function createExplanationOfBenefitSupportingInfoSchema() {
 }
 
 export function createExplanationOfBenefitDiagnosisSchema() {
-  return getCachedSchema("ExplanationOfBenefitDiagnosis", () => {
+  return getCachedSchema("ExplanationOfBenefitDiagnosis", [], () => {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitDiagnosis> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -203,7 +210,7 @@ export function createExplanationOfBenefitDiagnosisSchema() {
 }
 
 export function createExplanationOfBenefitProcedureSchema() {
-  return getCachedSchema("ExplanationOfBenefitProcedure", () => {
+  return getCachedSchema("ExplanationOfBenefitProcedure", [], () => {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitProcedure> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -224,7 +231,7 @@ export function createExplanationOfBenefitProcedureSchema() {
 }
 
 export function createExplanationOfBenefitInsuranceSchema() {
-  return getCachedSchema("ExplanationOfBenefitInsurance", () => {
+  return getCachedSchema("ExplanationOfBenefitInsurance", [], () => {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitInsurance> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -242,7 +249,7 @@ export function createExplanationOfBenefitInsuranceSchema() {
 }
 
 export function createExplanationOfBenefitAccidentSchema() {
-  return getCachedSchema("ExplanationOfBenefitAccident", () => {
+  return getCachedSchema("ExplanationOfBenefitAccident", [], () => {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitAccident> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -260,7 +267,7 @@ export function createExplanationOfBenefitAccidentSchema() {
 }
 
 export function createExplanationOfBenefitItemSchema() {
-  return getCachedSchema("ExplanationOfBenefitItem", () => {
+  return getCachedSchema("ExplanationOfBenefitItem", [], () => {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitItem> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -315,7 +322,7 @@ export function createExplanationOfBenefitItemSchema() {
 }
 
 export function createExplanationOfBenefitAdjudicationSchema() {
-  return getCachedSchema("ExplanationOfBenefitAdjudication", () => {
+  return getCachedSchema("ExplanationOfBenefitAdjudication", [], () => {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitAdjudication> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -333,7 +340,7 @@ export function createExplanationOfBenefitAdjudicationSchema() {
 }
 
 export function createExplanationOfBenefitDetailSchema() {
-  return getCachedSchema("ExplanationOfBenefitDetail", () => {
+  return getCachedSchema("ExplanationOfBenefitDetail", [], () => {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitDetail> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -367,7 +374,7 @@ export function createExplanationOfBenefitDetailSchema() {
 }
 
 export function createExplanationOfBenefitSubDetailSchema() {
-  return getCachedSchema("ExplanationOfBenefitSubDetail", () => {
+  return getCachedSchema("ExplanationOfBenefitSubDetail", [], () => {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitSubDetail> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -398,7 +405,7 @@ export function createExplanationOfBenefitSubDetailSchema() {
 }
 
 export function createExplanationOfBenefitAddItemSchema() {
-  return getCachedSchema("ExplanationOfBenefitAddItem", () => {
+  return getCachedSchema("ExplanationOfBenefitAddItem", [], () => {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitAddItem> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -442,7 +449,7 @@ export function createExplanationOfBenefitAddItemSchema() {
 }
 
 export function createExplanationOfBenefitDetail1Schema() {
-  return getCachedSchema("ExplanationOfBenefitDetail1", () => {
+  return getCachedSchema("ExplanationOfBenefitDetail1", [], () => {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitDetail1> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -470,7 +477,7 @@ export function createExplanationOfBenefitDetail1Schema() {
 }
 
 export function createExplanationOfBenefitSubDetail1Schema() {
-  return getCachedSchema("ExplanationOfBenefitSubDetail1", () => {
+  return getCachedSchema("ExplanationOfBenefitSubDetail1", [], () => {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitSubDetail1> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -495,7 +502,7 @@ export function createExplanationOfBenefitSubDetail1Schema() {
 }
 
 export function createExplanationOfBenefitTotalSchema() {
-  return getCachedSchema("ExplanationOfBenefitTotal", () => {
+  return getCachedSchema("ExplanationOfBenefitTotal", [], () => {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitTotal> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -510,7 +517,7 @@ export function createExplanationOfBenefitTotalSchema() {
 }
 
 export function createExplanationOfBenefitPaymentSchema() {
-  return getCachedSchema("ExplanationOfBenefitPayment", () => {
+  return getCachedSchema("ExplanationOfBenefitPayment", [], () => {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitPayment> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -530,7 +537,7 @@ export function createExplanationOfBenefitPaymentSchema() {
 }
 
 export function createExplanationOfBenefitProcessNoteSchema() {
-  return getCachedSchema("ExplanationOfBenefitProcessNote", () => {
+  return getCachedSchema("ExplanationOfBenefitProcessNote", [], () => {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitProcessNote> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -550,7 +557,7 @@ export function createExplanationOfBenefitProcessNoteSchema() {
 }
 
 export function createExplanationOfBenefitBenefitBalanceSchema() {
-  return getCachedSchema("ExplanationOfBenefitBenefitBalance", () => {
+  return getCachedSchema("ExplanationOfBenefitBenefitBalance", [], () => {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitBenefitBalance> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -576,7 +583,7 @@ export function createExplanationOfBenefitBenefitBalanceSchema() {
 }
 
 export function createExplanationOfBenefitFinancialSchema() {
-  return getCachedSchema("ExplanationOfBenefitFinancial", () => {
+  return getCachedSchema("ExplanationOfBenefitFinancial", [], () => {
     const baseSchema: z.ZodType<types.ExplanationOfBenefitFinancial> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

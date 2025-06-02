@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -42,7 +42,7 @@ import { createResourceListSchema } from "../resourcelist/schema";
 /* Generated from FHIR JSON Schema */
 
 export function createParametersSchema() {
-  return getCachedSchema("Parameters", () => {
+  return getCachedSchema("Parameters", [], () => {
     const baseSchema: z.ZodType<types.Parameters> = z.strictObject({
       resourceType: z.literal("Parameters"),
       id: primitives.getIdSchema().optional(),
@@ -59,7 +59,7 @@ export function createParametersSchema() {
 }
 
 export function createParametersParameterSchema() {
-  return getCachedSchema("ParametersParameter", () => {
+  return getCachedSchema("ParametersParameter", [], () => {
     const baseSchema: z.ZodType<types.ParametersParameter> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

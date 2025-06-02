@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -17,8 +17,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createClinicalImpressionSchema() {
-  return getCachedSchema("ClinicalImpression", () => {
+export function createClinicalImpressionSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("ClinicalImpression", [contained], () => {
     const baseSchema: z.ZodType<types.ClinicalImpression> = z.strictObject({
       resourceType: z.literal("ClinicalImpression"),
       id: primitives.getIdSchema().optional(),
@@ -28,7 +35,7 @@ export function createClinicalImpressionSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -69,7 +76,7 @@ export function createClinicalImpressionSchema() {
 }
 
 export function createClinicalImpressionInvestigationSchema() {
-  return getCachedSchema("ClinicalImpressionInvestigation", () => {
+  return getCachedSchema("ClinicalImpressionInvestigation", [], () => {
     const baseSchema: z.ZodType<types.ClinicalImpressionInvestigation> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -84,7 +91,7 @@ export function createClinicalImpressionInvestigationSchema() {
 }
 
 export function createClinicalImpressionFindingSchema() {
-  return getCachedSchema("ClinicalImpressionFinding", () => {
+  return getCachedSchema("ClinicalImpressionFinding", [], () => {
     const baseSchema: z.ZodType<types.ClinicalImpressionFinding> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

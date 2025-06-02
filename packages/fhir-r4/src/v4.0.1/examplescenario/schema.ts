@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -16,8 +16,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createExampleScenarioSchema() {
-  return getCachedSchema("ExampleScenario", () => {
+export function createExampleScenarioSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("ExampleScenario", [contained], () => {
     const baseSchema: z.ZodType<types.ExampleScenario> = z.strictObject({
       resourceType: z.literal("ExampleScenario"),
       id: primitives.getIdSchema().optional(),
@@ -27,7 +34,7 @@ export function createExampleScenarioSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       url: primitives.getUriSchema().optional(),
@@ -63,7 +70,7 @@ export function createExampleScenarioSchema() {
 }
 
 export function createExampleScenarioActorSchema() {
-  return getCachedSchema("ExampleScenarioActor", () => {
+  return getCachedSchema("ExampleScenarioActor", [], () => {
     const baseSchema: z.ZodType<types.ExampleScenarioActor> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -83,7 +90,7 @@ export function createExampleScenarioActorSchema() {
 }
 
 export function createExampleScenarioInstanceSchema() {
-  return getCachedSchema("ExampleScenarioInstance", () => {
+  return getCachedSchema("ExampleScenarioInstance", [], () => {
     const baseSchema: z.ZodType<types.ExampleScenarioInstance> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),
@@ -109,7 +116,7 @@ export function createExampleScenarioInstanceSchema() {
 }
 
 export function createExampleScenarioVersionSchema() {
-  return getCachedSchema("ExampleScenarioVersion", () => {
+  return getCachedSchema("ExampleScenarioVersion", [], () => {
     const baseSchema: z.ZodType<types.ExampleScenarioVersion> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -125,7 +132,7 @@ export function createExampleScenarioVersionSchema() {
 }
 
 export function createExampleScenarioContainedInstanceSchema() {
-  return getCachedSchema("ExampleScenarioContainedInstance", () => {
+  return getCachedSchema("ExampleScenarioContainedInstance", [], () => {
     const baseSchema: z.ZodType<types.ExampleScenarioContainedInstance> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -142,7 +149,7 @@ export function createExampleScenarioContainedInstanceSchema() {
 }
 
 export function createExampleScenarioProcessSchema() {
-  return getCachedSchema("ExampleScenarioProcess", () => {
+  return getCachedSchema("ExampleScenarioProcess", [], () => {
     const baseSchema: z.ZodType<types.ExampleScenarioProcess> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -163,7 +170,7 @@ export function createExampleScenarioProcessSchema() {
 }
 
 export function createExampleScenarioStepSchema() {
-  return getCachedSchema("ExampleScenarioStep", () => {
+  return getCachedSchema("ExampleScenarioStep", [], () => {
     const baseSchema: z.ZodType<types.ExampleScenarioStep> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -180,7 +187,7 @@ export function createExampleScenarioStepSchema() {
 }
 
 export function createExampleScenarioOperationSchema() {
-  return getCachedSchema("ExampleScenarioOperation", () => {
+  return getCachedSchema("ExampleScenarioOperation", [], () => {
     const baseSchema: z.ZodType<types.ExampleScenarioOperation> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -211,7 +218,7 @@ export function createExampleScenarioOperationSchema() {
 }
 
 export function createExampleScenarioAlternativeSchema() {
-  return getCachedSchema("ExampleScenarioAlternative", () => {
+  return getCachedSchema("ExampleScenarioAlternative", [], () => {
     const baseSchema: z.ZodType<types.ExampleScenarioAlternative> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

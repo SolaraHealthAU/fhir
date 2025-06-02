@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -17,8 +17,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createInvoiceSchema() {
-  return getCachedSchema("Invoice", () => {
+export function createInvoiceSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Invoice", [contained], () => {
     const baseSchema: z.ZodType<types.Invoice> = z.strictObject({
       resourceType: z.literal("Invoice"),
       id: primitives.getIdSchema().optional(),
@@ -28,7 +35,7 @@ export function createInvoiceSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -66,7 +73,7 @@ export function createInvoiceSchema() {
 }
 
 export function createInvoiceParticipantSchema() {
-  return getCachedSchema("InvoiceParticipant", () => {
+  return getCachedSchema("InvoiceParticipant", [], () => {
     const baseSchema: z.ZodType<types.InvoiceParticipant> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -80,7 +87,7 @@ export function createInvoiceParticipantSchema() {
 }
 
 export function createInvoiceLineItemSchema() {
-  return getCachedSchema("InvoiceLineItem", () => {
+  return getCachedSchema("InvoiceLineItem", [], () => {
     const baseSchema: z.ZodType<types.InvoiceLineItem> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -97,7 +104,7 @@ export function createInvoiceLineItemSchema() {
 }
 
 export function createInvoicePriceComponentSchema() {
-  return getCachedSchema("InvoicePriceComponent", () => {
+  return getCachedSchema("InvoicePriceComponent", [], () => {
     const baseSchema: z.ZodType<types.InvoicePriceComponent> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

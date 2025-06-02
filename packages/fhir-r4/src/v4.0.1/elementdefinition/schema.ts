@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createExtensionSchema,
   createElementSchema,
@@ -41,7 +41,7 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createElementDefinitionSchema() {
-  return getCachedSchema("ElementDefinition", () => {
+  return getCachedSchema("ElementDefinition", [], () => {
     const baseSchema: z.ZodType<types.ElementDefinition> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -348,7 +348,7 @@ export function createElementDefinitionSchema() {
 }
 
 export function createElementDefinitionSlicingSchema() {
-  return getCachedSchema("ElementDefinitionSlicing", () => {
+  return getCachedSchema("ElementDefinitionSlicing", [], () => {
     const baseSchema: z.ZodType<types.ElementDefinitionSlicing> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -370,7 +370,7 @@ export function createElementDefinitionSlicingSchema() {
 }
 
 export function createElementDefinitionDiscriminatorSchema() {
-  return getCachedSchema("ElementDefinitionDiscriminator", () => {
+  return getCachedSchema("ElementDefinitionDiscriminator", [], () => {
     const baseSchema: z.ZodType<types.ElementDefinitionDiscriminator> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -389,7 +389,7 @@ export function createElementDefinitionDiscriminatorSchema() {
 }
 
 export function createElementDefinitionBaseSchema() {
-  return getCachedSchema("ElementDefinitionBase", () => {
+  return getCachedSchema("ElementDefinitionBase", [], () => {
     const baseSchema: z.ZodType<types.ElementDefinitionBase> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -407,7 +407,7 @@ export function createElementDefinitionBaseSchema() {
 }
 
 export function createElementDefinitionTypeSchema() {
-  return getCachedSchema("ElementDefinitionType", () => {
+  return getCachedSchema("ElementDefinitionType", [], () => {
     const baseSchema: z.ZodType<types.ElementDefinitionType> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -432,7 +432,7 @@ export function createElementDefinitionTypeSchema() {
 }
 
 export function createElementDefinitionExampleSchema() {
-  return getCachedSchema("ElementDefinitionExample", () => {
+  return getCachedSchema("ElementDefinitionExample", [], () => {
     const baseSchema: z.ZodType<types.ElementDefinitionExample> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -516,7 +516,7 @@ export function createElementDefinitionExampleSchema() {
 }
 
 export function createElementDefinitionConstraintSchema() {
-  return getCachedSchema("ElementDefinitionConstraint", () => {
+  return getCachedSchema("ElementDefinitionConstraint", [], () => {
     const baseSchema: z.ZodType<types.ElementDefinitionConstraint> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -542,7 +542,7 @@ export function createElementDefinitionConstraintSchema() {
 }
 
 export function createElementDefinitionBindingSchema() {
-  return getCachedSchema("ElementDefinitionBinding", () => {
+  return getCachedSchema("ElementDefinitionBinding", [], () => {
     const baseSchema: z.ZodType<types.ElementDefinitionBinding> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -560,7 +560,7 @@ export function createElementDefinitionBindingSchema() {
 }
 
 export function createElementDefinitionMappingSchema() {
-  return getCachedSchema("ElementDefinitionMapping", () => {
+  return getCachedSchema("ElementDefinitionMapping", [], () => {
     const baseSchema: z.ZodType<types.ElementDefinitionMapping> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

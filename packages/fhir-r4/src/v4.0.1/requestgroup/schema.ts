@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -23,8 +23,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createRequestGroupSchema() {
-  return getCachedSchema("RequestGroup", () => {
+export function createRequestGroupSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("RequestGroup", [contained], () => {
     const baseSchema: z.ZodType<types.RequestGroup> = z.strictObject({
       resourceType: z.literal("RequestGroup"),
       id: primitives.getIdSchema().optional(),
@@ -34,7 +41,7 @@ export function createRequestGroupSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -70,7 +77,7 @@ export function createRequestGroupSchema() {
 }
 
 export function createRequestGroupActionSchema() {
-  return getCachedSchema("RequestGroupAction", () => {
+  return getCachedSchema("RequestGroupAction", [], () => {
     const baseSchema: z.ZodType<types.RequestGroupAction> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -119,7 +126,7 @@ export function createRequestGroupActionSchema() {
 }
 
 export function createRequestGroupConditionSchema() {
-  return getCachedSchema("RequestGroupCondition", () => {
+  return getCachedSchema("RequestGroupCondition", [], () => {
     const baseSchema: z.ZodType<types.RequestGroupCondition> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -134,7 +141,7 @@ export function createRequestGroupConditionSchema() {
 }
 
 export function createRequestGroupRelatedActionSchema() {
-  return getCachedSchema("RequestGroupRelatedAction", () => {
+  return getCachedSchema("RequestGroupRelatedAction", [], () => {
     const baseSchema: z.ZodType<types.RequestGroupRelatedAction> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

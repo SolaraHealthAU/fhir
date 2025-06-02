@@ -19,7 +19,8 @@ import type { ResourceList } from "../resourcelist/types";
 /** Generated from FHIR JSON Schema */
 
 /** This resource is primarily used for the identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use. */
-export interface Medication {
+
+export interface Medication<Contained = ResourceList> {
   resourceType: `Medication`;
   /** The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes. */
   id?: string;
@@ -35,8 +36,7 @@ export interface Medication {
   _language?: Element;
   /** A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety. */
   text?: Narrative;
-  /** These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope. */
-  contained?: ResourceList[];
+  contained?: Contained[];
   /** May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
   extension?: Extension[];
   /** May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
@@ -64,6 +64,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** This resource is primarily used for the identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use. */
+
 export interface MedicationIngredient {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -86,6 +87,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** This resource is primarily used for the identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use. */
+
 export interface MedicationBatch {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -106,7 +108,8 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Describes the event of a patient consuming or otherwise being administered a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.  Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care practitioner. */
-export interface MedicationAdministration {
+
+export interface MedicationAdministration<Contained = ResourceList> {
   resourceType: `MedicationAdministration`;
   /** The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes. */
   id?: string;
@@ -122,8 +125,7 @@ export interface MedicationAdministration {
   _language?: Element;
   /** A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety. */
   text?: Narrative;
-  /** These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope. */
-  contained?: ResourceList[];
+  contained?: Contained[];
   /** May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
   extension?: Extension[];
   /** May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
@@ -181,6 +183,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Describes the event of a patient consuming or otherwise being administered a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.  Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care practitioner. */
+
 export interface MedicationAdministrationPerformer {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -197,6 +200,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Describes the event of a patient consuming or otherwise being administered a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.  Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care practitioner. */
+
 export interface MedicationAdministrationDosage {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -227,7 +231,8 @@ The dosage instructions should reflect the dosage of the medication that was adm
 }
 
 /** Indicates that a medication product is to be or has been dispensed for a named person/patient.  This includes a description of the medication product (supply) provided and the instructions for administering the medication.  The medication dispense is the result of a pharmacy system responding to a medication order. */
-export interface MedicationDispense {
+
+export interface MedicationDispense<Contained = ResourceList> {
   resourceType: `MedicationDispense`;
   /** The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes. */
   id?: string;
@@ -243,8 +248,7 @@ export interface MedicationDispense {
   _language?: Element;
   /** A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety. */
   text?: Narrative;
-  /** These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope. */
-  contained?: ResourceList[];
+  contained?: Contained[];
   /** May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
   extension?: Extension[];
   /** May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
@@ -312,6 +316,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Indicates that a medication product is to be or has been dispensed for a named person/patient.  This includes a description of the medication product (supply) provided and the instructions for administering the medication.  The medication dispense is the result of a pharmacy system responding to a medication order. */
+
 export interface MedicationDispensePerformer {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -328,6 +333,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Indicates that a medication product is to be or has been dispensed for a named person/patient.  This includes a description of the medication product (supply) provided and the instructions for administering the medication.  The medication dispense is the result of a pharmacy system responding to a medication order. */
+
 export interface MedicationDispenseSubstitution {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -350,7 +356,8 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Information about a medication that is used to support knowledge. */
-export interface MedicationKnowledge {
+
+export interface MedicationKnowledge<Contained = ResourceList> {
   resourceType: `MedicationKnowledge`;
   /** The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes. */
   id?: string;
@@ -366,8 +373,7 @@ export interface MedicationKnowledge {
   _language?: Element;
   /** A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety. */
   text?: Narrative;
-  /** These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope. */
-  contained?: ResourceList[];
+  contained?: Contained[];
   /** May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
   extension?: Extension[];
   /** May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
@@ -427,6 +433,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Information about a medication that is used to support knowledge. */
+
 export interface MedicationKnowledgeRelatedMedicationKnowledge {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -443,6 +450,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Information about a medication that is used to support knowledge. */
+
 export interface MedicationKnowledgeMonograph {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -459,6 +467,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Information about a medication that is used to support knowledge. */
+
 export interface MedicationKnowledgeIngredient {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -481,6 +490,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Information about a medication that is used to support knowledge. */
+
 export interface MedicationKnowledgeCost {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -501,6 +511,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Information about a medication that is used to support knowledge. */
+
 export interface MedicationKnowledgeMonitoringProgram {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -519,6 +530,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Information about a medication that is used to support knowledge. */
+
 export interface MedicationKnowledgeAdministrationGuidelines {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -539,6 +551,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Information about a medication that is used to support knowledge. */
+
 export interface MedicationKnowledgeDosage {
   id?: string;
 
@@ -552,6 +565,7 @@ export interface MedicationKnowledgeDosage {
 }
 
 /** Information about a medication that is used to support knowledge. */
+
 export interface MedicationKnowledgePatientCharacteristics {
   id?: string;
 
@@ -569,6 +583,7 @@ export interface MedicationKnowledgePatientCharacteristics {
 }
 
 /** Information about a medication that is used to support knowledge. */
+
 export interface MedicationKnowledgeMedicineClassification {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -585,6 +600,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Information about a medication that is used to support knowledge. */
+
 export interface MedicationKnowledgePackaging {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -601,6 +617,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Information about a medication that is used to support knowledge. */
+
 export interface MedicationKnowledgeDrugCharacteristic {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -627,6 +644,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Information about a medication that is used to support knowledge. */
+
 export interface MedicationKnowledgeRegulatory {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -647,6 +665,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Information about a medication that is used to support knowledge. */
+
 export interface MedicationKnowledgeSubstitution {
   id?: string;
 
@@ -662,6 +681,7 @@ export interface MedicationKnowledgeSubstitution {
 }
 
 /** Information about a medication that is used to support knowledge. */
+
 export interface MedicationKnowledgeSchedule {
   id?: string;
 
@@ -673,6 +693,7 @@ export interface MedicationKnowledgeSchedule {
 }
 
 /** Information about a medication that is used to support knowledge. */
+
 export interface MedicationKnowledgeMaxDispense {
   id?: string;
 
@@ -686,6 +707,7 @@ export interface MedicationKnowledgeMaxDispense {
 }
 
 /** Information about a medication that is used to support knowledge. */
+
 export interface MedicationKnowledgeKinetics {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -704,7 +726,8 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** An order or request for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called "MedicationRequest" rather than "MedicationPrescription" or "MedicationOrder" to generalize the use across inpatient and outpatient settings, including care plans, etc., and to harmonize with workflow patterns. */
-export interface MedicationRequest {
+
+export interface MedicationRequest<Contained = ResourceList> {
   resourceType: `MedicationRequest`;
   /** The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes. */
   id?: string;
@@ -720,8 +743,7 @@ export interface MedicationRequest {
   _language?: Element;
   /** A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety. */
   text?: Narrative;
-  /** These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope. */
-  contained?: ResourceList[];
+  contained?: Contained[];
   /** May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
   extension?: Extension[];
   /** May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
@@ -815,6 +837,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** An order or request for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called "MedicationRequest" rather than "MedicationPrescription" or "MedicationOrder" to generalize the use across inpatient and outpatient settings, including care plans, etc., and to harmonize with workflow patterns. */
+
 export interface MedicationRequestDispenseRequest {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -843,6 +866,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** An order or request for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called "MedicationRequest" rather than "MedicationPrescription" or "MedicationOrder" to generalize the use across inpatient and outpatient settings, including care plans, etc., and to harmonize with workflow patterns. */
+
 export interface MedicationRequestInitialFill {
   id?: string;
 
@@ -856,6 +880,7 @@ export interface MedicationRequestInitialFill {
 }
 
 /** An order or request for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called "MedicationRequest" rather than "MedicationPrescription" or "MedicationOrder" to generalize the use across inpatient and outpatient settings, including care plans, etc., and to harmonize with workflow patterns. */
+
 export interface MedicationRequestSubstitution {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -878,7 +903,8 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 /** A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from sources such as the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains. 
 
 The primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information. */
-export interface MedicationStatement {
+
+export interface MedicationStatement<Contained = ResourceList> {
   resourceType: `MedicationStatement`;
   /** The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes. */
   id?: string;
@@ -894,8 +920,7 @@ export interface MedicationStatement {
   _language?: Element;
   /** A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety. */
   text?: Narrative;
-  /** These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope. */
-  contained?: ResourceList[];
+  contained?: Contained[];
   /** May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
   extension?: Extension[];
   /** May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.

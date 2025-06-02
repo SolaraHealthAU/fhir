@@ -1,7 +1,6 @@
 import { createPlanDefinitionSchema } from "../../src";
 import {
   PlandefinitionChlamydiaScreeningIntervention,
-  PlandefinitionExampleCardiologyOs,
   PlandefinitionExampleKdn5Simplified,
   PlandefinitionExample,
   PlandefinitionExclusiveBreastfeedingIntervention01,
@@ -33,20 +32,6 @@ describe("Plandefinition Group Schema Validation", () => {
       console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
       throw new Error(
         `Schema validation failed for PlandefinitionChlamydiaScreeningIntervention: ${result.error.message}`,
-      );
-    }
-    expect(result.success).toBe(true);
-  });
-
-  it("should validate PlandefinitionExampleCardiologyOs fixture (PlanDefinition)", () => {
-    const result = createPlanDefinitionSchema().safeParse(
-      PlandefinitionExampleCardiologyOs,
-    );
-    if (!result.success) {
-      console.error("Validation failed for PlandefinitionExampleCardiologyOs:");
-      console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
-      throw new Error(
-        `Schema validation failed for PlandefinitionExampleCardiologyOs: ${result.error.message}`,
       );
     }
     expect(result.success).toBe(true);

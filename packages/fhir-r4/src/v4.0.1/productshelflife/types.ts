@@ -8,6 +8,7 @@ import type {
 /** Generated from FHIR JSON Schema */
 
 /** The shelf-life and storage information for a medicinal product item or container can be described using this class. */
+
 export interface ProductShelfLife {
   id?: string;
 

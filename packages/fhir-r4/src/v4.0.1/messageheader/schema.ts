@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -16,8 +16,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createMessageHeaderSchema() {
-  return getCachedSchema("MessageHeader", () => {
+export function createMessageHeaderSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("MessageHeader", [contained], () => {
     const baseSchema: z.ZodType<types.MessageHeader> = z.strictObject({
       resourceType: z.literal("MessageHeader"),
       id: primitives.getIdSchema().optional(),
@@ -27,7 +34,7 @@ export function createMessageHeaderSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       eventCoding: createCodingSchema().optional(),
@@ -50,7 +57,7 @@ export function createMessageHeaderSchema() {
 }
 
 export function createMessageHeaderDestinationSchema() {
-  return getCachedSchema("MessageHeaderDestination", () => {
+  return getCachedSchema("MessageHeaderDestination", [], () => {
     const baseSchema: z.ZodType<types.MessageHeaderDestination> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -69,7 +76,7 @@ export function createMessageHeaderDestinationSchema() {
 }
 
 export function createMessageHeaderSourceSchema() {
-  return getCachedSchema("MessageHeaderSource", () => {
+  return getCachedSchema("MessageHeaderSource", [], () => {
     const baseSchema: z.ZodType<types.MessageHeaderSource> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -90,7 +97,7 @@ export function createMessageHeaderSourceSchema() {
 }
 
 export function createMessageHeaderResponseSchema() {
-  return getCachedSchema("MessageHeaderResponse", () => {
+  return getCachedSchema("MessageHeaderResponse", [], () => {
     const baseSchema: z.ZodType<types.MessageHeaderResponse> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

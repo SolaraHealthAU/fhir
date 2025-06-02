@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -20,8 +20,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createSpecimenSchema() {
-  return getCachedSchema("Specimen", () => {
+export function createSpecimenSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Specimen", [contained], () => {
     const baseSchema: z.ZodType<types.Specimen> = z.strictObject({
       resourceType: z.literal("Specimen"),
       id: primitives.getIdSchema().optional(),
@@ -31,7 +38,7 @@ export function createSpecimenSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -63,7 +70,7 @@ export function createSpecimenSchema() {
 }
 
 export function createSpecimenCollectionSchema() {
-  return getCachedSchema("SpecimenCollection", () => {
+  return getCachedSchema("SpecimenCollection", [], () => {
     const baseSchema: z.ZodType<types.SpecimenCollection> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -85,7 +92,7 @@ export function createSpecimenCollectionSchema() {
 }
 
 export function createSpecimenProcessingSchema() {
-  return getCachedSchema("SpecimenProcessing", () => {
+  return getCachedSchema("SpecimenProcessing", [], () => {
     const baseSchema: z.ZodType<types.SpecimenProcessing> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -104,7 +111,7 @@ export function createSpecimenProcessingSchema() {
 }
 
 export function createSpecimenContainerSchema() {
-  return getCachedSchema("SpecimenContainer", () => {
+  return getCachedSchema("SpecimenContainer", [], () => {
     const baseSchema: z.ZodType<types.SpecimenContainer> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -123,8 +130,15 @@ export function createSpecimenContainerSchema() {
   });
 }
 
-export function createSpecimenDefinitionSchema() {
-  return getCachedSchema("SpecimenDefinition", () => {
+export function createSpecimenDefinitionSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("SpecimenDefinition", [contained], () => {
     const baseSchema: z.ZodType<types.SpecimenDefinition> = z.strictObject({
       resourceType: z.literal("SpecimenDefinition"),
       id: primitives.getIdSchema().optional(),
@@ -134,7 +148,7 @@ export function createSpecimenDefinitionSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: createIdentifierSchema().optional(),
@@ -153,7 +167,7 @@ export function createSpecimenDefinitionSchema() {
 }
 
 export function createSpecimenDefinitionTypeTestedSchema() {
-  return getCachedSchema("SpecimenDefinitionTypeTested", () => {
+  return getCachedSchema("SpecimenDefinitionTypeTested", [], () => {
     const baseSchema: z.ZodType<types.SpecimenDefinitionTypeTested> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -177,7 +191,7 @@ export function createSpecimenDefinitionTypeTestedSchema() {
 }
 
 export function createSpecimenDefinitionContainerSchema() {
-  return getCachedSchema("SpecimenDefinitionContainer", () => {
+  return getCachedSchema("SpecimenDefinitionContainer", [], () => {
     const baseSchema: z.ZodType<types.SpecimenDefinitionContainer> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -202,7 +216,7 @@ export function createSpecimenDefinitionContainerSchema() {
 }
 
 export function createSpecimenDefinitionAdditiveSchema() {
-  return getCachedSchema("SpecimenDefinitionAdditive", () => {
+  return getCachedSchema("SpecimenDefinitionAdditive", [], () => {
     const baseSchema: z.ZodType<types.SpecimenDefinitionAdditive> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -217,7 +231,7 @@ export function createSpecimenDefinitionAdditiveSchema() {
 }
 
 export function createSpecimenDefinitionHandlingSchema() {
-  return getCachedSchema("SpecimenDefinitionHandling", () => {
+  return getCachedSchema("SpecimenDefinitionHandling", [], () => {
     const baseSchema: z.ZodType<types.SpecimenDefinitionHandling> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

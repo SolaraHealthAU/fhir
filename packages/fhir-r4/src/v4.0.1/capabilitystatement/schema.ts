@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -17,8 +17,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createCapabilityStatementSchema() {
-  return getCachedSchema("CapabilityStatement", () => {
+export function createCapabilityStatementSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("CapabilityStatement", [contained], () => {
     const baseSchema: z.ZodType<types.CapabilityStatement> = z.strictObject({
       resourceType: z.literal("CapabilityStatement"),
       id: primitives.getIdSchema().optional(),
@@ -28,7 +35,7 @@ export function createCapabilityStatementSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       url: primitives.getUriSchema().optional(),
@@ -103,7 +110,7 @@ export function createCapabilityStatementSchema() {
 }
 
 export function createCapabilityStatementSoftwareSchema() {
-  return getCachedSchema("CapabilityStatementSoftware", () => {
+  return getCachedSchema("CapabilityStatementSoftware", [], () => {
     const baseSchema: z.ZodType<types.CapabilityStatementSoftware> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -122,7 +129,7 @@ export function createCapabilityStatementSoftwareSchema() {
 }
 
 export function createCapabilityStatementImplementationSchema() {
-  return getCachedSchema("CapabilityStatementImplementation", () => {
+  return getCachedSchema("CapabilityStatementImplementation", [], () => {
     const baseSchema: z.ZodType<types.CapabilityStatementImplementation> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -140,7 +147,7 @@ export function createCapabilityStatementImplementationSchema() {
 }
 
 export function createCapabilityStatementRestSchema() {
-  return getCachedSchema("CapabilityStatementRest", () => {
+  return getCachedSchema("CapabilityStatementRest", [], () => {
     const baseSchema: z.ZodType<types.CapabilityStatementRest> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),
@@ -170,7 +177,7 @@ export function createCapabilityStatementRestSchema() {
 }
 
 export function createCapabilityStatementSecuritySchema() {
-  return getCachedSchema("CapabilityStatementSecurity", () => {
+  return getCachedSchema("CapabilityStatementSecurity", [], () => {
     const baseSchema: z.ZodType<types.CapabilityStatementSecurity> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -188,7 +195,7 @@ export function createCapabilityStatementSecuritySchema() {
 }
 
 export function createCapabilityStatementResourceSchema() {
-  return getCachedSchema("CapabilityStatementResource", () => {
+  return getCachedSchema("CapabilityStatementResource", [], () => {
     const baseSchema: z.ZodType<types.CapabilityStatementResource> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -250,7 +257,7 @@ export function createCapabilityStatementResourceSchema() {
 }
 
 export function createCapabilityStatementInteractionSchema() {
-  return getCachedSchema("CapabilityStatementInteraction", () => {
+  return getCachedSchema("CapabilityStatementInteraction", [], () => {
     const baseSchema: z.ZodType<types.CapabilityStatementInteraction> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -279,7 +286,7 @@ export function createCapabilityStatementInteractionSchema() {
 }
 
 export function createCapabilityStatementSearchParamSchema() {
-  return getCachedSchema("CapabilityStatementSearchParam", () => {
+  return getCachedSchema("CapabilityStatementSearchParam", [], () => {
     const baseSchema: z.ZodType<types.CapabilityStatementSearchParam> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -311,7 +318,7 @@ export function createCapabilityStatementSearchParamSchema() {
 }
 
 export function createCapabilityStatementOperationSchema() {
-  return getCachedSchema("CapabilityStatementOperation", () => {
+  return getCachedSchema("CapabilityStatementOperation", [], () => {
     const baseSchema: z.ZodType<types.CapabilityStatementOperation> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -329,7 +336,7 @@ export function createCapabilityStatementOperationSchema() {
 }
 
 export function createCapabilityStatementInteraction1Schema() {
-  return getCachedSchema("CapabilityStatementInteraction1", () => {
+  return getCachedSchema("CapabilityStatementInteraction1", [], () => {
     const baseSchema: z.ZodType<types.CapabilityStatementInteraction1> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -348,7 +355,7 @@ export function createCapabilityStatementInteraction1Schema() {
 }
 
 export function createCapabilityStatementMessagingSchema() {
-  return getCachedSchema("CapabilityStatementMessaging", () => {
+  return getCachedSchema("CapabilityStatementMessaging", [], () => {
     const baseSchema: z.ZodType<types.CapabilityStatementMessaging> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -369,7 +376,7 @@ export function createCapabilityStatementMessagingSchema() {
 }
 
 export function createCapabilityStatementEndpointSchema() {
-  return getCachedSchema("CapabilityStatementEndpoint", () => {
+  return getCachedSchema("CapabilityStatementEndpoint", [], () => {
     const baseSchema: z.ZodType<types.CapabilityStatementEndpoint> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -385,7 +392,7 @@ export function createCapabilityStatementEndpointSchema() {
 }
 
 export function createCapabilityStatementSupportedMessageSchema() {
-  return getCachedSchema("CapabilityStatementSupportedMessage", () => {
+  return getCachedSchema("CapabilityStatementSupportedMessage", [], () => {
     const baseSchema: z.ZodType<types.CapabilityStatementSupportedMessage> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -401,7 +408,7 @@ export function createCapabilityStatementSupportedMessageSchema() {
 }
 
 export function createCapabilityStatementDocumentSchema() {
-  return getCachedSchema("CapabilityStatementDocument", () => {
+  return getCachedSchema("CapabilityStatementDocument", [], () => {
     const baseSchema: z.ZodType<types.CapabilityStatementDocument> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

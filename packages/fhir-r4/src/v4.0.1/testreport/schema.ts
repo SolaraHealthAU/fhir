@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -14,8 +14,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createTestReportSchema() {
-  return getCachedSchema("TestReport", () => {
+export function createTestReportSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("TestReport", [contained], () => {
     const baseSchema: z.ZodType<types.TestReport> = z.strictObject({
       resourceType: z.literal("TestReport"),
       id: primitives.getIdSchema().optional(),
@@ -25,7 +32,7 @@ export function createTestReportSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: createIdentifierSchema().optional(),
@@ -59,7 +66,7 @@ export function createTestReportSchema() {
 }
 
 export function createTestReportParticipantSchema() {
-  return getCachedSchema("TestReportParticipant", () => {
+  return getCachedSchema("TestReportParticipant", [], () => {
     const baseSchema: z.ZodType<types.TestReportParticipant> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -77,7 +84,7 @@ export function createTestReportParticipantSchema() {
 }
 
 export function createTestReportSetupSchema() {
-  return getCachedSchema("TestReportSetup", () => {
+  return getCachedSchema("TestReportSetup", [], () => {
     const baseSchema: z.ZodType<types.TestReportSetup> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -90,7 +97,7 @@ export function createTestReportSetupSchema() {
 }
 
 export function createTestReportActionSchema() {
-  return getCachedSchema("TestReportAction", () => {
+  return getCachedSchema("TestReportAction", [], () => {
     const baseSchema: z.ZodType<types.TestReportAction> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -104,7 +111,7 @@ export function createTestReportActionSchema() {
 }
 
 export function createTestReportOperationSchema() {
-  return getCachedSchema("TestReportOperation", () => {
+  return getCachedSchema("TestReportOperation", [], () => {
     const baseSchema: z.ZodType<types.TestReportOperation> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -122,7 +129,7 @@ export function createTestReportOperationSchema() {
 }
 
 export function createTestReportAssertSchema() {
-  return getCachedSchema("TestReportAssert", () => {
+  return getCachedSchema("TestReportAssert", [], () => {
     const baseSchema: z.ZodType<types.TestReportAssert> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -140,7 +147,7 @@ export function createTestReportAssertSchema() {
 }
 
 export function createTestReportTestSchema() {
-  return getCachedSchema("TestReportTest", () => {
+  return getCachedSchema("TestReportTest", [], () => {
     const baseSchema: z.ZodType<types.TestReportTest> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -157,7 +164,7 @@ export function createTestReportTestSchema() {
 }
 
 export function createTestReportAction1Schema() {
-  return getCachedSchema("TestReportAction1", () => {
+  return getCachedSchema("TestReportAction1", [], () => {
     const baseSchema: z.ZodType<types.TestReportAction1> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -171,7 +178,7 @@ export function createTestReportAction1Schema() {
 }
 
 export function createTestReportTeardownSchema() {
-  return getCachedSchema("TestReportTeardown", () => {
+  return getCachedSchema("TestReportTeardown", [], () => {
     const baseSchema: z.ZodType<types.TestReportTeardown> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -184,7 +191,7 @@ export function createTestReportTeardownSchema() {
 }
 
 export function createTestReportAction2Schema() {
-  return getCachedSchema("TestReportAction2", () => {
+  return getCachedSchema("TestReportAction2", [], () => {
     const baseSchema: z.ZodType<types.TestReportAction2> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

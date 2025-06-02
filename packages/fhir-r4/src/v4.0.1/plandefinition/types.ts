@@ -24,7 +24,8 @@ import type { ResourceList } from "../resourcelist/types";
 /** Generated from FHIR JSON Schema */
 
 /** This resource allows for the definition of various types of plans as a sharable, consumable, and executable artifact. The resource is general enough to support the description of a broad range of clinical artifacts such as clinical decision support rules, order sets and protocols. */
-export interface PlanDefinition {
+
+export interface PlanDefinition<Contained = ResourceList> {
   resourceType: `PlanDefinition`;
   /** The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes. */
   id?: string;
@@ -40,8 +41,7 @@ export interface PlanDefinition {
   _language?: Element;
   /** A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety. */
   text?: Narrative;
-  /** These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope. */
-  contained?: ResourceList[];
+  contained?: Contained[];
   /** May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
   extension?: Extension[];
   /** May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
@@ -145,6 +145,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** This resource allows for the definition of various types of plans as a sharable, consumable, and executable artifact. The resource is general enough to support the description of a broad range of clinical artifacts such as clinical decision support rules, order sets and protocols. */
+
 export interface PlanDefinitionGoal {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -171,6 +172,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** This resource allows for the definition of various types of plans as a sharable, consumable, and executable artifact. The resource is general enough to support the description of a broad range of clinical artifacts such as clinical decision support rules, order sets and protocols. */
+
 export interface PlanDefinitionTarget {
   id?: string;
 
@@ -190,6 +192,7 @@ export interface PlanDefinitionTarget {
 }
 
 /** This resource allows for the definition of various types of plans as a sharable, consumable, and executable artifact. The resource is general enough to support the description of a broad range of clinical artifacts such as clinical decision support rules, order sets and protocols. */
+
 export interface PlanDefinitionAction {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -304,6 +307,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** This resource allows for the definition of various types of plans as a sharable, consumable, and executable artifact. The resource is general enough to support the description of a broad range of clinical artifacts such as clinical decision support rules, order sets and protocols. */
+
 export interface PlanDefinitionCondition {
   id?: string;
 
@@ -319,6 +323,7 @@ export interface PlanDefinitionCondition {
 }
 
 /** This resource allows for the definition of various types of plans as a sharable, consumable, and executable artifact. The resource is general enough to support the description of a broad range of clinical artifacts such as clinical decision support rules, order sets and protocols. */
+
 export interface PlanDefinitionRelatedAction {
   id?: string;
 
@@ -349,6 +354,7 @@ export interface PlanDefinitionRelatedAction {
 }
 
 /** This resource allows for the definition of various types of plans as a sharable, consumable, and executable artifact. The resource is general enough to support the description of a broad range of clinical artifacts such as clinical decision support rules, order sets and protocols. */
+
 export interface PlanDefinitionParticipant {
   id?: string;
 
@@ -364,6 +370,7 @@ export interface PlanDefinitionParticipant {
 }
 
 /** This resource allows for the definition of various types of plans as a sharable, consumable, and executable artifact. The resource is general enough to support the description of a broad range of clinical artifacts such as clinical decision support rules, order sets and protocols. */
+
 export interface PlanDefinitionDynamicValue {
   id?: string;
 

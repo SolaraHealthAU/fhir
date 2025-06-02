@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -19,8 +19,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createOrganizationSchema() {
-  return getCachedSchema("Organization", () => {
+export function createOrganizationSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Organization", [contained], () => {
     const baseSchema: z.ZodType<types.Organization> = z.strictObject({
       resourceType: z.literal("Organization"),
       id: primitives.getIdSchema().optional(),
@@ -30,7 +37,7 @@ export function createOrganizationSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -53,7 +60,7 @@ export function createOrganizationSchema() {
 }
 
 export function createOrganizationContactSchema() {
-  return getCachedSchema("OrganizationContact", () => {
+  return getCachedSchema("OrganizationContact", [], () => {
     const baseSchema: z.ZodType<types.OrganizationContact> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -68,8 +75,15 @@ export function createOrganizationContactSchema() {
   });
 }
 
-export function createOrganizationAffiliationSchema() {
-  return getCachedSchema("OrganizationAffiliation", () => {
+export function createOrganizationAffiliationSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("OrganizationAffiliation", [contained], () => {
     const baseSchema: z.ZodType<types.OrganizationAffiliation> = z.strictObject(
       {
         resourceType: z.literal("OrganizationAffiliation"),
@@ -80,7 +94,7 @@ export function createOrganizationAffiliationSchema() {
         language: primitives.getCodeSchema().optional(),
         _language: createElementSchema().optional(),
         text: createNarrativeSchema().optional(),
-        contained: z.array(createResourceListSchema()).optional(),
+        contained: z.array(contained).optional(),
         extension: z.array(createExtensionSchema()).optional(),
         modifierExtension: z.array(createExtensionSchema()).optional(),
         identifier: z.array(createIdentifierSchema()).optional(),

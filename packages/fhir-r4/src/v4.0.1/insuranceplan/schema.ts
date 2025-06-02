@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -21,8 +21,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createInsurancePlanSchema() {
-  return getCachedSchema("InsurancePlan", () => {
+export function createInsurancePlanSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("InsurancePlan", [contained], () => {
     const baseSchema: z.ZodType<types.InsurancePlan> = z.strictObject({
       resourceType: z.literal("InsurancePlan"),
       id: primitives.getIdSchema().optional(),
@@ -32,7 +39,7 @@ export function createInsurancePlanSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -59,7 +66,7 @@ export function createInsurancePlanSchema() {
 }
 
 export function createInsurancePlanContactSchema() {
-  return getCachedSchema("InsurancePlanContact", () => {
+  return getCachedSchema("InsurancePlanContact", [], () => {
     const baseSchema: z.ZodType<types.InsurancePlanContact> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -75,7 +82,7 @@ export function createInsurancePlanContactSchema() {
 }
 
 export function createInsurancePlanCoverageSchema() {
-  return getCachedSchema("InsurancePlanCoverage", () => {
+  return getCachedSchema("InsurancePlanCoverage", [], () => {
     const baseSchema: z.ZodType<types.InsurancePlanCoverage> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -90,7 +97,7 @@ export function createInsurancePlanCoverageSchema() {
 }
 
 export function createInsurancePlanBenefitSchema() {
-  return getCachedSchema("InsurancePlanBenefit", () => {
+  return getCachedSchema("InsurancePlanBenefit", [], () => {
     const baseSchema: z.ZodType<types.InsurancePlanBenefit> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -106,7 +113,7 @@ export function createInsurancePlanBenefitSchema() {
 }
 
 export function createInsurancePlanLimitSchema() {
-  return getCachedSchema("InsurancePlanLimit", () => {
+  return getCachedSchema("InsurancePlanLimit", [], () => {
     const baseSchema: z.ZodType<types.InsurancePlanLimit> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -120,7 +127,7 @@ export function createInsurancePlanLimitSchema() {
 }
 
 export function createInsurancePlanPlanSchema() {
-  return getCachedSchema("InsurancePlanPlan", () => {
+  return getCachedSchema("InsurancePlanPlan", [], () => {
     const baseSchema: z.ZodType<types.InsurancePlanPlan> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -138,7 +145,7 @@ export function createInsurancePlanPlanSchema() {
 }
 
 export function createInsurancePlanGeneralCostSchema() {
-  return getCachedSchema("InsurancePlanGeneralCost", () => {
+  return getCachedSchema("InsurancePlanGeneralCost", [], () => {
     const baseSchema: z.ZodType<types.InsurancePlanGeneralCost> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -157,7 +164,7 @@ export function createInsurancePlanGeneralCostSchema() {
 }
 
 export function createInsurancePlanSpecificCostSchema() {
-  return getCachedSchema("InsurancePlanSpecificCost", () => {
+  return getCachedSchema("InsurancePlanSpecificCost", [], () => {
     const baseSchema: z.ZodType<types.InsurancePlanSpecificCost> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -172,7 +179,7 @@ export function createInsurancePlanSpecificCostSchema() {
 }
 
 export function createInsurancePlanBenefit1Schema() {
-  return getCachedSchema("InsurancePlanBenefit1", () => {
+  return getCachedSchema("InsurancePlanBenefit1", [], () => {
     const baseSchema: z.ZodType<types.InsurancePlanBenefit1> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -186,7 +193,7 @@ export function createInsurancePlanBenefit1Schema() {
 }
 
 export function createInsurancePlanCostSchema() {
-  return getCachedSchema("InsurancePlanCost", () => {
+  return getCachedSchema("InsurancePlanCost", [], () => {
     const baseSchema: z.ZodType<types.InsurancePlanCost> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

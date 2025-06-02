@@ -534,9 +534,13 @@ type Definition = (typeof definitions)[number];
 function interceptAdditionalElementsZod(property: Property, resourceType: string): string {
   const result = outputZodProperty(property, resourceType);
 
+  if (property.property === 'contained') {
+    return `contained: z.array(contained).optional()`;
+  }
+
   if (resourceType === 'QuestionnaireItem' && property.property === 'linkId') {
     // There appears to be some circumstances where linkId is not present (in examples, mainly in display )
-    return `linkId: primitives.getStringSchema()`;
+    return `linkId: primitives.getStringSchema().optional()`;
   }
 
   if (resourceType === 'SearchParameter' && property.property === 'base') {
@@ -568,9 +572,39 @@ function outputZodType(type: Definition): string {
   const functionName = referenceCreateTypeFunction(type.type);
   const typeName = createTypeName(type.type);
 
-  return `
+  if (typeName === 'ResourceList') {
+    return `
+    const UNKNOWN = z.unknown();
+    export function createResourceListSchema() { 
+  return UNKNOWN;
+}
+    `;
+  }
+
+  const hasContained = type.properties.find((p) => p.property === 'contained');
+
+  const header = (() => {
+    if (hasContained) {
+      return `
+export function ${functionName}<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : options?.contained ?? createResourceListSchema();
+      `;
+    }
+
+    return `
 export function ${functionName}() {
-  return getCachedSchema('${typeName}', () => {
+      `;
+  })();
+
+  return `
+  ${header}
+
+  return getCachedSchema('${typeName}', [${hasContained ? 'contained' : ''}], () => {
     const baseSchema: z.ZodType<types.${typeName}> = z.strictObject({
       ${type.properties.map((k) => interceptAdditionalElementsZod(k, type.type)).join(',\n    ')}
     });
@@ -583,6 +617,10 @@ export function ${functionName}() {
 
 function interceptAdditionalElements(property: Property, resourceType: string): string {
   const result = outputInterfaceType(property, resourceType);
+
+  if (property.property === 'contained') {
+    return `contained?: Contained[]`;
+  }
 
   if (resourceType === 'QuestionnaireItem' && property.property === 'linkId') {
     // There appears to be some circumstances where linkId is not present (in examples, mainly in display )
@@ -612,9 +650,28 @@ function interceptAdditionalElements(property: Property, resourceType: string): 
 }
 
 function outputType(type: Definition): string {
+  if (type.type === 'ResourceList') {
+    return `export type ResourceList = unknown;
+    `;
+  }
+
+  const hasContained = type.properties.find((p) => p.property === 'contained');
+
+  const header = (() => {
+    if (hasContained) {
+      return `
+      export interface ${type.type}<Contained = ResourceList> {
+      `;
+    }
+
+    return `
+      export interface ${type.type} {
+      `;
+  })();
+
   return `
 ${type.description ? `/** ${type.description} */` : ''}
-export interface ${type.type} {
+  ${header}
   ${type.properties.map((k) => interceptAdditionalElements(k, type.type)).join(';\n  ')}
 }
 `;
@@ -1056,7 +1113,7 @@ async function writeFile(filePath: string, content: string) {
       `import { z } from 'zod/v4';`,
       `import * as types from './types';`,
       `import * as primitives from '../primitives';`,
-      `import { getCachedSchema } from '../schema-cache';`,
+      `import { getCachedSchema, ZodNever } from '../schema-cache';`,
     ]);
 
     // Add imports from dependencies
@@ -1201,4 +1258,57 @@ async function writeFile(filePath: string, content: string) {
   // Write out the primitives schema file
   await writeFile(path.join(baseOutputDir, 'primitives.ts'), primitivesSchemaHeaderFile);
   await writeFile(path.join(baseOutputDir, 'schema-cache.ts'), schemaCacheHeaderFile);
+
+  // Generate the all.ts file
+  const resourceSchemaImports: string[] = [];
+  const resourceSchemaFunctions: string[] = [];
+  const resourceTypes: string[] = [];
+
+  resourceDefinitions.forEach((d) => {
+    const typeName = normalizeTypeName(createTypeName(d.type, true));
+    const schemaFunctionName = `create${typeName}Schema`;
+
+    // Find which group this resource belongs to
+    const group = groups.find((g) => g.types.some((t) => normalizeTypeName(t.type) === typeName));
+
+    if (group) {
+      resourceSchemaImports.push(
+        `import { ${schemaFunctionName} } from './v4.0.1/${group.name}/schema';`,
+      );
+      resourceSchemaFunctions.push(`${schemaFunctionName}()`);
+      resourceTypes.push(typeName);
+    }
+  });
+
+  const allOutput = `
+    import { makeContainedUnion } from './utils';
+    ${resourceSchemaImports.join('\n')}
+
+    // Import all resource types
+    ${resourceDefinitions
+      .map((d) => {
+        const typeName = normalizeTypeName(createTypeName(d.type, true));
+        const group = groups.find((g) =>
+          g.types.some((t) => normalizeTypeName(t.type) === typeName),
+        );
+        if (group) {
+          return `import type { ${typeName} } from './v4.0.1/${group.name}/types';`;
+        }
+        return '';
+      })
+      .filter(Boolean)
+      .join('\n')}
+
+    /**
+     * A discriminated-union that accepts *any* FHIR resource.
+     * Downstream bundles will be ~2–3 MB, so import intentionally!
+     */
+    export const allContained = makeContainedUnion(
+      ${resourceSchemaFunctions.join(',\n      ')}
+    );
+
+    export type AllContained = ${resourceTypes.join(' | ')};
+  `;
+
+  await writeFile(path.join(__dirname, '..', '..', '..', 'src', 'all.ts'), allOutput);
 })();

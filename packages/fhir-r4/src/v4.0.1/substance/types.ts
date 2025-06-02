@@ -17,7 +17,8 @@ import type { SubstanceAmount } from "../substanceamount/types";
 /** Generated from FHIR JSON Schema */
 
 /** A homogeneous material with a definite composition. */
-export interface Substance {
+
+export interface Substance<Contained = ResourceList> {
   resourceType: `Substance`;
   /** The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes. */
   id?: string;
@@ -33,8 +34,7 @@ export interface Substance {
   _language?: Element;
   /** A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety. */
   text?: Narrative;
-  /** These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope. */
-  contained?: ResourceList[];
+  contained?: Contained[];
   /** May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
   extension?: Extension[];
   /** May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
@@ -62,6 +62,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** A homogeneous material with a definite composition. */
+
 export interface SubstanceInstance {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -82,6 +83,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** A homogeneous material with a definite composition. */
+
 export interface SubstanceIngredient {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -100,7 +102,8 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Nucleic acids are defined by three distinct elements: the base, sugar and linkage. Individual substance/moiety IDs will be created for each of these elements. The nucleotide sequence will be always entered in the 5’-3’ direction. */
-export interface SubstanceNucleicAcid {
+
+export interface SubstanceNucleicAcid<Contained = ResourceList> {
   resourceType: `SubstanceNucleicAcid`;
   /** The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes. */
   id?: string;
@@ -116,8 +119,7 @@ export interface SubstanceNucleicAcid {
   _language?: Element;
   /** A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety. */
   text?: Narrative;
-  /** These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope. */
-  contained?: ResourceList[];
+  contained?: Contained[];
   /** May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
   extension?: Extension[];
   /** May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
@@ -141,6 +143,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Nucleic acids are defined by three distinct elements: the base, sugar and linkage. Individual substance/moiety IDs will be created for each of these elements. The nucleotide sequence will be always entered in the 5’-3’ direction. */
+
 export interface SubstanceNucleicAcidSubunit {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -175,6 +178,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Nucleic acids are defined by three distinct elements: the base, sugar and linkage. Individual substance/moiety IDs will be created for each of these elements. The nucleotide sequence will be always entered in the 5’-3’ direction. */
+
 export interface SubstanceNucleicAcidLinkage {
   id?: string;
 
@@ -198,6 +202,7 @@ export interface SubstanceNucleicAcidLinkage {
 }
 
 /** Nucleic acids are defined by three distinct elements: the base, sugar and linkage. Individual substance/moiety IDs will be created for each of these elements. The nucleotide sequence will be always entered in the 5’-3’ direction. */
+
 export interface SubstanceNucleicAcidSugar {
   id?: string;
 
@@ -217,7 +222,8 @@ export interface SubstanceNucleicAcidSugar {
 }
 
 /** Todo. */
-export interface SubstancePolymer {
+
+export interface SubstancePolymer<Contained = ResourceList> {
   resourceType: `SubstancePolymer`;
   /** The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes. */
   id?: string;
@@ -233,8 +239,7 @@ export interface SubstancePolymer {
   _language?: Element;
   /** A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety. */
   text?: Narrative;
-  /** These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope. */
-  contained?: ResourceList[];
+  contained?: Contained[];
   /** May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
   extension?: Extension[];
   /** May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
@@ -258,6 +263,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Todo. */
+
 export interface SubstancePolymerMonomerSet {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -274,6 +280,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Todo. */
+
 export interface SubstancePolymerStartingMaterial {
   id?: string;
 
@@ -293,6 +300,7 @@ export interface SubstancePolymerStartingMaterial {
 }
 
 /** Todo. */
+
 export interface SubstancePolymerRepeat {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -317,6 +325,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Todo. */
+
 export interface SubstancePolymerRepeatUnit {
   id?: string;
 
@@ -338,6 +347,7 @@ export interface SubstancePolymerRepeatUnit {
 }
 
 /** Todo. */
+
 export interface SubstancePolymerDegreeOfPolymerisation {
   id?: string;
 
@@ -351,6 +361,7 @@ export interface SubstancePolymerDegreeOfPolymerisation {
 }
 
 /** Todo. */
+
 export interface SubstancePolymerStructuralRepresentation {
   id?: string;
 
@@ -368,7 +379,8 @@ export interface SubstancePolymerStructuralRepresentation {
 }
 
 /** A SubstanceProtein is defined as a single unit of a linear amino acid sequence, or a combination of subunits that are either covalently linked or have a defined invariant stoichiometric relationship. This includes all synthetic, recombinant and purified SubstanceProteins of defined sequence, whether the use is therapeutic or prophylactic. This set of elements will be used to describe albumins, coagulation factors, cytokines, growth factors, peptide/SubstanceProtein hormones, enzymes, toxins, toxoids, recombinant vaccines, and immunomodulators. */
-export interface SubstanceProtein {
+
+export interface SubstanceProtein<Contained = ResourceList> {
   resourceType: `SubstanceProtein`;
   /** The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes. */
   id?: string;
@@ -384,8 +396,7 @@ export interface SubstanceProtein {
   _language?: Element;
   /** A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety. */
   text?: Narrative;
-  /** These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope. */
-  contained?: ResourceList[];
+  contained?: Contained[];
   /** May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
   extension?: Extension[];
   /** May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
@@ -407,6 +418,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** A SubstanceProtein is defined as a single unit of a linear amino acid sequence, or a combination of subunits that are either covalently linked or have a defined invariant stoichiometric relationship. This includes all synthetic, recombinant and purified SubstanceProteins of defined sequence, whether the use is therapeutic or prophylactic. This set of elements will be used to describe albumins, coagulation factors, cytokines, growth factors, peptide/SubstanceProtein hormones, enzymes, toxins, toxoids, recombinant vaccines, and immunomodulators. */
+
 export interface SubstanceProteinSubunit {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -445,7 +457,8 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Todo. */
-export interface SubstanceReferenceInformation {
+
+export interface SubstanceReferenceInformation<Contained = ResourceList> {
   resourceType: `SubstanceReferenceInformation`;
   /** The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes. */
   id?: string;
@@ -461,8 +474,7 @@ export interface SubstanceReferenceInformation {
   _language?: Element;
   /** A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety. */
   text?: Narrative;
-  /** These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope. */
-  contained?: ResourceList[];
+  contained?: Contained[];
   /** May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
   extension?: Extension[];
   /** May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
@@ -484,6 +496,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Todo. */
+
 export interface SubstanceReferenceInformationGene {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -502,6 +515,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Todo. */
+
 export interface SubstanceReferenceInformationGeneElement {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -520,6 +534,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Todo. */
+
 export interface SubstanceReferenceInformationClassification {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -540,6 +555,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Todo. */
+
 export interface SubstanceReferenceInformationTarget {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -574,7 +590,8 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Source material shall capture information on the taxonomic and anatomical origins as well as the fraction of a material that can result in or can be modified to form a substance. This set of data elements shall be used to define polymer substances isolated from biological matrices. Taxonomic and anatomical origins shall be described using a controlled vocabulary as required. This information is captured for naturally derived polymers ( . starch) and structurally diverse substances. For Organisms belonging to the Kingdom Plantae the Substance level defines the fresh material of a single species or infraspecies, the Herbal Drug and the Herbal preparation. For Herbal preparations, the fraction information will be captured at the Substance information level and additional information for herbal extracts will be captured at the Specified Substance Group 1 information level. See for further explanation the Substance Class: Structurally Diverse and the herbal annex. */
-export interface SubstanceSourceMaterial {
+
+export interface SubstanceSourceMaterial<Contained = ResourceList> {
   resourceType: `SubstanceSourceMaterial`;
   /** The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes. */
   id?: string;
@@ -590,8 +607,7 @@ export interface SubstanceSourceMaterial {
   _language?: Element;
   /** A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety. */
   text?: Narrative;
-  /** These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope. */
-  contained?: ResourceList[];
+  contained?: Contained[];
   /** May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
   extension?: Extension[];
   /** May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
@@ -633,6 +649,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Source material shall capture information on the taxonomic and anatomical origins as well as the fraction of a material that can result in or can be modified to form a substance. This set of data elements shall be used to define polymer substances isolated from biological matrices. Taxonomic and anatomical origins shall be described using a controlled vocabulary as required. This information is captured for naturally derived polymers ( . starch) and structurally diverse substances. For Organisms belonging to the Kingdom Plantae the Substance level defines the fresh material of a single species or infraspecies, the Herbal Drug and the Herbal preparation. For Herbal preparations, the fraction information will be captured at the Substance information level and additional information for herbal extracts will be captured at the Specified Substance Group 1 information level. See for further explanation the Substance Class: Structurally Diverse and the herbal annex. */
+
 export interface SubstanceSourceMaterialFractionDescription {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -651,6 +668,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Source material shall capture information on the taxonomic and anatomical origins as well as the fraction of a material that can result in or can be modified to form a substance. This set of data elements shall be used to define polymer substances isolated from biological matrices. Taxonomic and anatomical origins shall be described using a controlled vocabulary as required. This information is captured for naturally derived polymers ( . starch) and structurally diverse substances. For Organisms belonging to the Kingdom Plantae the Substance level defines the fresh material of a single species or infraspecies, the Herbal Drug and the Herbal preparation. For Herbal preparations, the fraction information will be captured at the Substance information level and additional information for herbal extracts will be captured at the Specified Substance Group 1 information level. See for further explanation the Substance Class: Structurally Diverse and the herbal annex. */
+
 export interface SubstanceSourceMaterialOrganism {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -681,6 +699,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** Source material shall capture information on the taxonomic and anatomical origins as well as the fraction of a material that can result in or can be modified to form a substance. This set of data elements shall be used to define polymer substances isolated from biological matrices. Taxonomic and anatomical origins shall be described using a controlled vocabulary as required. This information is captured for naturally derived polymers ( . starch) and structurally diverse substances. For Organisms belonging to the Kingdom Plantae the Substance level defines the fresh material of a single species or infraspecies, the Herbal Drug and the Herbal preparation. For Herbal preparations, the fraction information will be captured at the Substance information level and additional information for herbal extracts will be captured at the Specified Substance Group 1 information level. See for further explanation the Substance Class: Structurally Diverse and the herbal annex. */
+
 export interface SubstanceSourceMaterialAuthor {
   id?: string;
 
@@ -696,6 +715,7 @@ export interface SubstanceSourceMaterialAuthor {
 }
 
 /** Source material shall capture information on the taxonomic and anatomical origins as well as the fraction of a material that can result in or can be modified to form a substance. This set of data elements shall be used to define polymer substances isolated from biological matrices. Taxonomic and anatomical origins shall be described using a controlled vocabulary as required. This information is captured for naturally derived polymers ( . starch) and structurally diverse substances. For Organisms belonging to the Kingdom Plantae the Substance level defines the fresh material of a single species or infraspecies, the Herbal Drug and the Herbal preparation. For Herbal preparations, the fraction information will be captured at the Substance information level and additional information for herbal extracts will be captured at the Specified Substance Group 1 information level. See for further explanation the Substance Class: Structurally Diverse and the herbal annex. */
+
 export interface SubstanceSourceMaterialHybrid {
   id?: string;
 
@@ -723,6 +743,7 @@ export interface SubstanceSourceMaterialHybrid {
 }
 
 /** Source material shall capture information on the taxonomic and anatomical origins as well as the fraction of a material that can result in or can be modified to form a substance. This set of data elements shall be used to define polymer substances isolated from biological matrices. Taxonomic and anatomical origins shall be described using a controlled vocabulary as required. This information is captured for naturally derived polymers ( . starch) and structurally diverse substances. For Organisms belonging to the Kingdom Plantae the Substance level defines the fresh material of a single species or infraspecies, the Herbal Drug and the Herbal preparation. For Herbal preparations, the fraction information will be captured at the Substance information level and additional information for herbal extracts will be captured at the Specified Substance Group 1 information level. See for further explanation the Substance Class: Structurally Diverse and the herbal annex. */
+
 export interface SubstanceSourceMaterialOrganismGeneral {
   id?: string;
 
@@ -740,6 +761,7 @@ export interface SubstanceSourceMaterialOrganismGeneral {
 }
 
 /** Source material shall capture information on the taxonomic and anatomical origins as well as the fraction of a material that can result in or can be modified to form a substance. This set of data elements shall be used to define polymer substances isolated from biological matrices. Taxonomic and anatomical origins shall be described using a controlled vocabulary as required. This information is captured for naturally derived polymers ( . starch) and structurally diverse substances. For Organisms belonging to the Kingdom Plantae the Substance level defines the fresh material of a single species or infraspecies, the Herbal Drug and the Herbal preparation. For Herbal preparations, the fraction information will be captured at the Substance information level and additional information for herbal extracts will be captured at the Specified Substance Group 1 information level. See for further explanation the Substance Class: Structurally Diverse and the herbal annex. */
+
 export interface SubstanceSourceMaterialPartDescription {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -756,7 +778,8 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** The detailed description of a substance, typically at a level beyond what is used for prescribing. */
-export interface SubstanceSpecification {
+
+export interface SubstanceSpecification<Contained = ResourceList> {
   resourceType: `SubstanceSpecification`;
   /** The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes. */
   id?: string;
@@ -772,8 +795,7 @@ export interface SubstanceSpecification {
   _language?: Element;
   /** A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety. */
   text?: Narrative;
-  /** These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope. */
-  contained?: ResourceList[];
+  contained?: Contained[];
   /** May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. */
   extension?: Extension[];
   /** May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
@@ -825,6 +847,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** The detailed description of a substance, typically at a level beyond what is used for prescribing. */
+
 export interface SubstanceSpecificationMoiety {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -859,6 +882,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** The detailed description of a substance, typically at a level beyond what is used for prescribing. */
+
 export interface SubstanceSpecificationProperty {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -889,6 +913,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** The detailed description of a substance, typically at a level beyond what is used for prescribing. */
+
 export interface SubstanceSpecificationStructure {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -921,6 +946,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** The detailed description of a substance, typically at a level beyond what is used for prescribing. */
+
 export interface SubstanceSpecificationIsotope {
   id?: string;
 
@@ -940,6 +966,7 @@ export interface SubstanceSpecificationIsotope {
 }
 
 /** The detailed description of a substance, typically at a level beyond what is used for prescribing. */
+
 export interface SubstanceSpecificationMolecularWeight {
   id?: string;
 
@@ -955,6 +982,7 @@ export interface SubstanceSpecificationMolecularWeight {
 }
 
 /** The detailed description of a substance, typically at a level beyond what is used for prescribing. */
+
 export interface SubstanceSpecificationRepresentation {
   id?: string;
 
@@ -972,6 +1000,7 @@ export interface SubstanceSpecificationRepresentation {
 }
 
 /** The detailed description of a substance, typically at a level beyond what is used for prescribing. */
+
 export interface SubstanceSpecificationCode {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -998,6 +1027,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** The detailed description of a substance, typically at a level beyond what is used for prescribing. */
+
 export interface SubstanceSpecificationName {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -1036,6 +1066,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** The detailed description of a substance, typically at a level beyond what is used for prescribing. */
+
 export interface SubstanceSpecificationOfficial {
   id?: string;
 
@@ -1053,6 +1084,7 @@ export interface SubstanceSpecificationOfficial {
 }
 
 /** The detailed description of a substance, typically at a level beyond what is used for prescribing. */
+
 export interface SubstanceSpecificationRelationship {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;

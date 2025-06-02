@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -11,7 +11,7 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createBinarySchema() {
-  return getCachedSchema("Binary", () => {
+  return getCachedSchema("Binary", [], () => {
     const baseSchema: z.ZodType<types.Binary> = z.strictObject({
       resourceType: z.literal("Binary"),
       id: primitives.getIdSchema().optional(),

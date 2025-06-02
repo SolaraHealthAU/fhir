@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -18,8 +18,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createDocumentReferenceSchema() {
-  return getCachedSchema("DocumentReference", () => {
+export function createDocumentReferenceSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("DocumentReference", [contained], () => {
     const baseSchema: z.ZodType<types.DocumentReference> = z.strictObject({
       resourceType: z.literal("DocumentReference"),
       id: primitives.getIdSchema().optional(),
@@ -29,7 +36,7 @@ export function createDocumentReferenceSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       masterIdentifier: createIdentifierSchema().optional(),
@@ -59,7 +66,7 @@ export function createDocumentReferenceSchema() {
 }
 
 export function createDocumentReferenceRelatesToSchema() {
-  return getCachedSchema("DocumentReferenceRelatesTo", () => {
+  return getCachedSchema("DocumentReferenceRelatesTo", [], () => {
     const baseSchema: z.ZodType<types.DocumentReferenceRelatesTo> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -75,7 +82,7 @@ export function createDocumentReferenceRelatesToSchema() {
 }
 
 export function createDocumentReferenceContentSchema() {
-  return getCachedSchema("DocumentReferenceContent", () => {
+  return getCachedSchema("DocumentReferenceContent", [], () => {
     const baseSchema: z.ZodType<types.DocumentReferenceContent> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -90,7 +97,7 @@ export function createDocumentReferenceContentSchema() {
 }
 
 export function createDocumentReferenceContextSchema() {
-  return getCachedSchema("DocumentReferenceContext", () => {
+  return getCachedSchema("DocumentReferenceContext", [], () => {
     const baseSchema: z.ZodType<types.DocumentReferenceContext> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -18,8 +18,15 @@ import { createElementDefinitionSchema } from "../elementdefinition/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createStructureDefinitionSchema() {
-  return getCachedSchema("StructureDefinition", () => {
+export function createStructureDefinitionSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("StructureDefinition", [contained], () => {
     const baseSchema: z.ZodType<types.StructureDefinition> = z.strictObject({
       resourceType: z.literal("StructureDefinition"),
       id: primitives.getIdSchema().optional(),
@@ -29,7 +36,7 @@ export function createStructureDefinitionSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       url: primitives.getUriSchema(),
@@ -108,7 +115,7 @@ export function createStructureDefinitionSchema() {
 }
 
 export function createStructureDefinitionMappingSchema() {
-  return getCachedSchema("StructureDefinitionMapping", () => {
+  return getCachedSchema("StructureDefinitionMapping", [], () => {
     const baseSchema: z.ZodType<types.StructureDefinitionMapping> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -129,7 +136,7 @@ export function createStructureDefinitionMappingSchema() {
 }
 
 export function createStructureDefinitionContextSchema() {
-  return getCachedSchema("StructureDefinitionContext", () => {
+  return getCachedSchema("StructureDefinitionContext", [], () => {
     const baseSchema: z.ZodType<types.StructureDefinitionContext> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -146,7 +153,7 @@ export function createStructureDefinitionContextSchema() {
 }
 
 export function createStructureDefinitionSnapshotSchema() {
-  return getCachedSchema("StructureDefinitionSnapshot", () => {
+  return getCachedSchema("StructureDefinitionSnapshot", [], () => {
     const baseSchema: z.ZodType<types.StructureDefinitionSnapshot> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -160,7 +167,7 @@ export function createStructureDefinitionSnapshotSchema() {
 }
 
 export function createStructureDefinitionDifferentialSchema() {
-  return getCachedSchema("StructureDefinitionDifferential", () => {
+  return getCachedSchema("StructureDefinitionDifferential", [], () => {
     const baseSchema: z.ZodType<types.StructureDefinitionDifferential> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

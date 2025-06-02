@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -42,8 +42,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createTaskSchema() {
-  return getCachedSchema("Task", () => {
+export function createTaskSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Task", [contained], () => {
     const baseSchema: z.ZodType<types.Task> = z.strictObject({
       resourceType: z.literal("Task"),
       id: primitives.getIdSchema().optional(),
@@ -53,7 +60,7 @@ export function createTaskSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -124,7 +131,7 @@ export function createTaskSchema() {
 }
 
 export function createTaskRestrictionSchema() {
-  return getCachedSchema("TaskRestriction", () => {
+  return getCachedSchema("TaskRestriction", [], () => {
     const baseSchema: z.ZodType<types.TaskRestriction> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -140,7 +147,7 @@ export function createTaskRestrictionSchema() {
 }
 
 export function createTaskInputSchema() {
-  return getCachedSchema("TaskInput", () => {
+  return getCachedSchema("TaskInput", [], () => {
     const baseSchema: z.ZodType<types.TaskInput> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -222,7 +229,7 @@ export function createTaskInputSchema() {
 }
 
 export function createTaskOutputSchema() {
-  return getCachedSchema("TaskOutput", () => {
+  return getCachedSchema("TaskOutput", [], () => {
     const baseSchema: z.ZodType<types.TaskOutput> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

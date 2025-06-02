@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -15,8 +15,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createDocumentManifestSchema() {
-  return getCachedSchema("DocumentManifest", () => {
+export function createDocumentManifestSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("DocumentManifest", [contained], () => {
     const baseSchema: z.ZodType<types.DocumentManifest> = z.strictObject({
       resourceType: z.literal("DocumentManifest"),
       id: primitives.getIdSchema().optional(),
@@ -26,7 +33,7 @@ export function createDocumentManifestSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       masterIdentifier: createIdentifierSchema().optional(),
@@ -52,7 +59,7 @@ export function createDocumentManifestSchema() {
 }
 
 export function createDocumentManifestRelatedSchema() {
-  return getCachedSchema("DocumentManifestRelated", () => {
+  return getCachedSchema("DocumentManifestRelated", [], () => {
     const baseSchema: z.ZodType<types.DocumentManifestRelated> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),

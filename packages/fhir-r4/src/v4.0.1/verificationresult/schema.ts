@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -16,8 +16,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createVerificationResultSchema() {
-  return getCachedSchema("VerificationResult", () => {
+export function createVerificationResultSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("VerificationResult", [contained], () => {
     const baseSchema: z.ZodType<types.VerificationResult> = z.strictObject({
       resourceType: z.literal("VerificationResult"),
       id: primitives.getIdSchema().optional(),
@@ -27,7 +34,7 @@ export function createVerificationResultSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       target: z.array(createReferenceSchema()).optional(),
@@ -58,7 +65,7 @@ export function createVerificationResultSchema() {
 }
 
 export function createVerificationResultPrimarySourceSchema() {
-  return getCachedSchema("VerificationResultPrimarySource", () => {
+  return getCachedSchema("VerificationResultPrimarySource", [], () => {
     const baseSchema: z.ZodType<types.VerificationResultPrimarySource> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -79,7 +86,7 @@ export function createVerificationResultPrimarySourceSchema() {
 }
 
 export function createVerificationResultAttestationSchema() {
-  return getCachedSchema("VerificationResultAttestation", () => {
+  return getCachedSchema("VerificationResultAttestation", [], () => {
     const baseSchema: z.ZodType<types.VerificationResultAttestation> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -103,7 +110,7 @@ export function createVerificationResultAttestationSchema() {
 }
 
 export function createVerificationResultValidatorSchema() {
-  return getCachedSchema("VerificationResultValidator", () => {
+  return getCachedSchema("VerificationResultValidator", [], () => {
     const baseSchema: z.ZodType<types.VerificationResultValidator> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

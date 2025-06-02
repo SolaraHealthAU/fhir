@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -14,8 +14,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createCompartmentDefinitionSchema() {
-  return getCachedSchema("CompartmentDefinition", () => {
+export function createCompartmentDefinitionSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("CompartmentDefinition", [contained], () => {
     const baseSchema: z.ZodType<types.CompartmentDefinition> = z.strictObject({
       resourceType: z.literal("CompartmentDefinition"),
       id: primitives.getIdSchema().optional(),
@@ -25,7 +32,7 @@ export function createCompartmentDefinitionSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       url: primitives.getUriSchema(),
@@ -66,7 +73,7 @@ export function createCompartmentDefinitionSchema() {
 }
 
 export function createCompartmentDefinitionResourceSchema() {
-  return getCachedSchema("CompartmentDefinitionResource", () => {
+  return getCachedSchema("CompartmentDefinitionResource", [], () => {
     const baseSchema: z.ZodType<types.CompartmentDefinitionResource> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

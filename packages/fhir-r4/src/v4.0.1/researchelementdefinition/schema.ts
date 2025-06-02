@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -23,8 +23,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createResearchElementDefinitionSchema() {
-  return getCachedSchema("ResearchElementDefinition", () => {
+export function createResearchElementDefinitionSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("ResearchElementDefinition", [contained], () => {
     const baseSchema: z.ZodType<types.ResearchElementDefinition> =
       z.strictObject({
         resourceType: z.literal("ResearchElementDefinition"),
@@ -35,7 +42,7 @@ export function createResearchElementDefinitionSchema() {
         language: primitives.getCodeSchema().optional(),
         _language: createElementSchema().optional(),
         text: createNarrativeSchema().optional(),
-        contained: z.array(createResourceListSchema()).optional(),
+        contained: z.array(contained).optional(),
         extension: z.array(createExtensionSchema()).optional(),
         modifierExtension: z.array(createExtensionSchema()).optional(),
         url: primitives.getUriSchema().optional(),
@@ -102,7 +109,7 @@ export function createResearchElementDefinitionSchema() {
 }
 
 export function createResearchElementDefinitionCharacteristicSchema() {
-  return getCachedSchema("ResearchElementDefinitionCharacteristic", () => {
+  return getCachedSchema("ResearchElementDefinitionCharacteristic", [], () => {
     const baseSchema: z.ZodType<types.ResearchElementDefinitionCharacteristic> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

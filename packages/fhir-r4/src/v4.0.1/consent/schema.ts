@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -18,8 +18,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createConsentSchema() {
-  return getCachedSchema("Consent", () => {
+export function createConsentSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Consent", [contained], () => {
     const baseSchema: z.ZodType<types.Consent> = z.strictObject({
       resourceType: z.literal("Consent"),
       id: primitives.getIdSchema().optional(),
@@ -29,7 +36,7 @@ export function createConsentSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -62,7 +69,7 @@ export function createConsentSchema() {
 }
 
 export function createConsentPolicySchema() {
-  return getCachedSchema("ConsentPolicy", () => {
+  return getCachedSchema("ConsentPolicy", [], () => {
     const baseSchema: z.ZodType<types.ConsentPolicy> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -78,7 +85,7 @@ export function createConsentPolicySchema() {
 }
 
 export function createConsentVerificationSchema() {
-  return getCachedSchema("ConsentVerification", () => {
+  return getCachedSchema("ConsentVerification", [], () => {
     const baseSchema: z.ZodType<types.ConsentVerification> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -95,7 +102,7 @@ export function createConsentVerificationSchema() {
 }
 
 export function createConsentProvisionSchema() {
-  return getCachedSchema("ConsentProvision", () => {
+  return getCachedSchema("ConsentProvision", [], () => {
     const baseSchema: z.ZodType<types.ConsentProvision> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -119,7 +126,7 @@ export function createConsentProvisionSchema() {
 }
 
 export function createConsentActorSchema() {
-  return getCachedSchema("ConsentActor", () => {
+  return getCachedSchema("ConsentActor", [], () => {
     const baseSchema: z.ZodType<types.ConsentActor> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -133,7 +140,7 @@ export function createConsentActorSchema() {
 }
 
 export function createConsentDataSchema() {
-  return getCachedSchema("ConsentData", () => {
+  return getCachedSchema("ConsentData", [], () => {
     const baseSchema: z.ZodType<types.ConsentData> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

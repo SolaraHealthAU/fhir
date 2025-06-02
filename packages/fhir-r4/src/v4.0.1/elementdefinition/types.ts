@@ -37,6 +37,7 @@ import type {
 /** Generated from FHIR JSON Schema */
 
 /** Captures constraints on each element within the resource, profile, or extension. */
+
 export interface ElementDefinition {
   id?: string;
 
@@ -628,6 +629,7 @@ export interface ElementDefinition {
 }
 
 /** Captures constraints on each element within the resource, profile, or extension. */
+
 export interface ElementDefinitionSlicing {
   id?: string;
 
@@ -651,6 +653,7 @@ export interface ElementDefinitionSlicing {
 }
 
 /** Captures constraints on each element within the resource, profile, or extension. */
+
 export interface ElementDefinitionDiscriminator {
   id?: string;
 
@@ -668,6 +671,7 @@ export interface ElementDefinitionDiscriminator {
 }
 
 /** Captures constraints on each element within the resource, profile, or extension. */
+
 export interface ElementDefinitionBase {
   id?: string;
 
@@ -689,6 +693,7 @@ export interface ElementDefinitionBase {
 }
 
 /** Captures constraints on each element within the resource, profile, or extension. */
+
 export interface ElementDefinitionType {
   id?: string;
 
@@ -716,6 +721,7 @@ export interface ElementDefinitionType {
 }
 
 /** Captures constraints on each element within the resource, profile, or extension. */
+
 export interface ElementDefinitionExample {
   id?: string;
 
@@ -867,6 +873,7 @@ export interface ElementDefinitionExample {
 }
 
 /** Captures constraints on each element within the resource, profile, or extension. */
+
 export interface ElementDefinitionConstraint {
   id?: string;
 
@@ -902,6 +909,7 @@ export interface ElementDefinitionConstraint {
 }
 
 /** Captures constraints on each element within the resource, profile, or extension. */
+
 export interface ElementDefinitionBinding {
   id?: string;
 
@@ -921,6 +929,7 @@ export interface ElementDefinitionBinding {
 }
 
 /** Captures constraints on each element within the resource, profile, or extension. */
+
 export interface ElementDefinitionMapping {
   id?: string;
 

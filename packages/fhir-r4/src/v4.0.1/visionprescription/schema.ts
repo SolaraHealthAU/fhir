@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -17,8 +17,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createVisionPrescriptionSchema() {
-  return getCachedSchema("VisionPrescription", () => {
+export function createVisionPrescriptionSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("VisionPrescription", [contained], () => {
     const baseSchema: z.ZodType<types.VisionPrescription> = z.strictObject({
       resourceType: z.literal("VisionPrescription"),
       id: primitives.getIdSchema().optional(),
@@ -28,7 +35,7 @@ export function createVisionPrescriptionSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -51,7 +58,7 @@ export function createVisionPrescriptionSchema() {
 }
 
 export function createVisionPrescriptionLensSpecificationSchema() {
-  return getCachedSchema("VisionPrescriptionLensSpecification", () => {
+  return getCachedSchema("VisionPrescriptionLensSpecification", [], () => {
     const baseSchema: z.ZodType<types.VisionPrescriptionLensSpecification> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -88,7 +95,7 @@ export function createVisionPrescriptionLensSpecificationSchema() {
 }
 
 export function createVisionPrescriptionPrismSchema() {
-  return getCachedSchema("VisionPrescriptionPrism", () => {
+  return getCachedSchema("VisionPrescriptionPrism", [], () => {
     const baseSchema: z.ZodType<types.VisionPrescriptionPrism> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),

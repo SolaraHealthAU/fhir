@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -42,8 +42,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createStructureMapSchema() {
-  return getCachedSchema("StructureMap", () => {
+export function createStructureMapSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("StructureMap", [contained], () => {
     const baseSchema: z.ZodType<types.StructureMap> = z.strictObject({
       resourceType: z.literal("StructureMap"),
       id: primitives.getIdSchema().optional(),
@@ -53,7 +60,7 @@ export function createStructureMapSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       url: primitives.getUriSchema(),
@@ -92,7 +99,7 @@ export function createStructureMapSchema() {
 }
 
 export function createStructureMapStructureSchema() {
-  return getCachedSchema("StructureMapStructure", () => {
+  return getCachedSchema("StructureMapStructure", [], () => {
     const baseSchema: z.ZodType<types.StructureMapStructure> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -111,7 +118,7 @@ export function createStructureMapStructureSchema() {
 }
 
 export function createStructureMapGroupSchema() {
-  return getCachedSchema("StructureMapGroup", () => {
+  return getCachedSchema("StructureMapGroup", [], () => {
     const baseSchema: z.ZodType<types.StructureMapGroup> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -133,7 +140,7 @@ export function createStructureMapGroupSchema() {
 }
 
 export function createStructureMapInputSchema() {
-  return getCachedSchema("StructureMapInput", () => {
+  return getCachedSchema("StructureMapInput", [], () => {
     const baseSchema: z.ZodType<types.StructureMapInput> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -153,7 +160,7 @@ export function createStructureMapInputSchema() {
 }
 
 export function createStructureMapRuleSchema() {
-  return getCachedSchema("StructureMapRule", () => {
+  return getCachedSchema("StructureMapRule", [], () => {
     const baseSchema: z.ZodType<types.StructureMapRule> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -173,7 +180,7 @@ export function createStructureMapRuleSchema() {
 }
 
 export function createStructureMapSourceSchema() {
-  return getCachedSchema("StructureMapSource", () => {
+  return getCachedSchema("StructureMapSource", [], () => {
     const baseSchema: z.ZodType<types.StructureMapSource> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -277,7 +284,7 @@ export function createStructureMapSourceSchema() {
 }
 
 export function createStructureMapTargetSchema() {
-  return getCachedSchema("StructureMapTarget", () => {
+  return getCachedSchema("StructureMapTarget", [], () => {
     const baseSchema: z.ZodType<types.StructureMapTarget> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -327,7 +334,7 @@ export function createStructureMapTargetSchema() {
 }
 
 export function createStructureMapParameterSchema() {
-  return getCachedSchema("StructureMapParameter", () => {
+  return getCachedSchema("StructureMapParameter", [], () => {
     const baseSchema: z.ZodType<types.StructureMapParameter> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -349,7 +356,7 @@ export function createStructureMapParameterSchema() {
 }
 
 export function createStructureMapDependentSchema() {
-  return getCachedSchema("StructureMapDependent", () => {
+  return getCachedSchema("StructureMapDependent", [], () => {
     const baseSchema: z.ZodType<types.StructureMapDependent> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

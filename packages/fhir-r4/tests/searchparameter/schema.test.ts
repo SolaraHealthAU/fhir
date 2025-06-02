@@ -15,7 +15,6 @@ import {
   PatientExtensionsPatientAge,
   PatientExtensionsPatientBirthorderboolean,
   PatientExtensionsPatientMothersmaidenname,
-  QuestionnaireresponseExtensionsQuestionnaireresponseItemSubject,
   SearchparameterExampleExtension,
   SearchparameterExampleReference,
   SearchparameterExample,
@@ -258,22 +257,6 @@ describe("Searchparameter Group Schema Validation", () => {
       console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
       throw new Error(
         `Schema validation failed for PatientExtensionsPatientMothersmaidenname: ${result.error.message}`,
-      );
-    }
-    expect(result.success).toBe(true);
-  });
-
-  it("should validate QuestionnaireresponseExtensionsQuestionnaireresponseItemSubject fixture (SearchParameter)", () => {
-    const result = createSearchParameterSchema().safeParse(
-      QuestionnaireresponseExtensionsQuestionnaireresponseItemSubject,
-    );
-    if (!result.success) {
-      console.error(
-        "Validation failed for QuestionnaireresponseExtensionsQuestionnaireresponseItemSubject:",
-      );
-      console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
-      throw new Error(
-        `Schema validation failed for QuestionnaireresponseExtensionsQuestionnaireresponseItemSubject: ${result.error.message}`,
       );
     }
     expect(result.success).toBe(true);

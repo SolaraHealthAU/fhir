@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -19,8 +19,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createNutritionOrderSchema() {
-  return getCachedSchema("NutritionOrder", () => {
+export function createNutritionOrderSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("NutritionOrder", [contained], () => {
     const baseSchema: z.ZodType<types.NutritionOrder> = z.strictObject({
       resourceType: z.literal("NutritionOrder"),
       id: primitives.getIdSchema().optional(),
@@ -30,7 +37,7 @@ export function createNutritionOrderSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -64,7 +71,7 @@ export function createNutritionOrderSchema() {
 }
 
 export function createNutritionOrderOralDietSchema() {
-  return getCachedSchema("NutritionOrderOralDiet", () => {
+  return getCachedSchema("NutritionOrderOralDiet", [], () => {
     const baseSchema: z.ZodType<types.NutritionOrderOralDiet> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -83,7 +90,7 @@ export function createNutritionOrderOralDietSchema() {
 }
 
 export function createNutritionOrderNutrientSchema() {
-  return getCachedSchema("NutritionOrderNutrient", () => {
+  return getCachedSchema("NutritionOrderNutrient", [], () => {
     const baseSchema: z.ZodType<types.NutritionOrderNutrient> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -97,7 +104,7 @@ export function createNutritionOrderNutrientSchema() {
 }
 
 export function createNutritionOrderTextureSchema() {
-  return getCachedSchema("NutritionOrderTexture", () => {
+  return getCachedSchema("NutritionOrderTexture", [], () => {
     const baseSchema: z.ZodType<types.NutritionOrderTexture> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -111,7 +118,7 @@ export function createNutritionOrderTextureSchema() {
 }
 
 export function createNutritionOrderSupplementSchema() {
-  return getCachedSchema("NutritionOrderSupplement", () => {
+  return getCachedSchema("NutritionOrderSupplement", [], () => {
     const baseSchema: z.ZodType<types.NutritionOrderSupplement> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -131,7 +138,7 @@ export function createNutritionOrderSupplementSchema() {
 }
 
 export function createNutritionOrderEnteralFormulaSchema() {
-  return getCachedSchema("NutritionOrderEnteralFormula", () => {
+  return getCachedSchema("NutritionOrderEnteralFormula", [], () => {
     const baseSchema: z.ZodType<types.NutritionOrderEnteralFormula> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -158,7 +165,7 @@ export function createNutritionOrderEnteralFormulaSchema() {
 }
 
 export function createNutritionOrderAdministrationSchema() {
-  return getCachedSchema("NutritionOrderAdministration", () => {
+  return getCachedSchema("NutritionOrderAdministration", [], () => {
     const baseSchema: z.ZodType<types.NutritionOrderAdministration> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

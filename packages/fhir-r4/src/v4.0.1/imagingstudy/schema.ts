@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -17,8 +17,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createImagingStudySchema() {
-  return getCachedSchema("ImagingStudy", () => {
+export function createImagingStudySchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("ImagingStudy", [contained], () => {
     const baseSchema: z.ZodType<types.ImagingStudy> = z.strictObject({
       resourceType: z.literal("ImagingStudy"),
       id: primitives.getIdSchema().optional(),
@@ -28,7 +35,7 @@ export function createImagingStudySchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -69,7 +76,7 @@ export function createImagingStudySchema() {
 }
 
 export function createImagingStudySeriesSchema() {
-  return getCachedSchema("ImagingStudySeries", () => {
+  return getCachedSchema("ImagingStudySeries", [], () => {
     const baseSchema: z.ZodType<types.ImagingStudySeries> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -98,7 +105,7 @@ export function createImagingStudySeriesSchema() {
 }
 
 export function createImagingStudyPerformerSchema() {
-  return getCachedSchema("ImagingStudyPerformer", () => {
+  return getCachedSchema("ImagingStudyPerformer", [], () => {
     const baseSchema: z.ZodType<types.ImagingStudyPerformer> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -112,7 +119,7 @@ export function createImagingStudyPerformerSchema() {
 }
 
 export function createImagingStudyInstanceSchema() {
-  return getCachedSchema("ImagingStudyInstance", () => {
+  return getCachedSchema("ImagingStudyInstance", [], () => {
     const baseSchema: z.ZodType<types.ImagingStudyInstance> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

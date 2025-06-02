@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -16,8 +16,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createImplementationGuideSchema() {
-  return getCachedSchema("ImplementationGuide", () => {
+export function createImplementationGuideSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("ImplementationGuide", [contained], () => {
     const baseSchema: z.ZodType<types.ImplementationGuide> = z.strictObject({
       resourceType: z.literal("ImplementationGuide"),
       id: primitives.getIdSchema().optional(),
@@ -27,7 +34,7 @@ export function createImplementationGuideSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       url: primitives.getUriSchema(),
@@ -444,7 +451,7 @@ export function createImplementationGuideSchema() {
 }
 
 export function createImplementationGuideDependsOnSchema() {
-  return getCachedSchema("ImplementationGuideDependsOn", () => {
+  return getCachedSchema("ImplementationGuideDependsOn", [], () => {
     const baseSchema: z.ZodType<types.ImplementationGuideDependsOn> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -462,7 +469,7 @@ export function createImplementationGuideDependsOnSchema() {
 }
 
 export function createImplementationGuideGlobalSchema() {
-  return getCachedSchema("ImplementationGuideGlobal", () => {
+  return getCachedSchema("ImplementationGuideGlobal", [], () => {
     const baseSchema: z.ZodType<types.ImplementationGuideGlobal> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -478,7 +485,7 @@ export function createImplementationGuideGlobalSchema() {
 }
 
 export function createImplementationGuideDefinitionSchema() {
-  return getCachedSchema("ImplementationGuideDefinition", () => {
+  return getCachedSchema("ImplementationGuideDefinition", [], () => {
     const baseSchema: z.ZodType<types.ImplementationGuideDefinition> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -498,7 +505,7 @@ export function createImplementationGuideDefinitionSchema() {
 }
 
 export function createImplementationGuideGroupingSchema() {
-  return getCachedSchema("ImplementationGuideGrouping", () => {
+  return getCachedSchema("ImplementationGuideGrouping", [], () => {
     const baseSchema: z.ZodType<types.ImplementationGuideGrouping> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -515,7 +522,7 @@ export function createImplementationGuideGroupingSchema() {
 }
 
 export function createImplementationGuideResourceSchema() {
-  return getCachedSchema("ImplementationGuideResource", () => {
+  return getCachedSchema("ImplementationGuideResource", [], () => {
     const baseSchema: z.ZodType<types.ImplementationGuideResource> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -567,7 +574,7 @@ export function createImplementationGuideResourceSchema() {
 }
 
 export function createImplementationGuidePageSchema() {
-  return getCachedSchema("ImplementationGuidePage", () => {
+  return getCachedSchema("ImplementationGuidePage", [], () => {
     const baseSchema: z.ZodType<types.ImplementationGuidePage> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),
@@ -589,7 +596,7 @@ export function createImplementationGuidePageSchema() {
 }
 
 export function createImplementationGuideParameterSchema() {
-  return getCachedSchema("ImplementationGuideParameter", () => {
+  return getCachedSchema("ImplementationGuideParameter", [], () => {
     const baseSchema: z.ZodType<types.ImplementationGuideParameter> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -619,7 +626,7 @@ export function createImplementationGuideParameterSchema() {
 }
 
 export function createImplementationGuideTemplateSchema() {
-  return getCachedSchema("ImplementationGuideTemplate", () => {
+  return getCachedSchema("ImplementationGuideTemplate", [], () => {
     const baseSchema: z.ZodType<types.ImplementationGuideTemplate> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -638,7 +645,7 @@ export function createImplementationGuideTemplateSchema() {
 }
 
 export function createImplementationGuideManifestSchema() {
-  return getCachedSchema("ImplementationGuideManifest", () => {
+  return getCachedSchema("ImplementationGuideManifest", [], () => {
     const baseSchema: z.ZodType<types.ImplementationGuideManifest> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -659,7 +666,7 @@ export function createImplementationGuideManifestSchema() {
 }
 
 export function createImplementationGuideResource1Schema() {
-  return getCachedSchema("ImplementationGuideResource1", () => {
+  return getCachedSchema("ImplementationGuideResource1", [], () => {
     const baseSchema: z.ZodType<types.ImplementationGuideResource1> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -679,7 +686,7 @@ export function createImplementationGuideResource1Schema() {
 }
 
 export function createImplementationGuidePage1Schema() {
-  return getCachedSchema("ImplementationGuidePage1", () => {
+  return getCachedSchema("ImplementationGuidePage1", [], () => {
     const baseSchema: z.ZodType<types.ImplementationGuidePage1> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

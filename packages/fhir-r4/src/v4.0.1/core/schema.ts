@@ -1,13 +1,13 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 
 /* Generated from FHIR JSON Schema */
 // Resources schema header file
 
 export function createElementSchema() {
-  return getCachedSchema("Element", () => {
+  return getCachedSchema("Element", [], () => {
     const baseSchema: z.ZodType<types.Element> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -18,7 +18,7 @@ export function createElementSchema() {
 }
 
 export function createExtensionSchema() {
-  return getCachedSchema("Extension", () => {
+  return getCachedSchema("Extension", [], () => {
     const baseSchema: z.ZodType<types.Extension> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -100,7 +100,7 @@ export function createExtensionSchema() {
 }
 
 export function createAnnotationSchema() {
-  return getCachedSchema("Annotation", () => {
+  return getCachedSchema("Annotation", [], () => {
     const baseSchema: z.ZodType<types.Annotation> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -118,7 +118,7 @@ export function createAnnotationSchema() {
 }
 
 export function createAttachmentSchema() {
-  return getCachedSchema("Attachment", () => {
+  return getCachedSchema("Attachment", [], () => {
     const baseSchema: z.ZodType<types.Attachment> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -145,7 +145,7 @@ export function createAttachmentSchema() {
 }
 
 export function createIdentifierSchema() {
-  return getCachedSchema("Identifier", () => {
+  return getCachedSchema("Identifier", [], () => {
     const baseSchema: z.ZodType<types.Identifier> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -165,7 +165,7 @@ export function createIdentifierSchema() {
 }
 
 export function createCodeableConceptSchema() {
-  return getCachedSchema("CodeableConcept", () => {
+  return getCachedSchema("CodeableConcept", [], () => {
     const baseSchema: z.ZodType<types.CodeableConcept> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -179,7 +179,7 @@ export function createCodeableConceptSchema() {
 }
 
 export function createCodingSchema() {
-  return getCachedSchema("Coding", () => {
+  return getCachedSchema("Coding", [], () => {
     const baseSchema: z.ZodType<types.Coding> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -200,7 +200,7 @@ export function createCodingSchema() {
 }
 
 export function createQuantitySchema() {
-  return getCachedSchema("Quantity", () => {
+  return getCachedSchema("Quantity", [], () => {
     const baseSchema: z.ZodType<types.Quantity> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -221,7 +221,7 @@ export function createQuantitySchema() {
 }
 
 export function createDurationSchema() {
-  return getCachedSchema("Duration", () => {
+  return getCachedSchema("Duration", [], () => {
     const baseSchema: z.ZodType<types.Duration> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -242,7 +242,7 @@ export function createDurationSchema() {
 }
 
 export function createDistanceSchema() {
-  return getCachedSchema("Distance", () => {
+  return getCachedSchema("Distance", [], () => {
     const baseSchema: z.ZodType<types.Distance> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -263,7 +263,7 @@ export function createDistanceSchema() {
 }
 
 export function createCountSchema() {
-  return getCachedSchema("Count", () => {
+  return getCachedSchema("Count", [], () => {
     const baseSchema: z.ZodType<types.Count> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -284,7 +284,7 @@ export function createCountSchema() {
 }
 
 export function createMoneySchema() {
-  return getCachedSchema("Money", () => {
+  return getCachedSchema("Money", [], () => {
     const baseSchema: z.ZodType<types.Money> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -299,7 +299,7 @@ export function createMoneySchema() {
 }
 
 export function createAgeSchema() {
-  return getCachedSchema("Age", () => {
+  return getCachedSchema("Age", [], () => {
     const baseSchema: z.ZodType<types.Age> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -320,7 +320,7 @@ export function createAgeSchema() {
 }
 
 export function createRangeSchema() {
-  return getCachedSchema("Range", () => {
+  return getCachedSchema("Range", [], () => {
     const baseSchema: z.ZodType<types.Range> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -333,7 +333,7 @@ export function createRangeSchema() {
 }
 
 export function createPeriodSchema() {
-  return getCachedSchema("Period", () => {
+  return getCachedSchema("Period", [], () => {
     const baseSchema: z.ZodType<types.Period> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -348,7 +348,7 @@ export function createPeriodSchema() {
 }
 
 export function createRatioSchema() {
-  return getCachedSchema("Ratio", () => {
+  return getCachedSchema("Ratio", [], () => {
     const baseSchema: z.ZodType<types.Ratio> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -361,7 +361,7 @@ export function createRatioSchema() {
 }
 
 export function createReferenceSchema() {
-  return getCachedSchema("Reference", () => {
+  return getCachedSchema("Reference", [], () => {
     const baseSchema: z.ZodType<types.Reference> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -379,7 +379,7 @@ export function createReferenceSchema() {
 }
 
 export function createSampledDataSchema() {
-  return getCachedSchema("SampledData", () => {
+  return getCachedSchema("SampledData", [], () => {
     const baseSchema: z.ZodType<types.SampledData> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -403,7 +403,7 @@ export function createSampledDataSchema() {
 }
 
 export function createSignatureSchema() {
-  return getCachedSchema("Signature", () => {
+  return getCachedSchema("Signature", [], () => {
     const baseSchema: z.ZodType<types.Signature> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -425,7 +425,7 @@ export function createSignatureSchema() {
 }
 
 export function createHumanNameSchema() {
-  return getCachedSchema("HumanName", () => {
+  return getCachedSchema("HumanName", [], () => {
     const baseSchema: z.ZodType<types.HumanName> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -459,7 +459,7 @@ export function createHumanNameSchema() {
 }
 
 export function createAddressSchema() {
-  return getCachedSchema("Address", () => {
+  return getCachedSchema("Address", [], () => {
     const baseSchema: z.ZodType<types.Address> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -489,7 +489,7 @@ export function createAddressSchema() {
 }
 
 export function createContactPointSchema() {
-  return getCachedSchema("ContactPoint", () => {
+  return getCachedSchema("ContactPoint", [], () => {
     const baseSchema: z.ZodType<types.ContactPoint> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -511,7 +511,7 @@ export function createContactPointSchema() {
 }
 
 export function createTimingSchema() {
-  return getCachedSchema("Timing", () => {
+  return getCachedSchema("Timing", [], () => {
     const baseSchema: z.ZodType<types.Timing> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -527,7 +527,7 @@ export function createTimingSchema() {
 }
 
 export function createTimingRepeatSchema() {
-  return getCachedSchema("TimingRepeat", () => {
+  return getCachedSchema("TimingRepeat", [], () => {
     const baseSchema: z.ZodType<types.TimingRepeat> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -600,7 +600,7 @@ export function createTimingRepeatSchema() {
 }
 
 export function createMetaSchema() {
-  return getCachedSchema("Meta", () => {
+  return getCachedSchema("Meta", [], () => {
     const baseSchema: z.ZodType<types.Meta> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -620,7 +620,7 @@ export function createMetaSchema() {
 }
 
 export function createContactDetailSchema() {
-  return getCachedSchema("ContactDetail", () => {
+  return getCachedSchema("ContactDetail", [], () => {
     const baseSchema: z.ZodType<types.ContactDetail> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -634,7 +634,7 @@ export function createContactDetailSchema() {
 }
 
 export function createContributorSchema() {
-  return getCachedSchema("Contributor", () => {
+  return getCachedSchema("Contributor", [], () => {
     const baseSchema: z.ZodType<types.Contributor> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -650,7 +650,7 @@ export function createContributorSchema() {
 }
 
 export function createDataRequirementSchema() {
-  return getCachedSchema("DataRequirement", () => {
+  return getCachedSchema("DataRequirement", [], () => {
     const baseSchema: z.ZodType<types.DataRequirement> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -673,7 +673,7 @@ export function createDataRequirementSchema() {
 }
 
 export function createDataRequirementCodeFilterSchema() {
-  return getCachedSchema("DataRequirementCodeFilter", () => {
+  return getCachedSchema("DataRequirementCodeFilter", [], () => {
     const baseSchema: z.ZodType<types.DataRequirementCodeFilter> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -692,7 +692,7 @@ export function createDataRequirementCodeFilterSchema() {
 }
 
 export function createDataRequirementDateFilterSchema() {
-  return getCachedSchema("DataRequirementDateFilter", () => {
+  return getCachedSchema("DataRequirementDateFilter", [], () => {
     const baseSchema: z.ZodType<types.DataRequirementDateFilter> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -713,7 +713,7 @@ export function createDataRequirementDateFilterSchema() {
 }
 
 export function createDataRequirementSortSchema() {
-  return getCachedSchema("DataRequirementSort", () => {
+  return getCachedSchema("DataRequirementSort", [], () => {
     const baseSchema: z.ZodType<types.DataRequirementSort> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -729,7 +729,7 @@ export function createDataRequirementSortSchema() {
 }
 
 export function createParameterDefinitionSchema() {
-  return getCachedSchema("ParameterDefinition", () => {
+  return getCachedSchema("ParameterDefinition", [], () => {
     const baseSchema: z.ZodType<types.ParameterDefinition> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -753,7 +753,7 @@ export function createParameterDefinitionSchema() {
 }
 
 export function createRelatedArtifactSchema() {
-  return getCachedSchema("RelatedArtifact", () => {
+  return getCachedSchema("RelatedArtifact", [], () => {
     const baseSchema: z.ZodType<types.RelatedArtifact> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -785,7 +785,7 @@ export function createRelatedArtifactSchema() {
 }
 
 export function createTriggerDefinitionSchema() {
-  return getCachedSchema("TriggerDefinition", () => {
+  return getCachedSchema("TriggerDefinition", [], () => {
     const baseSchema: z.ZodType<types.TriggerDefinition> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -817,7 +817,7 @@ export function createTriggerDefinitionSchema() {
 }
 
 export function createUsageContextSchema() {
-  return getCachedSchema("UsageContext", () => {
+  return getCachedSchema("UsageContext", [], () => {
     const baseSchema: z.ZodType<types.UsageContext> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -833,7 +833,7 @@ export function createUsageContextSchema() {
 }
 
 export function createDosageSchema() {
-  return getCachedSchema("Dosage", () => {
+  return getCachedSchema("Dosage", [], () => {
     const baseSchema: z.ZodType<types.Dosage> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -863,7 +863,7 @@ export function createDosageSchema() {
 }
 
 export function createDosageDoseAndRateSchema() {
-  return getCachedSchema("DosageDoseAndRate", () => {
+  return getCachedSchema("DosageDoseAndRate", [], () => {
     const baseSchema: z.ZodType<types.DosageDoseAndRate> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -881,7 +881,7 @@ export function createDosageDoseAndRateSchema() {
 }
 
 export function createExpressionSchema() {
-  return getCachedSchema("Expression", () => {
+  return getCachedSchema("Expression", [], () => {
     const baseSchema: z.ZodType<types.Expression> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

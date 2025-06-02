@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -16,8 +16,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createConceptMapSchema() {
-  return getCachedSchema("ConceptMap", () => {
+export function createConceptMapSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("ConceptMap", [contained], () => {
     const baseSchema: z.ZodType<types.ConceptMap> = z.strictObject({
       resourceType: z.literal("ConceptMap"),
       id: primitives.getIdSchema().optional(),
@@ -27,7 +34,7 @@ export function createConceptMapSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       url: primitives.getUriSchema().optional(),
@@ -72,7 +79,7 @@ export function createConceptMapSchema() {
 }
 
 export function createConceptMapGroupSchema() {
-  return getCachedSchema("ConceptMapGroup", () => {
+  return getCachedSchema("ConceptMapGroup", [], () => {
     const baseSchema: z.ZodType<types.ConceptMapGroup> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -94,7 +101,7 @@ export function createConceptMapGroupSchema() {
 }
 
 export function createConceptMapElementSchema() {
-  return getCachedSchema("ConceptMapElement", () => {
+  return getCachedSchema("ConceptMapElement", [], () => {
     const baseSchema: z.ZodType<types.ConceptMapElement> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -111,7 +118,7 @@ export function createConceptMapElementSchema() {
 }
 
 export function createConceptMapTargetSchema() {
-  return getCachedSchema("ConceptMapTarget", () => {
+  return getCachedSchema("ConceptMapTarget", [], () => {
     const baseSchema: z.ZodType<types.ConceptMapTarget> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -146,7 +153,7 @@ export function createConceptMapTargetSchema() {
 }
 
 export function createConceptMapDependsOnSchema() {
-  return getCachedSchema("ConceptMapDependsOn", () => {
+  return getCachedSchema("ConceptMapDependsOn", [], () => {
     const baseSchema: z.ZodType<types.ConceptMapDependsOn> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -165,7 +172,7 @@ export function createConceptMapDependsOnSchema() {
 }
 
 export function createConceptMapUnmappedSchema() {
-  return getCachedSchema("ConceptMapUnmapped", () => {
+  return getCachedSchema("ConceptMapUnmapped", [], () => {
     const baseSchema: z.ZodType<types.ConceptMapUnmapped> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

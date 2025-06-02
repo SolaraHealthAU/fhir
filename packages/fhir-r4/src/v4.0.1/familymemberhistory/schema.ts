@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -19,8 +19,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createFamilyMemberHistorySchema() {
-  return getCachedSchema("FamilyMemberHistory", () => {
+export function createFamilyMemberHistorySchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("FamilyMemberHistory", [contained], () => {
     const baseSchema: z.ZodType<types.FamilyMemberHistory> = z.strictObject({
       resourceType: z.literal("FamilyMemberHistory"),
       id: primitives.getIdSchema().optional(),
@@ -30,7 +37,7 @@ export function createFamilyMemberHistorySchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -84,7 +91,7 @@ export function createFamilyMemberHistorySchema() {
 }
 
 export function createFamilyMemberHistoryConditionSchema() {
-  return getCachedSchema("FamilyMemberHistoryCondition", () => {
+  return getCachedSchema("FamilyMemberHistoryCondition", [], () => {
     const baseSchema: z.ZodType<types.FamilyMemberHistoryCondition> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

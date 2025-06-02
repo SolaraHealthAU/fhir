@@ -3,6 +3,7 @@ import type { Meta, Element, Reference } from "../core/types";
 /** Generated from FHIR JSON Schema */
 
 /** A resource that represents the data of a single raw artifact as digital content accessible in its native format.  A Binary resource can contain any content, whether text, image, pdf, zip archive, etc. */
+
 export interface Binary {
   resourceType: `Binary`;
   /** The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes. */

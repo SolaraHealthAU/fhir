@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -27,8 +27,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createPlanDefinitionSchema() {
-  return getCachedSchema("PlanDefinition", () => {
+export function createPlanDefinitionSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("PlanDefinition", [contained], () => {
     const baseSchema: z.ZodType<types.PlanDefinition> = z.strictObject({
       resourceType: z.literal("PlanDefinition"),
       id: primitives.getIdSchema().optional(),
@@ -38,7 +45,7 @@ export function createPlanDefinitionSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       url: primitives.getUriSchema().optional(),
@@ -95,7 +102,7 @@ export function createPlanDefinitionSchema() {
 }
 
 export function createPlanDefinitionGoalSchema() {
-  return getCachedSchema("PlanDefinitionGoal", () => {
+  return getCachedSchema("PlanDefinitionGoal", [], () => {
     const baseSchema: z.ZodType<types.PlanDefinitionGoal> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -114,7 +121,7 @@ export function createPlanDefinitionGoalSchema() {
 }
 
 export function createPlanDefinitionTargetSchema() {
-  return getCachedSchema("PlanDefinitionTarget", () => {
+  return getCachedSchema("PlanDefinitionTarget", [], () => {
     const baseSchema: z.ZodType<types.PlanDefinitionTarget> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -131,7 +138,7 @@ export function createPlanDefinitionTargetSchema() {
 }
 
 export function createPlanDefinitionActionSchema() {
-  return getCachedSchema("PlanDefinitionAction", () => {
+  return getCachedSchema("PlanDefinitionAction", [], () => {
     const baseSchema: z.ZodType<types.PlanDefinitionAction> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -208,7 +215,7 @@ export function createPlanDefinitionActionSchema() {
 }
 
 export function createPlanDefinitionConditionSchema() {
-  return getCachedSchema("PlanDefinitionCondition", () => {
+  return getCachedSchema("PlanDefinitionCondition", [], () => {
     const baseSchema: z.ZodType<types.PlanDefinitionCondition> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),
@@ -225,7 +232,7 @@ export function createPlanDefinitionConditionSchema() {
 }
 
 export function createPlanDefinitionRelatedActionSchema() {
-  return getCachedSchema("PlanDefinitionRelatedAction", () => {
+  return getCachedSchema("PlanDefinitionRelatedAction", [], () => {
     const baseSchema: z.ZodType<types.PlanDefinitionRelatedAction> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -256,7 +263,7 @@ export function createPlanDefinitionRelatedActionSchema() {
 }
 
 export function createPlanDefinitionParticipantSchema() {
-  return getCachedSchema("PlanDefinitionParticipant", () => {
+  return getCachedSchema("PlanDefinitionParticipant", [], () => {
     const baseSchema: z.ZodType<types.PlanDefinitionParticipant> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -274,7 +281,7 @@ export function createPlanDefinitionParticipantSchema() {
 }
 
 export function createPlanDefinitionDynamicValueSchema() {
-  return getCachedSchema("PlanDefinitionDynamicValue", () => {
+  return getCachedSchema("PlanDefinitionDynamicValue", [], () => {
     const baseSchema: z.ZodType<types.PlanDefinitionDynamicValue> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

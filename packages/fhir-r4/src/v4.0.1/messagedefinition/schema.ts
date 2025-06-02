@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -17,8 +17,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createMessageDefinitionSchema() {
-  return getCachedSchema("MessageDefinition", () => {
+export function createMessageDefinitionSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("MessageDefinition", [contained], () => {
     const baseSchema: z.ZodType<types.MessageDefinition> = z.strictObject({
       resourceType: z.literal("MessageDefinition"),
       id: primitives.getIdSchema().optional(),
@@ -28,7 +35,7 @@ export function createMessageDefinitionSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       url: primitives.getUriSchema().optional(),
@@ -81,7 +88,7 @@ export function createMessageDefinitionSchema() {
 }
 
 export function createMessageDefinitionFocusSchema() {
-  return getCachedSchema("MessageDefinitionFocus", () => {
+  return getCachedSchema("MessageDefinitionFocus", [], () => {
     const baseSchema: z.ZodType<types.MessageDefinitionFocus> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -100,7 +107,7 @@ export function createMessageDefinitionFocusSchema() {
 }
 
 export function createMessageDefinitionAllowedResponseSchema() {
-  return getCachedSchema("MessageDefinitionAllowedResponse", () => {
+  return getCachedSchema("MessageDefinitionAllowedResponse", [], () => {
     const baseSchema: z.ZodType<types.MessageDefinitionAllowedResponse> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -21,8 +21,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createQuestionnaireSchema() {
-  return getCachedSchema("Questionnaire", () => {
+export function createQuestionnaireSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Questionnaire", [contained], () => {
     const baseSchema: z.ZodType<types.Questionnaire> = z.strictObject({
       resourceType: z.literal("Questionnaire"),
       id: primitives.getIdSchema().optional(),
@@ -32,7 +39,7 @@ export function createQuestionnaireSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       url: primitives.getUriSchema().optional(),
@@ -78,12 +85,12 @@ export function createQuestionnaireSchema() {
 }
 
 export function createQuestionnaireItemSchema() {
-  return getCachedSchema("QuestionnaireItem", () => {
+  return getCachedSchema("QuestionnaireItem", [], () => {
     const baseSchema: z.ZodType<types.QuestionnaireItem> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
-      linkId: primitives.getStringSchema(),
+      linkId: primitives.getStringSchema().optional(),
       _linkId: createElementSchema().optional(),
       definition: primitives.getUriSchema().optional(),
       _definition: createElementSchema().optional(),
@@ -133,7 +140,7 @@ export function createQuestionnaireItemSchema() {
 }
 
 export function createQuestionnaireEnableWhenSchema() {
-  return getCachedSchema("QuestionnaireEnableWhen", () => {
+  return getCachedSchema("QuestionnaireEnableWhen", [], () => {
     const baseSchema: z.ZodType<types.QuestionnaireEnableWhen> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),
@@ -170,7 +177,7 @@ export function createQuestionnaireEnableWhenSchema() {
 }
 
 export function createQuestionnaireAnswerOptionSchema() {
-  return getCachedSchema("QuestionnaireAnswerOption", () => {
+  return getCachedSchema("QuestionnaireAnswerOption", [], () => {
     const baseSchema: z.ZodType<types.QuestionnaireAnswerOption> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -195,7 +202,7 @@ export function createQuestionnaireAnswerOptionSchema() {
 }
 
 export function createQuestionnaireInitialSchema() {
-  return getCachedSchema("QuestionnaireInitial", () => {
+  return getCachedSchema("QuestionnaireInitial", [], () => {
     const baseSchema: z.ZodType<types.QuestionnaireInitial> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -226,8 +233,15 @@ export function createQuestionnaireInitialSchema() {
   });
 }
 
-export function createQuestionnaireResponseSchema() {
-  return getCachedSchema("QuestionnaireResponse", () => {
+export function createQuestionnaireResponseSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("QuestionnaireResponse", [contained], () => {
     const baseSchema: z.ZodType<types.QuestionnaireResponse> = z.strictObject({
       resourceType: z.literal("QuestionnaireResponse"),
       id: primitives.getIdSchema().optional(),
@@ -237,7 +251,7 @@ export function createQuestionnaireResponseSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: createIdentifierSchema().optional(),
@@ -266,7 +280,7 @@ export function createQuestionnaireResponseSchema() {
 }
 
 export function createQuestionnaireResponseItemSchema() {
-  return getCachedSchema("QuestionnaireResponseItem", () => {
+  return getCachedSchema("QuestionnaireResponseItem", [], () => {
     const baseSchema: z.ZodType<types.QuestionnaireResponseItem> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -287,7 +301,7 @@ export function createQuestionnaireResponseItemSchema() {
 }
 
 export function createQuestionnaireResponseAnswerSchema() {
-  return getCachedSchema("QuestionnaireResponseAnswer", () => {
+  return getCachedSchema("QuestionnaireResponseAnswer", [], () => {
     const baseSchema: z.ZodType<types.QuestionnaireResponseAnswer> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

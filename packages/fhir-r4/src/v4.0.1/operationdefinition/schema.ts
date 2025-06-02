@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -15,8 +15,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createOperationDefinitionSchema() {
-  return getCachedSchema("OperationDefinition", () => {
+export function createOperationDefinitionSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("OperationDefinition", [contained], () => {
     const baseSchema: z.ZodType<types.OperationDefinition> = z.strictObject({
       resourceType: z.literal("OperationDefinition"),
       id: primitives.getIdSchema().optional(),
@@ -26,7 +33,7 @@ export function createOperationDefinitionSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       url: primitives.getUriSchema().optional(),
@@ -80,7 +87,7 @@ export function createOperationDefinitionSchema() {
 }
 
 export function createOperationDefinitionParameterSchema() {
-  return getCachedSchema("OperationDefinitionParameter", () => {
+  return getCachedSchema("OperationDefinitionParameter", [], () => {
     const baseSchema: z.ZodType<types.OperationDefinitionParameter> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -125,7 +132,7 @@ export function createOperationDefinitionParameterSchema() {
 }
 
 export function createOperationDefinitionBindingSchema() {
-  return getCachedSchema("OperationDefinitionBinding", () => {
+  return getCachedSchema("OperationDefinitionBinding", [], () => {
     const baseSchema: z.ZodType<types.OperationDefinitionBinding> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -143,7 +150,7 @@ export function createOperationDefinitionBindingSchema() {
 }
 
 export function createOperationDefinitionReferencedFromSchema() {
-  return getCachedSchema("OperationDefinitionReferencedFrom", () => {
+  return getCachedSchema("OperationDefinitionReferencedFrom", [], () => {
     const baseSchema: z.ZodType<types.OperationDefinitionReferencedFrom> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -160,7 +167,7 @@ export function createOperationDefinitionReferencedFromSchema() {
 }
 
 export function createOperationDefinitionOverloadSchema() {
-  return getCachedSchema("OperationDefinitionOverload", () => {
+  return getCachedSchema("OperationDefinitionOverload", [], () => {
     const baseSchema: z.ZodType<types.OperationDefinitionOverload> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

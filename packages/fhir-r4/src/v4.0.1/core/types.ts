@@ -1,6 +1,7 @@
 /** Generated from FHIR JSON Schema */
 
 /** Base definition for all elements in a resource. */
+
 export interface Element {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -9,6 +10,7 @@ export interface Element {
 }
 
 /** Optional Extension Element - found in all resources. */
+
 export interface Extension {
   id?: string;
 
@@ -158,6 +160,7 @@ export interface Extension {
 }
 
 /** A  text note which also  contains information about who made the statement and when. */
+
 export interface Annotation {
   id?: string;
 
@@ -179,6 +182,7 @@ export interface Annotation {
 }
 
 /** For referring to data content defined in other formats. */
+
 export interface Attachment {
   id?: string;
 
@@ -218,6 +222,7 @@ export interface Attachment {
 }
 
 /** An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers. */
+
 export interface Identifier {
   id?: string;
 
@@ -243,6 +248,7 @@ export interface Identifier {
 }
 
 /** A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text. */
+
 export interface CodeableConcept {
   id?: string;
 
@@ -256,6 +262,7 @@ export interface CodeableConcept {
 }
 
 /** A reference to a code defined by a terminology system. */
+
 export interface Coding {
   id?: string;
 
@@ -283,6 +290,7 @@ export interface Coding {
 }
 
 /** A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies. */
+
 export interface Quantity {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -311,6 +319,7 @@ export interface Quantity {
 }
 
 /** A length of time. */
+
 export interface Duration {
   id?: string;
 
@@ -338,6 +347,7 @@ export interface Duration {
 }
 
 /** A length - a value with a unit that is a physical distance. */
+
 export interface Distance {
   id?: string;
 
@@ -365,6 +375,7 @@ export interface Distance {
 }
 
 /** A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies. */
+
 export interface Count {
   id?: string;
 
@@ -392,6 +403,7 @@ export interface Count {
 }
 
 /** An amount of economic utility in some recognized currency. */
+
 export interface Money {
   id?: string;
 
@@ -407,6 +419,7 @@ export interface Money {
 }
 
 /** A duration of time during which an organism (or a process) has existed. */
+
 export interface Age {
   id?: string;
 
@@ -434,6 +447,7 @@ export interface Age {
 }
 
 /** A set of ordered Quantities defined by a low and high limit. */
+
 export interface Range {
   id?: string;
 
@@ -445,6 +459,7 @@ export interface Range {
 }
 
 /** A time period defined by a start and end date and optionally time. */
+
 export interface Period {
   id?: string;
 
@@ -460,6 +475,7 @@ export interface Period {
 }
 
 /** A relationship of two Quantity values - expressed as a numerator and a denominator. */
+
 export interface Ratio {
   id?: string;
 
@@ -471,6 +487,7 @@ export interface Ratio {
 }
 
 /** A reference from one resource to another. */
+
 export interface Reference {
   id?: string;
 
@@ -494,6 +511,7 @@ The type is the Canonical URL of Resource Definition that is the type this refer
 }
 
 /** A series of measurements taken by a device, with upper and lower limits. There may be more than one dimension in the data. */
+
 export interface SampledData {
   id?: string;
 
@@ -527,6 +545,7 @@ export interface SampledData {
 }
 
 /** A signature along with supporting context. The signature may be a digital signature that is cryptographic in nature, or some other signature acceptable to the domain. This other signature may be as simple as a graphical image representing a hand-written signature, or a signature ceremony Different signature approaches have different utilities. */
+
 export interface Signature {
   id?: string;
 
@@ -556,6 +575,7 @@ export interface Signature {
 }
 
 /** A human's name with the ability to identify parts and usage. */
+
 export interface HumanName {
   id?: string;
 
@@ -596,6 +616,7 @@ export interface HumanName {
 }
 
 /** An address expressed using postal conventions (as opposed to GPS or other location definition formats).  This data type may be used to convey addresses for use in delivering mail as well as for visiting locations which might not be valid for mail delivery.  There are a variety of postal address formats defined around the world. */
+
 export interface Address {
   id?: string;
 
@@ -641,6 +662,7 @@ export interface Address {
 }
 
 /** Details for all kinds of technology mediated contact points for a person or organization, including telephone, email, etc. */
+
 export interface ContactPoint {
   id?: string;
 
@@ -666,6 +688,7 @@ export interface ContactPoint {
 }
 
 /** Specifies an event that may occur multiple times. Timing schedules are used to record when things are planned, expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds, and may be used for reporting the schedule to which past regular activities were carried out. */
+
 export interface Timing {
   id?: string;
 
@@ -683,6 +706,7 @@ export interface Timing {
 }
 
 /** Specifies an event that may occur multiple times. Timing schedules are used to record when things are planned, expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds, and may be used for reporting the schedule to which past regular activities were carried out. */
+
 export interface TimingRepeat {
   id?: string;
 
@@ -781,6 +805,7 @@ export interface TimingRepeat {
 }
 
 /** The metadata about a resource. This is content in the resource that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource. */
+
 export interface Meta {
   id?: string;
 
@@ -806,6 +831,7 @@ export interface Meta {
 }
 
 /** Specifies contact information for a person or organization. */
+
 export interface ContactDetail {
   id?: string;
 
@@ -819,6 +845,7 @@ export interface ContactDetail {
 }
 
 /** A contributor to the content of a knowledge asset, including authors, editors, reviewers, and endorsers. */
+
 export interface Contributor {
   id?: string;
 
@@ -836,6 +863,7 @@ export interface Contributor {
 }
 
 /** Describes a required data item for evaluation in terms of the type of data, and optional code or date-based filters of the data. */
+
 export interface DataRequirement {
   id?: string;
 
@@ -869,6 +897,7 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
 }
 
 /** Describes a required data item for evaluation in terms of the type of data, and optional code or date-based filters of the data. */
+
 export interface DataRequirementCodeFilter {
   id?: string;
 
@@ -890,6 +919,7 @@ export interface DataRequirementCodeFilter {
 }
 
 /** Describes a required data item for evaluation in terms of the type of data, and optional code or date-based filters of the data. */
+
 export interface DataRequirementDateFilter {
   id?: string;
 
@@ -915,6 +945,7 @@ export interface DataRequirementDateFilter {
 }
 
 /** Describes a required data item for evaluation in terms of the type of data, and optional code or date-based filters of the data. */
+
 export interface DataRequirementSort {
   id?: string;
 
@@ -932,6 +963,7 @@ export interface DataRequirementSort {
 }
 
 /** The parameters to the module. This collection specifies both the input and output parameters. Input parameters are provided by the caller as part of the $evaluate operation. Output parameters are included in the GuidanceResponse. */
+
 export interface ParameterDefinition {
   id?: string;
 
@@ -965,6 +997,7 @@ export interface ParameterDefinition {
 }
 
 /** Related artifacts such as additional documentation, justification, or bibliographic references. */
+
 export interface RelatedArtifact {
   id?: string;
 
@@ -1004,6 +1037,7 @@ export interface RelatedArtifact {
 }
 
 /** A description of a triggering event. Triggering events can be named events, data events, or periodic, as determined by the type element. */
+
 export interface TriggerDefinition {
   id?: string;
 
@@ -1043,6 +1077,7 @@ export interface TriggerDefinition {
 }
 
 /** Specifies clinical/business/etc. metadata that can be used to retrieve, index and/or categorize an artifact. This metadata can either be specific to the applicable population (e.g., age category, DRG) or the specific context of care (e.g., venue, care setting, provider of care). */
+
 export interface UsageContext {
   id?: string;
 
@@ -1060,6 +1095,7 @@ export interface UsageContext {
 }
 
 /** Indicates how the medication is/was taken or should be taken by the patient. */
+
 export interface Dosage {
   id?: string;
 
@@ -1105,6 +1141,7 @@ export interface Dosage {
 }
 
 /** Indicates how the medication is/was taken or should be taken by the patient. */
+
 export interface DosageDoseAndRate {
   id?: string;
 
@@ -1126,6 +1163,7 @@ export interface DosageDoseAndRate {
 }
 
 /** A expression that is evaluated in a specified context and returns a value. The context of use of the expression must specify the context in which the expression is evaluated, and how the result of the expression is used. */
+
 export interface Expression {
   id?: string;
 

@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -15,8 +15,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createTerminologyCapabilitiesSchema() {
-  return getCachedSchema("TerminologyCapabilities", () => {
+export function createTerminologyCapabilitiesSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("TerminologyCapabilities", [contained], () => {
     const baseSchema: z.ZodType<types.TerminologyCapabilities> = z.strictObject(
       {
         resourceType: z.literal("TerminologyCapabilities"),
@@ -27,7 +34,7 @@ export function createTerminologyCapabilitiesSchema() {
         language: primitives.getCodeSchema().optional(),
         _language: createElementSchema().optional(),
         text: createNarrativeSchema().optional(),
-        contained: z.array(createResourceListSchema()).optional(),
+        contained: z.array(contained).optional(),
         extension: z.array(createExtensionSchema()).optional(),
         modifierExtension: z.array(createExtensionSchema()).optional(),
         url: primitives.getUriSchema().optional(),
@@ -81,7 +88,7 @@ export function createTerminologyCapabilitiesSchema() {
 }
 
 export function createTerminologyCapabilitiesSoftwareSchema() {
-  return getCachedSchema("TerminologyCapabilitiesSoftware", () => {
+  return getCachedSchema("TerminologyCapabilitiesSoftware", [], () => {
     const baseSchema: z.ZodType<types.TerminologyCapabilitiesSoftware> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -98,7 +105,7 @@ export function createTerminologyCapabilitiesSoftwareSchema() {
 }
 
 export function createTerminologyCapabilitiesImplementationSchema() {
-  return getCachedSchema("TerminologyCapabilitiesImplementation", () => {
+  return getCachedSchema("TerminologyCapabilitiesImplementation", [], () => {
     const baseSchema: z.ZodType<types.TerminologyCapabilitiesImplementation> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -115,7 +122,7 @@ export function createTerminologyCapabilitiesImplementationSchema() {
 }
 
 export function createTerminologyCapabilitiesCodeSystemSchema() {
-  return getCachedSchema("TerminologyCapabilitiesCodeSystem", () => {
+  return getCachedSchema("TerminologyCapabilitiesCodeSystem", [], () => {
     const baseSchema: z.ZodType<types.TerminologyCapabilitiesCodeSystem> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -134,7 +141,7 @@ export function createTerminologyCapabilitiesCodeSystemSchema() {
 }
 
 export function createTerminologyCapabilitiesVersionSchema() {
-  return getCachedSchema("TerminologyCapabilitiesVersion", () => {
+  return getCachedSchema("TerminologyCapabilitiesVersion", [], () => {
     const baseSchema: z.ZodType<types.TerminologyCapabilitiesVersion> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -158,7 +165,7 @@ export function createTerminologyCapabilitiesVersionSchema() {
 }
 
 export function createTerminologyCapabilitiesFilterSchema() {
-  return getCachedSchema("TerminologyCapabilitiesFilter", () => {
+  return getCachedSchema("TerminologyCapabilitiesFilter", [], () => {
     const baseSchema: z.ZodType<types.TerminologyCapabilitiesFilter> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -175,7 +182,7 @@ export function createTerminologyCapabilitiesFilterSchema() {
 }
 
 export function createTerminologyCapabilitiesExpansionSchema() {
-  return getCachedSchema("TerminologyCapabilitiesExpansion", () => {
+  return getCachedSchema("TerminologyCapabilitiesExpansion", [], () => {
     const baseSchema: z.ZodType<types.TerminologyCapabilitiesExpansion> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -199,7 +206,7 @@ export function createTerminologyCapabilitiesExpansionSchema() {
 }
 
 export function createTerminologyCapabilitiesParameterSchema() {
-  return getCachedSchema("TerminologyCapabilitiesParameter", () => {
+  return getCachedSchema("TerminologyCapabilitiesParameter", [], () => {
     const baseSchema: z.ZodType<types.TerminologyCapabilitiesParameter> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -216,7 +223,7 @@ export function createTerminologyCapabilitiesParameterSchema() {
 }
 
 export function createTerminologyCapabilitiesValidateCodeSchema() {
-  return getCachedSchema("TerminologyCapabilitiesValidateCode", () => {
+  return getCachedSchema("TerminologyCapabilitiesValidateCode", [], () => {
     const baseSchema: z.ZodType<types.TerminologyCapabilitiesValidateCode> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -231,7 +238,7 @@ export function createTerminologyCapabilitiesValidateCodeSchema() {
 }
 
 export function createTerminologyCapabilitiesTranslationSchema() {
-  return getCachedSchema("TerminologyCapabilitiesTranslation", () => {
+  return getCachedSchema("TerminologyCapabilitiesTranslation", [], () => {
     const baseSchema: z.ZodType<types.TerminologyCapabilitiesTranslation> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -246,7 +253,7 @@ export function createTerminologyCapabilitiesTranslationSchema() {
 }
 
 export function createTerminologyCapabilitiesClosureSchema() {
-  return getCachedSchema("TerminologyCapabilitiesClosure", () => {
+  return getCachedSchema("TerminologyCapabilitiesClosure", [], () => {
     const baseSchema: z.ZodType<types.TerminologyCapabilitiesClosure> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

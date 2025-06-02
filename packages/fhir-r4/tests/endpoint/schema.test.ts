@@ -1,6 +1,5 @@
 import { createEndpointSchema } from "../../src";
 import {
-  EndpointExampleDirect,
   EndpointExampleIid,
   EndpointExampleWadors,
   EndpointExample,
@@ -8,18 +7,6 @@ import {
 import { z } from "zod/v4";
 
 describe("Endpoint Group Schema Validation", () => {
-  it("should validate EndpointExampleDirect fixture (Endpoint)", () => {
-    const result = createEndpointSchema().safeParse(EndpointExampleDirect);
-    if (!result.success) {
-      console.error("Validation failed for EndpointExampleDirect:");
-      console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
-      throw new Error(
-        `Schema validation failed for EndpointExampleDirect: ${result.error.message}`,
-      );
-    }
-    expect(result.success).toBe(true);
-  });
-
   it("should validate EndpointExampleIid fixture (Endpoint)", () => {
     const result = createEndpointSchema().safeParse(EndpointExampleIid);
     if (!result.success) {

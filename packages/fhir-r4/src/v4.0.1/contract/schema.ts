@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -23,8 +23,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createContractSchema() {
-  return getCachedSchema("Contract", () => {
+export function createContractSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Contract", [contained], () => {
     const baseSchema: z.ZodType<types.Contract> = z.strictObject({
       resourceType: z.literal("Contract"),
       id: primitives.getIdSchema().optional(),
@@ -34,7 +41,7 @@ export function createContractSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -88,7 +95,7 @@ export function createContractSchema() {
 }
 
 export function createContractContentDefinitionSchema() {
-  return getCachedSchema("ContractContentDefinition", () => {
+  return getCachedSchema("ContractContentDefinition", [], () => {
     const baseSchema: z.ZodType<types.ContractContentDefinition> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -110,7 +117,7 @@ export function createContractContentDefinitionSchema() {
 }
 
 export function createContractTermSchema() {
-  return getCachedSchema("ContractTerm", () => {
+  return getCachedSchema("ContractTerm", [], () => {
     const baseSchema: z.ZodType<types.ContractTerm> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -137,7 +144,7 @@ export function createContractTermSchema() {
 }
 
 export function createContractSecurityLabelSchema() {
-  return getCachedSchema("ContractSecurityLabel", () => {
+  return getCachedSchema("ContractSecurityLabel", [], () => {
     const baseSchema: z.ZodType<types.ContractSecurityLabel> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -154,7 +161,7 @@ export function createContractSecurityLabelSchema() {
 }
 
 export function createContractOfferSchema() {
-  return getCachedSchema("ContractOffer", () => {
+  return getCachedSchema("ContractOffer", [], () => {
     const baseSchema: z.ZodType<types.ContractOffer> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -181,7 +188,7 @@ export function createContractOfferSchema() {
 }
 
 export function createContractPartySchema() {
-  return getCachedSchema("ContractParty", () => {
+  return getCachedSchema("ContractParty", [], () => {
     const baseSchema: z.ZodType<types.ContractParty> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -195,7 +202,7 @@ export function createContractPartySchema() {
 }
 
 export function createContractAnswerSchema() {
-  return getCachedSchema("ContractAnswer", () => {
+  return getCachedSchema("ContractAnswer", [], () => {
     const baseSchema: z.ZodType<types.ContractAnswer> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -227,7 +234,7 @@ export function createContractAnswerSchema() {
 }
 
 export function createContractAssetSchema() {
-  return getCachedSchema("ContractAsset", () => {
+  return getCachedSchema("ContractAsset", [], () => {
     const baseSchema: z.ZodType<types.ContractAsset> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -260,7 +267,7 @@ export function createContractAssetSchema() {
 }
 
 export function createContractContextSchema() {
-  return getCachedSchema("ContractContext", () => {
+  return getCachedSchema("ContractContext", [], () => {
     const baseSchema: z.ZodType<types.ContractContext> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -276,7 +283,7 @@ export function createContractContextSchema() {
 }
 
 export function createContractValuedItemSchema() {
-  return getCachedSchema("ContractValuedItem", () => {
+  return getCachedSchema("ContractValuedItem", [], () => {
     const baseSchema: z.ZodType<types.ContractValuedItem> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -312,7 +319,7 @@ export function createContractValuedItemSchema() {
 }
 
 export function createContractActionSchema() {
-  return getCachedSchema("ContractAction", () => {
+  return getCachedSchema("ContractAction", [], () => {
     const baseSchema: z.ZodType<types.ContractAction> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -358,7 +365,7 @@ export function createContractActionSchema() {
 }
 
 export function createContractSubjectSchema() {
-  return getCachedSchema("ContractSubject", () => {
+  return getCachedSchema("ContractSubject", [], () => {
     const baseSchema: z.ZodType<types.ContractSubject> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -372,7 +379,7 @@ export function createContractSubjectSchema() {
 }
 
 export function createContractSignerSchema() {
-  return getCachedSchema("ContractSigner", () => {
+  return getCachedSchema("ContractSigner", [], () => {
     const baseSchema: z.ZodType<types.ContractSigner> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -387,7 +394,7 @@ export function createContractSignerSchema() {
 }
 
 export function createContractFriendlySchema() {
-  return getCachedSchema("ContractFriendly", () => {
+  return getCachedSchema("ContractFriendly", [], () => {
     const baseSchema: z.ZodType<types.ContractFriendly> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -401,7 +408,7 @@ export function createContractFriendlySchema() {
 }
 
 export function createContractLegalSchema() {
-  return getCachedSchema("ContractLegal", () => {
+  return getCachedSchema("ContractLegal", [], () => {
     const baseSchema: z.ZodType<types.ContractLegal> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -415,7 +422,7 @@ export function createContractLegalSchema() {
 }
 
 export function createContractRuleSchema() {
-  return getCachedSchema("ContractRule", () => {
+  return getCachedSchema("ContractRule", [], () => {
     const baseSchema: z.ZodType<types.ContractRule> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

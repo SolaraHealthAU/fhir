@@ -3,6 +3,7 @@ import type { Extension, Range, CodeableConcept } from "../core/types";
 /** Generated from FHIR JSON Schema */
 
 /** A populatioof people with some set of grouping criteria. */
+
 export interface Population {
   id?: string;
 

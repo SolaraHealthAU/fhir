@@ -38,6 +38,7 @@ import type { ResourceList } from "../resourcelist/types";
 /** Generated from FHIR JSON Schema */
 
 /** This resource is a non-persisted resource used to pass information into and back from an [operation](operations.html). It has no other use, and there is no RESTful endpoint associated with it. */
+
 export interface Parameters {
   resourceType: `Parameters`;
   /** The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes. */
@@ -57,6 +58,7 @@ export interface Parameters {
 }
 
 /** This resource is a non-persisted resource used to pass information into and back from an [operation](operations.html). It has no other use, and there is no RESTful endpoint associated with it. */
+
 export interface ParametersParameter {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;

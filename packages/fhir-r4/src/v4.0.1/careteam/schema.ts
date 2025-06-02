@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -18,8 +18,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createCareTeamSchema() {
-  return getCachedSchema("CareTeam", () => {
+export function createCareTeamSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("CareTeam", [contained], () => {
     const baseSchema: z.ZodType<types.CareTeam> = z.strictObject({
       resourceType: z.literal("CareTeam"),
       id: primitives.getIdSchema().optional(),
@@ -29,7 +36,7 @@ export function createCareTeamSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -62,7 +69,7 @@ export function createCareTeamSchema() {
 }
 
 export function createCareTeamParticipantSchema() {
-  return getCachedSchema("CareTeamParticipant", () => {
+  return getCachedSchema("CareTeamParticipant", [], () => {
     const baseSchema: z.ZodType<types.CareTeamParticipant> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

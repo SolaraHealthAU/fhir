@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -18,8 +18,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createCommunicationSchema() {
-  return getCachedSchema("Communication", () => {
+export function createCommunicationSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Communication", [contained], () => {
     const baseSchema: z.ZodType<types.Communication> = z.strictObject({
       resourceType: z.literal("Communication"),
       id: primitives.getIdSchema().optional(),
@@ -29,7 +36,7 @@ export function createCommunicationSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -69,7 +76,7 @@ export function createCommunicationSchema() {
 }
 
 export function createCommunicationPayloadSchema() {
-  return getCachedSchema("CommunicationPayload", () => {
+  return getCachedSchema("CommunicationPayload", [], () => {
     const baseSchema: z.ZodType<types.CommunicationPayload> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -84,8 +91,15 @@ export function createCommunicationPayloadSchema() {
   });
 }
 
-export function createCommunicationRequestSchema() {
-  return getCachedSchema("CommunicationRequest", () => {
+export function createCommunicationRequestSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("CommunicationRequest", [contained], () => {
     const baseSchema: z.ZodType<types.CommunicationRequest> = z.strictObject({
       resourceType: z.literal("CommunicationRequest"),
       id: primitives.getIdSchema().optional(),
@@ -95,7 +109,7 @@ export function createCommunicationRequestSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -133,7 +147,7 @@ export function createCommunicationRequestSchema() {
 }
 
 export function createCommunicationRequestPayloadSchema() {
-  return getCachedSchema("CommunicationRequestPayload", () => {
+  return getCachedSchema("CommunicationRequestPayload", [], () => {
     const baseSchema: z.ZodType<types.CommunicationRequestPayload> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

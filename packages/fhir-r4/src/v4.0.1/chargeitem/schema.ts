@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -22,8 +22,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createChargeItemSchema() {
-  return getCachedSchema("ChargeItem", () => {
+export function createChargeItemSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("ChargeItem", [contained], () => {
     const baseSchema: z.ZodType<types.ChargeItem> = z.strictObject({
       resourceType: z.literal("ChargeItem"),
       id: primitives.getIdSchema().optional(),
@@ -33,7 +40,7 @@ export function createChargeItemSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -86,7 +93,7 @@ export function createChargeItemSchema() {
 }
 
 export function createChargeItemPerformerSchema() {
-  return getCachedSchema("ChargeItemPerformer", () => {
+  return getCachedSchema("ChargeItemPerformer", [], () => {
     const baseSchema: z.ZodType<types.ChargeItemPerformer> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -99,8 +106,15 @@ export function createChargeItemPerformerSchema() {
   });
 }
 
-export function createChargeItemDefinitionSchema() {
-  return getCachedSchema("ChargeItemDefinition", () => {
+export function createChargeItemDefinitionSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("ChargeItemDefinition", [contained], () => {
     const baseSchema: z.ZodType<types.ChargeItemDefinition> = z.strictObject({
       resourceType: z.literal("ChargeItemDefinition"),
       id: primitives.getIdSchema().optional(),
@@ -110,7 +124,7 @@ export function createChargeItemDefinitionSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       url: primitives.getUriSchema(),
@@ -159,7 +173,7 @@ export function createChargeItemDefinitionSchema() {
 }
 
 export function createChargeItemDefinitionApplicabilitySchema() {
-  return getCachedSchema("ChargeItemDefinitionApplicability", () => {
+  return getCachedSchema("ChargeItemDefinitionApplicability", [], () => {
     const baseSchema: z.ZodType<types.ChargeItemDefinitionApplicability> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -178,7 +192,7 @@ export function createChargeItemDefinitionApplicabilitySchema() {
 }
 
 export function createChargeItemDefinitionPropertyGroupSchema() {
-  return getCachedSchema("ChargeItemDefinitionPropertyGroup", () => {
+  return getCachedSchema("ChargeItemDefinitionPropertyGroup", [], () => {
     const baseSchema: z.ZodType<types.ChargeItemDefinitionPropertyGroup> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -197,7 +211,7 @@ export function createChargeItemDefinitionPropertyGroupSchema() {
 }
 
 export function createChargeItemDefinitionPriceComponentSchema() {
-  return getCachedSchema("ChargeItemDefinitionPriceComponent", () => {
+  return getCachedSchema("ChargeItemDefinitionPriceComponent", [], () => {
     const baseSchema: z.ZodType<types.ChargeItemDefinitionPriceComponent> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

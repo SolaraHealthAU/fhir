@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -18,8 +18,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createCoverageSchema() {
-  return getCachedSchema("Coverage", () => {
+export function createCoverageSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Coverage", [contained], () => {
     const baseSchema: z.ZodType<types.Coverage> = z.strictObject({
       resourceType: z.literal("Coverage"),
       id: primitives.getIdSchema().optional(),
@@ -29,7 +36,7 @@ export function createCoverageSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -64,7 +71,7 @@ export function createCoverageSchema() {
 }
 
 export function createCoverageClassSchema() {
-  return getCachedSchema("CoverageClass", () => {
+  return getCachedSchema("CoverageClass", [], () => {
     const baseSchema: z.ZodType<types.CoverageClass> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -81,7 +88,7 @@ export function createCoverageClassSchema() {
 }
 
 export function createCoverageCostToBeneficiarySchema() {
-  return getCachedSchema("CoverageCostToBeneficiary", () => {
+  return getCachedSchema("CoverageCostToBeneficiary", [], () => {
     const baseSchema: z.ZodType<types.CoverageCostToBeneficiary> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -98,7 +105,7 @@ export function createCoverageCostToBeneficiarySchema() {
 }
 
 export function createCoverageExceptionSchema() {
-  return getCachedSchema("CoverageException", () => {
+  return getCachedSchema("CoverageException", [], () => {
     const baseSchema: z.ZodType<types.CoverageException> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -111,8 +118,15 @@ export function createCoverageExceptionSchema() {
   });
 }
 
-export function createCoverageEligibilityRequestSchema() {
-  return getCachedSchema("CoverageEligibilityRequest", () => {
+export function createCoverageEligibilityRequestSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("CoverageEligibilityRequest", [contained], () => {
     const baseSchema: z.ZodType<types.CoverageEligibilityRequest> =
       z.strictObject({
         resourceType: z.literal("CoverageEligibilityRequest"),
@@ -123,7 +137,7 @@ export function createCoverageEligibilityRequestSchema() {
         language: primitives.getCodeSchema().optional(),
         _language: createElementSchema().optional(),
         text: createNarrativeSchema().optional(),
-        contained: z.array(createResourceListSchema()).optional(),
+        contained: z.array(contained).optional(),
         extension: z.array(createExtensionSchema()).optional(),
         modifierExtension: z.array(createExtensionSchema()).optional(),
         identifier: z.array(createIdentifierSchema()).optional(),
@@ -158,7 +172,7 @@ export function createCoverageEligibilityRequestSchema() {
 }
 
 export function createCoverageEligibilityRequestSupportingInfoSchema() {
-  return getCachedSchema("CoverageEligibilityRequestSupportingInfo", () => {
+  return getCachedSchema("CoverageEligibilityRequestSupportingInfo", [], () => {
     const baseSchema: z.ZodType<types.CoverageEligibilityRequestSupportingInfo> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -176,7 +190,7 @@ export function createCoverageEligibilityRequestSupportingInfoSchema() {
 }
 
 export function createCoverageEligibilityRequestInsuranceSchema() {
-  return getCachedSchema("CoverageEligibilityRequestInsurance", () => {
+  return getCachedSchema("CoverageEligibilityRequestInsurance", [], () => {
     const baseSchema: z.ZodType<types.CoverageEligibilityRequestInsurance> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -194,7 +208,7 @@ export function createCoverageEligibilityRequestInsuranceSchema() {
 }
 
 export function createCoverageEligibilityRequestItemSchema() {
-  return getCachedSchema("CoverageEligibilityRequestItem", () => {
+  return getCachedSchema("CoverageEligibilityRequestItem", [], () => {
     const baseSchema: z.ZodType<types.CoverageEligibilityRequestItem> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -222,7 +236,7 @@ export function createCoverageEligibilityRequestItemSchema() {
 }
 
 export function createCoverageEligibilityRequestDiagnosisSchema() {
-  return getCachedSchema("CoverageEligibilityRequestDiagnosis", () => {
+  return getCachedSchema("CoverageEligibilityRequestDiagnosis", [], () => {
     const baseSchema: z.ZodType<types.CoverageEligibilityRequestDiagnosis> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -236,8 +250,15 @@ export function createCoverageEligibilityRequestDiagnosisSchema() {
   });
 }
 
-export function createCoverageEligibilityResponseSchema() {
-  return getCachedSchema("CoverageEligibilityResponse", () => {
+export function createCoverageEligibilityResponseSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("CoverageEligibilityResponse", [contained], () => {
     const baseSchema: z.ZodType<types.CoverageEligibilityResponse> =
       z.strictObject({
         resourceType: z.literal("CoverageEligibilityResponse"),
@@ -248,7 +269,7 @@ export function createCoverageEligibilityResponseSchema() {
         language: primitives.getCodeSchema().optional(),
         _language: createElementSchema().optional(),
         text: createNarrativeSchema().optional(),
-        contained: z.array(createResourceListSchema()).optional(),
+        contained: z.array(contained).optional(),
         extension: z.array(createExtensionSchema()).optional(),
         modifierExtension: z.array(createExtensionSchema()).optional(),
         identifier: z.array(createIdentifierSchema()).optional(),
@@ -287,7 +308,7 @@ export function createCoverageEligibilityResponseSchema() {
 }
 
 export function createCoverageEligibilityResponseInsuranceSchema() {
-  return getCachedSchema("CoverageEligibilityResponseInsurance", () => {
+  return getCachedSchema("CoverageEligibilityResponseInsurance", [], () => {
     const baseSchema: z.ZodType<types.CoverageEligibilityResponseInsurance> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -305,7 +326,7 @@ export function createCoverageEligibilityResponseInsuranceSchema() {
 }
 
 export function createCoverageEligibilityResponseItemSchema() {
-  return getCachedSchema("CoverageEligibilityResponseItem", () => {
+  return getCachedSchema("CoverageEligibilityResponseItem", [], () => {
     const baseSchema: z.ZodType<types.CoverageEligibilityResponseItem> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -341,7 +362,7 @@ export function createCoverageEligibilityResponseItemSchema() {
 }
 
 export function createCoverageEligibilityResponseBenefitSchema() {
-  return getCachedSchema("CoverageEligibilityResponseBenefit", () => {
+  return getCachedSchema("CoverageEligibilityResponseBenefit", [], () => {
     const baseSchema: z.ZodType<types.CoverageEligibilityResponseBenefit> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -365,7 +386,7 @@ export function createCoverageEligibilityResponseBenefitSchema() {
 }
 
 export function createCoverageEligibilityResponseErrorSchema() {
-  return getCachedSchema("CoverageEligibilityResponseError", () => {
+  return getCachedSchema("CoverageEligibilityResponseError", [], () => {
     const baseSchema: z.ZodType<types.CoverageEligibilityResponseError> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

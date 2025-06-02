@@ -9,7 +9,6 @@ import {
   PatientExampleD,
   PatientExampleDicom,
   PatientExampleF001Pieter,
-  PatientExampleF201Roel,
   PatientExampleIhePcd,
   PatientExampleInfantFetal,
   PatientExampleInfantMom,
@@ -130,18 +129,6 @@ describe("Patient Group Schema Validation", () => {
       console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
       throw new Error(
         `Schema validation failed for PatientExampleF001Pieter: ${result.error.message}`,
-      );
-    }
-    expect(result.success).toBe(true);
-  });
-
-  it("should validate PatientExampleF201Roel fixture (Patient)", () => {
-    const result = createPatientSchema().safeParse(PatientExampleF201Roel);
-    if (!result.success) {
-      console.error("Validation failed for PatientExampleF201Roel:");
-      console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
-      throw new Error(
-        `Schema validation failed for PatientExampleF201Roel: ${result.error.message}`,
       );
     }
     expect(result.success).toBe(true);

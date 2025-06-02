@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -21,8 +21,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createMeasureSchema() {
-  return getCachedSchema("Measure", () => {
+export function createMeasureSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Measure", [contained], () => {
     const baseSchema: z.ZodType<types.Measure> = z.strictObject({
       resourceType: z.literal("Measure"),
       id: primitives.getIdSchema().optional(),
@@ -32,7 +39,7 @@ export function createMeasureSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       url: primitives.getUriSchema().optional(),
@@ -110,7 +117,7 @@ export function createMeasureSchema() {
 }
 
 export function createMeasureGroupSchema() {
-  return getCachedSchema("MeasureGroup", () => {
+  return getCachedSchema("MeasureGroup", [], () => {
     const baseSchema: z.ZodType<types.MeasureGroup> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -127,7 +134,7 @@ export function createMeasureGroupSchema() {
 }
 
 export function createMeasurePopulationSchema() {
-  return getCachedSchema("MeasurePopulation", () => {
+  return getCachedSchema("MeasurePopulation", [], () => {
     const baseSchema: z.ZodType<types.MeasurePopulation> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -143,7 +150,7 @@ export function createMeasurePopulationSchema() {
 }
 
 export function createMeasureStratifierSchema() {
-  return getCachedSchema("MeasureStratifier", () => {
+  return getCachedSchema("MeasureStratifier", [], () => {
     const baseSchema: z.ZodType<types.MeasureStratifier> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -160,7 +167,7 @@ export function createMeasureStratifierSchema() {
 }
 
 export function createMeasureComponentSchema() {
-  return getCachedSchema("MeasureComponent", () => {
+  return getCachedSchema("MeasureComponent", [], () => {
     const baseSchema: z.ZodType<types.MeasureComponent> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -176,7 +183,7 @@ export function createMeasureComponentSchema() {
 }
 
 export function createMeasureSupplementalDataSchema() {
-  return getCachedSchema("MeasureSupplementalData", () => {
+  return getCachedSchema("MeasureSupplementalData", [], () => {
     const baseSchema: z.ZodType<types.MeasureSupplementalData> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),
@@ -194,8 +201,15 @@ export function createMeasureSupplementalDataSchema() {
   });
 }
 
-export function createMeasureReportSchema() {
-  return getCachedSchema("MeasureReport", () => {
+export function createMeasureReportSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("MeasureReport", [contained], () => {
     const baseSchema: z.ZodType<types.MeasureReport> = z.strictObject({
       resourceType: z.literal("MeasureReport"),
       id: primitives.getIdSchema().optional(),
@@ -205,7 +219,7 @@ export function createMeasureReportSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -234,7 +248,7 @@ export function createMeasureReportSchema() {
 }
 
 export function createMeasureReportGroupSchema() {
-  return getCachedSchema("MeasureReportGroup", () => {
+  return getCachedSchema("MeasureReportGroup", [], () => {
     const baseSchema: z.ZodType<types.MeasureReportGroup> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -250,7 +264,7 @@ export function createMeasureReportGroupSchema() {
 }
 
 export function createMeasureReportPopulationSchema() {
-  return getCachedSchema("MeasureReportPopulation", () => {
+  return getCachedSchema("MeasureReportPopulation", [], () => {
     const baseSchema: z.ZodType<types.MeasureReportPopulation> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),
@@ -268,7 +282,7 @@ export function createMeasureReportPopulationSchema() {
 }
 
 export function createMeasureReportStratifierSchema() {
-  return getCachedSchema("MeasureReportStratifier", () => {
+  return getCachedSchema("MeasureReportStratifier", [], () => {
     const baseSchema: z.ZodType<types.MeasureReportStratifier> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),
@@ -284,7 +298,7 @@ export function createMeasureReportStratifierSchema() {
 }
 
 export function createMeasureReportStratumSchema() {
-  return getCachedSchema("MeasureReportStratum", () => {
+  return getCachedSchema("MeasureReportStratum", [], () => {
     const baseSchema: z.ZodType<types.MeasureReportStratum> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -300,7 +314,7 @@ export function createMeasureReportStratumSchema() {
 }
 
 export function createMeasureReportComponentSchema() {
-  return getCachedSchema("MeasureReportComponent", () => {
+  return getCachedSchema("MeasureReportComponent", [], () => {
     const baseSchema: z.ZodType<types.MeasureReportComponent> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -314,7 +328,7 @@ export function createMeasureReportComponentSchema() {
 }
 
 export function createMeasureReportPopulation1Schema() {
-  return getCachedSchema("MeasureReportPopulation1", () => {
+  return getCachedSchema("MeasureReportPopulation1", [], () => {
     const baseSchema: z.ZodType<types.MeasureReportPopulation1> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

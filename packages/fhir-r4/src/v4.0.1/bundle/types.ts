@@ -10,6 +10,7 @@ import type { ResourceList } from "../resourcelist/types";
 /** Generated from FHIR JSON Schema */
 
 /** A container for a collection of resources. */
+
 export interface Bundle {
   resourceType: `Bundle`;
   /** The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes. */
@@ -56,6 +57,7 @@ export interface Bundle {
 }
 
 /** A container for a collection of resources. */
+
 export interface BundleLink {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -76,6 +78,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** A container for a collection of resources. */
+
 export interface BundleEntry {
   /** Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces. */
   id?: string;
@@ -104,6 +107,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 }
 
 /** A container for a collection of resources. */
+
 export interface BundleSearch {
   id?: string;
 
@@ -121,6 +125,7 @@ export interface BundleSearch {
 }
 
 /** A container for a collection of resources. */
+
 export interface BundleRequest {
   id?: string;
 
@@ -154,6 +159,7 @@ export interface BundleRequest {
 }
 
 /** A container for a collection of resources. */
+
 export interface BundleResponse {
   id?: string;
 

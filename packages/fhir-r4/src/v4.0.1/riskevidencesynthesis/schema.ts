@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -20,8 +20,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createRiskEvidenceSynthesisSchema() {
-  return getCachedSchema("RiskEvidenceSynthesis", () => {
+export function createRiskEvidenceSynthesisSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("RiskEvidenceSynthesis", [contained], () => {
     const baseSchema: z.ZodType<types.RiskEvidenceSynthesis> = z.strictObject({
       resourceType: z.literal("RiskEvidenceSynthesis"),
       id: primitives.getIdSchema().optional(),
@@ -31,7 +38,7 @@ export function createRiskEvidenceSynthesisSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       url: primitives.getUriSchema().optional(),
@@ -85,7 +92,7 @@ export function createRiskEvidenceSynthesisSchema() {
 }
 
 export function createRiskEvidenceSynthesisSampleSizeSchema() {
-  return getCachedSchema("RiskEvidenceSynthesisSampleSize", () => {
+  return getCachedSchema("RiskEvidenceSynthesisSampleSize", [], () => {
     const baseSchema: z.ZodType<types.RiskEvidenceSynthesisSampleSize> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -104,7 +111,7 @@ export function createRiskEvidenceSynthesisSampleSizeSchema() {
 }
 
 export function createRiskEvidenceSynthesisRiskEstimateSchema() {
-  return getCachedSchema("RiskEvidenceSynthesisRiskEstimate", () => {
+  return getCachedSchema("RiskEvidenceSynthesisRiskEstimate", [], () => {
     const baseSchema: z.ZodType<types.RiskEvidenceSynthesisRiskEstimate> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -130,7 +137,7 @@ export function createRiskEvidenceSynthesisRiskEstimateSchema() {
 }
 
 export function createRiskEvidenceSynthesisPrecisionEstimateSchema() {
-  return getCachedSchema("RiskEvidenceSynthesisPrecisionEstimate", () => {
+  return getCachedSchema("RiskEvidenceSynthesisPrecisionEstimate", [], () => {
     const baseSchema: z.ZodType<types.RiskEvidenceSynthesisPrecisionEstimate> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -150,7 +157,7 @@ export function createRiskEvidenceSynthesisPrecisionEstimateSchema() {
 }
 
 export function createRiskEvidenceSynthesisCertaintySchema() {
-  return getCachedSchema("RiskEvidenceSynthesisCertainty", () => {
+  return getCachedSchema("RiskEvidenceSynthesisCertainty", [], () => {
     const baseSchema: z.ZodType<types.RiskEvidenceSynthesisCertainty> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -168,17 +175,21 @@ export function createRiskEvidenceSynthesisCertaintySchema() {
 }
 
 export function createRiskEvidenceSynthesisCertaintySubcomponentSchema() {
-  return getCachedSchema("RiskEvidenceSynthesisCertaintySubcomponent", () => {
-    const baseSchema: z.ZodType<types.RiskEvidenceSynthesisCertaintySubcomponent> =
-      z.strictObject({
-        id: primitives.getStringSchema().optional(),
-        extension: z.array(createExtensionSchema()).optional(),
-        modifierExtension: z.array(createExtensionSchema()).optional(),
-        type: createCodeableConceptSchema().optional(),
-        rating: z.array(createCodeableConceptSchema()).optional(),
-        note: z.array(createAnnotationSchema()).optional(),
-      });
+  return getCachedSchema(
+    "RiskEvidenceSynthesisCertaintySubcomponent",
+    [],
+    () => {
+      const baseSchema: z.ZodType<types.RiskEvidenceSynthesisCertaintySubcomponent> =
+        z.strictObject({
+          id: primitives.getStringSchema().optional(),
+          extension: z.array(createExtensionSchema()).optional(),
+          modifierExtension: z.array(createExtensionSchema()).optional(),
+          type: createCodeableConceptSchema().optional(),
+          rating: z.array(createCodeableConceptSchema()).optional(),
+          note: z.array(createAnnotationSchema()).optional(),
+        });
 
-    return baseSchema;
-  });
+      return baseSchema;
+    },
+  );
 }

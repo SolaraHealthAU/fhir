@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -16,8 +16,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createNamingSystemSchema() {
-  return getCachedSchema("NamingSystem", () => {
+export function createNamingSystemSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("NamingSystem", [contained], () => {
     const baseSchema: z.ZodType<types.NamingSystem> = z.strictObject({
       resourceType: z.literal("NamingSystem"),
       id: primitives.getIdSchema().optional(),
@@ -27,7 +34,7 @@ export function createNamingSystemSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       name: primitives.getStringSchema(),
@@ -58,7 +65,7 @@ export function createNamingSystemSchema() {
 }
 
 export function createNamingSystemUniqueIdSchema() {
-  return getCachedSchema("NamingSystemUniqueId", () => {
+  return getCachedSchema("NamingSystemUniqueId", [], () => {
     const baseSchema: z.ZodType<types.NamingSystemUniqueId> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

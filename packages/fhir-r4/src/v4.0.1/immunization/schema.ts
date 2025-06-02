@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -17,8 +17,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createImmunizationSchema() {
-  return getCachedSchema("Immunization", () => {
+export function createImmunizationSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Immunization", [contained], () => {
     const baseSchema: z.ZodType<types.Immunization> = z.strictObject({
       resourceType: z.literal("Immunization"),
       id: primitives.getIdSchema().optional(),
@@ -28,7 +35,7 @@ export function createImmunizationSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -77,7 +84,7 @@ export function createImmunizationSchema() {
 }
 
 export function createImmunizationPerformerSchema() {
-  return getCachedSchema("ImmunizationPerformer", () => {
+  return getCachedSchema("ImmunizationPerformer", [], () => {
     const baseSchema: z.ZodType<types.ImmunizationPerformer> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -91,7 +98,7 @@ export function createImmunizationPerformerSchema() {
 }
 
 export function createImmunizationEducationSchema() {
-  return getCachedSchema("ImmunizationEducation", () => {
+  return getCachedSchema("ImmunizationEducation", [], () => {
     const baseSchema: z.ZodType<types.ImmunizationEducation> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -111,7 +118,7 @@ export function createImmunizationEducationSchema() {
 }
 
 export function createImmunizationReactionSchema() {
-  return getCachedSchema("ImmunizationReaction", () => {
+  return getCachedSchema("ImmunizationReaction", [], () => {
     const baseSchema: z.ZodType<types.ImmunizationReaction> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -128,7 +135,7 @@ export function createImmunizationReactionSchema() {
 }
 
 export function createImmunizationProtocolAppliedSchema() {
-  return getCachedSchema("ImmunizationProtocolApplied", () => {
+  return getCachedSchema("ImmunizationProtocolApplied", [], () => {
     const baseSchema: z.ZodType<types.ImmunizationProtocolApplied> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -152,8 +159,15 @@ export function createImmunizationProtocolAppliedSchema() {
   });
 }
 
-export function createImmunizationEvaluationSchema() {
-  return getCachedSchema("ImmunizationEvaluation", () => {
+export function createImmunizationEvaluationSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("ImmunizationEvaluation", [contained], () => {
     const baseSchema: z.ZodType<types.ImmunizationEvaluation> = z.strictObject({
       resourceType: z.literal("ImmunizationEvaluation"),
       id: primitives.getIdSchema().optional(),
@@ -163,7 +177,7 @@ export function createImmunizationEvaluationSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -195,8 +209,15 @@ export function createImmunizationEvaluationSchema() {
   });
 }
 
-export function createImmunizationRecommendationSchema() {
-  return getCachedSchema("ImmunizationRecommendation", () => {
+export function createImmunizationRecommendationSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("ImmunizationRecommendation", [contained], () => {
     const baseSchema: z.ZodType<types.ImmunizationRecommendation> =
       z.strictObject({
         resourceType: z.literal("ImmunizationRecommendation"),
@@ -207,7 +228,7 @@ export function createImmunizationRecommendationSchema() {
         language: primitives.getCodeSchema().optional(),
         _language: createElementSchema().optional(),
         text: createNarrativeSchema().optional(),
-        contained: z.array(createResourceListSchema()).optional(),
+        contained: z.array(contained).optional(),
         extension: z.array(createExtensionSchema()).optional(),
         modifierExtension: z.array(createExtensionSchema()).optional(),
         identifier: z.array(createIdentifierSchema()).optional(),
@@ -225,7 +246,7 @@ export function createImmunizationRecommendationSchema() {
 }
 
 export function createImmunizationRecommendationRecommendationSchema() {
-  return getCachedSchema("ImmunizationRecommendationRecommendation", () => {
+  return getCachedSchema("ImmunizationRecommendationRecommendation", [], () => {
     const baseSchema: z.ZodType<types.ImmunizationRecommendationRecommendation> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -264,7 +285,7 @@ export function createImmunizationRecommendationRecommendationSchema() {
 }
 
 export function createImmunizationRecommendationDateCriterionSchema() {
-  return getCachedSchema("ImmunizationRecommendationDateCriterion", () => {
+  return getCachedSchema("ImmunizationRecommendationDateCriterion", [], () => {
     const baseSchema: z.ZodType<types.ImmunizationRecommendationDateCriterion> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

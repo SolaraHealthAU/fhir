@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -16,8 +16,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createAppointmentSchema() {
-  return getCachedSchema("Appointment", () => {
+export function createAppointmentSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Appointment", [contained], () => {
     const baseSchema: z.ZodType<types.Appointment> = z.strictObject({
       resourceType: z.literal("Appointment"),
       id: primitives.getIdSchema().optional(),
@@ -27,7 +34,7 @@ export function createAppointmentSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -79,7 +86,7 @@ export function createAppointmentSchema() {
 }
 
 export function createAppointmentParticipantSchema() {
-  return getCachedSchema("AppointmentParticipant", () => {
+  return getCachedSchema("AppointmentParticipant", [], () => {
     const baseSchema: z.ZodType<types.AppointmentParticipant> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -97,8 +104,15 @@ export function createAppointmentParticipantSchema() {
   });
 }
 
-export function createAppointmentResponseSchema() {
-  return getCachedSchema("AppointmentResponse", () => {
+export function createAppointmentResponseSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("AppointmentResponse", [contained], () => {
     const baseSchema: z.ZodType<types.AppointmentResponse> = z.strictObject({
       resourceType: z.literal("AppointmentResponse"),
       id: primitives.getIdSchema().optional(),
@@ -108,7 +122,7 @@ export function createAppointmentResponseSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),

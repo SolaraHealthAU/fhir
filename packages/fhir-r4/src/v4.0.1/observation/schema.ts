@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -22,8 +22,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createObservationSchema() {
-  return getCachedSchema("Observation", () => {
+export function createObservationSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Observation", [contained], () => {
     const baseSchema: z.ZodType<types.Observation> = z.strictObject({
       resourceType: z.literal("Observation"),
       id: primitives.getIdSchema().optional(),
@@ -33,7 +40,7 @@ export function createObservationSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -100,7 +107,7 @@ export function createObservationSchema() {
 }
 
 export function createObservationReferenceRangeSchema() {
-  return getCachedSchema("ObservationReferenceRange", () => {
+  return getCachedSchema("ObservationReferenceRange", [], () => {
     const baseSchema: z.ZodType<types.ObservationReferenceRange> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -120,7 +127,7 @@ export function createObservationReferenceRangeSchema() {
 }
 
 export function createObservationComponentSchema() {
-  return getCachedSchema("ObservationComponent", () => {
+  return getCachedSchema("ObservationComponent", [], () => {
     const baseSchema: z.ZodType<types.ObservationComponent> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -153,8 +160,15 @@ export function createObservationComponentSchema() {
   });
 }
 
-export function createObservationDefinitionSchema() {
-  return getCachedSchema("ObservationDefinition", () => {
+export function createObservationDefinitionSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("ObservationDefinition", [contained], () => {
     const baseSchema: z.ZodType<types.ObservationDefinition> = z.strictObject({
       resourceType: z.literal("ObservationDefinition"),
       id: primitives.getIdSchema().optional(),
@@ -164,7 +178,7 @@ export function createObservationDefinitionSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       category: z.array(createCodeableConceptSchema()).optional(),
@@ -208,7 +222,7 @@ export function createObservationDefinitionSchema() {
 }
 
 export function createObservationDefinitionQuantitativeDetailsSchema() {
-  return getCachedSchema("ObservationDefinitionQuantitativeDetails", () => {
+  return getCachedSchema("ObservationDefinitionQuantitativeDetails", [], () => {
     const baseSchema: z.ZodType<types.ObservationDefinitionQuantitativeDetails> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -227,7 +241,7 @@ export function createObservationDefinitionQuantitativeDetailsSchema() {
 }
 
 export function createObservationDefinitionQualifiedIntervalSchema() {
-  return getCachedSchema("ObservationDefinitionQualifiedInterval", () => {
+  return getCachedSchema("ObservationDefinitionQualifiedInterval", [], () => {
     const baseSchema: z.ZodType<types.ObservationDefinitionQualifiedInterval> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

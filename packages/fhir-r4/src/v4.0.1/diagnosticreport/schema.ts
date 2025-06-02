@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -17,8 +17,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createDiagnosticReportSchema() {
-  return getCachedSchema("DiagnosticReport", () => {
+export function createDiagnosticReportSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("DiagnosticReport", [contained], () => {
     const baseSchema: z.ZodType<types.DiagnosticReport> = z.strictObject({
       resourceType: z.literal("DiagnosticReport"),
       id: primitives.getIdSchema().optional(),
@@ -28,7 +35,7 @@ export function createDiagnosticReportSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -72,7 +79,7 @@ export function createDiagnosticReportSchema() {
 }
 
 export function createDiagnosticReportMediaSchema() {
-  return getCachedSchema("DiagnosticReportMedia", () => {
+  return getCachedSchema("DiagnosticReportMedia", [], () => {
     const baseSchema: z.ZodType<types.DiagnosticReportMedia> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

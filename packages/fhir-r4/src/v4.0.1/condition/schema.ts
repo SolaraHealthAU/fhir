@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -19,8 +19,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createConditionSchema() {
-  return getCachedSchema("Condition", () => {
+export function createConditionSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Condition", [contained], () => {
     const baseSchema: z.ZodType<types.Condition> = z.strictObject({
       resourceType: z.literal("Condition"),
       id: primitives.getIdSchema().optional(),
@@ -30,7 +37,7 @@ export function createConditionSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -70,7 +77,7 @@ export function createConditionSchema() {
 }
 
 export function createConditionStageSchema() {
-  return getCachedSchema("ConditionStage", () => {
+  return getCachedSchema("ConditionStage", [], () => {
     const baseSchema: z.ZodType<types.ConditionStage> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -85,7 +92,7 @@ export function createConditionStageSchema() {
 }
 
 export function createConditionEvidenceSchema() {
-  return getCachedSchema("ConditionEvidence", () => {
+  return getCachedSchema("ConditionEvidence", [], () => {
     const baseSchema: z.ZodType<types.ConditionEvidence> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

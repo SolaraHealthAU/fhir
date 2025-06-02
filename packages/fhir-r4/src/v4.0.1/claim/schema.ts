@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -20,8 +20,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createClaimSchema() {
-  return getCachedSchema("Claim", () => {
+export function createClaimSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Claim", [contained], () => {
     const baseSchema: z.ZodType<types.Claim> = z.strictObject({
       resourceType: z.literal("Claim"),
       id: primitives.getIdSchema().optional(),
@@ -31,7 +38,7 @@ export function createClaimSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -71,7 +78,7 @@ export function createClaimSchema() {
 }
 
 export function createClaimRelatedSchema() {
-  return getCachedSchema("ClaimRelated", () => {
+  return getCachedSchema("ClaimRelated", [], () => {
     const baseSchema: z.ZodType<types.ClaimRelated> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -86,7 +93,7 @@ export function createClaimRelatedSchema() {
 }
 
 export function createClaimPayeeSchema() {
-  return getCachedSchema("ClaimPayee", () => {
+  return getCachedSchema("ClaimPayee", [], () => {
     const baseSchema: z.ZodType<types.ClaimPayee> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -100,7 +107,7 @@ export function createClaimPayeeSchema() {
 }
 
 export function createClaimCareTeamSchema() {
-  return getCachedSchema("ClaimCareTeam", () => {
+  return getCachedSchema("ClaimCareTeam", [], () => {
     const baseSchema: z.ZodType<types.ClaimCareTeam> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -119,7 +126,7 @@ export function createClaimCareTeamSchema() {
 }
 
 export function createClaimSupportingInfoSchema() {
-  return getCachedSchema("ClaimSupportingInfo", () => {
+  return getCachedSchema("ClaimSupportingInfo", [], () => {
     const baseSchema: z.ZodType<types.ClaimSupportingInfo> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -146,7 +153,7 @@ export function createClaimSupportingInfoSchema() {
 }
 
 export function createClaimDiagnosisSchema() {
-  return getCachedSchema("ClaimDiagnosis", () => {
+  return getCachedSchema("ClaimDiagnosis", [], () => {
     const baseSchema: z.ZodType<types.ClaimDiagnosis> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -165,7 +172,7 @@ export function createClaimDiagnosisSchema() {
 }
 
 export function createClaimProcedureSchema() {
-  return getCachedSchema("ClaimProcedure", () => {
+  return getCachedSchema("ClaimProcedure", [], () => {
     const baseSchema: z.ZodType<types.ClaimProcedure> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -185,7 +192,7 @@ export function createClaimProcedureSchema() {
 }
 
 export function createClaimInsuranceSchema() {
-  return getCachedSchema("ClaimInsurance", () => {
+  return getCachedSchema("ClaimInsurance", [], () => {
     const baseSchema: z.ZodType<types.ClaimInsurance> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -208,7 +215,7 @@ export function createClaimInsuranceSchema() {
 }
 
 export function createClaimAccidentSchema() {
-  return getCachedSchema("ClaimAccident", () => {
+  return getCachedSchema("ClaimAccident", [], () => {
     const baseSchema: z.ZodType<types.ClaimAccident> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -225,7 +232,7 @@ export function createClaimAccidentSchema() {
 }
 
 export function createClaimItemSchema() {
-  return getCachedSchema("ClaimItem", () => {
+  return getCachedSchema("ClaimItem", [], () => {
     const baseSchema: z.ZodType<types.ClaimItem> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -270,7 +277,7 @@ export function createClaimItemSchema() {
 }
 
 export function createClaimDetailSchema() {
-  return getCachedSchema("ClaimDetail", () => {
+  return getCachedSchema("ClaimDetail", [], () => {
     const baseSchema: z.ZodType<types.ClaimDetail> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -296,7 +303,7 @@ export function createClaimDetailSchema() {
 }
 
 export function createClaimSubDetailSchema() {
-  return getCachedSchema("ClaimSubDetail", () => {
+  return getCachedSchema("ClaimSubDetail", [], () => {
     const baseSchema: z.ZodType<types.ClaimSubDetail> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -320,8 +327,15 @@ export function createClaimSubDetailSchema() {
   });
 }
 
-export function createClaimResponseSchema() {
-  return getCachedSchema("ClaimResponse", () => {
+export function createClaimResponseSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("ClaimResponse", [contained], () => {
     const baseSchema: z.ZodType<types.ClaimResponse> = z.strictObject({
       resourceType: z.literal("ClaimResponse"),
       id: primitives.getIdSchema().optional(),
@@ -331,7 +345,7 @@ export function createClaimResponseSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -374,7 +388,7 @@ export function createClaimResponseSchema() {
 }
 
 export function createClaimResponseItemSchema() {
-  return getCachedSchema("ClaimResponseItem", () => {
+  return getCachedSchema("ClaimResponseItem", [], () => {
     const baseSchema: z.ZodType<types.ClaimResponseItem> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -392,7 +406,7 @@ export function createClaimResponseItemSchema() {
 }
 
 export function createClaimResponseAdjudicationSchema() {
-  return getCachedSchema("ClaimResponseAdjudication", () => {
+  return getCachedSchema("ClaimResponseAdjudication", [], () => {
     const baseSchema: z.ZodType<types.ClaimResponseAdjudication> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -410,7 +424,7 @@ export function createClaimResponseAdjudicationSchema() {
 }
 
 export function createClaimResponseDetailSchema() {
-  return getCachedSchema("ClaimResponseDetail", () => {
+  return getCachedSchema("ClaimResponseDetail", [], () => {
     const baseSchema: z.ZodType<types.ClaimResponseDetail> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -428,7 +442,7 @@ export function createClaimResponseDetailSchema() {
 }
 
 export function createClaimResponseSubDetailSchema() {
-  return getCachedSchema("ClaimResponseSubDetail", () => {
+  return getCachedSchema("ClaimResponseSubDetail", [], () => {
     const baseSchema: z.ZodType<types.ClaimResponseSubDetail> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -445,7 +459,7 @@ export function createClaimResponseSubDetailSchema() {
 }
 
 export function createClaimResponseAddItemSchema() {
-  return getCachedSchema("ClaimResponseAddItem", () => {
+  return getCachedSchema("ClaimResponseAddItem", [], () => {
     const baseSchema: z.ZodType<types.ClaimResponseAddItem> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -484,7 +498,7 @@ export function createClaimResponseAddItemSchema() {
 }
 
 export function createClaimResponseDetail1Schema() {
-  return getCachedSchema("ClaimResponseDetail1", () => {
+  return getCachedSchema("ClaimResponseDetail1", [], () => {
     const baseSchema: z.ZodType<types.ClaimResponseDetail1> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -507,7 +521,7 @@ export function createClaimResponseDetail1Schema() {
 }
 
 export function createClaimResponseSubDetail1Schema() {
-  return getCachedSchema("ClaimResponseSubDetail1", () => {
+  return getCachedSchema("ClaimResponseSubDetail1", [], () => {
     const baseSchema: z.ZodType<types.ClaimResponseSubDetail1> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),
@@ -531,7 +545,7 @@ export function createClaimResponseSubDetail1Schema() {
 }
 
 export function createClaimResponseTotalSchema() {
-  return getCachedSchema("ClaimResponseTotal", () => {
+  return getCachedSchema("ClaimResponseTotal", [], () => {
     const baseSchema: z.ZodType<types.ClaimResponseTotal> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -545,7 +559,7 @@ export function createClaimResponseTotalSchema() {
 }
 
 export function createClaimResponsePaymentSchema() {
-  return getCachedSchema("ClaimResponsePayment", () => {
+  return getCachedSchema("ClaimResponsePayment", [], () => {
     const baseSchema: z.ZodType<types.ClaimResponsePayment> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -564,7 +578,7 @@ export function createClaimResponsePaymentSchema() {
 }
 
 export function createClaimResponseProcessNoteSchema() {
-  return getCachedSchema("ClaimResponseProcessNote", () => {
+  return getCachedSchema("ClaimResponseProcessNote", [], () => {
     const baseSchema: z.ZodType<types.ClaimResponseProcessNote> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -584,7 +598,7 @@ export function createClaimResponseProcessNoteSchema() {
 }
 
 export function createClaimResponseInsuranceSchema() {
-  return getCachedSchema("ClaimResponseInsurance", () => {
+  return getCachedSchema("ClaimResponseInsurance", [], () => {
     const baseSchema: z.ZodType<types.ClaimResponseInsurance> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -604,7 +618,7 @@ export function createClaimResponseInsuranceSchema() {
 }
 
 export function createClaimResponseErrorSchema() {
-  return getCachedSchema("ClaimResponseError", () => {
+  return getCachedSchema("ClaimResponseError", [], () => {
     const baseSchema: z.ZodType<types.ClaimResponseError> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

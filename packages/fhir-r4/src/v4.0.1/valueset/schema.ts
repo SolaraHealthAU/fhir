@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -17,8 +17,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createValueSetSchema() {
-  return getCachedSchema("ValueSet", () => {
+export function createValueSetSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("ValueSet", [contained], () => {
     const baseSchema: z.ZodType<types.ValueSet> = z.strictObject({
       resourceType: z.literal("ValueSet"),
       id: primitives.getIdSchema().optional(),
@@ -28,7 +35,7 @@ export function createValueSetSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       url: primitives.getUriSchema().optional(),
@@ -68,7 +75,7 @@ export function createValueSetSchema() {
 }
 
 export function createValueSetComposeSchema() {
-  return getCachedSchema("ValueSetCompose", () => {
+  return getCachedSchema("ValueSetCompose", [], () => {
     const baseSchema: z.ZodType<types.ValueSetCompose> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -86,7 +93,7 @@ export function createValueSetComposeSchema() {
 }
 
 export function createValueSetIncludeSchema() {
-  return getCachedSchema("ValueSetInclude", () => {
+  return getCachedSchema("ValueSetInclude", [], () => {
     const baseSchema: z.ZodType<types.ValueSetInclude> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -105,7 +112,7 @@ export function createValueSetIncludeSchema() {
 }
 
 export function createValueSetConceptSchema() {
-  return getCachedSchema("ValueSetConcept", () => {
+  return getCachedSchema("ValueSetConcept", [], () => {
     const baseSchema: z.ZodType<types.ValueSetConcept> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -122,7 +129,7 @@ export function createValueSetConceptSchema() {
 }
 
 export function createValueSetDesignationSchema() {
-  return getCachedSchema("ValueSetDesignation", () => {
+  return getCachedSchema("ValueSetDesignation", [], () => {
     const baseSchema: z.ZodType<types.ValueSetDesignation> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -139,7 +146,7 @@ export function createValueSetDesignationSchema() {
 }
 
 export function createValueSetFilterSchema() {
-  return getCachedSchema("ValueSetFilter", () => {
+  return getCachedSchema("ValueSetFilter", [], () => {
     const baseSchema: z.ZodType<types.ValueSetFilter> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -169,7 +176,7 @@ export function createValueSetFilterSchema() {
 }
 
 export function createValueSetExpansionSchema() {
-  return getCachedSchema("ValueSetExpansion", () => {
+  return getCachedSchema("ValueSetExpansion", [], () => {
     const baseSchema: z.ZodType<types.ValueSetExpansion> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -191,7 +198,7 @@ export function createValueSetExpansionSchema() {
 }
 
 export function createValueSetParameterSchema() {
-  return getCachedSchema("ValueSetParameter", () => {
+  return getCachedSchema("ValueSetParameter", [], () => {
     const baseSchema: z.ZodType<types.ValueSetParameter> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -219,7 +226,7 @@ export function createValueSetParameterSchema() {
 }
 
 export function createValueSetContainsSchema() {
-  return getCachedSchema("ValueSetContains", () => {
+  return getCachedSchema("ValueSetContains", [], () => {
     const baseSchema: z.ZodType<types.ValueSetContains> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

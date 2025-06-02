@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -16,8 +16,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createBiologicallyDerivedProductSchema() {
-  return getCachedSchema("BiologicallyDerivedProduct", () => {
+export function createBiologicallyDerivedProductSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("BiologicallyDerivedProduct", [contained], () => {
     const baseSchema: z.ZodType<types.BiologicallyDerivedProduct> =
       z.strictObject({
         resourceType: z.literal("BiologicallyDerivedProduct"),
@@ -28,7 +35,7 @@ export function createBiologicallyDerivedProductSchema() {
         language: primitives.getCodeSchema().optional(),
         _language: createElementSchema().optional(),
         text: createNarrativeSchema().optional(),
-        contained: z.array(createResourceListSchema()).optional(),
+        contained: z.array(contained).optional(),
         extension: z.array(createExtensionSchema()).optional(),
         modifierExtension: z.array(createExtensionSchema()).optional(),
         identifier: z.array(createIdentifierSchema()).optional(),
@@ -60,7 +67,7 @@ export function createBiologicallyDerivedProductSchema() {
 }
 
 export function createBiologicallyDerivedProductCollectionSchema() {
-  return getCachedSchema("BiologicallyDerivedProductCollection", () => {
+  return getCachedSchema("BiologicallyDerivedProductCollection", [], () => {
     const baseSchema: z.ZodType<types.BiologicallyDerivedProductCollection> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -78,7 +85,7 @@ export function createBiologicallyDerivedProductCollectionSchema() {
 }
 
 export function createBiologicallyDerivedProductProcessingSchema() {
-  return getCachedSchema("BiologicallyDerivedProductProcessing", () => {
+  return getCachedSchema("BiologicallyDerivedProductProcessing", [], () => {
     const baseSchema: z.ZodType<types.BiologicallyDerivedProductProcessing> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -98,7 +105,7 @@ export function createBiologicallyDerivedProductProcessingSchema() {
 }
 
 export function createBiologicallyDerivedProductManipulationSchema() {
-  return getCachedSchema("BiologicallyDerivedProductManipulation", () => {
+  return getCachedSchema("BiologicallyDerivedProductManipulation", [], () => {
     const baseSchema: z.ZodType<types.BiologicallyDerivedProductManipulation> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -116,7 +123,7 @@ export function createBiologicallyDerivedProductManipulationSchema() {
 }
 
 export function createBiologicallyDerivedProductStorageSchema() {
-  return getCachedSchema("BiologicallyDerivedProductStorage", () => {
+  return getCachedSchema("BiologicallyDerivedProductStorage", [], () => {
     const baseSchema: z.ZodType<types.BiologicallyDerivedProductStorage> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

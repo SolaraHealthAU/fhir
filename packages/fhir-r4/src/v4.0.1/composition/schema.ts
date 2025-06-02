@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -16,8 +16,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createCompositionSchema() {
-  return getCachedSchema("Composition", () => {
+export function createCompositionSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Composition", [contained], () => {
     const baseSchema: z.ZodType<types.Composition> = z.strictObject({
       resourceType: z.literal("Composition"),
       id: primitives.getIdSchema().optional(),
@@ -27,7 +34,7 @@ export function createCompositionSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: createIdentifierSchema().optional(),
@@ -56,7 +63,7 @@ export function createCompositionSchema() {
 }
 
 export function createCompositionAttesterSchema() {
-  return getCachedSchema("CompositionAttester", () => {
+  return getCachedSchema("CompositionAttester", [], () => {
     const baseSchema: z.ZodType<types.CompositionAttester> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -73,7 +80,7 @@ export function createCompositionAttesterSchema() {
 }
 
 export function createCompositionRelatesToSchema() {
-  return getCachedSchema("CompositionRelatesTo", () => {
+  return getCachedSchema("CompositionRelatesTo", [], () => {
     const baseSchema: z.ZodType<types.CompositionRelatesTo> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -89,7 +96,7 @@ export function createCompositionRelatesToSchema() {
 }
 
 export function createCompositionEventSchema() {
-  return getCachedSchema("CompositionEvent", () => {
+  return getCachedSchema("CompositionEvent", [], () => {
     const baseSchema: z.ZodType<types.CompositionEvent> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -104,7 +111,7 @@ export function createCompositionEventSchema() {
 }
 
 export function createCompositionSectionSchema() {
-  return getCachedSchema("CompositionSection", () => {
+  return getCachedSchema("CompositionSection", [], () => {
     const baseSchema: z.ZodType<types.CompositionSection> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

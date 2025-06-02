@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createExtensionSchema,
   createQuantitySchema,
@@ -13,7 +13,7 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createSubstanceAmountSchema() {
-  return getCachedSchema("SubstanceAmount", () => {
+  return getCachedSchema("SubstanceAmount", [], () => {
     const baseSchema: z.ZodType<types.SubstanceAmount> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -33,7 +33,7 @@ export function createSubstanceAmountSchema() {
 }
 
 export function createSubstanceAmountReferenceRangeSchema() {
-  return getCachedSchema("SubstanceAmountReferenceRange", () => {
+  return getCachedSchema("SubstanceAmountReferenceRange", [], () => {
     const baseSchema: z.ZodType<types.SubstanceAmountReferenceRange> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

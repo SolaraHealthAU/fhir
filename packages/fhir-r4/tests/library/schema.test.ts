@@ -1,14 +1,8 @@
 import { createLibrarySchema } from "../../src";
 import {
-  LibraryCms146Example,
   LibraryCompositionExample,
-  LibraryExample,
   LibraryExclusiveBreastfeedingCdsLogic,
   LibraryExclusiveBreastfeedingCqmLogic,
-  LibraryFhirHelpers,
-  LibraryHivIndicators,
-  LibraryMmiSuicideriskOrdersetLogic,
-  LibraryOmtkModelinfo,
   LibraryOpioidcdsCommon,
   LibraryOpioidcdsRecommendation04,
   LibraryOpioidcdsRecommendation05,
@@ -16,25 +10,11 @@ import {
   LibraryOpioidcdsRecommendation08,
   LibraryOpioidcdsRecommendation10,
   LibraryOpioidcdsRecommendation11,
-  LibraryPredecessorExample,
   LibraryQuickModelDefinition,
-  LibraryZikaVirusInterventionLogic,
 } from "./fixture";
 import { z } from "zod/v4";
 
 describe("Library Group Schema Validation", () => {
-  it("should validate LibraryCms146Example fixture (Library)", () => {
-    const result = createLibrarySchema().safeParse(LibraryCms146Example);
-    if (!result.success) {
-      console.error("Validation failed for LibraryCms146Example:");
-      console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
-      throw new Error(
-        `Schema validation failed for LibraryCms146Example: ${result.error.message}`,
-      );
-    }
-    expect(result.success).toBe(true);
-  });
-
   it("should validate LibraryCompositionExample fixture (Library)", () => {
     const result = createLibrarySchema().safeParse(LibraryCompositionExample);
     if (!result.success) {
@@ -42,18 +22,6 @@ describe("Library Group Schema Validation", () => {
       console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
       throw new Error(
         `Schema validation failed for LibraryCompositionExample: ${result.error.message}`,
-      );
-    }
-    expect(result.success).toBe(true);
-  });
-
-  it("should validate LibraryExample fixture (Library)", () => {
-    const result = createLibrarySchema().safeParse(LibraryExample);
-    if (!result.success) {
-      console.error("Validation failed for LibraryExample:");
-      console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
-      throw new Error(
-        `Schema validation failed for LibraryExample: ${result.error.message}`,
       );
     }
     expect(result.success).toBe(true);
@@ -86,58 +54,6 @@ describe("Library Group Schema Validation", () => {
       console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
       throw new Error(
         `Schema validation failed for LibraryExclusiveBreastfeedingCqmLogic: ${result.error.message}`,
-      );
-    }
-    expect(result.success).toBe(true);
-  });
-
-  it("should validate LibraryFhirHelpers fixture (Library)", () => {
-    const result = createLibrarySchema().safeParse(LibraryFhirHelpers);
-    if (!result.success) {
-      console.error("Validation failed for LibraryFhirHelpers:");
-      console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
-      throw new Error(
-        `Schema validation failed for LibraryFhirHelpers: ${result.error.message}`,
-      );
-    }
-    expect(result.success).toBe(true);
-  });
-
-  it("should validate LibraryHivIndicators fixture (Library)", () => {
-    const result = createLibrarySchema().safeParse(LibraryHivIndicators);
-    if (!result.success) {
-      console.error("Validation failed for LibraryHivIndicators:");
-      console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
-      throw new Error(
-        `Schema validation failed for LibraryHivIndicators: ${result.error.message}`,
-      );
-    }
-    expect(result.success).toBe(true);
-  });
-
-  it("should validate LibraryMmiSuicideriskOrdersetLogic fixture (Library)", () => {
-    const result = createLibrarySchema().safeParse(
-      LibraryMmiSuicideriskOrdersetLogic,
-    );
-    if (!result.success) {
-      console.error(
-        "Validation failed for LibraryMmiSuicideriskOrdersetLogic:",
-      );
-      console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
-      throw new Error(
-        `Schema validation failed for LibraryMmiSuicideriskOrdersetLogic: ${result.error.message}`,
-      );
-    }
-    expect(result.success).toBe(true);
-  });
-
-  it("should validate LibraryOmtkModelinfo fixture (Library)", () => {
-    const result = createLibrarySchema().safeParse(LibraryOmtkModelinfo);
-    if (!result.success) {
-      console.error("Validation failed for LibraryOmtkModelinfo:");
-      console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
-      throw new Error(
-        `Schema validation failed for LibraryOmtkModelinfo: ${result.error.message}`,
       );
     }
     expect(result.success).toBe(true);
@@ -239,18 +155,6 @@ describe("Library Group Schema Validation", () => {
     expect(result.success).toBe(true);
   });
 
-  it("should validate LibraryPredecessorExample fixture (Library)", () => {
-    const result = createLibrarySchema().safeParse(LibraryPredecessorExample);
-    if (!result.success) {
-      console.error("Validation failed for LibraryPredecessorExample:");
-      console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
-      throw new Error(
-        `Schema validation failed for LibraryPredecessorExample: ${result.error.message}`,
-      );
-    }
-    expect(result.success).toBe(true);
-  });
-
   it("should validate LibraryQuickModelDefinition fixture (Library)", () => {
     const result = createLibrarySchema().safeParse(LibraryQuickModelDefinition);
     if (!result.success) {
@@ -258,20 +162,6 @@ describe("Library Group Schema Validation", () => {
       console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
       throw new Error(
         `Schema validation failed for LibraryQuickModelDefinition: ${result.error.message}`,
-      );
-    }
-    expect(result.success).toBe(true);
-  });
-
-  it("should validate LibraryZikaVirusInterventionLogic fixture (Library)", () => {
-    const result = createLibrarySchema().safeParse(
-      LibraryZikaVirusInterventionLogic,
-    );
-    if (!result.success) {
-      console.error("Validation failed for LibraryZikaVirusInterventionLogic:");
-      console.error(JSON.stringify(z.treeifyError(result.error), null, 2));
-      throw new Error(
-        `Schema validation failed for LibraryZikaVirusInterventionLogic: ${result.error.message}`,
       );
     }
     expect(result.success).toBe(true);

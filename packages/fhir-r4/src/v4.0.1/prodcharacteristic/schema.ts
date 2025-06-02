@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createExtensionSchema,
   createQuantitySchema,
@@ -13,7 +13,7 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createProdCharacteristicSchema() {
-  return getCachedSchema("ProdCharacteristic", () => {
+  return getCachedSchema("ProdCharacteristic", [], () => {
     const baseSchema: z.ZodType<types.ProdCharacteristic> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

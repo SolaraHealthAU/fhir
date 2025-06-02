@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -23,8 +23,15 @@ import { createProdCharacteristicSchema } from "../prodcharacteristic/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createDeviceSchema() {
-  return getCachedSchema("Device", () => {
+export function createDeviceSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Device", [contained], () => {
     const baseSchema: z.ZodType<types.Device> = z.strictObject({
       resourceType: z.literal("Device"),
       id: primitives.getIdSchema().optional(),
@@ -34,7 +41,7 @@ export function createDeviceSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -82,7 +89,7 @@ export function createDeviceSchema() {
 }
 
 export function createDeviceUdiCarrierSchema() {
-  return getCachedSchema("DeviceUdiCarrier", () => {
+  return getCachedSchema("DeviceUdiCarrier", [], () => {
     const baseSchema: z.ZodType<types.DeviceUdiCarrier> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -108,7 +115,7 @@ export function createDeviceUdiCarrierSchema() {
 }
 
 export function createDeviceDeviceNameSchema() {
-  return getCachedSchema("DeviceDeviceName", () => {
+  return getCachedSchema("DeviceDeviceName", [], () => {
     const baseSchema: z.ZodType<types.DeviceDeviceName> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -131,7 +138,7 @@ export function createDeviceDeviceNameSchema() {
 }
 
 export function createDeviceSpecializationSchema() {
-  return getCachedSchema("DeviceSpecialization", () => {
+  return getCachedSchema("DeviceSpecialization", [], () => {
     const baseSchema: z.ZodType<types.DeviceSpecialization> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -146,7 +153,7 @@ export function createDeviceSpecializationSchema() {
 }
 
 export function createDeviceVersionSchema() {
-  return getCachedSchema("DeviceVersion", () => {
+  return getCachedSchema("DeviceVersion", [], () => {
     const baseSchema: z.ZodType<types.DeviceVersion> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -162,7 +169,7 @@ export function createDeviceVersionSchema() {
 }
 
 export function createDevicePropertySchema() {
-  return getCachedSchema("DeviceProperty", () => {
+  return getCachedSchema("DeviceProperty", [], () => {
     const baseSchema: z.ZodType<types.DeviceProperty> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -176,8 +183,15 @@ export function createDevicePropertySchema() {
   });
 }
 
-export function createDeviceDefinitionSchema() {
-  return getCachedSchema("DeviceDefinition", () => {
+export function createDeviceDefinitionSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("DeviceDefinition", [contained], () => {
     const baseSchema: z.ZodType<types.DeviceDefinition> = z.strictObject({
       resourceType: z.literal("DeviceDefinition"),
       id: primitives.getIdSchema().optional(),
@@ -187,7 +201,7 @@ export function createDeviceDefinitionSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -229,7 +243,7 @@ export function createDeviceDefinitionSchema() {
 }
 
 export function createDeviceDefinitionUdiDeviceIdentifierSchema() {
-  return getCachedSchema("DeviceDefinitionUdiDeviceIdentifier", () => {
+  return getCachedSchema("DeviceDefinitionUdiDeviceIdentifier", [], () => {
     const baseSchema: z.ZodType<types.DeviceDefinitionUdiDeviceIdentifier> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -248,7 +262,7 @@ export function createDeviceDefinitionUdiDeviceIdentifierSchema() {
 }
 
 export function createDeviceDefinitionDeviceNameSchema() {
-  return getCachedSchema("DeviceDefinitionDeviceName", () => {
+  return getCachedSchema("DeviceDefinitionDeviceName", [], () => {
     const baseSchema: z.ZodType<types.DeviceDefinitionDeviceName> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -272,7 +286,7 @@ export function createDeviceDefinitionDeviceNameSchema() {
 }
 
 export function createDeviceDefinitionSpecializationSchema() {
-  return getCachedSchema("DeviceDefinitionSpecialization", () => {
+  return getCachedSchema("DeviceDefinitionSpecialization", [], () => {
     const baseSchema: z.ZodType<types.DeviceDefinitionSpecialization> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -289,7 +303,7 @@ export function createDeviceDefinitionSpecializationSchema() {
 }
 
 export function createDeviceDefinitionCapabilitySchema() {
-  return getCachedSchema("DeviceDefinitionCapability", () => {
+  return getCachedSchema("DeviceDefinitionCapability", [], () => {
     const baseSchema: z.ZodType<types.DeviceDefinitionCapability> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -304,7 +318,7 @@ export function createDeviceDefinitionCapabilitySchema() {
 }
 
 export function createDeviceDefinitionPropertySchema() {
-  return getCachedSchema("DeviceDefinitionProperty", () => {
+  return getCachedSchema("DeviceDefinitionProperty", [], () => {
     const baseSchema: z.ZodType<types.DeviceDefinitionProperty> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -320,7 +334,7 @@ export function createDeviceDefinitionPropertySchema() {
 }
 
 export function createDeviceDefinitionMaterialSchema() {
-  return getCachedSchema("DeviceDefinitionMaterial", () => {
+  return getCachedSchema("DeviceDefinitionMaterial", [], () => {
     const baseSchema: z.ZodType<types.DeviceDefinitionMaterial> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -337,8 +351,15 @@ export function createDeviceDefinitionMaterialSchema() {
   });
 }
 
-export function createDeviceMetricSchema() {
-  return getCachedSchema("DeviceMetric", () => {
+export function createDeviceMetricSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("DeviceMetric", [contained], () => {
     const baseSchema: z.ZodType<types.DeviceMetric> = z.strictObject({
       resourceType: z.literal("DeviceMetric"),
       id: primitives.getIdSchema().optional(),
@@ -348,7 +369,7 @@ export function createDeviceMetricSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -389,7 +410,7 @@ export function createDeviceMetricSchema() {
 }
 
 export function createDeviceMetricCalibrationSchema() {
-  return getCachedSchema("DeviceMetricCalibration", () => {
+  return getCachedSchema("DeviceMetricCalibration", [], () => {
     const baseSchema: z.ZodType<types.DeviceMetricCalibration> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),
@@ -415,8 +436,15 @@ export function createDeviceMetricCalibrationSchema() {
   });
 }
 
-export function createDeviceRequestSchema() {
-  return getCachedSchema("DeviceRequest", () => {
+export function createDeviceRequestSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("DeviceRequest", [contained], () => {
     const baseSchema: z.ZodType<types.DeviceRequest> = z.strictObject({
       resourceType: z.literal("DeviceRequest"),
       id: primitives.getIdSchema().optional(),
@@ -426,7 +454,7 @@ export function createDeviceRequestSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -471,7 +499,7 @@ export function createDeviceRequestSchema() {
 }
 
 export function createDeviceRequestParameterSchema() {
-  return getCachedSchema("DeviceRequestParameter", () => {
+  return getCachedSchema("DeviceRequestParameter", [], () => {
     const baseSchema: z.ZodType<types.DeviceRequestParameter> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -488,8 +516,15 @@ export function createDeviceRequestParameterSchema() {
   });
 }
 
-export function createDeviceUseStatementSchema() {
-  return getCachedSchema("DeviceUseStatement", () => {
+export function createDeviceUseStatementSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("DeviceUseStatement", [contained], () => {
     const baseSchema: z.ZodType<types.DeviceUseStatement> = z.strictObject({
       resourceType: z.literal("DeviceUseStatement"),
       id: primitives.getIdSchema().optional(),
@@ -499,7 +534,7 @@ export function createDeviceUseStatementSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),

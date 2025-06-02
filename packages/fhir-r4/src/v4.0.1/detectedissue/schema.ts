@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -16,8 +16,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createDetectedIssueSchema() {
-  return getCachedSchema("DetectedIssue", () => {
+export function createDetectedIssueSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("DetectedIssue", [contained], () => {
     const baseSchema: z.ZodType<types.DetectedIssue> = z.strictObject({
       resourceType: z.literal("DetectedIssue"),
       id: primitives.getIdSchema().optional(),
@@ -27,7 +34,7 @@ export function createDetectedIssueSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -55,7 +62,7 @@ export function createDetectedIssueSchema() {
 }
 
 export function createDetectedIssueEvidenceSchema() {
-  return getCachedSchema("DetectedIssueEvidence", () => {
+  return getCachedSchema("DetectedIssueEvidence", [], () => {
     const baseSchema: z.ZodType<types.DetectedIssueEvidence> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -69,7 +76,7 @@ export function createDetectedIssueEvidenceSchema() {
 }
 
 export function createDetectedIssueMitigationSchema() {
-  return getCachedSchema("DetectedIssueMitigation", () => {
+  return getCachedSchema("DetectedIssueMitigation", [], () => {
     const baseSchema: z.ZodType<types.DetectedIssueMitigation> = z.strictObject(
       {
         id: primitives.getStringSchema().optional(),

@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -15,8 +15,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createGraphDefinitionSchema() {
-  return getCachedSchema("GraphDefinition", () => {
+export function createGraphDefinitionSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("GraphDefinition", [contained], () => {
     const baseSchema: z.ZodType<types.GraphDefinition> = z.strictObject({
       resourceType: z.literal("GraphDefinition"),
       id: primitives.getIdSchema().optional(),
@@ -26,7 +33,7 @@ export function createGraphDefinitionSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       url: primitives.getUriSchema().optional(),
@@ -61,7 +68,7 @@ export function createGraphDefinitionSchema() {
 }
 
 export function createGraphDefinitionLinkSchema() {
-  return getCachedSchema("GraphDefinitionLink", () => {
+  return getCachedSchema("GraphDefinitionLink", [], () => {
     const baseSchema: z.ZodType<types.GraphDefinitionLink> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -84,7 +91,7 @@ export function createGraphDefinitionLinkSchema() {
 }
 
 export function createGraphDefinitionTargetSchema() {
-  return getCachedSchema("GraphDefinitionTarget", () => {
+  return getCachedSchema("GraphDefinitionTarget", [], () => {
     const baseSchema: z.ZodType<types.GraphDefinitionTarget> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -103,7 +110,7 @@ export function createGraphDefinitionTargetSchema() {
 }
 
 export function createGraphDefinitionCompartmentSchema() {
-  return getCachedSchema("GraphDefinitionCompartment", () => {
+  return getCachedSchema("GraphDefinitionCompartment", [], () => {
     const baseSchema: z.ZodType<types.GraphDefinitionCompartment> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),

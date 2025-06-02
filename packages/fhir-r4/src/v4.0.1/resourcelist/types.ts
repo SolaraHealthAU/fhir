@@ -1,3 +1,2 @@
 /** Generated from FHIR JSON Schema */
-
-export interface ResourceList {}
+export type ResourceList = unknown;

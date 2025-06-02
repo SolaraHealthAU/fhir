@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -14,7 +14,7 @@ import { createResourceListSchema } from "../resourcelist/schema";
 /* Generated from FHIR JSON Schema */
 
 export function createBundleSchema() {
-  return getCachedSchema("Bundle", () => {
+  return getCachedSchema("Bundle", [], () => {
     const baseSchema: z.ZodType<types.Bundle> = z.strictObject({
       resourceType: z.literal("Bundle"),
       id: primitives.getIdSchema().optional(),
@@ -50,7 +50,7 @@ export function createBundleSchema() {
 }
 
 export function createBundleLinkSchema() {
-  return getCachedSchema("BundleLink", () => {
+  return getCachedSchema("BundleLink", [], () => {
     const baseSchema: z.ZodType<types.BundleLink> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -66,7 +66,7 @@ export function createBundleLinkSchema() {
 }
 
 export function createBundleEntrySchema() {
-  return getCachedSchema("BundleEntry", () => {
+  return getCachedSchema("BundleEntry", [], () => {
     const baseSchema: z.ZodType<types.BundleEntry> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -85,7 +85,7 @@ export function createBundleEntrySchema() {
 }
 
 export function createBundleSearchSchema() {
-  return getCachedSchema("BundleSearch", () => {
+  return getCachedSchema("BundleSearch", [], () => {
     const baseSchema: z.ZodType<types.BundleSearch> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -101,7 +101,7 @@ export function createBundleSearchSchema() {
 }
 
 export function createBundleRequestSchema() {
-  return getCachedSchema("BundleRequest", () => {
+  return getCachedSchema("BundleRequest", [], () => {
     const baseSchema: z.ZodType<types.BundleRequest> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -127,7 +127,7 @@ export function createBundleRequestSchema() {
 }
 
 export function createBundleResponseSchema() {
-  return getCachedSchema("BundleResponse", () => {
+  return getCachedSchema("BundleResponse", [], () => {
     const baseSchema: z.ZodType<types.BundleResponse> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

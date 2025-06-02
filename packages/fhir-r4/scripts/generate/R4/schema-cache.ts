@@ -1,50 +1,102 @@
 import { z } from 'zod/v4';
 
+export const ZodNever = z.never();
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const schemaCache = new Map<string, z.ZodType<any>>();
 const creationState = new Map<string, 'creating' | 'created'>();
 
-export function getCachedSchema<T>(key: string, factory: () => z.ZodType<T>): z.ZodType<T> {
+// Helper function to create a stable key from dependencies
+function createCacheKey(key: string, dependencies?: unknown): string {
+  if (dependencies === undefined) {
+    return key;
+  }
+
+  // Create a stable representation of the dependency
+  let depString: string;
+  if (dependencies && typeof dependencies === 'object' && 'def' in dependencies) {
+    // For Zod types, use their type information
+    depString = (dependencies as any).def?.typeName ?? 'unknown';
+  } else if (
+    typeof dependencies === 'string' ||
+    typeof dependencies === 'number' ||
+    typeof dependencies === 'boolean'
+  ) {
+    depString = String(dependencies);
+  } else {
+    depString = 'unknown';
+  }
+
+  return `${key}|${depString}`;
+}
+
+// Function overloads
+export function getCachedSchema<T>(key: string, factory: () => z.ZodType<T>): z.ZodType<T>;
+export function getCachedSchema<T>(
+  key: string,
+  dependencies: unknown,
+  factory: () => z.ZodType<T>,
+): z.ZodType<T>;
+export function getCachedSchema<T>(
+  key: string,
+  factoryOrDependencies: (() => z.ZodType<T>) | unknown,
+  factory?: () => z.ZodType<T>,
+): z.ZodType<T> {
+  let actualFactory: () => z.ZodType<T>;
+  let dependencies: unknown;
+
+  if (typeof factoryOrDependencies === 'function' && factory === undefined) {
+    // Called with (key, factory)
+    actualFactory = factoryOrDependencies as () => z.ZodType<T>;
+    dependencies = undefined;
+  } else {
+    // Called with (key, dependencies, factory)
+    dependencies = factoryOrDependencies;
+    actualFactory = factory!;
+  }
+
+  const cacheKey = createCacheKey(key, dependencies);
+
   // If schema is already created, return it
-  if (schemaCache.has(key) && creationState.get(key) === 'created') {
-    return schemaCache.get(key)!;
+  if (schemaCache.has(cacheKey) && creationState.get(cacheKey) === 'created') {
+    return schemaCache.get(cacheKey)!;
   }
 
   // If we're already creating this schema (circular reference detected)
-  if (creationState.get(key) === 'creating') {
+  if (creationState.get(cacheKey) === 'creating') {
     // Return a lazy reference that will resolve once creation is complete
-    if (!schemaCache.has(key)) {
+    if (!schemaCache.has(cacheKey)) {
       // Create and store the lazy schema for this circular reference
       const lazySchema = z.lazy(() => {
-        const actualSchema = schemaCache.get(key);
-        if (!actualSchema || creationState.get(key) !== 'created') {
+        const actualSchema = schemaCache.get(cacheKey);
+        if (!actualSchema || creationState.get(cacheKey) !== 'created') {
           throw new Error(
-            `Circular reference detected for schema ${key} but actual schema not yet created`,
+            `Circular reference detected for schema ${cacheKey} but actual schema not yet created`,
           );
         }
         return actualSchema;
       });
-      schemaCache.set(key, lazySchema);
+      schemaCache.set(cacheKey, lazySchema);
     }
-    return schemaCache.get(key)!;
+    return schemaCache.get(cacheKey)!;
   }
 
   // Mark as creating to detect circular references
-  creationState.set(key, 'creating');
+  creationState.set(cacheKey, 'creating');
 
   try {
     // Create the actual schema
-    const actualSchema = factory();
+    const actualSchema = actualFactory();
 
     // Store the actual schema
-    schemaCache.set(key, actualSchema);
-    creationState.set(key, 'created');
+    schemaCache.set(cacheKey, actualSchema);
+    creationState.set(cacheKey, 'created');
 
     return actualSchema;
   } catch (error) {
     // Clean up on error
-    schemaCache.delete(key);
-    creationState.delete(key);
+    schemaCache.delete(cacheKey);
+    creationState.delete(cacheKey);
     throw error;
   }
 }

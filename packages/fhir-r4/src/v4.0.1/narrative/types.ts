@@ -3,6 +3,7 @@ import type { Extension, Element } from "../core/types";
 /** Generated from FHIR JSON Schema */
 
 /** A human-readable summary of the resource conveying the essential clinical and business information for the resource. */
+
 export interface Narrative {
   id?: string;
 

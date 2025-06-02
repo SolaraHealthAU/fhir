@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createExtensionSchema,
   createRangeSchema,
@@ -11,7 +11,7 @@ import {
 /* Generated from FHIR JSON Schema */
 
 export function createPopulationSchema() {
-  return getCachedSchema("Population", () => {
+  return getCachedSchema("Population", [], () => {
     const baseSchema: z.ZodType<types.Population> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

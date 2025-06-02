@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -16,8 +16,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createMolecularSequenceSchema() {
-  return getCachedSchema("MolecularSequence", () => {
+export function createMolecularSequenceSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("MolecularSequence", [contained], () => {
     const baseSchema: z.ZodType<types.MolecularSequence> = z.strictObject({
       resourceType: z.literal("MolecularSequence"),
       id: primitives.getIdSchema().optional(),
@@ -27,7 +34,7 @@ export function createMolecularSequenceSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -59,7 +66,7 @@ export function createMolecularSequenceSchema() {
 }
 
 export function createMolecularSequenceReferenceSeqSchema() {
-  return getCachedSchema("MolecularSequenceReferenceSeq", () => {
+  return getCachedSchema("MolecularSequenceReferenceSeq", [], () => {
     const baseSchema: z.ZodType<types.MolecularSequenceReferenceSeq> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -87,7 +94,7 @@ export function createMolecularSequenceReferenceSeqSchema() {
 }
 
 export function createMolecularSequenceVariantSchema() {
-  return getCachedSchema("MolecularSequenceVariant", () => {
+  return getCachedSchema("MolecularSequenceVariant", [], () => {
     const baseSchema: z.ZodType<types.MolecularSequenceVariant> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -111,7 +118,7 @@ export function createMolecularSequenceVariantSchema() {
 }
 
 export function createMolecularSequenceQualitySchema() {
-  return getCachedSchema("MolecularSequenceQuality", () => {
+  return getCachedSchema("MolecularSequenceQuality", [], () => {
     const baseSchema: z.ZodType<types.MolecularSequenceQuality> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -150,7 +157,7 @@ export function createMolecularSequenceQualitySchema() {
 }
 
 export function createMolecularSequenceRocSchema() {
-  return getCachedSchema("MolecularSequenceRoc", () => {
+  return getCachedSchema("MolecularSequenceRoc", [], () => {
     const baseSchema: z.ZodType<types.MolecularSequenceRoc> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -176,7 +183,7 @@ export function createMolecularSequenceRocSchema() {
 }
 
 export function createMolecularSequenceRepositorySchema() {
-  return getCachedSchema("MolecularSequenceRepository", () => {
+  return getCachedSchema("MolecularSequenceRepository", [], () => {
     const baseSchema: z.ZodType<types.MolecularSequenceRepository> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -201,7 +208,7 @@ export function createMolecularSequenceRepositorySchema() {
 }
 
 export function createMolecularSequenceStructureVariantSchema() {
-  return getCachedSchema("MolecularSequenceStructureVariant", () => {
+  return getCachedSchema("MolecularSequenceStructureVariant", [], () => {
     const baseSchema: z.ZodType<types.MolecularSequenceStructureVariant> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -221,7 +228,7 @@ export function createMolecularSequenceStructureVariantSchema() {
 }
 
 export function createMolecularSequenceOuterSchema() {
-  return getCachedSchema("MolecularSequenceOuter", () => {
+  return getCachedSchema("MolecularSequenceOuter", [], () => {
     const baseSchema: z.ZodType<types.MolecularSequenceOuter> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -237,7 +244,7 @@ export function createMolecularSequenceOuterSchema() {
 }
 
 export function createMolecularSequenceInnerSchema() {
-  return getCachedSchema("MolecularSequenceInner", () => {
+  return getCachedSchema("MolecularSequenceInner", [], () => {
     const baseSchema: z.ZodType<types.MolecularSequenceInner> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),

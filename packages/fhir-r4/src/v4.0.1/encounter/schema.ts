@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 import * as types from "./types";
 import * as primitives from "../primitives";
-import { getCachedSchema } from "../schema-cache";
+import { getCachedSchema, ZodNever } from "../schema-cache";
 import {
   createMetaSchema,
   createElementSchema,
@@ -18,8 +18,15 @@ import { createResourceListSchema } from "../resourcelist/schema";
 
 /* Generated from FHIR JSON Schema */
 
-export function createEncounterSchema() {
-  return getCachedSchema("Encounter", () => {
+export function createEncounterSchema<
+  C extends z.ZodTypeAny = z.ZodUnknown,
+>(options?: { contained?: C; allowNested?: boolean }) {
+  const contained =
+    options?.allowNested === false
+      ? ZodNever
+      : (options?.contained ?? createResourceListSchema());
+
+  return getCachedSchema("Encounter", [contained], () => {
     const baseSchema: z.ZodType<types.Encounter> = z.strictObject({
       resourceType: z.literal("Encounter"),
       id: primitives.getIdSchema().optional(),
@@ -29,7 +36,7 @@ export function createEncounterSchema() {
       language: primitives.getCodeSchema().optional(),
       _language: createElementSchema().optional(),
       text: createNarrativeSchema().optional(),
-      contained: z.array(createResourceListSchema()).optional(),
+      contained: z.array(contained).optional(),
       extension: z.array(createExtensionSchema()).optional(),
       modifierExtension: z.array(createExtensionSchema()).optional(),
       identifier: z.array(createIdentifierSchema()).optional(),
@@ -73,7 +80,7 @@ export function createEncounterSchema() {
 }
 
 export function createEncounterStatusHistorySchema() {
-  return getCachedSchema("EncounterStatusHistory", () => {
+  return getCachedSchema("EncounterStatusHistory", [], () => {
     const baseSchema: z.ZodType<types.EncounterStatusHistory> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -98,7 +105,7 @@ export function createEncounterStatusHistorySchema() {
 }
 
 export function createEncounterClassHistorySchema() {
-  return getCachedSchema("EncounterClassHistory", () => {
+  return getCachedSchema("EncounterClassHistory", [], () => {
     const baseSchema: z.ZodType<types.EncounterClassHistory> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -112,7 +119,7 @@ export function createEncounterClassHistorySchema() {
 }
 
 export function createEncounterParticipantSchema() {
-  return getCachedSchema("EncounterParticipant", () => {
+  return getCachedSchema("EncounterParticipant", [], () => {
     const baseSchema: z.ZodType<types.EncounterParticipant> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -127,7 +134,7 @@ export function createEncounterParticipantSchema() {
 }
 
 export function createEncounterDiagnosisSchema() {
-  return getCachedSchema("EncounterDiagnosis", () => {
+  return getCachedSchema("EncounterDiagnosis", [], () => {
     const baseSchema: z.ZodType<types.EncounterDiagnosis> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
@@ -143,7 +150,7 @@ export function createEncounterDiagnosisSchema() {
 }
 
 export function createEncounterHospitalizationSchema() {
-  return getCachedSchema("EncounterHospitalization", () => {
+  return getCachedSchema("EncounterHospitalization", [], () => {
     const baseSchema: z.ZodType<types.EncounterHospitalization> =
       z.strictObject({
         id: primitives.getStringSchema().optional(),
@@ -165,7 +172,7 @@ export function createEncounterHospitalizationSchema() {
 }
 
 export function createEncounterLocationSchema() {
-  return getCachedSchema("EncounterLocation", () => {
+  return getCachedSchema("EncounterLocation", [], () => {
     const baseSchema: z.ZodType<types.EncounterLocation> = z.strictObject({
       id: primitives.getStringSchema().optional(),
       extension: z.array(createExtensionSchema()).optional(),
