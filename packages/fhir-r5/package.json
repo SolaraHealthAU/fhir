@@ -1,6 +1,6 @@
 {
   "name": "@solarahealth/fhir-r5",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "TypeScript types and Zod schemas for HL7 FHIR R5 resources with runtime validation",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
