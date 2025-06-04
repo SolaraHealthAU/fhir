@@ -17,6 +17,13 @@
       "types": "./dist/esm/src/all.d.ts"
     }
   },
+  "typesVersions": {
+    "*": {
+      "all": [
+        "dist/esm/src/all.d.ts"
+      ]
+    }
+  },
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -49,7 +56,7 @@
     "url": "https://github.com/SolaraHealthAU/fhir.git",
     "directory": "packages/fhir-r4"
   },
-  "homepage": "https://github.com/SolaraHealthAU/fhir#readme",
+  "homepage": "https://github.com/SolaraHealthAU/fhir/tree/main/packages/fhir-r4#readme",
   "bugs": {
     "url": "https://github.com/SolaraHealthAU/fhir/issues"
   },

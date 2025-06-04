@@ -38,7 +38,7 @@
     "url": "https://github.com/SolaraHealthAU/fhir.git",
     "directory": "packages/fhir-r4-server"
   },
-  "homepage": "https://github.com/SolaraHealthAU/fhir#readme",
+  "homepage": "https://github.com/SolaraHealthAU/fhir/tree/main/packages/fhir-r4-server#readme",
   "bugs": {
     "url": "https://github.com/SolaraHealthAU/fhir/issues"
   },
