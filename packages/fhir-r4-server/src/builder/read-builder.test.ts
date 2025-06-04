@@ -377,7 +377,7 @@ describe('ReadBuilder', () => {
           if (!context.userId) {
             throw new Error('Unauthorized');
           }
-          return {
+          const patient: Patient = {
             ...samplePatient,
             id,
             meta: {
@@ -385,6 +385,8 @@ describe('ReadBuilder', () => {
               tag: [{ code: 'accessed-by', display: context.userId }],
             },
           };
+
+          return patient;
         })
         .build();
 
