@@ -21,21 +21,44 @@ jobs:
           - '20.x'
     steps:
       - uses: actions/checkout@v3
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Cache root node_modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-root-node-modules-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-root-node-modules-
+
+      - name: Cache package node_modules
+        uses: actions/cache@v3
+        with:
+          path: ${{ matrix.package }}/node_modules
+          key: ${{ runner.os }}-${{ matrix.package }}-node-modules-${{ hashFiles(format('{0}/package-lock.json', matrix.package)) }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.package }}-node-modules-
+
       - name: Install root dependencies
-        run: npm install
+        run: npm ci
+
       - name: Install dependencies
         working-directory: ${{ matrix.package }}
-        run: npm install
+        run: npm ci
+
       - name: Run typecheck
         working-directory: ${{ matrix.package }}
         run: npm run typecheck
+
       - name: Run test
         working-directory: ${{ matrix.package }}
         run: TZ='UTC-10' npm run test -- --ci --runInBand --no-watchman
+
       - name: Run eslint
         working-directory: ${{ matrix.package }}
         run: npm run lint
