@@ -15,7 +15,7 @@ jobs:
       matrix:
         package:
           - packages/fhir-r4
-          # - packages/fhir-r4-server
+          - packages/fhir-r4-server
         node-version:
           - '20.x'
     steps:
@@ -29,9 +29,12 @@ jobs:
       - name: Install dependencies
         working-directory: ${{ matrix.package }}
         run: npm install
+      - name: Run typecheck
+        working-directory: ${{ matrix.package }}
+        run: npm run typecheck
       - name: Run test
         working-directory: ${{ matrix.package }}
         run: npm run test
-      # - name: Run CI
-      #   working-directory: ${{ matrix.package }}
-      #   run: npm run ci
+      - name: Run eslint
+        working-directory: ${{ matrix.package }}
+        run: npm run lint

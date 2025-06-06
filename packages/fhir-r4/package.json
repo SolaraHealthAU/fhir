@@ -72,6 +72,7 @@
     "generate:r4": "esr scripts/generate/R4/generate.ts",
     "generate:fixtures": "esr scripts/generate/R4/generate-tests-and-fixtures.ts",
     "generate": "./bin/download-specifications && npm run generate:r4",
+    "prepare": "npm run build",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
