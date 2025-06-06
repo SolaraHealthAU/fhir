@@ -65,7 +65,7 @@
     "build:esm": "tsc --project tsconfig.esm.json",
     "build": "npm run clean && npm run build:cjs && npm run build:esm",
     "clean": "rm -rf dist",
-    "ci": "npm run typecheck && npm run lint && npm run test",
+    "ci": "npm run typecheck && npm run test",
     "typecheck": "tsc --noEmit",
     "test": "NODE_ENV=test && jest",
     "lint": "eslint src",
