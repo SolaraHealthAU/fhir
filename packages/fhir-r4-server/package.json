@@ -1,6 +1,6 @@
 {
   "name": "@solarahealth/fhir-r4-server",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "TypeScript-first FHIR R4 server middleware for Express.js with builder pattern API, automatic validation, and type-safe resource handling",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -55,7 +55,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@solarahealth/fhir-r4": "*"
+    "@solarahealth/fhir-r4": "^1.2.0"
   },
   "peerDependencies": {
     "express": "^5.1.0"
