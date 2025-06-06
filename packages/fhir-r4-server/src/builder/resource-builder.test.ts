@@ -1,5 +1,10 @@
 import * as z from 'zod';
-import type { Bundle, Patient, CapabilityStatementSearchParam } from '@solarahealth/fhir-r4';
+import type {
+  Bundle,
+  Patient,
+  Observation,
+  CapabilityStatementSearchParam,
+} from '@solarahealth/fhir-r4';
 import { defineResource } from './resource-builder';
 import type { Context, CapabilityStatementResource } from '../types';
 import * as errors from '../errors';
@@ -95,7 +100,7 @@ describe('ResourceBuilder', () => {
   describe('defineResource function', () => {
     it('should create a ResourceBuilder for a valid resource type', () => {
       // Act
-      const builder = defineResource<TestContext, 'Patient'>('Patient');
+      const builder = defineResource<TestContext, Patient>('Patient');
 
       // Assert
       expect(builder).toBeDefined();
@@ -106,8 +111,8 @@ describe('ResourceBuilder', () => {
 
     it('should create builders for different resource types', () => {
       // Act
-      const patientBuilder = defineResource<TestContext, 'Patient'>('Patient');
-      const observationBuilder = defineResource<TestContext, 'Observation'>('Observation');
+      const patientBuilder = defineResource<TestContext, Patient>('Patient');
+      const observationBuilder = defineResource<TestContext, Observation>('Observation');
 
       // Assert
       expect(patientBuilder).toBeDefined();
@@ -118,7 +123,7 @@ describe('ResourceBuilder', () => {
   describe('basic functionality', () => {
     it('should build a resource with only read capability', () => {
       // Act
-      const resource = defineResource<TestContext, 'Patient'>('Patient')
+      const resource = defineResource<TestContext, Patient>('Patient')
         .read((builder) =>
           builder.id(z.string()).retrieveWith(async (id, context) => {
             return await context.database.patients.findById(id);
@@ -135,7 +140,7 @@ describe('ResourceBuilder', () => {
 
     it('should build a resource with only search capability', () => {
       // Act
-      const resource = defineResource<TestContext, 'Patient'>('Patient')
+      const resource = defineResource<TestContext, Patient>('Patient')
         .search((builder) =>
           builder.params(patientSearchSchema).list(async (params, context, req) => {
             return sampleBundle;
@@ -152,7 +157,7 @@ describe('ResourceBuilder', () => {
 
     it('should build a resource with both read and search capabilities', () => {
       // Act
-      const resource = defineResource<TestContext, 'Patient'>('Patient')
+      const resource = defineResource<TestContext, Patient>('Patient')
         .read((builder) =>
           builder.id(z.string()).retrieveWith(async (id, context) => {
             return samplePatient;
@@ -175,7 +180,7 @@ describe('ResourceBuilder', () => {
   describe('capability statement configuration', () => {
     it('should configure conditional read capability', () => {
       // Act
-      const resource = defineResource<TestContext, 'Patient'>('Patient')
+      const resource = defineResource<TestContext, Patient>('Patient')
         .conditionalRead('modified-since')
         .read((builder) =>
           builder.id(z.string()).retrieveWith(async (id, context) => samplePatient),
@@ -188,7 +193,7 @@ describe('ResourceBuilder', () => {
 
     it('should configure search parameters', () => {
       // Act
-      const resource = defineResource<TestContext, 'Patient'>('Patient')
+      const resource = defineResource<TestContext, Patient>('Patient')
         .searchParams(patientSearchParams)
         .search((builder) =>
           builder.params(patientSearchSchema).list(async (params, context, req) => sampleBundle),
@@ -201,7 +206,7 @@ describe('ResourceBuilder', () => {
 
     it('should configure multiple capability properties', () => {
       // Act
-      const resource = defineResource<TestContext, 'Patient'>('Patient')
+      const resource = defineResource<TestContext, Patient>('Patient')
         .conditionalRead('modified-since')
         .conditionalCreate(true)
         .conditionalUpdate(true)
@@ -228,7 +233,7 @@ describe('ResourceBuilder', () => {
 
     it('should exclude undefined properties from the built resource', () => {
       // Act
-      const resource = defineResource<TestContext, 'Patient'>('Patient')
+      const resource = defineResource<TestContext, Patient>('Patient')
         .read((builder) =>
           builder.id(z.string()).retrieveWith(async (id, context) => samplePatient),
         )
@@ -246,7 +251,7 @@ describe('ResourceBuilder', () => {
   describe('method chaining', () => {
     it('should support fluent method chaining', () => {
       // Act
-      const result = defineResource<TestContext, 'Patient'>('Patient')
+      const result = defineResource<TestContext, Patient>('Patient')
         .conditionalRead('modified-since')
         .searchParams(patientSearchParams)
         .read((builder) =>
@@ -266,7 +271,7 @@ describe('ResourceBuilder', () => {
       // This test verifies that TypeScript compilation succeeds
       // and the builder maintains proper typing
 
-      const resource = defineResource<TestContext, 'Patient'>('Patient')
+      const resource = defineResource<TestContext, Patient>('Patient')
         .read((builder) =>
           builder
             .id(z.string())
@@ -289,14 +294,14 @@ describe('ResourceBuilder', () => {
 
     it('should allow methods to be called in any order', () => {
       // Act - different order
-      const resource1 = defineResource<TestContext, 'Patient'>('Patient')
+      const resource1 = defineResource<TestContext, Patient>('Patient')
         .search((builder) => builder.params(patientSearchSchema).list(async () => sampleBundle))
         .conditionalRead('modified-since')
         .read((builder) => builder.id(z.string()).retrieveWith(async () => samplePatient))
         .searchParams(patientSearchParams)
         .build();
 
-      const resource2 = defineResource<TestContext, 'Patient'>('Patient')
+      const resource2 = defineResource<TestContext, Patient>('Patient')
         .searchParams(patientSearchParams)
         .read((builder) => builder.id(z.string()).retrieveWith(async () => samplePatient))
         .conditionalRead('modified-since')
@@ -314,7 +319,7 @@ describe('ResourceBuilder', () => {
   describe('documentation support', () => {
     it('should support documentation for read operations', () => {
       // Act
-      const resource = defineResource<TestContext, 'Patient'>('Patient')
+      const resource = defineResource<TestContext, Patient>('Patient')
         .read(
           (builder) => builder.id(z.string()).retrieveWith(async (id, context) => samplePatient),
           'Retrieve a patient by ID',
@@ -327,7 +332,7 @@ describe('ResourceBuilder', () => {
 
     it('should support documentation for search operations', () => {
       // Act
-      const resource = defineResource<TestContext, 'Patient'>('Patient')
+      const resource = defineResource<TestContext, Patient>('Patient')
         .search(
           (builder) =>
             builder.params(patientSearchSchema).list(async (params, context, req) => sampleBundle),
@@ -346,7 +351,7 @@ describe('ResourceBuilder', () => {
     it('should validate builder composition - read operations', () => {
       // Act & Assert - building with proper read configuration should not throw
       expect(() => {
-        defineResource<TestContext, 'Patient'>('Patient')
+        defineResource<TestContext, Patient>('Patient')
           .read((builder) =>
             builder.id(z.string()).retrieveWith(async (id, context) => samplePatient),
           )
@@ -357,7 +362,7 @@ describe('ResourceBuilder', () => {
     it('should validate builder composition - search operations', () => {
       // Act & Assert - building with proper search configuration should not throw
       expect(() => {
-        defineResource<TestContext, 'Patient'>('Patient')
+        defineResource<TestContext, Patient>('Patient')
           .search((builder) =>
             builder.params(patientSearchSchema).list(async (params, context, req) => sampleBundle),
           )
@@ -368,7 +373,7 @@ describe('ResourceBuilder', () => {
     it('should handle builder errors from read configuration', () => {
       // Act & Assert
       expect(() => {
-        defineResource<TestContext, 'Patient'>('Patient')
+        defineResource<TestContext, Patient>('Patient')
           .read(null as any)
           .build();
       }).toThrow('Invalid argument provided to read()');
@@ -377,7 +382,7 @@ describe('ResourceBuilder', () => {
     it('should handle builder errors from search configuration', () => {
       // Act & Assert
       expect(() => {
-        defineResource<TestContext, 'Patient'>('Patient')
+        defineResource<TestContext, Patient>('Patient')
           .search(null as any)
           .build();
       }).toThrow('Invalid argument provided to search()');
@@ -396,7 +401,7 @@ describe('ResourceBuilder', () => {
       };
 
       // Act
-      const patientResource = defineResource<TestContext, 'Patient'>('Patient')
+      const patientResource = defineResource<TestContext, Patient>('Patient')
         .read((builder) =>
           builder.id(z.string()).retrieveWith(async (id) => {
             const patient = patients[id];
@@ -416,7 +421,7 @@ describe('ResourceBuilder', () => {
 
     it('should support builder-api.md comprehensive resource pattern', () => {
       // Act
-      const patientResource = defineResource<TestContext, 'Patient'>('Patient')
+      const patientResource = defineResource<TestContext, Patient>('Patient')
         .searchParams(patientSearchParams)
         .read((builder) =>
           builder.id(z.string()).retrieveWith(async (id, context) => {
@@ -476,7 +481,7 @@ describe('ResourceBuilder', () => {
       }
 
       // Act
-      const securePatientResource = defineResource<TestContext, 'Patient'>('Patient')
+      const securePatientResource = defineResource<TestContext, Patient>('Patient')
         .read((builder) =>
           builder.id(z.string()).retrieveWith(
             requireAuth(async (id, context) => {
@@ -500,7 +505,7 @@ describe('ResourceBuilder', () => {
   describe('advanced configuration', () => {
     it('should handle search include and rev-include parameters', () => {
       // Act
-      const resource = defineResource<TestContext, 'Patient'>('Patient')
+      const resource = defineResource<TestContext, Patient>('Patient')
         .searchInclude(['Patient:organization', 'Patient:general-practitioner'])
         .searchRevInclude(['Observation:subject', 'Encounter:subject'])
         .search((builder) =>
@@ -518,7 +523,7 @@ describe('ResourceBuilder', () => {
 
     it('should handle all capability statement configuration options', () => {
       // Act
-      const resource = defineResource<TestContext, 'Patient'>('Patient')
+      const resource = defineResource<TestContext, Patient>('Patient')
         .conditionalRead('full-support')
         .conditionalCreate(true)
         .conditionalUpdate(true)
@@ -551,7 +556,7 @@ describe('ResourceBuilder', () => {
   describe('edge cases', () => {
     it('should build a resource with no operations', () => {
       // Act
-      const resource = defineResource<TestContext, 'Patient'>('Patient').build();
+      const resource = defineResource<TestContext, Patient>('Patient').build();
 
       // Assert
       expect(resource.type).toBe('Patient');
@@ -560,7 +565,7 @@ describe('ResourceBuilder', () => {
 
     it('should handle multiple calls to the same method (last one wins)', () => {
       // Act
-      const resource = defineResource<TestContext, 'Patient'>('Patient')
+      const resource = defineResource<TestContext, Patient>('Patient')
         .conditionalRead('not-supported')
         .conditionalRead('modified-since') // This should override the previous one
         .read((builder) =>
@@ -586,7 +591,7 @@ describe('ResourceBuilder', () => {
       };
 
       // Act
-      const resource = defineResource<TestContext, 'Patient'>('Patient')
+      const resource = defineResource<TestContext, Patient>('Patient')
         .read(readHandlerBuilder)
         .build();
 
@@ -606,7 +611,7 @@ describe('ResourceBuilder', () => {
       };
 
       // Act
-      const resource = defineResource<TestContext, 'Patient'>('Patient')
+      const resource = defineResource<TestContext, Patient>('Patient')
         .search(searchHandlerBuilder)
         .build();
 

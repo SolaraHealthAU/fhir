@@ -106,7 +106,7 @@ const sampleBundle: Bundle = {
 };
 
 describe('SearchBuilder', () => {
-  let builder: SearchBuilder<'Patient', any>;
+  let builder: SearchBuilder<Patient, any>;
   let mockContext: TestContext;
   let patientSearchSchema: z.ZodTypeAny;
 

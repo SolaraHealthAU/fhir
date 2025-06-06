@@ -6,22 +6,22 @@ import type {
   CapabilityStatementInteractionOption,
 } from './types';
 import * as controllers from './controllers/controllers';
-import type { KnownResource } from '@solarahealth/fhir-r4';
+import type { ResourceListType } from '@solarahealth/fhir-r4';
 
 export const init = <C extends Context>(options: Options<C>): RestServer<C> => {
   // Create a mapping for rest resources and interactions
   const restResourceTypeInteractionMapping: Map<
-    KnownResource,
+    ResourceListType['resourceType'],
     Map<
-      CapabilityStatementInteractionOption<KnownResource, C>['code'],
-      CapabilityStatementInteractionOption<KnownResource, C>
+      CapabilityStatementInteractionOption<ResourceListType, C>['code'],
+      CapabilityStatementInteractionOption<ResourceListType, C>
     >
   > = new Map();
   options.capabilities.rest?.forEach((rest) => {
     rest.resource?.forEach((resource) => {
       const interactionMapping = new Map<
-        CapabilityStatementInteractionOption<KnownResource, C>['code'],
-        CapabilityStatementInteractionOption<KnownResource, C>
+        CapabilityStatementInteractionOption<ResourceListType, C>['code'],
+        CapabilityStatementInteractionOption<ResourceListType, C>
       >();
       resource.interaction?.forEach((interaction) => {
         interactionMapping.set(interaction.code, interaction);
@@ -33,10 +33,10 @@ export const init = <C extends Context>(options: Options<C>): RestServer<C> => {
   return {
     options,
     obtainRestResourceInteractionOption: <
-      R extends KnownResource,
+      R extends ResourceListType,
       I extends CapabilityStatementInteractionOption<R, C>['code'],
     >(
-      resourceType: R,
+      resourceType: R['resourceType'],
       interactionCode: I,
     ) => {
       const restResource = restResourceTypeInteractionMapping.get(resourceType);
@@ -54,10 +54,10 @@ export const init = <C extends Context>(options: Options<C>): RestServer<C> => {
 export type RestServer<C extends Context> = {
   options: Options<C>;
   obtainRestResourceInteractionOption: <
-    R extends KnownResource,
+    R extends ResourceListType,
     I extends CapabilityStatementInteractionOption<R, C>['code'],
   >(
-    resourceType: R,
+    resourceType: R['resourceType'],
     interactionCode: I,
   ) => (CapabilityStatementInteractionOption<R, C> & { code: I }) | null;
 };

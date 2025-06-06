@@ -1,19 +1,19 @@
 import * as z from 'zod';
-import type { KnownResource } from '@solarahealth/fhir-r4';
+import type { ResourceListType } from '@solarahealth/fhir-r4';
 import * as types from '../types';
 
 type IdOf<S extends z.ZodTypeAny> = z.infer<S> & string;
 
 export class ReadBuilder<
-  RT extends KnownResource,
+  RT extends ResourceListType,
   C extends types.Context,
   SId extends z.ZodTypeAny | null = null,
 > {
   private idSchema!: SId;
   private idPre?: (raw: string) => string;
-  private retrieve!: (id: IdOf<NonNullable<SId>>, ctx: C) => Promise<types.Resource<RT>>;
+  private retrieve!: (id: IdOf<NonNullable<SId>>, ctx: C) => Promise<RT>;
 
-  constructor(private readonly rt: RT) {}
+  constructor(private readonly rt: RT['resourceType']) {}
 
   /** id() – canonical‑ID schema + optional pre‑processor */
   id<S extends z.ZodTypeAny>(schema: S, pre?: (raw: string) => string) {
@@ -23,7 +23,7 @@ export class ReadBuilder<
   }
 
   /** retrieve() – DB lookup fn returning FHIR resource */
-  retrieveWith(fn: (id: IdOf<NonNullable<SId>>, ctx: C) => Promise<types.Resource<RT>>) {
+  retrieveWith(fn: (id: IdOf<NonNullable<SId>>, ctx: C) => Promise<RT>) {
     this.retrieve = fn;
     return this as unknown as ReadBuilder<RT, C, SId>;
   }
@@ -49,7 +49,7 @@ export class ReadBuilder<
 
 /** Read‑builder ready marker type */
 export type ReadBuilderReady<
-  RT extends KnownResource,
+  RT extends ResourceListType,
   C extends types.Context,
   SId extends z.ZodTypeAny,
 > = ReadBuilder<RT, C, SId> & {

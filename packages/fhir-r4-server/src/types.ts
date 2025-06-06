@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import type {
-  KnownResource,
   OperationOutcome,
   Bundle,
   CapabilityStatementResource as FhirR4CapabilityStatementResource,
@@ -11,27 +10,27 @@ import type {
   CapabilityStatementRest as FhirR4CapabilityStatementRest,
 } from '@solarahealth/fhir-r4';
 
-export type ResourceService<R extends KnownResource, C extends Context> = {
+export type ResourceService<
+  R extends ResourceListType,
+  C extends Context,
+  O extends ResourceListType,
+> = {
   getCapabilityStatementResource: () => ConsistentCapabilityStatementResource<R>;
 } & Partial<{
   // Supported capabilities
-  read: (args: { id: string }, context: C) => Promise<Resource<R>>;
-  vread: (args: { id: string; vid: string }, context: C) => Promise<Resource<R>>;
-  update: (args: { id: string; body: Resource<R> }, context: C) => Promise<Resource<R> | void>;
-  patch: (args: { id: string; body: string }, context: C) => Promise<Resource<R> | void>;
+  read: (args: { id: string }, context: C) => Promise<R>;
+  vread: (args: { id: string; vid: string }, context: C) => Promise<R>;
+  update: (args: { id: string; body: R }, context: C) => Promise<R | void>;
+  patch: (args: { id: string; body: string }, context: C) => Promise<R | void>;
   delete: (args: { id: string }, context: C) => Promise<OperationOutcome>;
-  create: (args: { body: Resource<R> }, context: C) => Promise<Resource<R> | void>;
-  searchType: (args: { params: Record<string, string> }, context: C) => Promise<Bundle>;
-  historyInstance: (args: { params: Record<string, string> }, context: C) => Promise<Bundle>;
-  historyType: (args: { params: Record<string, string> }, context: C) => Promise<Bundle>;
+  create: (args: { body: R }, context: C) => Promise<R | void>;
+  searchType: (args: { params: Record<string, string> }, context: C) => Promise<Bundle<O, R>>;
+  historyInstance: (args: { params: Record<string, string> }, context: C) => Promise<Bundle<O, R>>;
+  historyType: (args: { params: Record<string, string> }, context: C) => Promise<Bundle<O, R>>;
 }>;
 
-export type Resource<R extends KnownResource> = ResourceListType & {
-  resourceType: R;
-};
-
-type ConsistentCapabilityStatementResource<T extends string> = {
-  type: T;
+type ConsistentCapabilityStatementResource<T extends ResourceListType> = {
+  type: T['resourceType'];
 } & FhirR4CapabilityStatementResource;
 
 export type Context = object;
@@ -55,7 +54,7 @@ export interface CapabilityStatement<C extends Context> extends FhirR4Capability
 }
 
 export interface CapabilityStatementRest<C extends Context> extends FhirR4CapabilityStatementRest {
-  resource?: CapabilityStatementResource<KnownResource, C>[];
+  resource?: CapabilityStatementResource<ResourceListType, C>[];
   interaction?: CapabilityStatementInteraction1Option<C>[];
 }
 
@@ -70,17 +69,17 @@ interface CapabilityStatementInteraction1Transaction<C extends Context>
 
 export type TransactionHandler<C extends Context> = (args: unknown, c: C) => Promise<void>;
 
-export interface CapabilityStatementResource<R extends KnownResource, C extends Context>
+export interface CapabilityStatementResource<R extends ResourceListType, C extends Context>
   extends FhirR4CapabilityStatementResource {
-  type: R;
+  type: R['resourceType'];
   interaction: CapabilityStatementInteractionOption<R, C>[];
 }
 
-export type CapabilityStatementInteractionOption<R extends KnownResource, C extends Context> =
+export type CapabilityStatementInteractionOption<R extends ResourceListType, C extends Context> =
   | CapabilityStatementInteractionRead<R, C>
   | CapabilityStatementInteractionSearchType<C>;
 
-export interface CapabilityStatementInteractionRead<R extends KnownResource, C extends Context>
+export interface CapabilityStatementInteractionRead<R extends ResourceListType, C extends Context>
   extends CapabilityStatementInteraction {
   code: 'read';
   handler: ResourceReadHandler<R, C>;
@@ -92,23 +91,23 @@ export interface CapabilityStatementInteractionSearchType<C extends Context>
   handler: ResourceSearchTypeHandler<C>;
 }
 
-export type InteractionDetail<R extends KnownResource, C extends Context> =
+export type InteractionDetail<R extends ResourceListType, C extends Context> =
   | InteractionDetailRead<R, C>
   | InteractionDetailSearchType<C>;
 
-export type InteractionDetailRead<R extends KnownResource, C extends Context> = {
+export type InteractionDetailRead<R extends ResourceListType, C extends Context> = {
   handler: ResourceReadHandler<R, C>;
   documentation?: string;
 };
 
-export type ResourceReadHandler<R extends KnownResource, C extends Context> = (
+export type ResourceReadHandler<R extends ResourceListType, C extends Context> = (
   args: {
     id: string;
     ifModifiedSince: string | null;
     ifNoneMatch: string | null;
   },
   context: C,
-) => Promise<Resource<R>>;
+) => Promise<R>;
 
 export type InteractionDetailSearchType<C extends Context> = {
   handler: ResourceSearchTypeHandler<C>;

@@ -14,6 +14,7 @@ import type {
   ResourceSearchTypeHandler,
 } from './types';
 import * as controllers from './controllers/controllers';
+import type { Patient, Practitioner } from '@solarahealth/fhir-r4';
 
 // Mock the controllers module
 jest.mock('./controllers/controllers', () => ({
@@ -61,7 +62,7 @@ describe('rest-server', () => {
   describe('init', () => {
     describe('basic functionality', () => {
       it('should initialize a rest server with simple capabilities', () => {
-        const mockReadHandler: ResourceReadHandler<'Patient', TestContext> = jest.fn(async () => ({
+        const mockReadHandler: ResourceReadHandler<Patient, TestContext> = jest.fn(async () => ({
           resourceType: 'Patient' as const,
           id: '1',
         }));
@@ -166,7 +167,7 @@ describe('rest-server', () => {
 
     describe('resource interaction mapping', () => {
       it('should map multiple resource types with multiple interactions', () => {
-        const mockReadHandler: ResourceReadHandler<'Patient', TestContext> = jest.fn();
+        const mockReadHandler: ResourceReadHandler<Patient, TestContext> = jest.fn();
         const mockSearchHandler: ResourceSearchTypeHandler<TestContext> = jest.fn();
 
         const capabilities: CapabilityStatement<TestContext> = {
@@ -233,8 +234,8 @@ describe('rest-server', () => {
       });
 
       it('should handle multiple rest configurations', () => {
-        const mockPatientHandler: ResourceReadHandler<'Patient', TestContext> = jest.fn();
-        const mockPractitionerHandler: ResourceReadHandler<'Practitioner', TestContext> = jest.fn();
+        const mockPatientHandler: ResourceReadHandler<Patient, TestContext> = jest.fn();
+        const mockPractitionerHandler: ResourceReadHandler<Practitioner, TestContext> = jest.fn();
 
         const capabilities: CapabilityStatement<TestContext> = {
           resourceType: 'CapabilityStatement',
@@ -338,7 +339,7 @@ describe('rest-server', () => {
       let server: RestServer<TestContext>;
 
       beforeEach(() => {
-        const mockReadHandler: ResourceReadHandler<'Patient', TestContext> = jest.fn(async () => ({
+        const mockReadHandler: ResourceReadHandler<Patient, TestContext> = jest.fn(async () => ({
           resourceType: 'Patient' as const,
           id: '1',
         }));
@@ -407,7 +408,7 @@ describe('rest-server', () => {
     let mockContext: ExpressContextFunction<TestContext>;
 
     beforeEach(() => {
-      const mockReadHandler: ResourceReadHandler<'Patient', TestContext> = jest.fn(async () => ({
+      const mockReadHandler: ResourceReadHandler<Patient, TestContext> = jest.fn(async () => ({
         resourceType: 'Patient' as const,
         id: '1',
       }));
@@ -524,7 +525,7 @@ describe('rest-server', () => {
 
   describe('integration tests', () => {
     it('should create a complete working server setup', () => {
-      const mockReadHandler: ResourceReadHandler<'Patient', TestContext> = jest.fn(async () => ({
+      const mockReadHandler: ResourceReadHandler<Patient, TestContext> = jest.fn(async () => ({
         resourceType: 'Patient' as const,
         id: '123',
       }));

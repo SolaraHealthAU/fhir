@@ -3,7 +3,7 @@
 ------------------------------------------------------------------- */
 
 import * as z from 'zod';
-import type { KnownResource } from '@solarahealth/fhir-r4';
+import type { ResourceListType } from '@solarahealth/fhir-r4';
 import * as types from '../types';
 import { ReadBuilder, ReadBuilderReady } from './read-builder';
 import { SearchBuilder, SearchBuilderReady } from './search-builder';
@@ -11,8 +11,8 @@ import { SearchBuilder, SearchBuilderReady } from './search-builder';
 /* ------------------------------------------------------------------
    2.  Public entry point
    ------------------------------------------------------------------ */
-export function defineResource<C extends types.Context, RT extends KnownResource>(
-  resourceType: RT,
+export function defineResource<C extends types.Context, RT extends ResourceListType>(
+  resourceType: RT['resourceType'],
 ) {
   return new ResourceBuilder<RT, C>(resourceType);
 }
@@ -20,7 +20,7 @@ export function defineResource<C extends types.Context, RT extends KnownResource
 /* ------------------------------------------------------------------
    3.  Resource‑level builder – chains read() / search() …
    ------------------------------------------------------------------ */
-class ResourceBuilder<RT extends KnownResource, C extends types.Context> {
+class ResourceBuilder<RT extends ResourceListType, C extends types.Context> {
   // Store interaction details
   private interactions: {
     read?: types.InteractionDetailRead<RT, C>;
@@ -45,7 +45,7 @@ class ResourceBuilder<RT extends KnownResource, C extends types.Context> {
   private _readHistory?: types.CapabilityStatementResource<RT, C>['readHistory'];
   private _updateCreate?: types.CapabilityStatementResource<RT, C>['updateCreate'];
 
-  constructor(private readonly rt: RT) {}
+  constructor(private readonly rt: RT['resourceType']) {}
 
   // Method to add interaction details
   private addReadInteraction(handler: types.ResourceReadHandler<RT, C>, documentation?: string) {

@@ -1,10 +1,10 @@
 import * as z from 'zod';
-import type { Bundle, KnownResource } from '@solarahealth/fhir-r4';
+import type { Bundle, ResourceListType } from '@solarahealth/fhir-r4';
 import * as types from '../types';
 import * as errors from '../errors';
 
 export class SearchBuilder<
-  RT extends KnownResource,
+  RT extends ResourceListType,
   ParamsOut, // Type of validated search params
 > {
   private paramSchema!: z.ZodTypeAny;
@@ -14,7 +14,7 @@ export class SearchBuilder<
     req: { query: Record<string, string | string[]> },
   ) => Promise<Bundle>;
 
-  constructor(private readonly rt: RT) {}
+  constructor(private readonly rt: RT['resourceType']) {}
 
   /** Define the Zod schema for validating search parameters */
   params<S extends z.ZodTypeAny>(schema: S) {
@@ -58,7 +58,7 @@ export class SearchBuilder<
 }
 
 /** SearchBuilder ready marker type */
-export type SearchBuilderReady<RT extends KnownResource, ParamsOut> = SearchBuilder<
+export type SearchBuilderReady<RT extends ResourceListType, ParamsOut> = SearchBuilder<
   RT,
   ParamsOut
 > & {
