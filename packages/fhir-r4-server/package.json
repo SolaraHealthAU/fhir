@@ -55,7 +55,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@solarahealth/fhir-r4": "^1.1.1"
+    "@solarahealth/fhir-r4": "*"
   },
   "peerDependencies": {
     "express": "^5.1.0"
