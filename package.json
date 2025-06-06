@@ -4,7 +4,8 @@
   "description": "TypeScript types and utilities for HL7 FHIR resources with runtime validation",
   "private": true,
   "workspaces": [
-    "packages/*",
+    "packages/fhir-r4",
+    "packages/fhir-r4-server",
     "packages/fhir-r4-server/examples/*",
     "benchmarking/fhir-r4",
     "benchmarking/fhir-r4/fhir-r4"

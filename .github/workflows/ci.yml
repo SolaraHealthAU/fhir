@@ -51,6 +51,11 @@ jobs:
         working-directory: ${{ matrix.package }}
         run: npm ci
 
+      - name: Run build on server
+        if: matrix.package == 'packages/fhir-r4-server/examples/simple-patient-record'
+        working-directory: ${{ matrix.package }}/../../
+        run: npm run build
+
       - name: Run typecheck
         working-directory: ${{ matrix.package }}
         run: npm run typecheck
