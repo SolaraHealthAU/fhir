@@ -34,7 +34,7 @@ jobs:
         run: npm run typecheck
       - name: Run test
         working-directory: ${{ matrix.package }}
-        run: npm run test
+        run: TZ='UTC-10' npm run test -- --ci --runInBand --no-watchman
       - name: Run eslint
         working-directory: ${{ matrix.package }}
         run: npm run lint
