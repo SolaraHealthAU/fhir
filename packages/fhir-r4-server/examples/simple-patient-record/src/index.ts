@@ -175,12 +175,17 @@ app.get('/health', (req, res) => {
   res.json({ status: 'healthy', timestamp: new Date().toISOString() });
 });
 
-// 8. Start the server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`🚀 FHIR server running on http://localhost:${PORT}`);
-  console.log(`📋 Capability statement: http://localhost:${PORT}/fhir/metadata`);
-  console.log(`👤 Example patient: http://localhost:${PORT}/fhir/Patient/123`);
-  console.log(`🔍 Search patients: http://localhost:${PORT}/fhir/Patient?name=John`);
-  console.log(`💚 Health check: http://localhost:${PORT}/health`);
-});
+// 8. Start the server (only if not in test environment)
+if (process.env.NODE_ENV !== 'test') {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`🚀 FHIR server running on http://localhost:${PORT}`);
+    console.log(`📋 Capability statement: http://localhost:${PORT}/fhir/metadata`);
+    console.log(`👤 Example patient: http://localhost:${PORT}/fhir/Patient/123`);
+    console.log(`🔍 Search patients: http://localhost:${PORT}/fhir/Patient?name=John`);
+    console.log(`💚 Health check: http://localhost:${PORT}/health`);
+  });
+}
+
+// Export the app for testing
+export default app;

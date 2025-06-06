@@ -33,7 +33,15 @@ curl -s "$BASE_URL/fhir/Patient/456" | jq '{id, name, gender, birthDate}'
 echo ""
 
 echo "📖 GET $BASE_URL/fhir/Patient/999 (Non-existent - should return 404):"
-curl -s -w "HTTP Status: %{http_code}\n" "$BASE_URL/fhir/Patient/999" | jq -r 'if type == "object" then .issue[0].diagnostics else empty end'
+RESPONSE=$(curl -s "$BASE_URL/fhir/Patient/999")
+STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$BASE_URL/fhir/Patient/999")
+echo "HTTP Status: $STATUS_CODE"
+if [ "$STATUS_CODE" = "404" ]; then
+    echo "$RESPONSE" | jq -r '.issue[0].diagnostics // "Patient not found"'
+else
+    echo "Unexpected status code: $STATUS_CODE"
+    echo "$RESPONSE" | jq -r '.'
+fi
 echo ""
 
 echo "🔍 Searching Patients:"

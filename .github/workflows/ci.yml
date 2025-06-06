@@ -16,6 +16,7 @@ jobs:
         package:
           - packages/fhir-r4
           - packages/fhir-r4-server
+          - packages/fhir-r4-server/examples/simple-patient-record
         node-version:
           - '20.x'
     steps:
